@@ -1,0 +1,9 @@
+node_modules/
+_site/
+.DS_Store
+.history/
+.env
+.vscode/
+# One-off scripts that first wrote the registers. Running them would overwrite later edits.
+scripts/seed/
+reports/
