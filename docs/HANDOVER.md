@@ -46,7 +46,7 @@ The scripts print their own counts. They are not copied here because they change
 4. **Not found, and shown as gaps:** the share of people on the full rate, the number whose pension is not increased abroad, costings for a double lock and for means-testing, incomes of pensioner carers.
 5. **Typed wording that will age:** the worked example on the triple lock page names months and years in words. The first year in the rule comparison starts at 2027/28. Both are in the maintenance guide.
 6. **One check date is printed for two figures** in a few combined source notes. The dates are the same today.
-7. **The preview on Netlify is password protected** and sends `noindex` on every file. Both must be removed at launch. The password is in the local `.env` file, which is not committed.
+7. **The preview on Netlify uses basic authentication** and sends `noindex` on every file. Both must be removed at launch. The user name and password are in the `BASIC_AUTH` variable in Netlify and in the local `.preview-password` file, which is not committed.
 8. **Field errors use `role="alert"`.** With many errors at once, screen reader announcements may compete. Not tested.
 9. **`scripts/seed/` should be deleted.** Running it would overwrite the registers. A delete was attempted and declined by the permission settings, so it is still there.
 10. **Two party positions rest on news reports**, not party documents.

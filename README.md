@@ -74,7 +74,7 @@ A11Y_ASSESSMENT_DATE=2026-10-01 AI_CRAWLER_POLICY=allow npm run build
 
 ## Hosting
 
-Netlify builds a password-protected preview from `main`, using `netlify.toml`. Repository: https://github.com/LegendT/UK-State-Pension-Explorer
+Netlify builds a preview from `main`, using `netlify.toml`. The preview asks for a user name and password. They are set in the `BASIC_AUTH` variable in Netlify, as `user:password`, and the build writes them to `_site/_headers`. To try that locally: `BASIC_AUTH=user:password npm run build`. Repository: https://github.com/LegendT/UK-State-Pension-Explorer
 
 ## Conventions
 

@@ -11,10 +11,24 @@ const production = env === "production";
 // On Netlify a preview takes the address of its own deploy. Production never does: it needs SITE_URL.
 const url = (process.env.SITE_URL || (production ? "" : process.env.DEPLOY_PRIME_URL || "http://localhost:8080")).replace(/\/$/, "");
 
+// Basic authentication for the preview. The value is "user:password" and comes from the
+// environment only, so it is never in the repository. See src/_headers.njk.
+const basicAuth = process.env.BASIC_AUTH || "";
+if (basicAuth && !/^[^\s:]+:[^\s]+$/.test(basicAuth)) {
+  throw new Error("BASIC_AUTH must be user:password with no spaces");
+}
+if (process.env.NETLIFY && !production && !basicAuth) {
+  throw new Error("Preview build stopped. BASIC_AUTH is not set in Netlify, so the preview would be open to anyone with the address.");
+}
+if (production && basicAuth) {
+  throw new Error("Production build stopped. BASIC_AUTH is set, so the published site would ask every reader for a password.");
+}
+
 const config = {
   env,
   production,
   indexable: production,
+  basicAuth,
   name: process.env.SITE_NAME || "UK State Pension Explorer",
   url,
   language: "en-GB",

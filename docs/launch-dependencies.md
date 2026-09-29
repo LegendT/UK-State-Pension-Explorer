@@ -6,7 +6,7 @@ Things only the owner can supply or decide. The build works locally without them
 | --- | --- | --- | --- |
 | 1 | Name of the site. The working title is "UK State Pension Explorer". | `SITE_NAME`. The two share images in `scripts/share/` carry the name and must be made again if it changes. | Publication |
 | 2 | Production domain, with HTTPS and no path. | `SITE_URL` | Canonicals, sitemap, social cards, reciprocal links |
-| 3 | Hosting. | Netlify, project `ukstatepensionexplorer`, set by the owner on 29 September 2026. `netlify.toml` builds a preview with security headers and a `noindex` header. The project is password protected. For launch: set `SITE_ENV=production`, remove the `X-Robots-Tag` header and take off the password. | Publication |
+| 3 | Hosting. | Netlify, project `ukstatepensionexplorer`, set by the owner on 29 September 2026. `netlify.toml` builds a preview with security headers and a `noindex` header. The preview uses basic authentication, written at build time from the `BASIC_AUTH` variable in Netlify. For launch: set `SITE_ENV=production`, remove the `X-Robots-Tag` header and delete `BASIC_AUTH`. | Publication |
 | 4 | A working route to report an error or an accessibility barrier. | `CORRECTION_URL` | Publication. Scope sections 2H and 6 |
 | 5 | Owner of the content, and whether a person or an organisation. | `OWNER_NAME`, `OWNER_TYPE` | Publication. Structured data publisher |
 | 6 | A reviewer who is not the author, and the date of the review. | `REVIEWER_NAME`, `REVIEW_DATE` | Publication. Scope section 7, stage 3 |
