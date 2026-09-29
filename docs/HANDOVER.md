@@ -69,7 +69,7 @@ Not checked on the deployed preview: the other three calculators, any browser bu
 
 ## Known defects and limits
 
-1. **The news note and the social care section of the reform options page predate the Prime Minister's conference speech of 29 September 2026.** No transcript was found by mid-afternoon that day. Both must be rewritten once it is published. Later that day Pensions Age reported that the speech announced an "annual double lock" after the next general election, as part of plans to pay for a National Care Service. That is a news report, read at source, not the speech. If it is right, the section's statement that no proposal was found is out of date.
+1. **The news note and the social care section of the reform options page predate the Prime Minister's conference speech of 29 September 2026.** No transcript was found by mid-afternoon that day. Both must be rewritten once it is published. Later that day Pensions Age reported that the speech announced an "annual double lock" after the next general election, as part of plans to pay for a National Care Service. That is a news report, read at source, not the speech. If it is right, the section's statement that no proposal was found is out of date. Two changes wait for that rewrite: the Resolution Foundation saving appears three times on the reform options page, and the dated section sits in the middle of the page and is not mentioned in the opening paragraph.
 2. **No published proposal ties the triple lock to social care.** The section says so. For that reason it is a dated section and not a main page.
 3. **Example budgets are not like for like.** Private renters at the 2026 minimum, social renters at the 2025 minimum, owners at the 2025 moderate standard.
 4. **Not found, and shown as gaps:** the share of people on the full rate, the number whose pension is not increased abroad, costings for a double lock and for means-testing, incomes of pensioner carers.
@@ -77,10 +77,8 @@ Not checked on the deployed preview: the other three calculators, any browser bu
 6. **One check date is printed for two figures** in a few combined source notes. The dates are the same today.
 7. **The preview on Netlify uses basic authentication** and sends `noindex` on every file. Both were seen working on the deploy preview. Both must be removed at launch. The user name and password are in the `BASIC_AUTH` variable in Netlify. Netlify's own password protection is also switched on, so a visitor is asked twice. The owner has decided to turn it off. Whether that has been done was not checked.
 8. **Field errors use `role="alert"`.** With many errors at once, screen reader announcements may compete. Not tested.
-9. **`scripts/seed/` was deleted** on 29 September 2026, on the owner's decision.
-10. **Two party positions rest on news reports**, not party documents.
-11. **After launch, deploy previews and branch deploys would be open.** The launch steps delete `BASIC_AUTH` everywhere. Keeping it for those two contexts needs the production guard to check the Netlify context. Deferred to launch planning.
-12. **`.preview-password` was deleted** on 29 September 2026. The owner has stored the sign-in elsewhere.
+9. **Two party positions rest on news reports**, not party documents.
+10. **After launch, deploy previews and branch deploys would be open.** The launch steps delete `BASIC_AUTH` everywhere. Keeping it for those two contexts needs the production guard to check the Netlify context. Deferred to launch planning.
 
 ## Checks not performed
 
