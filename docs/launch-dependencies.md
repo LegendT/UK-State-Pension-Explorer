@@ -4,7 +4,7 @@ Things only the owner can supply or decide. The build works locally without them
 
 | No. | Dependency | How it is supplied | Blocks |
 | --- | --- | --- | --- |
-| 1 | Name of the site. The working title is "UK State Pension Explorer". | `SITE_NAME`. The two share images in `scripts/share/` carry the name and must be made again if it changes. | Publication |
+| 1 | Name of the site. The working title is "UK State Pension Explorer". | `SITE_TITLE`. The two share images in `scripts/share/` carry the name and must be made again if it changes. | Publication |
 | 2 | Production domain, with HTTPS and no path. | `SITE_URL` | Canonicals, sitemap, social cards, reciprocal links |
 | 3 | Hosting. | Netlify, project `ukstatepensionexplorer`, set by the owner on 29 September 2026. `netlify.toml` builds a preview with security headers and a `noindex` header. The preview uses basic authentication, written at build time from the `BASIC_AUTH` variable in Netlify. For launch: change `SITE_ENV` to `production` in `netlify.toml` (a value set in the Netlify screen is overridden by the file), remove the `X-Robots-Tag` header and delete `BASIC_AUTH`. | Publication |
 | 4 | A working route to report an error or an accessibility barrier. | `CORRECTION_URL` | Publication. Scope sections 2H and 6 |

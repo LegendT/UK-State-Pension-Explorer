@@ -43,7 +43,7 @@ A production build stops unless the launch decisions it can check are set. It al
 The command below passes only after that header has been removed from `netlify.toml`.
 
 ```
-SITE_ENV=production SITE_NAME="..." SITE_URL=https://... CORRECTION_URL=https://... \
+SITE_ENV=production SITE_TITLE="..." SITE_URL=https://... CORRECTION_URL=https://... \
 OWNER_NAME="..." OWNER_TYPE=Person REVIEWER_NAME="..." REVIEW_DATE=2026-10-01 \
 A11Y_ASSESSMENT_DATE=2026-10-01 AI_CRAWLER_POLICY=allow npm run build
 ```

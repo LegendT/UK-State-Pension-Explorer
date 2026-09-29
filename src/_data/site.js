@@ -29,7 +29,8 @@ const config = {
   production,
   indexable: production,
   basicAuth,
-  name: process.env.SITE_NAME || "UK State Pension Explorer",
+  // SITE_TITLE, not SITE_NAME: Netlify sets SITE_NAME itself, to the project name.
+  name: process.env.SITE_TITLE || "UK State Pension Explorer",
   url,
   language: "en-GB",
   correctionUrl: process.env.CORRECTION_URL || "",
@@ -67,7 +68,7 @@ if (production) {
   const missing = [];
   if (!/^https:\/\/[^/]+$/.test(url)) missing.push("SITE_URL (https, no path)");
   if (/localhost|example|placeholder/i.test(url)) missing.push("SITE_URL (a real domain)");
-  if (!process.env.SITE_NAME) missing.push("SITE_NAME (the working title is not used without a decision)");
+  if (!process.env.SITE_TITLE) missing.push("SITE_TITLE (the working title is not used without a decision)");
   if (!["Person", "Organization"].includes(process.env.OWNER_TYPE)) missing.push("OWNER_TYPE (Person or Organization, the schema.org spelling)");
   if (!config.correctionUrl) missing.push("CORRECTION_URL");
   if (!config.ownerName) missing.push("OWNER_NAME");
