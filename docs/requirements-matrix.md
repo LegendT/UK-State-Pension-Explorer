@@ -29,7 +29,7 @@ Status values: **Built**, **Built with a gap** (the gap is named), **Not built**
 | E Public-finance context | `#public-finances`, `#cost-and-saving` | Tables `sp-spending-series`, `sp-longrun` | Built |
 | E Distributional context | `#who` | Tables `income-fifths`, `wealth-bands` | Built with a gap: carers' incomes and wealth by type for 65 and over not found |
 | E Sister-site links in context | `#public-finances`, `#cost-and-saving` | `links.json` | Built. Destination tools not exercised in a browser |
-| F Pensions and social care | `/pensions-and-social-care/` | GOV.UK, nation governments, Health Foundation | Built with a gap: dated before the speech |
+| F Pensions and social care | `/reform-options/#social-care` | GOV.UK, nation governments, Health Foundation | Built as a dated section of the reform options page, not a page of its own. Owner's decision, 29 September 2026. Gap: dated before the speech |
 | G History | `/history/` | `history.json` | Built |
 | H Sources, method and corrections | `/sources-and-method/` | The three registers | Built with a gap: no correction route, no owner, no reviewer |
 | Utility pages | `/accessibility/`, `/privacy/`, `/site-map/`, `/404.html` | | Built |
@@ -84,7 +84,7 @@ See `docs/accessibility-assessment.md`. Status: **Built with a gap**. Automated 
 | --- | --- |
 | 1 Evidence and content foundation | Built |
 | 2 Complete first version | Built |
-| 3 Verification | Part done. Done: tests, passage and value checks, build checks, automated accessibility. Not done: review by a second person, screen readers, deployed checks |
+| 3 Verification | Part done. Done: tests, passage and value checks, build checks, automated accessibility, checks on the deploy preview. Not done: review by a second person, screen readers, checks on a production domain |
 
 ## Section 9: sister sites
 
@@ -109,5 +109,5 @@ See `docs/accessibility-assessment.md`. Status: **Built with a gap**. Automated 
 | HTML site map | `/site-map/` | | Built |
 | Environment indexing controls | `site.js`, `base.njk`, `robots.njk` | Builds in three environments | Built |
 | AI crawler policy recorded as undecided | `launch-dependencies.md` item 7 | | Owner |
-| Deployed checks | | | Not done: no deployment |
+| Deployed checks | Netlify deploy preview of pull request 1 | `curl` and Chrome, recorded in `docs/HANDOVER.md` | Done for the deploy preview. Not done for the main site address or a production domain |
 | Search console | | | Not done: needs account and domain |
