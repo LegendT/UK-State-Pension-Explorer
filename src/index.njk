@@ -8,7 +8,7 @@ permalink: /
 {%- set bsp = "bsp-full-weekly" | figure -%}
 {%- set next = "earnings-first-estimate-2026" | figure -%}
 
-<section class="rate-block" aria-labelledby="rate-heading">
+<header class="rate-block">
   <h1 id="rate-heading">How much is the State Pension?</h1>
   <p class="rate">{{ nsp.shown }} a week</p>
   <p class="rate-label">Full new State Pension, {{ nsp.period_label }}, before tax.</p>
@@ -20,7 +20,7 @@ permalink: /
     <li><a href="https://www.gov.uk/check-state-pension">Check your own State Pension forecast on GOV.UK</a></li>
   </ul>
   <p class="source">Rates took effect on {{ nsp.effective_from | timeTag | safe }}. Sources: {{ m.cite(nsp.source) }}, and {{ m.cite(bsp.source) }}. Both were checked against the source on {{ nsp.checked_date | timeTag | safe }}. The rates cover Great Britain. Northern Ireland sets the same rates through its own order, which we did not read.</p>
-</section>
+</header>
 
 <p class="lede">This site explains the State Pension, the yearly increase known as the triple lock, what a pension can cover, and the evidence for and against changing the rules. It is written for people who have heard these things in the news and want them explained.</p>
 

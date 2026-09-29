@@ -77,6 +77,27 @@ A11Y_ASSESSMENT_DATE=2026-10-01 AI_CRAWLER_POLICY=allow npm run build
 
 Netlify builds a preview from `main`, using `netlify.toml`. The preview asks for a user name and password. They are set in the `BASIC_AUTH` variable in Netlify, as `user:password`, and the build writes them to `_site/_headers`. `BASIC_AUTH=user:password npm run build` shows that the rule is written. It does not show that the sign-in works, because the local server ignores that file. That was checked on the Netlify deploy preview on 29 September 2026. Repository, private: https://github.com/LegendT/UK-State-Pension-Explorer
 
+## Markup conventions
+
+Set on 29 September 2026 after a sweep of every built page. No build check holds these yet. They are a reading, made with the page map of the built site.
+
+| Rule | Where it applies |
+| --- | --- |
+| A figure card is an `article` with a heading, inside a list item. Its heading is one level below the heading of the section it sits in. Pass the level to `m.stat`. | The cards on the State Pension, living on a pension and reform options pages |
+| A note or a "not available" block is a `div` with `role="note"` and a heading as its first child, one level below the section it sits in. Pass the level to `m.note` and `m.unavailable`. | Every page, and the results the calculators write |
+| An option is an `article` with its own `h3`. It has no `aria-labelledby`, so it is not a region landmark. | Reform options |
+| A `section` with `aria-labelledby` is for a calculator only. | The four calculators |
+| A label with one value is a `dl`. Keep a space between `</dt>` and `<dd>`. | Figure details, calculator results, the options |
+| A chart is a `figure` with its title in a `figcaption`. | The history explorer and the rule comparison |
+| A date that a template prints is a `time` element: `timeTag` for a day, `monthOrDayTag` for a source that gives a month only. Dates typed inside register text stay plain. | Citations, check dates, the register of sources |
+| Words taken from a source are in `q` or in quotation marks. | Quoted passages |
+| Lists of links in the footer are `nav` elements with names. | Every page |
+| A wrapper that scrolls a table or chart keeps `tabindex="0"`, `role="region"` and a name. `html-validate` reports each one under `prefer-native-element`. That report is declined. | Every wide table and chart |
+
+The exception is the preview banner. It has `role="note"` and no heading, because a heading there would come before the `h1`. It goes at launch.
+
+`scripts/a11y-manual-assist.mjs` counts skipped heading levels. It cannot tell whether a heading sits under the right parent. Check that by reading the outline.
+
 ## Conventions
 
 - British English. No em dashes. No emoji.

@@ -161,9 +161,9 @@ permalink: /reform-options/
 <h3>Poverty and deprivation</h3>
 
 <ul class="cards cards--three">
-  <li>{{ m.stat("low-income-ahc" | figure, "After rent, mortgage interest and similar costs are taken off.") }}</li>
-  <li>{{ m.stat("low-income-bhc" | figure, "Before housing costs are taken off.") }}</li>
-  <li>{{ m.stat("material-deprivation" | figure, "A measure of going without, not of income.") }}</li>
+  <li>{{ m.stat("low-income-ahc" | figure, "After rent, mortgage interest and similar costs are taken off.", 4) }}</li>
+  <li>{{ m.stat("low-income-bhc" | figure, "Before housing costs are taken off.", 4) }}</li>
+  <li>{{ m.stat("material-deprivation" | figure, "A measure of going without, not of income.", 4) }}</li>
 </ul>
 
 <p>Fewer pensioners are in low income after housing costs than before, because most own their home outright. {{ m.c("hbai-owners") }} For a pensioner who rents, housing costs work the other way.</p>
@@ -201,46 +201,46 @@ permalink: /reform-options/
 <p>The page describes each option the same way. The law sets a minimum of earnings for any option. A rule that pays less than earnings growth would need a change in the law. {{ m.c("legal-earnings-floor") }}</p>
 
 <div class="option-grid">
-  <section class="option" aria-labelledby="opt-triple">
+  <article class="option">
     <h3 id="opt-triple">Keep the triple lock</h3>
     <dl>
-      <dt>The rule</dt><dd>The highest of prices, earnings and 2.5%.</dd>
-      <dt>Effect on the pension</dt><dd>It rises at least as fast as prices and as earnings, every year. Over time it rises faster than both. The level in future is uncertain: {{ ("ifs-range-2050" | claim).passage }}. {{ m.c("ifs-range-2050") }}</dd>
-      <dt>Who is affected</dt><dd>Current pensioners, and future ones more so, because increases build up over time. {{ m.c("ppi-future-workers") }} People who live longer gain more. {{ m.c("ifs-longevity") }}</dd>
-      <dt>Public finances</dt><dd>The highest cost of the four rules, and the least predictable.</dd>
-      <dt>A judgement, not a finding</dt><dd>Whether the pension should rise as a share of earnings, and how far.</dd>
+      <dt>The rule</dt> <dd>The highest of prices, earnings and 2.5%.</dd>
+      <dt>Effect on the pension</dt> <dd>It rises at least as fast as prices and as earnings, every year. Over time it rises faster than both. The source puts it this way: <q>{{ ("ifs-range-2050" | claim).passage }}</q>. {{ m.c("ifs-range-2050") }}</dd>
+      <dt>Who is affected</dt> <dd>Current pensioners, and future ones more so, because increases build up over time. {{ m.c("ppi-future-workers") }} People who live longer gain more. {{ m.c("ifs-longevity") }}</dd>
+      <dt>Public finances</dt> <dd>The highest cost of the four rules, and the least predictable.</dd>
+      <dt>A judgement, not a finding</dt> <dd>Whether the pension should rise as a share of earnings, and how far.</dd>
     </dl>
-  </section>
-  <section class="option" aria-labelledby="opt-double">
+  </article>
+  <article class="option">
     <h3 id="opt-double">Double lock: prices or earnings</h3>
     <dl>
-      <dt>The rule</dt><dd>The higher of prices and earnings. The 2.5% minimum is removed.</dd>
-      <dt>Effect on the pension</dt><dd>The same as the triple lock in any year when prices or earnings rise by 2.5% or more. Lower in other years. It still rises faster than both prices and earnings over time, because it takes the higher each year.</dd>
-      <dt>Who is affected</dt><dd>The same people, by less. Modelling from 2018 put the effect on pensioner poverty in 2050 at {{ "ppi-poverty-double-lock" | figShown }} more people than under the triple lock. {{ m.cite(("ppi-poverty-earnings-link" | figure).source) }}.</dd>
-      <dt>Public finances</dt><dd>{{ ("no-costed-double-lock" | claim).statement }}</dd>
-      <dt>A precedent</dt><dd>{{ ("double-lock-2017" | claim).statement }} {{ m.c("double-lock-2017") }}</dd>
+      <dt>The rule</dt> <dd>The higher of prices and earnings. The 2.5% minimum is removed.</dd>
+      <dt>Effect on the pension</dt> <dd>The same as the triple lock in any year when prices or earnings rise by 2.5% or more. Lower in other years. It still rises faster than both prices and earnings over time, because it takes the higher each year.</dd>
+      <dt>Who is affected</dt> <dd>The same people, by less. Modelling from 2018 put the effect on pensioner poverty in 2050 at {{ "ppi-poverty-double-lock" | figShown }} more people than under the triple lock. {{ m.cite(("ppi-poverty-earnings-link" | figure).source) }}.</dd>
+      <dt>Public finances</dt> <dd>{{ ("no-costed-double-lock" | claim).statement }}</dd>
+      <dt>A precedent</dt> <dd>{{ ("double-lock-2017" | claim).statement }} {{ m.c("double-lock-2017") }}</dd>
     </dl>
-  </section>
-  <section class="option" aria-labelledby="opt-earnings">
+  </article>
+  <article class="option">
     <h3 id="opt-earnings">Earnings link</h3>
     <dl>
-      <dt>The rule</dt><dd>The rise in average earnings. This is the minimum the law already requires.</dd>
-      <dt>Effect on the pension</dt><dd>It keeps its value compared with pay. In a year when prices rise faster than pay, it loses buying power.</dd>
-      <dt>Who is affected</dt><dd>Modelling from 2018 put the number of extra pensioners in poverty in 2050 at {{ "ppi-poverty-earnings-link" | figShown }}, compared with the triple lock. {{ m.sourceNote("ppi-poverty-earnings-link" | figure) }}</dd>
-      <dt>Public finances</dt><dd>Small savings at first, large over decades. See the table above.</dd>
-      <dt>A judgement, not a finding</dt><dd>Whether a year of lost buying power is acceptable if the pension keeps pace with pay over time.</dd>
+      <dt>The rule</dt> <dd>The rise in average earnings. This is the minimum the law already requires.</dd>
+      <dt>Effect on the pension</dt> <dd>It keeps its value compared with pay. In a year when prices rise faster than pay, it loses buying power.</dd>
+      <dt>Who is affected</dt> <dd>Modelling from 2018 put the number of extra pensioners in poverty in 2050 at {{ "ppi-poverty-earnings-link" | figShown }}, compared with the triple lock. {{ m.sourceNote("ppi-poverty-earnings-link" | figure) }}</dd>
+      <dt>Public finances</dt> <dd>Small savings at first, large over decades. See the table above.</dd>
+      <dt>A judgement, not a finding</dt> <dd>Whether a year of lost buying power is acceptable if the pension keeps pace with pay over time.</dd>
     </dl>
-  </section>
-  <section class="option" aria-labelledby="opt-prices">
+  </article>
+  <article class="option">
     <h3 id="opt-prices">Prices link</h3>
     <dl>
-      <dt>The rule</dt><dd>The rise in the Consumer Prices Index.</dd>
-      <dt>Effect on the pension</dt><dd>It keeps its buying power against the official index. When pay rises faster than prices, which is the usual long-run pattern, it falls further behind pay each year.</dd>
-      <dt>Who is affected</dt><dd>Future pensioners most, because the gap with earnings grows with time.</dd>
-      <dt>Public finances</dt><dd>The largest saving of the four. See the table above.</dd>
-      <dt>The law</dt><dd>It would pay less than the present legal minimum in most years, so the law would have to change. From 1980 to 2010 the law required only a prices link. {{ m.c("earnings-link-1980") }}</dd>
+      <dt>The rule</dt> <dd>The rise in the Consumer Prices Index.</dd>
+      <dt>Effect on the pension</dt> <dd>It keeps its buying power against the official index. When pay rises faster than prices, which is the usual long-run pattern, it falls further behind pay each year.</dd>
+      <dt>Who is affected</dt> <dd>Future pensioners most, because the gap with earnings grows with time.</dd>
+      <dt>Public finances</dt> <dd>The largest saving of the four. See the table above.</dd>
+      <dt>The law</dt> <dd>It would pay less than the present legal minimum in most years, so the law would have to change. From 1980 to 2010 the law required only a prices link. {{ m.c("earnings-link-1980") }}</dd>
     </dl>
-  </section>
+  </article>
 </div>
 
 <h3 id="smoothed">A fifth option, explained but not in the calculator: a smoothed earnings link</h3>
@@ -317,7 +317,7 @@ permalink: /reform-options/
         <label for="compare-floor">The amount never falls in pounds (a cash floor of 0%)</label>
       </div>
       <p class="hint" id="compare-floor-hint">This is an assumption of these hypothetical rules. It is not a statement of the law. It matters only when prices or earnings fall.</p>
-      <p><strong>Why this scenario is here:</strong> <span id="compare-reason">{{ scenario.reason }}</span></p>
+      <dl class="reason"><dt>Why this scenario is here</dt> <dd id="compare-reason">{{ scenario.reason }}</dd></dl>
     </fieldset>
 
     <details class="more" id="compare-edit">
@@ -373,42 +373,42 @@ permalink: /reform-options/
 <p>The State Pension is not means-tested. A person's income and savings do not affect it. The options below would change that, or would reach a similar aim another way.</p>
 
 <div class="option-grid">
-  <section class="option" aria-labelledby="ent-income">
+  <article class="option">
     <h3 id="ent-income">Means-test by income</h3>
     <dl>
-      <dt>The idea</dt><dd>Reduce or withdraw the State Pension for people with income above a level.</dd>
-      <dt>Who is affected</dt><dd>It depends entirely on the level and on how fast the pension is withdrawn. No proposal we found sets them.</dd>
-      <dt>Known difficulties</dt><dd>Not everyone who is entitled claims a means-tested benefit. Take-up of Pension Credit is {{ m.f("pension-credit-take-up") }}. A withdrawal rate reduces the reward for saving. {{ m.c("ifs-no-means-test-reason") }}</dd>
-      <dt>Public finances</dt><dd>{{ ("no-costed-means-test" | claim).statement }}</dd>
+      <dt>The idea</dt> <dd>Reduce or withdraw the State Pension for people with income above a level.</dd>
+      <dt>Who is affected</dt> <dd>It depends entirely on the level and on how fast the pension is withdrawn. No proposal we found sets them.</dd>
+      <dt>Known difficulties</dt> <dd>Not everyone who is entitled claims a means-tested benefit. Take-up of Pension Credit is {{ m.f("pension-credit-take-up") }}. A withdrawal rate reduces the reward for saving. {{ m.c("ifs-no-means-test-reason") }}</dd>
+      <dt>Public finances</dt> <dd>{{ ("no-costed-means-test" | claim).statement }}</dd>
     </dl>
-  </section>
-  <section class="option" aria-labelledby="ent-assets">
+  </article>
+  <article class="option">
     <h3 id="ent-assets">Means-test by assets as well as income</h3>
     <dl>
-      <dt>The idea</dt><dd>Count savings, and possibly property, as well as income.</dd>
-      <dt>Who is affected</dt><dd>People with wealth and low income, including owners of homes that have risen in value. Whether the home counts changes the result greatly.</dd>
-      <dt>An example from abroad</dt><dd>{{ ("australia-assets-test" | claim).statement }} {{ m.c("australia-assets-test") }} {{ ("australia-assets-test" | claim).note }}</dd>
-      <dt>Known difficulties</dt><dd>Valuing assets, treating the home, and people who cannot turn an asset into income.</dd>
+      <dt>The idea</dt> <dd>Count savings, and possibly property, as well as income.</dd>
+      <dt>Who is affected</dt> <dd>People with wealth and low income, including owners of homes that have risen in value. Whether the home counts changes the result greatly.</dd>
+      <dt>An example from abroad</dt> <dd>{{ ("australia-assets-test" | claim).statement }} {{ m.c("australia-assets-test") }} {{ ("australia-assets-test" | claim).note }}</dd>
+      <dt>Known difficulties</dt> <dd>Valuing assets, treating the home, and people who cannot turn an asset into income.</dd>
     </dl>
-  </section>
-  <section class="option" aria-labelledby="ent-tax">
+  </article>
+  <article class="option">
     <h3 id="ent-tax">Keep the pension and redistribute through tax</h3>
     <dl>
-      <dt>The idea</dt><dd>Pay the State Pension to everyone entitled and recover more from people with higher incomes through the tax system.</dd>
-      <dt>How it works now</dt><dd>The State Pension is already taxable. The Winter Fuel Payment is now recovered through tax from people with income over {{ m.f("winter-fuel-income-limit") }}.</dd>
-      <dt>A proposal</dt><dd>{{ ("if-nic-proposal" | claim).statement }} {{ m.c("if-nic-proposal") }}</dd>
-      <dt>Known difficulties</dt><dd>Tax looks at income, not wealth. A change in tax for pensioners also reaches pensioners with modest private pensions.</dd>
+      <dt>The idea</dt> <dd>Pay the State Pension to everyone entitled and recover more from people with higher incomes through the tax system.</dd>
+      <dt>How it works now</dt> <dd>The State Pension is already taxable. The Winter Fuel Payment is now recovered through tax from people with income over {{ m.f("winter-fuel-income-limit") }}.</dd>
+      <dt>A proposal</dt> <dd>{{ ("if-nic-proposal" | claim).statement }} {{ m.c("if-nic-proposal") }}</dd>
+      <dt>Known difficulties</dt> <dd>Tax looks at income, not wealth. A change in tax for pensioners also reaches pensioners with modest private pensions.</dd>
     </dl>
-  </section>
-  <section class="option" aria-labelledby="ent-targeted">
+  </article>
+  <article class="option">
     <h3 id="ent-targeted">Keep broad entitlement and strengthen targeted support</h3>
     <dl>
-      <dt>The idea</dt><dd>Leave the State Pension as it is and put more into Pension Credit, housing support or disability benefits.</dd>
-      <dt>Who is affected</dt><dd>People on low incomes who claim. People who are entitled and do not claim get nothing. About {{ m.f("pension-credit-non-recipients") }} families did not claim Pension Credit.</dd>
-      <dt>A view</dt><dd>{{ ("pc-safety-net" | claim).statement }} {{ m.c("pc-safety-net") }}</dd>
-      <dt>Known difficulties</dt><dd>Take-up, and the effect on the reward for saving. {{ m.c("wp-savings-credit") }}</dd>
+      <dt>The idea</dt> <dd>Leave the State Pension as it is and put more into Pension Credit, housing support or disability benefits.</dd>
+      <dt>Who is affected</dt> <dd>People on low incomes who claim. People who are entitled and do not claim get nothing. About {{ m.f("pension-credit-non-recipients") }} families did not claim Pension Credit.</dd>
+      <dt>A view</dt> <dd>{{ ("pc-safety-net" | claim).statement }} {{ m.c("pc-safety-net") }}</dd>
+      <dt>Known difficulties</dt> <dd>Take-up, and the effect on the reward for saving. {{ m.c("wp-savings-credit") }}</dd>
     </dl>
-  </section>
+  </article>
 </div>
 
 <h3>Why the present system is not means-tested</h3>
@@ -588,7 +588,7 @@ permalink: /reform-options/
 <h2 id="arguments">The main arguments, side by side</h2>
 
 <div class="option-grid">
-  <section class="option" aria-labelledby="args-keep">
+  <article class="option">
     <h3 id="args-keep">For keeping the triple lock</h3>
     <ul>
       <li><strong>Most pensioners depend on it.</strong> {{ ("ppi-reliance" | claim).statement }} {{ m.c("ppi-reliance") }} {{ ("ageuk-largest-income" | claim).statement }} {{ m.c("ageuk-largest-income") }}</li>
@@ -598,8 +598,8 @@ permalink: /reform-options/
       <li><strong>The level is about 30% of typical pay.</strong> The full new State Pension is {{ m.f("nsp-share-median-earnings") }} of median full-time earnings. {{ m.c("pc-30-percent") }}</li>
       <li><strong>It supports private saving.</strong> {{ ("pc-firm-foundation" | claim).statement }} {{ m.c("pc-firm-foundation") }}</li>
     </ul>
-  </section>
-  <section class="option" aria-labelledby="args-change">
+  </article>
+  <article class="option">
     <h3 id="args-change">For changing it</h3>
     <ul>
       <li><strong>It has cost more than expected.</strong> {{ m.f("tl-cost-vs-earnings-2029-30") }} a year by 2029-30 compared with earnings uprating, against {{ m.f("tl-cost-initial-assumption") }} on the first assumption. {{ m.cite(("tl-cost-vs-earnings-2029-30" | figure).source) }}.</li>
@@ -609,7 +609,7 @@ permalink: /reform-options/
       <li><strong>Fairness between generations.</strong> {{ ("rf-living-standards" | claim).statement }} {{ m.c("rf-living-standards") }}</li>
       <li><strong>It is not aimed at poverty.</strong> {{ ("rf-poverty-since-2011" | claim).statement }} {{ m.c("rf-poverty-since-2011") }} It applies the same percentage to the full rates, whatever the income of the person who receives them.</li>
     </ul>
-  </section>
+  </article>
 </div>
 
 <p>Some of these points pull against each other on the facts. The Pensions Policy Institute and the Office for Budget Responsibility weigh the triple lock against demographics differently, using different dates and baselines. Both are cited above. We have not tried to make them agree.</p>

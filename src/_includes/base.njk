@@ -93,14 +93,14 @@
 </main>
 <footer class="site-footer">
   <div class="wrap">
-    <section aria-labelledby="other-explainers">
+    <nav aria-labelledby="other-explainers">
       <h2 id="other-explainers">Our other explainers</h2>
       <ul class="explainers">
         {%- for sibling in site.siblings %}
         <li><a href="{{ sibling.url }}">{{ sibling.name }}</a> <span>{{ sibling.summary }} This is a separate website.</span></li>
         {%- endfor %}
       </ul>
-    </section>
+    </nav>
     <nav aria-label="Footer">
       <ul class="footer-links">
         <li><a href="/sources-and-method/">Sources, method and corrections</a></li>

@@ -110,8 +110,8 @@ export function renderHistory(options) {
 
   return (
     `<h3>${name}, ${from} to ${to}</h3>` +
-    `<p>${HISTORY_MEASURES[measure]}. Full rate, before tax.</p>` +
-    `<figure class="chart"><div class="scroll-x" tabindex="0" role="region" aria-label="Chart: ${name}, ${from} to ${to}">${chart}</div></figure>` +
+    `<p>Full rate, before tax.</p>` +
+    `<figure class="chart"><figcaption><h4>${HISTORY_MEASURES[measure]}</h4></figcaption><div class="scroll-x" tabindex="0" role="region" aria-label="Chart: ${name}, ${from} to ${to}">${chart}</div></figure>` +
     comparison +
     `<div class="scroll-x" tabindex="0" role="region" aria-label="${name}, ${from} to ${to}, table"><table>` +
     `<caption>${name}, ${from} to ${to}. ${HISTORY_MEASURES[measure]}</caption>` +

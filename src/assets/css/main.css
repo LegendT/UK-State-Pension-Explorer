@@ -66,6 +66,8 @@ h1 { font-size: 1.875rem; margin-top: var(--space-l); }
 h2 { font-size: 1.4rem; }
 h3 { font-size: 1.15rem; }
 h4 { font-size: 1rem; }
+/* Straight quotation marks, as in the quoted passages elsewhere. */
+q { quotes: '"' '"'; }
 p, ul, ol, dl, table, figure { margin: 0 0 var(--space-m); }
 p, li { text-wrap: pretty; }
 li + li { margin-top: 0.25rem; }
@@ -170,7 +172,7 @@ main > .wide, main > .tool, main > figure, main > .cards, main > .scroll-x, main
 .source dd { margin: 0 0 var(--space-s); }
 
 .stat { padding: var(--space-m); border: 1px solid var(--rule); border-radius: var(--radius); background: var(--panel); height: 100%; }
-.stat :is(h3, h5) { margin-top: 0; font-size: 1rem; }
+.stat :is(h3, h4, h5) { margin-top: 0; font-size: 1rem; }
 .stat .value { font-size: 1.6rem; font-weight: 700; margin: 0; font-variant-numeric: tabular-nums; }
 .stat .what { color: var(--ink-soft); font-size: 0.95rem; }
 
@@ -273,6 +275,8 @@ button, .button {
 button.secondary { color: var(--accent); background: var(--paper); }
 .buttons { display: flex; flex-wrap: wrap; gap: var(--space-s); margin-bottom: var(--space-m); }
 
+.reason dt { font-weight: 600; }
+.reason dd { margin: 0; }
 .result { padding: var(--space-m); background: var(--accent-soft); border-radius: var(--radius); margin-bottom: var(--space-m); }
 .result > :first-child { margin-top: 0; }
 .result > :last-child { margin-bottom: 0; }

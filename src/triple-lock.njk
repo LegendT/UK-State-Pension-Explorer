@@ -133,13 +133,13 @@ permalink: /triple-lock/
     <h3>Full new State Pension, {{ latest.tax_year }}: what was decided</h3>
     <p class="headline">{{ latest.applied_tenths | percent }} increase, decided by earnings</p>
     <dl>
-      <dt>Prices, year to the September before</dt><dd>{{ latest.prices_tenths | percent }}</dd>
-      <dt>Earnings, May to July before, as used in the decision</dt><dd>{{ latest.earnings_tenths | percent }}</dd>
-      <dt>Minimum</dt><dd>2.5%</dd>
-      <dt>Weekly rate before</dt><dd>{{ before.new_pence | money }}</dd>
-      <dt>Weekly rate after, as published</dt><dd>{{ latest.new_pence | money }}</dd>
-      <dt>Weekly increase</dt><dd>{{ (latest.new_pence - before.new_pence) | money }}</dd>
-      <dt>52 weeks at the new rate</dt><dd>{{ (latest.new_pence * 52) | money }}</dd>
+      <dt>Prices, year to the September before</dt> <dd>{{ latest.prices_tenths | percent }}</dd>
+      <dt>Earnings, May to July before, as used in the decision</dt> <dd>{{ latest.earnings_tenths | percent }}</dd>
+      <dt>Minimum</dt> <dd>2.5%</dd>
+      <dt>Weekly rate before</dt> <dd>{{ before.new_pence | money }}</dd>
+      <dt>Weekly rate after, as published</dt> <dd>{{ latest.new_pence | money }}</dd>
+      <dt>Weekly increase</dt> <dd>{{ (latest.new_pence - before.new_pence) | money }}</dd>
+      <dt>52 weeks at the new rate</dt> <dd>{{ (latest.new_pence * 52) | money }}</dd>
     </dl>
     <p>These are the published decision and the published rates. This tool did not calculate them.</p>
   </div>

@@ -39,6 +39,8 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("timeTag", (iso) => (iso ? `<time datetime="${iso}">${displayDate(iso)}</time>` : ""));
   eleventyConfig.addFilter("displayDate", displayDate);
   eleventyConfig.addFilter("monthOrDay", monthOrDay);
+  // The same, as a time element. A month with no day is a valid datetime.
+  eleventyConfig.addFilter("monthOrDayTag", (iso) => `<time datetime="${iso}">${monthOrDay(iso)}</time>`);
   eleventyConfig.addFilter("money", (pence) => money(pence));
   eleventyConfig.addFilter("percent", (tenths) => percent(tenths));
   // Plain values for form fields: "230.25" and "3.8".

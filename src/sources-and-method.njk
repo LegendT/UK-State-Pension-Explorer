@@ -73,11 +73,11 @@ permalink: /sources-and-method/
 <h2 id="dates">What the dates on this site mean</h2>
 
 <dl>
-  <dt>Period</dt><dd>The time a figure describes, such as a tax year.</dd>
-  <dt>Took effect</dt><dd>The date a rate or rule started to apply.</dd>
-  <dt>Published</dt><dd>The date the source was published, where the source gives one.</dd>
-  <dt>Checked against the source</dt><dd>The date we read the source. Checking a source again does not change a page's content date.</dd>
-  <dt>Content last changed</dt><dd>The date the content of a page last changed in substance. It does not change when the site is rebuilt.</dd>
+  <dt>Period</dt> <dd>The time a figure describes, such as a tax year.</dd>
+  <dt>Took effect</dt> <dd>The date a rate or rule started to apply.</dd>
+  <dt>Published</dt> <dd>The date the source was published, where the source gives one.</dd>
+  <dt>Checked against the source</dt> <dd>The date we read the source. Checking a source again does not change a page's content date.</dd>
+  <dt>Content last changed</dt> <dd>The date the content of a page last changed in substance. It does not change when the site is rebuilt.</dd>
 </dl>
 
 <h2 id="models">How the calculators work, and their limits</h2>
@@ -224,7 +224,7 @@ permalink: /sources-and-method/
     <thead><tr><th scope="col">Source</th><th scope="col">Publisher</th><th scope="col">Published</th><th scope="col">Checked</th><th scope="col">Notes</th></tr></thead>
     <tbody>
       {%- for id, s in sources %}
-      <tr id="source-{{ id }}"><th scope="row"><a href="{{ s.url }}">{{ s.title }}</a></th><td>{{ s.publisher }}</td><td>{% if s.published_date %}{{ s.published_date | monthOrDay }}{% elif s.updated_date %}Updated {{ s.updated_date | monthOrDay }}{% else %}Not given{% endif %}</td><td>{{ s.checked_date | timeTag | safe }}</td><td>{{ s.note or "" }}</td></tr>
+      <tr id="source-{{ id }}"><th scope="row"><a href="{{ s.url }}">{{ s.title }}</a></th><td>{{ s.publisher }}</td><td>{% if s.published_date %}{{ s.published_date | monthOrDayTag | safe }}{% elif s.updated_date %}Updated {{ s.updated_date | monthOrDayTag | safe }}{% else %}Not given{% endif %}</td><td>{{ s.checked_date | timeTag | safe }}</td><td>{{ s.note or "" }}</td></tr>
       {%- endfor %}
     </tbody>
   </table>

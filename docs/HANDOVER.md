@@ -79,6 +79,15 @@ Not checked on the deployed preview: the other three calculators, any browser bu
 8. **Field errors use `role="alert"`.** With many errors at once, screen reader announcements may compete. Not tested.
 9. **Two party positions rest on news reports**, not party documents.
 10. **After launch, deploy previews and branch deploys would be open.** The launch steps delete `BASIC_AUTH` everywhere. Keeping it for those two contexts needs the production guard to check the Netlify context. Deferred to launch planning.
+11. **Markup left as it is after the sweep of 29 September 2026.** Each needs design work or a decision, and none is a failure of an automated check.
+    - The lists of a bold label and a value, 87 items on six pages, should be description lists.
+    - The source note under each figure packs kind, period, place and source into paragraphs. It should be a description list.
+    - The label and value pairs inside each option on the reform options page have no styles of their own, so the values are indented and the labels are not bold.
+    - The names of scrolling table regions are typed apart from the captions, and some differ from them.
+    - The name of each chart joins its title and its whole description.
+    - Each card under "Where to go next" on the overview puts two sentences inside the link.
+    - "Not available: costings for a double lock and for means-testing" is at the level of the section above it.
+    - No build check holds the markup conventions in the README.
 
 ## Checks not performed
 
