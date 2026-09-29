@@ -127,7 +127,8 @@ if (site.production) {
   const robots = readFileSync(join(OUT, "robots.txt"), "utf8");
   if (!robots.includes(`Sitemap: ${site.url}/sitemap.xml`)) fail("robots.txt does not name the sitemap");
   if (/^Disallow: \/\s*$/m.test(robots.split("User-agent: *")[1].split("User-agent:")[0])) fail("robots.txt blocks all crawlers in production");
-  if (existsSync("netlify.toml") && /X-Robots-Tag\s*=\s*"noindex"/.test(readFileSync("netlify.toml", "utf8"))) fail("netlify.toml still sends X-Robots-Tag: noindex. Remove it for production.");
+  // Any X-Robots-Tag line that is not a comment, whatever its value or quoting.
+  if (existsSync("netlify.toml") && /^[ \t]*X-Robots-Tag\b/m.test(readFileSync("netlify.toml", "utf8"))) fail("netlify.toml still sends an X-Robots-Tag header. Remove it for production.");
   if (existsSync(join(OUT, "_headers"))) fail("_headers was written in a production build");
 } else if (existsSync(sitemapPath)) {
   fail("a sitemap was written in a build that is not production");

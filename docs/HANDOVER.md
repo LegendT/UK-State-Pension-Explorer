@@ -51,6 +51,8 @@ The scripts print their own counts. They are not copied here because they change
 8. **Field errors use `role="alert"`.** With many errors at once, screen reader announcements may compete. Not tested.
 9. **`scripts/seed/` should be deleted.** Running it would overwrite the registers. A delete was attempted and declined by the permission settings, so it is still there.
 10. **Two party positions rest on news reports**, not party documents.
+11. **After launch, deploy previews and branch deploys would be open.** The launch steps delete `BASIC_AUTH` everywhere. Keeping it for those two contexts needs the production guard to check the Netlify context. Deferred to launch planning.
+12. **The sign-in is also in a local plain-text file**, `.preview-password`. It can be deleted once the owner has stored the password elsewhere.
 
 ## Checks not performed
 
@@ -78,7 +80,7 @@ See `docs/launch-dependencies.md`. In short: name, domain, the launch steps for 
 | Item | Status |
 | --- | --- |
 | Reciprocal links on UK Public Finances Explorer and UK Migration Explorer | Not started. Needs a live domain. No other repository was changed |
-| Deployed checks | Not started. Needs a deployment |
+| Deployed checks | Not started. Needs a deployment. To include: 401 without the sign-in and 200 with it, the headers as served, the 404 status, whether `/_headers` is served as a file, and whether the history download works under the Content Security Policy |
 | Search console | Not started. Needs account and domain access |
 
 ## Found in passing

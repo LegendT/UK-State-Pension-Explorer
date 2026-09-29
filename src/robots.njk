@@ -20,6 +20,8 @@ Sitemap: {{ site.url }}/sitemap.xml
 # {{ site.name }}: {{ site.env }} build, not for indexing.
 # Crawlers are allowed to read pages so that they can see the noindex instruction on each one.
 # Blocking here would hide that instruction. This file is not access control.
+# On the Netlify preview a sign-in comes first, so crawlers get 401 and see neither this file
+# nor the pages. There the sign-in is what keeps them out.
 User-agent: *
 Disallow:
 {%- endif %}
