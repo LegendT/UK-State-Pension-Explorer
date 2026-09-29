@@ -61,7 +61,7 @@ body {
   font: 400 1.0625rem/1.65 system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-h1, h2, h3, h4 { line-height: 1.2; text-wrap: balance; margin: var(--space-xl) 0 var(--space-s); }
+h1, h2, h3, h4, h5 { line-height: 1.2; text-wrap: balance; margin: var(--space-xl) 0 var(--space-s); }
 h1 { font-size: 1.875rem; margin-top: var(--space-l); }
 h2 { font-size: 1.4rem; }
 h3 { font-size: 1.15rem; }
@@ -170,7 +170,7 @@ main > .wide, main > .tool, main > figure, main > .cards, main > .scroll-x, main
 .source dd { margin: 0 0 var(--space-s); }
 
 .stat { padding: var(--space-m); border: 1px solid var(--rule); border-radius: var(--radius); background: var(--panel); height: 100%; }
-.stat h3 { margin-top: 0; font-size: 1rem; }
+.stat :is(h3, h5) { margin-top: 0; font-size: 1rem; }
 .stat .value { font-size: 1.6rem; font-weight: 700; margin: 0; font-variant-numeric: tabular-nums; }
 .stat .what { color: var(--ink-soft); font-size: 0.95rem; }
 

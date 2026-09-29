@@ -73,20 +73,6 @@
       "modified_note": "First written."
     },
     {
-      "path": "/pensions-and-social-care/",
-      "group": "main",
-      "title": "Pensions and social care: assessing a reported trade-off",
-      "purpose": "Separate enacted policy, commitments, proposals and reporting. Set out the questions any trade-off must answer.",
-      "description": "What has been decided, proposed and only reported about pensions and social care, which nations each covers, and the questions a trade-off would need to answer.",
-      "shareImage": "share-default",
-      "template": "pensions-and-social-care",
-      "canonical_path": "/pensions-and-social-care/",
-      "index": true,
-      "published": null,
-      "modified": "2026-09-29",
-      "modified_note": "First written."
-    },
-    {
       "path": "/history/",
       "group": "main",
       "title": "State Pension history: rates and increases since 2010",

@@ -36,9 +36,9 @@
 {%- endmacro -%}
 
 {#- A figure shown as a card: label, value, plain meaning, source. -#}
-{%- macro stat(f, what) -%}
+{%- macro stat(f, what, level) -%}
 <article class="stat">
-  <h3>{{ f.label }}</h3>
+  <h{{ level or 3 }}>{{ f.label }}</h{{ level or 3 }}>
   <p class="value">{{ f.shown }}</p>
   {%- if what %}<p class="what">{{ what }}</p>{% endif %}
   {{ sourceNote(f) }}

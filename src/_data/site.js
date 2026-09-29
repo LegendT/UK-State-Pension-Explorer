@@ -46,7 +46,6 @@ const config = {
     { href: "/triple-lock/", label: "The triple lock" },
     { href: "/living-on-a-pension/", label: "Living on a pension" },
     { href: "/reform-options/", label: "Reform options" },
-    { href: "/pensions-and-social-care/", label: "Pensions and social care" },
     { href: "/history/", label: "History" },
     { href: "/sources-and-method/", label: "Sources and method" },
   ],
