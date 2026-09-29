@@ -1,0 +1,2209 @@
+{
+  "meta": {
+    "title": "State Pension triple lock: year-by-year history and ONS inputs",
+    "retrieved": "2026-09-29",
+    "language": "en-GB",
+    "status_values": [
+      "FETCHED-AND-QUOTED",
+      "SECONDARY-ONLY",
+      "NOT-FOUND"
+    ],
+    "rounding_rule": {
+      "value": "Full rates of basic and new State Pension are rounded to the nearest 5p",
+      "status": "FETCHED-AND-QUOTED",
+      "source": "EM to SI 2018/281 para 4.11; repeated in EMs 2017, 2019-2024, 2026",
+      "url": "https://www.legislation.gov.uk/uksi/2018/281/pdfs/uksiem_20180281_en.pdf",
+      "empirical": "previous rate x (1 + pct) rounded to nearest 5p reproduces every published rate 2010/11-2026/27 (basic) and 2017/18-2026/27 (new)"
+    },
+    "not_retrieved": [
+      "House of Commons Library CBP-7812 and SN05649 (site returned a bot-verification challenge; not bypassed)",
+      "ONS release dates for September CPI and May-July AWE for 2010-2015",
+      "Party manifesto texts"
+    ]
+  },
+  "year_by_year": [
+    {
+      "tax_year": "2010/11",
+      "basic_state_pension_weekly": {
+        "value": "97.65",
+        "unit": "GBP/week",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM to SI 2010/793 para 7.2 (\"from £95.25 to £97.65 a week\")",
+        "url": "https://www.legislation.gov.uk/uksi/2010/793/pdfs/uksiem_20100793_en.pdf",
+        "cross_check": "DWP Abstract of benefit rate statistics 2025, Table 6 (agrees)"
+      },
+      "new_state_pension_weekly": null,
+      "percentage_applied": {
+        "value": "2.5",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2010 para 7.2: \"increased by 2.5% in line with the Government's commitment to up-rate basic State Pension by the higher of 2.5% or growth in the RPI\"",
+        "url": "https://www.legislation.gov.uk/uksi/2010/793/pdfs/uksiem_20100793_en.pdf"
+      },
+      "determining_measure": {
+        "value": "2.5% (pre-triple-lock commitment: higher of 2.5% or RPI)",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2010 para 7.2: \"increased by 2.5% in line with the Government's commitment to up-rate basic State Pension by the higher of 2.5% or growth in the RPI\"",
+        "url": "https://www.legislation.gov.uk/uksi/2010/793/pdfs/uksiem_20100793_en.pdf"
+      },
+      "cpi_year_to_september_used": null,
+      "earnings_used": null,
+      "effective_date": {
+        "value": "2010-04-12",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "Social Security Benefits Up-rating Order 2010 (SI 2010/793) art 1 commencement; date is a Monday",
+        "url": "https://www.legislation.gov.uk/uksi/2010/793/article/1/made"
+      },
+      "earnings_currently_published_KAC3": {
+        "value": "0.9",
+        "vintage": "15-09-2026",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "ONS KAC3 CSV",
+        "differs_from_decision_figure": false
+      },
+      "earnings_first_published": {
+        "value": null,
+        "status": "NOT-FOUND",
+        "note": "ONS previous-version archive for KAC3 starts December 2015"
+      },
+      "earnings_october_revision": {
+        "value": null,
+        "status": "NOT-FOUND"
+      },
+      "arithmetic_check": {
+        "basic": {
+          "previous_rate_x_1_plus_pct_unrounded": "97.63125",
+          "nearest_5p": "97.65",
+          "matches_nearest_5p": true,
+          "rounded_up_5p": "97.65",
+          "rounded_down_5p": "97.60",
+          "nearest_1p": "97.63",
+          "implied_percentage_from_published_rates": "2.5197"
+        }
+      },
+      "exceptional_year_note": "Pre-triple-lock. RPI for year to September 2009 was negative (-1.4% per DWP Abstract Table 5); 2.5% applied under the previous government's commitment. No earnings test applied; s150A earnings review first ran in tax year 2010-11 for April 2011."
+    },
+    {
+      "tax_year": "2011/12",
+      "basic_state_pension_weekly": {
+        "value": "102.15",
+        "unit": "GBP/week",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM to SI 2011/821 para 7.4 (\"from £97.65 to £102.15 a week\")",
+        "url": "https://www.legislation.gov.uk/uksi/2011/821/pdfs/uksiem_20110821_en.pdf",
+        "cross_check": "DWP Abstract of benefit rate statistics 2025, Table 6 (agrees)"
+      },
+      "new_state_pension_weekly": null,
+      "percentage_applied": {
+        "value": "4.6",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2011 para 7.4: \"increased in line with the growth in the RPI for the 12 months to September 2010, which was 4.6%\"; fn 7: AWE \"annual growth of 1.3% for the quarter ending July 2010\"",
+        "url": "https://www.legislation.gov.uk/uksi/2011/821/pdfs/uksiem_20110821_en.pdf"
+      },
+      "determining_measure": {
+        "value": "RPI (one-off; year to September 2010)",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2011 para 7.4: \"increased in line with the growth in the RPI for the 12 months to September 2010, which was 4.6%\"; fn 7: AWE \"annual growth of 1.3% for the quarter ending July 2010\"",
+        "url": "https://www.legislation.gov.uk/uksi/2011/821/pdfs/uksiem_20110821_en.pdf"
+      },
+      "cpi_year_to_september_used": {
+        "value": "3.1",
+        "reference_period": "September 2010",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "ONS D7G7 (current series; CPI not revised)",
+        "url": "https://www.legislation.gov.uk/uksi/2011/821/pdfs/uksiem_20110821_en.pdf"
+      },
+      "earnings_used": {
+        "value": "1.3",
+        "reference_period": "May-July 2010, AWE total pay, whole economy, SA, 3-month average year on year",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2011 para 7.4: \"increased in line with the growth in the RPI for the 12 months to September 2010, which was 4.6%\"; fn 7: AWE \"annual growth of 1.3% for the quarter ending July 2010\"",
+        "url": "https://www.legislation.gov.uk/uksi/2011/821/pdfs/uksiem_20110821_en.pdf"
+      },
+      "effective_date": {
+        "value": "2011-04-11",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "Social Security Benefits Up-rating Order 2011 (SI 2011/821) art 1 commencement; date is a Monday",
+        "url": "https://www.legislation.gov.uk/uksi/2011/821/article/1/made"
+      },
+      "earnings_currently_published_KAC3": {
+        "value": "1.2",
+        "vintage": "15-09-2026",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "ONS KAC3 CSV",
+        "differs_from_decision_figure": true
+      },
+      "earnings_first_published": {
+        "value": null,
+        "status": "NOT-FOUND",
+        "note": "ONS previous-version archive for KAC3 starts December 2015"
+      },
+      "earnings_october_revision": {
+        "value": null,
+        "status": "NOT-FOUND"
+      },
+      "arithmetic_check": {
+        "basic": {
+          "previous_rate_x_1_plus_pct_unrounded": "102.14190",
+          "nearest_5p": "102.15",
+          "matches_nearest_5p": true,
+          "rounded_up_5p": "102.15",
+          "rounded_down_5p": "102.10",
+          "nearest_1p": "102.14",
+          "implied_percentage_from_published_rates": "4.6083"
+        }
+      },
+      "exceptional_year_note": "First triple-lock year but RPI (4.6%) used as a one-off for the basic pension; CPI was 3.1%, earnings 1.3%."
+    },
+    {
+      "tax_year": "2012/13",
+      "basic_state_pension_weekly": {
+        "value": "107.45",
+        "unit": "GBP/week",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM to SI 2012/780 para 7.2 (\"from £102.15 to £107.45 a week\")",
+        "url": "https://www.legislation.gov.uk/uksi/2012/780/pdfs/uksiem_20120780_en.pdf",
+        "cross_check": "DWP Abstract of benefit rate statistics 2025, Table 6 (agrees)"
+      },
+      "new_state_pension_weekly": null,
+      "percentage_applied": {
+        "value": "5.2",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2012 para 7.2: \"As the relevant increase in the CPI (5.2%) is higher than that in average earnings (2.8%) or 2.5%\"",
+        "url": "https://www.legislation.gov.uk/uksi/2012/780/pdfs/uksiem_20120780_en.pdf"
+      },
+      "determining_measure": {
+        "value": "CPI",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2012 para 7.2: \"As the relevant increase in the CPI (5.2%) is higher than that in average earnings (2.8%) or 2.5%\"",
+        "url": "https://www.legislation.gov.uk/uksi/2012/780/pdfs/uksiem_20120780_en.pdf"
+      },
+      "cpi_year_to_september_used": {
+        "value": "5.2",
+        "reference_period": "September 2011",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2012 para 7.2: \"As the relevant increase in the CPI (5.2%) is higher than that in average earnings (2.8%) or 2.5%\"",
+        "url": "https://www.legislation.gov.uk/uksi/2012/780/pdfs/uksiem_20120780_en.pdf"
+      },
+      "earnings_used": {
+        "value": "2.8",
+        "reference_period": "May-July 2011, AWE total pay, whole economy, SA, 3-month average year on year",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2012 para 7.2: \"As the relevant increase in the CPI (5.2%) is higher than that in average earnings (2.8%) or 2.5%\"",
+        "url": "https://www.legislation.gov.uk/uksi/2012/780/pdfs/uksiem_20120780_en.pdf"
+      },
+      "effective_date": {
+        "value": "2012-04-09",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "Social Security Benefits Up-rating Order 2012 (SI 2012/780) art 1 commencement; date is a Monday",
+        "url": "https://www.legislation.gov.uk/uksi/2012/780/article/1/made"
+      },
+      "earnings_currently_published_KAC3": {
+        "value": "2.8",
+        "vintage": "15-09-2026",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "ONS KAC3 CSV",
+        "differs_from_decision_figure": false
+      },
+      "earnings_first_published": {
+        "value": null,
+        "status": "NOT-FOUND",
+        "note": "ONS previous-version archive for KAC3 starts December 2015"
+      },
+      "earnings_october_revision": {
+        "value": null,
+        "status": "NOT-FOUND"
+      },
+      "arithmetic_check": {
+        "basic": {
+          "previous_rate_x_1_plus_pct_unrounded": "107.46180",
+          "nearest_5p": "107.45",
+          "matches_nearest_5p": true,
+          "rounded_up_5p": "107.50",
+          "rounded_down_5p": "107.45",
+          "nearest_1p": "107.46",
+          "implied_percentage_from_published_rates": "5.1884"
+        }
+      }
+    },
+    {
+      "tax_year": "2013/14",
+      "basic_state_pension_weekly": {
+        "value": "110.15",
+        "unit": "GBP/week",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM to SI 2013/574 para 7.2 (\"from £107.45 to £110.15 a week\")",
+        "url": "https://www.legislation.gov.uk/uksi/2013/574/pdfs/uksiem_20130574_en.pdf",
+        "cross_check": "DWP Abstract of benefit rate statistics 2025, Table 6 (agrees)"
+      },
+      "new_state_pension_weekly": null,
+      "percentage_applied": {
+        "value": "2.5",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2013 para 7.2: \"average earnings (1.6 per cent) is lower than both the CPI (2.2 per cent) and 2.5 per cent\"",
+        "url": "https://www.legislation.gov.uk/uksi/2013/574/pdfs/uksiem_20130574_en.pdf"
+      },
+      "determining_measure": {
+        "value": "2.5%",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2013 para 7.2: \"average earnings (1.6 per cent) is lower than both the CPI (2.2 per cent) and 2.5 per cent\"",
+        "url": "https://www.legislation.gov.uk/uksi/2013/574/pdfs/uksiem_20130574_en.pdf"
+      },
+      "cpi_year_to_september_used": {
+        "value": "2.2",
+        "reference_period": "September 2012",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2013 para 7.2: \"average earnings (1.6 per cent) is lower than both the CPI (2.2 per cent) and 2.5 per cent\"",
+        "url": "https://www.legislation.gov.uk/uksi/2013/574/pdfs/uksiem_20130574_en.pdf"
+      },
+      "earnings_used": {
+        "value": "1.6",
+        "reference_period": "May-July 2012, AWE total pay, whole economy, SA, 3-month average year on year",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2013 para 7.2: \"average earnings (1.6 per cent) is lower than both the CPI (2.2 per cent) and 2.5 per cent\"",
+        "url": "https://www.legislation.gov.uk/uksi/2013/574/pdfs/uksiem_20130574_en.pdf"
+      },
+      "effective_date": {
+        "value": "2013-04-08",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "Social Security Benefits Up-rating Order 2013 (SI 2013/574) art 1 commencement; date is a Monday",
+        "url": "https://www.legislation.gov.uk/uksi/2013/574/article/1/made"
+      },
+      "earnings_currently_published_KAC3": {
+        "value": "1.5",
+        "vintage": "15-09-2026",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "ONS KAC3 CSV",
+        "differs_from_decision_figure": true
+      },
+      "earnings_first_published": {
+        "value": null,
+        "status": "NOT-FOUND",
+        "note": "ONS previous-version archive for KAC3 starts December 2015"
+      },
+      "earnings_october_revision": {
+        "value": null,
+        "status": "NOT-FOUND"
+      },
+      "arithmetic_check": {
+        "basic": {
+          "previous_rate_x_1_plus_pct_unrounded": "110.13625",
+          "nearest_5p": "110.15",
+          "matches_nearest_5p": true,
+          "rounded_up_5p": "110.15",
+          "rounded_down_5p": "110.10",
+          "nearest_1p": "110.14",
+          "implied_percentage_from_published_rates": "2.5128"
+        }
+      }
+    },
+    {
+      "tax_year": "2014/15",
+      "basic_state_pension_weekly": {
+        "value": "113.10",
+        "unit": "GBP/week",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "DWP, Benefit and pension rates 2014/15 (GOV.UK), State Pension section, row \"Category A or B basic pension\"/\"Category A or B\"; new State Pension row \"Full rate\"",
+        "url": "https://assets.publishing.service.gov.uk/media/5a748212ed915d0e8bf18db3/Benefit_and_Pension_rates_2014-15.pdf",
+        "cross_check": "DWP Abstract of benefit rate statistics 2025, Table 6 (agrees)"
+      },
+      "new_state_pension_weekly": null,
+      "percentage_applied": {
+        "value": "2.7",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2014 para 7.2: \"average earnings (1.2 per cent) is lower than both CPI (2.7 per cent) and 2.5 per cent\"",
+        "url": "https://www.legislation.gov.uk/uksi/2014/516/pdfs/uksiem_20140516_en.pdf"
+      },
+      "determining_measure": {
+        "value": "CPI",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2014 para 7.2: \"average earnings (1.2 per cent) is lower than both CPI (2.7 per cent) and 2.5 per cent\"",
+        "url": "https://www.legislation.gov.uk/uksi/2014/516/pdfs/uksiem_20140516_en.pdf"
+      },
+      "cpi_year_to_september_used": {
+        "value": "2.7",
+        "reference_period": "September 2013",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2014 para 7.2: \"average earnings (1.2 per cent) is lower than both CPI (2.7 per cent) and 2.5 per cent\"",
+        "url": "https://www.legislation.gov.uk/uksi/2014/516/pdfs/uksiem_20140516_en.pdf"
+      },
+      "earnings_used": {
+        "value": "1.2",
+        "reference_period": "May-July 2013, AWE total pay, whole economy, SA, 3-month average year on year",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2014 para 7.2: \"average earnings (1.2 per cent) is lower than both CPI (2.7 per cent) and 2.5 per cent\"",
+        "url": "https://www.legislation.gov.uk/uksi/2014/516/pdfs/uksiem_20140516_en.pdf"
+      },
+      "effective_date": {
+        "value": "2014-04-07",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "Social Security Benefits Up-rating Order 2014 (SI 2014/516) art 1 commencement; date is a Monday",
+        "url": "https://www.legislation.gov.uk/uksi/2014/516/article/1/made"
+      },
+      "earnings_currently_published_KAC3": {
+        "value": "1.2",
+        "vintage": "15-09-2026",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "ONS KAC3 CSV",
+        "differs_from_decision_figure": false
+      },
+      "earnings_first_published": {
+        "value": null,
+        "status": "NOT-FOUND",
+        "note": "ONS previous-version archive for KAC3 starts December 2015"
+      },
+      "earnings_october_revision": {
+        "value": null,
+        "status": "NOT-FOUND"
+      },
+      "arithmetic_check": {
+        "basic": {
+          "previous_rate_x_1_plus_pct_unrounded": "113.12405",
+          "nearest_5p": "113.10",
+          "matches_nearest_5p": true,
+          "rounded_up_5p": "113.15",
+          "rounded_down_5p": "113.10",
+          "nearest_1p": "113.12",
+          "implied_percentage_from_published_rates": "2.6782"
+        }
+      }
+    },
+    {
+      "tax_year": "2015/16",
+      "basic_state_pension_weekly": {
+        "value": "115.95",
+        "unit": "GBP/week",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "DWP, Benefit and pension rates 2015/16 (GOV.UK), State Pension section, row \"Category A or B basic pension\"/\"Category A or B\"; new State Pension row \"Full rate\"",
+        "url": "https://assets.publishing.service.gov.uk/media/5a7eac8fed915d74e33f1b40/proposed_benefit_and_pension_rates_2015_to_2016.pdf",
+        "cross_check": "DWP Abstract of benefit rate statistics 2025, Table 6 (agrees)"
+      },
+      "new_state_pension_weekly": null,
+      "percentage_applied": {
+        "value": "2.5",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2015 para 7.2: \"both the relevant increase in average earnings (0.6 per cent) and CPI (1.2 per cent) is lower than 2.5 per cent\"",
+        "url": "https://www.legislation.gov.uk/uksi/2015/457/pdfs/uksiem_20150457_en.pdf"
+      },
+      "determining_measure": {
+        "value": "2.5%",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2015 para 7.2: \"both the relevant increase in average earnings (0.6 per cent) and CPI (1.2 per cent) is lower than 2.5 per cent\"",
+        "url": "https://www.legislation.gov.uk/uksi/2015/457/pdfs/uksiem_20150457_en.pdf"
+      },
+      "cpi_year_to_september_used": {
+        "value": "1.2",
+        "reference_period": "September 2014",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2015 para 7.2: \"both the relevant increase in average earnings (0.6 per cent) and CPI (1.2 per cent) is lower than 2.5 per cent\"",
+        "url": "https://www.legislation.gov.uk/uksi/2015/457/pdfs/uksiem_20150457_en.pdf"
+      },
+      "earnings_used": {
+        "value": "0.6",
+        "reference_period": "May-July 2014, AWE total pay, whole economy, SA, 3-month average year on year",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2015 para 7.2: \"both the relevant increase in average earnings (0.6 per cent) and CPI (1.2 per cent) is lower than 2.5 per cent\"",
+        "url": "https://www.legislation.gov.uk/uksi/2015/457/pdfs/uksiem_20150457_en.pdf"
+      },
+      "effective_date": {
+        "value": "2015-04-06",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "Social Security Benefits Up-rating Order 2015 (SI 2015/457) art 1 commencement; date is a Monday",
+        "url": "https://www.legislation.gov.uk/uksi/2015/457/article/1/made"
+      },
+      "earnings_currently_published_KAC3": {
+        "value": "0.5",
+        "vintage": "15-09-2026",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "ONS KAC3 CSV",
+        "differs_from_decision_figure": true
+      },
+      "earnings_first_published": {
+        "value": null,
+        "status": "NOT-FOUND",
+        "note": "ONS previous-version archive for KAC3 starts December 2015"
+      },
+      "earnings_october_revision": {
+        "value": null,
+        "status": "NOT-FOUND"
+      },
+      "arithmetic_check": {
+        "basic": {
+          "previous_rate_x_1_plus_pct_unrounded": "115.92750",
+          "nearest_5p": "115.95",
+          "matches_nearest_5p": true,
+          "rounded_up_5p": "115.95",
+          "rounded_down_5p": "115.90",
+          "nearest_1p": "115.93",
+          "implied_percentage_from_published_rates": "2.5199"
+        }
+      }
+    },
+    {
+      "tax_year": "2016/17",
+      "basic_state_pension_weekly": {
+        "value": "119.30",
+        "unit": "GBP/week",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "DWP, Benefit and pension rates 2016/17 (GOV.UK), State Pension section, row \"Category A or B basic pension\"/\"Category A or B\"; new State Pension row \"Full rate\"",
+        "url": "https://assets.publishing.service.gov.uk/media/5a7f304fed915d74e33f4e0d/proposed_benefit_and_pension_rates_2016_to_2017.pdf",
+        "cross_check": "DWP Abstract of benefit rate statistics 2025, Table 6 (agrees)"
+      },
+      "new_state_pension_weekly": {
+        "value": "155.65",
+        "unit": "GBP/week",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "DWP, Proposed benefit and pension rates 2016 to 2017, row \"NEW STATE PENSION 155.65\"",
+        "url": "https://assets.publishing.service.gov.uk/media/5a7f304fed915d74e33f4e0d/proposed_benefit_and_pension_rates_2016_to_2017.pdf"
+      },
+      "percentage_applied": {
+        "value": "2.9",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2016 para 7.2: \"the relevant increase in prices (-0.1 per cent) and 2.5 per cent are lower than the rise in earnings ... will increase by 2.9 per cent\"",
+        "url": "https://www.legislation.gov.uk/uksi/2016/230/pdfs/uksiem_20160230_en.pdf"
+      },
+      "determining_measure": {
+        "value": "Earnings",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2016 para 7.2: \"the relevant increase in prices (-0.1 per cent) and 2.5 per cent are lower than the rise in earnings ... will increase by 2.9 per cent\"",
+        "url": "https://www.legislation.gov.uk/uksi/2016/230/pdfs/uksiem_20160230_en.pdf"
+      },
+      "cpi_year_to_september_used": {
+        "value": "-0.1",
+        "reference_period": "September 2015",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2016 para 7.2: \"the relevant increase in prices (-0.1 per cent) and 2.5 per cent are lower than the rise in earnings ... will increase by 2.9 per cent\"",
+        "url": "https://www.legislation.gov.uk/uksi/2016/230/pdfs/uksiem_20160230_en.pdf"
+      },
+      "earnings_used": {
+        "value": "2.9",
+        "reference_period": "May-July 2015, AWE total pay, whole economy, SA, 3-month average year on year",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2016 para 7.2: \"the relevant increase in prices (-0.1 per cent) and 2.5 per cent are lower than the rise in earnings ... will increase by 2.9 per cent\"",
+        "url": "https://www.legislation.gov.uk/uksi/2016/230/pdfs/uksiem_20160230_en.pdf"
+      },
+      "effective_date": {
+        "value": "2016-04-11",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "Social Security Benefits Up-rating Order 2016 (SI 2016/230) art 1 commencement; date is a Monday",
+        "url": "https://www.legislation.gov.uk/uksi/2016/230/article/1/made"
+      },
+      "earnings_currently_published_KAC3": {
+        "value": "2.8",
+        "vintage": "15-09-2026",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "ONS KAC3 CSV",
+        "differs_from_decision_figure": true
+      },
+      "earnings_first_published": {
+        "value": null,
+        "status": "NOT-FOUND",
+        "note": "ONS previous-version archive for KAC3 starts December 2015"
+      },
+      "earnings_october_revision": {
+        "value": null,
+        "status": "NOT-FOUND"
+      },
+      "arithmetic_check": {
+        "basic": {
+          "previous_rate_x_1_plus_pct_unrounded": "119.31255",
+          "nearest_5p": "119.30",
+          "matches_nearest_5p": true,
+          "rounded_up_5p": "119.35",
+          "rounded_down_5p": "119.30",
+          "nearest_1p": "119.31",
+          "implied_percentage_from_published_rates": "2.8892"
+        }
+      }
+    },
+    {
+      "tax_year": "2017/18",
+      "basic_state_pension_weekly": {
+        "value": "122.30",
+        "unit": "GBP/week",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "DWP, Benefit and pension rates 2017/18 (GOV.UK), State Pension section, row \"Category A or B basic pension\"/\"Category A or B\"; new State Pension row \"Full rate\"",
+        "url": "https://assets.publishing.service.gov.uk/media/5a809e8be5274a2e87dbad87/proposed-benefit-and-pension-rates-2017-to-2018.pdf",
+        "cross_check": "DWP Abstract of benefit rate statistics 2025, Table 6 (agrees)"
+      },
+      "new_state_pension_weekly": {
+        "value": "159.55",
+        "unit": "GBP/week",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "DWP, Benefit and pension rates 2017/18 (GOV.UK), State Pension section, row \"Category A or B basic pension\"/\"Category A or B\"; new State Pension row \"Full rate\"",
+        "url": "https://assets.publishing.service.gov.uk/media/5a809e8be5274a2e87dbad87/proposed-benefit-and-pension-rates-2017-to-2018.pdf"
+      },
+      "percentage_applied": {
+        "value": "2.5",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2017 para 7.2: \"prices (1.0 per cent CPI) and earnings (2.4 per cent AWE) are lower ... will increase by 2.5 per cent\"",
+        "url": "https://www.legislation.gov.uk/uksi/2017/260/pdfs/uksiem_20170260_en.pdf"
+      },
+      "determining_measure": {
+        "value": "2.5%",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2017 para 7.2: \"prices (1.0 per cent CPI) and earnings (2.4 per cent AWE) are lower ... will increase by 2.5 per cent\"",
+        "url": "https://www.legislation.gov.uk/uksi/2017/260/pdfs/uksiem_20170260_en.pdf"
+      },
+      "cpi_year_to_september_used": {
+        "value": "1.0",
+        "reference_period": "September 2016",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2017 para 7.2: \"prices (1.0 per cent CPI) and earnings (2.4 per cent AWE) are lower ... will increase by 2.5 per cent\"",
+        "url": "https://www.legislation.gov.uk/uksi/2017/260/pdfs/uksiem_20170260_en.pdf"
+      },
+      "earnings_used": {
+        "value": "2.4",
+        "reference_period": "May-July 2016, AWE total pay, whole economy, SA, 3-month average year on year",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2017 para 7.2: \"prices (1.0 per cent CPI) and earnings (2.4 per cent AWE) are lower ... will increase by 2.5 per cent\"",
+        "url": "https://www.legislation.gov.uk/uksi/2017/260/pdfs/uksiem_20170260_en.pdf"
+      },
+      "effective_date": {
+        "value": "2017-04-10",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "Social Security Benefits Up-rating Order 2017 (SI 2017/260) art 1 commencement; date is a Monday",
+        "url": "https://www.legislation.gov.uk/uksi/2017/260/article/1/made"
+      },
+      "earnings_currently_published_KAC3": {
+        "value": "2.5",
+        "vintage": "15-09-2026",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "ONS KAC3 CSV",
+        "differs_from_decision_figure": true
+      },
+      "earnings_first_published": {
+        "value": "2.3",
+        "vintage": "14-09-2016",
+        "ons_version": "v11",
+        "status": "FETCHED-AND-QUOTED"
+      },
+      "earnings_october_revision": {
+        "value": "2.4",
+        "vintage": "19-10-2016",
+        "ons_version": "v12",
+        "status": "FETCHED-AND-QUOTED"
+      },
+      "arithmetic_check": {
+        "basic": {
+          "previous_rate_x_1_plus_pct_unrounded": "122.28250",
+          "nearest_5p": "122.30",
+          "matches_nearest_5p": true,
+          "rounded_up_5p": "122.30",
+          "rounded_down_5p": "122.25",
+          "nearest_1p": "122.28",
+          "implied_percentage_from_published_rates": "2.5147"
+        },
+        "new": {
+          "previous_rate_x_1_plus_pct_unrounded": "159.54125",
+          "nearest_5p": "159.55",
+          "matches_nearest_5p": true,
+          "rounded_up_5p": "159.55",
+          "rounded_down_5p": "159.50",
+          "nearest_1p": "159.54",
+          "implied_percentage_from_published_rates": "2.5056"
+        }
+      }
+    },
+    {
+      "tax_year": "2018/19",
+      "basic_state_pension_weekly": {
+        "value": "125.95",
+        "unit": "GBP/week",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "DWP, Benefit and pension rates 2018/19 (GOV.UK), State Pension section, row \"Category A or B basic pension\"/\"Category A or B\"; new State Pension row \"Full rate\"",
+        "url": "https://assets.publishing.service.gov.uk/media/5ac4abbae5274a0b107ead7e/proposed-benefit-and-pension-rates-2018-to-2019.pdf",
+        "cross_check": "DWP Abstract of benefit rate statistics 2025, Table 6 (agrees)"
+      },
+      "new_state_pension_weekly": {
+        "value": "164.35",
+        "unit": "GBP/week",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "DWP, Benefit and pension rates 2018/19 (GOV.UK), State Pension section, row \"Category A or B basic pension\"/\"Category A or B\"; new State Pension row \"Full rate\"",
+        "url": "https://assets.publishing.service.gov.uk/media/5ac4abbae5274a0b107ead7e/proposed-benefit-and-pension-rates-2018-to-2019.pdf"
+      },
+      "percentage_applied": {
+        "value": "3.0",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2018 para 7.2: \"prices (3.0% CPI) is higher than both growth in earnings (2.2% AWE) and 2.5%\"",
+        "url": "https://www.legislation.gov.uk/uksi/2018/281/pdfs/uksiem_20180281_en.pdf"
+      },
+      "determining_measure": {
+        "value": "CPI",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2018 para 7.2: \"prices (3.0% CPI) is higher than both growth in earnings (2.2% AWE) and 2.5%\"",
+        "url": "https://www.legislation.gov.uk/uksi/2018/281/pdfs/uksiem_20180281_en.pdf"
+      },
+      "cpi_year_to_september_used": {
+        "value": "3.0",
+        "reference_period": "September 2017",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2018 para 7.2: \"prices (3.0% CPI) is higher than both growth in earnings (2.2% AWE) and 2.5%\"",
+        "url": "https://www.legislation.gov.uk/uksi/2018/281/pdfs/uksiem_20180281_en.pdf"
+      },
+      "earnings_used": {
+        "value": "2.2",
+        "reference_period": "May-July 2017, AWE total pay, whole economy, SA, 3-month average year on year",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2018 para 7.2: \"prices (3.0% CPI) is higher than both growth in earnings (2.2% AWE) and 2.5%\"",
+        "url": "https://www.legislation.gov.uk/uksi/2018/281/pdfs/uksiem_20180281_en.pdf"
+      },
+      "effective_date": {
+        "value": "2018-04-09",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "Social Security Benefits Up-rating Order 2018 (SI 2018/281) art 1 commencement; date is a Monday",
+        "url": "https://www.legislation.gov.uk/uksi/2018/281/article/1/made"
+      },
+      "earnings_currently_published_KAC3": {
+        "value": "2.2",
+        "vintage": "15-09-2026",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "ONS KAC3 CSV",
+        "differs_from_decision_figure": false
+      },
+      "earnings_first_published": {
+        "value": "2.1",
+        "vintage": "13-09-2017",
+        "ons_version": "v23",
+        "status": "FETCHED-AND-QUOTED"
+      },
+      "earnings_october_revision": {
+        "value": "2.2",
+        "vintage": "18-10-2017",
+        "ons_version": "v24",
+        "status": "FETCHED-AND-QUOTED"
+      },
+      "arithmetic_check": {
+        "basic": {
+          "previous_rate_x_1_plus_pct_unrounded": "125.9690",
+          "nearest_5p": "125.95",
+          "matches_nearest_5p": true,
+          "rounded_up_5p": "126.00",
+          "rounded_down_5p": "125.95",
+          "nearest_1p": "125.97",
+          "implied_percentage_from_published_rates": "2.9845"
+        },
+        "new": {
+          "previous_rate_x_1_plus_pct_unrounded": "164.3365",
+          "nearest_5p": "164.35",
+          "matches_nearest_5p": true,
+          "rounded_up_5p": "164.35",
+          "rounded_down_5p": "164.30",
+          "nearest_1p": "164.34",
+          "implied_percentage_from_published_rates": "3.0085"
+        }
+      }
+    },
+    {
+      "tax_year": "2019/20",
+      "basic_state_pension_weekly": {
+        "value": "129.20",
+        "unit": "GBP/week",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "DWP, Benefit and pension rates 2019/20 (GOV.UK), State Pension section, row \"Category A or B basic pension\"/\"Category A or B\"; new State Pension row \"Full rate\"",
+        "url": "https://assets.publishing.service.gov.uk/media/5ca6100fe5274a77da137ee9/Benefit_and_pension_rates_2019.pdf",
+        "cross_check": "DWP Abstract of benefit rate statistics 2025, Table 6 (agrees)"
+      },
+      "new_state_pension_weekly": {
+        "value": "168.60",
+        "unit": "GBP/week",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "DWP, Benefit and pension rates 2019/20 (GOV.UK), State Pension section, row \"Category A or B basic pension\"/\"Category A or B\"; new State Pension row \"Full rate\"",
+        "url": "https://assets.publishing.service.gov.uk/media/5ca6100fe5274a77da137ee9/Benefit_and_pension_rates_2019.pdf"
+      },
+      "percentage_applied": {
+        "value": "2.6",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2019 para 7.3: \"earnings over the relevant period (2.6 per cent) is higher than both the growth in prices (2.4 per cent) and 2.5 per cent\"",
+        "url": "https://www.legislation.gov.uk/uksi/2019/480/pdfs/uksiem_20190480_en.pdf"
+      },
+      "determining_measure": {
+        "value": "Earnings",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2019 para 7.3: \"earnings over the relevant period (2.6 per cent) is higher than both the growth in prices (2.4 per cent) and 2.5 per cent\"",
+        "url": "https://www.legislation.gov.uk/uksi/2019/480/pdfs/uksiem_20190480_en.pdf"
+      },
+      "cpi_year_to_september_used": {
+        "value": "2.4",
+        "reference_period": "September 2018",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2019 para 7.3: \"earnings over the relevant period (2.6 per cent) is higher than both the growth in prices (2.4 per cent) and 2.5 per cent\"",
+        "url": "https://www.legislation.gov.uk/uksi/2019/480/pdfs/uksiem_20190480_en.pdf"
+      },
+      "earnings_used": {
+        "value": "2.6",
+        "reference_period": "May-July 2018, AWE total pay, whole economy, SA, 3-month average year on year",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2019 para 7.3: \"earnings over the relevant period (2.6 per cent) is higher than both the growth in prices (2.4 per cent) and 2.5 per cent\"",
+        "url": "https://www.legislation.gov.uk/uksi/2019/480/pdfs/uksiem_20190480_en.pdf"
+      },
+      "effective_date": {
+        "value": "2019-04-08",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "Social Security Benefits Up-rating Order 2019 (SI 2019/480) art 1 commencement; date is a Monday",
+        "url": "https://www.legislation.gov.uk/uksi/2019/480/article/1/made"
+      },
+      "earnings_currently_published_KAC3": {
+        "value": "2.7",
+        "vintage": "15-09-2026",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "ONS KAC3 CSV",
+        "differs_from_decision_figure": true
+      },
+      "earnings_first_published": {
+        "value": "2.6",
+        "vintage": "11-09-2018",
+        "ons_version": "v35",
+        "status": "FETCHED-AND-QUOTED"
+      },
+      "earnings_october_revision": {
+        "value": "2.6",
+        "vintage": "16-10-2018",
+        "ons_version": "v36",
+        "status": "FETCHED-AND-QUOTED"
+      },
+      "arithmetic_check": {
+        "basic": {
+          "previous_rate_x_1_plus_pct_unrounded": "129.22470",
+          "nearest_5p": "129.20",
+          "matches_nearest_5p": true,
+          "rounded_up_5p": "129.25",
+          "rounded_down_5p": "129.20",
+          "nearest_1p": "129.22",
+          "implied_percentage_from_published_rates": "2.5804"
+        },
+        "new": {
+          "previous_rate_x_1_plus_pct_unrounded": "168.62310",
+          "nearest_5p": "168.60",
+          "matches_nearest_5p": true,
+          "rounded_up_5p": "168.65",
+          "rounded_down_5p": "168.60",
+          "nearest_1p": "168.62",
+          "implied_percentage_from_published_rates": "2.5859"
+        }
+      }
+    },
+    {
+      "tax_year": "2020/21",
+      "basic_state_pension_weekly": {
+        "value": "134.25",
+        "unit": "GBP/week",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "DWP, Benefit and pension rates 2020/21 (GOV.UK), State Pension section, row \"Category A or B basic pension\"/\"Category A or B\"; new State Pension row \"Full rate\"",
+        "url": "https://assets.publishing.service.gov.uk/media/5e8ee784d3bf7f4120cb1874/benefit-and-pension-rates-2020.pdf",
+        "cross_check": "DWP Abstract of benefit rate statistics 2025, Table 6 (agrees)"
+      },
+      "new_state_pension_weekly": {
+        "value": "175.20",
+        "unit": "GBP/week",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "DWP, Benefit and pension rates 2020/21 (GOV.UK), State Pension section, row \"Category A or B basic pension\"/\"Category A or B\"; new State Pension row \"Full rate\"",
+        "url": "https://assets.publishing.service.gov.uk/media/5e8ee784d3bf7f4120cb1874/benefit-and-pension-rates-2020.pdf"
+      },
+      "percentage_applied": {
+        "value": "3.9",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2020 para 7.3: \"earnings over the relevant period (3.9 per cent) is higher than both the growth in prices (1.7 per cent) and 2.5 per cent\"",
+        "url": "https://www.legislation.gov.uk/uksi/2020/234/pdfs/uksiem_20200234_en.pdf"
+      },
+      "determining_measure": {
+        "value": "Earnings",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2020 para 7.3: \"earnings over the relevant period (3.9 per cent) is higher than both the growth in prices (1.7 per cent) and 2.5 per cent\"",
+        "url": "https://www.legislation.gov.uk/uksi/2020/234/pdfs/uksiem_20200234_en.pdf"
+      },
+      "cpi_year_to_september_used": {
+        "value": "1.7",
+        "reference_period": "September 2019",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2020 para 7.3: \"earnings over the relevant period (3.9 per cent) is higher than both the growth in prices (1.7 per cent) and 2.5 per cent\"",
+        "url": "https://www.legislation.gov.uk/uksi/2020/234/pdfs/uksiem_20200234_en.pdf"
+      },
+      "earnings_used": {
+        "value": "3.9",
+        "reference_period": "May-July 2019, AWE total pay, whole economy, SA, 3-month average year on year",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2020 para 7.3: \"earnings over the relevant period (3.9 per cent) is higher than both the growth in prices (1.7 per cent) and 2.5 per cent\"",
+        "url": "https://www.legislation.gov.uk/uksi/2020/234/pdfs/uksiem_20200234_en.pdf"
+      },
+      "effective_date": {
+        "value": "2020-04-06",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "Social Security Benefits Up-rating Order 2020 (SI 2020/234) art 1 commencement; date is a Monday",
+        "url": "https://www.legislation.gov.uk/uksi/2020/234/article/1/made"
+      },
+      "earnings_currently_published_KAC3": {
+        "value": "4.0",
+        "vintage": "15-09-2026",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "ONS KAC3 CSV",
+        "differs_from_decision_figure": true
+      },
+      "earnings_first_published": {
+        "value": "4.0",
+        "vintage": "10-09-2019",
+        "ons_version": "v47",
+        "status": "FETCHED-AND-QUOTED"
+      },
+      "earnings_october_revision": {
+        "value": "3.9",
+        "vintage": "15-10-2019",
+        "ons_version": "v48",
+        "status": "FETCHED-AND-QUOTED"
+      },
+      "arithmetic_check": {
+        "basic": {
+          "previous_rate_x_1_plus_pct_unrounded": "134.23880",
+          "nearest_5p": "134.25",
+          "matches_nearest_5p": true,
+          "rounded_up_5p": "134.25",
+          "rounded_down_5p": "134.20",
+          "nearest_1p": "134.24",
+          "implied_percentage_from_published_rates": "3.9087"
+        },
+        "new": {
+          "previous_rate_x_1_plus_pct_unrounded": "175.17540",
+          "nearest_5p": "175.20",
+          "matches_nearest_5p": true,
+          "rounded_up_5p": "175.20",
+          "rounded_down_5p": "175.15",
+          "nearest_1p": "175.18",
+          "implied_percentage_from_published_rates": "3.9146"
+        }
+      }
+    },
+    {
+      "tax_year": "2021/22",
+      "basic_state_pension_weekly": {
+        "value": "137.60",
+        "unit": "GBP/week",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "DWP, Benefit and pension rates 2021/22 (GOV.UK), State Pension section, row \"Category A or B basic pension\"/\"Category A or B\"; new State Pension row \"Full rate\"",
+        "url": "https://assets.publishing.service.gov.uk/media/60fe862d8fa8f5043411d861/benefit-and-pension-rates-2021-2022.pdf",
+        "cross_check": "DWP Abstract of benefit rate statistics 2025, Table 6 (agrees)"
+      },
+      "new_state_pension_weekly": {
+        "value": "179.60",
+        "unit": "GBP/week",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "DWP, Benefit and pension rates 2021/22 (GOV.UK), State Pension section, row \"Category A or B basic pension\"/\"Category A or B\"; new State Pension row \"Full rate\"",
+        "url": "https://assets.publishing.service.gov.uk/media/60fe862d8fa8f5043411d861/benefit-and-pension-rates-2021-2022.pdf"
+      },
+      "percentage_applied": {
+        "value": "2.5",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2021 para 7.2: \"2.5 per cent is higher than the growth in prices over the relevant period (0.5 per cent) and earnings fell by 1.0 per cent\"",
+        "url": "https://www.legislation.gov.uk/uksi/2021/162/pdfs/uksiem_20210162_en.pdf"
+      },
+      "determining_measure": {
+        "value": "2.5% (permitted by Social Security (Up-rating of Benefits) Act 2020)",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2021 para 7.2: \"2.5 per cent is higher than the growth in prices over the relevant period (0.5 per cent) and earnings fell by 1.0 per cent\"",
+        "url": "https://www.legislation.gov.uk/uksi/2021/162/pdfs/uksiem_20210162_en.pdf"
+      },
+      "cpi_year_to_september_used": {
+        "value": "0.5",
+        "reference_period": "September 2020",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2021 para 7.2: \"2.5 per cent is higher than the growth in prices over the relevant period (0.5 per cent) and earnings fell by 1.0 per cent\"",
+        "url": "https://www.legislation.gov.uk/uksi/2021/162/pdfs/uksiem_20210162_en.pdf"
+      },
+      "earnings_used": {
+        "value": "-1.0",
+        "reference_period": "May-July 2020, AWE total pay, whole economy, SA, 3-month average year on year",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2021 para 7.2: \"2.5 per cent is higher than the growth in prices over the relevant period (0.5 per cent) and earnings fell by 1.0 per cent\"",
+        "url": "https://www.legislation.gov.uk/uksi/2021/162/pdfs/uksiem_20210162_en.pdf"
+      },
+      "effective_date": {
+        "value": "2021-04-12",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "Social Security Benefits Up-rating Order 2021 (SI 2021/162) art 1 commencement; date is a Monday",
+        "url": "https://www.legislation.gov.uk/uksi/2021/162/article/1/made"
+      },
+      "earnings_currently_published_KAC3": {
+        "value": "-0.9",
+        "vintage": "15-09-2026",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "ONS KAC3 CSV",
+        "differs_from_decision_figure": true
+      },
+      "earnings_first_published": {
+        "value": "-1.0",
+        "vintage": "15-09-2020",
+        "ons_version": "v59",
+        "status": "FETCHED-AND-QUOTED"
+      },
+      "earnings_october_revision": {
+        "value": "-1.0",
+        "vintage": "13-10-2020",
+        "ons_version": "v60",
+        "status": "FETCHED-AND-QUOTED"
+      },
+      "arithmetic_check": {
+        "basic": {
+          "previous_rate_x_1_plus_pct_unrounded": "137.60625",
+          "nearest_5p": "137.60",
+          "matches_nearest_5p": true,
+          "rounded_up_5p": "137.65",
+          "rounded_down_5p": "137.60",
+          "nearest_1p": "137.61",
+          "implied_percentage_from_published_rates": "2.4953"
+        },
+        "new": {
+          "previous_rate_x_1_plus_pct_unrounded": "179.58000",
+          "nearest_5p": "179.60",
+          "matches_nearest_5p": true,
+          "rounded_up_5p": "179.60",
+          "rounded_down_5p": "179.55",
+          "nearest_1p": "179.58",
+          "implied_percentage_from_published_rates": "2.5114"
+        }
+      },
+      "exceptional_year_note": "Earnings fell 1.0%; s150A did not permit an order without earnings growth; Social Security (Up-rating of Benefits) Act 2020 (Royal Assent 23 Nov 2020) gave a one-year discretion; 2.5% applied."
+    },
+    {
+      "tax_year": "2022/23",
+      "basic_state_pension_weekly": {
+        "value": "141.85",
+        "unit": "GBP/week",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "DWP, Benefit and pension rates 2022/23 (GOV.UK), State Pension section, row \"Category A or B basic pension\"/\"Category A or B\"; new State Pension row \"Full rate\"",
+        "url": "https://assets.publishing.service.gov.uk/media/61a0ee27e90e07044b1ef468/benefit-and-pension-rates-2022-2023.pdf",
+        "cross_check": "DWP Abstract of benefit rate statistics 2025, Table 6 (agrees)"
+      },
+      "new_state_pension_weekly": {
+        "value": "185.15",
+        "unit": "GBP/week",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "DWP, Benefit and pension rates 2022/23 (GOV.UK), State Pension section, row \"Category A or B basic pension\"/\"Category A or B\"; new State Pension row \"Full rate\"",
+        "url": "https://assets.publishing.service.gov.uk/media/61a0ee27e90e07044b1ef468/benefit-and-pension-rates-2022-2023.pdf"
+      },
+      "percentage_applied": {
+        "value": "3.1",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "HCWS420 25 Nov 2021: \"In line with the Social Security (Up-rating of Benefits) Act 2021, State Pension rates will rise in line with CPI of 3.1%\"",
+        "url": "https://www.legislation.gov.uk/uksi/2022/292/pdfs/uksiem_20220292_en.pdf"
+      },
+      "determining_measure": {
+        "value": "CPI (earnings element set aside by Social Security (Up-rating of Benefits) Act 2021)",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "HCWS420 25 Nov 2021: \"In line with the Social Security (Up-rating of Benefits) Act 2021, State Pension rates will rise in line with CPI of 3.1%\"",
+        "url": "https://www.legislation.gov.uk/uksi/2022/292/pdfs/uksiem_20220292_en.pdf"
+      },
+      "cpi_year_to_september_used": {
+        "value": "3.1",
+        "reference_period": "September 2021",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "HCWS420 25 Nov 2021: \"In line with the Social Security (Up-rating of Benefits) Act 2021, State Pension rates will rise in line with CPI of 3.1%\"",
+        "url": "https://www.legislation.gov.uk/uksi/2022/292/pdfs/uksiem_20220292_en.pdf"
+      },
+      "earnings_used": {
+        "value": "8.3 (not used)",
+        "reference_period": "May-July 2021, AWE total pay, whole economy, SA, 3-month average year on year",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "DWP Abstract methodology statement Annex C: \"exceptional earnings growth (8.3%)\"; ONS KAC3 vintages of 14-09-2021 and 12-10-2021 both 8.3",
+        "url": "https://www.gov.uk/government/statistics/dwp-abstract-of-statistics-policies-and-statements/methodology-statement-for-the-dwp-abstract-of-statistics"
+      },
+      "effective_date": {
+        "value": "2022-04-11",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "Social Security Benefits Up-rating Order 2022 (SI 2022/292) art 1 commencement; date is a Monday",
+        "url": "https://www.legislation.gov.uk/uksi/2022/292/article/1/made"
+      },
+      "earnings_currently_published_KAC3": {
+        "value": "8.4",
+        "vintage": "15-09-2026",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "ONS KAC3 CSV",
+        "differs_from_decision_figure": true
+      },
+      "earnings_first_published": {
+        "value": "8.3",
+        "vintage": "14-09-2021",
+        "ons_version": "v71",
+        "status": "FETCHED-AND-QUOTED"
+      },
+      "earnings_october_revision": {
+        "value": "8.3",
+        "vintage": "12-10-2021",
+        "ons_version": "v72",
+        "status": "FETCHED-AND-QUOTED"
+      },
+      "arithmetic_check": {
+        "basic": {
+          "previous_rate_x_1_plus_pct_unrounded": "141.86560",
+          "nearest_5p": "141.85",
+          "matches_nearest_5p": true,
+          "rounded_up_5p": "141.90",
+          "rounded_down_5p": "141.85",
+          "nearest_1p": "141.87",
+          "implied_percentage_from_published_rates": "3.0887"
+        },
+        "new": {
+          "previous_rate_x_1_plus_pct_unrounded": "185.16760",
+          "nearest_5p": "185.15",
+          "matches_nearest_5p": true,
+          "rounded_up_5p": "185.20",
+          "rounded_down_5p": "185.15",
+          "nearest_1p": "185.17",
+          "implied_percentage_from_published_rates": "3.0902"
+        }
+      },
+      "exceptional_year_note": "Earnings element suspended for one year by Social Security (Up-rating of Benefits) Act 2021 (Royal Assent 17 Nov 2021): higher of prices or 2.5%. Earnings figure set aside 8.3%; since revised (8.6% in 2022 vintages and DWP Note 50; 8.4% in current series)."
+    },
+    {
+      "tax_year": "2023/24",
+      "basic_state_pension_weekly": {
+        "value": "156.20",
+        "unit": "GBP/week",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "DWP, Benefit and pension rates 2023/24 (GOV.UK), State Pension section, row \"Category A or B basic pension\"/\"Category A or B\"; new State Pension row \"Full rate\"",
+        "url": "https://assets.publishing.service.gov.uk/media/64956da1831311000c29625c/benefit-and-pensions-rates-2023-2024.pdf",
+        "cross_check": "DWP Abstract of benefit rate statistics 2025, Table 6 (agrees)"
+      },
+      "new_state_pension_weekly": {
+        "value": "203.85",
+        "unit": "GBP/week",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "DWP, Benefit and pension rates 2023/24 (GOV.UK), State Pension section, row \"Category A or B basic pension\"/\"Category A or B\"; new State Pension row \"Full rate\"",
+        "url": "https://assets.publishing.service.gov.uk/media/64956da1831311000c29625c/benefit-and-pensions-rates-2023-2024.pdf"
+      },
+      "percentage_applied": {
+        "value": "10.1",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2023 para 7.2: \"prices over the relevant period (10.1 per cent) is higher than both the growth in earnings (5.5 per cent) and 2.5 per cent\"",
+        "url": "https://www.legislation.gov.uk/uksi/2023/316/pdfs/uksiem_20230316_en.pdf"
+      },
+      "determining_measure": {
+        "value": "CPI",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2023 para 7.2: \"prices over the relevant period (10.1 per cent) is higher than both the growth in earnings (5.5 per cent) and 2.5 per cent\"",
+        "url": "https://www.legislation.gov.uk/uksi/2023/316/pdfs/uksiem_20230316_en.pdf"
+      },
+      "cpi_year_to_september_used": {
+        "value": "10.1",
+        "reference_period": "September 2022",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2023 para 7.2: \"prices over the relevant period (10.1 per cent) is higher than both the growth in earnings (5.5 per cent) and 2.5 per cent\"",
+        "url": "https://www.legislation.gov.uk/uksi/2023/316/pdfs/uksiem_20230316_en.pdf"
+      },
+      "earnings_used": {
+        "value": "5.5",
+        "reference_period": "May-July 2022, AWE total pay, whole economy, SA, 3-month average year on year",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2023 para 7.2: \"prices over the relevant period (10.1 per cent) is higher than both the growth in earnings (5.5 per cent) and 2.5 per cent\"",
+        "url": "https://www.legislation.gov.uk/uksi/2023/316/pdfs/uksiem_20230316_en.pdf"
+      },
+      "effective_date": {
+        "value": "2023-04-10",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "Social Security Benefits Up-rating Order 2023 (SI 2023/316) art 1 commencement; date is a Monday",
+        "url": "https://www.legislation.gov.uk/uksi/2023/316/article/1/made"
+      },
+      "earnings_currently_published_KAC3": {
+        "value": "5.5",
+        "vintage": "15-09-2026",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "ONS KAC3 CSV",
+        "differs_from_decision_figure": false
+      },
+      "earnings_first_published": {
+        "value": "5.5",
+        "vintage": "13-09-2022",
+        "ons_version": "v83",
+        "status": "FETCHED-AND-QUOTED"
+      },
+      "earnings_october_revision": {
+        "value": "5.5",
+        "vintage": "11-10-2022",
+        "ons_version": "v84",
+        "status": "FETCHED-AND-QUOTED"
+      },
+      "arithmetic_check": {
+        "basic": {
+          "previous_rate_x_1_plus_pct_unrounded": "156.17685",
+          "nearest_5p": "156.20",
+          "matches_nearest_5p": true,
+          "rounded_up_5p": "156.20",
+          "rounded_down_5p": "156.15",
+          "nearest_1p": "156.18",
+          "implied_percentage_from_published_rates": "10.1163"
+        },
+        "new": {
+          "previous_rate_x_1_plus_pct_unrounded": "203.85015",
+          "nearest_5p": "203.85",
+          "matches_nearest_5p": true,
+          "rounded_up_5p": "203.90",
+          "rounded_down_5p": "203.85",
+          "nearest_1p": "203.85",
+          "implied_percentage_from_published_rates": "10.0999"
+        }
+      }
+    },
+    {
+      "tax_year": "2024/25",
+      "basic_state_pension_weekly": {
+        "value": "169.50",
+        "unit": "GBP/week",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "DWP, Benefit and pension rates 2024/25 (GOV.UK), State Pension section, row \"Category A or B basic pension\"/\"Category A or B\"; new State Pension row \"Full rate\"",
+        "url": "https://assets.publishing.service.gov.uk/media/660d236c38f66c001184a967/benefit-pension-rates-2024-2025.pdf",
+        "cross_check": "DWP Abstract of benefit rate statistics 2025, Table 6 (agrees)"
+      },
+      "new_state_pension_weekly": {
+        "value": "221.20",
+        "unit": "GBP/week",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "DWP, Benefit and pension rates 2024/25 (GOV.UK), State Pension section, row \"Category A or B basic pension\"/\"Category A or B\"; new State Pension row \"Full rate\"",
+        "url": "https://assets.publishing.service.gov.uk/media/660d236c38f66c001184a967/benefit-pension-rates-2024-2025.pdf"
+      },
+      "percentage_applied": {
+        "value": "8.5",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2024 para 7.2: \"earnings over the relevant period (8.5%) is higher than both the growth in prices (6.7%) and 2.5%\"",
+        "url": "https://www.legislation.gov.uk/uksi/2024/242/pdfs/uksiem_20240242_en_001.pdf"
+      },
+      "determining_measure": {
+        "value": "Earnings",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2024 para 7.2: \"earnings over the relevant period (8.5%) is higher than both the growth in prices (6.7%) and 2.5%\"",
+        "url": "https://www.legislation.gov.uk/uksi/2024/242/pdfs/uksiem_20240242_en_001.pdf"
+      },
+      "cpi_year_to_september_used": {
+        "value": "6.7",
+        "reference_period": "September 2023",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2024 para 7.2: \"earnings over the relevant period (8.5%) is higher than both the growth in prices (6.7%) and 2.5%\"",
+        "url": "https://www.legislation.gov.uk/uksi/2024/242/pdfs/uksiem_20240242_en_001.pdf"
+      },
+      "earnings_used": {
+        "value": "8.5",
+        "reference_period": "May-July 2023, AWE total pay, whole economy, SA, 3-month average year on year",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2024 para 7.2: \"earnings over the relevant period (8.5%) is higher than both the growth in prices (6.7%) and 2.5%\"",
+        "url": "https://www.legislation.gov.uk/uksi/2024/242/pdfs/uksiem_20240242_en_001.pdf"
+      },
+      "effective_date": {
+        "value": "2024-04-08",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "Social Security Benefits Up-rating Order 2024 (SI 2024/242) art 1 commencement; date is a Monday",
+        "url": "https://www.legislation.gov.uk/uksi/2024/242/article/1/made"
+      },
+      "earnings_currently_published_KAC3": {
+        "value": "8.5",
+        "vintage": "15-09-2026",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "ONS KAC3 CSV",
+        "differs_from_decision_figure": false
+      },
+      "earnings_first_published": {
+        "value": "8.5",
+        "vintage": "12-09-2023",
+        "ons_version": "v96",
+        "status": "FETCHED-AND-QUOTED"
+      },
+      "earnings_october_revision": {
+        "value": "8.5",
+        "vintage": "14-11-2023",
+        "ons_version": "v97",
+        "status": "FETCHED-AND-QUOTED"
+      },
+      "arithmetic_check": {
+        "basic": {
+          "previous_rate_x_1_plus_pct_unrounded": "169.47700",
+          "nearest_5p": "169.50",
+          "matches_nearest_5p": true,
+          "rounded_up_5p": "169.50",
+          "rounded_down_5p": "169.45",
+          "nearest_1p": "169.48",
+          "implied_percentage_from_published_rates": "8.5147"
+        },
+        "new": {
+          "previous_rate_x_1_plus_pct_unrounded": "221.17725",
+          "nearest_5p": "221.20",
+          "matches_nearest_5p": true,
+          "rounded_up_5p": "221.20",
+          "rounded_down_5p": "221.15",
+          "nearest_1p": "221.18",
+          "implied_percentage_from_published_rates": "8.5112"
+        }
+      },
+      "exceptional_year_note": "8.5% is total pay (including bonuses); ONS said it was \"affected by the NHS and civil service one-off payments made in June and July 2023\"; regular pay was 7.8%. Revised to 8.3% in 2024 vintages; current series shows 8.5%."
+    },
+    {
+      "tax_year": "2025/26",
+      "basic_state_pension_weekly": {
+        "value": "176.45",
+        "unit": "GBP/week",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "DWP, Benefit and pension rates 2025/26 (GOV.UK), State Pension section, row \"Category A or B basic pension\"/\"Category A or B\"; new State Pension row \"Full rate\"",
+        "url": "https://assets.publishing.service.gov.uk/media/67efe453cb0feef57df7e571/benefit_and_pension_rates_2025_to_2026.pdf",
+        "cross_check": "DWP Abstract of benefit rate statistics 2025, Table 6 (agrees)"
+      },
+      "new_state_pension_weekly": {
+        "value": "230.25",
+        "unit": "GBP/week",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "DWP, Benefit and pension rates 2025/26 (GOV.UK), State Pension section, row \"Category A or B basic pension\"/\"Category A or B\"; new State Pension row \"Full rate\"",
+        "url": "https://assets.publishing.service.gov.uk/media/67efe453cb0feef57df7e571/benefit_and_pension_rates_2025_to_2026.pdf"
+      },
+      "percentage_applied": {
+        "value": "4.1",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2025 para 5.2: \"earnings over the relevant period (4.1%) is higher than both the growth in prices (1.7%) and 2.5%\"",
+        "url": "https://www.legislation.gov.uk/uksi/2025/295/pdfs/uksiem_20250295_en_001.pdf"
+      },
+      "determining_measure": {
+        "value": "Earnings",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2025 para 5.2: \"earnings over the relevant period (4.1%) is higher than both the growth in prices (1.7%) and 2.5%\"",
+        "url": "https://www.legislation.gov.uk/uksi/2025/295/pdfs/uksiem_20250295_en_001.pdf"
+      },
+      "cpi_year_to_september_used": {
+        "value": "1.7",
+        "reference_period": "September 2024",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2025 para 5.2: \"earnings over the relevant period (4.1%) is higher than both the growth in prices (1.7%) and 2.5%\"",
+        "url": "https://www.legislation.gov.uk/uksi/2025/295/pdfs/uksiem_20250295_en_001.pdf"
+      },
+      "earnings_used": {
+        "value": "4.1",
+        "reference_period": "May-July 2024, AWE total pay, whole economy, SA, 3-month average year on year",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2025 para 5.2: \"earnings over the relevant period (4.1%) is higher than both the growth in prices (1.7%) and 2.5%\"",
+        "url": "https://www.legislation.gov.uk/uksi/2025/295/pdfs/uksiem_20250295_en_001.pdf"
+      },
+      "effective_date": {
+        "value": "2025-04-07",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "Social Security Benefits Up-rating Order 2025 (SI 2025/295) art 1 commencement; date is a Monday",
+        "url": "https://www.legislation.gov.uk/uksi/2025/295/article/1/made"
+      },
+      "earnings_currently_published_KAC3": {
+        "value": "4.4",
+        "vintage": "15-09-2026",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "ONS KAC3 CSV",
+        "differs_from_decision_figure": true
+      },
+      "earnings_first_published": {
+        "value": "4.0",
+        "vintage": "10-09-2024",
+        "ons_version": "v108",
+        "status": "FETCHED-AND-QUOTED"
+      },
+      "earnings_october_revision": {
+        "value": "4.1",
+        "vintage": "15-10-2024",
+        "ons_version": "v109",
+        "status": "FETCHED-AND-QUOTED"
+      },
+      "arithmetic_check": {
+        "basic": {
+          "previous_rate_x_1_plus_pct_unrounded": "176.44950",
+          "nearest_5p": "176.45",
+          "matches_nearest_5p": true,
+          "rounded_up_5p": "176.45",
+          "rounded_down_5p": "176.40",
+          "nearest_1p": "176.45",
+          "implied_percentage_from_published_rates": "4.1003"
+        },
+        "new": {
+          "previous_rate_x_1_plus_pct_unrounded": "230.26920",
+          "nearest_5p": "230.25",
+          "matches_nearest_5p": true,
+          "rounded_up_5p": "230.30",
+          "rounded_down_5p": "230.25",
+          "nearest_1p": "230.27",
+          "implied_percentage_from_published_rates": "4.0913"
+        }
+      },
+      "exceptional_year_note": "First published 4.0% (10 Sep 2024); revised to 4.1% in October 2024 release, which was the figure used. Current series 4.4%."
+    },
+    {
+      "tax_year": "2026/27",
+      "basic_state_pension_weekly": {
+        "value": "184.90",
+        "unit": "GBP/week",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "DWP, Benefit and pension rates 2026/27 (GOV.UK), State Pension section, row \"Category A or B basic pension\"/\"Category A or B\"; new State Pension row \"Full rate\"",
+        "url": "https://assets.publishing.service.gov.uk/media/69931706ceeaa48d377f6bd5/Benefit-and-pension-rates-2026-2027.pdf",
+        "cross_check": "EM to SI 2026/148 para 5.4"
+      },
+      "new_state_pension_weekly": {
+        "value": "241.30",
+        "unit": "GBP/week",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "DWP, Benefit and pension rates 2026/27 (GOV.UK), State Pension section, row \"Category A or B basic pension\"/\"Category A or B\"; new State Pension row \"Full rate\"",
+        "url": "https://assets.publishing.service.gov.uk/media/69931706ceeaa48d377f6bd5/Benefit-and-pension-rates-2026-2027.pdf"
+      },
+      "percentage_applied": {
+        "value": "4.8",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2026 para 5.3: \"earnings over the relevant period (4.8%) is higher than ... the growth in prices (3.8%) and 2.5%\"",
+        "url": "https://www.legislation.gov.uk/uksi/2026/148/pdfs/uksiem_20260148_en_001.pdf"
+      },
+      "determining_measure": {
+        "value": "Earnings",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2026 para 5.3: \"earnings over the relevant period (4.8%) is higher than ... the growth in prices (3.8%) and 2.5%\"",
+        "url": "https://www.legislation.gov.uk/uksi/2026/148/pdfs/uksiem_20260148_en_001.pdf"
+      },
+      "cpi_year_to_september_used": {
+        "value": "3.8",
+        "reference_period": "September 2025",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2026 para 5.3: \"earnings over the relevant period (4.8%) is higher than ... the growth in prices (3.8%) and 2.5%\"",
+        "url": "https://www.legislation.gov.uk/uksi/2026/148/pdfs/uksiem_20260148_en_001.pdf"
+      },
+      "earnings_used": {
+        "value": "4.8",
+        "reference_period": "May-July 2025, AWE total pay, whole economy, SA, 3-month average year on year",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "EM 2026 para 5.3: \"earnings over the relevant period (4.8%) is higher than ... the growth in prices (3.8%) and 2.5%\"",
+        "url": "https://www.legislation.gov.uk/uksi/2026/148/pdfs/uksiem_20260148_en_001.pdf"
+      },
+      "effective_date": {
+        "value": "2026-04-06",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "Social Security Benefits Up-rating Order 2026 (SI 2026/148) art 1 commencement; date is a Monday",
+        "url": "https://www.legislation.gov.uk/uksi/2026/148/article/1/made"
+      },
+      "earnings_currently_published_KAC3": {
+        "value": "4.9",
+        "vintage": "15-09-2026",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "ONS KAC3 CSV",
+        "differs_from_decision_figure": true
+      },
+      "earnings_first_published": {
+        "value": "4.7",
+        "vintage": "16-09-2025",
+        "ons_version": "v120",
+        "status": "FETCHED-AND-QUOTED"
+      },
+      "earnings_october_revision": {
+        "value": "4.8",
+        "vintage": "14-10-2025",
+        "ons_version": "v121",
+        "status": "FETCHED-AND-QUOTED"
+      },
+      "arithmetic_check": {
+        "basic": {
+          "previous_rate_x_1_plus_pct_unrounded": "184.91960",
+          "nearest_5p": "184.90",
+          "matches_nearest_5p": true,
+          "rounded_up_5p": "184.95",
+          "rounded_down_5p": "184.90",
+          "nearest_1p": "184.92",
+          "implied_percentage_from_published_rates": "4.7889"
+        },
+        "new": {
+          "previous_rate_x_1_plus_pct_unrounded": "241.30200",
+          "nearest_5p": "241.30",
+          "matches_nearest_5p": true,
+          "rounded_up_5p": "241.35",
+          "rounded_down_5p": "241.30",
+          "nearest_1p": "241.30",
+          "implied_percentage_from_published_rates": "4.7991"
+        }
+      },
+      "exceptional_year_note": "First published 4.7% (16 Sep 2025); October 2025 vintage 4.8%, the figure used. EM 2026 footnote says the figure \"remained at 4.8%\", which disagrees with the ONS September 2025 bulletin and vintage (4.7%). Current series 4.9%."
+    }
+  ],
+  "pending_2027_28": {
+    "decision": null,
+    "status": "NOT-DETERMINED",
+    "inputs": {
+      "awe_may_july_2026": {
+        "value": "3.9",
+        "label": "INPUT NOT DECISION; first estimate, subject to revision in the 20 October 2026 release",
+        "status": "FETCHED-AND-QUOTED",
+        "source": "ONS, Average weekly earnings in Great Britain: September 2026, released 15 September 2026; KAC3 2026 JUL",
+        "url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/averageweeklyearningsingreatbritain/september2026"
+      },
+      "cpi_september_2026": {
+        "value": null,
+        "status": "NOT-FOUND",
+        "note": "Not yet published; ONS next release 21 October 2026. Latest published is August 2026 at 3.1%."
+      },
+      "floor": "2.5"
+    }
+  },
+  "ons_series": {
+    "retrieved": "2026-09-29",
+    "KAC3": {
+      "title": "AWE: Whole Economy Year on Year Three Month Average Growth (%): Seasonally Adjusted Total Pay Excluding Arrears",
+      "url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/earningsandworkinghours/timeseries/kac3/lms",
+      "csv": "https://www.ons.gov.uk/generator?format=csv&uri=/employmentandlabourmarket/peopleinwork/earningsandworkinghours/timeseries/kac3/lms",
+      "release_date": "2026-09-15",
+      "next_release": "2026-10-20",
+      "period_label_note": "Monthly label \"YYYY JUL\" is the three-month average May-July",
+      "status": "FETCHED-AND-QUOTED",
+      "may_july_current": {
+        "2010": "1.2",
+        "2011": "2.8",
+        "2012": "1.5",
+        "2013": "1.2",
+        "2014": "0.5",
+        "2015": "2.8",
+        "2016": "2.5",
+        "2017": "2.2",
+        "2018": "2.7",
+        "2019": "4.0",
+        "2020": "-0.9",
+        "2021": "8.4",
+        "2022": "5.5",
+        "2023": "8.5",
+        "2024": "4.4",
+        "2025": "4.9",
+        "2026": "3.9"
+      },
+      "vintages": {
+        "v10": {
+          "csv_release_date": "17-08-2016",
+          "superseded_on": "14 September 2016",
+          "last_observation": [
+            "2016 JUN",
+            "2.4"
+          ],
+          "jul_values": {
+            "2010": "1.6",
+            "2011": "2.8",
+            "2012": "1.5",
+            "2013": "1.2",
+            "2014": "0.6",
+            "2015": "2.9"
+          }
+        },
+        "v11": {
+          "csv_release_date": "14-09-2016",
+          "superseded_on": "19 October 2016",
+          "last_observation": [
+            "2016 JUL",
+            "2.3"
+          ],
+          "jul_values": {
+            "2010": "1.6",
+            "2011": "2.8",
+            "2012": "1.5",
+            "2013": "1.2",
+            "2014": "0.6",
+            "2015": "2.9",
+            "2016": "2.3"
+          }
+        },
+        "v12": {
+          "csv_release_date": "19-10-2016",
+          "superseded_on": "16 November 2016",
+          "last_observation": [
+            "2016 AUG",
+            "2.3"
+          ],
+          "jul_values": {
+            "2010": "1.6",
+            "2011": "2.8",
+            "2012": "1.5",
+            "2013": "1.2",
+            "2014": "0.6",
+            "2015": "2.8",
+            "2016": "2.4"
+          }
+        },
+        "v22": {
+          "csv_release_date": "16-08-2017",
+          "superseded_on": "13 September 2017",
+          "last_observation": [
+            "2017 JUN",
+            "2.1"
+          ],
+          "jul_values": {
+            "2010": "1.7",
+            "2011": "2.6",
+            "2012": "1.4",
+            "2013": "1.1",
+            "2014": "0.5",
+            "2015": "3.0",
+            "2016": "2.4"
+          }
+        },
+        "v23": {
+          "csv_release_date": "13-09-2017",
+          "superseded_on": "18 October 2017",
+          "last_observation": [
+            "2017 JUL",
+            "2.1"
+          ],
+          "jul_values": {
+            "2010": "1.7",
+            "2011": "2.6",
+            "2012": "1.4",
+            "2013": "1.1",
+            "2014": "0.5",
+            "2015": "3.0",
+            "2016": "2.3",
+            "2017": "2.1"
+          }
+        },
+        "v24": {
+          "csv_release_date": "18-10-2017",
+          "superseded_on": "15 November 2017",
+          "last_observation": [
+            "2017 AUG",
+            "2.2"
+          ],
+          "jul_values": {
+            "2010": "1.7",
+            "2011": "2.6",
+            "2012": "1.4",
+            "2013": "1.1",
+            "2014": "0.5",
+            "2015": "3.0",
+            "2016": "2.3",
+            "2017": "2.2"
+          }
+        },
+        "v34": {
+          "csv_release_date": "14-08-2018",
+          "superseded_on": "11 September 2018",
+          "last_observation": [
+            "2018 JUN",
+            "2.4"
+          ],
+          "jul_values": {
+            "2010": "1.7",
+            "2011": "2.6",
+            "2012": "1.4",
+            "2013": "1.1",
+            "2014": "0.5",
+            "2015": "3.0",
+            "2016": "2.4",
+            "2017": "2.3"
+          }
+        },
+        "v35": {
+          "csv_release_date": "11-09-2018",
+          "superseded_on": "16 October 2018",
+          "last_observation": [
+            "2018 JUL",
+            "2.6"
+          ],
+          "jul_values": {
+            "2010": "1.7",
+            "2011": "2.6",
+            "2012": "1.4",
+            "2013": "1.1",
+            "2014": "0.5",
+            "2015": "3.0",
+            "2016": "2.4",
+            "2017": "2.3",
+            "2018": "2.6"
+          }
+        },
+        "v36": {
+          "csv_release_date": "16-10-2018",
+          "superseded_on": "13 November 2018",
+          "last_observation": [
+            "2018 AUG",
+            "2.7"
+          ],
+          "jul_values": {
+            "2010": "1.7",
+            "2011": "2.6",
+            "2012": "1.4",
+            "2013": "1.1",
+            "2014": "0.5",
+            "2015": "3.0",
+            "2016": "2.4",
+            "2017": "2.3",
+            "2018": "2.6"
+          }
+        },
+        "v46": {
+          "csv_release_date": "13-08-2019",
+          "superseded_on": "10 September 2019",
+          "last_observation": [
+            "2019 JUN",
+            "3.7"
+          ],
+          "jul_values": {
+            "2010": "1.7",
+            "2011": "2.6",
+            "2012": "1.4",
+            "2013": "1.1",
+            "2014": "0.4",
+            "2015": "2.8",
+            "2016": "2.5",
+            "2017": "2.3",
+            "2018": "2.6"
+          }
+        },
+        "v47": {
+          "csv_release_date": "10-09-2019",
+          "superseded_on": "15 October 2019",
+          "last_observation": [
+            "2019 JUL",
+            "4.0"
+          ],
+          "jul_values": {
+            "2010": "1.7",
+            "2011": "2.6",
+            "2012": "1.4",
+            "2013": "1.1",
+            "2014": "0.4",
+            "2015": "2.8",
+            "2016": "2.5",
+            "2017": "2.3",
+            "2018": "2.6",
+            "2019": "4.0"
+          }
+        },
+        "v48": {
+          "csv_release_date": "15-10-2019",
+          "superseded_on": "12 November 2019",
+          "last_observation": [
+            "2019 AUG",
+            "3.8"
+          ],
+          "jul_values": {
+            "2010": "1.7",
+            "2011": "2.6",
+            "2012": "1.4",
+            "2013": "1.1",
+            "2014": "0.4",
+            "2015": "2.8",
+            "2016": "2.5",
+            "2017": "2.3",
+            "2018": "2.6",
+            "2019": "3.9"
+          }
+        },
+        "v58": {
+          "csv_release_date": "11-08-2020",
+          "superseded_on": "15 September 2020",
+          "last_observation": [
+            "2020 JUN",
+            "-1.2"
+          ],
+          "jul_values": {
+            "2010": "1.8",
+            "2011": "2.7",
+            "2012": "1.4",
+            "2013": "1.1",
+            "2014": "0.4",
+            "2015": "2.8",
+            "2016": "2.5",
+            "2017": "2.2",
+            "2018": "2.6",
+            "2019": "3.9"
+          }
+        },
+        "v59": {
+          "csv_release_date": "15-09-2020",
+          "superseded_on": "13 October 2020",
+          "last_observation": [
+            "2020 JUL",
+            "-1.0"
+          ],
+          "jul_values": {
+            "2010": "1.8",
+            "2011": "2.7",
+            "2012": "1.4",
+            "2013": "1.1",
+            "2014": "0.4",
+            "2015": "2.8",
+            "2016": "2.4",
+            "2017": "2.2",
+            "2018": "2.6",
+            "2019": "3.9",
+            "2020": "-1.0"
+          }
+        },
+        "v60": {
+          "csv_release_date": "13-10-2020",
+          "superseded_on": "10 November 2020",
+          "last_observation": [
+            "2020 AUG",
+            "0.0"
+          ],
+          "jul_values": {
+            "2010": "1.8",
+            "2011": "2.7",
+            "2012": "1.4",
+            "2013": "1.1",
+            "2014": "0.4",
+            "2015": "2.8",
+            "2016": "2.4",
+            "2017": "2.2",
+            "2018": "2.6",
+            "2019": "3.9",
+            "2020": "-1.0"
+          }
+        },
+        "v70": {
+          "csv_release_date": "17-08-2021",
+          "superseded_on": "14 September 2021",
+          "last_observation": [
+            "2021 JUN",
+            "8.8"
+          ],
+          "jul_values": {
+            "2010": "1.8",
+            "2011": "2.7",
+            "2012": "1.4",
+            "2013": "1.1",
+            "2014": "0.4",
+            "2015": "2.8",
+            "2016": "2.5",
+            "2017": "2.2",
+            "2018": "2.6",
+            "2019": "3.9",
+            "2020": "-1.0"
+          }
+        },
+        "v71": {
+          "csv_release_date": "14-09-2021",
+          "superseded_on": "12 October 2021",
+          "last_observation": [
+            "2021 JUL",
+            "8.3"
+          ],
+          "jul_values": {
+            "2010": "1.8",
+            "2011": "2.7",
+            "2012": "1.4",
+            "2013": "1.1",
+            "2014": "0.4",
+            "2015": "2.8",
+            "2016": "2.5",
+            "2017": "2.2",
+            "2018": "2.6",
+            "2019": "3.9",
+            "2020": "-1.0",
+            "2021": "8.3"
+          }
+        },
+        "v72": {
+          "csv_release_date": "12-10-2021",
+          "superseded_on": "16 November 2021",
+          "last_observation": [
+            "2021 AUG",
+            "7.2"
+          ],
+          "jul_values": {
+            "2010": "1.8",
+            "2011": "2.7",
+            "2012": "1.4",
+            "2013": "1.1",
+            "2014": "0.4",
+            "2015": "2.8",
+            "2016": "2.5",
+            "2017": "2.2",
+            "2018": "2.6",
+            "2019": "3.9",
+            "2020": "-1.0",
+            "2021": "8.3"
+          }
+        },
+        "v82": {
+          "csv_release_date": "16-08-2022",
+          "superseded_on": "13 September 2022",
+          "last_observation": [
+            "2022 JUN",
+            "5.1"
+          ],
+          "jul_values": {
+            "2010": "1.8",
+            "2011": "2.7",
+            "2012": "1.4",
+            "2013": "1.1",
+            "2014": "0.4",
+            "2015": "2.8",
+            "2016": "2.5",
+            "2017": "2.2",
+            "2018": "2.6",
+            "2019": "3.9",
+            "2020": "-1.0",
+            "2021": "8.6"
+          }
+        },
+        "v83": {
+          "csv_release_date": "13-09-2022",
+          "superseded_on": "11 October 2022",
+          "last_observation": [
+            "2022 JUL",
+            "5.5"
+          ],
+          "jul_values": {
+            "2010": "1.8",
+            "2011": "2.7",
+            "2012": "1.4",
+            "2013": "1.1",
+            "2014": "0.4",
+            "2015": "2.8",
+            "2016": "2.5",
+            "2017": "2.2",
+            "2018": "2.6",
+            "2019": "3.9",
+            "2020": "-1.0",
+            "2021": "8.6",
+            "2022": "5.5"
+          }
+        },
+        "v84": {
+          "csv_release_date": "11-10-2022",
+          "superseded_on": "15 November 2022",
+          "last_observation": [
+            "2022 AUG",
+            "6.0"
+          ],
+          "jul_values": {
+            "2010": "1.8",
+            "2011": "2.7",
+            "2012": "1.4",
+            "2013": "1.1",
+            "2014": "0.4",
+            "2015": "2.8",
+            "2016": "2.5",
+            "2017": "2.2",
+            "2018": "2.6",
+            "2019": "3.9",
+            "2020": "-1.0",
+            "2021": "8.6",
+            "2022": "5.5"
+          }
+        },
+        "v94": {
+          "csv_release_date": "15-08-2023",
+          "superseded_on": "12 September 2023",
+          "last_observation": [
+            "2023 JUN",
+            "8.2"
+          ],
+          "jul_values": {
+            "2010": "1.8",
+            "2011": "2.7",
+            "2012": "1.4",
+            "2013": "1.1",
+            "2014": "0.4",
+            "2015": "2.8",
+            "2016": "2.5",
+            "2017": "2.2",
+            "2018": "2.6",
+            "2019": "3.9",
+            "2020": "-1.0",
+            "2021": "8.6",
+            "2022": "5.5"
+          }
+        },
+        "v95": {
+          "csv_release_date": "12-09-2023",
+          "superseded_on": "12 September 2023",
+          "last_observation": [
+            "2023 JUL",
+            "8.5"
+          ],
+          "jul_values": {
+            "2010": "1.2",
+            "2011": "2.8",
+            "2012": "1.5",
+            "2013": "1.2",
+            "2014": "0.5",
+            "2015": "2.8",
+            "2016": "2.5",
+            "2017": "2.2",
+            "2018": "2.7",
+            "2019": "4.0",
+            "2020": "-1.0",
+            "2021": "8.4",
+            "2022": "5.4",
+            "2023": "8.5"
+          }
+        },
+        "v96": {
+          "csv_release_date": "12-09-2023",
+          "superseded_on": "14 November 2023",
+          "last_observation": [
+            "2023 JUL",
+            "8.5"
+          ],
+          "jul_values": {
+            "2010": "1.2",
+            "2011": "2.8",
+            "2012": "1.5",
+            "2013": "1.2",
+            "2014": "0.5",
+            "2015": "2.8",
+            "2016": "2.5",
+            "2017": "2.2",
+            "2018": "2.7",
+            "2019": "4.0",
+            "2020": "-0.9",
+            "2021": "8.4",
+            "2022": "5.4",
+            "2023": "8.5"
+          }
+        },
+        "v97": {
+          "csv_release_date": "14-11-2023",
+          "superseded_on": "17 November 2023",
+          "last_observation": [
+            "2023 SEP",
+            "7.9"
+          ],
+          "jul_values": {
+            "2010": "1.2",
+            "2011": "2.8",
+            "2012": "1.5",
+            "2013": "1.2",
+            "2014": "0.5",
+            "2015": "2.8",
+            "2016": "2.5",
+            "2017": "2.2",
+            "2018": "2.7",
+            "2019": "4.0",
+            "2020": "-1.0",
+            "2021": "8.4",
+            "2022": "5.4",
+            "2023": "8.5"
+          }
+        },
+        "v107": {
+          "csv_release_date": "13-08-2024",
+          "superseded_on": "10 September 2024",
+          "last_observation": [
+            "2024 JUN",
+            "4.5"
+          ],
+          "jul_values": {
+            "2010": "1.2",
+            "2011": "2.8",
+            "2012": "1.5",
+            "2013": "1.2",
+            "2014": "0.5",
+            "2015": "2.8",
+            "2016": "2.5",
+            "2017": "2.2",
+            "2018": "2.7",
+            "2019": "4.0",
+            "2020": "-0.9",
+            "2021": "8.4",
+            "2022": "5.4",
+            "2023": "8.4"
+          }
+        },
+        "v108": {
+          "csv_release_date": "10-09-2024",
+          "superseded_on": "15 October 2024",
+          "last_observation": [
+            "2024 JUL",
+            "4.0"
+          ],
+          "jul_values": {
+            "2010": "1.2",
+            "2011": "2.8",
+            "2012": "1.5",
+            "2013": "1.2",
+            "2014": "0.5",
+            "2015": "2.8",
+            "2016": "2.5",
+            "2017": "2.2",
+            "2018": "2.7",
+            "2019": "4.0",
+            "2020": "-0.9",
+            "2021": "8.4",
+            "2022": "5.4",
+            "2023": "8.3",
+            "2024": "4.0"
+          }
+        },
+        "v109": {
+          "csv_release_date": "15-10-2024",
+          "superseded_on": "12 November 2024",
+          "last_observation": [
+            "2024 AUG",
+            "3.8"
+          ],
+          "jul_values": {
+            "2010": "1.2",
+            "2011": "2.8",
+            "2012": "1.5",
+            "2013": "1.2",
+            "2014": "0.5",
+            "2015": "2.8",
+            "2016": "2.5",
+            "2017": "2.2",
+            "2018": "2.7",
+            "2019": "4.0",
+            "2020": "-0.9",
+            "2021": "8.4",
+            "2022": "5.4",
+            "2023": "8.3",
+            "2024": "4.1"
+          }
+        },
+        "v119": {
+          "csv_release_date": "12-08-2025",
+          "superseded_on": "16 September 2025",
+          "last_observation": [
+            "2025 JUN",
+            "4.6"
+          ],
+          "jul_values": {
+            "2010": "1.2",
+            "2011": "2.8",
+            "2012": "1.5",
+            "2013": "1.2",
+            "2014": "0.5",
+            "2015": "2.8",
+            "2016": "2.5",
+            "2017": "2.2",
+            "2018": "2.7",
+            "2019": "4.0",
+            "2020": "-0.9",
+            "2021": "8.4",
+            "2022": "5.5",
+            "2023": "8.4",
+            "2024": "4.4"
+          }
+        },
+        "v120": {
+          "csv_release_date": "16-09-2025",
+          "superseded_on": "14 October 2025",
+          "last_observation": [
+            "2025 JUL",
+            "4.7"
+          ],
+          "jul_values": {
+            "2010": "1.2",
+            "2011": "2.8",
+            "2012": "1.5",
+            "2013": "1.2",
+            "2014": "0.5",
+            "2015": "2.8",
+            "2016": "2.5",
+            "2017": "2.2",
+            "2018": "2.7",
+            "2019": "4.0",
+            "2020": "-0.9",
+            "2021": "8.4",
+            "2022": "5.5",
+            "2023": "8.4",
+            "2024": "4.4",
+            "2025": "4.7"
+          }
+        },
+        "v121": {
+          "csv_release_date": "14-10-2025",
+          "superseded_on": "11 November 2025",
+          "last_observation": [
+            "2025 AUG",
+            "5.0"
+          ],
+          "jul_values": {
+            "2010": "1.2",
+            "2011": "2.8",
+            "2012": "1.5",
+            "2013": "1.2",
+            "2014": "0.5",
+            "2015": "2.8",
+            "2016": "2.5",
+            "2017": "2.2",
+            "2018": "2.7",
+            "2019": "4.0",
+            "2020": "-0.9",
+            "2021": "8.4",
+            "2022": "5.5",
+            "2023": "8.4",
+            "2024": "4.4",
+            "2025": "4.8"
+          }
+        },
+        "v131": {
+          "csv_release_date": "18-08-2026",
+          "superseded_on": "15 September 2026",
+          "last_observation": [
+            "2026 JUN",
+            "4.1"
+          ],
+          "jul_values": {
+            "2010": "1.2",
+            "2011": "2.8",
+            "2012": "1.5",
+            "2013": "1.2",
+            "2014": "0.5",
+            "2015": "2.8",
+            "2016": "2.5",
+            "2017": "2.2",
+            "2018": "2.7",
+            "2019": "4.0",
+            "2020": "-0.9",
+            "2021": "8.4",
+            "2022": "5.5",
+            "2023": "8.5",
+            "2024": "4.4",
+            "2025": "4.9"
+          }
+        }
+      }
+    },
+    "D7G7": {
+      "title": "CPI ANNUAL RATE 00: ALL ITEMS 2015=100",
+      "url": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7g7/mm23",
+      "release_date": "2026-09-16",
+      "next_release": "2026-10-21",
+      "status": "FETCHED-AND-QUOTED",
+      "september_current": {
+        "2009": "1.1",
+        "2010": "3.1",
+        "2011": "5.2",
+        "2012": "2.2",
+        "2013": "2.7",
+        "2014": "1.2",
+        "2015": "-0.1",
+        "2016": "1.0",
+        "2017": "3.0",
+        "2018": "2.4",
+        "2019": "1.7",
+        "2020": "0.5",
+        "2021": "3.1",
+        "2022": "10.1",
+        "2023": "6.7",
+        "2024": "1.7",
+        "2025": "3.8"
+      },
+      "latest": {
+        "2026 AUG": "3.1"
+      }
+    },
+    "D7BT": {
+      "title": "CPI INDEX 00: ALL ITEMS 2015=100",
+      "url": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7bt/mm23",
+      "release_date": "2026-09-16",
+      "next_release": "2026-10-21",
+      "status": "FETCHED-AND-QUOTED",
+      "september_current": {
+        "2009": "87.1",
+        "2010": "89.8",
+        "2011": "94.4",
+        "2012": "96.5",
+        "2013": "99.1",
+        "2014": "100.3",
+        "2015": "100.2",
+        "2016": "101.1",
+        "2017": "104.1",
+        "2018": "106.6",
+        "2019": "108.5",
+        "2020": "109.1",
+        "2021": "112.4",
+        "2022": "123.8",
+        "2023": "132.0",
+        "2024": "134.2",
+        "2025": "139.3"
+      },
+      "latest": {
+        "2026 AUG": "143.6"
+      }
+    }
+  }
+}
