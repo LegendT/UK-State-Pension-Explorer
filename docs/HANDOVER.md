@@ -82,7 +82,6 @@ Not checked on the deployed preview: the other three calculators, any browser bu
 11. **Markup left as it is after the sweep of 29 September 2026.** Each needs design work or a decision, and none is a failure of an automated check.
     - The lists of a bold label and a value, 87 items on six pages, should be description lists.
     - The source note under each figure packs kind, period, place and source into paragraphs. It should be a description list.
-    - The label and value pairs inside each option on the reform options page have no styles of their own, so the values are indented and the labels are not bold.
     - The names of scrolling table regions are typed apart from the captions, and some differ from them.
     - The name of each chart joins its title and its whole description.
     - Each card under "Where to go next" on the overview puts two sentences inside the link.
