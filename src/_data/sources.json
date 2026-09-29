@@ -1,0 +1,852 @@
+{
+  "govuk-new-state-pension": {
+    "publisher": "Department for Work and Pensions",
+    "title": "The new State Pension",
+    "url": "https://www.gov.uk/new-state-pension/what-youll-get",
+    "published_date": null,
+    "updated_date": "2026-09-09",
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": "GOV.UK guides show no publication date. The date given is the last technical update recorded by GOV.UK."
+  },
+  "govuk-basic-state-pension": {
+    "publisher": "Department for Work and Pensions",
+    "title": "The basic State Pension",
+    "url": "https://www.gov.uk/state-pension/how-much-you-get",
+    "published_date": null,
+    "updated_date": "2026-09-09",
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": "GOV.UK guides show no publication date. The date given is the last technical update recorded by GOV.UK."
+  },
+  "dwp-rates-2026-27": {
+    "publisher": "Department for Work and Pensions",
+    "title": "Benefit and pension rates 2026 to 2027",
+    "url": "https://www.gov.uk/government/publications/benefit-and-pension-rates-2026-to-2027",
+    "published_date": "2025-11-27",
+    "updated_date": "2026-02-16",
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": "Rates were confirmed on 16 February 2026. The publication gives no effective dates. Those come from the Up-rating Order."
+  },
+  "govuk-nsp-eligibility": {
+    "publisher": "Department for Work and Pensions",
+    "title": "The new State Pension: Eligibility",
+    "url": "https://www.gov.uk/new-state-pension/eligibility",
+    "published_date": null,
+    "updated_date": "2026-09-09",
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": null
+  },
+  "dwp-sp-explained": {
+    "publisher": "Department for Work and Pensions",
+    "title": "Your State Pension explained",
+    "url": "https://www.gov.uk/government/publications/your-new-state-pension-explained/your-state-pension-explained",
+    "published_date": null,
+    "updated_date": "2026-04-06",
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": "The page gives the amount for each qualifying year as £6.89 but describes it as £230.25 divided by 35. £230.25 is the 2025/26 rate. This site uses the £6.89 figure and does not repeat the out-of-date wording."
+  },
+  "govuk-ni-credits": {
+    "publisher": "HM Revenue and Customs",
+    "title": "National Insurance credits",
+    "url": "https://www.gov.uk/national-insurance-credits",
+    "published_date": null,
+    "updated_date": "2025-01-21",
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": null
+  },
+  "dwp-spa-timetable": {
+    "publisher": "Department for Work and Pensions",
+    "title": "State Pension age timetable",
+    "url": "https://www.gov.uk/government/publications/state-pension-age-timetable/state-pension-age-timetable",
+    "published_date": null,
+    "updated_date": "2014-05-15",
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": null
+  },
+  "dwp-spa-review-3": {
+    "publisher": "Department for Work and Pensions",
+    "title": "Third State Pension age review",
+    "url": "https://www.gov.uk/government/collections/third-state-pension-age-review",
+    "published_date": "2025-07-21",
+    "updated_date": "2025-08-18",
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": null
+  },
+  "govuk-deferring": {
+    "publisher": "Department for Work and Pensions",
+    "title": "Defer (delay) your State Pension",
+    "url": "https://www.gov.uk/deferring-state-pension",
+    "published_date": null,
+    "updated_date": "2024-11-08",
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": null
+  },
+  "govuk-how-to-claim": {
+    "publisher": "Department for Work and Pensions",
+    "title": "The new State Pension: How to claim",
+    "url": "https://www.gov.uk/new-state-pension/how-to-claim",
+    "published_date": null,
+    "updated_date": "2026-09-09",
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": null
+  },
+  "hmrc-sp-taxed": {
+    "publisher": "HM Revenue and Customs",
+    "title": "How your State Pension is taxed",
+    "url": "https://www.gov.uk/guidance/how-your-state-pension-is-taxed",
+    "published_date": "2026-07-07",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": null
+  },
+  "hmrc-income-tax-rates": {
+    "publisher": "HM Revenue and Customs",
+    "title": "Income Tax rates and Personal Allowances",
+    "url": "https://www.gov.uk/income-tax-rates",
+    "published_date": null,
+    "updated_date": "2026-09-25",
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": null
+  },
+  "govuk-tax-on-pension": {
+    "publisher": "HM Revenue and Customs",
+    "title": "Tax when you get a pension: How your tax is paid",
+    "url": "https://www.gov.uk/tax-on-pension/how-your-tax-is-paid",
+    "published_date": null,
+    "updated_date": "2024-11-11",
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": null
+  },
+  "budget-2025": {
+    "publisher": "HM Treasury",
+    "title": "Budget 2025",
+    "url": "https://www.gov.uk/government/publications/budget-2025-document/budget-2025-html",
+    "published_date": "2025-11-26",
+    "updated_date": "2025-11-28",
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": null
+  },
+  "govuk-when-paid": {
+    "publisher": "Department for Work and Pensions",
+    "title": "The new State Pension: When you're paid",
+    "url": "https://www.gov.uk/new-state-pension/when-youre-paid",
+    "published_date": null,
+    "updated_date": "2026-09-09",
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": null
+  },
+  "claims-payments-regs": {
+    "publisher": "UK Statutory Instruments",
+    "title": "The Social Security (Claims and Payments) Regulations 1987, regulation 22CA",
+    "url": "https://www.legislation.gov.uk/uksi/1987/1968/regulation/22CA",
+    "published_date": null,
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": null
+  },
+  "dwp-take-up-fye2024": {
+    "publisher": "Department for Work and Pensions",
+    "title": "Income-related benefits: estimates of take-up: financial year ending 2024",
+    "url": "https://www.gov.uk/government/statistics/income-related-benefits-estimates-of-take-up-financial-year-ending-2024/income-related-benefits-estimates-of-take-up-financial-year-ending-2024",
+    "published_date": "2025-10-30",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": "Official statistics, not accredited. The next release, for the financial year ending 2025, is due on 22 October 2026."
+  },
+  "govuk-housing-benefit": {
+    "publisher": "Department for Work and Pensions",
+    "title": "Housing Benefit",
+    "url": "https://www.gov.uk/housing-benefit",
+    "published_date": null,
+    "updated_date": "2024-10-17",
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": null
+  },
+  "govuk-council-tax-reduction": {
+    "publisher": "GOV.UK",
+    "title": "Apply for Council Tax Reduction",
+    "url": "https://www.gov.uk/apply-council-tax-reduction",
+    "published_date": null,
+    "updated_date": "2022-05-27",
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": null
+  },
+  "govuk-winter-fuel": {
+    "publisher": "Department for Work and Pensions",
+    "title": "Winter Fuel Payment",
+    "url": "https://www.gov.uk/winter-fuel-payment",
+    "published_date": null,
+    "updated_date": "2026-09-25",
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": null
+  },
+  "nif-account-2024-25": {
+    "publisher": "HM Revenue and Customs",
+    "title": "Great Britain National Insurance Fund Account for the year ended 31 March 2025",
+    "url": "https://www.gov.uk/government/publications/national-insurance-fund-accounts",
+    "published_date": "2025-11-27",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": "Cash receipts and payments basis. Great Britain only."
+  },
+  "gad-uprating-2026": {
+    "publisher": "Government Actuary's Department",
+    "title": "Report by the Government Actuary on the draft Social Security Benefits Up-rating Order 2026",
+    "url": "https://www.gov.uk/government/publications/report-to-parliament-on-the-2026-re-rating-and-up-rating-orders",
+    "published_date": "2026-01-13",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": "Projections use the November 2025 forecast of the Office for Budget Responsibility."
+  },
+  "govuk-retire-abroad": {
+    "publisher": "Department for Work and Pensions",
+    "title": "State Pension if you retire abroad: How your pension is affected",
+    "url": "https://www.gov.uk/state-pension-if-you-retire-abroad/rates-of-state-pension",
+    "published_date": null,
+    "updated_date": "2026-09-09",
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": null
+  },
+  "dwp-expenditure-2026": {
+    "publisher": "Department for Work and Pensions",
+    "title": "Benefit expenditure and caseload tables 2026",
+    "url": "https://www.gov.uk/government/publications/benefit-expenditure-and-caseload-tables-2026",
+    "published_date": "2026-04-14",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": "Figures cover Great Britain and people living overseas who receive UK benefits. Northern Ireland is not included. Forecasts are consistent with the March 2026 forecast of the Office for Budget Responsibility."
+  },
+  "dwp-compendium-2026": {
+    "publisher": "Department for Work and Pensions",
+    "title": "Annual DWP Benefits Statistics Compendium: 2026",
+    "url": "https://www.gov.uk/government/statistics/annual-dwp-benefits-statistics-compendium-2026/annual-dwp-benefits-statistics-compendium-2026",
+    "published_date": "2026-09-15",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": "Accredited official statistics. The release covers DWP benefits in Great Britain. It does not say whether recipients living abroad are included in State Pension figures. The next release is due on 21 September 2027."
+  },
+  "obr-frs-2026": {
+    "publisher": "Office for Budget Responsibility",
+    "title": "Fiscal risks and sustainability: July 2026",
+    "url": "https://obr.uk/frs/fiscal-risks-and-sustainability-july-2026/",
+    "published_date": "2026-07-07",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": "Long-term figures are projections under stated assumptions. The Office for Budget Responsibility does not describe them as forecasts."
+  },
+  "obr-frs-2025": {
+    "publisher": "Office for Budget Responsibility",
+    "title": "Fiscal risks and sustainability: July 2025",
+    "url": "https://obr.uk/frs/fiscal-risks-and-sustainability-july-2025/",
+    "published_date": "2025-07-08",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": null
+  },
+  "ifs-r272": {
+    "publisher": "Institute for Fiscal Studies",
+    "title": "The triple lock: uncertainty for pension incomes and the public finances (Report R272)",
+    "url": "https://ifs.org.uk/sites/default/files/2023-09/R272-The-triple-lock-costs-and-uncertainty.pdf",
+    "published_date": "2023-09",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Copyright of the publisher. Short quotation only.",
+    "note": null
+  },
+  "ifs-pensions-review-final": {
+    "publisher": "Institute for Fiscal Studies",
+    "title": "The Pensions Review: final recommendations",
+    "url": "https://ifs.org.uk/sites/default/files/2025-07/The%20Pensions%20Review%20-%20final%20recommendations%20with%20cover_0.pdf",
+    "published_date": "2025-07-02",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Copyright of the publisher. Short quotation only.",
+    "note": null
+  },
+  "rf-ratchet-2026": {
+    "publisher": "Resolution Foundation",
+    "title": "What a ratchet! Why it's time to stop being polite about the triple lock",
+    "url": "https://www.resolutionfoundation.org/publications/what-a-ratchet/",
+    "published_date": "2026-06-10",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Copyright of the publisher. Short quotation only.",
+    "note": null
+  },
+  "ons-npp-2024": {
+    "publisher": "Office for National Statistics",
+    "title": "National population projections: 2024-based",
+    "url": "https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationprojections/bulletins/nationalpopulationprojections/2024based",
+    "published_date": "2026-04-28",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": "Projections, not forecasts. Pensionable age follows the State Pension age in law for each year."
+  },
+  "hmrc-it-liabilities-2026": {
+    "publisher": "HM Revenue and Customs",
+    "title": "Income Tax liabilities statistics: tax year 2023 to 2024 to tax year 2026 to 2027",
+    "url": "https://www.gov.uk/government/statistics/income-tax-liabilities-statistics-tax-year-2023-to-2024-to-tax-year-2026-to-2027/bulletin-commentary",
+    "published_date": "2026-07-15",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": null
+  },
+  "jrf-mis-2026": {
+    "publisher": "Joseph Rowntree Foundation. Research by the Centre for Research in Social Policy, Loughborough University",
+    "title": "A Minimum Income Standard for the United Kingdom in 2026",
+    "url": "https://www.jrf.org.uk/income-savings-and-debt/a-minimum-income-standard-for-the-united-kingdom-in-2026",
+    "published_date": "2026-09-08",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Copyright of the publisher. Figures quoted with attribution.",
+    "note": null
+  },
+  "crsp-mis-budgets-2026": {
+    "publisher": "Centre for Research in Social Policy, Loughborough University",
+    "title": "Annual Budgets 2026 (standard Minimum Income Standard budgets)",
+    "url": "https://www.lboro.ac.uk/research/crsp/usingmisdata/detailed-mis-spreadsheets/",
+    "published_date": null,
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Copyright of the publisher. Figures quoted with attribution.",
+    "note": "The spreadsheet carries no publication date. Its couple pensioner figures match the published 2026 report to the penny."
+  },
+  "rls-2025-update": {
+    "publisher": "Pensions UK. Research by the Centre for Research in Social Policy, Loughborough University",
+    "title": "Retirement Living Standards in the UK: 2025 update",
+    "url": "https://www.retirementlivingstandards.org.uk/2026_research_report.pdf",
+    "published_date": "2026-06-03",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Copyright of the publisher. Figures quoted with attribution.",
+    "note": "Published in June 2026 at April 2025 prices."
+  },
+  "ons-family-spending-fye2025": {
+    "publisher": "Office for National Statistics",
+    "title": "Family spending workbook 2: expenditure by income, financial year ending 2025, Table A23",
+    "url": "https://www.ons.gov.uk/peoplepopulationandcommunity/personalandhouseholdfinances/expenditure/datasets/familyspendingworkbook2expenditurebyincome",
+    "published_date": "2026-06-11",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": "Accredited official statistics. About 5,000 households took part. The response rate in Great Britain was 26%."
+  },
+  "ons-hci-2026-q2": {
+    "publisher": "Office for National Statistics",
+    "title": "Household Costs Indices for UK household groups: April to June 2026",
+    "url": "https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/householdcostsindicesforukhouseholdgroups/apriltojune2026",
+    "published_date": "2026-08-28",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": "Official statistics in development. Estimates can be revised. The next release is due on 27 November 2026."
+  },
+  "dwp-pensioners-incomes-fye2025": {
+    "publisher": "Department for Work and Pensions",
+    "title": "Pensioners' Incomes: financial years ending 1995 to 2025",
+    "url": "https://www.gov.uk/government/statistics/pensioners-incomes-financial-years-ending-1995-to-2025/pensioners-incomes-financial-years-ending-1995-to-2025",
+    "published_date": "2026-03-26",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": "Accredited official statistics. Survey of private households. People in care homes are not covered. The response rate was 31%."
+  },
+  "dwp-hbai-fye2025": {
+    "publisher": "Department for Work and Pensions",
+    "title": "Households Below Average Income: an analysis of the UK income distribution, financial years ending 1995 to 2025",
+    "url": "https://www.gov.uk/government/statistics/households-below-average-income-for-financial-years-ending-1995-to-2025/households-below-average-income-an-analysis-of-the-uk-income-distribution-fye-1995-to-fye-2025",
+    "published_date": "2026-03-26",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": "Accredited official statistics. Survey estimates with sampling uncertainty."
+  },
+  "ons-was-round8": {
+    "publisher": "Office for National Statistics",
+    "title": "Household total wealth in Great Britain: April 2020 to March 2022",
+    "url": "https://www.ons.gov.uk/peoplepopulationandcommunity/personalandhouseholdfinances/incomeandwealth/bulletins/totalwealthingreatbritain/april2020tomarch2022",
+    "published_date": "2025-01-24",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": "Accreditation of the Wealth and Assets Survey is suspended from this round while the Office for National Statistics works on its quality. Data were collected by telephone during the pandemic."
+  },
+  "dwp-frs-fye2025": {
+    "publisher": "Department for Work and Pensions",
+    "title": "Family Resources Survey: financial year 2024 to 2025",
+    "url": "https://www.gov.uk/government/statistics/family-resources-survey-financial-year-2024-to-2025",
+    "published_date": "2026-03-26",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": null
+  },
+  "ssaa-1992-s150a": {
+    "publisher": "UK Public General Acts",
+    "title": "Social Security Administration Act 1992, section 150A",
+    "url": "https://www.legislation.gov.uk/ukpga/1992/5/section/150A",
+    "published_date": null,
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": "Revised text as shown on legislation.gov.uk on the date checked."
+  },
+  "uprating-act-2020": {
+    "publisher": "UK Public General Acts",
+    "title": "Social Security (Up-rating of Benefits) Act 2020",
+    "url": "https://www.legislation.gov.uk/ukpga/2020/23",
+    "published_date": "2020-11-23",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": null
+  },
+  "uprating-act-2021": {
+    "publisher": "UK Public General Acts",
+    "title": "Social Security (Up-rating of Benefits) Act 2021",
+    "url": "https://www.legislation.gov.uk/ukpga/2021/32",
+    "published_date": "2021-11-17",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": null
+  },
+  "em-uprating-2026": {
+    "publisher": "Department for Work and Pensions",
+    "title": "Explanatory memorandum to the Social Security Benefits Up-rating Order 2026",
+    "url": "https://www.legislation.gov.uk/uksi/2026/148/pdfs/uksiem_20260148_en_001.pdf",
+    "published_date": "2026-03-02",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": "A footnote says the earnings figure 'remained at 4.8%' in the October release. The Office for National Statistics first published 4.7% and revised it to 4.8%. The figure used in the decision is not affected."
+  },
+  "em-uprating-2018": {
+    "publisher": "Department for Work and Pensions",
+    "title": "Explanatory memorandum to the Social Security Benefits Up-rating Order 2018",
+    "url": "https://www.legislation.gov.uk/uksi/2018/281/pdfs/uksiem_20180281_en.pdf",
+    "published_date": "2018-03-06",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": "The date is the date the Order was made."
+  },
+  "em-uprating-2011": {
+    "publisher": "Department for Work and Pensions",
+    "title": "Explanatory memorandum to the Social Security Benefits Up-rating Order 2011",
+    "url": "https://www.legislation.gov.uk/uksi/2011/821/pdfs/uksiem_20110821_en.pdf",
+    "published_date": "2011-03-16",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": "The date is the date the Order was made."
+  },
+  "dwp-abstract-2025": {
+    "publisher": "Department for Work and Pensions",
+    "title": "Abstract of DWP benefit rate statistics 2025",
+    "url": "https://www.gov.uk/government/statistics/abstract-of-dwp-benefit-rate-statistics-2025",
+    "published_date": "2026-01-28",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": "Its table of effective dates gives 13 April 2015 where the Order says 6 April 2015, and 2.3% for earnings in 2018 where the explanatory memorandum says 2.2%. This site follows the Orders and memoranda."
+  },
+  "coalition-programme-2010": {
+    "publisher": "Cabinet Office",
+    "title": "The Coalition: our programme for government",
+    "url": "https://www.gov.uk/government/publications/the-coalition-our-programme-for-government",
+    "published_date": "2010-05-20",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": null
+  },
+  "budget-june-2010": {
+    "publisher": "HM Treasury",
+    "title": "Budget June 2010",
+    "url": "https://www.gov.uk/government/publications/budget-june-2010",
+    "published_date": "2010-06-22",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": null
+  },
+  "ss-act-1980": {
+    "publisher": "UK Public General Acts",
+    "title": "Social Security Act 1980, section 1",
+    "url": "https://www.legislation.gov.uk/ukpga/1980/30/section/1/enacted",
+    "published_date": "1980-05-23",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": null
+  },
+  "si-2010-2650": {
+    "publisher": "UK Statutory Instruments",
+    "title": "The Up-rating of Basic Pension etc. (Designated Tax Year) Order 2010 (S.I. 2010/2650)",
+    "url": "https://www.legislation.gov.uk/uksi/2010/2650/made",
+    "published_date": "2010-10-26",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": "The instrument designates the tax year 2010-11 as the start of the earnings link."
+  },
+  "ons-awe-2026-09": {
+    "publisher": "Office for National Statistics",
+    "title": "Average weekly earnings in Great Britain: September 2026",
+    "url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/averageweeklyearningsingreatbritain/september2026",
+    "published_date": "2026-09-15",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": "A first estimate. The revised figure is due on 20 October 2026."
+  },
+  "pm-care-2026-07-29": {
+    "publisher": "Prime Minister's Office, 10 Downing Street",
+    "title": "PM sets out new path to fix social care together: 29 July 2026",
+    "url": "https://www.gov.uk/government/news/pm-sets-out-new-path-to-fix-social-care-together-29-july-2026",
+    "published_date": "2026-07-29",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": null
+  },
+  "pa-2026-09-28": {
+    "publisher": "PA News, published by the Stratford Herald",
+    "title": "Burnham vows to end 'politics as usual' in first Labour leader conference speech",
+    "url": "https://www.stratford-herald.com/national/burnham-vows-to-end-politics-as-usual-in-first-labour-leader-conference-speech-172277/",
+    "published_date": "2026-09-28",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Copyright of the publisher. Short quotation only.",
+    "note": "A news report written before the speech was given. It is evidence of what was reported, not of what was said in the speech."
+  },
+  "itv-peston-2026-09-27": {
+    "publisher": "ITV News",
+    "title": "Peston: Will Burnham reform the pension triple lock to pay for social care?",
+    "url": "https://www.itv.com/news/2026-09-27/peston-will-burnham-reform-the-pensions-triple-lock-to-pay-for-social-care",
+    "published_date": "2026-09-27",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Copyright of the publisher. Short quotation only.",
+    "note": "Commentary by a journalist."
+  },
+  "labour-manifesto-2024": {
+    "publisher": "Labour Party",
+    "title": "Labour Party Manifesto 2024",
+    "url": "https://labour.org.uk/wp-content/uploads/2024/06/Labour-Party-manifesto-2024.pdf",
+    "published_date": "2024-06-13",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Copyright of the publisher. Short quotation only.",
+    "note": null
+  },
+  "libdem-pensions-page": {
+    "publisher": "Liberal Democrats",
+    "title": "Protect Our Pensions",
+    "url": "https://www.libdems.org.uk/pension",
+    "published_date": null,
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Copyright of the publisher. Short quotation only.",
+    "note": "The page is undated."
+  },
+  "cityam-reform-2026-04": {
+    "publisher": "City AM",
+    "title": "Farage blasted for pledge to keep 'unsustainable' triple lock pension",
+    "url": "https://www.cityam.com/farage-slammed-over-pledge-to-keep-unsustainable-triple-lock-pension/",
+    "published_date": null,
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Copyright of the publisher. Short quotation only.",
+    "note": "A news report of a press conference held on 2 April 2026. The date of the article was not recorded. This site found no party document."
+  },
+  "telegraph-yahoo-2026-09-19": {
+    "publisher": "The Telegraph, published by Yahoo News",
+    "title": "Indispensable or indefensible? Westminster's triple lock nightmare",
+    "url": "https://www.yahoo.com/news/politics/articles/indispensable-indefensible-westminster-triple-lock-050000209.html",
+    "published_date": "2026-09-19",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Copyright of the publisher. Short quotation only.",
+    "note": "A news report. This site found no party document."
+  },
+  "pensions-commission-tor": {
+    "publisher": "Department for Work and Pensions",
+    "title": "Pensions Commission: Terms of Reference",
+    "url": "https://www.gov.uk/government/publications/pensions-commission-terms-of-reference/pensions-commission-terms-of-reference",
+    "published_date": "2025-07-21",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": null
+  },
+  "pensions-commission-interim": {
+    "publisher": "Pensions Commission",
+    "title": "Pensions 2050: evidence and future priorities. Interim report",
+    "url": "https://www.gov.uk/government/publications/pensions-2050-evidence-and-future-priorities-interim-report",
+    "published_date": "2026-05-19",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": null
+  },
+  "tbi-lifespan-2026": {
+    "publisher": "Tony Blair Institute for Global Change",
+    "title": "The Lifespan Fund: Reforming the State Pension for a More Affordable, Flexible and Fair Future",
+    "url": "https://assets.ctfassets.net/75ila1cntaeh/6QSdZmXNKMwJqWoH0VqSNW/8aa4273e4094d307fa4b3f6f267b0084/The_Lifespan_Fund_-_Tony_Blair_Institute_-_May_2026.pdf",
+    "published_date": "2026-05",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Copyright of the publisher. Short quotation only.",
+    "note": null
+  },
+  "ppi-triple-lock-2024": {
+    "publisher": "Pensions Policy Institute",
+    "title": "Triple Lock Briefing Paper (General Election 2024 series, paper 1)",
+    "url": "https://www.pensionspolicyinstitute.org.uk/media/ltjjqtd5/20240529-general-election-briefing-paper-1-triple-lock.pdf",
+    "published_date": "2024-05-29",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Copyright of the publisher. Short quotation only.",
+    "note": null
+  },
+  "ppi-triple-lock-2018": {
+    "publisher": "Pensions Policy Institute",
+    "title": "How would removal of the State Pension triple lock affect adequacy? (press release)",
+    "url": "https://www.pensionspolicyinstitute.org.uk/media/ujrcbu33/20180321-triple-lock.pdf",
+    "published_date": "2018-03-21",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Copyright of the publisher. Short quotation only.",
+    "note": "Modelling from 2018."
+  },
+  "ageuk-triple-lock-2023": {
+    "publisher": "Age UK",
+    "title": "Parliamentary Briefing: The triple lock and the State Pension",
+    "url": "https://www.ageuk.org.uk/siteassets/documents/reports-and-publications/reports-and-briefings/age-uk-parliamentary-briefing-triple-lock-and-the-state-pension-october-2023.pdf",
+    "published_date": "2023-10",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Copyright of the publisher. Short quotation only.",
+    "note": null
+  },
+  "single-tier-white-paper": {
+    "publisher": "Department for Work and Pensions",
+    "title": "The single-tier pension: a simple foundation for saving (Cm 8528)",
+    "url": "https://assets.publishing.service.gov.uk/media/5a7b622940f0b64646935cb1/single-tier-pension.pdf",
+    "published_date": "2013-01-14",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": null
+  },
+  "services-australia-assets": {
+    "publisher": "Services Australia",
+    "title": "Assets test for Age Pension",
+    "url": "https://www.servicesaustralia.gov.au/assets-test-for-age-pension?context=22526",
+    "published_date": null,
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Copyright of the Commonwealth of Australia. Short quotation only.",
+    "note": "A live page. The limits shown apply from 20 September 2026."
+  },
+  "govuk-ni-after-spa": {
+    "publisher": "HM Revenue and Customs",
+    "title": "National Insurance and tax after State Pension age",
+    "url": "https://www.gov.uk/tax-national-insurance-after-state-pension-age",
+    "published_date": null,
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": null
+  },
+  "if-nic-anomaly": {
+    "publisher": "Intergenerational Foundation",
+    "title": "An Extraordinary Anomaly: Why workers over state pension age should pay National Insurance",
+    "url": "https://if.org.uk/research/an-extraordinary-anomaly-why-workers-over-state-pension-age-should-pay-national-insurance/",
+    "published_date": null,
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Copyright of the publisher. Short quotation only.",
+    "note": "The publication date and price basis were not confirmed."
+  },
+  "conservative-manifesto-2017": {
+    "publisher": "Conservative and Unionist Party",
+    "title": "Forward, Together: The Conservative and Unionist Party Manifesto 2017",
+    "url": "https://ucrel.lancs.ac.uk/wmatrix/ukmanifestos2017/localpdf/Conservatives.pdf",
+    "published_date": "2017-05",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Copyright of the publisher. Short quotation only.",
+    "note": "Read from a university archive copy."
+  },
+  "dhsc-charging-2026-27": {
+    "publisher": "Department of Health and Social Care",
+    "title": "Social care charging for care and support 2026 to 2027: local authority circular",
+    "url": "https://www.gov.uk/government/publications/social-care-charging-for-local-authorities-2026-to-2027/social-care-charging-for-care-and-support-2026-to-2027-local-authority-circular",
+    "published_date": "2026-02-17",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": null
+  },
+  "chancellor-2024-07-29": {
+    "publisher": "HM Treasury",
+    "title": "Chancellor statement on public spending inheritance",
+    "url": "https://www.gov.uk/government/speeches/chancellor-statement-on-public-spending-inheritance",
+    "published_date": "2024-07-29",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": null
+  },
+  "casey-tor": {
+    "publisher": "Department of Health and Social Care",
+    "title": "Independent commission into adult social care: terms of reference",
+    "url": "https://www.gov.uk/government/publications/independent-commission-into-adult-social-care-terms-of-reference/independent-commission-into-adult-social-care-terms-of-reference",
+    "published_date": "2025-07-11",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": "The page still shows the first timetable of two phases, in 2026 and 2028. On 29 July 2026 the Prime Minister's Office said the report would come in summer 2027."
+  },
+  "casey-panel-2026": {
+    "publisher": "Department of Health and Social Care",
+    "title": "Thousands invited to register for public panel for independent commission on adult social care",
+    "url": "https://www.gov.uk/government/news/thousands-invited-to-register-for-public-panel-for-independent-commission-on-adult-social-care",
+    "published_date": "2026-09-21",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": null
+  },
+  "mygov-scot-care": {
+    "publisher": "Scottish Government",
+    "title": "Costs of personal and nursing care",
+    "url": "https://www.mygov.scot/personal-nursing-care/costs",
+    "published_date": null,
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": "The page date was not recorded."
+  },
+  "gov-wales-charging": {
+    "publisher": "Welsh Government",
+    "title": "Charging for social care",
+    "url": "https://www.gov.wales/charging-social-care",
+    "published_date": null,
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": "The page date was not recorded."
+  },
+  "nidirect-care-fees": {
+    "publisher": "Northern Ireland Executive (nidirect)",
+    "title": "Paying your care home fees",
+    "url": "https://www.nidirect.gov.uk/articles/paying-your-care-home-fees",
+    "published_date": null,
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": "The page date was not recorded."
+  },
+  "dhsc-asc-finance-2024-25": {
+    "publisher": "Department of Health and Social Care",
+    "title": "Adult social care finance report, England: 2024 to 2025",
+    "url": "https://www.gov.uk/government/statistics/adult-social-care-finance-report-england-2024-to-2025/adult-social-care-finance-report-england-2024-to-2025",
+    "published_date": "2025-10-23",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": null
+  },
+  "dhsc-asc-activity-2024-25": {
+    "publisher": "Department of Health and Social Care",
+    "title": "Adult social care activity report 2024 to 2025: commentary",
+    "url": "https://www.gov.uk/government/statistics/adult-social-care-activity-report-england-2024-to-2025/adult-social-care-activity-report-2024-to-2025-commentary",
+    "published_date": "2025-10-23",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": "Official statistics in development."
+  },
+  "health-foundation-2024": {
+    "publisher": "The Health Foundation",
+    "title": "Social care funding reform in England",
+    "url": "https://www.health.org.uk/reports-and-analysis/briefings/social-care-funding-reform-in-england",
+    "published_date": "2024-01",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Copyright of the publisher. Short quotation only.",
+    "note": "Estimates in 2023/24 prices. The source calls its estimate for universal care 'a broad estimate only'."
+  },
+  "ageuk-state-of-care-2025": {
+    "publisher": "Age UK",
+    "title": "The State of Health and Care of Older People in England 2025",
+    "url": "https://www.ageuk.org.uk/siteassets/documents/reports-and-publications/reports-and-briefings/health--wellbeing/state-of-health-and-care/state-of-health-care-of-older-people-in-england-2025.pdf",
+    "published_date": null,
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Copyright of the publisher. Short quotation only.",
+    "note": "The publication date was not recorded. The estimate was first published on 26 September 2024. It uses a survey wave from 2021 to 2023."
+  },
+  "govuk-aa-eligibility": {
+    "publisher": "Department for Work and Pensions",
+    "title": "Attendance Allowance: Eligibility",
+    "url": "https://www.gov.uk/attendance-allowance/eligibility",
+    "published_date": null,
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": null
+  },
+  "rls-details": {
+    "publisher": "Pensions UK",
+    "title": "Retirement Living Standards: the detail",
+    "url": "https://www.retirementlivingstandards.org.uk/details",
+    "published_date": null,
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Copyright of the publisher. Short quotation only.",
+    "note": "The page is undated."
+  },
+  "ons-family-spending-bulletin": {
+    "publisher": "Office for National Statistics",
+    "title": "Family spending in the UK: April 2024 to March 2025",
+    "url": "https://www.ons.gov.uk/peoplepopulationandcommunity/personalandhouseholdfinances/expenditure/bulletins/familyspendingintheuk/april2024tomarch2025",
+    "published_date": "2026-06-11",
+    "updated_date": null,
+    "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": "Accredited official statistics."
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "as_of": "2026-09-29",
+  "note": "A dated note, not a maintained news service. Review when policy status changes.",
+  "groups": [
+    {
+      "heading": "Confirmed policy and commitments",
+      "meaning": "Set out in law, in a government document or in a published commitment.",
+      "entries": [
+        {
+          "text": "The full rates for 2026/27 rose on 6 April 2026, in line with earnings growth.",
+          "claims": [
+            "tl-2026-decision"
+          ],
+          "figures": []
+        },
+        {
+          "text": "The government's Budget documents commit to the triple lock for the length of this Parliament.",
+          "claims": [
+            "tl-this-parliament"
+          ],
+          "figures": []
+        },
+        {
+          "text": "In England, a commission on adult social care is due to report in summer 2027. The government has not published how a new care service would be paid for.",
+          "claims": [
+            "casey-summer-2027",
+            "care-funded-principle"
+          ],
+          "figures": []
+        },
+        {
+          "text": "The Pensions Commission plans its final report for spring 2027. Its terms of reference do not mention the triple lock by name.",
+          "claims": [
+            "pc-final-2027",
+            "pc-terms"
+          ],
+          "figures": []
+        }
+      ]
+    },
+    {
+      "heading": "Proposals by research bodies",
+      "meaning": "Published recommendations. None is government policy, and none is tied to paying for social care.",
+      "entries": [
+        {
+          "text": "The Institute for Fiscal Studies proposes a target level for the pension as a share of earnings, with protection against inflation and no means test.",
+          "claims": [
+            "ifs-guarantee-1",
+            "ifs-guarantee-2",
+            "ifs-guarantee-3"
+          ],
+          "figures": []
+        },
+        {
+          "text": "The Resolution Foundation proposes a smoothed earnings link, and gives an estimate of the saving in 2029-30.",
+          "claims": [
+            "rf-smoothed-recommendation"
+          ],
+          "figures": [
+            "saving-smoothed-rf-2030"
+          ]
+        },
+        {
+          "text": "The Tony Blair Institute proposes a smoothed earnings link after 2030 as part of a wider redesign.",
+          "claims": [
+            "tbi-proposal"
+          ],
+          "figures": []
+        }
+      ]
+    },
+    {
+      "heading": "Reported, not confirmed",
+      "meaning": "News reports. They are evidence of what was reported, not of a decision.",
+      "entries": [
+        {
+          "text": "A Cabinet minister said on 28 September 2026 that the government is keeping its manifesto commitment. PA News reported that ministers had declined to confirm that it will be in the next manifesto.",
+          "claims": [
+            "minister-sticking-2026-09-28",
+            "next-manifesto-unconfirmed"
+          ],
+          "figures": []
+        },
+        {
+          "text": "PA News described the idea that a less generous pension increase could help pay for free adult social care in England as speculation.",
+          "claims": [
+            "care-speculation"
+          ],
+          "figures": []
+        }
+      ]
+    },
+    {
+      "heading": "Commentary",
+      "meaning": "The views and inferences of named people.",
+      "entries": [
+        {
+          "text": "A political journalist inferred that pension reform might be used to pay for care, and said he was not certain.",
+          "claims": [
+            "peston-inference"
+          ],
+          "figures": []
+        }
+      ]
+    },
+    {
+      "heading": "What we did not find",
+      "meaning": "A search that finds nothing is not proof that nothing exists.",
+      "entries": [
+        {
+          "text": "We found no document from a party, a commission or the government that proposes replacing the triple lock to pay for social care.",
+          "claims": [
+            "no-published-trade-off"
+          ],
+          "figures": []
+        },
+        {
+          "text": "We found no costed proposal to means-test the State Pension.",
+          "claims": [
+            "no-costed-means-test"
+          ],
+          "figures": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,325 @@
+{
+  "checked_date": "2026-09-29",
+  "categories": [
+    {
+      "id": "rent",
+      "label": "Rent or mortgage",
+      "hint": "What you pay. If Housing Benefit goes straight to your landlord, enter only what is left for you to pay, and do not enter that benefit as income."
+    },
+    {
+      "id": "council-tax",
+      "label": "Council Tax",
+      "hint": "The bill after any Council Tax Reduction or discount."
+    },
+    {
+      "id": "water",
+      "label": "Water"
+    },
+    {
+      "id": "fuel",
+      "label": "Gas, electricity and other fuel",
+      "hint": "The bill after any discount, such as the Warm Home Discount."
+    },
+    {
+      "id": "insurance",
+      "label": "Home insurance"
+    },
+    {
+      "id": "other-housing",
+      "label": "Other housing costs",
+      "hint": "For example repairs, maintenance and service charges."
+    },
+    {
+      "id": "food",
+      "label": "Food and non-alcoholic drinks"
+    },
+    {
+      "id": "alcohol",
+      "label": "Alcohol"
+    },
+    {
+      "id": "clothing",
+      "label": "Clothing and footwear"
+    },
+    {
+      "id": "household-goods",
+      "label": "Household goods",
+      "hint": "Includes a weekly share of things replaced now and then, such as a cooker or a bed."
+    },
+    {
+      "id": "household-services",
+      "label": "Household services",
+      "hint": "For example phone, internet and postage."
+    },
+    {
+      "id": "personal",
+      "label": "Personal goods and services",
+      "hint": "For example toiletries, hairdressing, prescriptions, dental and eye care."
+    },
+    {
+      "id": "motoring",
+      "label": "Running a car"
+    },
+    {
+      "id": "other-travel",
+      "label": "Other travel",
+      "hint": "For example buses, trains and taxis."
+    },
+    {
+      "id": "social",
+      "label": "Social and cultural activities",
+      "hint": "For example TV licence, hobbies, gifts, eating out and holidays."
+    },
+    {
+      "id": "care",
+      "label": "Disability and care costs",
+      "hint": "No example budget includes these. Enter your own."
+    },
+    {
+      "id": "other",
+      "label": "Any other spending"
+    }
+  ],
+  "income": [
+    {
+      "id": "state-pension",
+      "label": "State Pension",
+      "hint": "Before tax. Person 1."
+    },
+    {
+      "id": "state-pension-2",
+      "label": "State Pension, second person",
+      "hint": "Before tax. Two-person households only.",
+      "couple_only": true
+    },
+    {
+      "id": "private-pension",
+      "label": "Workplace and personal pensions",
+      "hint": "Before tax is taken off."
+    },
+    {
+      "id": "earnings",
+      "label": "Earnings from work",
+      "hint": "Before tax and National Insurance."
+    },
+    {
+      "id": "savings",
+      "label": "Income from savings and investments"
+    },
+    {
+      "id": "benefits",
+      "label": "Benefits you actually receive",
+      "hint": "For example Pension Credit, Attendance Allowance or Housing Benefit paid to you. Do not enter a benefit you have not claimed."
+    },
+    {
+      "id": "other-income",
+      "label": "Any other income"
+    }
+  ],
+  "presets": [
+    {
+      "id": "mis-2026-single-private",
+      "label": "Single pensioner, renting privately: Minimum Income Standard 2026",
+      "household": "single",
+      "tenure": "Private renter",
+      "kind": "research-budget",
+      "source_id": "crsp-mis-budgets-2026",
+      "table_reference": "Sheet: 2026, column: Single pensioner.",
+      "price_date": "April 2026",
+      "geography": "United Kingdom, urban areas outside London",
+      "housing": "One-bedroom flat rented privately at the lower quartile of rents in the East Midlands. The rent is an indication only.",
+      "exclusions": "No extra costs of disability or care. No car. Assumes relatively good health. No tax: the figures are spending, so the income needed is higher if tax is due.",
+      "note": null,
+      "checked_date": "2026-09-29",
+      "pence": {
+        "food": 6119,
+        "alcohol": 690,
+        "clothing": 880,
+        "water": 1258,
+        "council-tax": 2356,
+        "insurance": 105,
+        "fuel": 2296,
+        "other-housing": 387,
+        "household-goods": 1878,
+        "household-services": 704,
+        "personal": 3716,
+        "motoring": 0,
+        "other-travel": 1129,
+        "social": 5838,
+        "rent": 13693
+      },
+      "published_total_ex_rent_pence": 27357,
+      "rounding_difference_pence": -1
+    },
+    {
+      "id": "mis-2026-couple-private",
+      "label": "Pensioner couple, renting privately: Minimum Income Standard 2026",
+      "household": "couple",
+      "tenure": "Private renter",
+      "kind": "research-budget",
+      "source_id": "jrf-mis-2026",
+      "table_reference": "Table 3: Weekly MIS budgets for 4 household types, April 2026, column: Couple pensioners.",
+      "price_date": "April 2026",
+      "geography": "United Kingdom, urban areas outside London",
+      "housing": "Two-bedroom flat rented privately at the lower quartile of rents in the East Midlands. The rent is an indication only.",
+      "exclusions": "No extra costs of disability or care. No car. Assumes relatively good health. No tax: the figures are spending, so the income needed is higher if tax is due.",
+      "note": null,
+      "checked_date": "2026-09-29",
+      "pence": {
+        "food": 13253,
+        "alcohol": 1251,
+        "clothing": 1760,
+        "water": 1484,
+        "council-tax": 3142,
+        "insurance": 108,
+        "fuel": 3025,
+        "other-housing": 387,
+        "household-goods": 2143,
+        "household-services": 907,
+        "personal": 7433,
+        "motoring": 0,
+        "other-travel": 1502,
+        "social": 8794,
+        "rent": 16110
+      },
+      "published_total_ex_rent_pence": 45191,
+      "rounding_difference_pence": -2
+    },
+    {
+      "id": "rls-2025-min-single-social",
+      "label": "One person, social renter: Retirement Living Standard, minimum",
+      "household": "single",
+      "tenure": "Social renter",
+      "kind": "research-budget",
+      "source_id": "rls-2025-update",
+      "table_reference": "Table 3 (2025 column) and Table 5 (social rent).",
+      "price_date": "April 2025",
+      "geography": "United Kingdom, urban areas outside London",
+      "housing": "Social rent, East Midlands average. The rent is an indication only and takes no account of Housing Benefit.",
+      "exclusions": "No social care, no dependants, no pets. No tax: the figures are spending after tax, so the income needed is higher if tax is due.",
+      "note": "This budget is the Minimum Income Standard pensioner budget for 2025. It is a year older than the 2026 budgets and uses an earlier basket.",
+      "checked_date": "2026-09-29",
+      "pence": {
+        "food": 6217,
+        "alcohol": 688,
+        "clothing": 849,
+        "water": 1137,
+        "council-tax": 2242,
+        "insurance": 104,
+        "fuel": 2554,
+        "other-housing": 381,
+        "household-goods": 2004,
+        "household-services": 670,
+        "personal": 3061,
+        "motoring": 0,
+        "other-travel": 1105,
+        "social": 5651,
+        "rent": 9409
+      },
+      "published_total_ex_rent_pence": 26662,
+      "rounding_difference_pence": 1
+    },
+    {
+      "id": "rls-2025-min-couple-social",
+      "label": "Two people, social renters: Retirement Living Standard, minimum",
+      "household": "couple",
+      "tenure": "Social renter",
+      "kind": "research-budget",
+      "source_id": "rls-2025-update",
+      "table_reference": "Table 4 (2025 column) and Table 6 (social rent).",
+      "price_date": "April 2025",
+      "geography": "United Kingdom, urban areas outside London",
+      "housing": "Social rent, East Midlands average. The rent is an indication only and takes no account of Housing Benefit.",
+      "exclusions": "No social care, no dependants, no pets. No tax: the figures are spending after tax, so the income needed is higher if tax is due.",
+      "note": "This budget is the Minimum Income Standard pensioner budget for 2025. It is a year older than the 2026 budgets and uses an earlier basket.",
+      "checked_date": "2026-09-29",
+      "pence": {
+        "food": 12746,
+        "alcohol": 1247,
+        "clothing": 1698,
+        "water": 1342,
+        "council-tax": 2989,
+        "insurance": 107,
+        "fuel": 3305,
+        "other-housing": 381,
+        "household-goods": 2301,
+        "household-services": 865,
+        "personal": 6122,
+        "motoring": 0,
+        "other-travel": 1475,
+        "social": 8490,
+        "rent": 11503
+      },
+      "published_total_ex_rent_pence": 43066,
+      "rounding_difference_pence": 2
+    },
+    {
+      "id": "rls-2025-mod-single-owner",
+      "label": "One person, owner with no mortgage: Retirement Living Standard, moderate",
+      "household": "single",
+      "tenure": "Owner without a mortgage",
+      "kind": "research-budget",
+      "source_id": "rls-2025-update",
+      "table_reference": "Table 3, 2025 column, moderate.",
+      "price_date": "April 2025",
+      "geography": "United Kingdom, urban areas outside London",
+      "housing": "The research assumes a home owned with no mortgage and no rent. Repairs and maintenance are in 'Other housing costs'.",
+      "exclusions": "No social care, no dependants, no pets. No tax: the figures are spending after tax, so the income needed is higher if tax is due.",
+      "note": "A moderate standard is above a minimum. It includes a car.",
+      "checked_date": "2026-09-29",
+      "pence": {
+        "food": 13532,
+        "alcohol": 1489,
+        "clothing": 2441,
+        "water": 1123,
+        "council-tax": 3092,
+        "insurance": 459,
+        "fuel": 4410,
+        "other-housing": 2295,
+        "household-goods": 4327,
+        "household-services": 1669,
+        "personal": 4427,
+        "motoring": 8365,
+        "other-travel": 793,
+        "social": 14292,
+        "rent": 0
+      },
+      "published_total_ex_rent_pence": 62714,
+      "rounding_difference_pence": 0
+    },
+    {
+      "id": "rls-2025-mod-couple-owner",
+      "label": "Two people, owners with no mortgage: Retirement Living Standard, moderate",
+      "household": "couple",
+      "tenure": "Owner without a mortgage",
+      "kind": "research-budget",
+      "source_id": "rls-2025-update",
+      "table_reference": "Table 4, 2025 column, moderate.",
+      "price_date": "April 2025",
+      "geography": "United Kingdom, urban areas outside London",
+      "housing": "The research assumes a home owned with no mortgage and no rent. Repairs and maintenance are in 'Other housing costs'.",
+      "exclusions": "No social care, no dependants, no pets. No tax: the figures are spending after tax, so the income needed is higher if tax is due.",
+      "note": "A moderate standard is above a minimum. It includes a car.",
+      "checked_date": "2026-09-29",
+      "pence": {
+        "food": 22011,
+        "alcohol": 2369,
+        "clothing": 4882,
+        "water": 1324,
+        "council-tax": 4122,
+        "insurance": 462,
+        "fuel": 4799,
+        "other-housing": 2295,
+        "household-goods": 4327,
+        "household-services": 2335,
+        "personal": 8487,
+        "motoring": 8182,
+        "other-travel": 1057,
+        "social": 20358,
+        "rent": 0
+      },
+      "published_total_ex_rent_pence": 87010,
+      "rounding_difference_pence": 0
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+[
+  {
+    "term": "Additional State Pension",
+    "meaning": "An extra amount on top of the basic State Pension, based on earnings and some credits before April 2016. It rises with prices, not with the triple lock."
+  },
+  {
+    "term": "After housing costs",
+    "meaning": "A way of measuring income that takes off rent, mortgage interest, water charges and similar costs first."
+  },
+  {
+    "term": "Basic State Pension",
+    "meaning": "The State Pension for people who reached State Pension age before 6 April 2016."
+  },
+  {
+    "term": "Cash terms",
+    "meaning": "Amounts in the pounds of the year they were paid, with no adjustment for inflation."
+  },
+  {
+    "term": "Constant prices",
+    "meaning": "Amounts adjusted for inflation so that different years can be compared. Also called real terms."
+  },
+  {
+    "term": "Consumer Prices Index (CPI)",
+    "meaning": "The main official measure of how much prices have changed. The triple lock uses the rise in this index over the 12 months to September."
+  },
+  {
+    "term": "Contracted out",
+    "meaning": "Paying lower National Insurance in return for building up a workplace or personal pension instead of the Additional State Pension. It ended in April 2016."
+  },
+  {
+    "term": "Counterfactual",
+    "meaning": "A calculation of what would have happened under a different rule. It is not something that was paid."
+  },
+  {
+    "term": "Deferral",
+    "meaning": "Putting off a claim to the State Pension in return for a higher weekly amount later."
+  },
+  {
+    "term": "Double lock",
+    "meaning": "A rule that raises the pension by the higher of two measures. On this site it means the higher of prices and earnings."
+  },
+  {
+    "term": "Earnings link",
+    "meaning": "A rule that raises the pension in line with growth in average earnings."
+  },
+  {
+    "term": "Full rate",
+    "meaning": "The weekly amount for a person with the National Insurance record that the rules require. Many people receive less and some receive more."
+  },
+  {
+    "term": "Means test",
+    "meaning": "A check of income, savings or both, used to decide who receives a benefit and how much."
+  },
+  {
+    "term": "Median",
+    "meaning": "The middle value. Half of the group is above it and half is below."
+  },
+  {
+    "term": "National Insurance Fund",
+    "meaning": "The account that receives most National Insurance contributions and pays the State Pension and some other benefits."
+  },
+  {
+    "term": "New State Pension",
+    "meaning": "The State Pension for people who reached State Pension age on or after 6 April 2016."
+  },
+  {
+    "term": "Pension Credit",
+    "meaning": "A means-tested benefit that tops up the income of people over State Pension age. It has to be claimed."
+  },
+  {
+    "term": "Pensioner unit",
+    "meaning": "A single pensioner, or a couple where at least one partner is over State Pension age. Used in official statistics on pensioner incomes."
+  },
+  {
+    "term": "Protected payment",
+    "meaning": "An amount paid on top of the full new State Pension to a person whose starting amount in 2016 was higher than the full rate."
+  },
+  {
+    "term": "Qualifying year",
+    "meaning": "A tax year in which a person paid, or was credited with, enough National Insurance to count towards the State Pension."
+  },
+  {
+    "term": "Smoothed earnings link",
+    "meaning": "A rule that follows earnings in the long run but rises with prices in years when earnings growth is lower, without a permanent gain."
+  },
+  {
+    "term": "State Pension age",
+    "meaning": "The earliest age at which a person can claim the State Pension."
+  },
+  {
+    "term": "Take-up",
+    "meaning": "The share of people entitled to a benefit who claim it."
+  },
+  {
+    "term": "Triple lock",
+    "meaning": "A government commitment to raise the basic and new State Pension each year by the highest of price inflation, earnings growth or 2.5%."
+  },
+  {
+    "term": "Uprating",
+    "meaning": "The yearly increase in the rate of a pension or benefit."
+  }
+]

@@ -1,0 +1,4 @@
+{
+  "note": "Used only when AI_CRAWLER_POLICY is refuse-training. The list is the one the UK Migration Explorer published on 29 September 2026. It was not checked against each operator's documentation for this site. Review it before launch.",
+  "training": ["Amazonbot", "GPTBot", "ClaudeBot", "Google-Extended", "Applebot-Extended", "CCBot", "Bytespider", "meta-externalagent", "cohere-ai", "AI2Bot", "PanguBot", "Timpibot", "Omgilibot", "Webzio", "Webzio-Extended"]
+}

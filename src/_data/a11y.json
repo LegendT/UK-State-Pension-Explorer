@@ -1,0 +1,89 @@
+{
+  "standard": "WCAG 2.2 Level AA",
+  "status": "incomplete",
+  "assessed_on": "2026-09-29",
+  "note": "Filled in from docs/accessibility-assessment.md after each round of testing.",
+  "done": [
+    {
+      "check": "Automated rules",
+      "result": "axe-core 4.11 ran on every page, at phone and desktop widths, in light and dark schemes, and with each calculator showing a result and an error. It found no violations. Where it could not judge the contrast of some text, each case was measured, and none was below the required ratio.",
+      "environment": "Chrome 154 on macOS (Apple silicon), driven by script.",
+      "date": "2026-09-29"
+    },
+    {
+      "check": "Reflow",
+      "result": "At 320 CSS pixels wide, no page scrolls sideways. Wide tables and charts scroll inside their own area.",
+      "environment": "Chrome 154 on macOS (Apple silicon), driven by script.",
+      "date": "2026-09-29"
+    },
+    {
+      "check": "Text spacing",
+      "result": "With the spacing of WCAG 1.4.12 applied, no text was cut off on any page.",
+      "environment": "Chrome 154 on macOS (Apple silicon), driven by script.",
+      "date": "2026-09-29"
+    },
+    {
+      "check": "Target size",
+      "result": "No control is smaller than 24 by 24 CSS pixels, apart from links inside a sentence, which the guidelines exempt. Some controls are between 24 and 43 pixels high, below our own aim of 44.",
+      "environment": "Chrome 154 on macOS (Apple silicon), driven by script.",
+      "date": "2026-09-29"
+    },
+    {
+      "check": "Keyboard order and visible focus",
+      "result": "A script pressed Tab through every page. Every control was reached, in reading order, with a visible focus outline, and none was covered by other content.",
+      "environment": "Chrome 154 on macOS (Apple silicon), driven by script.",
+      "date": "2026-09-29"
+    },
+    {
+      "check": "Headings",
+      "result": "No page skips a heading level.",
+      "environment": "Chrome 154 on macOS (Apple silicon), driven by script.",
+      "date": "2026-09-29"
+    },
+    {
+      "check": "Without JavaScript",
+      "result": "Every explanation can be read. Each calculator shows a notice and a worked example or default result.",
+      "environment": "Chrome 154 on macOS (Apple silicon), driven by script.",
+      "date": "2026-09-29"
+    }
+  ],
+  "not_done": [
+    {
+      "check": "VoiceOver with Safari",
+      "reason": "Not yet tested by a person. This needs someone to listen to each page and each calculator."
+    },
+    {
+      "check": "NVDA with a Windows browser",
+      "reason": "Not yet tested. No Windows computer was available."
+    },
+    {
+      "check": "Keyboard use by a person",
+      "reason": "The keyboard check was made by a script. A person has not yet worked through each calculator with a keyboard alone."
+    },
+    {
+      "check": "Zoom to 200% and 400% in a browser",
+      "reason": "Reflow was measured at the equivalent width by script. A person has not yet zoomed each page in a browser."
+    },
+    {
+      "check": "Touch on a phone",
+      "reason": "Tested at phone width on a computer only, not on a phone."
+    },
+    {
+      "check": "Firefox and Safari",
+      "reason": "All checks so far used Chrome."
+    },
+    {
+      "check": "Use by disabled and older readers",
+      "reason": "No usability sessions have been held."
+    },
+    {
+      "check": "Independent audit",
+      "reason": "None has been carried out."
+    },
+    {
+      "check": "Changes to a form when a choice is made",
+      "reason": "Some choices change other fields at once: the household, the scenario, the number of years, the first year and the pension series. A person has not yet judged whether each change is clear."
+    }
+  ],
+  "known_issues": []
+}

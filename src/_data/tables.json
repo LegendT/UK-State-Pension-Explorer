@@ -1,0 +1,412 @@
+{
+  "sp-spending-series": {
+    "caption": "State Pension spending, Great Britain and recipients overseas, 2022/23 to 2030/31",
+    "source_id": "dwp-expenditure-2026",
+    "table_reference": "Sheet: State Pension. Nominal terms block and real terms block, total rows; caseload block, total row.",
+    "checked_date": "2026-09-29",
+    "classification": "observed-statistic and forecast",
+    "qualifications": "Northern Ireland is not included. 2022/23 to 2024/25 are outturn. Later years are forecasts made in spring 2026. Constant prices use the GDP deflator, not the Consumer Prices Index. Recipients are an average over the year.",
+    "columns": [
+      "Financial year",
+      "Status",
+      "Spending in cash (£ billion)",
+      "Spending in 2026/27 prices (£ billion)",
+      "Recipients (million)"
+    ],
+    "rows": [
+      [
+        "2022/23",
+        "Outturn",
+        "110.5",
+        "127.5",
+        "12.60"
+      ],
+      [
+        "2023/24",
+        "Outturn",
+        "124.1",
+        "136.0",
+        "12.78"
+      ],
+      [
+        "2024/25",
+        "Outturn",
+        "136.6",
+        "143.8",
+        "12.99"
+      ],
+      [
+        "2025/26",
+        "Forecast",
+        "146.1",
+        "149.0",
+        "13.20"
+      ],
+      [
+        "2026/27",
+        "Forecast",
+        "154.2",
+        "154.2",
+        "13.22"
+      ],
+      [
+        "2027/28",
+        "Forecast",
+        "158.9",
+        "155.9",
+        "13.08"
+      ],
+      [
+        "2028/29",
+        "Forecast",
+        "164.0",
+        "157.9",
+        "13.17"
+      ],
+      [
+        "2029/30",
+        "Forecast",
+        "172.2",
+        "162.8",
+        "13.43"
+      ],
+      [
+        "2030/31",
+        "Forecast",
+        "180.7",
+        "167.4",
+        "13.70"
+      ]
+    ],
+    "align": [
+      "l",
+      "l",
+      "r",
+      "r",
+      "r"
+    ]
+  },
+  "sp-longrun": {
+    "caption": "Projected State Pension spending as a share of the economy",
+    "source_id": "obr-frs-2026",
+    "table_reference": "Table 3.1: Baseline primary spending scenario, row: State pension.",
+    "checked_date": "2026-09-29",
+    "classification": "projection",
+    "qualifications": "United Kingdom. A projection under stated assumptions, including that the triple lock continues. Not a forecast.",
+    "columns": [
+      "Financial year",
+      "Per cent of GDP"
+    ],
+    "rows": [
+      [
+        "2025-26",
+        "4.8"
+      ],
+      [
+        "2030-31",
+        "5.0"
+      ],
+      [
+        "2035-36",
+        "5.4"
+      ],
+      [
+        "2045-46",
+        "5.8"
+      ],
+      [
+        "2055-56",
+        "6.7"
+      ],
+      [
+        "2065-66",
+        "7.9"
+      ],
+      [
+        "2075-76",
+        "8.6"
+      ]
+    ],
+    "align": [
+      "l",
+      "r"
+    ]
+  },
+  "income-fifths": {
+    "caption": "Median weekly income after housing costs, by fifth of the pensioner income distribution",
+    "source_id": "dwp-pensioners-incomes-fye2025",
+    "table_reference": "Data tables, Table 4.1.",
+    "checked_date": "2026-09-29",
+    "classification": "observed-statistic",
+    "qualifications": "United Kingdom. An average of the three years 2022/23 to 2024/25, in 2024/25 prices. Net of Income Tax and Council Tax. Fifths are formed separately for couples and for single pensioners. A pensioner unit is a single pensioner or a couple, so the couple figures are for two people.",
+    "columns": [
+      "Group",
+      "Bottom fifth",
+      "Second fifth",
+      "Middle fifth",
+      "Fourth fifth",
+      "Top fifth"
+    ],
+    "rows": [
+      [
+        "Single pensioners",
+        "£179",
+        "£243",
+        "£322",
+        "£412",
+        "£612"
+      ],
+      [
+        "Pensioner couples",
+        "£346",
+        "£497",
+        "£634",
+        "£821",
+        "£1,230"
+      ]
+    ],
+    "align": [
+      "l",
+      "r",
+      "r",
+      "r",
+      "r",
+      "r"
+    ]
+  },
+  "observed-spending": {
+    "caption": "Average weekly spending of retired households, financial year ending 2025",
+    "source_id": "ons-family-spending-fye2025",
+    "table_reference": "Table A23: High level expenditure by household composition.",
+    "checked_date": "2026-09-29",
+    "classification": "observed-statistic",
+    "qualifications": "United Kingdom. Means across all households in each group. Housing leaves out mortgage interest and Council Tax, which are in 'Other expenditure items'. Health and education are not published for these groups, so the categories do not add up to the totals. Two-adult households are not always couples.",
+    "columns": [
+      "Category",
+      "One person, mainly dependent on state pensions",
+      "Two adults, mainly dependent on state pensions",
+      "One person, other retired",
+      "Two adults, other retired"
+    ],
+    "rows": [
+      [
+        "Households in the sample",
+        "160",
+        "90",
+        "500",
+        "620"
+      ],
+      [
+        "Food and non-alcoholic drinks",
+        "£38.90",
+        "£73.50",
+        "£40.60",
+        "£79.50"
+      ],
+      [
+        "Alcoholic drinks and tobacco",
+        "£6.10",
+        "£9.60",
+        "£7.70",
+        "£14.70"
+      ],
+      [
+        "Clothing and footwear",
+        "£7.20",
+        "£13.40",
+        "£6.70",
+        "£16.30"
+      ],
+      [
+        "Housing (net), fuel and power",
+        "£64.30",
+        "£86.00",
+        "£72.40",
+        "£79.40"
+      ],
+      [
+        "Household goods and services",
+        "£18.60",
+        "£32.20",
+        "£21.20",
+        "£49.10"
+      ],
+      [
+        "Health",
+        "Not published",
+        "Not published",
+        "Not published",
+        "Not published"
+      ],
+      [
+        "Transport",
+        "£16.40",
+        "£52.40",
+        "£30.80",
+        "£101.30"
+      ],
+      [
+        "Communication",
+        "£13.80",
+        "£17.80",
+        "£15.20",
+        "£21.60"
+      ],
+      [
+        "Recreation and culture",
+        "£31.80",
+        "£78.30",
+        "£46.20",
+        "£103.20"
+      ],
+      [
+        "Education",
+        "Not published",
+        "Not published",
+        "Not published",
+        "Not published"
+      ],
+      [
+        "Restaurants and hotels",
+        "£11.20",
+        "£28.80",
+        "£16.70",
+        "£57.30"
+      ],
+      [
+        "Miscellaneous goods and services",
+        "£27.20",
+        "£38.00",
+        "£33.30",
+        "£59.30"
+      ],
+      [
+        "Other expenditure items",
+        "£29.00",
+        "£54.40",
+        "£41.30",
+        "£85.30"
+      ],
+      [
+        "Total spending",
+        "£271.30",
+        "£498.10",
+        "£343.30",
+        "£691.40"
+      ]
+    ],
+    "align": [
+      "l",
+      "r",
+      "r",
+      "r",
+      "r"
+    ]
+  },
+  "wealth-bands": {
+    "caption": "People aged 65 and over, by the total wealth of their household",
+    "source_id": "ons-was-round8",
+    "table_reference": "Total wealth tables, Table 2.11, row: 65+.",
+    "checked_date": "2026-09-29",
+    "classification": "observed-statistic",
+    "qualifications": "Great Britain, April 2020 to March 2022. Accreditation of the survey is suspended. Wealth includes the home and private pensions. It does not include State Pension rights.",
+    "columns": [
+      "Total household wealth",
+      "Share of people aged 65 and over (per cent)",
+      "Share of all people (per cent)"
+    ],
+    "rows": [
+      [
+        "Less than £20,000",
+        "5",
+        "11"
+      ],
+      [
+        "£20,000 to under £85,000",
+        "10",
+        "15"
+      ],
+      [
+        "£85,000 to under £200,000",
+        "9",
+        "13"
+      ],
+      [
+        "£200,000 to under £300,000",
+        "9",
+        "10"
+      ],
+      [
+        "£300,000 to under £500,000",
+        "17",
+        "15"
+      ],
+      [
+        "£500,000 to under £1 million",
+        "27",
+        "21"
+      ],
+      [
+        "£1 million or more",
+        "22",
+        "15"
+      ]
+    ],
+    "align": [
+      "l",
+      "r",
+      "r"
+    ]
+  },
+  "care-by-nation": {
+    "caption": "Who decides, and who is covered",
+    "source_id": null,
+    "table_reference": "Compiled by this site from the sources cited on this page.",
+    "checked_date": "2026-09-29",
+    "classification": "published-rule",
+    "qualifications": "A summary by this site. The rows on social care rest on the sources cited under 'Social care now, nation by nation'. The rows on benefits rest on the sources cited on the State Pension page.",
+    "columns": [
+      "Policy",
+      "Who decides",
+      "Who it covers"
+    ],
+    "rows": [
+      [
+        "State Pension and the triple lock",
+        "UK government",
+        "The whole UK. Northern Ireland sets its rates through its own orders, which we did not read."
+      ],
+      [
+        "Pension Credit",
+        "UK government",
+        "Great Britain. Northern Ireland has its own scheme."
+      ],
+      [
+        "Attendance Allowance",
+        "UK government",
+        "England and Wales"
+      ],
+      [
+        "Pension Age Disability Payment",
+        "Scottish Government",
+        "Scotland"
+      ],
+      [
+        "Adult social care and its charges",
+        "Each nation",
+        "England, Scotland, Wales and Northern Ireland, separately"
+      ],
+      [
+        "The commission on adult social care and a National Care Service",
+        "UK government, acting for England",
+        "England"
+      ]
+    ],
+    "align": [
+      "l",
+      "l",
+      "l"
+    ],
+    "compiled": true
+  }
+}
