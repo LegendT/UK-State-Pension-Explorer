@@ -76,7 +76,7 @@ A11Y_ASSESSMENT_DATE=2026-10-01 AI_CRAWLER_POLICY=allow npm run build
 
 ## Hosting
 
-Netlify builds a preview from `main`, using `netlify.toml`. The preview is configured to ask for a user name and password. They are set in the `BASIC_AUTH` variable in Netlify, as `user:password`, and the build writes them to `_site/_headers`. `BASIC_AUTH=user:password npm run build` shows that the rule is written. It does not show that the sign-in works, because the local server ignores that file. That can only be checked on Netlify. Repository: https://github.com/LegendT/UK-State-Pension-Explorer
+Netlify builds a preview from `main`, using `netlify.toml`. The preview asks for a user name and password. They are set in the `BASIC_AUTH` variable in Netlify, as `user:password`, and the build writes them to `_site/_headers`. `BASIC_AUTH=user:password npm run build` shows that the rule is written. It does not show that the sign-in works, because the local server ignores that file. That was checked on the Netlify deploy preview on 29 September 2026. Repository: https://github.com/LegendT/UK-State-Pension-Explorer
 
 ## Conventions
 

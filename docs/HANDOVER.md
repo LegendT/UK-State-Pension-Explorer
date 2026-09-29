@@ -39,6 +39,32 @@ Run on 29 September 2026, Chrome 154, macOS.
 
 The scripts print their own counts. They are not copied here because they change with the content.
 
+## Checks on the deployed preview
+
+Run on 29 September 2026 against the deploy preview of pull request 1, commit `15744d9`, with `curl` and Chrome 154.
+
+| Check | Result |
+| --- | --- |
+| No credentials | 401, Netlify's password page |
+| Past the password page, no sign-in | 401, `WWW-Authenticate: Basic` |
+| Past the password page, wrong sign-in | 401 |
+| Past the password page, right sign-in | 200 |
+| A page that does not exist | 404, with the site's own page |
+| `/_headers` | 404. The file is not served |
+| All 11 pages, `robots.txt`, the CSV, a share image, the stylesheet and a script | 200, with the expected content types |
+| `/sitemap.xml` | 404, as intended for a preview |
+| Headers as served | Content Security Policy, `X-Frame-Options`, `Referrer-Policy`, `X-Content-Type-Options`, `Permissions-Policy` and `X-Robots-Tag: noindex`, on pages and on the CSV |
+| `http://` address | 301 to `https://` |
+| Canonical address | The deploy's own address |
+| History explorer in Chrome | Form shown, result updated, download started from a `blob:` address. No policy violation from the site's own code |
+
+Found by these checks:
+
+- **The site was titled "ukstatepensionexplorer".** Netlify sets `SITE_NAME` on every build. The setting is now `SITE_TITLE`. Fixed after this deploy, so the deploy checked still shows the wrong name.
+- **The Content Security Policy blocks Netlify's own preview toolbar**, which Netlify adds to deploy previews. Chrome reported one blocked inline style and one blocked frame from `app.netlify.com`. The site is not affected. The toolbar can be switched off in Netlify.
+
+Not checked on the deployed preview: the other three calculators, any browser but Chrome, a fetched share preview on a social platform, and anything on the main site address, which has no deploy of this code until the pull request is merged.
+
 ## Known defects and limits
 
 1. **The news note and the social care page predate the Prime Minister's conference speech.** No transcript was found by mid-afternoon. Both must be rewritten once it is published.
@@ -47,7 +73,7 @@ The scripts print their own counts. They are not copied here because they change
 4. **Not found, and shown as gaps:** the share of people on the full rate, the number whose pension is not increased abroad, costings for a double lock and for means-testing, incomes of pensioner carers.
 5. **Typed wording that will age:** the worked example on the triple lock page names months and years in words. The first year in the rule comparison starts at 2027/28. Both are in the maintenance guide.
 6. **One check date is printed for two figures** in a few combined source notes. The dates are the same today.
-7. **The preview on Netlify is configured for basic authentication** and sends `noindex` on every file. Neither has been seen working, because no deploy of this code exists yet. Both must be removed at launch. The user name and password are in the `BASIC_AUTH` variable in Netlify and in the local `.preview-password` file, which is not committed. Netlify's own password protection is also switched on, so a visitor is asked twice until it is turned off.
+7. **The preview on Netlify uses basic authentication** and sends `noindex` on every file. Both were seen working on the deploy preview. Both must be removed at launch. The user name and password are in the `BASIC_AUTH` variable in Netlify and in the local `.preview-password` file, which is not committed. Netlify's own password protection is also switched on, so a visitor is asked twice until it is turned off.
 8. **Field errors use `role="alert"`.** With many errors at once, screen reader announcements may compete. Not tested.
 9. **`scripts/seed/` should be deleted.** Running it would overwrite the registers. A delete was attempted and declined by the permission settings, so it is still there.
 10. **Two party positions rest on news reports**, not party documents.
@@ -80,7 +106,7 @@ See `docs/launch-dependencies.md`. In short: name, domain, the launch steps for 
 | Item | Status |
 | --- | --- |
 | Reciprocal links on UK Public Finances Explorer and UK Migration Explorer | Not started. Needs a live domain. No other repository was changed |
-| Deployed checks | Not started. Needs a deployment. To include: 401 without the sign-in and 200 with it, the headers as served, the 404 status, whether `/_headers` is served as a file, and whether the history download works under the Content Security Policy |
+| Deployed checks | Done for the deploy preview. See "Checks on the deployed preview". Not done for the main site address or a production domain |
 | Search console | Not started. Needs account and domain access |
 
 ## Found in passing
