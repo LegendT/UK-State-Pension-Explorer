@@ -1,7 +1,8 @@
 ---
 # Written only when BASIC_AUTH is set. The permalink is in _headers.11tydata.js.
+# "safe" keeps the password as typed. Without it, characters such as & would be written as HTML entities.
 eleventyExcludeFromCollections: true
 ---
 # Written by the build from the BASIC_AUTH variable. Do not commit a copy of this file.
 /*
-  Basic-Auth: {{ site.basicAuth }}
+  Basic-Auth: {{ site.basicAuth | safe }}

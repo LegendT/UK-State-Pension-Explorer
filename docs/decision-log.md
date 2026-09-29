@@ -26,8 +26,7 @@ Short record of decisions made during the first build, 29 September 2026. Newest
 | 20 | The April 2026 decision is cited to the explanatory memorandum, not the written statement. | The parliamentary site refused reading. The memorandum could be read and says the same. | Yes |
 | 21 | Party positions for the Greens, SNP and Plaid Cymru are left out. | Only 2024 statements were found, two through other people's summaries. | Yes |
 | 22 | `published` is empty for every page. `modified` is 29 September 2026, the date the content was first written. | The site is not published. Dates are never taken from a build. | Yes |
-| 23 | Production builds stop unless the domain, correction route, owner, reviewer, accessibility assessment date and crawler policy are set. | The brief says production must not use placeholder values silently. | Yes |
-
+| 23 | Production builds stop unless the name, domain, correction route, owner and owner type, reviewer, accessibility assessment date and crawler policy are set. | The brief says production must not use placeholder values silently. | Yes |
 | 24 | The title of the social care page says "a reported trade-off", not "the proposed trade-off" as in the scope. | No published proposal was found. | Yes |
 | 25 | A claim that something was not found has no source. The register shows it as a record of a search. | No source can show an absence. | Yes |
 

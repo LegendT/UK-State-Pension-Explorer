@@ -38,7 +38,9 @@ The accessibility scripts use the Chrome already on the computer. Set `CHROME_PA
 | preview | `noindex` on every page | None | Preview banner |
 | production | Indexable | `/sitemap.xml` | None |
 
-A production build stops unless the launch decisions it can check are set. See `docs/launch-dependencies.md` for those and for the ones it cannot check.
+A production build stops unless the launch decisions it can check are set. It also stops while `BASIC_AUTH` is set or while `netlify.toml` still sends the `noindex` header. See `docs/launch-dependencies.md`.
+
+The command below passes only after that header has been removed from `netlify.toml`.
 
 ```
 SITE_ENV=production SITE_NAME="..." SITE_URL=https://... CORRECTION_URL=https://... \
@@ -74,7 +76,7 @@ A11Y_ASSESSMENT_DATE=2026-10-01 AI_CRAWLER_POLICY=allow npm run build
 
 ## Hosting
 
-Netlify builds a preview from `main`, using `netlify.toml`. The preview asks for a user name and password. They are set in the `BASIC_AUTH` variable in Netlify, as `user:password`, and the build writes them to `_site/_headers`. To try that locally: `BASIC_AUTH=user:password npm run build`. Repository: https://github.com/LegendT/UK-State-Pension-Explorer
+Netlify builds a preview from `main`, using `netlify.toml`. The preview is configured to ask for a user name and password. They are set in the `BASIC_AUTH` variable in Netlify, as `user:password`, and the build writes them to `_site/_headers`. `BASIC_AUTH=user:password npm run build` shows that the rule is written. It does not show that the sign-in works, because the local server ignores that file. That can only be checked on Netlify. Repository: https://github.com/LegendT/UK-State-Pension-Explorer
 
 ## Conventions
 

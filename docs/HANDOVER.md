@@ -1,6 +1,6 @@
 # Handover: first build
 
-29 September 2026. The site is a **preview for review**. It is not published, not deployed and not committed: the folder is not a git repository.
+29 September 2026. The site is a **preview for review**. It is not published. The work is committed on the branch `first-build` and has not been pushed, so Netlify has not yet built it.
 
 ## How to look at it
 
@@ -26,8 +26,9 @@ Run on 29 September 2026, Chrome 154, macOS.
 | Check | Command | Result |
 | --- | --- | --- |
 | Calculator tests | `npm test` | 22 of 22 pass |
-| Build checks | `npm run build` | No problems, in development, preview and production configurations |
-| Production gate | Build with settings missing, a placeholder domain, a wrong owner type | Stopped each time, naming what was missing |
+| Build checks | `npm run build` | No problems in development and preview. A production configuration passed before the `noindex` header was added to `netlify.toml`. It now stops on that header, as intended |
+| Production gate | Build with settings missing, a placeholder domain, a wrong owner type, `BASIC_AUTH` set, and the `noindex` header present | Stopped each time, naming the cause |
+| Preview gate | Preview build with `NETLIFY` set and no `BASIC_AUTH`. `BASIC_AUTH` in the wrong format | Stopped each time |
 | Quoted passages | `python3 scripts/check-passages.py` | All found: most by the script, the rest in a browser because three sites refuse scripts |
 | Figures with no quoted passage | `python3 scripts/check-values.py`, then the source spreadsheets | All values found. For two wealth figures the value was found but the row was not confirmed |
 | Source addresses | One request each | All responded except sites that refuse scripts, which opened in a browser |
@@ -46,7 +47,7 @@ The scripts print their own counts. They are not copied here because they change
 4. **Not found, and shown as gaps:** the share of people on the full rate, the number whose pension is not increased abroad, costings for a double lock and for means-testing, incomes of pensioner carers.
 5. **Typed wording that will age:** the worked example on the triple lock page names months and years in words. The first year in the rule comparison starts at 2027/28. Both are in the maintenance guide.
 6. **One check date is printed for two figures** in a few combined source notes. The dates are the same today.
-7. **The preview on Netlify uses basic authentication** and sends `noindex` on every file. Both must be removed at launch. The user name and password are in the `BASIC_AUTH` variable in Netlify and in the local `.preview-password` file, which is not committed.
+7. **The preview on Netlify is configured for basic authentication** and sends `noindex` on every file. Neither has been seen working, because no deploy of this code exists yet. Both must be removed at launch. The user name and password are in the `BASIC_AUTH` variable in Netlify and in the local `.preview-password` file, which is not committed. Netlify's own password protection is also switched on, so a visitor is asked twice until it is turned off.
 8. **Field errors use `role="alert"`.** With many errors at once, screen reader announcements may compete. Not tested.
 9. **`scripts/seed/` should be deleted.** Running it would overwrite the registers. A delete was attempted and declined by the permission settings, so it is still there.
 10. **Two party positions rest on news reports**, not party documents.
@@ -64,13 +65,13 @@ The scripts print their own counts. They are not copied here because they change
 
 ## Owner decisions needed for launch
 
-See `docs/launch-dependencies.md`. In short: name, domain, hosting, correction route, owner, reviewer, AI crawler policy, accessibility assessment by a person, analytics.
+See `docs/launch-dependencies.md`. In short: name, domain, the launch steps for hosting, correction route, owner, reviewer, AI crawler policy, accessibility assessment by a person, analytics.
 
 ## Questions for the owner
 
-2. **Should pensions and social care stay a main page?** It rests on reporting that may change within days. The alternative is a dated section of the reform options page until a proposal is published.
-3. **May `scripts/seed/` be deleted?**
-4. **Should the fiscal-claim page on UK Migration Explorer be linked?** It does not mention pensions.
+1. **Should pensions and social care stay a main page?** It rests on reporting that may change within days. The alternative is a dated section of the reform options page until a proposal is published.
+2. **May `scripts/seed/` be deleted?**
+3. **Should the fiscal-claim page on UK Migration Explorer be linked?** It does not mention pensions.
 
 ## Tracked separately
 

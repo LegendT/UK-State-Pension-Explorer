@@ -1,6 +1,6 @@
 # Launch dependencies
 
-Things only the owner can supply or decide. The build works locally without them. A production build stops until items 1, 2, 4, 5, 6, 7 and 8 are set. Items 3, 9, 10 and 11 are not enforced by the build.
+Things only the owner can supply or decide. The build works locally without them. A production build stops until items 1, 2, 4, 5, 6, 7 and 8 are set. Item 3 is enforced in part: the build stops while `BASIC_AUTH` is set or the `noindex` header is in `netlify.toml`. Items 9, 10 and 11 are not enforced by the build.
 
 | No. | Dependency | How it is supplied | Blocks |
 | --- | --- | --- | --- |
