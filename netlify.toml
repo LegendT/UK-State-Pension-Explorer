@@ -19,6 +19,10 @@
   SITE_ENV = "preview"
   # The accessibility scripts use a local Chrome and do not run on Netlify.
   PUPPETEER_SKIP_DOWNLOAD = "1"
+  # BASIC_AUTH is a secret in Netlify, and the build writes it to _site/_headers on purpose.
+  # Netlify scans build output for secret values and fails the build when it finds one,
+  # so that one file is left out of the scan.
+  SECRETS_SCAN_OMIT_PATHS = "_site/_headers"
 
 [[headers]]
   for = "/*"
