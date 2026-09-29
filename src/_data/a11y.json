@@ -6,7 +6,7 @@
   "done": [
     {
       "check": "Automated rules",
-      "result": "axe-core 4.11 ran on every page, at phone and desktop widths, in light and dark schemes, and with each calculator showing a result and an error. It found no violations. Where it could not judge the contrast of some text, each case was measured, and none was below the required ratio.",
+      "result": "axe-core 4.11 ran on every page, at phone and desktop widths, in light and dark schemes, and with each calculator showing a result and an error. It found no violations. Where it could not judge the contrast of some text, a script measured each case, and none was below the required ratio.",
       "environment": "Chrome 154 on macOS (Apple silicon), driven by script.",
       "date": "2026-09-29"
     },
@@ -74,11 +74,11 @@
     },
     {
       "check": "Use by disabled and older readers",
-      "reason": "No usability sessions have been held."
+      "reason": "We have held no usability sessions."
     },
     {
       "check": "Independent audit",
-      "reason": "None has been carried out."
+      "reason": "No one has carried one out."
     },
     {
       "check": "Changes to a form when a choice is made",

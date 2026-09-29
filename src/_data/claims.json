@@ -775,13 +775,13 @@
     "source_id": "services-australia-assets",
     "passage": "When your assets are more than the limit for your situation, your pension will reduce.",
     "interpretation": false,
-    "note": "Context only. Australia's Age Pension is based on residence and paid from general taxation, and sits beside compulsory private saving. It is not a model proposed for the UK by any body this site found.",
+    "note": "Context only. Australia's Age Pension is based on residence and paid from general taxation, and sits beside compulsory private saving. It is not a model proposed for the UK by any body we found.",
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance"
   },
   "no-costed-means-test": {
     "kind": "not-found",
-    "statement": "This site found no costed proposal from a party, commission or research body to means-test the UK State Pension.",
+    "statement": "We found no costed proposal from a party, commission or research body to means-test the UK State Pension.",
     "source_id": null,
     "passage": null,
     "interpretation": false,
@@ -791,7 +791,7 @@
   },
   "no-costed-double-lock": {
     "kind": "not-found",
-    "statement": "This site found no current official or research estimate of the saving from a double lock that it could open and check.",
+    "statement": "We found no current official or research estimate of the saving from a double lock that we could open and check.",
     "source_id": null,
     "passage": null,
     "interpretation": false,
@@ -891,7 +891,7 @@
   },
   "no-published-trade-off": {
     "kind": "not-found",
-    "statement": "This site found no document from a party, a commission or the government that proposes replacing the triple lock to pay for social care.",
+    "statement": "We found no document from a party, a commission or the government that proposes replacing the triple lock to pay for social care.",
     "source_id": null,
     "passage": null,
     "interpretation": false,
@@ -905,7 +905,7 @@
     "source_id": "telegraph-yahoo-2026-09-19",
     "passage": "The Conservatives created the triple lock; we've always protected it and we stand by it.",
     "interpretation": false,
-    "note": "Reported in a newspaper article of 19 September 2026, which dates the remark to September 2025. This site found no party document.",
+    "note": "Reported in a newspaper article of 19 September 2026, which dates the remark to September 2025. We found no party document.",
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance"
   },
@@ -925,7 +925,7 @@
     "source_id": "cityam-reform-2026-04",
     "passage": null,
     "interpretation": false,
-    "note": "Reported in a newspaper. This site found no party document. No wording is quoted.",
+    "note": "Reported in a newspaper. We found no party document. No wording is quoted.",
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance"
   },

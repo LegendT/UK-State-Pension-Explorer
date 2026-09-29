@@ -68,7 +68,7 @@ function showPast() {
     row("52 weeks at the new rate", money(to * 52)) +
     `</dl>` +
     (record.note ? `<p><strong>An exceptional year.</strong> ${escapeHtml(record.note)}</p>` : "") +
-    `<p>These are the published decision and the published rates. They are not calculated by this tool.</p>`;
+    `<p>These are the published decision and the published rates. This tool did not calculate them.</p>`;
   announce(status, `Showing the decision for ${record.tax_year}: ${percent(record.applied_tenths)}.`);
 }
 

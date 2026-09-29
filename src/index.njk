@@ -49,7 +49,9 @@ permalink: /
 <p>{{ group.meaning }}</p>
 <ul>
   {%- for item in group.entries %}
-  <li>{{ item.text }} {% for id in item.claims %}{{ m.c(id) }} {% endfor %}{% for id in item.figures %}{% set fg = id | figure %}<span class="ref">Source: {{ m.cite(fg.source) }}.</span> {% endfor %}</li>
+  {#- One citation for each source, however many claims in the entry rest on it. -#}
+  {%- set cited = [] %}
+  <li>{{ item.text }} {% for id in item.claims %}{% set r = id | claim %}{% set key = r.source.url if r.source else id %}{% if key not in cited %}{% set _ = cited.push(key) %}{{ m.c(id) }} {% endif %}{% endfor %}{% for id in item.figures %}{% set fg = id | figure %}{% if fg.source.url not in cited %}{% set _ = cited.push(fg.source.url) %}<span class="ref">Source: {{ m.cite(fg.source) }}.</span> {% endif %}{% endfor %}</li>
   {%- endfor %}
 </ul>
 {%- endfor %}
@@ -80,4 +82,4 @@ permalink: /
 
 <h2 id="about">About this site</h2>
 
-<p>This is an educational project. It is not a government service and it does not give financial advice. It aims to be neutral: it sets out the strongest supported arguments on each side and says where a conclusion depends on a judgement about fairness. <a href="/sources-and-method/">How the site is sourced and checked</a>.</p>
+<p>This is an educational project. It is not a government service and it does not give financial advice. It aims to be neutral. It sets out the strongest supported arguments on each side and says where a conclusion depends on a judgement about fairness. <a href="/sources-and-method/">How the site is sourced and checked</a>.</p>

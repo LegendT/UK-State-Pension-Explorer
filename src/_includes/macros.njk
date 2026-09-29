@@ -24,7 +24,7 @@
       <dt>What it measures</dt><dd>{{ f.definition }}</dd>
       <dt>Who it covers</dt><dd>{{ f.population }}</dd>
       <dt>Where in the source</dt><dd>{{ f.table_reference }}</dd>
-      {%- if f.passage %}<dt>What the source says</dt><dd>“{{ f.passage }}”</dd>{% endif %}
+      {%- if f.passage %}<dt>What the source says</dt><dd>"{{ f.passage }}"</dd>{% endif %}
       {%- if f.formula %}<dt>Calculation</dt><dd>{{ f.formula }}</dd>{% endif %}
       {%- if f.gross_net %}<dt>Before or after tax</dt><dd>{{ f.gross_net }}</dd>{% endif %}
       {%- if f.price_basis and f.price_basis != "not applicable" %}<dt>Price basis</dt><dd>{{ f.price_basis | upperFirst }}</dd>{% endif %}

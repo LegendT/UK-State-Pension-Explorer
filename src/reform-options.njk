@@ -9,7 +9,7 @@ permalink: /reform-options/
 <p class="lede">Two separate decisions are often discussed together. One is how the State Pension should rise each year. The other is who should be entitled to it. This page sets out the options for each, the evidence on costs and on who is affected, and the points where the answer depends on a judgement about fairness.</p>
 
 {% call m.note("How to read this page", 2) %}
-<p>The same questions are asked of every option, including keeping the present rule. Where the evidence is strong, the page says so. Where a claim is a recommendation or a value judgement, the page says whose it is. No option is recommended.</p>
+<p>The page asks the same questions of every option, including keeping the present rule. Where the evidence is strong, the page says so. Where a claim is a recommendation or a value judgement, the page says whose it is. It recommends no option.</p>
 {% endcall %}
 
 {{ m.contents([
@@ -131,12 +131,12 @@ permalink: /reform-options/
   </tbody>
 </table>
 {% endcall %}
-<div class="source"><p>Estimates and projections, not forecasts of what will happen. None describes a cut to pensions already in payment. The sources do not say so in those words: this is our reading of what each one models. Checked against the sources on {{ ("saving-earnings-2075" | figure).checked_date | timeTag | safe }}.</p></div>
+<div class="source"><p>Estimates and projections, not forecasts of what will happen. None describes a cut to pensions already in payment. The sources do not say so in those words. This is our reading of what each one models. Checked against the sources on {{ ("saving-earnings-2075" | figure).checked_date | timeTag | safe }}.</p></div>
 
 <p>The pattern is consistent across sources. In the next few years the saving is small compared with the bill. Over decades it becomes large. The Institute for Fiscal Studies puts the cost of keeping the triple lock in 2050 at between {{ m.f("ifs-tl-cost-2050-low") }} and {{ m.f("ifs-tl-cost-2050-high") }} a year, a wide range because the result depends on how volatile prices and earnings turn out to be.</p>
 {{ m.sourceNote("ifs-tl-cost-2050-high" | figure) }}
 
-<p>Spending would still rise without the triple lock. The Institute for Fiscal Studies says: “{{ ("ifs-rise-without-tl" | figure).passage }}”.</p>
+<p>Spending would still rise without the triple lock. The Institute for Fiscal Studies says: "{{ ("ifs-rise-without-tl" | figure).passage }}".</p>
 {{ m.sourceNote("ifs-rise-without-tl" | figure) }}
 
 {% call m.unavailable("costings for a double lock and for means-testing", 3) %}
@@ -198,7 +198,7 @@ permalink: /reform-options/
 
 <h2 id="increases">Options for the yearly increase</h2>
 
-<p>Each option is described the same way. The law sets a minimum of earnings for any option: a rule that pays less than earnings growth would need a change in the law. {{ m.c("legal-earnings-floor") }}</p>
+<p>The page describes each option the same way. The law sets a minimum of earnings for any option. A rule that pays less than earnings growth would need a change in the law. {{ m.c("legal-earnings-floor") }}</p>
 
 <div class="option-grid">
   <section class="option" aria-labelledby="opt-triple">
@@ -269,7 +269,7 @@ permalink: /reform-options/
     <li>It models <strong>one full rate</strong>, weekly and <strong>before tax</strong>. It is not your entitlement.</li>
     <li>The yearly figures are <strong>illustrations</strong>. They are not forecasts and have no probability.</li>
     <li>It leaves out Income Tax, Pension Credit and every other benefit. A difference shown here is not a difference in money to spend.</li>
-    <li>It cannot be used to work out national savings.</li>
+    <li>You cannot use it to work out national savings.</li>
     <li>The tool does not send or store anything you enter.</li>
   </ul>
   {% endcall %}
@@ -378,7 +378,7 @@ permalink: /reform-options/
     <dl>
       <dt>The idea</dt><dd>Reduce or withdraw the State Pension for people with income above a level.</dd>
       <dt>Who is affected</dt><dd>It depends entirely on the level and on how fast the pension is withdrawn. No proposal we found sets them.</dd>
-      <dt>Known difficulties</dt><dd>Means-tested benefits are not claimed by everyone entitled: take-up of Pension Credit is {{ m.f("pension-credit-take-up") }}. A withdrawal rate reduces the reward for saving. {{ m.c("ifs-no-means-test-reason") }}</dd>
+      <dt>Known difficulties</dt><dd>Not everyone who is entitled claims a means-tested benefit. Take-up of Pension Credit is {{ m.f("pension-credit-take-up") }}. A withdrawal rate reduces the reward for saving. {{ m.c("ifs-no-means-test-reason") }}</dd>
       <dt>Public finances</dt><dd>{{ ("no-costed-means-test" | claim).statement }}</dd>
     </dl>
   </section>
@@ -404,7 +404,7 @@ permalink: /reform-options/
     <h3 id="ent-targeted">Keep broad entitlement and strengthen targeted support</h3>
     <dl>
       <dt>The idea</dt><dd>Leave the State Pension as it is and put more into Pension Credit, housing support or disability benefits.</dd>
-      <dt>Who is affected</dt><dd>People on low incomes who claim. People who are entitled and do not claim get nothing: about {{ m.f("pension-credit-non-recipients") }} families did not claim Pension Credit.</dd>
+      <dt>Who is affected</dt><dd>People on low incomes who claim. People who are entitled and do not claim get nothing. About {{ m.f("pension-credit-non-recipients") }} families did not claim Pension Credit.</dd>
       <dt>A view</dt><dd>{{ ("pc-safety-net" | claim).statement }} {{ m.c("pc-safety-net") }}</dd>
       <dt>Known difficulties</dt><dd>Take-up, and the effect on the reward for saving. {{ m.c("wp-savings-credit") }}</dd>
     </dl>

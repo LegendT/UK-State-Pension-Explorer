@@ -235,7 +235,7 @@
       "cpi_index": 109.1,
       "reference_year": 2020,
       "exceptional": true,
-      "note": "Earnings fell by 1.0%. The law then allowed no increase when earnings did not rise, so Parliament passed the Social Security (Up-rating of Benefits) Act 2020 to permit one. 2.5% was applied.",
+      "note": "Earnings fell by 1.0%. The law then allowed no increase when earnings did not rise, so Parliament passed the Social Security (Up-rating of Benefits) Act 2020 to permit one. The increase was 2.5%.",
       "rate_source_url": "https://assets.publishing.service.gov.uk/media/60fe862d8fa8f5043411d861/benefit-and-pension-rates-2021-2022.pdf",
       "decision_source_url": "https://www.legislation.gov.uk/uksi/2021/162/pdfs/uksiem_20210162_en.pdf",
       "new_effective_date": "2021-04-12"
@@ -253,7 +253,7 @@
       "cpi_index": 112.4,
       "reference_year": 2021,
       "exceptional": true,
-      "note": "The earnings part of the triple lock was set aside for one year by the Social Security (Up-rating of Benefits) Act 2021. Earnings growth was 8.3%. The Consumer Prices Index (3.1%) was applied.",
+      "note": "The Social Security (Up-rating of Benefits) Act 2021 set aside the earnings part of the triple lock for one year. Earnings growth was 8.3%. The pension rose by the Consumer Prices Index figure, 3.1%.",
       "rate_source_url": "https://assets.publishing.service.gov.uk/media/61a0ee27e90e07044b1ef468/benefit-and-pension-rates-2022-2023.pdf",
       "decision_source_url": "https://www.legislation.gov.uk/uksi/2022/292/pdfs/uksiem_20220292_en.pdf",
       "new_effective_date": "2022-04-11"
