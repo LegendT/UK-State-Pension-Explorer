@@ -1,0 +1,25 @@
+---
+permalink: /robots.txt
+eleventyExcludeFromCollections: true
+---
+{%- if site.production -%}
+# {{ site.name }}
+# AI crawler policy: {{ site.aiCrawlerPolicy }}. Recorded in docs/decision-log.md.
+User-agent: *
+Disallow:
+{% if site.aiCrawlerPolicy == "refuse-training" %}
+# Crawlers and control tokens that collect content for training AI models.
+# This list goes out of date. Check it against each operator's own documentation.
+{% for agent in crawlers.training -%}
+User-agent: {{ agent }}
+{% endfor -%}
+Disallow: /
+{% endif %}
+Sitemap: {{ site.url }}/sitemap.xml
+{%- else -%}
+# {{ site.name }}: {{ site.env }} build, not for indexing.
+# Crawlers are allowed to read pages so that they can see the noindex instruction on each one.
+# Blocking here would hide that instruction. This file is not access control.
+User-agent: *
+Disallow:
+{%- endif %}

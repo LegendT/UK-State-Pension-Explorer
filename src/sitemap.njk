@@ -1,0 +1,15 @@
+---
+# The permalink is set in sitemap.11tydata.js: /sitemap.xml in production, nothing otherwise.
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- for entry in pages %}{% if entry.index %}
+  <url>
+    <loc>{{ site.url }}{{ entry.canonical_path }}</loc>
+    {%- if entry.modified %}
+    <lastmod>{{ entry.modified }}</lastmod>
+    {%- endif %}
+  </url>
+{%- endif %}{% endfor %}
+</urlset>

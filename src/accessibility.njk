@@ -1,0 +1,73 @@
+---
+layout: base.njk
+permalink: /accessibility/
+---
+{%- import "macros.njk" as m with context -%}
+<h1>Accessibility statement</h1>
+
+<p class="lede">This site aims to meet the Web Content Accessibility Guidelines (WCAG) 2.2 at Level AA on every page and in every calculator. {% if a11y.status != "complete" %}The assessment is not complete, so we do not yet claim that it does.{% endif %}</p>
+
+{% if a11y.status != "complete" %}
+{% call m.note("Status: assessment not complete", 2) %}
+<p>This is a preview. Automated checks and some manual checks have been done. Checks with screen readers by a person have not. Automated checks alone cannot show that a site meets the guidelines. The site will not be described as meeting WCAG 2.2 AA until every check below is done and every failure is fixed.</p>
+{% endcall %}
+{% endif %}
+
+<h2 id="scope">What this statement covers</h2>
+<p>Every page of this site and the four calculators, in their normal state, with an error showing, with details opened and after a result has changed.</p>
+
+<h2 id="how-to-use">What you should be able to do</h2>
+<ul>
+  <li>Use every page and calculator with a keyboard alone.</li>
+  <li>See where keyboard focus is at all times.</li>
+  <li>Zoom to 400% without losing content or scrolling sideways, except inside wide tables and charts, which scroll on their own.</li>
+  <li>Read every chart as a table. No information depends on colour alone.</li>
+  <li>Use the site in a light or dark colour scheme, following your device's setting.</li>
+  <li>Read every explanation with JavaScript switched off. The calculators need JavaScript. Each shows a worked example or a default result without it.</li>
+  <li>Enter figures by typing. No calculator needs dragging or a slider.</li>
+</ul>
+
+<h2 id="tested">What has been tested</h2>
+{% if a11y.done | length %}
+<ul>
+  {%- for item in a11y.done %}
+  <li><strong>{{ item.check }}.</strong> {{ item.result }} {{ item.environment }} Tested on {{ item.date | timeTag | safe }}.</li>
+  {%- endfor %}
+</ul>
+{% else %}
+<p>No test results are recorded yet.</p>
+{% endif %}
+
+<h2 id="not-tested">What has not been tested</h2>
+{% if a11y.not_done | length %}
+<ul>
+  {%- for item in a11y.not_done %}
+  <li><strong>{{ item.check }}.</strong> {{ item.reason }}</li>
+  {%- endfor %}
+</ul>
+{% else %}
+<p>Nothing is recorded as outstanding.</p>
+{% endif %}
+
+<h2 id="known-issues">Known problems</h2>
+{% if a11y.known_issues | length %}
+<ul>
+  {%- for item in a11y.known_issues %}
+  <li><strong>{{ item.issue }}.</strong> {{ item.detail }} WCAG {{ item.criterion }}.</li>
+  {%- endfor %}
+</ul>
+{% else %}
+<p>No failure found in testing is still open. That covers only the tests listed above.</p>
+{% endif %}
+
+<h2 id="report">Report a problem</h2>
+{% if site.correctionUrl %}
+<p>If you cannot use part of this site, <a href="{{ site.correctionUrl }}">tell us what you were trying to do and what happened</a>.</p>
+{% else %}
+{% call m.unavailable("a way to report a problem", 3) %}
+<p>The route for reporting a problem has not been set up. This is one of the decisions to make before the site is published. The site will not be published without it.</p>
+{% endcall %}
+{% endif %}
+
+<h2 id="dates">Preparation of this statement</h2>
+<p>{% if a11y.assessed_on %}The tests listed were last run on {{ a11y.assessed_on | timeTag | safe }}.{% else %}No assessment date is recorded.{% endif %} The full assessment, criterion by criterion, is kept with the site's source files.</p>

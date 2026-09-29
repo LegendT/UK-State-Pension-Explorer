@@ -1,0 +1,179 @@
+---
+layout: base.njk
+permalink: /history/
+---
+{%- import "macros.njk" as m with context -%}
+{%- set first = history.years | first -%}
+{%- set latest = history.years | last -%}
+<h1>State Pension history: rates and increases since 2010</h1>
+
+<p class="lede">This page records the full weekly rates of the State Pension and the increase applied each April, from {{ first.tax_year }} to {{ latest.tax_year }}. It marks the years when the usual rule was not followed. It can also calculate what a different rule would have produced, which is a calculation and not a record of what was paid.</p>
+
+{{ m.contents([
+  ["two-series", "Two separate series"],
+  ["decisions", "Every rate and decision"],
+  ["exceptions", "The exceptional years"],
+  ["revisions", "Why the earnings figures differ from those published now"],
+  ["explorer", "Try it: explore the history"],
+  ["download", "Download the data"]
+]) }}
+
+<h2 id="two-series">Two separate series</h2>
+
+<p>The basic State Pension and the new State Pension are different things. The new State Pension began on 6 April 2016, so it has no rate before {{ (history.years | where("tax_year", "2016/17") | first).tax_year }}. This page never joins the two into one line, because no person's pension moved from one to the other.</p>
+
+<p>Both are full rates, before tax. They are not what each person received. <a href="/state-pension/#what-people-receive">What people actually receive</a>.</p>
+
+<h2 id="decisions">Every rate and decision</h2>
+
+{% call m.scrollTable("Full State Pension rates and the increase applied each year") %}
+<table>
+  <caption>Full weekly rates and the increase applied each year, as published</caption>
+  <thead>
+    <tr><th scope="col">Tax year</th><th scope="col">Took effect</th><th scope="col" class="num">Basic State Pension</th><th scope="col" class="num">New State Pension</th><th scope="col" class="num">Increase applied</th><th scope="col" class="num">Prices</th><th scope="col" class="num">Earnings, as used</th><th scope="col">Decided by</th></tr>
+  </thead>
+  <tbody>
+    {%- for year in history.years %}
+    <tr>
+      <th scope="row">{{ year.tax_year }}{% if year.exceptional %} <span class="status">Exceptional</span>{% endif %}</th>
+      <td>{{ year.effective_date | timeTag | safe }}</td>
+      <td class="num">{{ year.basic_pence | money }}</td>
+      <td class="num">{% if year.new_pence %}{{ year.new_pence | money }}{% else %}Did not exist{% endif %}</td>
+      <td class="num">{{ year.applied_tenths | percent }}</td>
+      <td class="num">{% if year.prices_tenths !== null %}{{ year.prices_tenths | percent }}{% else %}Not a test that year{% endif %}</td>
+      <td class="num">{% if year.earnings_tenths !== null %}{{ year.earnings_tenths | percent }}{% else %}Not a test that year{% endif %}</td>
+      <td>{{ { "prices": "Prices (CPI)", "earnings": "Earnings", "floor": "The 2.5% minimum", "rpi": "Prices (RPI, this year only)", "pre-triple-lock": "The higher of 2.5% or RPI" }[year.measure] }}</td>
+    </tr>
+    {%- endfor %}
+  </tbody>
+</table>
+{% endcall %}
+<div class="source">
+  <p><span class="status">Published rate</span> Great Britain. Prices are the rise in the Consumer Prices Index over the year to the September before. Earnings are for May to July of the year before, as used in the decision. In 2016/17 the basic State Pension rose on 11 April and the new State Pension began on 6 April.</p>
+  <p>Sources: <a href="{{ history.sources.rates_url }}">{{ history.sources.rates }}</a> <a href="{{ history.sources.decisions_url }}">{{ history.sources.decisions }}</a> Checked against the sources on {{ history.checked_date | timeTag | safe }}.</p>
+</div>
+
+<p>Each rate follows from the one before, the increase applied, and rounding to the nearest 5p. We tested this for every increase from 2011/12, and for the new State Pension from 2017/18. {{ m.c("rounding-5p") }}</p>
+
+<h2 id="exceptions">The exceptional years</h2>
+
+<dl>
+  {%- for year in history.years %}{% if year.exceptional %}
+  <dt>{{ year.tax_year }}</dt>
+  <dd>{{ year.note }}</dd>
+  {%- endif %}{% endfor %}
+</dl>
+<p>{{ m.c("tl-2011-rpi") }} {{ m.c("tl-2021-act") }} {{ m.c("tl-2022-act") }}</p>
+
+<p>Because of these years, applying today's rule to every past year does not reproduce what was paid. The published decision is the record.</p>
+
+<h2 id="revisions">Why the earnings figures differ from those published now</h2>
+
+<p>The Office for National Statistics revises its earnings figures. The figure used in a decision is the one published at the time.
+{% set changed = 0 %}{% set counted = 0 %}{% for year in history.years %}{% if year.earnings_tenths !== null %}{% set counted = counted + 1 %}{% if year.earnings_tenths != year.earnings_current_tenths %}{% set changed = changed + 1 %}{% endif %}{% endif %}{% endfor %}
+In {{ changed }} of the {{ counted }} years from 2011/12, the figure published now is different.</p>
+
+{% call m.scrollTable("Earnings growth as used in each decision and as published now") %}
+<table>
+  <caption>Earnings growth: the figure used in each decision, and the figure published now</caption>
+  <thead><tr><th scope="col">For tax year</th><th scope="col" class="num">Used in the decision</th><th scope="col" class="num">Published now</th></tr></thead>
+  <tbody>
+    {%- for year in history.years %}{% if year.earnings_tenths !== null %}
+    <tr><th scope="row">{{ year.tax_year }}</th><td class="num">{{ year.earnings_tenths | percent }}</td><td class="num">{{ year.earnings_current_tenths | percent }}</td></tr>
+    {%- endif %}{% endfor %}
+  </tbody>
+</table>
+{% endcall %}
+<div class="source">
+  <p><span class="status">Observed statistic</span> <span class="status">Can be revised</span> Average weekly earnings, whole economy, total pay including bonuses, May to July compared with a year earlier.</p>
+  <p>Source for the figures published now: <a href="{{ history.sources.earnings_current_url }}">{{ history.sources.earnings_current }}</a> Checked against the source on {{ history.checked_date | timeTag | safe }}.</p>
+</div>
+
+<p>The calculations on this page use the figures as used in each decision. A calculation from the figures published now would give slightly different results.</p>
+
+<section class="tool" aria-labelledby="explorer">
+  <h2 id="explorer">Try it: explore the history</h2>
+
+  <p>Choose a pension, a range of years and how to show the amounts. You can add a calculation of what another rule would have produced from the first year you choose.</p>
+
+  <div class="no-js-only">
+    {% call m.note("The explorer needs JavaScript", 3) %}
+    <p>The form is not available, because JavaScript is off or did not load. The chart and table below show the basic State Pension in cash. The full record is in the table above and in the <a href="#download">download</a>.</p>
+    {% endcall %}
+  </div>
+
+  <form id="history-form" class="js-only" novalidate>
+    <fieldset>
+      <legend>What to show</legend>
+      <div class="fields">
+        <div class="field">
+          <label for="history-series">Pension</label>
+          <select id="history-series" name="history-series">
+            <option value="basic">Full basic State Pension</option>
+            <option value="new">Full new State Pension (from 2016/17)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="history-measure">Show amounts as</label>
+          <select id="history-measure" name="history-measure">
+            <option value="cash">Cash: the money of each year</option>
+            <option value="real">Buying power: the prices of the latest year</option>
+            <option value="earnings">Compared with earnings: an index</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="history-from">First year</label>
+          <span class="error" id="history-error" role="alert"></span>
+          <select id="history-from" name="history-from" aria-describedby="history-error"></select>
+        </div>
+        <div class="field">
+          <label for="history-to">Last year</label>
+          <select id="history-to" name="history-to"></select>
+        </div>
+        <div class="field">
+          <label for="history-rule">Add a calculation under another rule</label>
+          <span class="hint" id="history-rule-hint">It starts from the published rate in the first year you chose.</span>
+          <select id="history-rule" name="history-rule" aria-describedby="history-rule-hint">
+            <option value="">None: published rates only</option>
+            <option value="triple-lock">Triple lock, applied mechanically</option>
+            <option value="double-lock">Double lock (prices or earnings)</option>
+            <option value="earnings">Earnings link</option>
+            <option value="prices">Prices link</option>
+          </select>
+        </div>
+      </div>
+      <div class="buttons">
+        <button type="submit">Show the result</button>
+        <button type="button" class="secondary" id="history-download">Download the table shown (CSV)</button>
+        <button type="button" class="secondary" id="history-copy">Copy the table shown</button>
+      </div>
+    </fieldset>
+  </form>
+
+  <p class="visually-hidden" role="status" id="history-status"></p>
+
+  <div class="result" id="history-result">
+    {{ { years: history.years, series: "basic", from: first.tax_year, to: latest.tax_year, measure: "cash", rule: "" } | renderHistory | safe }}
+  </div>
+
+  <h3>How the measures are worked out</h3>
+  <ul>
+    <li><strong>Cash.</strong> The published rate.</li>
+    <li><strong>Buying power.</strong> The published rate × the price index for the latest year ÷ the price index for that year. The index is the Consumer Prices Index level for the September before each rate took effect.</li>
+    <li><strong>Compared with earnings.</strong> The rise in the rate since the first year shown, divided by the rise in earnings over the same years. The rise in earnings is built from the figures used in each decision. It is an index, not a share of any pay figure in pounds.</li>
+    <li><strong>A calculation under another rule.</strong> The rule is applied year by year from the published rate of the first year, with rounding to the nearest 5p and no fall in pounds. It does not apply the special rules of exceptional years.</li>
+  </ul>
+  <div class="source">
+    <p>Source for the price index: <a href="{{ history.sources.prices_index_url }}">{{ history.sources.prices_index }}</a> Checked against the source on {{ history.checked_date | timeTag | safe }}.</p>
+  </div>
+  <p><a href="/sources-and-method/#models">Full method, reference examples and limits</a>. For future years, which are hypothetical, use the <a href="/reform-options/#compare">rule comparison</a>.</p>
+
+  <script type="application/json" id="history-data">{{ { years: history.years } | json | safe }}</script>
+  <script type="module" src="/assets/js/tools/history.js"></script>
+</section>
+
+<h2 id="download">Download the data</h2>
+
+<p><a href="/assets/data/state-pension-full-rates.csv" download>Download the published rates and decisions for both pensions (CSV)</a>. The file holds the published figures only, in cash, with the notes for exceptional years. It has no calculated values.</p>
+
+<p>The figures are compiled by this site from official publications. This site is not an official statistics producer.</p>

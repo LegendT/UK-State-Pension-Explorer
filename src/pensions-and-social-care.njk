@@ -1,0 +1,182 @@
+---
+layout: base.njk
+permalink: /pensions-and-social-care/
+---
+{%- import "macros.njk" as m with context -%}
+<h1>Pensions and social care: assessing a reported trade-off</h1>
+
+<p class="lede">In September 2026 news reports linked two things: a less generous yearly increase in the State Pension, and free social care for adults in England. This page sets out what has been decided, what has been proposed and what has only been reported. It then lists the questions any such trade-off would have to answer.</p>
+
+{% call m.note("The position on the morning of " ~ (news.as_of | displayDate), 2) %}
+<p>This page was checked before the Prime Minister's speech to his party conference on {{ news.as_of | timeTag | safe }}. {{ m.c("speech-not-yet-given") }} Reports of what the speech would say are reports, not a record of what was said. We found no published proposal to replace the triple lock in order to pay for social care. That can change quickly. Treat this page as a dated record.</p>
+{% endcall %}
+
+{{ m.contents([
+  ["two-things", "A pension and a care service are different things"],
+  ["scope", "Who each policy covers"],
+  ["status", "What is decided, proposed and reported"],
+  ["care-now", "Social care now, nation by nation"],
+  ["scale", "The sums involved"],
+  ["questions", "Questions a proposal must answer"],
+  ["not-assume", "What should not be assumed"]
+]) }}
+
+<h2 id="two-things">A pension and a care service are different things</h2>
+
+<dl>
+  <dt>A pension payment</dt>
+  <dd>Cash, paid to a person every 4 weeks, for as long as they live. The person decides how to spend it. The amount follows set rules about a person's National Insurance record. It does not depend on need.</dd>
+  <dt>A social care service</dt>
+  <dd>Help with washing, dressing, eating and getting about, at home or in a care home. It goes only to people assessed as needing it, when they need it. Many people never use it. Some need a great deal.</dd>
+</dl>
+
+<p>So a change that takes a little from every pensioner and gives a service to some is not an exchange of equal value for each person. It moves money from pensioners in general to people who need care. Whether that is fair is a judgement. Who gains and who loses is a question of fact that depends on the design.</p>
+
+<h2 id="scope">Who each policy covers</h2>
+
+{{ m.dataTable("care-by-nation", false) }}
+
+<p>The State Pension is the same across the UK. Social care is decided separately in England, Scotland, Wales and Northern Ireland. The commission and the proposed National Care Service are for England.</p>
+
+{% call m.note("Why this matters", 3) %}
+<p>A lower State Pension increase would affect pensioners in all four nations. A care service for England would serve people in England. No source we found explains how pensioners in Scotland, Wales and Northern Ireland would be treated. Until a proposal says, the two cannot be treated as covering the same people.</p>
+{% endcall %}
+
+<h2 id="status">What is decided, proposed and reported</h2>
+
+<h3>In law or in a government document</h3>
+<ul>
+  <li>{{ ("tl-this-parliament" | claim).statement }} {{ m.c("tl-this-parliament") }}</li>
+  <li>{{ ("tl-policy-not-law" | claim).statement }} {{ m.c("tl-policy-not-law") }}</li>
+  <li>{{ ("care-cap-cancelled" | claim).statement }} {{ m.c("care-cap-cancelled") }}</li>
+  <li>{{ ("casey-first-terms" | claim).statement }} {{ ("casey-affordable" | claim).statement }} {{ m.c("casey-first-terms") }}</li>
+</ul>
+
+<h3>Announced commitments</h3>
+<ul>
+  <li>{{ ("casey-summer-2027" | claim).statement }} {{ m.c("casey-summer-2027") }}</li>
+  <li>{{ ("care-funded-principle" | claim).statement }} {{ m.c("care-funded-principle") }}</li>
+  <li>{{ ("casey-panel" | claim).statement }} {{ m.c("casey-panel") }}</li>
+  <li>{{ ("labour-manifesto-tl" | claim).statement }} {{ m.c("labour-manifesto-tl") }}</li>
+  <li>{{ ("pc-final-2027" | claim).statement }} {{ ("pc-terms" | claim).statement }} {{ m.c("pc-terms") }}</li>
+</ul>
+
+<h3>Proposals with costings</h3>
+<ul>
+  <li>The Resolution Foundation proposes a smoothed earnings link and estimates a saving of {{ "saving-smoothed-rf-2030" | figShown }} in 2029-30. It does not tie the saving to social care. {{ m.cite(("saving-smoothed-rf-2030" | figure).source) }}.</li>
+  <li>The Health Foundation has costed three models of care reform for England. They are estimates of general models, not of a government plan. See <a href="#scale">The sums involved</a>.</li>
+</ul>
+
+<h3>Reported</h3>
+<ul>
+  <li>{{ ("minister-sticking-2026-09-28" | claim).statement }} {{ m.c("minister-sticking-2026-09-28") }}</li>
+  <li>{{ ("next-manifesto-unconfirmed" | claim).statement }} {{ m.c("next-manifesto-unconfirmed") }}</li>
+  <li>{{ ("care-speculation" | claim).statement }} {{ m.c("care-speculation") }}</li>
+  <li>{{ ("care-not-before-election" | claim).statement }} {{ m.c("care-not-before-election") }}</li>
+</ul>
+
+<h3>Commentary</h3>
+<ul>
+  <li>{{ ("peston-inference" | claim).statement }} {{ m.c("peston-inference") }}</li>
+</ul>
+
+<h3>Positions of other parties</h3>
+<ul>
+  <li>{{ ("conservative-position" | claim).statement }} {{ m.c("conservative-position") }}</li>
+  <li>{{ ("libdem-position" | claim).statement }} {{ m.c("libdem-position") }}</li>
+  <li>{{ ("reform-position" | claim).statement }} {{ m.c("reform-position") }}</li>
+</ul>
+<p>These are the statements we found that date from 2025 or 2026. Two of the three come from news reports, not from a party document. For the Green Party, the Scottish National Party and Plaid Cymru we found statements from 2024 only, so they are not listed.</p>
+
+{% call m.unavailable("a published proposal for the trade-off", 3) %}
+<p>{{ ("no-published-trade-off" | claim).statement }} {{ ("no-published-trade-off" | claim).note }}</p>
+{% endcall %}
+
+<h2 id="care-now">Social care now, nation by nation</h2>
+
+<h3>England</h3>
+<p>Care is means-tested. A person with capital above {{ m.f("care-eng-upper-limit") }} pays the full cost. Below {{ m.f("care-eng-lower-limit") }}, capital is ignored. There is no limit on what a person can pay over a lifetime.</p>
+{{ m.sourceNote("care-eng-upper-limit" | figure) }}
+
+<h3>Scotland</h3>
+<p>Personal and nursing care are free for people assessed as needing them. For a person in a care home who pays their own fees, the payments are {{ m.f("care-scot-personal") }} a week for personal care and {{ m.f("care-scot-nursing") }} for nursing care. They do not cover accommodation.</p>
+{{ m.sourceNote("care-scot-personal" | figure) }}
+
+<h3>Wales</h3>
+<p>The most a person can be charged for care at home is {{ m.f("care-wales-max-charge") }} a week. For residential care the capital limit is {{ m.f("care-wales-residential-limit") }}. For care at home a different figure applies, {{ m.f("care-wales-home-limit") }}.</p>
+{{ m.sourceNote("care-wales-residential-limit" | figure) }}
+
+<h3>Northern Ireland</h3>
+<p>Care home fees are means-tested, with an upper capital limit of {{ m.f("care-ni-upper-limit") }}.</p>
+{{ m.sourceNote("care-ni-upper-limit" | figure) }}
+
+<h3>Cash benefits for care needs</h3>
+<p>Attendance Allowance is a cash benefit from the UK government, paid in England and Wales. It is not a care service and is not means-tested. {{ m.c("aa-scotland") }}</p>
+
+<h2 id="scale">The sums involved</h2>
+
+<p>These figures are from different sources, for different years and on different price bases. They are set out to show scale. They must not be added or subtracted as if they were one account.</p>
+
+<h3>Spending on adult social care in England</h3>
+<ul class="cards">
+  <li>{{ m.stat("care-eng-spend-gross" | figure, "What councils spent, before counting what people paid towards their own care.") }}</li>
+  <li>{{ m.stat("care-eng-long-term" | figure, "People receiving council-arranged long-term care on one day.") }}</li>
+</ul>
+
+<p>Age UK estimates that {{ m.f("care-unmet-need") }} people aged 65 and over in England have some unmet need for care.</p>
+{{ m.sourceNote("care-unmet-need" | figure) }}
+
+<h3>Estimated extra cost of care reform in England</h3>
+{% call m.scrollTable("Estimated extra yearly cost of three models of care reform in England") %}
+<table>
+  <caption>Estimated extra yearly cost of three models of care reform in England, 2023/24 prices</caption>
+  <thead><tr><th scope="col">Model</th><th scope="col" class="num">Extra cost a year</th><th scope="col">Year</th></tr></thead>
+  <tbody>
+    {%- for id, model in [["care-cost-cap","A cap on lifetime care costs, set at " ~ ("care-cap-level" | fig)],["care-cost-free-personal","Free personal care for people aged 65 and over"],["care-cost-universal","Universal care, free when used"]] %}
+    {%- set fg = id | figure %}
+    <tr><th scope="row">{{ model }}</th><td class="num">{{ id | figShown }}</td><td>{{ fg.period_label }}</td></tr>
+    {%- endfor %}
+  </tbody>
+</table>
+{% endcall %}
+{{ m.sourceNote("care-cost-universal" | figure) }}
+<p>{{ m.c("hf-broad-estimate") }} The design of the government's National Care Service has not been published, so none of these figures is its cost.</p>
+
+<h3>Estimated saving from changing the pension increase</h3>
+<p>The nearest published estimate is a saving of {{ "saving-smoothed-rf-2030" | figShown }} in 2029-30 from a smoothed earnings link starting in 2027-28, after tax and benefit effects.</p>
+{{ m.sourceNote("saving-smoothed-rf-2030" | figure) }}
+
+<p>Over the long term the saving grows. <a href="/reform-options/#cost-and-saving">Reform options: costs and savings</a> has the estimates and their bases.</p>
+
+{% call m.note("What the scale shows, and what it does not", 3) %}
+<p>In the first years after a change, the published estimate of the pension saving is a small part of the published estimate for universal care. The two estimates are for different years and in different prices, so the comparison is rough. It does not show that the trade-off is impossible, because a plan could be smaller, could start later, or could use other money as well. It does show that a plan would need to say where the rest comes from, and when.</p>
+{% endcall %}
+
+<h2 id="questions">Questions a proposal must answer</h2>
+
+<p>No proposal has been published, so these questions cannot yet be answered. They are the test to apply when one is.</p>
+
+<ol>
+  <li><strong>What rule would replace the triple lock, from when, and for whom?</strong> Including whether pensions already in payment are affected, and what happens in a year of high inflation.</li>
+  <li><strong>What care would be covered?</strong> Personal care only, or accommodation too. At home, in a care home, or both.</li>
+  <li><strong>Who would be eligible?</strong> Which level of need, which ages, which nations.</li>
+  <li><strong>Who loses income, who receives a service, and when?</strong> Any loss depends on the rule chosen and on how prices and earnings move. It would be spread across all pensioners. The service goes to some people, at the time they need it.</li>
+  <li><strong>What are the costs and savings, and against what baseline?</strong> Before or after tax and benefit effects. In cash or in constant prices. For one year or added up over several.</li>
+  <li><strong>Would the saving actually be used for care?</strong> Spending is decided year by year. A saving in one budget is not tied to another unless the law or the plan ties it.</li>
+  <li><strong>What pays for the early years?</strong> Care costs begin when the service begins. Pension savings build up slowly.</li>
+  <li><strong>Can the service be delivered?</strong> Staff, care homes and councils would need to be in place.</li>
+  <li><strong>What happens in Scotland, Wales and Northern Ireland?</strong></li>
+  <li><strong>What happens to people on the lowest incomes?</strong> Including whether Pension Credit would rise to make up the difference, given that many who are entitled do not claim it.</li>
+</ol>
+
+<h2 id="not-assume">What should not be assumed</h2>
+
+<ul>
+  <li><strong>That what the triple lock has cost is money now available.</strong> Past increases are in today's rates. Only future increases can change. <a href="/reform-options/#cost-and-saving">Past cost is not future saving</a>.</li>
+  <li><strong>That each person who gives up pension income receives care of the same value.</strong> A pension change would reach every pensioner. A care service would reach the people who need care. Who gains and who loses depends on a design that has not been published.</li>
+  <li><strong>That changing the rule means a cut in pounds.</strong> Under the alternatives discussed, the pension would still rise each year. <a href="/reform-options/#compare">Compare the rules</a>.</li>
+  <li><strong>That a think tank's estimate is the cost of a government plan.</strong></li>
+  <li><strong>That a report of what a politician will say is what they said.</strong></li>
+</ul>
+
+<p>{{ ("hf-affordable" | claim).statement }} {{ m.c("hf-affordable") }} That is a view about priorities. Others weigh the same figures differently.</p>
