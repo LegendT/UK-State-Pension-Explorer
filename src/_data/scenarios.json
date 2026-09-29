@@ -1,0 +1,647 @@
+{
+  "note": "Hypothetical paths. They are illustrations, not forecasts, and carry no probability.",
+  "default": "steady",
+  "default_years": 10,
+  "scenarios": [
+    {
+      "id": "steady",
+      "label": "Steady growth",
+      "reason": "Prices rise by 2.0% and earnings by 3.7% every year. These are the long-run averages the Office for Budget Responsibility assumes in its July 2026 report. Earnings are always the highest measure, so three of the four rules give the same result.",
+      "source_id": "obr-frs-2026",
+      "path": [
+        {
+          "prices": 20,
+          "earnings": 37
+        },
+        {
+          "prices": 20,
+          "earnings": 37
+        },
+        {
+          "prices": 20,
+          "earnings": 37
+        },
+        {
+          "prices": 20,
+          "earnings": 37
+        },
+        {
+          "prices": 20,
+          "earnings": 37
+        },
+        {
+          "prices": 20,
+          "earnings": 37
+        },
+        {
+          "prices": 20,
+          "earnings": 37
+        },
+        {
+          "prices": 20,
+          "earnings": 37
+        },
+        {
+          "prices": 20,
+          "earnings": 37
+        },
+        {
+          "prices": 20,
+          "earnings": 37
+        },
+        {
+          "prices": 20,
+          "earnings": 37
+        },
+        {
+          "prices": 20,
+          "earnings": 37
+        },
+        {
+          "prices": 20,
+          "earnings": 37
+        },
+        {
+          "prices": 20,
+          "earnings": 37
+        },
+        {
+          "prices": 20,
+          "earnings": 37
+        },
+        {
+          "prices": 20,
+          "earnings": 37
+        },
+        {
+          "prices": 20,
+          "earnings": 37
+        },
+        {
+          "prices": 20,
+          "earnings": 37
+        },
+        {
+          "prices": 20,
+          "earnings": 37
+        },
+        {
+          "prices": 20,
+          "earnings": 37
+        },
+        {
+          "prices": 20,
+          "earnings": 37
+        },
+        {
+          "prices": 20,
+          "earnings": 37
+        },
+        {
+          "prices": 20,
+          "earnings": 37
+        },
+        {
+          "prices": 20,
+          "earnings": 37
+        },
+        {
+          "prices": 20,
+          "earnings": 37
+        },
+        {
+          "prices": 20,
+          "earnings": 37
+        },
+        {
+          "prices": 20,
+          "earnings": 37
+        },
+        {
+          "prices": 20,
+          "earnings": 37
+        },
+        {
+          "prices": 20,
+          "earnings": 37
+        },
+        {
+          "prices": 20,
+          "earnings": 37
+        }
+      ]
+    },
+    {
+      "id": "low",
+      "label": "Low inflation, low pay growth",
+      "reason": "Prices rise by 2.0% and earnings by 2.2% every year. Both are below 2.5%, so the 2.5% minimum decides the triple lock every year. It shows what the minimum alone is worth.",
+      "source_id": null,
+      "path": [
+        {
+          "prices": 20,
+          "earnings": 22
+        },
+        {
+          "prices": 20,
+          "earnings": 22
+        },
+        {
+          "prices": 20,
+          "earnings": 22
+        },
+        {
+          "prices": 20,
+          "earnings": 22
+        },
+        {
+          "prices": 20,
+          "earnings": 22
+        },
+        {
+          "prices": 20,
+          "earnings": 22
+        },
+        {
+          "prices": 20,
+          "earnings": 22
+        },
+        {
+          "prices": 20,
+          "earnings": 22
+        },
+        {
+          "prices": 20,
+          "earnings": 22
+        },
+        {
+          "prices": 20,
+          "earnings": 22
+        },
+        {
+          "prices": 20,
+          "earnings": 22
+        },
+        {
+          "prices": 20,
+          "earnings": 22
+        },
+        {
+          "prices": 20,
+          "earnings": 22
+        },
+        {
+          "prices": 20,
+          "earnings": 22
+        },
+        {
+          "prices": 20,
+          "earnings": 22
+        },
+        {
+          "prices": 20,
+          "earnings": 22
+        },
+        {
+          "prices": 20,
+          "earnings": 22
+        },
+        {
+          "prices": 20,
+          "earnings": 22
+        },
+        {
+          "prices": 20,
+          "earnings": 22
+        },
+        {
+          "prices": 20,
+          "earnings": 22
+        },
+        {
+          "prices": 20,
+          "earnings": 22
+        },
+        {
+          "prices": 20,
+          "earnings": 22
+        },
+        {
+          "prices": 20,
+          "earnings": 22
+        },
+        {
+          "prices": 20,
+          "earnings": 22
+        },
+        {
+          "prices": 20,
+          "earnings": 22
+        },
+        {
+          "prices": 20,
+          "earnings": 22
+        },
+        {
+          "prices": 20,
+          "earnings": 22
+        },
+        {
+          "prices": 20,
+          "earnings": 22
+        },
+        {
+          "prices": 20,
+          "earnings": 22
+        },
+        {
+          "prices": 20,
+          "earnings": 22
+        }
+      ]
+    },
+    {
+      "id": "weak-earnings",
+      "label": "Weak earnings",
+      "reason": "Prices rise by 3.0% and earnings by 1.5% every year. Prices decide the triple lock and the double lock. The earnings link falls behind prices.",
+      "source_id": null,
+      "path": [
+        {
+          "prices": 30,
+          "earnings": 15
+        },
+        {
+          "prices": 30,
+          "earnings": 15
+        },
+        {
+          "prices": 30,
+          "earnings": 15
+        },
+        {
+          "prices": 30,
+          "earnings": 15
+        },
+        {
+          "prices": 30,
+          "earnings": 15
+        },
+        {
+          "prices": 30,
+          "earnings": 15
+        },
+        {
+          "prices": 30,
+          "earnings": 15
+        },
+        {
+          "prices": 30,
+          "earnings": 15
+        },
+        {
+          "prices": 30,
+          "earnings": 15
+        },
+        {
+          "prices": 30,
+          "earnings": 15
+        },
+        {
+          "prices": 30,
+          "earnings": 15
+        },
+        {
+          "prices": 30,
+          "earnings": 15
+        },
+        {
+          "prices": 30,
+          "earnings": 15
+        },
+        {
+          "prices": 30,
+          "earnings": 15
+        },
+        {
+          "prices": 30,
+          "earnings": 15
+        },
+        {
+          "prices": 30,
+          "earnings": 15
+        },
+        {
+          "prices": 30,
+          "earnings": 15
+        },
+        {
+          "prices": 30,
+          "earnings": 15
+        },
+        {
+          "prices": 30,
+          "earnings": 15
+        },
+        {
+          "prices": 30,
+          "earnings": 15
+        },
+        {
+          "prices": 30,
+          "earnings": 15
+        },
+        {
+          "prices": 30,
+          "earnings": 15
+        },
+        {
+          "prices": 30,
+          "earnings": 15
+        },
+        {
+          "prices": 30,
+          "earnings": 15
+        },
+        {
+          "prices": 30,
+          "earnings": 15
+        },
+        {
+          "prices": 30,
+          "earnings": 15
+        },
+        {
+          "prices": 30,
+          "earnings": 15
+        },
+        {
+          "prices": 30,
+          "earnings": 15
+        },
+        {
+          "prices": 30,
+          "earnings": 15
+        },
+        {
+          "prices": 30,
+          "earnings": 15
+        }
+      ]
+    },
+    {
+      "id": "volatile",
+      "label": "Volatile prices",
+      "reason": "Years of high inflation and low pay growth (6.0% and 2.0%) alternate with years of low inflation and catch-up pay growth (1.0% and 5.0%). It shows how rules that take the higher measure each year pull ahead of both prices and earnings.",
+      "source_id": null,
+      "path": [
+        {
+          "prices": 60,
+          "earnings": 20
+        },
+        {
+          "prices": 10,
+          "earnings": 50
+        },
+        {
+          "prices": 60,
+          "earnings": 20
+        },
+        {
+          "prices": 10,
+          "earnings": 50
+        },
+        {
+          "prices": 60,
+          "earnings": 20
+        },
+        {
+          "prices": 10,
+          "earnings": 50
+        },
+        {
+          "prices": 60,
+          "earnings": 20
+        },
+        {
+          "prices": 10,
+          "earnings": 50
+        },
+        {
+          "prices": 60,
+          "earnings": 20
+        },
+        {
+          "prices": 10,
+          "earnings": 50
+        },
+        {
+          "prices": 60,
+          "earnings": 20
+        },
+        {
+          "prices": 10,
+          "earnings": 50
+        },
+        {
+          "prices": 60,
+          "earnings": 20
+        },
+        {
+          "prices": 10,
+          "earnings": 50
+        },
+        {
+          "prices": 60,
+          "earnings": 20
+        },
+        {
+          "prices": 10,
+          "earnings": 50
+        },
+        {
+          "prices": 60,
+          "earnings": 20
+        },
+        {
+          "prices": 10,
+          "earnings": 50
+        },
+        {
+          "prices": 60,
+          "earnings": 20
+        },
+        {
+          "prices": 10,
+          "earnings": 50
+        },
+        {
+          "prices": 60,
+          "earnings": 20
+        },
+        {
+          "prices": 10,
+          "earnings": 50
+        },
+        {
+          "prices": 60,
+          "earnings": 20
+        },
+        {
+          "prices": 10,
+          "earnings": 50
+        },
+        {
+          "prices": 60,
+          "earnings": 20
+        },
+        {
+          "prices": 10,
+          "earnings": 50
+        },
+        {
+          "prices": 60,
+          "earnings": 20
+        },
+        {
+          "prices": 10,
+          "earnings": 50
+        },
+        {
+          "prices": 60,
+          "earnings": 20
+        },
+        {
+          "prices": 10,
+          "earnings": 50
+        }
+      ]
+    },
+    {
+      "id": "falling-earnings",
+      "label": "A year of falling earnings",
+      "reason": "Earnings fall by 1.0% in the first year while prices rise by 1.0%. Pay then recovers by 6.0% with prices up 3.0%, and later years are steady at 2.0% and 3.5%. It tests negative growth and the cash floor.",
+      "source_id": null,
+      "path": [
+        {
+          "prices": 10,
+          "earnings": -10
+        },
+        {
+          "prices": 30,
+          "earnings": 60
+        },
+        {
+          "prices": 20,
+          "earnings": 35
+        },
+        {
+          "prices": 20,
+          "earnings": 35
+        },
+        {
+          "prices": 20,
+          "earnings": 35
+        },
+        {
+          "prices": 20,
+          "earnings": 35
+        },
+        {
+          "prices": 20,
+          "earnings": 35
+        },
+        {
+          "prices": 20,
+          "earnings": 35
+        },
+        {
+          "prices": 20,
+          "earnings": 35
+        },
+        {
+          "prices": 20,
+          "earnings": 35
+        },
+        {
+          "prices": 20,
+          "earnings": 35
+        },
+        {
+          "prices": 20,
+          "earnings": 35
+        },
+        {
+          "prices": 20,
+          "earnings": 35
+        },
+        {
+          "prices": 20,
+          "earnings": 35
+        },
+        {
+          "prices": 20,
+          "earnings": 35
+        },
+        {
+          "prices": 20,
+          "earnings": 35
+        },
+        {
+          "prices": 20,
+          "earnings": 35
+        },
+        {
+          "prices": 20,
+          "earnings": 35
+        },
+        {
+          "prices": 20,
+          "earnings": 35
+        },
+        {
+          "prices": 20,
+          "earnings": 35
+        },
+        {
+          "prices": 20,
+          "earnings": 35
+        },
+        {
+          "prices": 20,
+          "earnings": 35
+        },
+        {
+          "prices": 20,
+          "earnings": 35
+        },
+        {
+          "prices": 20,
+          "earnings": 35
+        },
+        {
+          "prices": 20,
+          "earnings": 35
+        },
+        {
+          "prices": 20,
+          "earnings": 35
+        },
+        {
+          "prices": 20,
+          "earnings": 35
+        },
+        {
+          "prices": 20,
+          "earnings": 35
+        },
+        {
+          "prices": 20,
+          "earnings": 35
+        },
+        {
+          "prices": 20,
+          "earnings": 35
+        }
+      ]
+    }
+  ]
+}

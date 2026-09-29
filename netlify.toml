@@ -1,0 +1,42 @@
+# Netlify builds a PREVIEW. It is not the published site.
+# The preview asks for a user name and password (basic authentication). The build writes that
+# rule to _site/_headers from the BASIC_AUTH variable, which is set in Netlify and nowhere else.
+# No password is in this file or in the repository. A preview build on Netlify stops if
+# BASIC_AUTH is missing.
+#
+# Before launch, all three of these change together:
+#   1. SITE_ENV becomes "production" and the launch settings in docs/launch-dependencies.md are set.
+#   2. The X-Robots-Tag header below is removed. scripts/check-build.mjs stops a production
+#      build while it is still here.
+#   3. BASIC_AUTH is deleted in Netlify. A production build stops while it is set.
+
+[build]
+  command = "npm test && npm run build"
+  publish = "_site"
+
+[build.environment]
+  NODE_VERSION = "24"
+  SITE_ENV = "preview"
+  # The accessibility scripts use a local Chrome and do not run on Netlify.
+  PUPPETEER_SKIP_DOWNLOAD = "1"
+  # BASIC_AUTH is a secret in Netlify, and the build writes it to _site/_headers on purpose.
+  # Netlify scans build output for secret values and fails the build when it finds one,
+  # so that one file is left out of the scan.
+  SECRETS_SCAN_OMIT_PATHS = "_site/_headers"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Covers files that cannot carry a noindex tag, such as the CSV and the share images.
+    X-Robots-Tag = "noindex"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "DENY"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+    Content-Security-Policy = "default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'"
+
+# Assets are not fingerprinted, so they are cached for a short time only.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"

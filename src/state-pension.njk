@@ -1,0 +1,199 @@
+---
+layout: base.njk
+permalink: /state-pension/
+---
+{%- import "macros.njk" as m with context -%}
+<h1>The State Pension: what people receive and why</h1>
+
+<p class="lede">The State Pension is a regular payment from the government to people who have reached State Pension age. How much a person gets depends on their National Insurance record. The two headline rates are full rates. Many people get less, and some get more.</p>
+
+{% call m.note("This page explains the rules. It cannot tell you what you will get", 2) %}
+<p>For your own amount, use the official services: <a href="https://www.gov.uk/check-state-pension">check your State Pension forecast</a>, <a href="https://www.gov.uk/state-pension-age">check your State Pension age</a> and <a href="https://www.gov.uk/check-national-insurance-record">check your National Insurance record</a>, all on GOV.UK.</p>
+{% endcall %}
+
+{{ m.contents([
+  ["purpose", "What the State Pension is for"],
+  ["which-system", "Which pension applies"],
+  ["qualifying", "National Insurance and qualifying years"],
+  ["what-people-receive", "What people actually receive"],
+  ["age-and-claiming", "State Pension age, claiming and deferring"],
+  ["components", "Parts of the pension that rise by a different rule"],
+  ["tax-and-payment", "Tax and how it is paid"],
+  ["extra-help", "Pension Credit and other help"],
+  ["financing", "How it is paid for"],
+  ["overseas", "People who live abroad"]
+]) }}
+
+<h2 id="purpose">What the State Pension is for</h2>
+
+<p>The State Pension gives a basic income in later life. It sits beside workplace and personal pensions, which people build up through their own and their employer's contributions. The Pensions Commission describes it as the base that other retirement saving is built on. {{ m.c("pc-firm-foundation") }}</p>
+
+<p>Most pensioners have more than one source of income. {{ m.f("share-with-state-pension") }} of pensioner units receive the State Pension, and {{ m.f("share-with-private-pension") }} receive a private pension. {{ m.f("share-state-only") }} have only the State Pension and other state benefits.</p>
+{{ m.sourceNote("share-state-only" | figure) }}
+
+<h2 id="which-system">Which pension applies</h2>
+
+<p>There are two systems.</p>
+
+<ul>
+  <li>The <strong>new State Pension</strong> is for men born on or after 6 April 1951 and women born on or after 6 April 1953. These are people who reached State Pension age on or after 6 April 2016.</li>
+  <li>The <strong>basic State Pension</strong> is for people born before those dates.</li>
+</ul>
+<p>{{ m.c("which-system") }}</p>
+
+<ul class="cards">
+  <li>{{ m.stat("nsp-full-weekly" | figure, "The full rate for a person on the new system with the record the rules require.") }}</li>
+  <li>{{ m.stat("bsp-full-weekly" | figure, "The full rate of the basic part only, for a person on the older system.") }}</li>
+</ul>
+
+{% call m.note("Why the two rates cannot be compared directly", 3) %}
+<p>The basic State Pension is one part of what people on the older system receive. Many of them also get Additional State Pension, which was based on their earnings. The new State Pension replaced both parts with a single amount. So the gap between {{ m.f("bsp-full-weekly") }} and {{ m.f("nsp-full-weekly") }} does not show that people on the older system receive less in total. The averages in <a href="#what-people-receive">What people actually receive</a> show this.</p>
+{% endcall %}
+
+<h2 id="qualifying">National Insurance and qualifying years</h2>
+
+<p>Entitlement is built up through qualifying years. A qualifying year is a tax year in which a person paid, or was credited with, enough National Insurance.</p>
+
+<h3>The new State Pension</h3>
+<ul>
+  <li>A person usually needs {{ m.f("nsp-min-qualifying-years") }} qualifying years to get any new State Pension.</li>
+  <li>A person whose National Insurance record began after April 2016 needs {{ m.f("nsp-full-rate-years") }} qualifying years for the full rate.</li>
+  <li>Each qualifying year added after 5 April 2016 adds about {{ m.f("nsp-per-qualifying-year") }} a week, up to the full rate.</li>
+</ul>
+{{ m.sourceNote("nsp-full-rate-years" | figure) }}
+
+{% call m.note("35 years does not guarantee the full rate for everyone", 3) %}
+<p>Most people who are retiring now began work before 2016. For them, the government worked out a starting amount from their record up to April 2016. {{ m.c("starting-amount") }}</p>
+<p>The starting amount was reduced for any years the person was contracted out. Being contracted out meant paying lower National Insurance and building up a workplace or personal pension in place of the Additional State Pension. {{ m.c("contracted-out") }}</p>
+<p>So a person with 35 or more years can be below the full rate, and a person with fewer than 35 can reach it.</p>
+{% endcall %}
+
+<h3>The basic State Pension</h3>
+<p>The number of years needed for the full basic State Pension depends on date of birth and sex. {{ ("bsp-30-years" | claim).statement }} {{ m.c("bsp-30-years") }}</p>
+
+<h3>National Insurance credits</h3>
+<p>People who are not paying National Insurance can get credits in some situations, for example when they are unemployed, ill, or caring for a child or an adult. Some credits are automatic. Others have to be claimed. {{ m.c("ni-credits") }}</p>
+
+<h2 id="what-people-receive">What people actually receive</h2>
+
+<p>These are averages of the State Pension in payment in March 2026. They include any protected payment or Additional State Pension. They are at the rates in force before the increase of April 2026, so they are not comparable with the 2026/27 full rates above.</p>
+
+{% call m.scrollTable("Mean weekly State Pension in payment, March 2026") %}
+<table>
+  <caption>Mean weekly State Pension in payment, March 2026, before tax</caption>
+  <thead><tr><th scope="col">System</th><th scope="col" class="num">Men</th><th scope="col" class="num">Women</th><th scope="col" class="num">Everyone</th></tr></thead>
+  <tbody>
+    <tr><th scope="row">New State Pension</th><td class="num">{{ m.f("nsp-mean-weekly-men") }}</td><td class="num">{{ m.f("nsp-mean-weekly-women") }}</td><td class="num">{{ m.f("nsp-mean-weekly") }}</td></tr>
+    <tr><th scope="row">State Pension before 2016</th><td class="num">{{ m.f("pre2016-mean-weekly-men") }}</td><td class="num">{{ m.f("pre2016-mean-weekly-women") }}</td><td class="num">{{ m.f("pre2016-mean-weekly") }}</td></tr>
+    <tr><th scope="row">Both systems</th><td class="num">Not published in the release</td><td class="num">Not published in the release</td><td class="num">{{ m.f("sp-mean-weekly") }}</td></tr>
+  </tbody>
+</table>
+{% endcall %}
+{{ m.sourceNote("nsp-mean-weekly" | figure) }}
+
+<p>In March 2026, {{ m.f("sp-recipients") }} people were receiving the State Pension, of whom {{ m.f("nsp-recipients") }} were on the new State Pension.</p>
+{{ m.sourceNote("sp-recipients" | figure) }}
+
+<p>On the older system, women receive less on average than men. On the new system the gap is much smaller.</p>
+
+{% call m.unavailable("the share of people on the full rate", 3) %}
+<p>We did not find a published figure for the share of new State Pension recipients who receive the full rate, more than it, or less than it. The releases we read do not give it. We have not estimated it.</p>
+{% endcall %}
+
+<h2 id="age-and-claiming">State Pension age, claiming and deferring</h2>
+
+<p>State Pension age is rising from 66 to 67 between 2026 and 2028. The change is happening now. {{ m.c("spa-67") }}</p>
+
+<p>The law provides for a further rise to 68 between 2044 and 2046. {{ m.c("spa-68") }} A third review of State Pension age began in July 2025. {{ m.c("spa-review") }}</p>
+
+<p>The State Pension has to be claimed. {{ m.c("claim-not-automatic") }} A pension that is not claimed is deferred. {{ m.c("deferral-default") }}</p>
+
+<p>Deferring raises the weekly amount later. On the new State Pension the increase is 1% for every {{ m.f("deferral-weeks-new") }} weeks. On the basic State Pension it is 1% for every {{ m.f("deferral-weeks-basic") }} weeks.</p>
+{{ m.sourceNote("deferral-weeks-new" | figure) }}
+
+<h2 id="components">Parts of the pension that rise by a different rule</h2>
+
+<p>The triple lock applies to the full rate of the new State Pension and to the basic State Pension. Other parts rise with prices.</p>
+
+{% call m.scrollTable("How each part of the State Pension rose in April 2026") %}
+<table>
+  <caption>How each part of the State Pension rose in April 2026</caption>
+  <thead><tr><th scope="col">Part</th><th scope="col">What it is</th><th scope="col" class="num">Increase</th></tr></thead>
+  <tbody>
+    <tr><th scope="row">New State Pension, full rate</th><td>The standard amount on the new system</td><td class="num">{{ history.years[history.years.length - 1].applied_tenths | percent }}</td></tr>
+    <tr><th scope="row">Basic State Pension</th><td>The standard amount on the older system</td><td class="num">{{ history.years[history.years.length - 1].applied_tenths | percent }}</td></tr>
+    <tr><th scope="row">Protected payment</th><td>An amount above the full new rate, for a person whose starting amount in 2016 was higher</td><td class="num">{{ m.f("cpi-linked-uprating-2026") }}</td></tr>
+    <tr><th scope="row">Additional State Pension</th><td>The earnings-related part of the older system</td><td class="num">{{ m.f("cpi-linked-uprating-2026") }}</td></tr>
+    <tr><th scope="row">Extra pension from deferring</th><td>The increase earned by claiming late</td><td class="num">{{ m.f("cpi-linked-uprating-2026") }}</td></tr>
+  </tbody>
+</table>
+{% endcall %}
+{{ m.sourceNote("cpi-linked-uprating-2026" | figure) }}
+<p>{{ m.c("protected-payment-cpi") }} {{ m.c("deferral-increase-cpi") }}</p>
+
+<p>This matters for any calculation. Applying one percentage to a person's whole payment gives the wrong answer if part of that payment rises by a different rule.</p>
+
+<h2 id="tax-and-payment">Tax and how it is paid</h2>
+
+<p>The State Pension is taxable, but it is paid without tax taken off. {{ m.c("taxable-paid-gross") }} Tax that is due is usually collected through the tax code on a private pension or on earnings. If it cannot be collected that way, HM Revenue and Customs sends a bill. {{ m.c("simple-assessment") }}</p>
+
+<p>The standard Personal Allowance is {{ m.f("personal-allowance") }} a year. The full new State Pension over 52 weeks is {{ m.f("nsp-full-52-weeks") }}, which is just below it. A person with a protected payment, extra pension from deferring, or any other income can have tax to pay.</p>
+{{ m.sourceNote("personal-allowance" | figure) }}
+
+{% call m.note("Announced, not yet law", 3) %}
+<p>{{ ("simple-assessment-2027" | claim).statement }} {{ m.c("simple-assessment-2027") }}</p>
+{% endcall %}
+
+<p>The State Pension is usually paid every 4 weeks, in arrears. {{ m.c("paid-four-weekly") }} {{ m.c("paid-in-arrears") }}</p>
+
+{% call m.note("A 4-week payment is not a month's money", 3) %}
+<p>There are 13 four-week periods in 52 weeks. A payment of 4 weeks at the full new rate is {{ (("nsp-full-weekly" | figPence) * 4) | money }}. Spread over 12 calendar months, 52 weeks at that rate is {{ ((("nsp-full-weekly" | figPence) * 52) / 12) | round | money }} a month. Budgeting by the month with 4-week payments means one payment in the year falls in a month that already had one.</p>
+{% endcall %}
+
+<h2 id="extra-help">Pension Credit and other help</h2>
+
+<p>These are separate from the State Pension. Each has its own rules, and none is paid automatically with the State Pension.</p>
+
+<h3>Pension Credit</h3>
+<p>Pension Credit is a means-tested benefit for people over State Pension age on a low income. The part called Guarantee Credit tops up weekly income to {{ m.f("pension-credit-single") }} for a single person or {{ m.f("pension-credit-couple") }} for a couple. Extra amounts apply for severe disability and for carers.</p>
+{{ m.sourceNote("pension-credit-single" | figure) }}
+
+<p>Many people who are entitled do not claim. In the latest estimate, {{ m.f("pension-credit-take-up") }} of entitled families claimed. About {{ m.f("pension-credit-non-recipients") }} families did not, and {{ m.f("pension-credit-unclaimed") }} went unclaimed.</p>
+{{ m.sourceNote("pension-credit-take-up" | figure) }}
+<p><a href="https://www.gov.uk/pension-credit">Check whether you can get Pension Credit on GOV.UK</a>.</p>
+
+<h3>Help with housing and Council Tax</h3>
+<p>{{ ("housing-benefit" | claim).statement }} {{ m.c("housing-benefit") }} {{ ("council-tax-reduction" | claim).statement }} {{ m.c("council-tax-reduction") }}</p>
+
+<h3>Help with the costs of disability</h3>
+<p>Attendance Allowance is for people over State Pension age who need help or supervision because of a disability or health condition. It is {{ m.f("attendance-allowance-lower") }} or {{ m.f("attendance-allowance-higher") }} a week and is not means-tested. It covers England and Wales. {{ m.c("aa-scotland") }}</p>
+{{ m.sourceNote("attendance-allowance-lower" | figure) }}
+
+<h3>Winter Fuel Payment</h3>
+<p>The Winter Fuel Payment is paid to people over State Pension age in England, Wales and Northern Ireland. For people with a total income over {{ m.f("winter-fuel-income-limit") }}, HM Revenue and Customs takes the payment back through the tax system.</p>
+{{ m.sourceNote("winter-fuel-income-limit" | figure) }}
+
+<h2 id="financing">How it is paid for</h2>
+
+<p>The State Pension is paid from the National Insurance Fund. {{ m.c("pay-as-you-go") }}</p>
+
+<p>This is the main difference from a workplace or personal pension. In those, contributions are invested in a pot that belongs to the saver. In the State Pension there is no pot. A person's contributions build an entitlement under the rules, and the money paid in by today's workers and employers pays today's pensions.</p>
+
+<ul class="cards cards--three">
+  <li>{{ m.stat("nif-contributions-2024-25" | figure, "Money paid into the Fund in the year.") }}</li>
+  <li>{{ m.stat("nif-state-pension-2024-25" | figure, "State Pension paid out of the Fund in the year.") }}</li>
+  <li>{{ m.stat("nif-balance-2025" | figure, "What the Fund held at the end of the year.") }}</li>
+</ul>
+
+<p>For national spending on the State Pension and how it is expected to change, see <a href="/reform-options/#public-finances">Reform options: costs and savings</a>.</p>
+
+<h2 id="overseas">People who live abroad</h2>
+
+<p>{{ ("overseas-frozen" | claim).statement }} {{ m.c("overseas-frozen") }} {{ ("overseas-return" | claim).statement }} {{ m.c("overseas-return") }}</p>
+
+<p>About {{ m.f("sp-paid-overseas") }} State Pension recipients lived outside the UK in 2024/25.</p>
+{{ m.sourceNote("sp-paid-overseas" | figure) }}
+
+{% call m.unavailable("how many people have a pension that is not increased", 3) %}
+<p>We did not find a current official figure for the number of people whose pension is not increased, or for the cost of increasing it. Check the <a href="https://www.gov.uk/state-pension-if-you-retire-abroad">official guide to the State Pension abroad</a> for the rule in a particular country.</p>
+{% endcall %}

@@ -1,0 +1,313 @@
+---
+layout: base.njk
+permalink: /living-on-a-pension/
+---
+{%- import "macros.njk" as m with context -%}
+<h1>Living on a pension: what the money can cover</h1>
+
+<p class="lede">Whether a pension is enough depends on what is being asked. What people spend, what research says a standard of living costs, and what one household needs are three different things. This page keeps them apart, then gives you a budget to fill in yourself.</p>
+
+{{ m.contents([
+  ["three-questions", "Three questions about living costs"],
+  ["research-budgets", "What research says a standard of living costs"],
+  ["observed", "What retired households spend"],
+  ["income", "What income pensioners have"],
+  ["own-needs", "What one household needs"],
+  ["prices", "Prices and pensioner households"],
+  ["budget", "Try it: what does the pension cover?"]
+]) }}
+
+<h2 id="three-questions">Three questions about living costs</h2>
+
+<ol>
+  <li><strong>What do pensioner households spend?</strong> Surveys record this. Spending is limited by income, so low spending can mean going without. It does not show low need.</li>
+  <li><strong>What does a minimum acceptable standard of living cost?</strong> Researchers ask groups of the public to agree a list of goods and services, then price it. The result is a benchmark.</li>
+  <li><strong>What does a particular household need?</strong> That depends on housing, health, where the household lives, and who is in it. No national figure answers it.</li>
+</ol>
+
+{% call m.note("Four things these figures are not", 3) %}
+<ul>
+  <li>A research budget is not a legal entitlement. No benefit is set by it.</li>
+  <li>Falling below a research budget is not the same as being in poverty as official statistics measure it. The two use different tests.</li>
+  <li>A survey average for households is not how one person spends a State Pension.</li>
+  <li>Do not assume that a household lives on the State Pension alone, or that it receives extra support automatically. Most pensioners have other income. Many who could claim Pension Credit do not.</li>
+</ul>
+{% endcall %}
+
+<h2 id="research-budgets">What research says a standard of living costs</h2>
+
+<h3>The Minimum Income Standard, 2026</h3>
+
+<p>The Minimum Income Standard is produced by Loughborough University for the Joseph Rowntree Foundation. Groups of members of the public agree what a household needs for a minimum socially acceptable standard of living. {{ m.c("mis-not-poverty-line") }}</p>
+
+<ul class="cards">
+  <li>{{ m.stat("mis-single-ex-rent" | figure, "A single pensioner, not counting rent.") }}</li>
+  <li>{{ m.stat("mis-couple-ex-rent" | figure, "A pensioner couple, not counting rent.") }}</li>
+</ul>
+
+<p>Rent is shown separately because it differs so much by area. The budgets use an indicative private rent of {{ m.f("mis-single-rent") }} a week for a single pensioner and {{ m.f("mis-couple-rent") }} for a couple.</p>
+{{ m.sourceNote("mis-single-rent" | figure) }}
+
+{% call m.note("The 2026 budgets cannot be compared directly with earlier years", 4) %}
+<p>{{ ("mis-tenure-change" | claim).statement }} {{ m.c("mis-tenure-change") }} {{ ("mis-basket-change" | claim).statement }} {{ m.c("mis-basket-change") }} A change in the benchmark from one year to the next is not only a change in prices.</p>
+{% endcall %}
+
+<h4>How pension income compares with the budget</h4>
+
+<p>The researchers model a household that receives the State Pension or Pension Credit and every other benefit it is entitled to. They compare its income after rent and Council Tax with the budget.</p>
+
+{% call m.scrollTable("Share of the Minimum Income Standard covered by pension income") %}
+<table>
+  <caption>Share of the Minimum Income Standard budget covered, April 2026</caption>
+  <thead><tr><th scope="col">Household</th><th scope="col">Housing</th><th scope="col">Income from</th><th scope="col" class="num">Share covered</th></tr></thead>
+  <tbody>
+    <tr><th scope="row">Single pensioner</th><td>Private rent</td><td>State Pension or Pension Credit</td><td class="num">{{ m.f("mis-cover-single-private") }}</td></tr>
+    <tr><th scope="row">Single pensioner</th><td>Social rent</td><td>State Pension or Pension Credit</td><td class="num">{{ m.f("mis-cover-single-social") }}</td></tr>
+    <tr><th scope="row">Pensioner couple</th><td>Private rent</td><td>Pension Credit</td><td class="num">{{ m.f("mis-cover-couple-private-pc") }}</td></tr>
+    <tr><th scope="row">Pensioner couple</th><td>Private rent</td><td>Full State Pension</td><td class="num">{{ m.f("mis-cover-couple-private-full") }}</td></tr>
+    <tr><th scope="row">Pensioner couple</th><td>Social rent</td><td>Full State Pension</td><td class="num">{{ m.f("mis-cover-couple-social-full") }}</td></tr>
+  </tbody>
+</table>
+{% endcall %}
+{{ m.sourceNote("mis-cover-single-private" | figure) }}
+
+<p>Two cautions. The cases assume every benefit is claimed, and many are not. {{ m.c("mis-all-benefits-assumed") }} And the budget leaves out the extra costs of disability and care. {{ m.c("mis-excludes-disability") }}</p>
+
+<h3>The Retirement Living Standards</h3>
+
+<p>The Retirement Living Standards are produced by the same research centre for Pensions UK. They describe three levels: minimum, moderate and comfortable.</p>
+
+{% call m.scrollTable("Retirement Living Standards, yearly spending") %}
+<table>
+  <caption>Retirement Living Standards: yearly spending, UK outside London, April 2025 prices</caption>
+  <thead><tr><th scope="col">Standard</th><th scope="col" class="num">One person</th><th scope="col" class="num">Two people</th></tr></thead>
+  <tbody>
+    <tr><th scope="row">Minimum</th><td class="num">{{ m.f("rls-min-single") }}</td><td class="num">{{ m.f("rls-min-couple") }}</td></tr>
+    <tr><th scope="row">Moderate</th><td class="num">{{ m.f("rls-mod-single") }}</td><td class="num">{{ m.f("rls-mod-couple") }}</td></tr>
+    <tr><th scope="row">Comfortable</th><td class="num">{{ m.f("rls-comf-single") }}</td><td class="num">{{ m.f("rls-comf-couple") }}</td></tr>
+  </tbody>
+</table>
+{% endcall %}
+{{ m.sourceNote("rls-mod-single" | figure) }}
+
+<p>These figures leave out rent and mortgage payments. {{ m.c("rls-housing-assumption") }} They are spending, so the income needed is higher once tax is paid. {{ m.c("rls-after-tax") }}</p>
+
+<p>The minimum standard and the Minimum Income Standard are not two separate pieces of evidence. The minimum standard is the Minimum Income Standard pensioner budget for 2025. If they agree, that is because they are the same research.</p>
+
+<h2 id="observed">What retired households spend</h2>
+
+{{ m.dataTable("observed-spending") }}
+
+<p>How to read this table.</p>
+<ul>
+  <li>These are averages over every household in the group, including those that spent nothing on an item.</li>
+  <li>The groups are small. {{ m.c("fs-small-samples") }} The group of two adults mainly dependent on state pensions had {{ tables["observed-spending"].rows[0][2] }} households in the sample, so its figures are weak.</li>
+  <li>Households that depend mainly on state pensions spend less than other retired households. The table cannot show whether that is because they need less or because they have less.</li>
+  <li>The categories are not the same as those in the research budgets, so the two cannot be compared line by line. Council Tax, for example, is inside "Other expenditure items" here.</li>
+</ul>
+
+<h2 id="income">What income pensioners have</h2>
+
+<ul class="cards">
+  <li>{{ m.stat("income-median-ahc-single" | figure, "Half of single pensioners have less than this, and half have more.") }}</li>
+  <li>{{ m.stat("income-median-ahc-couple" | figure, "For the couple together, not each person.") }}</li>
+</ul>
+
+<p>Benefits, including the State Pension, make up {{ m.f("benefit-share-single") }} of the gross income of single pensioners and {{ m.f("benefit-share-couple") }} of the gross income of couples. The rest comes from workplace and personal pensions, earnings and savings.</p>
+{{ m.sourceNote("benefit-share-single" | figure) }}
+
+{% call m.note("Do not set these incomes beside the research budgets without care", 4) %}
+<p>The income figures are after Council Tax. The research budgets count Council Tax as a cost. Comparing them directly counts Council Tax twice. The periods also differ: incomes are for 2024/25 and the 2026 budget is priced at April 2026.</p>
+{% endcall %}
+
+<p>For how incomes and wealth are spread among pensioners, see <a href="/reform-options/#who">Reform options: who receives what</a>.</p>
+
+<h2 id="own-needs">What one household needs</h2>
+
+<dl>
+  <dt>Housing</dt>
+  <dd>The largest difference between households. An owner with no mortgage pays no rent but pays for repairs and buildings insurance. A renter's costs depend on the area and on whether the landlord is a council, a housing association or private. Taking the rent out of a renter's budget does not make an owner's budget.</dd>
+  <dt>Sharing costs</dt>
+  <dd>Two people do not need twice what one person needs. Heating, Council Tax and rent are shared. When a partner dies, income falls by more than costs do.</dd>
+  <dt>Where the household lives</dt>
+  <dd>The research budgets are for urban areas outside London. London costs more. Rural households often need a car where the budgets assume buses.</dd>
+  <dt>Energy</dt>
+  <dd>A person who is at home all day, or who is ill, needs more heating. An older or poorly insulated home costs more to heat.</dd>
+  <dt>Disability and care</dt>
+  <dd>No research budget on this page includes them. They can be large. Attendance Allowance exists to help with them and has to be claimed. <a href="/state-pension/#extra-help">Help with the costs of disability</a>.</dd>
+  <dt>Costs that come now and then</dt>
+  <dd>A cooker, a boiler repair, new glasses. The research budgets include a weekly share for replacing things. That spreads the cost on paper. It does not mean the household has the cash on the day the cooker breaks.</dd>
+</dl>
+
+<h2 id="prices">Prices and pensioner households</h2>
+
+<p>The inflation rate is how fast prices are rising now. It is not how much prices have risen in total. When inflation falls from 10% to 3%, prices are still rising, on top of the earlier rise.</p>
+
+<p>The Office for National Statistics publishes a measure of costs for different types of household.</p>
+
+{% call m.scrollTable("Rise in household costs, retired and non-retired households") %}
+<table>
+  <caption>Rise in household costs to June 2026</caption>
+  <thead><tr><th scope="col">Household type</th><th scope="col" class="num">Over 1 year</th><th scope="col" class="num">Over 5 years</th></tr></thead>
+  <tbody>
+    <tr><th scope="row">Retired households</th><td class="num">{{ m.f("hci-retired") }}</td><td class="num">{{ m.f("hci-retired-5yr") }}</td></tr>
+    <tr><th scope="row">Non-retired households</th><td class="num">{{ m.f("hci-non-retired") }}</td><td class="num">{{ m.f("hci-non-retired-5yr") }}</td></tr>
+  </tbody>
+</table>
+{% endcall %}
+{{ m.sourceNote("hci-retired" | figure) }}
+
+<p>To compare the pension with prices, the two must cover the same period. Over the five tax years from 2021/22 to 2026/27 the full new State Pension rose from {{ (history.years | where("tax_year", "2021/22") | first).new_pence | money }} to {{ (history.years | where("tax_year", "2026/27") | first).new_pence | money }} a week. That period is close to the five years in the table but not the same, and the pension rises once a year while prices rise through the year. One inflation reading does not test whether the pension is adequate. <a href="/history/">Rates and prices over time</a>.</p>
+
+<section class="tool" aria-labelledby="budget">
+  <h2 id="budget">Try it: what does the pension cover?</h2>
+
+  <p>Enter a household's income and spending to see what is left, or what is short. You can start from an example budget and change it.</p>
+
+  {% call m.note("Before you start", 3) %}
+  <ul>
+    <li><strong>Your figures stay on your device.</strong> Nothing you enter is sent, stored or put in the page address. Reloading or leaving the page clears it. <a href="/privacy/">Privacy</a>.</li>
+    <li><strong>This is a budget, not a decision about benefits.</strong> The tool does not work out tax or any benefit.</li>
+    <li><strong>It shows the present.</strong> It does not project future prices or pension increases.</li>
+    <li><strong>Households it does not cover.</strong> It is for one person or two people who have both reached State Pension age. It does not suit a couple where one partner is under State Pension age, a household with other adults or children, or a person in a care home. The benefit rules for those cases are different. <a href="https://www.gov.uk/benefits-calculators">Benefits calculators listed on GOV.UK</a> can take them into account.</li>
+  </ul>
+  {% endcall %}
+
+  <h3>How to enter amounts</h3>
+  <ol>
+    <li>Enter income <strong>before tax</strong>.</li>
+    <li>Enter a benefit only if you <strong>actually receive</strong> it, and enter it once, as income.</li>
+    <li>Enter each bill at the amount you are <strong>actually charged</strong>. If a discount has already reduced the bill, do not also enter the discount as income.</li>
+    <li>Enter Income Tax for the household on its own line. If tax has already been taken off an income figure you entered, do not enter that tax again.</li>
+    <li>If you do not know the tax, leave it empty. The result will say it is before tax.</li>
+  </ol>
+
+  <div class="no-js-only">
+    {% call m.note("The budget form needs JavaScript", 3) %}
+    <p>The form is not available, because JavaScript is off or did not load. The example budgets are set out in full under <a href="#example-budgets">The example budgets</a>.</p>
+    {% endcall %}
+  </div>
+
+  <form id="budget-form" class="js-only" novalidate autocomplete="off">
+    <fieldset>
+      <legend>Household</legend>
+      <div class="choice"><input type="radio" id="budget-household-single" name="budget-household" value="single" checked><label for="budget-household-single">One person</label></div>
+      <div class="choice"><input type="radio" id="budget-household-couple" name="budget-household" value="couple"><label for="budget-household-couple">Two people</label></div>
+      <p class="hint">Choosing two people adds a second State Pension field and changes the example budgets offered.</p>
+    </fieldset>
+
+    <fieldset>
+      <legend>Period</legend>
+      <div class="field">
+        <label for="budget-period">The amounts I enter are for</label>
+        <span class="hint" id="budget-period-hint">One period for every amount, income and spending.</span>
+        <select id="budget-period" name="budget-period" aria-describedby="budget-period-hint">
+          <option value="week">A week</option>
+          <option value="four-weeks">4 weeks</option>
+          <option value="month">A calendar month</option>
+          <option value="year">A year</option>
+        </select>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Start from an example budget (optional)</legend>
+      <p>Each example is a research budget: what research found a standard of living costs. None is what people actually spend, and none includes disability or care costs. Loading one replaces the spending amounts below.</p>
+      <div class="field">
+        <label for="budget-preset">Example budget</label>
+        <select id="budget-preset" name="budget-preset">
+          <option value="">None: I will enter my own spending</option>
+          {%- for preset in budgets.presets %}
+          <option value="{{ preset.id }}" data-household="{{ preset.household }}">{{ preset.label }} ({{ preset.price_date }} prices)</option>
+          {%- endfor %}
+        </select>
+      </div>
+      <button type="button" class="secondary" id="budget-load">Load this example</button>
+      <div id="budget-preset-about"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Income, before tax</legend>
+      <button type="button" class="secondary" id="budget-fill-pension">Fill in the full new State Pension ({{ "nsp-full-weekly" | fig }} a week)</button>
+      <p class="hint">The full rate is not everyone's payment. Replace it with the amount actually received.</p>
+      <div class="fields">
+        {%- for row in budgets.income %}
+        <div{% if row.couple_only %} data-couple-only hidden{% endif %}>
+        {{ m.field("budget-" ~ row.id, row.label, "", row.hint, "£", "") }}
+        </div>
+        {%- endfor %}
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Income Tax</legend>
+      {{ m.field("budget-tax", "Income Tax for the household", "", "Leave empty if you do not know it. Enter 0 if you know no tax is due.", "£", "") }}
+    </fieldset>
+
+    <fieldset>
+      <legend>Spending</legend>
+      <div class="fields">
+        {%- for row in budgets.categories %}
+        <div>{{ m.field("budget-" ~ row.id, row.label, "", row.hint, "£", "") }}</div>
+        {%- endfor %}
+      </div>
+    </fieldset>
+
+    <div class="buttons">
+      <button type="submit">Show my budget</button>
+      <button type="button" class="secondary" id="budget-clear">Clear everything I entered</button>
+    </div>
+  </form>
+
+  <p class="visually-hidden" role="status" id="budget-status"></p>
+
+  <div class="result js-only" id="budget-result">
+    <h3>No result yet</h3>
+    <p>Enter amounts, then select Show my budget.</p>
+  </div>
+
+  <h3 id="example-budgets">The example budgets</h3>
+  <p>Every example is a research budget for a household in an urban area outside London. Weekly amounts, in pounds.</p>
+
+  {%- for preset in budgets.presets %}
+  {%- set s = preset.source_id | sourceRecord %}
+  <details class="more">
+    <summary>{{ preset.label }}</summary>
+    <div class="scroll-x" tabindex="0" role="region" aria-label="{{ preset.label }}">
+    <table>
+      <caption>{{ preset.label }}: weekly budget, {{ preset.price_date }} prices</caption>
+      <thead><tr><th scope="col">Category</th><th scope="col" class="num">A week</th></tr></thead>
+      <tbody>
+        {%- for category in budgets.categories %}{% if preset.pence[category.id] %}
+        <tr><th scope="row">{{ category.label }}</th><td class="num">{{ preset.pence[category.id] | money }}</td></tr>
+        {%- endif %}{% endfor %}
+        <tr><th scope="row">Total published by the source, not counting rent</th><td class="num">{{ preset.published_total_ex_rent_pence | money }}</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="source">
+      <p><span class="status">Research benchmark</span> {{ preset.tenure }}. {{ preset.housing }}</p>
+      <p>Left out: {{ preset.exclusions }}</p>
+      {%- if preset.note %}<p>{{ preset.note }}</p>{% endif %}
+      {%- if preset.rounding_difference_pence %}<p>The categories add up to {{ (preset.rounding_difference_pence | abs) }}p {{ "more" if preset.rounding_difference_pence > 0 else "less" }} than the published total, because the source rounds each line.</p>{% endif %}
+      <p>Source: {{ m.cite(s) }}. {{ preset.table_reference }} Checked against the source on {{ preset.checked_date | timeTag | safe }}.</p>
+    </div>
+  </details>
+  {%- endfor %}
+
+  {% call m.unavailable("an example for every kind of household", 4) %}
+  <p>We have no example for an owner at a minimum standard, for a household in London, or for a household with disability or care costs. The research we found does not publish them in a form we could check. We have not adapted a renter's budget by taking out the rent, because an owner has repair and insurance costs a renter does not. We have not updated any budget for inflation: each example is as its source published it, at the price date shown.</p>
+  {% endcall %}
+
+  <h3>How the tool calculates</h3>
+  <ul>
+    <li>Every amount is turned into a yearly amount: a week × 52, 4 weeks × 13, a month × 12.</li>
+    <li>Balance = income before tax − the tax you entered − spending.</li>
+    <li>If no tax is entered, the balance is labelled "before tax".</li>
+    <li>The tool never changes an amount you entered.</li>
+  </ul>
+  <p><a href="/sources-and-method/#models">Full method and limits</a>.</p>
+
+  <script type="application/json" id="budget-data">{{ budgets | budgetData | json | safe }}</script>
+  <script type="module" src="/assets/js/tools/budget.js"></script>
+</section>

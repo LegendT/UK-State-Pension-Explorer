@@ -1,0 +1,5 @@
+---
+permalink: /assets/data/state-pension-full-rates.csv
+eleventyExcludeFromCollections: true
+---
+{{ { years: history.years, series: "basic", from: "2010/11", to: "2026/27", measure: "cash", rule: "" } | historyCsv | safe }}{{ ({ years: history.years, series: "new", from: "2016/17", to: "2026/27", measure: "cash", rule: "" } | historyCsv).split("\n").slice(1).join("\n") | safe }}

@@ -1,0 +1,97 @@
+{
+  "note": "Links to the sister sites. Outbound links from this site and the planned links back are tracked separately. A link is listed as live only after the destination content was read.",
+  "outbound": [
+    {
+      "id": "debt-vs-deficit",
+      "from_page": "/reform-options/",
+      "url": "https://ukpublicfinances.org/deficit-vs-debt/",
+      "site": "UK Public Finances Explorer",
+      "label": "Debt and deficit in plain English",
+      "purpose": "Explains why a yearly spending change and the accumulated debt are different quantities.",
+      "content_checked": "2026-09-29",
+      "http_status": 200,
+      "content_found": "A prose explainer of debt, deficit, borrowing and debt interest. It carries no figures and does not mention pensions or the National Insurance Fund.",
+      "comparability": "No figures are taken from the destination.",
+      "status": "live"
+    },
+    {
+      "id": "budget-simulator",
+      "from_page": "/reform-options/",
+      "url": "https://ukpublicfinances.org/budget-simulator/",
+      "site": "UK Public Finances Explorer",
+      "label": "Budget simulator",
+      "purpose": "Shows the State Pension beside other spending and taxes.",
+      "content_checked": "2026-09-29",
+      "http_status": 200,
+      "content_found": "Five spending sliders and three tax sliders. The State Pension is one line with a baseline of £146 billion, a 2025-26 forecast. The page calls itself a teaching model, not a forecast. It needs JavaScript. Interactive behaviour was not tested in a browser.",
+      "comparability": "Its £146 billion is a forecast for 2025-26 from an earlier source vintage. This site uses £136.6 billion outturn for 2024/25 and £154.2 billion forecast for 2026/27 from DWP. The figures are not compared on this site.",
+      "status": "live"
+    },
+    {
+      "id": "big-numbers",
+      "from_page": "/reform-options/",
+      "url": "https://ukpublicfinances.org/big-numbers/",
+      "site": "UK Public Finances Explorer",
+      "label": "Big numbers translator",
+      "purpose": "Puts a national amount in billions into scale.",
+      "content_checked": "2026-09-29",
+      "http_status": 200,
+      "content_found": "One input, an amount in billions of pounds. It divides by population, adults and taxpayers and compares with budgets. It has no figure per pensioner and cannot be filled in from a link. It needs JavaScript. Interactive behaviour was not tested in a browser.",
+      "comparability": "Per-person results are simple division. They are not what anyone pays or receives. No derived amount is quoted on this site.",
+      "status": "live"
+    },
+    {
+      "id": "migration",
+      "from_page": "/reform-options/",
+      "url": "https://ukmigrationexplorer.org/migration/",
+      "site": "UK Migration Explorer",
+      "label": "How migration is measured",
+      "purpose": "Explains migration measures for a reader who meets them in a discussion of the future number of workers.",
+      "content_checked": "2026-09-29",
+      "http_status": 200,
+      "content_found": "Net migration from 2012 to 2025 with the method break of June 2021, and revisions to estimates. It has no age breakdown and no figures for working age or pensionable age.",
+      "comparability": "The page cannot support a claim about the effect of migration on the ratio of workers to pensioners. No figures are taken from it.",
+      "status": "live"
+    },
+    {
+      "id": "fiscal-claim",
+      "from_page": null,
+      "url": "https://ukmigrationexplorer.org/common-claims/immigrants-pay-far-more-than-they-cost/",
+      "site": "UK Migration Explorer",
+      "label": "Claim checked: immigrants pay more in tax than they cost",
+      "purpose": "Would explain how scope, age and time horizon enter an analysis of fiscal contribution.",
+      "content_checked": "2026-09-29",
+      "http_status": 200,
+      "content_found": "The page says the claim is not established as a general claim. It does not mention pensions or State Pension age.",
+      "comparability": "Not applicable.",
+      "status": "not-placed",
+      "reason": "This site has no passage that discusses the fiscal contribution of migrants, so a link would have no context. It stays in the register for a later decision."
+    }
+  ],
+  "reciprocal": [
+    {
+      "site": "UK Public Finances Explorer",
+      "placement": "Footer: a three-site 'Our other explainers' list on every page.",
+      "status": "not-started",
+      "depends_on": "A published address for this site."
+    },
+    {
+      "site": "UK Public Finances Explorer",
+      "placement": "Budget simulator, beside the State Pension slider: a link to the explanation of the triple lock and the rule comparison.",
+      "status": "not-started",
+      "depends_on": "A published address for this site, and the owner's agreement on wording."
+    },
+    {
+      "site": "UK Migration Explorer",
+      "placement": "Footer: a three-site 'Our other explainers' list on every page.",
+      "status": "not-started",
+      "depends_on": "A published address for this site."
+    },
+    {
+      "site": "UK Migration Explorer",
+      "placement": "A contextual link only if an existing passage discusses pensions or the ratio of workers to pensioners. None was found on the pages read.",
+      "status": "not-started",
+      "depends_on": "An editorial check of fit. A footer link is enough if no passage needs one."
+    }
+  ]
+}

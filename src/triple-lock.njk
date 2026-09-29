@@ -1,0 +1,196 @@
+---
+layout: base.njk
+permalink: /triple-lock/
+---
+{%- import "macros.njk" as m with context -%}
+{%- set latest = history.years[history.years.length - 1] -%}
+{%- set before = history.years[history.years.length - 2] -%}
+{%- set exNew = { startPence: before.new_pence, prices: latest.prices_tenths, earnings: latest.earnings_tenths } | mechanism -%}
+{%- set exBasic = { startPence: before.basic_pence, prices: latest.prices_tenths, earnings: latest.earnings_tenths } | mechanism -%}
+<h1>The triple lock: how annual increases work</h1>
+
+<p class="lede">Each April the full rates of the State Pension rise by the highest of three figures: the rise in prices, the rise in average earnings, or 2.5%. This page explains where the three figures come from, what the law requires, and what happened in each year.</p>
+
+{{ m.contents([
+  ["three-measures", "The three measures"],
+  ["timing", "When the figures are measured and when the pension rises"],
+  ["law", "What the law requires"],
+  ["worked-example", "A worked example: April 2026"],
+  ["tool", "Try it: how the triple lock works"],
+  ["compounding", "Why one year's increase affects every later year"],
+  ["history", "How the rule came about, and the exceptions"],
+  ["limits", "What the rule protects against, and its limits"]
+]) }}
+
+<h2 id="three-measures">The three measures</h2>
+
+<p>{{ ("tl-definition" | claim).statement }} {{ m.c("tl-definition") }}</p>
+
+<dl>
+  <dt>Prices</dt>
+  <dd>The rise in the Consumer Prices Index over the 12 months to September.</dd>
+  <dt>Earnings</dt>
+  <dd>The rise in average weekly earnings across the whole economy, for total pay including bonuses. It compares May to July with the same three months a year earlier.</dd>
+  <dt>2.5%</dt>
+  <dd>A fixed minimum. It decides the increase when both prices and earnings rise by less than 2.5%.</dd>
+</dl>
+
+<p>The triple lock applies to the full rate of the new State Pension and to the basic State Pension. It does not apply to a protected payment, to Additional State Pension or to extra pension from deferring. <a href="/state-pension/#components">Parts of the pension that rise by a different rule</a>.</p>
+
+<h2 id="timing">When the figures are measured and when the pension rises</h2>
+
+<ol>
+  <li><strong>May to July.</strong> The period for the earnings figure.</li>
+  <li><strong>September.</strong> The end of the 12 months for the prices figure.</li>
+  <li><strong>September and October.</strong> The Office for National Statistics publishes the earnings figure in mid-September and revises it in mid-October. It publishes the September prices figure in mid-October. The decision has used the revised earnings figure.</li>
+  <li><strong>Autumn.</strong> The Secretary of State announces the increase. In recent years this has been in late October or November.</li>
+  <li><strong>The following April.</strong> The new rates take effect in the first full week of the tax year.</li>
+</ol>
+
+<p>So the increase paid from April reflects prices and earnings from the year before. When inflation is rising quickly, the pension follows some months behind. When inflation is falling, the increase can be higher than inflation at the time it is paid.</p>
+
+<h2 id="law">What the law requires</h2>
+
+<p>{{ ("tl-policy-not-law" | claim).statement }} {{ m.c("tl-policy-not-law") }}</p>
+
+<ul>
+  <li>{{ ("legal-earnings-floor" | claim).statement }} {{ m.c("legal-earnings-floor") }}</li>
+  <li>{{ ("earnings-measure-discretion" | claim).statement }} {{ m.c("earnings-measure-discretion") }}</li>
+  <li>{{ ("no-order-if-earnings-fall" | claim).statement }} {{ m.c("no-order-if-earnings-fall") }}</li>
+  <li>{{ ("rounding-power" | claim).statement }} {{ ("rounding-5p" | claim).statement }} {{ m.c("rounding-5p") }}</li>
+</ul>
+
+<p>{{ ("tl-this-parliament" | claim).statement }} {{ m.c("tl-this-parliament") }}</p>
+
+<h2 id="worked-example">A worked example: April 2026</h2>
+
+<p>This example uses the published decision for {{ latest.tax_year }} and the full new State Pension.</p>
+
+<ol>
+  <li>Prices rose by {{ latest.prices_tenths | percent }} in the year to September 2025.</li>
+  <li>Earnings rose by {{ latest.earnings_tenths | percent }}, comparing May to July 2025 with a year earlier.</li>
+  <li>The minimum is 2.5%.</li>
+  <li>The highest is earnings, so the increase was {{ latest.applied_tenths | percent }}.</li>
+  <li>{{ before.new_pence | money }} × {{ latest.applied_tenths | factor }} = {{ exNew.unroundedPence | pounds4 }}. Rounded to the nearest 5p, that is {{ latest.new_pence | money }} a week.</li>
+  <li>The weekly increase was {{ (latest.new_pence - before.new_pence) | money }}.</li>
+  <li>52 weeks at the new rate is {{ (latest.new_pence * 52) | money }}.</li>
+</ol>
+<p>{{ m.c("tl-2026-decision") }}</p>
+
+<p>Rounding means the increase in pounds is not always exactly the headline percentage. In the same year the basic State Pension went from {{ before.basic_pence | money }} to {{ latest.basic_pence | money }}. The unrounded result was {{ exBasic.unroundedPence | pounds4 }}.</p>
+
+<section class="tool" aria-labelledby="tool">
+  <h2 id="tool">Try it: how the triple lock works</h2>
+
+  <p>This tool shows how the increase is chosen and applied. It works on <strong>one part</strong> of the State Pension: a full rate that follows the triple lock. Do not enter your whole pension payment. Other parts of a payment can rise by a different rule.</p>
+  <p>All amounts are weekly and before tax. The tool does not send or store anything you enter.</p>
+
+  <div class="no-js-only">
+    {% call m.note("The calculator needs JavaScript", 3) %}
+    <p>The calculator is not available, because JavaScript is off or did not load. The worked example above and the table of <a href="/history/#decisions">every decision since 2010</a> show the same method.</p>
+    {% endcall %}
+  </div>
+
+  <form id="mechanism-form" class="js-only" novalidate>
+    <fieldset>
+      <legend>Start from a past decision</legend>
+      <div class="fields">
+        <div class="field">
+          <label for="mechanism-year">Tax year</label>
+          <select id="mechanism-year" name="mechanism-year">
+            {%- for year in history.years | reverse %}{% if year.measure != "pre-triple-lock" %}
+            <option value="{{ year.tax_year }}">{{ year.tax_year }}</option>
+            {%- endif %}{% endfor %}
+          </select>
+        </div>
+        <div class="field">
+          <label for="mechanism-series">Pension</label>
+          <select id="mechanism-series" name="mechanism-series">
+            <option value="new">Full new State Pension</option>
+            <option value="basic">Full basic State Pension</option>
+          </select>
+        </div>
+      </div>
+      <button type="button" class="secondary" id="mechanism-load">Load this decision</button>
+    </fieldset>
+
+    <fieldset>
+      <legend>Figures used</legend>
+      <p>Showing: <span class="tool-mode" id="mechanism-mode">Past decision: {{ latest.tax_year }}, as published</span></p>
+      <p>Change any figure to see a hypothetical result. The result will then be labelled hypothetical.</p>
+      <div class="fields">
+        {{ m.field("mechanism-prices", "Rise in prices", latest.prices_tenths | plainPercent, "Per cent, from -10 to 25. One decimal place.", "", "%") }}
+        {{ m.field("mechanism-earnings", "Rise in earnings", latest.earnings_tenths | plainPercent, "Per cent, from -10 to 25. One decimal place.", "", "%") }}
+        {{ m.field("mechanism-start", "Weekly amount before the increase", before.new_pence | plainPounds, "A full rate, in pounds. From 1 to 1,000.", "£", "") }}
+      </div>
+      <button type="submit">Show the result</button>
+    </fieldset>
+  </form>
+
+  <p class="visually-hidden" role="status" id="mechanism-status"></p>
+
+  <div class="result" id="mechanism-result">
+    <h3>Full new State Pension, {{ latest.tax_year }}: what was decided</h3>
+    <p class="headline">{{ latest.applied_tenths | percent }} increase, decided by earnings</p>
+    <dl>
+      <dt>Prices, year to the September before</dt><dd>{{ latest.prices_tenths | percent }}</dd>
+      <dt>Earnings, May to July before, as used in the decision</dt><dd>{{ latest.earnings_tenths | percent }}</dd>
+      <dt>Minimum</dt><dd>2.5%</dd>
+      <dt>Weekly rate before</dt><dd>{{ before.new_pence | money }}</dd>
+      <dt>Weekly rate after, as published</dt><dd>{{ latest.new_pence | money }}</dd>
+      <dt>Weekly increase</dt><dd>{{ (latest.new_pence - before.new_pence) | money }}</dd>
+      <dt>52 weeks at the new rate</dt><dd>{{ (latest.new_pence * 52) | money }}</dd>
+    </dl>
+    <p>These are the published decision and the published rates. They are not calculated by this tool.</p>
+  </div>
+
+  <h3>How the tool calculates a hypothetical result</h3>
+  <ol>
+    <li>Increase = the highest of prices, earnings and 2.5%. If two or three are equal highest, the result names each of them.</li>
+    <li>New amount = amount before × (1 + increase ÷ 100).</li>
+    <li>The new amount is rounded to the nearest 5p. An exact half rounds up.</li>
+    <li>52-week equivalent = rounded weekly amount × 52.</li>
+  </ol>
+  <p>Past decisions are not calculated. They are read from the published record, because the figure used at the time can differ from the figure published now, and because some years had special rules. <a href="/sources-and-method/#models">Full method and limits</a>.</p>
+
+  <script type="application/json" id="mechanism-data">{{ { years: history.years } | json | safe }}</script>
+  <script type="module" src="/assets/js/tools/mechanism.js"></script>
+</section>
+
+<h2 id="compounding">Why one year's increase affects every later year</h2>
+
+<p>Each increase is applied to the rate that the previous increase produced. A higher increase in one year raises the starting point for every later year.</p>
+
+<p>This is also why the triple lock tends to raise the pension faster than either prices or earnings over a long period. In a year when prices rise faster than pay, the pension follows prices. In the next year, if pay catches up, the pension follows pay, from the higher starting point. The Pensions Commission calls this a ratchet. {{ m.c("tl-ratchet") }}</p>
+
+<p>How often does this happen? {{ ("tl-non-earnings-triggered" | claim).statement }} {{ m.c("tl-non-earnings-triggered") }}</p>
+
+<p>The <a href="/reform-options/#compare">rule comparison</a> shows the effect under different conditions, including conditions where the rules give the same result.</p>
+
+<h2 id="history">How the rule came about, and the exceptions</h2>
+
+<ul>
+  <li><strong>1980.</strong> {{ ("earnings-link-1980" | claim).statement }} {{ m.c("earnings-link-1980") }}</li>
+  <li><strong>2010.</strong> {{ ("tl-announced-2010" | claim).statement }} {{ m.c("tl-announced-2010") }} {{ ("tl-cpi-measure-2010" | claim).statement }} {{ m.c("tl-cpi-measure-2010") }} {{ ("earnings-link-restored" | claim).statement }} {{ m.c("earnings-link-restored") }}</li>
+  <li><strong>April 2011.</strong> {{ ("tl-2011-rpi" | claim).statement }} {{ m.c("tl-2011-rpi") }}</li>
+  <li><strong>April 2016.</strong> The new State Pension began, with a first full rate of {{ (history.years | where("tax_year", "2016/17") | first).new_pence | money }} a week.</li>
+  <li><strong>April 2021.</strong> {{ ("tl-2021-act" | claim).statement }} 2.5% was applied. {{ m.c("tl-2021-act") }}</li>
+  <li><strong>April 2022.</strong> {{ ("tl-2022-act" | claim).statement }} {% set y2022 = history.years | where("tax_year", "2022/23") | first %}Earnings growth had been {{ y2022.earnings_tenths | percent }}. The increase was {{ y2022.applied_tenths | percent }}. {{ m.c("tl-2022-act") }}</li>
+</ul>
+
+<p><a href="/history/">See every rate and decision since 2010</a>.</p>
+
+<h2 id="limits">What the rule protects against, and its limits</h2>
+
+<p>The rule means the full rate does not fall behind the official measure of prices, or behind average pay, from one year to the next. The 2.5% minimum means it rises in every year.</p>
+
+<p>It has limits.</p>
+<ul>
+  <li><strong>A national price index is not each person's bills.</strong> A household that spends more of its money on energy or rent can face a different rate of price rises. <a href="/living-on-a-pension/#prices">Prices and pensioner households</a>.</li>
+  <li><strong>The adjustment is yearly and looks back.</strong> It cannot follow prices as they change during the year.</li>
+  <li><strong>It raises the rate, not entitlement.</strong> A person who receives less than the full rate gets the same percentage on a smaller amount.</li>
+  <li><strong>It does not cover every part of a payment.</strong> Some parts rise with prices only.</li>
+  <li><strong>It is a commitment, not law.</strong> A government can change it.</li>
+</ul>
+
+<p>Whether the rule should stay is a separate question. <a href="/reform-options/">Reform options</a> sets out the evidence on each side.</p>

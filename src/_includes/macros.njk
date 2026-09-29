@@ -1,0 +1,122 @@
+{#- Shared components. Every figure and citation comes from the registers in src/_data. -#}
+
+{%- macro classLabel(key) -%}
+{{ { "published-rate": "Published rate", "published-rule": "Published rule", "observed-statistic": "Observed statistic", "estimate": "Estimate", "forecast": "Forecast", "projection": "Projection", "derived-calculation": "Calculated by this site", "research-benchmark": "Research benchmark", "hypothetical": "Hypothetical" }[key] }}
+{%- endmacro -%}
+
+{#- A short citation after a sentence. -#}
+{%- macro cite(s) -%}
+<a class="cite" href="{{ s.url }}">{{ s.publisher }}, {{ s.title }}</a>{% if s.published_date %} ({{ s.published_date | monthOrDay }}){% endif %}
+{%- endmacro -%}
+
+{#- The full source note for one figure. Qualifications stay visible. Technical detail opens on demand. -#}
+{%- macro sourceNote(f) -%}
+<div class="source">
+  <p><span class="status">{{ classLabel(f.classification) }}</span>{% if f.provisional %} <span class="status">Can be revised</span>{% endif %}
+  {{ f.period_label }}. {{ f.geography }}{% if f.range %} Range: {{ f.range }}.{% endif %}</p>
+  {%- if f.qualifications %}
+  <p>{{ f.qualifications }}</p>
+  {%- endif %}
+  <p>Source: {{ cite(f.source) }}. Checked against the source on {{ f.checked_date | timeTag | safe }}.</p>
+  <details>
+    <summary>More about this figure<span class="visually-hidden">: {{ f.label }}</span></summary>
+    <dl>
+      <dt>What it measures</dt><dd>{{ f.definition }}</dd>
+      <dt>Who it covers</dt><dd>{{ f.population }}</dd>
+      <dt>Where in the source</dt><dd>{{ f.table_reference }}</dd>
+      {%- if f.passage %}<dt>What the source says</dt><dd>“{{ f.passage }}”</dd>{% endif %}
+      {%- if f.formula %}<dt>Calculation</dt><dd>{{ f.formula }}</dd>{% endif %}
+      {%- if f.gross_net %}<dt>Before or after tax</dt><dd>{{ f.gross_net }}</dd>{% endif %}
+      {%- if f.price_basis and f.price_basis != "not applicable" %}<dt>Price basis</dt><dd>{{ f.price_basis | upperFirst }}</dd>{% endif %}
+      {%- if f.source.note %}<dt>About the source</dt><dd>{{ f.source.note }}</dd>{% endif %}
+      {%- if f.next_review %}<dt>When we will check again</dt><dd>{{ f.next_review }}</dd>{% endif %}
+    </dl>
+  </details>
+</div>
+{%- endmacro -%}
+
+{#- A figure shown as a card: label, value, plain meaning, source. -#}
+{%- macro stat(f, what) -%}
+<article class="stat">
+  <h3>{{ f.label }}</h3>
+  <p class="value">{{ f.shown }}</p>
+  {%- if what %}<p class="what">{{ what }}</p>{% endif %}
+  {{ sourceNote(f) }}
+</article>
+{%- endmacro -%}
+
+{%- macro note(heading, level) -%}
+<div class="note" role="note">
+  <h{{ level or 3 }}>{{ heading }}</h{{ level or 3 }}>
+  {{ caller() }}
+</div>
+{%- endmacro -%}
+
+{%- macro unavailable(heading, level) -%}
+<div class="unavailable" role="note">
+  <h{{ level or 3 }}>Not available: {{ heading }}</h{{ level or 3 }}>
+  {{ caller() }}
+</div>
+{%- endmacro -%}
+
+{%- macro contents(items) -%}
+<nav class="contents" aria-labelledby="contents-heading">
+  <h2 id="contents-heading">On this page</h2>
+  <ul>
+    {%- for item in items %}
+    <li><a href="#{{ item[0] }}">{{ item[1] }}</a></li>
+    {%- endfor %}
+  </ul>
+</nav>
+{%- endmacro -%}
+
+{#- A link to a sister site. The label names the destination site. -#}
+{%- macro sisterLink(link) -%}
+<a href="{{ link.url }}">{{ link.label }} ({{ link.site }})</a>
+{%- endmacro -%}
+
+{%- macro scrollTable(label) -%}
+<div class="scroll-x" tabindex="0" role="region" aria-label="{{ label }}">
+{{ caller() }}
+</div>
+{%- endmacro -%}
+
+{#- A citation for a claim in the claims register. -#}
+{%- macro c(id) -%}
+{%- set r = id | claim -%}
+{% if r.source %}<span class="ref">Source: {{ cite(r.source) }}.</span>{% else %}<span class="ref">A record of a search: <a href="/sources-and-method/#claim-{{ id }}">what was searched, and when</a>.</span>{% endif %}
+{%- endmacro -%}
+
+{#- A figure in running text, with its period. -#}
+{%- macro f(id) -%}{{ id | fig }}{%- endmacro -%}
+
+{#- One text input with its label, hint and error line. inputmode keeps a number keypad on phones. -#}
+{%- macro field(id, label, value, hint, prefix, suffix, mode) -%}
+<div class="field">
+  <label for="{{ id }}">{{ label }}</label>
+  {%- if hint %}<span class="hint" id="{{ id }}-hint">{{ hint }}</span>{% endif %}
+  <span class="error" id="{{ id }}-error" role="alert"></span>
+  <span class="affix">{% if prefix %}<span aria-hidden="true">{{ prefix }}</span>{% endif %}<input type="text" inputmode="{{ mode or 'decimal' }}" id="{{ id }}" name="{{ id }}" value="{{ value }}" autocomplete="off"{% if hint %} aria-describedby="{{ id }}-hint"{% endif %}>{% if suffix %}<span aria-hidden="true">{{ suffix }}</span>{% endif %}</span>
+</div>
+{%- endmacro -%}
+
+{#- A table from src/_data/tables.json, with its source and qualifications. -#}
+{%- macro dataTable(id, numeric) -%}
+{%- set t = tables[id] -%}
+{%- set s = (t.source_id | sourceRecord) if t.source_id else null -%}
+<div class="scroll-x" tabindex="0" role="region" aria-label="{{ t.caption }}">
+<table>
+  <caption>{{ t.caption }}</caption>
+  <thead><tr>{% for col in t.columns %}<th scope="col"{% if t.align[loop.index0] == "r" %} class="num"{% endif %}>{{ col }}</th>{% endfor %}</tr></thead>
+  <tbody>
+    {%- for row in t.rows %}
+    <tr>{% for cell in row %}{% if loop.first %}<th scope="row">{{ cell }}</th>{% else %}<td{% if t.align[loop.index0] == "r" %} class="num"{% endif %}>{{ cell }}</td>{% endif %}{% endfor %}</tr>
+    {%- endfor %}
+  </tbody>
+</table>
+</div>
+<div class="source">
+  <p>{{ t.qualifications }}</p>
+  <p>{% if s %}Source: {{ cite(s) }}. {% endif %}{{ t.table_reference }} Checked on {{ t.checked_date | timeTag | safe }}.</p>
+</div>
+{%- endmacro -%}

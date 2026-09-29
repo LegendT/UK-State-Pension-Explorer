@@ -1,0 +1,1042 @@
+{
+  "which-system": {
+    "kind": "rule",
+    "statement": "The new State Pension is for men born on or after 6 April 1951 and women born on or after 6 April 1953. People born before those dates are on the basic State Pension.",
+    "source_id": "govuk-nsp-eligibility",
+    "passage": "a man born on or after 6 April 1951 ... a woman born on or after 6 April 1953",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "starting-amount": {
+    "kind": "rule",
+    "statement": "For a National Insurance record that began before April 2016, a starting amount was worked out. It can be less than, more than or equal to the full rate.",
+    "source_id": "dwp-sp-explained",
+    "passage": "Your 'starting amount' could be less than, more than or equal to the full new State Pension.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "contracted-out": {
+    "kind": "rule",
+    "statement": "People who were contracted out usually need more than 35 qualifying years for the full rate.",
+    "source_id": "govuk-new-state-pension",
+    "passage": "If you were contracted out, you will usually need more than 35 qualifying years to get the full rate of new State Pension.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "ni-credits": {
+    "kind": "rule",
+    "statement": "National Insurance credits can fill gaps in a record, for example during unemployment, illness or caring.",
+    "source_id": "govuk-ni-credits",
+    "passage": "Credits can help to fill gaps in your National Insurance record, to make sure you qualify for certain benefits including the State Pension.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "spa-67": {
+    "kind": "enacted",
+    "statement": "State Pension age is rising from 66 to 67 between 2026 and 2028.",
+    "source_id": "dwp-spa-timetable",
+    "passage": "The State Pension age for men and women will now increase to 67 between 2026 and 2028.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "spa-68": {
+    "kind": "enacted",
+    "statement": "The law provides for a rise from 67 to 68 between 2044 and 2046. A review could change that timetable.",
+    "source_id": "dwp-spa-timetable",
+    "passage": "Under the Pensions Act 2007 the State Pension age for men and women will increase from 67 to 68 between 2044 and 2046.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "spa-review": {
+    "kind": "enacted",
+    "statement": "A third review of State Pension age was launched in July 2025. No report from it was listed on GOV.UK when this site was checked.",
+    "source_id": "dwp-spa-review-3",
+    "passage": "The government announced the launch of the third review of State Pension age in July 2025.",
+    "interpretation": false,
+    "note": "The absence of a report was checked on the GOV.UK collection page only.",
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "claim-not-automatic": {
+    "kind": "rule",
+    "statement": "The State Pension is not paid automatically. It has to be claimed.",
+    "source_id": "govuk-how-to-claim",
+    "passage": "You will not get your new State Pension automatically - you have to claim it.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "deferral-default": {
+    "kind": "rule",
+    "statement": "A State Pension that is not claimed at State Pension age is deferred.",
+    "source_id": "govuk-deferring",
+    "passage": "If you do not claim your State Pension at State Pension age, it automatically defers.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "protected-payment-cpi": {
+    "kind": "rule",
+    "statement": "A protected payment rises each year in line with the Consumer Prices Index, not the triple lock.",
+    "source_id": "govuk-new-state-pension",
+    "passage": "If you have a protected payment, it increases each year in line with the CPI.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "deferral-increase-cpi": {
+    "kind": "rule",
+    "statement": "Extra pension earned by deferring usually rises with the Consumer Prices Index.",
+    "source_id": "govuk-deferring",
+    "passage": "the extra amount you get because you deferred will usually increase each year based on the Consumer Price Index. It will not increase for some people who live abroad.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "taxable-paid-gross": {
+    "kind": "rule",
+    "statement": "The State Pension is taxable income, but no tax is taken off before it is paid.",
+    "source_id": "hmrc-sp-taxed",
+    "passage": "Your State Pension is taxable income, but tax is not taken off before you get it.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "simple-assessment": {
+    "kind": "rule",
+    "statement": "Where tax is due and cannot be collected another way, HM Revenue and Customs sends a Simple Assessment bill.",
+    "source_id": "govuk-tax-on-pension",
+    "passage": "If you go over your Personal Allowance and you have tax to pay, HMRC will send you a Simple Assessment tax bill.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "simple-assessment-2027": {
+    "kind": "commitment",
+    "statement": "The government has said that from 2027-28 pensioners whose only income is the basic or new State Pension, without increments, will not have to pay small amounts of tax through Simple Assessment. It has not published how. This is an announcement, not law.",
+    "source_id": "budget-2025",
+    "passage": "The government will ease the administrative burden for pensioners whose sole income is the basic or new State Pension without any increments so that they do not have to pay small amounts of tax via Simple Assessment from 2027-28",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "paid-four-weekly": {
+    "kind": "rule",
+    "statement": "The State Pension is usually paid every 4 weeks.",
+    "source_id": "govuk-when-paid",
+    "passage": "The new State Pension is usually paid into your account every 4 weeks.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "paid-in-arrears": {
+    "kind": "rule",
+    "statement": "The State Pension is paid in arrears, which means each payment covers the weeks just gone.",
+    "source_id": "claims-payments-regs",
+    "passage": "State pension is to be paid in arrears.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "pay-as-you-go": {
+    "kind": "finding",
+    "statement": "National Insurance is run on a pay-as-you-go basis: contributions paid this year meet the cost of benefits paid this year.",
+    "source_id": "nif-account-2024-25",
+    "passage": "The National Insurance scheme is financed on a pay as you go basis with contribution rates set at a level broadly necessary to meet the expected benefits expenditure in that year",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "overseas-frozen": {
+    "kind": "rule",
+    "statement": "People who live abroad get yearly increases only in the European Economic Area, Gibraltar, Switzerland and countries with an agreement that provides for them. Canada and New Zealand are excluded.",
+    "source_id": "govuk-retire-abroad",
+    "passage": "countries that have a social security agreement with the UK (but you cannot get increases in Canada or New Zealand) ... You will not get yearly increases if you live outside these countries.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "overseas-return": {
+    "kind": "rule",
+    "statement": "The pension goes up to the current rate if the person returns to live in the UK.",
+    "source_id": "govuk-retire-abroad",
+    "passage": "Your pension will go up to the current rate if you return to live in the UK.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "housing-benefit": {
+    "kind": "rule",
+    "statement": "New claims for Housing Benefit are open to people who have reached State Pension age.",
+    "source_id": "govuk-housing-benefit",
+    "passage": "You can only make a new claim for Housing Benefit if either of the following apply: you have reached State Pension age",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "council-tax-reduction": {
+    "kind": "rule",
+    "statement": "Council Tax Reduction is run by local councils and the rules vary by area.",
+    "source_id": "govuk-council-tax-reduction",
+    "passage": "You could be eligible if you're on a low income or claim benefits. Your bill could be reduced by up to 100%.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "ni-stops-at-spa": {
+    "kind": "rule",
+    "statement": "Most people stop paying National Insurance when they reach State Pension age.",
+    "source_id": "govuk-ni-after-spa",
+    "passage": "Most people stop paying National Insurance contributions after reaching State Pension age.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "tl-definition": {
+    "kind": "commitment",
+    "statement": "The triple lock is a government commitment to raise the basic and new State Pension each year by the highest of earnings growth, price inflation or 2.5%.",
+    "source_id": "dwp-abstract-2025",
+    "passage": "a government commitment to up-rate the basic and new State Pensions every year by the highest of earnings growth, inflation, or 2.5%",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "tl-policy-not-law": {
+    "kind": "rule",
+    "statement": "The law requires an increase at least in line with earnings. The triple lock goes further and is a commitment, not a legal duty.",
+    "source_id": "em-uprating-2026",
+    "passage": "The statutory minimum increase to the basic State Pension is the rise in earnings. The government has given a commitment to increase the basic State Pension in line with the Triple Lock",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "legal-earnings-floor": {
+    "kind": "enacted",
+    "statement": "Section 150A requires an increase of at least the percentage by which earnings have risen.",
+    "source_id": "ssaa-1992-s150a",
+    "passage": "increases each of the amounts referred to in subsection (1) above by a percentage not less than the percentage by which the general level of earnings is greater at the end of the period",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "earnings-measure-discretion": {
+    "kind": "enacted",
+    "statement": "The law leaves the choice of earnings measure to the Secretary of State.",
+    "source_id": "ssaa-1992-s150a",
+    "passage": "the Secretary of State shall estimate the general level of earnings in such manner as he thinks fit",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "rounding-power": {
+    "kind": "enacted",
+    "statement": "The law allows the new amount to be rounded up or down.",
+    "source_id": "ssaa-1992-s150a",
+    "passage": "adjust the amount of the increase so as to round the sum in question up or down to such extent as he thinks appropriate",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "rounding-5p": {
+    "kind": "rule",
+    "statement": "Full rates of the basic and new State Pension are rounded to the nearest 5p.",
+    "source_id": "em-uprating-2018",
+    "passage": "The majority of new rates are rounded to the nearest 5p. This includes, for example, the standard (full) rates of Category A and Category B basic State Pension and the full rate of new State Pension.",
+    "interpretation": false,
+    "note": "The 2025 memorandum says 'rounded up to the nearest 5 pence', but the new State Pension that year was rounded down. Nearest-5p rounding reproduces every published full rate from 2010/11 to 2026/27.",
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "no-order-if-earnings-fall": {
+    "kind": "finding",
+    "statement": "If earnings do not rise, the ordinary law provides for no increase. It does not provide for a cut.",
+    "source_id": "dwp-abstract-2025",
+    "passage": "prevents the Secretary of State from bringing forward an Up-rating Order if earnings growth is negative.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "tl-announced-2010": {
+    "kind": "commitment",
+    "statement": "The commitment was announced in May 2010 as a 'triple guarantee'.",
+    "source_id": "coalition-programme-2010",
+    "passage": "restore the earnings link for the basic state pension from April 2011, with a 'triple guarantee' that pensions are raised by the higher of earnings, prices or 2.5%",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "tl-cpi-measure-2010": {
+    "kind": "commitment",
+    "statement": "The June 2010 Budget said the Consumer Prices Index would be the prices measure.",
+    "source_id": "budget-june-2010",
+    "passage": "CPI will be used as the measure of prices in the triple guarantee",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "tl-2011-rpi": {
+    "kind": "enacted",
+    "statement": "In April 2011 the Retail Prices Index was used for the basic State Pension, for that year only.",
+    "source_id": "em-uprating-2011",
+    "passage": "increased in line with the growth in the RPI for the 12 months to September 2010, which was 4.6%",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "tl-2021-act": {
+    "kind": "enacted",
+    "statement": "For April 2021, when earnings had fallen, a one-year Act allowed an increase of whatever percentage the Secretary of State thought fit.",
+    "source_id": "uprating-act-2020",
+    "passage": "by such a percentage as the Secretary of State thinks fit",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "tl-2022-act": {
+    "kind": "enacted",
+    "statement": "For April 2022 a one-year Act replaced the earnings test with a prices test, with a minimum of 2.5%.",
+    "source_id": "uprating-act-2021",
+    "passage": "not less than 2.5%",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "tl-2026-decision": {
+    "kind": "enacted",
+    "statement": "For April 2026 the increase was 4.8%, in line with earnings growth.",
+    "source_id": "em-uprating-2026",
+    "passage": "earnings over the relevant period (4.8%) is higher than ... the growth in prices (3.8%) and 2.5%",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "earnings-link-1980": {
+    "kind": "enacted",
+    "statement": "From 1980 the law required the yearly review to look only at prices.",
+    "source_id": "ss-act-1980",
+    "passage": "the Secretary of State shall have regard only to prices",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "earnings-link-restored": {
+    "kind": "enacted",
+    "statement": "The earnings link was restored from the tax year 2010-11.",
+    "source_id": "si-2010-2650",
+    "passage": "The designated tax year ... is the tax year 2010-11",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "tl-this-parliament": {
+    "kind": "commitment",
+    "statement": "The government's Budget documents commit to the triple lock for the length of this Parliament.",
+    "source_id": "budget-2025",
+    "passage": "its commitment to the Triple Lock for the duration of this Parliament",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "tl-ratchet": {
+    "kind": "finding",
+    "statement": "A year in which pay grows by less than prices, or less than 2.5%, lifts the pension permanently relative to earnings.",
+    "source_id": "pensions-commission-interim",
+    "passage": "any year in which nominal pay growth falls below the rate of inflation or below 2.5% will lead to a permanent upwards ratchet in the State Pension's value relative to earnings",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "tl-non-earnings-triggered": {
+    "kind": "finding",
+    "statement": "The Office for Budget Responsibility counted, in July 2025, that the prices or 2.5% part of the lock had decided the increase in eight of the 13 years to that date.",
+    "source_id": "obr-frs-2025",
+    "passage": "the non-earnings elements of the lock triggered in eight of the 13 years to date",
+    "interpretation": false,
+    "note": "The report does not list the years. The record on this site's history page gives a different count for some 13-year spans, depending on which years are counted and how April 2022 is treated.",
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "mis-not-poverty-line": {
+    "kind": "finding",
+    "statement": "The researchers say the Minimum Income Standard is not a poverty threshold.",
+    "source_id": "jrf-mis-2026",
+    "passage": "MIS is relevant to the discussion of poverty, but it does not claim to be a poverty threshold.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "mis-excludes-disability": {
+    "kind": "finding",
+    "statement": "The Minimum Income Standard does not cover extra needs from disability or from living in a remote place.",
+    "source_id": "jrf-mis-2026",
+    "passage": "does not attempt to specify extra requirements for particular individuals and groups who may have additional needs, for example those resulting from living in a remote location or having a disability",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "mis-tenure-change": {
+    "kind": "finding",
+    "statement": "In 2026 the budgets for pensioners assumed private renting for the first time. Before that they assumed social housing.",
+    "source_id": "jrf-mis-2026",
+    "passage": "For the first time, MIS budgets for all household types now assume accommodation in the private rented sector.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "mis-basket-change": {
+    "kind": "finding",
+    "statement": "The researchers say changes to the basket mattered more than inflation for the 2026 budgets.",
+    "source_id": "jrf-mis-2026",
+    "passage": "in 2026 changes in the basket of goods and services ... have generally had a greater impact on what has happened to budgets overall than inflation.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "mis-all-benefits-assumed": {
+    "kind": "finding",
+    "statement": "The comparison of pension income with the budget assumes people receive every benefit they are entitled to.",
+    "source_id": "jrf-mis-2026",
+    "passage": "assume that people are receiving all the benefits to which they are entitled",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "rls-after-tax": {
+    "kind": "finding",
+    "statement": "The Retirement Living Standards are spending figures, so the income needed can be higher once tax is paid.",
+    "source_id": "rls-details",
+    "passage": "To meet these costs, you'll need enough income after tax. This means the income you need may be higher than the figures shown.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "rls-housing-assumption": {
+    "kind": "finding",
+    "statement": "At the moderate and comfortable standards the research assumes people enter retirement with no mortgage or rent. At the minimum it assumes social housing.",
+    "source_id": "rls-2025-update",
+    "passage": "At both the moderate and comfortable living standards, groups have agreed that it remains a reasonable assumption that people at this level are entering retirement mortgage or rent free",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "fs-small-samples": {
+    "kind": "finding",
+    "statement": "The Office for National Statistics warns that sample sizes remain small.",
+    "source_id": "ons-family-spending-bulletin",
+    "passage": "While sample sizes increased in FYE 2025, they remain small, and users should be aware that estimates for lower-level expenditure categories in the underlying data are subject to greater uncertainty",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "hbai-owners": {
+    "kind": "finding",
+    "statement": "Over three-quarters of pensioners live in homes owned outright, which is why fewer are in low income after housing costs than before.",
+    "source_id": "dwp-hbai-fye2025",
+    "passage": "Over three-quarters of pensioners live in homes that are owned outright",
+    "interpretation": true,
+    "note": "The passage gives the share who own outright. The link to low income after housing costs is stated by the same publication in the sentence that follows it.",
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "disability-income-artefact": {
+    "kind": "finding",
+    "statement": "Low-income figures count disability benefits as income and make no allowance for the extra costs of disability, so they can understate hardship among disabled pensioners.",
+    "source_id": "dwp-hbai-fye2025",
+    "passage": "somewhat simplistic, adjusting income similarly for all people aged 14 and over in a household, regardless of whether the person is a child, working-age adult, pensioner, or disabled",
+    "interpretation": true,
+    "note": "The second half of the statement is this site's reading of the publisher's caution about its method.",
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "ifs-guarantee-1": {
+    "kind": "recommendation",
+    "statement": "The Institute for Fiscal Studies recommends a target level for the new State Pension, set as a share of median full-time earnings, with increases that keep pace with earnings in the long run.",
+    "source_id": "ifs-pensions-review-final",
+    "passage": "There will be a government target level for the new state pension, expressed as a share of median full-time earnings. Increases in the state pension will in the long run keep pace with growth in economy-wide average earnings",
+    "interpretation": true,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "ifs-guarantee-2": {
+    "kind": "recommendation",
+    "statement": "Under that proposal the pension would still rise at least in line with inflation every year.",
+    "source_id": "ifs-pensions-review-final",
+    "passage": "Both before and after the target level is reached, the state pension will continue to increase at least in line with inflation every year.",
+    "interpretation": true,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "ifs-guarantee-3": {
+    "kind": "recommendation",
+    "statement": "The Institute for Fiscal Studies recommends that the State Pension is not means-tested.",
+    "source_id": "ifs-pensions-review-final",
+    "passage": "The state pension will not be means-tested.",
+    "interpretation": true,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "ifs-no-means-test-reason": {
+    "kind": "recommendation",
+    "statement": "Its stated reason is that means-testing would discourage saving and could undermine automatic enrolment.",
+    "source_id": "ifs-pensions-review-final",
+    "passage": "The temptation of an apparently lower-cost means-tested approach should be resisted as it would disincentivise saving for many and therefore risk undermining the success of automatic enrolment.",
+    "interpretation": true,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "ifs-explicit-goal": {
+    "kind": "recommendation",
+    "statement": "It argues that a government wanting a more generous pension should say so as a goal.",
+    "source_id": "ifs-pensions-review-final",
+    "passage": "if the government wants a more generous state pension relative to average earnings then it would be better to set that as an explicit goal than to use the triple lock",
+    "interpretation": true,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "ifs-not-immediately": {
+    "kind": "recommendation",
+    "statement": "It says the triple lock would not have to end at once.",
+    "source_id": "ifs-pensions-review-final",
+    "passage": "under our guarantee the government would not have to move away from the triple lock immediately",
+    "interpretation": true,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "ifs-range-2050": {
+    "kind": "finding",
+    "statement": "Under the triple lock the value of the pension in 2050 is uncertain.",
+    "source_id": "ifs-pensions-review-final",
+    "passage": "a reasonable range ... for the value of the new state pension in 2050 is between 31% and 37% of median full-time earnings",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "ifs-longevity": {
+    "kind": "finding",
+    "statement": "People with a longer life expectancy gain relatively more from the triple lock.",
+    "source_id": "ifs-pensions-review-final",
+    "passage": "those with a higher life expectancy benefit relatively more from the triple lock, as they are more likely to be receiving a generously indexed state pension in their 90s and beyond",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "smoothed-link-definition": {
+    "kind": "finding",
+    "statement": "Under a smoothed earnings link, the pension rises with prices when earnings growth is lower, until it is back at its target share of earnings.",
+    "source_id": "ifs-pensions-review-final",
+    "passage": "when average earnings growth is below the rate of inflation, the state pension should increase in line with inflation until the target level of the state pension is reached again",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "rf-smoothed-recommendation": {
+    "kind": "recommendation",
+    "statement": "The Resolution Foundation recommends a smoothed earnings link.",
+    "source_id": "rf-ratchet-2026",
+    "passage": "The best option would be a 'smoothed' earnings link, which tracks earnings growth but protects the value of the State Pension from temporary price shocks.",
+    "interpretation": true,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "rf-volatility": {
+    "kind": "commentary",
+    "statement": "The Resolution Foundation argues that generosity should not depend on how volatile the economy is.",
+    "source_id": "rf-ratchet-2026",
+    "passage": "It is impossible to justify why our generosity to the older population should be a function of economic volatility.",
+    "interpretation": true,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "rf-living-standards": {
+    "kind": "finding",
+    "statement": "The Resolution Foundation reports faster growth in living standards for pensioners than for others over two decades.",
+    "source_id": "rf-ratchet-2026",
+    "passage": "Pensioners have seen three times as much living standards growth as non-pensioners over the last two decades",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "rf-poverty-since-2011": {
+    "kind": "finding",
+    "statement": "It also reports that pensioner poverty has risen since 2011-12.",
+    "source_id": "rf-ratchet-2026",
+    "passage": "since 2011-12, pensioner poverty has risen by 2.3 percentage points even with the triple lock in place",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "tbi-proposal": {
+    "kind": "proposal",
+    "statement": "The Tony Blair Institute proposes replacing the triple lock after 2030 with a smoothed earnings link, as part of a wider redesign.",
+    "source_id": "tbi-lifespan-2026",
+    "passage": "Replace the triple lock after 2030 with a smoothed earnings link. The triple lock has become a long-run cost escalator.",
+    "interpretation": true,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "ppi-future-workers": {
+    "kind": "finding",
+    "statement": "The Pensions Policy Institute reports that the triple lock improves the pension for today's workers more than for today's pensioners.",
+    "source_id": "ppi-triple-lock-2024",
+    "passage": "the triple lock actually improves the State Pension even more for the current workforce than for current pensioners",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "ppi-demographics": {
+    "kind": "finding",
+    "statement": "The Pensions Policy Institute says the cost of an older population outweighs the cost of the triple lock.",
+    "source_id": "ppi-triple-lock-2024",
+    "passage": "the increase in State Pension costs related to demographic changes significantly outweigh the increase in costs resulting from the triple lock",
+    "interpretation": false,
+    "note": "The Office for Budget Responsibility attributes 1.2% of GDP of a 3.6% rise to the triple lock. The two statements use different dates and baselines.",
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "ppi-reliance": {
+    "kind": "finding",
+    "statement": "Around 60% of pensioner households get most of their income from the state.",
+    "source_id": "ppi-triple-lock-2024",
+    "passage": "Around 60% of pensioner households receive the majority of ... their income from the State, with State Pension making up 85% of that.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "ageuk-largest-income": {
+    "kind": "finding",
+    "statement": "Age UK says the State Pension is the largest single source of income for most pensioners.",
+    "source_id": "ageuk-triple-lock-2023",
+    "passage": "The State Pension is the largest single source of income for most pensioners.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "ageuk-women": {
+    "kind": "finding",
+    "statement": "Age UK reports higher poverty among women pensioners.",
+    "source_id": "ageuk-triple-lock-2023",
+    "passage": "One in six pensioners live in relative poverty in the UK, and nearer to one in five women pensioners",
+    "interpretation": false,
+    "note": "Published in October 2023.",
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "pc-firm-foundation": {
+    "kind": "finding",
+    "statement": "The Pensions Commission describes the State Pension as the foundation for retirement saving.",
+    "source_id": "pensions-commission-interim",
+    "passage": "The existing contributory non-means-tested State Pension is the firm foundation for retirement saving for the vast majority of the population.",
+    "interpretation": true,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "pc-safety-net": {
+    "kind": "finding",
+    "statement": "The Pensions Commission expects a means-tested safety net to remain necessary.",
+    "source_id": "pensions-commission-interim",
+    "passage": "A means-tested safety net will remain necessary but may need updating in light of rising numbers of pensioners renting privately.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "pc-30-percent": {
+    "kind": "finding",
+    "statement": "The Pensions Commission puts the full new State Pension at 30% of median earnings in 2025.",
+    "source_id": "pensions-commission-interim",
+    "passage": "the full rate of the new State Pension represented 30% of median earnings in 2025, up from 29% in 2016, almost achieving the 31% of median earnings envisaged by the first Commission",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "pc-terms": {
+    "kind": "enacted",
+    "statement": "The terms of reference of the Pensions Commission do not mention the triple lock or uprating by name.",
+    "source_id": "pensions-commission-tor",
+    "passage": "the role of private pension provision and wider savings, building on the foundation of the State Pension, in delivering financial security in retirement",
+    "interpretation": false,
+    "note": "The statement that the words do not appear is a reading of the whole document.",
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "pc-final-2027": {
+    "kind": "commitment",
+    "statement": "The Pensions Commission plans its final report for spring 2027.",
+    "source_id": "pensions-commission-interim",
+    "passage": "Our final report is planned for Spring 2027.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "wp-savings-credit": {
+    "kind": "finding",
+    "statement": "A 2013 White Paper said Savings Credit had brought more pensioners into means-testing.",
+    "source_id": "single-tier-white-paper",
+    "passage": "However, the Savings Credit has increased the number of pensioners within the scope of means-testing.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "wp-above-means-test": {
+    "kind": "enacted",
+    "statement": "The new State Pension was set above the basic level of means-tested support.",
+    "source_id": "single-tier-white-paper",
+    "passage": "The single-tier pension will be set at a rate that is above the basic level of means-tested support. As a result there will no longer be a need for a complex savings reward under single tier.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "wp-beveridge": {
+    "kind": "finding",
+    "statement": "The White Paper traces a contributory pension without a means test to the Beveridge report.",
+    "source_id": "single-tier-white-paper",
+    "passage": "Central to Beveridge's vision of a universal social insurance scheme was a basic non means-tested contributory retirement pension.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "australia-assets-test": {
+    "kind": "enacted",
+    "statement": "Australia reduces its Age Pension where assets are above a limit.",
+    "source_id": "services-australia-assets",
+    "passage": "When your assets are more than the limit for your situation, your pension will reduce.",
+    "interpretation": false,
+    "note": "Context only. Australia's Age Pension is based on residence and paid from general taxation, and sits beside compulsory private saving. It is not a model proposed for the UK by any body this site found.",
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "no-costed-means-test": {
+    "kind": "not-found",
+    "statement": "This site found no costed proposal from a party, commission or research body to means-test the UK State Pension.",
+    "source_id": null,
+    "passage": null,
+    "interpretation": false,
+    "note": "A finding of absence. The search covered the Office for Budget Responsibility, the Institute for Fiscal Studies, the Pensions Policy Institute, the Resolution Foundation and news reports, on 29 September 2026.",
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "no-costed-double-lock": {
+    "kind": "not-found",
+    "statement": "This site found no current official or research estimate of the saving from a double lock that it could open and check.",
+    "source_id": null,
+    "passage": null,
+    "interpretation": false,
+    "note": "A finding of absence. An Institute for Fiscal Studies article on the subject could not be opened. A figure of £2.6 billion attributed to the Social Market Foundation was seen in a news report only.",
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "if-nic-proposal": {
+    "kind": "proposal",
+    "statement": "The Intergenerational Foundation proposes National Insurance on the earnings of people over State Pension age.",
+    "source_id": "if-nic-anomaly",
+    "passage": "At least £1.5 billion extra National Insurance revenue could be raised annually",
+    "interpretation": true,
+    "note": "The date and price basis of the estimate were not confirmed.",
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "double-lock-2017": {
+    "kind": "proposal",
+    "statement": "The Conservative manifesto of 2017 proposed a double lock from 2020. It was not introduced.",
+    "source_id": "conservative-manifesto-2017",
+    "passage": "we will keep our promise to maintain the Triple Lock until 2020, and when it expires we will introduce a new Double Lock, meaning that pensions will rise in line with the earnings that pay for them",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "obr-tl-assumed": {
+    "kind": "finding",
+    "statement": "The Office for Budget Responsibility assumes the triple lock continues because no firm alternative policy exists.",
+    "source_id": "obr-frs-2026",
+    "passage": "assume it remains in place beyond this point in the absence of a firm policy alternative",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "labour-manifesto-tl": {
+    "kind": "commitment",
+    "statement": "The Labour manifesto of 2024 promised to keep the triple lock.",
+    "source_id": "labour-manifesto-2024",
+    "passage": "Labour will retain the triple lock",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "minister-sticking-2026-09-28": {
+    "kind": "reported",
+    "statement": "A Cabinet minister said on 28 September 2026 that the government is keeping its manifesto commitment.",
+    "source_id": "pa-2026-09-28",
+    "passage": "We have a commitment in our manifesto, we're sticking to that commitment, we've stuck to it to date, that is the right thing to do.",
+    "interpretation": false,
+    "note": "Jonathan Reynolds, as reported by PA News from a broadcast interview.",
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "next-manifesto-unconfirmed": {
+    "kind": "reported",
+    "statement": "PA News reported that ministers had declined to confirm that the commitment will be in the next manifesto.",
+    "source_id": "pa-2026-09-28",
+    "passage": "Ministers have refused to confirm Labour's commitment to the triple lock ... will be in that manifesto.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "care-speculation": {
+    "kind": "reported",
+    "statement": "PA News described the link between pension increases and care funding as speculation.",
+    "source_id": "pa-2026-09-28",
+    "passage": "That has fuelled speculation that a change in the way pensions are increased to a less generous system could be used to partly fund the cost of free social care for adults in England.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "care-not-before-election": {
+    "kind": "reported",
+    "statement": "PA News reported that change to care will not come before the next election.",
+    "source_id": "pa-2026-09-28",
+    "passage": "change will not come before the next election, with Baroness Louise Casey still to publish the findings of her review of social care",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "peston-inference": {
+    "kind": "commentary",
+    "statement": "A political journalist inferred that pension reform might pay for care, and said he was not certain.",
+    "source_id": "itv-peston-2026-09-27",
+    "passage": "As I say, Burnham dropped all these hints today. Am I certain that is his plan? Not really.",
+    "interpretation": true,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "no-published-trade-off": {
+    "kind": "not-found",
+    "statement": "This site found no document from a party, a commission or the government that proposes replacing the triple lock to pay for social care.",
+    "source_id": null,
+    "passage": null,
+    "interpretation": false,
+    "note": "A finding of absence on the morning of 29 September 2026, before the Prime Minister's conference speech. Parliamentary records could not be opened.",
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "conservative-position": {
+    "kind": "reported",
+    "statement": "The Conservative leader was reported as saying the party stands by the triple lock.",
+    "source_id": "telegraph-yahoo-2026-09-19",
+    "passage": "The Conservatives created the triple lock; we've always protected it and we stand by it.",
+    "interpretation": false,
+    "note": "Reported in a newspaper article of 19 September 2026, which dates the remark to September 2025. This site found no party document.",
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "libdem-position": {
+    "kind": "commitment",
+    "statement": "The Liberal Democrats say they support protecting the triple lock.",
+    "source_id": "libdem-pensions-page",
+    "passage": "We support protecting the triple lock so that pensions always rise in line with inflation, wages or 2.5% – whichever is highest.",
+    "interpretation": false,
+    "note": "The page is undated.",
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "reform-position": {
+    "kind": "reported",
+    "statement": "Reform UK was reported as committing to keep the triple lock on 2 April 2026.",
+    "source_id": "cityam-reform-2026-04",
+    "passage": null,
+    "interpretation": false,
+    "note": "Reported in a newspaper. This site found no party document. No wording is quoted.",
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "care-cap-cancelled": {
+    "kind": "enacted",
+    "statement": "The planned cap on care costs in England was cancelled on 29 July 2024.",
+    "source_id": "chancellor-2024-07-29",
+    "passage": "So it will not be possible to take forward these charging reforms. This will save over £1bn by the end of next year.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "casey-first-terms": {
+    "kind": "enacted",
+    "statement": "The commission's terms first set two phases, reporting in 2026 and by 2028.",
+    "source_id": "casey-tor",
+    "passage": "The purpose of the first phase of the commission is to set out the plan for how to implement a national care service, a government manifesto commitment. This should report in 2026.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "casey-affordable": {
+    "kind": "enacted",
+    "statement": "The terms require recommendations to be affordable within spending plans for this Parliament.",
+    "source_id": "casey-tor",
+    "passage": "The commission's recommendations must remain affordable, operating within the fiscal constraints of Spending Review settlements for the remainder of this Parliament.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "casey-summer-2027": {
+    "kind": "commitment",
+    "statement": "On 29 July 2026 the Prime Minister's Office said the commission would report in summer 2027.",
+    "source_id": "pm-care-2026-07-29",
+    "passage": "he would bring forward the date for Baroness Casey's commission to report back with a plan on how to deliver the National Care Service, accelerating this from 2028 to next summer",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "care-funded-principle": {
+    "kind": "commitment",
+    "statement": "The announcement says the service must be fully funded. It names no source of funding.",
+    "source_id": "pm-care-2026-07-29",
+    "passage": "This service must be fully and sustainably funded",
+    "interpretation": false,
+    "note": "That no funding source is named is a reading of the whole announcement.",
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "casey-panel": {
+    "kind": "enacted",
+    "statement": "A public panel for the commission was opened for registration in September 2026.",
+    "source_id": "casey-panel-2026",
+    "passage": "What is care? Who should receive it? And who should pay for what?",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "aa-scotland": {
+    "kind": "enacted",
+    "statement": "In Scotland, new claims are for Pension Age Disability Payment, not Attendance Allowance.",
+    "source_id": "govuk-aa-eligibility",
+    "passage": "You will need to apply for Pension Age Disability Payment instead of Attendance Allowance.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "hf-affordable": {
+    "kind": "commentary",
+    "statement": "The Health Foundation argues that reform is affordable if the government chooses it.",
+    "source_id": "health-foundation-2024",
+    "passage": "But reform is not unaffordable: if it chooses to, government can afford to provide a better, fairer and more generous social care system in England.",
+    "interpretation": true,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "hf-broad-estimate": {
+    "kind": "finding",
+    "statement": "The Health Foundation calls its estimate for universal care a broad estimate.",
+    "source_id": "health-foundation-2024",
+    "passage": "This is a broad estimate only.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "bsp-30-years": {
+    "kind": "rule",
+    "statement": "People born between 1945 and 1951 usually need 30 qualifying years for the full basic State Pension. People born earlier need more.",
+    "source_id": "govuk-basic-state-pension",
+    "passage": "30 qualifying years if you were born between 1945 and 1951",
+    "interpretation": false,
+    "note": "GOV.UK gives the bands by year of birth and by sex. Women born between 1950 and 1953 also need 30 years.",
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "speech-not-yet-given": {
+    "kind": "reported",
+    "statement": "The Prime Minister was due to give his first conference speech as party leader on 29 September 2026.",
+    "source_id": "pa-2026-09-28",
+    "passage": null,
+    "interpretation": false,
+    "note": "From the headline and text of a PA News report published on the evening of 28 September 2026. No transcript had been published when this site was last checked, in the afternoon of 29 September 2026.",
+    "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  }
+}

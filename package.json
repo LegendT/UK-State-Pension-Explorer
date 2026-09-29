@@ -1,0 +1,22 @@
+{
+  "name": "uk-state-pension-explorer",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A plain-English explainer of the UK State Pension, the triple lock and reform options. Working title.",
+  "type": "module",
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "rm -rf _site && eleventy && node scripts/check-build.mjs",
+    "test": "node --test",
+    "serve": "http-server _site -p 8137 -c-1 --silent",
+    "a11y": "node scripts/a11y.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "3.1.6",
+    "http-server": "14.1.1",
+    "pa11y-ci": "4.1.1"
+  }
+}

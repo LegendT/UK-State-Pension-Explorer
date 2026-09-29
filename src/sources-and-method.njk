@@ -1,0 +1,232 @@
+---
+layout: base.njk
+permalink: /sources-and-method/
+---
+{%- import "macros.njk" as m with context -%}
+<h1>Sources, method and corrections</h1>
+
+<p class="lede">This page says where the figures come from, how the calculations work, what has and has not been checked, and how to report an error.</p>
+
+{{ m.contents([
+  ["review-status", "What has and has not been checked"],
+  ["approach", "Editorial approach"],
+  ["source-order", "Which sources we use, and in what order"],
+  ["dates", "What the dates on this site mean"],
+  ["models", "How the calculators work, and their limits"],
+  ["ai", "Use of AI"],
+  ["ownership", "Who is responsible for this site"],
+  ["corrections", "Corrections"],
+  ["glossary", "Glossary"],
+  ["figure-register", "Register of figures"],
+  ["claim-register", "Register of claims"],
+  ["source-register", "Register of sources"]
+]) }}
+
+<h2 id="review-status">What has and has not been checked</h2>
+
+{% if not site.production %}
+{% call m.note("This is a preview", 3) %}
+<p>The site has not been published. The checks below are the only ones made so far.</p>
+{% endcall %}
+{% endif %}
+
+<h3>Checked</h3>
+<ul>
+  <li>Each figure and quotation was taken from the source named beside it, on the date shown. The reading was done with an AI assistant, which opened the source and copied the figure or passage.</li>
+  <li>The two headline rates were checked a second time, directly against GOV.UK.</li>
+  <li>The calculators were tested against examples worked out separately, by a different method from the calculator code.</li>
+  <li>Every increase in the published rates from 2011/12, and in the new State Pension from 2017/18, was tested against the rate before it, the increase applied, and rounding to the nearest 5p.</li>
+</ul>
+
+<h3>Not checked</h3>
+<ul>
+  <li>{% if site.reviewerName %}The content was reviewed by {{ site.reviewerName }} on {{ site.reviewDate | timeTag | safe }}.{% else %}<strong>No person has yet reviewed the content.</strong> A check by the same assistant that wrote a page is not an independent review.{% endif %}</li>
+  <li>Some sources refused automated reading, including the House of Commons Library and Hansard. Nothing on this site is quoted from them.</li>
+  <li>Figures reported in the news without a document we could open are left out, or are marked as reported.</li>
+  <li>The accessibility assessment is set out in the <a href="/accessibility/">accessibility statement</a>.</li>
+</ul>
+
+<p>We do not use labels such as "verified" or "official" as a general mark of reliability. Each figure says what it is, where it is from and when it was checked.</p>
+
+<h2 id="approach">Editorial approach</h2>
+
+<ul>
+  <li><strong>Neutral.</strong> The site explains. It does not recommend a policy. The same questions are put to every option, including keeping the present rules.</li>
+  <li><strong>Evidence is not treated as equal when it is not.</strong> A claim with strong evidence is stated plainly. A claim with weak or old evidence says so.</li>
+  <li><strong>Findings and judgements are kept apart.</strong> A recommendation by a research body is named as that body's recommendation.</li>
+  <li><strong>Gaps are shown.</strong> Where we did not find a figure, the page says so. We do not fill a gap with an estimate of our own or with an example household.</li>
+  <li><strong>Sources that disagree are both shown.</strong> We say how they differ. We do not pick one without saying.</li>
+</ul>
+
+<h2 id="source-order">Which sources we use, and in what order</h2>
+
+<ol>
+  <li><strong>The law and official rates.</strong> Acts, orders and the rates published by the Department for Work and Pensions. Used for rules and rates.</li>
+  <li><strong>Official statistics.</strong> The Department for Work and Pensions, the Office for National Statistics and HM Revenue and Customs. Used for what is observed. We note where statistics are in development or where accreditation is suspended.</li>
+  <li><strong>Official forecasts and projections.</strong> The Office for Budget Responsibility and the Government Actuary's Department. Always shown with their edition and assumptions.</li>
+  <li><strong>Research bodies.</strong> For analysis and benchmarks, named each time. Their recommendations are not official rules.</li>
+  <li><strong>News reports.</strong> Only for what has been reported or said. Never as the only authority for a rule or a costing.</li>
+</ol>
+
+<p>Our sister sites are not used as evidence for any claim here. Links to them are for further explanation.</p>
+
+<h2 id="dates">What the dates on this site mean</h2>
+
+<dl>
+  <dt>Period</dt><dd>The time a figure describes, such as a tax year.</dd>
+  <dt>Took effect</dt><dd>The date a rate or rule started to apply.</dd>
+  <dt>Published</dt><dd>The date the source was published, where the source gives one.</dd>
+  <dt>Checked against the source</dt><dd>The date we read the source. Checking a source again does not change a page's content date.</dd>
+  <dt>Content last changed</dt><dd>The date the content of a page last changed in substance. It does not change when the site is rebuilt.</dd>
+</dl>
+
+<h2 id="models">How the calculators work, and their limits</h2>
+
+<h3>What all four have in common</h3>
+<ul>
+  <li>They work in your browser. Nothing you enter is sent or stored.</li>
+  <li>Money is held in whole pence and percentages in tenths of a per cent, so no rounding happens except where the method says.</li>
+  <li>The three calculators about pension rates work before tax, on a full rate of one pension, not on a person's whole payment.</li>
+  <li>The budget explorer takes a household's whole income and has a line for Income Tax that the reader fills in.</li>
+  <li>None works out tax, Pension Credit or any other benefit.</li>
+</ul>
+
+<h3>The four rules</h3>
+{% call m.scrollTable("The four rules for the yearly increase") %}
+<table>
+  <caption>The increase each rule applies</caption>
+  <thead><tr><th scope="col">Rule</th><th scope="col">Increase applied</th></tr></thead>
+  <tbody>
+    <tr><th scope="row">Triple lock</th><td>The highest of prices, earnings and 2.5%</td></tr>
+    <tr><th scope="row">Double lock</th><td>The higher of prices and earnings</td></tr>
+    <tr><th scope="row">Earnings link</th><td>Earnings</td></tr>
+    <tr><th scope="row">Prices link</th><td>Prices</td></tr>
+  </tbody>
+</table>
+{% endcall %}
+
+<ul>
+  <li><strong>Ties.</strong> When two or three measures are equal highest, the result names each of them.</li>
+  <li><strong>Falling prices or earnings.</strong> The triple lock always gives at least 2.5%. For the other rules, a negative figure becomes 0% when the cash floor is on. The cash floor is an assumption of these hypothetical rules, not a statement of the law. It can be switched off in the rule comparison.</li>
+  <li><strong>Rounding.</strong> The new weekly amount is rounded to the nearest 5p, and an exact half rounds up. The rounded amount is the base for the next year. {{ m.c("rounding-5p") }}</li>
+  <li><strong>A year.</strong> 52 weeks at one rate. This is an equivalent. It is not what a person receives in a tax year.</li>
+  <li><strong>Timing.</strong> The rule comparison does not model the delay between the figures and the April increase. The history explorer uses the figures recorded for each decision.</li>
+</ul>
+
+<h3>What the calculators leave out</h3>
+<ul>
+  <li>A freeze, and a smoothed earnings link. <a href="/reform-options/#smoothed">Why the smoothed link is not in the calculator</a>.</li>
+  <li>Any estimate of national cost or saving.</li>
+  <li>Any link between a future pension and a household budget. That would need future prices, tax and benefits, which the tools do not have.</li>
+  <li>Probabilities. The scenarios are illustrations.</li>
+</ul>
+
+<h3>How the calculators were tested</h3>
+<p>The expected results were worked out in a separate program that uses decimal arithmetic, and by hand, before being compared with the calculators. The tests cover ties, zero, negative figures, an exact half in rounding, each of the four rules, the cash floor on and off, each way of entering a budget, and the exceptional years in the history. A separate method of arithmetic is a check on the code. It is not a review by another person.</p>
+
+<h2 id="ai">Use of AI</h2>
+
+<p>This site was researched, written and built with an AI assistant, Claude, made by Anthropic, working under the direction of the site's owner. The assistant read the sources, drafted the text, wrote the code and ran the tests. {% if site.reviewerName %}{{ site.reviewerName }} reviewed the content on {{ site.reviewDate | timeTag | safe }}.{% else %}No person has yet reviewed the content.{% endif %}</p>
+
+<p>An AI assistant can misread a source or state something wrongly with confidence. That is why each figure shows its source, and the passage it rests on where one is quoted, so that a reader can check it.</p>
+
+<h2 id="ownership">Who is responsible for this site</h2>
+
+{% if site.ownerName %}
+<p>This site is published by {{ site.ownerName }}. It is an independent educational project. It is not part of the government and is not an official statistics producer.</p>
+{% else %}
+{% call m.unavailable("the name of the publisher", 3) %}
+<p>The owner of this site has not yet been named here. This is one of the decisions to make before the site is published. The site is an independent educational project. It is not part of the government and is not an official statistics producer.</p>
+{% endcall %}
+{% endif %}
+
+<h2 id="corrections">Corrections</h2>
+
+<h3>Report an error</h3>
+{% if site.correctionUrl %}
+<p>If you think a figure or a statement is wrong, <a href="{{ site.correctionUrl }}">tell us which one and what you think it should be</a>.</p>
+{% else %}
+{% call m.unavailable("a way to report an error", 4) %}
+<p>The route for reporting an error has not been set up. This is one of the decisions to make before the site is published. The site will not be published without it.</p>
+{% endcall %}
+{% endif %}
+
+<h3>How corrections are handled</h3>
+<ol>
+  <li>A correction that changes what a reader would conclude is made first.</li>
+  <li>The figure or statement is corrected in the central register, so every page that uses it changes together.</li>
+  <li>The correction is listed here with its date and a plain explanation.</li>
+  <li>If a claim can no longer be supported and cannot be corrected at once, it is removed or marked as withdrawn.</li>
+</ol>
+
+<h3>Log</h3>
+<p>The log keeps three kinds of change apart.</p>
+<dl>
+  <dt>Errors made by this site</dt>
+  <dd>{% if corrections.errors | length %}<ul>{% for item in corrections.errors %}<li>{{ item.date | timeTag | safe }}: {{ item.text }}</li>{% endfor %}</ul>{% else %}None recorded. The site has not been published.{% endif %}</dd>
+  <dt>Changes in policy or rates</dt>
+  <dd>{% if corrections.policy_changes | length %}<ul>{% for item in corrections.policy_changes %}<li>{{ item.date | timeTag | safe }}: {{ item.text }}</li>{% endfor %}</ul>{% else %}None recorded.{% endif %}</dd>
+  <dt>Revisions by the producer of a statistic</dt>
+  <dd>{% if corrections.statistical_revisions | length %}<ul>{% for item in corrections.statistical_revisions %}<li>{{ item.date | timeTag | safe }}: {{ item.text }}</li>{% endfor %}</ul>{% else %}None recorded.{% endif %}</dd>
+</dl>
+
+<h2 id="glossary">Glossary</h2>
+<dl>
+  {%- for item in glossary %}
+  <dt id="term-{{ item.term | slugify }}">{{ item.term }}</dt>
+  <dd>{{ item.meaning }}</dd>
+  {%- endfor %}
+</dl>
+
+<h2 id="figure-register">Register of figures</h2>
+<p>Every figure used on the site, {{ figures | length }} in all. Each page takes its figures from this register.</p>
+<details class="more">
+  <summary>Show the register of figures</summary>
+  {% call m.scrollTable("Register of figures") %}
+  <table>
+    <caption>Register of figures</caption>
+    <thead><tr><th scope="col">Figure</th><th scope="col" class="num">Value</th><th scope="col">Period</th><th scope="col">Kind</th><th scope="col">Where</th><th scope="col">Source</th><th scope="col">Checked</th></tr></thead>
+    <tbody>
+      {%- for id, record in figures %}
+      {%- set fg = id | figure %}
+      <tr id="fig-{{ id }}"><th scope="row">{{ fg.label }}</th><td class="num">{{ fg.shown }}</td><td>{{ fg.period_label }}</td><td>{{ m.classLabel(fg.classification) }}</td><td>{{ fg.geography }}</td><td>{{ m.cite(fg.source) }}. {{ fg.table_reference }}</td><td>{{ fg.checked_date | timeTag | safe }}</td></tr>
+      {%- endfor %}
+    </tbody>
+  </table>
+  {% endcall %}
+</details>
+
+<h2 id="claim-register">Register of claims</h2>
+<p>Statements that are not figures, {{ claims | length }} in all, each with the passage it rests on. "Our reading" marks a statement that includes interpretation or reports a judgement.</p>
+<details class="more">
+  <summary>Show the register of claims</summary>
+  {% call m.scrollTable("Register of claims") %}
+  <table>
+    <caption>Register of claims</caption>
+    <thead><tr><th scope="col">Statement</th><th scope="col">Kind</th><th scope="col">What the source says</th><th scope="col">Source</th><th scope="col">Notes</th></tr></thead>
+    <tbody>
+      {%- for id, record in claims %}
+      {%- set cl = id | claim %}
+      <tr id="claim-{{ id }}"><th scope="row">{{ cl.statement }}</th><td>{{ { "rule": "Published rule", "enacted": "In law or a government document", "commitment": "Commitment", "proposal": "Proposal", "reported": "Reported", "commentary": "Commentary", "finding": "Research or official finding", "recommendation": "Recommendation", "not-found": "Not found" }[cl.kind] }}{% if cl.interpretation %}. Our reading or a judgement{% endif %}</td><td>{% if cl.passage %}“{{ cl.passage }}”{% else %}No passage quoted{% endif %}</td><td>{% if cl.source %}{{ m.cite(cl.source) }}{% else %}A record of a search. No source can show that something does not exist.{% endif %}</td><td>{{ cl.note or "" }}</td></tr>
+      {%- endfor %}
+    </tbody>
+  </table>
+  {% endcall %}
+</details>
+
+<h2 id="source-register">Register of sources</h2>
+<p>{{ sources | length }} sources.</p>
+<details class="more">
+  <summary>Show the register of sources</summary>
+  {% call m.scrollTable("Register of sources") %}
+  <table>
+    <caption>Register of sources</caption>
+    <thead><tr><th scope="col">Source</th><th scope="col">Publisher</th><th scope="col">Published</th><th scope="col">Checked</th><th scope="col">Notes</th></tr></thead>
+    <tbody>
+      {%- for id, s in sources %}
+      <tr id="source-{{ id }}"><th scope="row"><a href="{{ s.url }}">{{ s.title }}</a></th><td>{{ s.publisher }}</td><td>{% if s.published_date %}{{ s.published_date | monthOrDay }}{% elif s.updated_date %}Updated {{ s.updated_date | monthOrDay }}{% else %}Not given{% endif %}</td><td>{{ s.checked_date | timeTag | safe }}</td><td>{{ s.note or "" }}</td></tr>
+      {%- endfor %}
+    </tbody>
+  </table>
+  {% endcall %}
+</details>

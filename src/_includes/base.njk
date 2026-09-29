@@ -1,0 +1,117 @@
+{%- set entry = pages | where("path", page.url) | first -%}
+{%- if not entry %}{{ ("No page register entry for " + page.url) | fail }}{% endif -%}
+{%- set pageTitle = entry.title + " | " + site.name -%}
+{%- set canonical = site.url + entry.canonical_path -%}
+{%- set shareImage = site.url + "/assets/img/" + (entry.shareImage or "share-default") + ".png" -%}
+<!doctype html>
+<html lang="{{ site.language }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ pageTitle }}</title>
+<meta name="description" content="{{ entry.description }}">
+{%- if not (site.indexable and entry.index) %}
+<meta name="robots" content="noindex">
+{%- endif %}
+<link rel="canonical" href="{{ canonical }}">
+<meta name="theme-color" content="#fdfdfc" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#15181a" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="{{ canonical }}">
+<meta property="og:title" content="{{ entry.shareTitle or entry.title }}">
+<meta property="og:description" content="{{ entry.description }}">
+<meta property="og:image" content="{{ shareImage }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{ shareImages[entry.shareImage or 'share-default'] }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ entry.shareTitle or entry.title }}">
+<meta name="twitter:description" content="{{ entry.description }}">
+<meta name="twitter:image" content="{{ shareImage }}">
+<meta name="twitter:image:alt" content="{{ shareImages[entry.shareImage or 'share-default'] }}">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<script src="/assets/js/js-class.js"></script>
+<link rel="stylesheet" href="/assets/css/main.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "{{ site.url }}/#website",
+      "url": "{{ site.url }}/",
+      "name": {{ site.name | json | safe }},
+      "inLanguage": "en-GB"{% if site.ownerName %},
+      "publisher": { "@type": "{{ site.ownerType }}", "name": {{ site.ownerName | json | safe }} }{% endif %}
+    },
+    {
+      "@type": "WebPage",
+      "@id": "{{ canonical }}#webpage",
+      "url": "{{ canonical }}",
+      "name": {{ entry.title | json | safe }},
+      "description": {{ entry.description | json | safe }},
+      "isPartOf": { "@id": "{{ site.url }}/#website" },
+      "inLanguage": "en-GB"{% if entry.published %},
+      "datePublished": "{{ entry.published }}"{% endif %}{% if entry.modified %},
+      "dateModified": "{{ entry.modified }}"{% endif %}
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+{%- if not site.production %}
+<div class="preview-banner" role="note">
+  <div class="wrap">
+    <p><strong>Preview for review.</strong> This site is not published. A person has not yet reviewed its content, and its accessibility assessment is not complete. <a href="/sources-and-method/#review-status">What has and has not been checked</a>.</p>
+  </div>
+</div>
+{%- endif %}
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="/">{{ site.name }}</a></p>
+    <nav aria-label="Main">
+      <details class="nav-menu">
+        <summary>Menu</summary>
+        <ul>
+          {%- for item in site.nav %}
+          <li><a href="{{ item.href }}"{% if page.url == item.href %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
+          {%- endfor %}
+        </ul>
+      </details>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap" tabindex="-1">
+{{ content | safe }}
+{%- if entry.modified %}
+<p class="page-dates">Content of this page last changed on {{ entry.modified | timeTag | safe }}. Each figure shows the date it was checked against its source.</p>
+{%- endif %}
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <section aria-labelledby="other-explainers">
+      <h2 id="other-explainers">Our other explainers</h2>
+      <ul class="explainers">
+        {%- for sibling in site.siblings %}
+        <li><a href="{{ sibling.url }}">{{ sibling.name }}</a> <span>{{ sibling.summary }} This is a separate website.</span></li>
+        {%- endfor %}
+      </ul>
+    </section>
+    <nav aria-label="Footer">
+      <ul class="footer-links">
+        <li><a href="/sources-and-method/">Sources, method and corrections</a></li>
+        <li><a href="/accessibility/">Accessibility statement</a></li>
+        <li><a href="/privacy/">Privacy</a></li>
+        <li><a href="/site-map/">Site map</a></li>
+      </ul>
+    </nav>
+    <p>{{ site.name }} is an educational project. It is not a government service and does not give financial advice. Rates and rules change: each figure shows its source and the date it was checked.</p>
+    <p>Contains public sector information licensed under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government Licence v3.0</a>.</p>
+  </div>
+</footer>
+</body>
+</html>

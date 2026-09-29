@@ -1,0 +1,46 @@
+{
+  "note": "Passages confirmed by opening the source in a browser, because the site refuses automated requests. Each entry was read in Chrome on the date shown.",
+  "checked": [
+    {
+      "id": "care-cost-free-personal",
+      "date": "2026-09-29",
+      "browser": "Chrome 154"
+    },
+    {
+      "id": "care-cost-cap",
+      "date": "2026-09-29",
+      "browser": "Chrome 154"
+    },
+    {
+      "id": "care-cost-universal",
+      "date": "2026-09-29",
+      "browser": "Chrome 154"
+    },
+    {
+      "id": "hf-affordable",
+      "date": "2026-09-29",
+      "browser": "Chrome 154"
+    },
+    {
+      "id": "hf-broad-estimate",
+      "date": "2026-09-29",
+      "browser": "Chrome 154"
+    },
+    {
+      "id": "peston-inference",
+      "date": "2026-09-29",
+      "browser": "Chrome 154"
+    },
+    {
+      "id": "australia-assets-test",
+      "date": "2026-09-29",
+      "browser": "Chrome 154"
+    },
+    {
+      "id": "care-cap-level",
+      "date": "2026-09-29",
+      "browser": "Chrome 154",
+      "note": "The same passage as care-cost-cap."
+    }
+  ]
+}

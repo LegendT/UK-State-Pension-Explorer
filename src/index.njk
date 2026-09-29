@@ -1,0 +1,83 @@
+---
+layout: base.njk
+permalink: /
+---
+{%- import "macros.njk" as m with context -%}
+{%- set nsp = "nsp-full-weekly" | figure -%}
+{%- set nspYear = "nsp-full-52-weeks" | figure -%}
+{%- set bsp = "bsp-full-weekly" | figure -%}
+{%- set next = "earnings-first-estimate-2026" | figure -%}
+
+<section class="rate-block" aria-labelledby="rate-heading">
+  <h1 id="rate-heading">How much is the State Pension?</h1>
+  <p class="rate">{{ nsp.shown }} a week</p>
+  <p class="rate-label">Full new State Pension, {{ nsp.period_label }}, before tax.</p>
+  <p>{{ nspYear.shown }} over 52 weeks, calculated as {{ nspYear.formula }}. This is an equivalent. It is not the exact amount a person receives in a tax year.</p>
+  <p class="rate-second">Full basic State Pension: {{ bsp.shown }} a week.</p>
+  <p>These are full rates, not everyone's payment. Your amount depends on your National Insurance record and any extra entitlement. Some people receive less and some receive more.</p>
+  <ul class="link-list">
+    <li><a href="/state-pension/#which-system">Which pension applies to you?</a></li>
+    <li><a href="https://www.gov.uk/check-state-pension">Check your own State Pension forecast on GOV.UK</a></li>
+  </ul>
+  <p class="source">Rates took effect on {{ nsp.effective_from | timeTag | safe }}. Sources: {{ m.cite(nsp.source) }}, and {{ m.cite(bsp.source) }}. Both were checked against the source on {{ nsp.checked_date | timeTag | safe }}. The rates cover Great Britain. Northern Ireland sets the same rates through its own order, which we did not read.</p>
+</section>
+
+<p class="lede">This site explains the State Pension, the yearly increase known as the triple lock, what a pension can cover, and the evidence for and against changing the rules. It is written for people who have heard these things in the news and want them explained.</p>
+
+<h2 id="three-things">Three things to know first</h2>
+
+<p>The <strong>State Pension</strong> is a regular payment from the government to people who have reached State Pension age and have paid, or been credited with, enough National Insurance. There are two systems. Which one applies depends on when a person was born.</p>
+
+<p>The <strong>triple lock</strong> is the rule for the yearly increase. Each April the full rates rise by the highest of three figures: the rise in prices, the rise in average earnings, or 2.5%. {{ m.c("tl-definition") }}</p>
+
+<p><strong>Entitlement and increases are different questions.</strong> Entitlement decides who gets a State Pension and how much of the full rate. The yearly increase decides how the rates change over time. A proposal to change one does not change the other.</p>
+
+<h2 id="journeys">Where to go next</h2>
+
+<ul class="cards cards--three journeys">
+  <li><a href="/state-pension/">Understand the rules <span>Who gets the State Pension, how much, and how the yearly increase works. Start with <em>The State Pension</em>, then <em>The triple lock</em>.</span></a></li>
+  <li><a href="/living-on-a-pension/">Understand buying power <span>What research says a standard of living costs, what retired households spend, and a budget you can fill in yourself.</span></a></li>
+  <li><a href="/reform-options/">Explore reform <span>The options for changing increases or entitlement, what they would cost or save, and who would be affected.</span></a></li>
+</ul>
+
+<h2 id="in-the-news">In the news: what is decided and what is not</h2>
+
+<p>This is a dated note. It describes the position on the morning of {{ news.as_of | timeTag | safe }}, before the Prime Minister's speech to his party conference that day. {{ m.c("speech-not-yet-given") }} It will go out of date. It is not a live news feed.</p>
+
+{%- for group in news.groups %}
+<h3>{{ group.heading }}</h3>
+<p>{{ group.meaning }}</p>
+<ul>
+  {%- for item in group.entries %}
+  <li>{{ item.text }} {% for id in item.claims %}{{ m.c(id) }} {% endfor %}{% for id in item.figures %}{% set fg = id | figure %}<span class="ref">Source: {{ m.cite(fg.source) }}.</span> {% endfor %}</li>
+  {%- endfor %}
+</ul>
+{%- endfor %}
+
+<p><a href="/pensions-and-social-care/">Read the full assessment of pensions and social care</a>.</p>
+
+<h2 id="next-year">Next year's rate is not yet decided</h2>
+
+<p>The rate for {{ history.next_year.tax_year }} has not been set. It depends on two figures that are not yet final. Earnings growth for May to July 2026 was first estimated at {{ next.shown }}, and a revised figure is due on {{ history.next_year.earnings_revision_due | timeTag | safe }}. The rise in prices for the year to September 2026 is due on {{ history.next_year.prices_due | timeTag | safe }}. Until the government announces its decision, any figure for next year is a forecast.</p>
+{{ m.sourceNote(next) }}
+
+<h2 id="distinctions">Distinctions that matter</h2>
+
+<dl>
+  <dt>A full rate is not what everyone gets</dt>
+  <dd>The mean new State Pension in payment in March 2026 was {{ m.f("nsp-mean-weekly") }} a week, at the rates then in force. <a href="/state-pension/#what-people-receive">What people actually receive</a>.</dd>
+  <dt>The State Pension is not the same as Pension Credit</dt>
+  <dd>Pension Credit is a separate, means-tested benefit. It has to be claimed, and many people who could get it do not. <a href="/state-pension/#extra-help">Pension Credit and other help</a>.</dd>
+  <dt>A lower amount than under another rule is not a cut in pounds</dt>
+  <dd>Under most alternatives to the triple lock the pension still rises each year. It rises by less. <a href="/reform-options/#compare">Compare the rules</a>.</dd>
+  <dt>What the triple lock has cost is not what changing it would save</dt>
+  <dd>Past increases are already in today's rates. A change affects future increases only. <a href="/reform-options/#public-finances">Costs and savings</a>.</dd>
+  <dt>A research budget is not a measure of poverty, and neither is what people spend</dt>
+  <dd>They answer different questions. <a href="/living-on-a-pension/#three-questions">Three questions about living costs</a>.</dd>
+  <dt>State Pension policy is set for the whole UK. Social care policy is set by each nation</dt>
+  <dd>A care proposal for England does not cover people in Scotland, Wales or Northern Ireland. <a href="/pensions-and-social-care/#scope">Who each policy covers</a>.</dd>
+</dl>
+
+<h2 id="about">About this site</h2>
+
+<p>This is an educational project. It is not a government service and it does not give financial advice. It aims to be neutral: it sets out the strongest supported arguments on each side and says where a conclusion depends on a judgement about fairness. <a href="/sources-and-method/">How the site is sourced and checked</a>.</p>
