@@ -12,10 +12,8 @@ announcement of 29 September 2026 is research/06-announcement-2026-09-29.md.
 
 State on 30 September 2026: see the opening paragraph of docs/HANDOVER.md and its
 section "The announcement of 29 September 2026". The site is an unpublished preview.
-Pull request 1 is merged into main. Pull request 2 is open from first-build. The branch
-html-semantics follows first-build. The branch april-2030-rule follows html-semantics
-and holds the update for the announcement. That work is committed. Nothing on
-either branch is pushed. Run git status first.
+Pull requests 1, 2 and 3 are merged into main, which holds all the work, including
+the update for the announcement. Run git status first.
 
 Next action: none. Wait for Anthony to say what to do. Nothing else is authorised.
 
