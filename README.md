@@ -43,7 +43,7 @@ A production build stops unless the launch decisions it can check are set. It al
 The command below passes only after that header has been removed from `netlify.toml`.
 
 ```
-SITE_ENV=production SITE_NAME="..." SITE_URL=https://... CORRECTION_URL=https://... \
+SITE_ENV=production SITE_TITLE="..." SITE_URL=https://... CORRECTION_URL=https://... \
 OWNER_NAME="..." OWNER_TYPE=Person REVIEWER_NAME="..." REVIEW_DATE=2026-10-01 \
 A11Y_ASSESSMENT_DATE=2026-10-01 AI_CRAWLER_POLICY=allow npm run build
 ```
@@ -71,12 +71,11 @@ A11Y_ASSESSMENT_DATE=2026-10-01 AI_CRAWLER_POLICY=allow npm run build
 | `scripts/` | Build check, accessibility runs, source checks, reference calculations. |
 | `research/` | The research record behind the registers. |
 | `docs/` | Specification, decisions, assessment, maintenance, handover. |
-
-`scripts/seed/`, if present locally, holds the one-off scripts that first wrote the registers. It is not committed. **Do not run them.** The registers have been edited since.
+| `NEXT-SESSION.md` | A prompt for the first message of a new session. Written by the handoff check. Not edited by hand. |
 
 ## Hosting
 
-Netlify builds a preview from `main`, using `netlify.toml`. The preview is configured to ask for a user name and password. They are set in the `BASIC_AUTH` variable in Netlify, as `user:password`, and the build writes them to `_site/_headers`. `BASIC_AUTH=user:password npm run build` shows that the rule is written. It does not show that the sign-in works, because the local server ignores that file. That can only be checked on Netlify. Repository: https://github.com/LegendT/UK-State-Pension-Explorer
+Netlify builds a preview from `main`, using `netlify.toml`. The preview asks for a user name and password. They are set in the `BASIC_AUTH` variable in Netlify, as `user:password`, and the build writes them to `_site/_headers`. `BASIC_AUTH=user:password npm run build` shows that the rule is written. It does not show that the sign-in works, because the local server ignores that file. That was checked on the Netlify deploy preview on 29 September 2026. Repository, private: https://github.com/LegendT/UK-State-Pension-Explorer
 
 ## Conventions
 

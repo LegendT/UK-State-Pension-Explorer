@@ -26,7 +26,7 @@ Each figure has a `next_review` trigger. Known dates:
 | 22 October 2026 | DWP take-up estimates, financial year ending 2025 | `pension-credit-take-up`, `pension-credit-unclaimed`, `pension-credit-non-recipients` |
 | 27 November 2026 | ONS Household Costs Indices | `hci-*` |
 | Spring 2027 | Pensions Commission final report | Claims `pc-*` |
-| Summer 2027 | Care commission report for England | Pensions and social care page |
+| Summer 2027 | Care commission report for England | Social care section of the reform options page |
 | March 2027 | DWP Pensioners' Incomes and Households Below Average Income | `income-*`, `low-income-*`, `material-deprivation`, table `income-fifths` |
 | July 2027 | OBR Fiscal risks and sustainability | `sp-share-gdp-*`, `tl-share-of-rise`, `saving-*-2075`, table `sp-longrun` |
 | 21 September 2027 | DWP benefits statistics | `sp-recipients`, `*-mean-weekly*` |
@@ -39,7 +39,7 @@ Rechecking a source that has not changed updates `checked_date` only. It does no
 
 `src/_data/news.json` is a dated note. When policy status changes, rewrite it and change `as_of`. If nobody is maintaining it, leave the date in place. Never relabel an old note as current.
 
-The note of 29 September 2026 was written before the Prime Minister's conference speech. Read the speech once a transcript is published and rewrite the note and the pensions and social care page.
+The note of 29 September 2026 was written before the Prime Minister's conference speech. Read the speech once a transcript is published and rewrite the note and the social care section of the reform options page.
 
 ## Corrections
 

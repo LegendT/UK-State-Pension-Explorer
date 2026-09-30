@@ -64,8 +64,8 @@
       "http_status": 200,
       "content_found": "The page says the claim is not established as a general claim. It does not mention pensions or State Pension age.",
       "comparability": "Not applicable.",
-      "status": "not-placed",
-      "reason": "This site has no passage that discusses the fiscal contribution of migrants, so a link would have no context. It stays in the register for a later decision."
+      "status": "declined",
+      "reason": "This site has no passage that discusses the fiscal contribution of migrants, so a link would have no context. The owner decided on 29 September 2026 not to link it."
     }
   ],
   "reciprocal": [
