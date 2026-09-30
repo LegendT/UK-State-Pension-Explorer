@@ -775,13 +775,13 @@
     "source_id": "services-australia-assets",
     "passage": "When your assets are more than the limit for your situation, your pension will reduce.",
     "interpretation": false,
-    "note": "Context only. Australia's Age Pension is based on residence and paid from general taxation, and sits beside compulsory private saving. It is not a model proposed for the UK by any body this site found.",
+    "note": "Context only. Australia's Age Pension is based on residence and paid from general taxation, and sits beside compulsory private saving. It is not a model proposed for the UK by any body we found.",
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance"
   },
   "no-costed-means-test": {
     "kind": "not-found",
-    "statement": "This site found no costed proposal from a party, commission or research body to means-test the UK State Pension.",
+    "statement": "We found no costed proposal from a party, commission or research body to means-test the UK State Pension.",
     "source_id": null,
     "passage": null,
     "interpretation": false,
@@ -791,7 +791,7 @@
   },
   "no-costed-double-lock": {
     "kind": "not-found",
-    "statement": "This site found no current official or research estimate of the saving from a double lock that it could open and check.",
+    "statement": "We found no current official or research estimate, that we could open and check, of the saving from a double lock of prices or earnings.",
     "source_id": null,
     "passage": null,
     "interpretation": false,
@@ -821,7 +821,7 @@
   },
   "obr-tl-assumed": {
     "kind": "finding",
-    "statement": "The Office for Budget Responsibility assumes the triple lock continues because no firm alternative policy exists.",
+    "statement": "In its July 2026 report the Office for Budget Responsibility assumed the triple lock continues, because no firm alternative policy then existed.",
     "source_id": "obr-frs-2026",
     "passage": "assume it remains in place beyond this point in the absence of a firm policy alternative",
     "interpretation": false,
@@ -839,73 +839,13 @@
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance"
   },
-  "minister-sticking-2026-09-28": {
-    "kind": "reported",
-    "statement": "A Cabinet minister said on 28 September 2026 that the government is keeping its manifesto commitment.",
-    "source_id": "pa-2026-09-28",
-    "passage": "We have a commitment in our manifesto, we're sticking to that commitment, we've stuck to it to date, that is the right thing to do.",
-    "interpretation": false,
-    "note": "Jonathan Reynolds, as reported by PA News from a broadcast interview.",
-    "checked_date": "2026-09-29",
-    "review_status": "checked-with-ai-assistance"
-  },
-  "next-manifesto-unconfirmed": {
-    "kind": "reported",
-    "statement": "PA News reported that ministers had declined to confirm that the commitment will be in the next manifesto.",
-    "source_id": "pa-2026-09-28",
-    "passage": "Ministers have refused to confirm Labour's commitment to the triple lock ... will be in that manifesto.",
-    "interpretation": false,
-    "note": null,
-    "checked_date": "2026-09-29",
-    "review_status": "checked-with-ai-assistance"
-  },
-  "care-speculation": {
-    "kind": "reported",
-    "statement": "PA News described the link between pension increases and care funding as speculation.",
-    "source_id": "pa-2026-09-28",
-    "passage": "That has fuelled speculation that a change in the way pensions are increased to a less generous system could be used to partly fund the cost of free social care for adults in England.",
-    "interpretation": false,
-    "note": null,
-    "checked_date": "2026-09-29",
-    "review_status": "checked-with-ai-assistance"
-  },
-  "care-not-before-election": {
-    "kind": "reported",
-    "statement": "PA News reported that change to care will not come before the next election.",
-    "source_id": "pa-2026-09-28",
-    "passage": "change will not come before the next election, with Baroness Louise Casey still to publish the findings of her review of social care",
-    "interpretation": false,
-    "note": null,
-    "checked_date": "2026-09-29",
-    "review_status": "checked-with-ai-assistance"
-  },
-  "peston-inference": {
-    "kind": "commentary",
-    "statement": "A political journalist inferred that pension reform might pay for care, and said he was not certain.",
-    "source_id": "itv-peston-2026-09-27",
-    "passage": "As I say, Burnham dropped all these hints today. Am I certain that is his plan? Not really.",
-    "interpretation": true,
-    "note": null,
-    "checked_date": "2026-09-29",
-    "review_status": "checked-with-ai-assistance"
-  },
-  "no-published-trade-off": {
-    "kind": "not-found",
-    "statement": "This site found no document from a party, a commission or the government that proposes replacing the triple lock to pay for social care.",
-    "source_id": null,
-    "passage": null,
-    "interpretation": false,
-    "note": "A finding of absence on the morning of 29 September 2026, before the Prime Minister's conference speech. Parliamentary records could not be opened.",
-    "checked_date": "2026-09-29",
-    "review_status": "checked-with-ai-assistance"
-  },
   "conservative-position": {
     "kind": "reported",
     "statement": "The Conservative leader was reported as saying the party stands by the triple lock.",
     "source_id": "telegraph-yahoo-2026-09-19",
     "passage": "The Conservatives created the triple lock; we've always protected it and we stand by it.",
     "interpretation": false,
-    "note": "Reported in a newspaper article of 19 September 2026, which dates the remark to September 2025. This site found no party document.",
+    "note": "Reported in a newspaper article of 19 September 2026, which dates the remark to September 2025. We found no party document.",
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance"
   },
@@ -925,7 +865,7 @@
     "source_id": "cityam-reform-2026-04",
     "passage": null,
     "interpretation": false,
-    "note": "Reported in a newspaper. This site found no party document. No wording is quoted.",
+    "note": "Reported in a newspaper. We found no party document. No wording is quoted.",
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance"
   },
@@ -971,7 +911,7 @@
   },
   "care-funded-principle": {
     "kind": "commitment",
-    "statement": "The announcement says the service must be fully funded. It names no source of funding.",
+    "statement": "On 29 July 2026 the Prime Minister's Office said the service must be fully funded. That announcement named no source of funding.",
     "source_id": "pm-care-2026-07-29",
     "passage": "This service must be fully and sustainably funded",
     "interpretation": false,
@@ -1029,14 +969,444 @@
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance"
   },
-  "speech-not-yet-given": {
+  "tl-kept-to-2030": {
+    "kind": "commitment",
+    "statement": "The government says the triple lock stays as it is until April 2030.",
+    "source_id": "pm-care-2026-09-29",
+    "passage": "The current State Pension Triple Lock will be maintained until April 2030.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "rule-2030": {
+    "kind": "commitment",
+    "statement": "From April 2030 the government plans a different rule. The State Pension would rise each year by inflation or 2.5%, whichever is higher, and by more if that is needed to keep its value relative to earnings.",
+    "source_id": "pm-care-2026-09-29",
+    "passage": "From April 2030, the adjusted Triple Lock will mean the State Pension continues to rise by 2.5% or inflation - whichever is higher – and by even more if that is required to maintain its value relative to earnings.",
+    "interpretation": false,
+    "note": "An announcement. The rule is not in law, and the government has not published how the earnings part would be worked out.",
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "rule-2030-legislate": {
+    "kind": "commitment",
+    "statement": "The government says it will legislate for the change during this Parliament.",
+    "source_id": "pm-care-2026-09-29",
+    "passage": "The Government will legislate for the change during this Parliament.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "rule-2030-name": {
+    "kind": "commitment",
+    "statement": "The government calls the rule the adjusted triple lock.",
+    "source_id": "pm-care-2026-09-29",
+    "passage": "Savings under the adjusted Triple Lock will be used for a new National Care Service",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "rule-2030-example": {
+    "kind": "commitment",
+    "statement": "The government gives an example. If the State Pension is about a third of average earnings in 2030/31, it would rise as average earnings rise.",
+    "source_id": "pm-care-2026-09-29",
+    "passage": "if the value of the State Pension is around a third of average earnings by 2030/31, as average earnings rise, the State Pension will rise in line with that too",
+    "interpretation": false,
+    "note": "An example in the announcement. It is not a published target.",
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "rule-2030-no-fall": {
+    "kind": "commitment",
+    "statement": "The government says no pension will go down.",
+    "source_id": "pm-care-2026-09-29",
+    "passage": "Nobody's pension will ever go down.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "ncs-next-parliament": {
+    "kind": "commitment",
+    "statement": "The government says a National Care Service will be set up in the next Parliament, with free personal care for older people, based on need.",
+    "source_id": "pm-care-2026-09-29",
+    "passage": "A National Care Service will be established in the next Parliament, providing free personal care for older people, based on need rather than ability to pay.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "ncs-personal-care": {
+    "kind": "commitment",
+    "statement": "Personal care means help with things like eating, bathing and using the toilet.",
+    "source_id": "pm-care-2026-09-29",
+    "passage": "The new system will include personal care, helping with things like eating, bathing and using the toilet.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "ncs-not-bed-board": {
+    "kind": "commitment",
+    "statement": "The service would not cover bed and board. The present means-tested council contributions would stay for those.",
+    "source_id": "pm-care-2026-09-29",
+    "passage": "The service will not cover bed and board, for which existing means-tested council contributions will remain.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "ncs-phased": {
+    "kind": "commitment",
+    "statement": "The service would be introduced in phases, growing as the savings from the pension change grow and as staff and providers are built up.",
+    "source_id": "pm-care-2026-09-29",
+    "passage": "The new National Care Service will be introduced in phases, so its scope can grow as the savings increase from adjusting the Triple Lock, and as workforce and provider capacity are built up.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "ncs-not-borrowing": {
+    "kind": "commitment",
+    "statement": "The government says the service will be fully funded, and not through borrowing.",
+    "source_id": "pm-care-2026-09-29",
+    "passage": "It will be fully funded – and not through borrowing.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "ncs-savings-used": {
+    "kind": "commitment",
+    "statement": "The government says the savings from the pension change will be used for the care service. Baroness Casey's commission is to recommend how and when the service is built up.",
+    "source_id": "pm-care-2026-09-29",
+    "passage": "Savings under the adjusted Triple Lock will be used for a new National Care Service, with Baroness Casey to recommend how and when it is built up.",
+    "interpretation": false,
+    "note": "A statement of intent. Nothing in law ties one budget to the other.",
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "pm-speech-2030": {
+    "kind": "commitment",
+    "statement": "In his speech the Prime Minister said the pension would still rise every year by at least prices or 2.5%.",
+    "source_id": "speech-2026-09-29",
+    "passage": "The state pension will continue to rise every year at least by prices or 2.5%.",
+    "interpretation": false,
+    "note": "From the speech as printed by a newspaper. Not an official transcript.",
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "ifs-rule-2030-mechanism": {
+    "kind": "finding",
+    "statement": "The Institute for Fiscal Studies describes the rule as the highest of three things each year: inflation, 2.5%, or the amount needed for the pension to keep up with the growth in average earnings since the rule began.",
+    "source_id": "ifs-new-tl-comment-2026",
+    "passage": "the amount needed to ensure the state pension keeps up with average earnings growth since the introduction of the new policy",
+    "interpretation": false,
+    "note": "The Institute's description. The government has not published the mechanism.",
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "ifs-rule-2030-catch-up": {
+    "kind": "finding",
+    "statement": "In the Institute's description, after a year in which inflation or 2.5% decides the increase, the pension goes on rising by inflation or 2.5% until the growth in average earnings has caught up with it.",
+    "source_id": "ifs-new-tl-comment-2026",
+    "passage": "it instead continues to rise by 2.5% (or inflation, if higher than 2.5%) each year until the growth in the state pension is matched by growth in average earnings",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "ifs-ratchet-removed": {
+    "kind": "finding",
+    "statement": "The Institute for Fiscal Studies says the change removes the permanent ratchet.",
+    "source_id": "ifs-new-tl-comment-2026",
+    "passage": "It removes the most expensive and unattractive element of the old triple lock which is the permanent ratchet effect.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "ifs-smoothed-similar": {
+    "kind": "finding",
+    "statement": "The Institute for Fiscal Studies says a smoothed earnings link is similar to the announced rule, but without the rise of at least 2.5% every year.",
+    "source_id": "ifs-new-tl-comment-2026",
+    "passage": "is similar to the new triple lock, but it does not include the condition that the state pension must always rise by at least 2.5% each year",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "ifs-savings-small-early": {
+    "kind": "finding",
+    "statement": "The Institute for Fiscal Studies expects the savings to be fairly small in the first few years.",
+    "source_id": "ifs-new-tl-comment-2026",
+    "passage": "The savings to the Exchequer from this reform are likely to be relatively small in the first few years.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "ifs-not-universal-care": {
+    "kind": "commentary",
+    "statement": "The deputy director of the Institute for Fiscal Studies says the change should not be expected to save enough to pay for universal social care in the next Parliament.",
+    "source_id": "ifs-new-tl-response-2026",
+    "passage": "We should not expect this reform to save enough that it could fund universal social care in the next parliament.",
+    "interpretation": false,
+    "note": "That is about universal care. The government has announced free personal care, in phases.",
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "ifs-floor-arbitrary": {
+    "kind": "commentary",
+    "statement": "He calls the 2.5% minimum arbitrary and possibly costly.",
+    "source_id": "ifs-new-tl-response-2026",
+    "passage": "the minimum 2.5% increase each year remains an arbitrary and potentially costly part of the system",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "ifs-real-rise-slower": {
+    "kind": "commentary",
+    "statement": "The Institute's deputy director says pensions would still rise faster than prices over time, but more slowly than under the triple lock.",
+    "source_id": "ifs-new-tl-response-2026",
+    "passage": "state pensions will still rise in real terms over time but more slowly than under the current system",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "rf-response-2030": {
+    "kind": "commentary",
+    "statement": "The Resolution Foundation welcomed the change, and said that putting the savings into social care helps vulnerable pensioners most.",
+    "source_id": "rf-response-2026-09-29",
+    "passage": "recycling the savings into social care is especially good news for vulnerable pensioners",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "ncs-england-reported": {
     "kind": "reported",
-    "statement": "The Prime Minister was due to give his first conference speech as party leader on 29 September 2026.",
-    "source_id": "pa-2026-09-28",
+    "statement": "PA News reported that the care service is for England. The government's announcement names no nation.",
+    "source_id": "pa-2026-09-29",
+    "passage": "creating a NHS-style care service in England",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "wales-funding-reported": {
+    "kind": "reported",
+    "statement": "The Secretary of State for Wales was reported as saying that a share of the money would go to Wales, and that the Welsh Government would decide how to use it.",
+    "source_id": "nation-cymru-kinnock-2026-09-29",
+    "passage": "The right proportion of that funding will come to Wales, it will then be up to the government of the day to implement a new national care service.",
+    "interpretation": false,
+    "note": "Reported from a television interview. We found no government document that says it.",
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "minister-more-funding": {
+    "kind": "reported",
+    "statement": "A Cabinet minister was reported as saying the care plans could need more funding.",
+    "source_id": "lbc-2026-09-29",
+    "passage": "could require additional funding",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "conservative-response": {
+    "kind": "reported",
+    "statement": "The Conservative leader said the change would not save enough to pay for a care service for two decades. In the reports we read she did not say whether her party would keep the triple lock after 2030.",
+    "source_id": "lbc-2026-09-29",
+    "passage": "it won't generate enough savings to fund a nationalised care system for another two decades",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "libdem-response": {
+    "kind": "reported",
+    "statement": "The Liberal Democrat leader said care reform cannot wait until after another election and cannot be paid for by the poorest pensioners.",
+    "source_id": "lbc-2026-09-29",
+    "passage": "cannot wait until after another election, and it can't be funded from the pockets of our poorest pensioners",
+    "interpretation": false,
+    "note": "LBC quotes a post on a social media site. We did not open the post.",
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "reform-response": {
+    "kind": "commitment",
+    "statement": "Reform UK says it will keep the triple lock.",
+    "source_id": "reform-2026-09-29",
+    "passage": "Reform UK will always protect our pensioners and maintain the triple lock",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "snp-response": {
+    "kind": "reported",
+    "statement": "The First Minister of Scotland, who leads the Scottish National Party, called the change a bad idea.",
+    "source_id": "bbc-swinney-2026-09-29",
+    "passage": "I think it's a bad idea.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "plaid-response": {
+    "kind": "reported",
+    "statement": "Plaid Cymru's leader at Westminster responded to the speech. In the report we read she did not state a position on the pension change.",
+    "source_id": "nation-cymru-plaid-2026-09-29",
+    "passage": "there is clear common ground between Andy Burnham's plans for England and what the Plaid Cymru Welsh Government is already delivering in Wales",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "green-response": {
+    "kind": "reported",
+    "statement": "The Green Party leader called the speech half measures. In the report we read he did not state a position on the pension change.",
+    "source_id": "lbc-2026-09-29",
+    "passage": "half measures, reannouncements and tinkering",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "unite-response": {
+    "kind": "reported",
+    "statement": "The general secretary of the Unite union said pensioners should not be asked to pay before the very rich.",
+    "source_id": "pa-2026-09-29",
+    "passage": "Going to the well of pensioners before going for the super rich is wrong.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "ageuk-response": {
+    "kind": "reported",
+    "statement": "Age UK said it would wait for the detail before judging the pension change.",
+    "source_id": "hm-responses-2026-09-29",
+    "passage": "we postpone judgment on the overall impact of their proposed reform until we can scrutinise the detail",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "hf-response": {
+    "kind": "reported",
+    "statement": "The Health Foundation said more public money would be needed, and that what the service will include is not yet clear.",
+    "source_id": "hm-responses-2026-09-29",
+    "passage": "additional public investment will be needed to deliver a fairer and more universal system",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "kf-response": {
+    "kind": "reported",
+    "statement": "The King's Fund said many questions remain about how the reforms would work and what they would cost.",
+    "source_id": "hm-responses-2026-09-29",
+    "passage": "Many genuine questions remain about how these reforms will work in practice and how much it will cost.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "no-rule-2030-detail": {
+    "kind": "not-found",
+    "statement": "We found no Bill, no technical note and no costing method for the change to the triple lock.",
+    "source_id": null,
     "passage": null,
     "interpretation": false,
-    "note": "From the headline and text of a PA News report published on the evening of 28 September 2026. No transcript had been published when this site was last checked, in the afternoon of 29 September 2026.",
-    "checked_date": "2026-09-29",
+    "note": "Searched on 30 September 2026: GOV.UK, the announcement itself, and news reports of it. Parliament was not sitting. The announcement does not say which measure of earnings would be used, or from what starting point.",
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "no-rule-2030-distribution": {
+    "kind": "not-found",
+    "statement": "We found no published analysis of who would gain and who would lose from the pension change and the care service together.",
+    "source_id": null,
+    "passage": null,
+    "interpretation": false,
+    "note": "Searched on 30 September 2026: GOV.UK, the Institute for Fiscal Studies and the Resolution Foundation. Both bodies give totals, not effects on groups of people.",
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "no-ncs-nations": {
+    "kind": "not-found",
+    "statement": "The government's announcement does not say which nations the care service covers, or how pensioners in the other nations would be treated.",
+    "source_id": null,
+    "passage": null,
+    "interpretation": false,
+    "note": "A reading of the whole GOV.UK news story of 29 September 2026. News reports say the service is for England, and one reports a minister saying money would go to Wales.",
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "no-ncs-cost": {
+    "kind": "not-found",
+    "statement": "We found no government estimate of what the care service would cost.",
+    "source_id": null,
+    "passage": null,
+    "interpretation": false,
+    "note": "Searched on 30 September 2026: the GOV.UK news story and news reports. Reports give figures without naming a source.",
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "no-rule-2030-pension-credit": {
+    "kind": "not-found",
+    "statement": "We found nothing on what the change means for Pension Credit.",
+    "source_id": null,
+    "passage": null,
+    "interpretation": false,
+    "note": "Searched on 30 September 2026: the GOV.UK news story, the speech as printed, and the two Institute for Fiscal Studies pieces.",
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "ifs-rule-2030-illustration": {
+    "kind": "finding",
+    "statement": "The Institute for Fiscal Studies gives an example over ten years. Prices rise by 2% every year. Earnings rise by 4% a year, except for three years at 1%. In those three years the pension rises by 2.5%. When earnings growth recovers, the pension goes on rising by 2.5% until earnings have caught up. Then it follows earnings again.",
+    "source_id": "ifs-new-tl-comment-2026",
+    "passage": "By year 9, the growth in the state pension has matched the growth in average earnings since year 1, and so the state pension returns to rising in line with average earnings growth.",
+    "interpretation": false,
+    "note": "A stylised example by the Institute, not a forecast. Under the triple lock in the same example the pension follows earnings again at once, and stays permanently higher.",
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "rule-2030-needs-law": {
+    "kind": "finding",
+    "statement": "In a year when the pension is waiting for earnings to catch up, the announced rule would pay less than that year's earnings growth. The present law does not allow that, so the law would have to change.",
+    "source_id": "ifs-new-tl-comment-2026",
+    "passage": "under the new triple lock the state pension does not grow in line with earnings",
+    "interpretation": true,
+    "note": "Our reading. It joins the Institute's description of the rule to the legal minimum described on the triple lock page.",
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "press-double-lock": {
+    "kind": "reported",
+    "statement": "Some news reports call the announced rule a double lock.",
+    "source_id": "lbc-2026-09-29",
+    "passage": "the state pension will become a double lock",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "ncs-home-deferred": {
+    "kind": "commitment",
+    "statement": "Councils would still leave out the value of a home where a partner or dependent relative lives there, and deferred payment agreements would stay.",
+    "source_id": "pm-care-2026-09-29",
+    "passage": "Councils will continue to exclude the value of a home from financial assessments where a partner or dependent relative lives there, and deferred payment agreements will remain available",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-30",
     "review_status": "checked-with-ai-assistance"
   }
 }

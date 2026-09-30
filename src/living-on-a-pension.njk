@@ -41,8 +41,8 @@ permalink: /living-on-a-pension/
 <p>The Minimum Income Standard is produced by Loughborough University for the Joseph Rowntree Foundation. Groups of members of the public agree what a household needs for a minimum socially acceptable standard of living. {{ m.c("mis-not-poverty-line") }}</p>
 
 <ul class="cards">
-  <li>{{ m.stat("mis-single-ex-rent" | figure, "A single pensioner, not counting rent.") }}</li>
-  <li>{{ m.stat("mis-couple-ex-rent" | figure, "A pensioner couple, not counting rent.") }}</li>
+  <li>{{ m.stat("mis-single-ex-rent" | figure, "A single pensioner, not counting rent.", 4) }}</li>
+  <li>{{ m.stat("mis-couple-ex-rent" | figure, "A pensioner couple, not counting rent.", 4) }}</li>
 </ul>
 
 <p>Rent is shown separately because it differs so much by area. The budgets use an indicative private rent of {{ m.f("mis-single-rent") }} a week for a single pensioner and {{ m.f("mis-couple-rent") }} for a couple.</p>
@@ -98,7 +98,7 @@ permalink: /living-on-a-pension/
 
 {{ m.dataTable("observed-spending") }}
 
-<p>How to read this table.</p>
+<p>Read this table with four points in mind.</p>
 <ul>
   <li>These are averages over every household in the group, including those that spent nothing on an item.</li>
   <li>The groups are small. {{ m.c("fs-small-samples") }} The group of two adults mainly dependent on state pensions had {{ tables["observed-spending"].rows[0][2] }} households in the sample, so its figures are weak.</li>
@@ -116,8 +116,8 @@ permalink: /living-on-a-pension/
 <p>Benefits, including the State Pension, make up {{ m.f("benefit-share-single") }} of the gross income of single pensioners and {{ m.f("benefit-share-couple") }} of the gross income of couples. The rest comes from workplace and personal pensions, earnings and savings.</p>
 {{ m.sourceNote("benefit-share-single" | figure) }}
 
-{% call m.note("Do not set these incomes beside the research budgets without care", 4) %}
-<p>The income figures are after Council Tax. The research budgets count Council Tax as a cost. Comparing them directly counts Council Tax twice. The periods also differ: incomes are for 2024/25 and the 2026 budget is priced at April 2026.</p>
+{% call m.note("Do not set these incomes beside the research budgets without care", 3) %}
+<p>The income figures are after Council Tax. The research budgets count Council Tax as a cost. Comparing them directly counts Council Tax twice. The periods also differ. Incomes are for 2024/25 and the 2026 budget is priced at April 2026.</p>
 {% endcall %}
 
 <p>For how incomes and wealth are spread among pensioners, see <a href="/reform-options/#who">Reform options: who receives what</a>.</p>
@@ -189,11 +189,11 @@ permalink: /living-on-a-pension/
   </div>
 
   <form id="budget-form" class="js-only" novalidate autocomplete="off">
-    <fieldset>
+    <fieldset aria-describedby="budget-household-hint">
       <legend>Household</legend>
       <div class="choice"><input type="radio" id="budget-household-single" name="budget-household" value="single" checked><label for="budget-household-single">One person</label></div>
       <div class="choice"><input type="radio" id="budget-household-couple" name="budget-household" value="couple"><label for="budget-household-couple">Two people</label></div>
-      <p class="hint">Choosing two people adds a second State Pension field and changes the example budgets offered.</p>
+      <p class="hint" id="budget-household-hint">Choosing two people adds a second State Pension field and changes the example budgets offered.</p>
     </fieldset>
 
     <fieldset>
@@ -228,8 +228,8 @@ permalink: /living-on-a-pension/
 
     <fieldset>
       <legend>Income, before tax</legend>
-      <button type="button" class="secondary" id="budget-fill-pension">Fill in the full new State Pension ({{ "nsp-full-weekly" | fig }} a week)</button>
-      <p class="hint">The full rate is not everyone's payment. Replace it with the amount actually received.</p>
+      <button type="button" class="secondary" id="budget-fill-pension" aria-describedby="budget-fill-pension-hint">Fill in the full new State Pension ({{ "nsp-full-weekly" | fig }} a week)</button>
+      <p class="hint" id="budget-fill-pension-hint">The full rate is not everyone's payment. Replace it with the amount actually received.</p>
       <div class="fields">
         {%- for row in budgets.income %}
         <div{% if row.couple_only %} data-couple-only hidden{% endif %}>
@@ -296,7 +296,7 @@ permalink: /living-on-a-pension/
   {%- endfor %}
 
   {% call m.unavailable("an example for every kind of household", 4) %}
-  <p>We have no example for an owner at a minimum standard, for a household in London, or for a household with disability or care costs. The research we found does not publish them in a form we could check. We have not adapted a renter's budget by taking out the rent, because an owner has repair and insurance costs a renter does not. We have not updated any budget for inflation: each example is as its source published it, at the price date shown.</p>
+  <p>We have no example for an owner at a minimum standard, for a household in London, or for a household with disability or care costs. The research we found does not publish them in a form we could check. We have not adapted a renter's budget by taking out the rent, because an owner has repair and insurance costs a renter does not. We have not updated any budget for inflation. Each example is as its source published it, at the price date shown.</p>
   {% endcall %}
 
   <h3>How the tool calculates</h3>

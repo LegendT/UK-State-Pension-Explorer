@@ -93,14 +93,14 @@
 </main>
 <footer class="site-footer">
   <div class="wrap">
-    <section aria-labelledby="other-explainers">
+    <nav aria-labelledby="other-explainers">
       <h2 id="other-explainers">Our other explainers</h2>
       <ul class="explainers">
         {%- for sibling in site.siblings %}
         <li><a href="{{ sibling.url }}">{{ sibling.name }}</a> <span>{{ sibling.summary }} This is a separate website.</span></li>
         {%- endfor %}
       </ul>
-    </section>
+    </nav>
     <nav aria-label="Footer">
       <ul class="footer-links">
         <li><a href="/sources-and-method/">Sources, method and corrections</a></li>
@@ -109,7 +109,7 @@
         <li><a href="/site-map/">Site map</a></li>
       </ul>
     </nav>
-    <p>{{ site.name }} is an educational project. It is not a government service and does not give financial advice. Rates and rules change: each figure shows its source and the date it was checked.</p>
+    <p>{{ site.name }} is an educational project. It is not a government service and does not give financial advice. Rates and rules change, so each figure shows its source and the date it was checked.</p>
     <p>Contains public sector information licensed under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government Licence v3.0</a>.</p>
   </div>
 </footer>

@@ -49,6 +49,7 @@ The cash floor is an assumption of these hypothetical rules. It is not a stateme
 
 - A freeze. No specific proposal justifies it as a launch comparison.
 - A smoothed earnings rule with temporary inflation protection and catch-up. It is described in prose only, until its catch-up mechanism is fully specified.
+- The rule the government announced on 29 September 2026 for April 2030. It is described in prose only. The owner has decided that it will be added in a later phase (decision 38). The specification must be written here first, and must label as assumptions the earnings measure, the starting point and the catch-up test, because the government has published none of them.
 
 ## 4. From a percentage to a weekly rate
 

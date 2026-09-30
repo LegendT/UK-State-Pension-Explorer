@@ -51,11 +51,11 @@ permalink: /sources-and-method/
 <h2 id="approach">Editorial approach</h2>
 
 <ul>
-  <li><strong>Neutral.</strong> The site explains. It does not recommend a policy. The same questions are put to every option, including keeping the present rules.</li>
-  <li><strong>Evidence is not treated as equal when it is not.</strong> A claim with strong evidence is stated plainly. A claim with weak or old evidence says so.</li>
-  <li><strong>Findings and judgements are kept apart.</strong> A recommendation by a research body is named as that body's recommendation.</li>
-  <li><strong>Gaps are shown.</strong> Where we did not find a figure, the page says so. We do not fill a gap with an estimate of our own or with an example household.</li>
-  <li><strong>Sources that disagree are both shown.</strong> We say how they differ. We do not pick one without saying.</li>
+  <li><strong>Neutral.</strong> The site explains. It does not recommend a policy. The site puts the same questions to every option, including keeping the present rules.</li>
+  <li><strong>We do not treat evidence as equal when it is not.</strong> We state a claim with strong evidence plainly. A claim with weak or old evidence says so.</li>
+  <li><strong>We keep findings and judgements apart.</strong> We name a research body's recommendation as that body's recommendation.</li>
+  <li><strong>We show gaps.</strong> Where we did not find a figure, the page says so. We do not fill a gap with an estimate of our own or with an example household.</li>
+  <li><strong>When sources disagree, we show both.</strong> We say how they differ. We do not pick one without saying.</li>
 </ul>
 
 <h2 id="source-order">Which sources we use, and in what order</h2>
@@ -73,11 +73,11 @@ permalink: /sources-and-method/
 <h2 id="dates">What the dates on this site mean</h2>
 
 <dl>
-  <dt>Period</dt><dd>The time a figure describes, such as a tax year.</dd>
-  <dt>Took effect</dt><dd>The date a rate or rule started to apply.</dd>
-  <dt>Published</dt><dd>The date the source was published, where the source gives one.</dd>
-  <dt>Checked against the source</dt><dd>The date we read the source. Checking a source again does not change a page's content date.</dd>
-  <dt>Content last changed</dt><dd>The date the content of a page last changed in substance. It does not change when the site is rebuilt.</dd>
+  <dt>Period</dt> <dd>The time a figure describes, such as a tax year.</dd>
+  <dt>Took effect</dt> <dd>The date a rate or rule started to apply.</dd>
+  <dt>Published</dt> <dd>The date the source was published, where the source gives one.</dd>
+  <dt>Checked against the source</dt> <dd>The date we read the source. Checking a source again does not change a page's content date.</dd>
+  <dt>Content last changed</dt> <dd>The date the content of a page last changed in substance. It does not change when the site is rebuilt.</dd>
 </dl>
 
 <h2 id="models">How the calculators work, and their limits</h2>
@@ -115,7 +115,7 @@ permalink: /sources-and-method/
 
 <h3>What the calculators leave out</h3>
 <ul>
-  <li>A freeze, and a smoothed earnings link. <a href="/reform-options/#smoothed">Why the smoothed link is not in the calculator</a>.</li>
+  <li>A freeze, a smoothed earnings link, and the rule announced for April 2030. <a href="/reform-options/#smoothed">Why the last two are not in the calculator</a>.</li>
   <li>Any estimate of national cost or saving.</li>
   <li>Any link between a future pension and a household budget. That would need future prices, tax and benefits, which the tools do not have.</li>
   <li>Probabilities. The scenarios are illustrations.</li>
@@ -153,10 +153,10 @@ permalink: /sources-and-method/
 
 <h3>How corrections are handled</h3>
 <ol>
-  <li>A correction that changes what a reader would conclude is made first.</li>
-  <li>The figure or statement is corrected in the central register, so every page that uses it changes together.</li>
-  <li>The correction is listed here with its date and a plain explanation.</li>
-  <li>If a claim can no longer be supported and cannot be corrected at once, it is removed or marked as withdrawn.</li>
+  <li>We make a correction first if it changes what a reader would conclude.</li>
+  <li>We correct the figure or statement in the central register, so every page that uses it changes together.</li>
+  <li>We list the correction here with its date and a plain explanation.</li>
+  <li>If a claim can no longer be supported and cannot be corrected at once, we remove it or mark it as withdrawn.</li>
 </ol>
 
 <h3>Log</h3>
@@ -207,7 +207,7 @@ permalink: /sources-and-method/
     <tbody>
       {%- for id, record in claims %}
       {%- set cl = id | claim %}
-      <tr id="claim-{{ id }}"><th scope="row">{{ cl.statement }}</th><td>{{ { "rule": "Published rule", "enacted": "In law or a government document", "commitment": "Commitment", "proposal": "Proposal", "reported": "Reported", "commentary": "Commentary", "finding": "Research or official finding", "recommendation": "Recommendation", "not-found": "Not found" }[cl.kind] }}{% if cl.interpretation %}. Our reading or a judgement{% endif %}</td><td>{% if cl.passage %}“{{ cl.passage }}”{% else %}No passage quoted{% endif %}</td><td>{% if cl.source %}{{ m.cite(cl.source) }}{% else %}A record of a search. No source can show that something does not exist.{% endif %}</td><td>{{ cl.note or "" }}</td></tr>
+      <tr id="claim-{{ id }}"><th scope="row">{{ cl.statement }}</th><td>{{ { "rule": "Published rule", "enacted": "In law or a government document", "commitment": "Commitment", "proposal": "Proposal", "reported": "Reported", "commentary": "Commentary", "finding": "Research or official finding", "recommendation": "Recommendation", "not-found": "Not found" }[cl.kind] }}{% if cl.interpretation %}. Our reading or a judgement{% endif %}</td><td>{% if cl.passage %}"{{ cl.passage }}"{% else %}No passage quoted{% endif %}</td><td>{% if cl.source %}{{ m.cite(cl.source) }}{% else %}A record of a search. No source can show that something does not exist.{% endif %}</td><td>{{ cl.note or "" }}</td></tr>
       {%- endfor %}
     </tbody>
   </table>
@@ -224,7 +224,7 @@ permalink: /sources-and-method/
     <thead><tr><th scope="col">Source</th><th scope="col">Publisher</th><th scope="col">Published</th><th scope="col">Checked</th><th scope="col">Notes</th></tr></thead>
     <tbody>
       {%- for id, s in sources %}
-      <tr id="source-{{ id }}"><th scope="row"><a href="{{ s.url }}">{{ s.title }}</a></th><td>{{ s.publisher }}</td><td>{% if s.published_date %}{{ s.published_date | monthOrDay }}{% elif s.updated_date %}Updated {{ s.updated_date | monthOrDay }}{% else %}Not given{% endif %}</td><td>{{ s.checked_date | timeTag | safe }}</td><td>{{ s.note or "" }}</td></tr>
+      <tr id="source-{{ id }}"><th scope="row"><a href="{{ s.url }}">{{ s.title }}</a></th><td>{{ s.publisher }}</td><td>{% if s.published_date %}{{ s.published_date | monthOrDayTag | safe }}{% elif s.updated_date %}Updated {{ s.updated_date | monthOrDayTag | safe }}{% else %}Not given{% endif %}</td><td>{{ s.checked_date | timeTag | safe }}</td><td>{{ s.note or "" }}</td></tr>
       {%- endfor %}
     </tbody>
   </table>

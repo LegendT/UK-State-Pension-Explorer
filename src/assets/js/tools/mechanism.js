@@ -26,7 +26,7 @@ const MEASURE_NAMES = {
 };
 
 function row(label, value) {
-  return `<dt>${escapeHtml(label)}</dt><dd>${value}</dd>`;
+  return `<dt>${escapeHtml(label)}</dt> <dd>${value}</dd>`;
 }
 
 function previousRate(record, key) {
@@ -67,8 +67,8 @@ function showPast() {
     row("Weekly increase", money(to - from)) +
     row("52 weeks at the new rate", money(to * 52)) +
     `</dl>` +
-    (record.note ? `<p><strong>An exceptional year.</strong> ${escapeHtml(record.note)}</p>` : "") +
-    `<p>These are the published decision and the published rates. They are not calculated by this tool.</p>`;
+    (record.note ? `<div class="note" role="note"><h4>An exceptional year</h4><p>${escapeHtml(record.note)}</p></div>` : "") +
+    `<p>These are the published decision and the published rates. This tool did not calculate them.</p>`;
   announce(status, `Showing the decision for ${record.tax_year}: ${percent(record.applied_tenths)}.`);
 }
 

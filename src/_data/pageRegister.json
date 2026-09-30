@@ -13,8 +13,8 @@
       "canonical_path": "/",
       "index": true,
       "published": null,
-      "modified": "2026-09-29",
-      "modified_note": "First written."
+      "modified": "2026-09-30",
+      "modified_note": "Added the announcement of 29 September 2026 and rewrote the news note."
     },
     {
       "path": "/state-pension/",
@@ -41,8 +41,8 @@
       "canonical_path": "/triple-lock/",
       "index": true,
       "published": null,
-      "modified": "2026-09-29",
-      "modified_note": "First written."
+      "modified": "2026-09-30",
+      "modified_note": "Added the announcement of 29 September 2026."
     },
     {
       "path": "/living-on-a-pension/",
@@ -63,14 +63,14 @@
       "group": "main",
       "title": "Reform options: what changes, and who gains or loses",
       "purpose": "Compare ways to change yearly increases and ways to change entitlement, with costs and distribution. Hosts the rule comparison tool and the dated section on pensions and social care.",
-      "description": "The evidence for keeping or changing the triple lock and for means-testing, with costs, who is affected, and a reported trade-off with social care.",
+      "description": "Evidence for keeping or changing the triple lock and for means-testing: costs, who is affected, and the 2026 plan to change the rule and pay for social care.",
       "shareImage": "share-illustrative",
       "template": "reform-options",
       "canonical_path": "/reform-options/",
       "index": true,
       "published": null,
-      "modified": "2026-09-29",
-      "modified_note": "First written."
+      "modified": "2026-09-30",
+      "modified_note": "Added the rule announced for April 2030 and rewrote the social care section after the announcement of 29 September 2026."
     },
     {
       "path": "/history/",
@@ -125,8 +125,8 @@
       "canonical_path": "/privacy/",
       "index": true,
       "published": null,
-      "modified": "2026-09-29",
-      "modified_note": "First written."
+      "modified": "2026-09-30",
+      "modified_note": "Names the host and the analytics planned for launch."
     },
     {
       "path": "/site-map/",

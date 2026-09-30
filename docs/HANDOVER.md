@@ -1,8 +1,8 @@
 # Handover: first build
 
-29 September 2026. The site is a **preview for review**. It is not published. The work is on the branch `first-build`, in pull request 1 of https://github.com/LegendT/UK-State-Pension-Explorer, and is not merged. Netlify builds a deploy preview of the pull request, behind a sign-in.
+Written 29 September 2026, updated 30 September 2026. The site is a **preview for review**. It is not published. The repository is https://github.com/LegendT/UK-State-Pension-Explorer. Pull request 1, the first build, is merged into `main`. Pull request 2 is open from the branch `first-build`. The branch `html-semantics` follows `first-build` and holds the markup sweep and the stylesheet fixes. The branch `april-2030-rule` follows `html-semantics` and holds the update for the government's announcement of 29 September 2026. Netlify builds a deploy preview of each pull request, behind a sign-in.
 
-**Next action:** none is authorised. The owner decides whether to merge pull request 1. The owner answered the six questions on 29 September 2026: see "Owner's answers". The changes that followed are in the working copy and are not committed. Two questions wait on the owner: whether to list the 2024 positions of the Greens, SNP and Plaid Cymru, marked as 2024 (decision 34), and whether social care should still be a section once the speech has been read (defect 1).
+**Next action:** none is authorised. On 29 September 2026 the government announced a change to the triple lock from April 2030 and a National Care Service. The site was brought up to date on 30 September 2026, on the branch `april-2030-rule`: see "The announcement of 29 September 2026". The owner decides whether `html-semantics` and `april-2030-rule` join `first-build`, whether to merge pull request 2, and when the calculator work in decision 38 starts. The announcement work is committed on `april-2030-rule`. Run `git log origin/first-build..april-2030-rule` to see the commits that have not been pushed.
 
 ## How to look at it
 
@@ -41,6 +41,31 @@ Run on 29 September 2026, Chrome 154, macOS.
 
 The scripts print their own counts. They are not copied here because they change with the content.
 
+The build, the tests and both accessibility scripts were run again on 29 September 2026 after each later change: the fold of the social care page, the wording edits, the markup sweep and the stylesheet fixes. The results were the same each time: no build problems, 22 of 22 tests, 0 violations, 0 problems. After the markup sweep the changed blocks were looked at in Chrome at 390 and 1280 pixels wide, with a result loaded in each calculator shown.
+
+## The announcement of 29 September 2026
+
+The research record is `research/06-announcement-2026-09-29.md`. The decisions are numbers 36 to 43 in `docs/decision-log.md`.
+
+What changed on the site, on 30 September 2026:
+
+- The registers gained the sources, claims and figures for the announcement and the responses to it. Seven claims that the announcement overtook were deleted.
+- The news note on the overview was rewritten. The overview and the triple lock page each say that a change is announced for April 2030.
+- The reform options page has a card for the announced rule, the government's and the Institute for Fiscal Studies' figures in the cost and saving section, and a rewritten social care section, moved to follow the rule comparison. The ten questions the page set before the announcement now show what it answers.
+- Findings R7 to R17 of the critique of 30 September 2026 were dealt with: decision 43.
+
+Checks run on 30 September 2026 after the change, Chrome 154, macOS:
+
+| Check | Command | Result |
+| --- | --- | --- |
+| Build checks | `npm run build` | No problems |
+| Calculator tests | `npm test` | 22 of 22 pass |
+| Quoted passages | `python3 scripts/check-passages.py` | None missing. The passages from ifs.org.uk and reformparty.uk were matched in Chrome, because those sites refuse scripts |
+| Figures with no quoted passage | `python3 scripts/check-values.py` | Four wealth figures could not be read: the Office for National Statistics answered 429. They were not changed by this work |
+| Automated accessibility | `npm run a11y` | 0 violations. Every undecided contrast result measured: none below threshold |
+| Scripted accessibility measurements | `node scripts/a11y-manual-assist.mjs` | 0 problems |
+| Rendered pages | Screenshots in Chrome at 390 and 1280 pixels wide | The overview note, the law section of the triple lock page, and the option card, saving section, social care section and ten questions of the reform options page were looked at |
+
 ## Checks on the deployed preview
 
 Run on 29 September 2026 against the deploy preview of pull request 1, commit `15744d9`, with `curl` and Chrome 154.
@@ -65,20 +90,27 @@ Found by these checks:
 - **The site was titled "ukstatepensionexplorer".** Netlify sets `SITE_NAME` on every build. The setting is now `SITE_TITLE`. Fixed after this deploy, so the deploy checked still shows the wrong name.
 - **The Content Security Policy blocks Netlify's own preview toolbar**, which Netlify adds to deploy previews. Chrome reported one blocked inline style and one blocked frame from `app.netlify.com`. The site is not affected. The toolbar can be switched off in Netlify.
 
-Not checked on the deployed preview: the other three calculators, any browser but Chrome, a fetched share preview on a social platform, and anything on the main site address, which has no deploy of this code until the pull request is merged.
+Not checked on the deployed preview: the other three calculators, any browser but Chrome, a fetched share preview on a social platform, and anything on the main site address. Pull request 1 has since been merged, so that address may now have a deploy. On 30 September 2026 the main address was checked for the sign-in only: it answered 401 with `WWW-Authenticate: Basic`. Nothing else on it was looked at.
 
 ## Known defects and limits
 
-1. **The news note and the social care section of the reform options page predate the Prime Minister's conference speech of 29 September 2026.** No transcript was found by mid-afternoon that day. Both must be rewritten once it is published. Later that day Pensions Age reported that the speech announced an "annual double lock" after the next general election, as part of plans to pay for a National Care Service. That is a news report, read at source, not the speech. If it is right, the section's statement that no proposal was found is out of date. Two changes wait for that rewrite: the Resolution Foundation saving appears three times on the reform options page, and the dated section sits in the middle of the page and is not mentioned in the opening paragraph.
-2. **No published proposal ties the triple lock to social care.** The section says so. For that reason it is a dated section and not a main page.
+1. **The announced rule rests on one government news story.** No Bill, no technical note, no costing method and no cost for the care service was found on 30 September 2026. The mechanism on the site is the Institute for Fiscal Studies' description, not the government's. The rule is described in prose and is not yet in the rule comparison: decision 38. The maintenance guide lists what should trigger a rewrite.
+2. **Most responses to the announcement rest on news reports.** Only Reform UK's comes from the party's own page. The statements of Age UK, the Health Foundation and the King's Fund are as quoted in a trade report. No official transcript of the speech was found.
 3. **Example budgets are not like for like.** Private renters at the 2026 minimum, social renters at the 2025 minimum, owners at the 2025 moderate standard.
 4. **Not found, and shown as gaps:** the share of people on the full rate, the number whose pension is not increased abroad, costings for a double lock and for means-testing, incomes of pensioner carers.
 5. **Typed wording that will age:** the worked example on the triple lock page names months and years in words. The first year in the rule comparison starts at 2027/28. Both are in the maintenance guide.
-6. **One check date is printed for two figures** in a few combined source notes. The dates are the same today.
-7. **The preview on Netlify uses basic authentication** and sends `noindex` on every file. Both were seen working on the deploy preview. Both must be removed at launch. The user name and password are in the `BASIC_AUTH` variable in Netlify. Netlify's own password protection is also switched on, so a visitor is asked twice. The owner has decided to turn it off. Whether that has been done was not checked.
+6. **One check date is printed for two figures** in a few combined source notes. Where the dates differ, in the two table notes of the cost and saving section, the note prints both.
+7. **The preview on Netlify uses basic authentication** and sends `noindex` on every file. Both were seen working on the deploy preview. Both must be removed at launch. The user name and password are in the `BASIC_AUTH` variable in Netlify. Netlify's own password protection was switched off on 30 September 2026 with the Netlify CLI, on the owner's instruction. The main address then answered 401 with `WWW-Authenticate: Basic`, so basic authentication is the one sign-in.
 8. **Field errors use `role="alert"`.** With many errors at once, screen reader announcements may compete. Not tested.
-9. **Two party positions rest on news reports**, not party documents.
+9. **The government's savings figures cannot be checked.** They come with no price basis, baseline or method. The page says so, and says why they cannot be set beside the Institute for Fiscal Studies' range for 2050.
 10. **After launch, deploy previews and branch deploys would be open.** The launch steps delete `BASIC_AUTH` everywhere. Keeping it for those two contexts needs the production guard to check the Netlify context. Deferred to launch planning.
+11. **Markup left as it is after the sweep of 29 September 2026.** Each needs design work or a decision, and none is a failure of an automated check.
+    - The lists of a bold label and a value, 87 items on six pages, should be description lists.
+    - The source note under each figure packs kind, period, place and source into paragraphs. It should be a description list.
+    - The names of scrolling table regions are typed apart from the captions, and some differ from them.
+    - The name of each chart joins its title and its whole description.
+    - Each card under "Where to go next" on the overview puts two sentences inside the link.
+    - No build check holds the markup conventions in the README.
 
 ## Checks not performed
 
@@ -88,7 +120,7 @@ Not checked on the deployed preview: the other three calculators, any browser bu
 - The download and copy buttons of the history explorer were not pressed in a test.
 - The sister sites' tools were read from served HTML. They were not run.
 - House of Commons Library briefings and Hansard could not be opened.
-- Nothing on the main site address or a production domain. The deploy preview was checked: see "Checks on the deployed preview". Fetched share previews on a social platform were not checked.
+- Nothing on the main site address beyond the sign-in, and nothing on a production domain. The deploy preview of pull request 1 was checked, and the deploy preview of pull request 2 was not: see "Checks on the deployed preview". Fetched share previews on a social platform were not checked.
 - Search console verification, sitemap submission, indexing.
 
 ## Owner decisions needed for launch
@@ -101,21 +133,47 @@ Given on 29 September 2026. The record is `docs/decision-log.md`, numbers 29 to 
 
 | Question | Answer | State |
 | --- | --- | --- |
-| Should pensions and social care stay a main page? | No. A dated section of the reform options page | Done in the working copy. After the change, `npm run build`, `npm test`, `npm run a11y` and `node scripts/a11y-manual-assist.mjs` were run again on 29 September 2026, with the results in "Checks performed". The section was looked at in Chrome at 390 and 1280 pixels wide. Not committed, not deployed |
+| Should pensions and social care stay a main page? | No. A dated section of the reform options page | Done in the working copy. After the change, `npm run build`, `npm test`, `npm run a11y` and `node scripts/a11y-manual-assist.mjs` were run again on 29 September 2026, with the results in "Checks performed". The section was looked at in Chrome at 390 and 1280 pixels wide. Committed. Not deployed when this was written |
 | May `scripts/seed/` be deleted? | Yes | Deleted |
 | Should the fiscal-claim page be linked? | No | Register entry marked declined |
-| Should Netlify's own password page be turned off? | Yes | For the owner to do in Netlify. Not checked |
+| Should Netlify's own password page be turned off? | Yes | Done on 30 September 2026 with the Netlify CLI. Checked on the main address |
 | May `.preview-password` be deleted? | Yes | Deleted |
-| Are the decisions in the decision log accepted? | 22 accepted as written. Analytics amended to Cloudflare at launch. Number 21, the three parties left out, reopened | See number 34 |
+| Are the decisions in the decision log accepted? | 22 accepted as written. Analytics amended to Cloudflare at launch. Number 21, the three parties left out, reopened | See number 34, overtaken by number 39 |
 
 Answered on 29 September 2026: previews are protected with basic authentication, hosting is Netlify, and four unused variables were deleted from Netlify.
+
+## Owner's answers of 30 September 2026
+
+| Question | Answer | State |
+| --- | --- | --- |
+| Social care: section or page? | Section for now. Decide again when Casey reports | Done: decision 36 |
+| The name of the rule? | "The rule announced for April 2030", with the government's name given where the rule is described | Done: decision 37 |
+| Add the rule to the rule comparison? | Yes, as a later phase | Not started: decision 38 |
+| Responses from parties and other bodies? | Read them at source and add them now. Label what is left | Done: decision 39 |
+| Findings R7 to R17? | All now | Done: decision 43 |
+| A policy change entry in `corrections.json`? | No | Decision 40 |
+| The uncommitted edits on `html-semantics`? | Commit them first | Done: commits `8c78a0b` and `ad5dbb6` |
+| Which branch? | A new branch from `html-semantics` | Done: `april-2030-rule` |
+
+## Waiting on the owner
+
+As at 30 September 2026.
+
+| Item | What is needed |
+| --- | --- |
+| The rule comparison | The go-ahead for the later phase in decision 38: specification, code, tests and a reference calculation for the announced rule |
+| `html-semantics` and `april-2030-rule` | Whether they join `first-build` and go to pull request 2 |
+| Push | The announcement work on `april-2030-rule` is committed and not pushed. A critique of the committed work ran on 30 September 2026 and stamped the tree. Anthony types `/push` |
+| Decisions 35, 41 and 42 | Made by the assistant and not confirmed: straight quotation marks and the `q` element, deleting the overtaken claims, and treating the GOV.UK news story as the text of the announcement |
+| Two items the research left out | The speech's commitment on Income Tax for pensioners on low incomes, and a YouGov poll of 29 September 2026. See `research/06-announcement-2026-09-29.md` |
+| Markup conventions in the README | Written by the assistant after the sweep of 29 September. Not yet accepted by the owner |
 
 ## Tracked separately
 
 | Item | Status |
 | --- | --- |
 | Reciprocal links on UK Public Finances Explorer and UK Migration Explorer | Not started. Needs a live domain. No other repository was changed |
-| Deployed checks | Done for the deploy preview. See "Checks on the deployed preview". Not done for the main site address or a production domain |
+| Deployed checks | Done for the deploy preview of pull request 1. See "Checks on the deployed preview". Not done for pull request 2, the main site address or a production domain |
 | Search console | Not started. Needs account and domain access |
 
 ## Found in passing

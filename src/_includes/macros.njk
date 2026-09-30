@@ -6,7 +6,7 @@
 
 {#- A short citation after a sentence. -#}
 {%- macro cite(s) -%}
-<a class="cite" href="{{ s.url }}">{{ s.publisher }}, {{ s.title }}</a>{% if s.published_date %} ({{ s.published_date | monthOrDay }}){% endif %}
+<a class="cite" href="{{ s.url }}">{{ s.publisher }}, {{ s.title }}</a>{% if s.published_date %} ({{ s.published_date | monthOrDayTag | safe }}){% endif %}
 {%- endmacro -%}
 
 {#- The full source note for one figure. Qualifications stay visible. Technical detail opens on demand. -#}
@@ -21,15 +21,15 @@
   <details>
     <summary>More about this figure<span class="visually-hidden">: {{ f.label }}</span></summary>
     <dl>
-      <dt>What it measures</dt><dd>{{ f.definition }}</dd>
-      <dt>Who it covers</dt><dd>{{ f.population }}</dd>
-      <dt>Where in the source</dt><dd>{{ f.table_reference }}</dd>
-      {%- if f.passage %}<dt>What the source says</dt><dd>“{{ f.passage }}”</dd>{% endif %}
-      {%- if f.formula %}<dt>Calculation</dt><dd>{{ f.formula }}</dd>{% endif %}
-      {%- if f.gross_net %}<dt>Before or after tax</dt><dd>{{ f.gross_net }}</dd>{% endif %}
-      {%- if f.price_basis and f.price_basis != "not applicable" %}<dt>Price basis</dt><dd>{{ f.price_basis | upperFirst }}</dd>{% endif %}
-      {%- if f.source.note %}<dt>About the source</dt><dd>{{ f.source.note }}</dd>{% endif %}
-      {%- if f.next_review %}<dt>When we will check again</dt><dd>{{ f.next_review }}</dd>{% endif %}
+      <dt>What it measures</dt> <dd>{{ f.definition }}</dd>
+      <dt>Who it covers</dt> <dd>{{ f.population }}</dd>
+      <dt>Where in the source</dt> <dd>{{ f.table_reference }}</dd>
+      {%- if f.passage %}<dt>What the source says</dt> <dd>"{{ f.passage }}"</dd>{% endif %}
+      {%- if f.formula %}<dt>Calculation</dt> <dd>{{ f.formula }}</dd>{% endif %}
+      {%- if f.gross_net %}<dt>Before or after tax</dt> <dd>{{ f.gross_net }}</dd>{% endif %}
+      {%- if f.price_basis and f.price_basis != "not applicable" %}<dt>Price basis</dt> <dd>{{ f.price_basis | upperFirst }}</dd>{% endif %}
+      {%- if f.source.note %}<dt>About the source</dt> <dd>{{ f.source.note }}</dd>{% endif %}
+      {%- if f.next_review %}<dt>When we will check again</dt> <dd>{{ f.next_review }}</dd>{% endif %}
     </dl>
   </details>
 </div>
@@ -47,7 +47,8 @@
 
 {%- macro note(heading, level) -%}
 <div class="note" role="note">
-  <h{{ level or 3 }}>{{ heading }}</h{{ level or 3 }}>
+  {#- Headings come from the templates, never from a reader. One carries a time element. -#}
+  <h{{ level or 3 }}>{{ heading | safe }}</h{{ level or 3 }}>
   {{ caller() }}
 </div>
 {%- endmacro -%}

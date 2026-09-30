@@ -63,7 +63,7 @@ function summary(result, labels) {
     const falls = result.rules[rule].years.filter((year) => year.changePence < 0).length;
     const held = result.rules[rule].years.filter((year) => year.determining[0] === "cash-floor").length;
     const flat = result.rules[rule].years.slice(1).filter((year) => year.changePence === 0).length;
-    let text = `<strong>${RULE_LABELS[rule]}:</strong> ${money(end.pence)} a week after ${years}.`;
+    let text = `${money(end.pence)} a week after ${years}.`;
     if (rule !== "triple-lock") {
       text +=
         end.differencePence === 0
@@ -74,9 +74,9 @@ function summary(result, labels) {
     else if (held) text += ` The amount did not rise in ${held} of the years, because the cash floor applied. It did not fall in pounds in any year.`;
     else if (flat) text += ` The amount did not change in ${flat} of the years. It did not fall in pounds in any year.`;
     else text += " The amount rose in pounds in every year.";
-    return `<li>${text}</li>`;
+    return `<dt>${RULE_LABELS[rule]}</dt> <dd>${text}</dd>`;
   });
-  lines.push(`<ul>${items.join("")}</ul>`);
+  lines.push(`<dl>${items.join("")}</dl>`);
   lines.push(
     `<p>A lower amount than under the triple lock is a smaller rise, not a cut, unless the amount fell in pounds. All amounts are before tax and take no account of Pension Credit or other benefits.</p>`,
   );
@@ -169,7 +169,7 @@ export function renderComparison(options) {
   return (
     `<h3>Result: ${scenarioLabel}, starting from ${money(startPence)} a week</h3>` +
     `<p><span class="status">Hypothetical</span> An illustration using the figures shown. It is not a forecast and has no probability. ` +
-    `The cash floor is ${cashFloor ? "on: no rule can lower the amount in pounds" : "off: a rule can lower the amount in pounds"}.</p>` +
+    `The cash floor is ${cashFloor ? "on, so no rule can lower the amount in pounds" : "off, so a rule can lower the amount in pounds"}.</p>` +
     summary(result, labels) +
     `<figure class="chart"><figcaption><h4>${info.label}: ${info.unit}</h4></figcaption><div class="scroll-x" tabindex="0" role="region" aria-label="Chart: ${info.label}">${chart}</div></figure>` +
     values +
