@@ -60,8 +60,8 @@ permalink: /
 
 <h3 id="situations">Other things that change your situation</h3>
 <ul>
-  <li><strong>Caring for someone, or thinking about care.</strong> <a href="/reform-options/#social-care">Pensions and social care</a>, including the plan for a National Care Service. {{ ("ni-credits" | claim).statement }} {{ m.c("ni-credits") }} <a href="/state-pension/#qualifying">National Insurance and qualifying years</a>.</li>
-  <li><strong>Living in Scotland, Wales or Northern Ireland.</strong> Each nation runs its own social care. <a href="/reform-options/#care-now">Social care now, nation by nation</a>.</li>
+  <li><strong>Caring for someone, or thinking about care.</strong> <a href="/reform-options/social-care/">Pensions and social care</a>, including the plan for a National Care Service. {{ ("ni-credits" | claim).statement }} {{ m.c("ni-credits") }} <a href="/state-pension/#qualifying">National Insurance and qualifying years</a>.</li>
+  <li><strong>Living in Scotland, Wales or Northern Ireland.</strong> Each nation runs its own social care. <a href="/reform-options/social-care/#care-now">Social care now, nation by nation</a>.</li>
   <li><strong>Living abroad.</strong> In some countries the State Pension does not rise each year. {{ m.c("overseas-frozen") }} <a href="/state-pension/#overseas">People who live abroad</a>.</li>
   <li><strong>On a low income.</strong> Pension Credit is a separate benefit that has to be claimed. <a href="/state-pension/#extra-help">Pension Credit and other help</a>.</li>
 </ul>
@@ -86,21 +86,13 @@ permalink: /
 
 <h2 id="in-the-news">In the news: what is decided and what is not</h2>
 
-<p>This is a dated note. It describes the position on {{ news.as_of | timeTag | safe }}, after the Prime Minister's announcement of {{ ("pm-care-2026-09-29" | sourceRecord).published_date | timeTag | safe }}. It will go out of date. It is not a live news feed.</p>
+<p>On {{ ("pm-care-2026-09-29" | sourceRecord).published_date | timeTag | safe }} the Prime Minister announced a change to the yearly increase. {{ ("tl-kept-to-2030" | claim).statement }} {{ ("rule-2030" | claim).statement }} {{ m.c("rule-2030") }}</p>
 
-{%- for group in news.groups %}
-<h3>{{ group.heading }}</h3>
-<p>{{ group.meaning }}</p>
-<ul>
-  {%- for item in group.entries %}
-  {#- One citation for each source, however many claims in the entry rest on it. -#}
-  {%- set cited = [] %}
-  <li>{{ item.text }} {% for id in item.claims %}{% set r = id | claim %}{% set key = r.source.url if r.source else id %}{% if key not in cited %}{% set _ = cited.push(key) %}{{ m.c(id) }} {% endif %}{% endfor %}{% for id in item.figures %}{% set fg = id | figure %}{% if fg.source.url not in cited %}{% set _ = cited.push(fg.source.url) %}<span class="ref">Source: {{ m.cite(fg.source) }}.</span> {% endif %}{% endfor %}</li>
-  {%- endfor %}
-</ul>
-{%- endfor %}
+<p>This is an announcement. It is not law. {{ ("rule-2030-legislate" | claim).statement }} {{ ("ncs-savings-used" | claim).statement }} {{ m.c("ncs-savings-used") }} {{ ("no-rule-2030-detail" | claim).statement }} {{ m.c("no-rule-2030-detail") }}</p>
 
-<p><a href="/reform-options/#social-care">Read the full assessment of pensions and social care</a>.</p>
+<p>This is a dated note, correct on {{ news.as_of | timeTag | safe }}. It is not a live news feed.</p>
+
+<p><a href="/reform-options/social-care/">What is announced, what is in law and what is only reported</a>, with what research bodies and other parties said, is on the pensions and social care page.</p>
 
 <h2 id="next-year">Next year's rate is not yet decided</h2>
 
@@ -117,11 +109,11 @@ permalink: /
   <dt>A lower amount than under another rule is not a cut in pounds</dt>
   <dd>Under most alternatives to the triple lock the pension still rises each year. It rises by less. <a href="/reform-options/#compare">Compare the rules</a>.</dd>
   <dt>What the triple lock has cost is not what changing it would save</dt>
-  <dd>Past increases are already in today's rates. A change affects future increases only. <a href="/reform-options/#cost-and-saving">Costs and savings</a>.</dd>
+  <dd>Past increases are already in today's rates. A change affects future increases only. <a href="/reform-options/costs/#cost-and-saving">Costs and savings</a>.</dd>
   <dt>A research budget is not a measure of poverty, and neither is what people spend</dt>
   <dd>They answer different questions. <a href="/living-on-a-pension/#three-questions">Three questions about living costs</a>.</dd>
   <dt>State Pension policy is set for the whole UK. Social care policy is set by each nation</dt>
-  <dd>A care proposal for England does not cover people in Scotland, Wales or Northern Ireland. <a href="/reform-options/#care-scope">Who each policy covers</a>.</dd>
+  <dd>A care proposal for England does not cover people in Scotland, Wales or Northern Ireland. <a href="/reform-options/social-care/#care-scope">Who each policy covers</a>.</dd>
 </dl>
 
 <h2 id="about">About this site</h2>

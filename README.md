@@ -57,13 +57,13 @@ A11Y_ASSESSMENT_DATE=2026-10-01 AI_CRAWLER_POLICY=allow npm run build
 | `src/_data/figures.json` | Register of figures. Numbers in page text come from here. Exceptions: `tables.json`, `history.json`, `budgets.json` and `scenarios.json` hold their own sourced values, and `links.json` quotes two figures in a note. |
 | `src/_data/claims.json` | Register of statements that are not figures. |
 | `src/_data/sources.json` | Register of sources. |
-| `src/_data/history.json` | Published rates and decisions, 2010/11 to 2026/27. |
+| `src/_data/history.json` | Published rates and decisions, 2010/11 to 2026/27. A year with an `annotation` is marked on the history chart, with that text in the list under it. |
 | `src/_data/tables.json` | Sourced tables. |
 | `src/_data/budgets.json` | Budget categories and example budgets. |
 | `src/_data/scenarios.json` | Hypothetical scenarios for the rule comparison. |
 | `src/_data/pageRegister.json` | Title, description, dates and indexing for each page. |
 | `src/_data/links.json` | Links to the sister sites, and the planned links back. |
-| `src/_data/news.json` | The dated note on the overview page. Its `as_of` date also dates the social care section of the reform options page. |
+| `src/_data/news.json` | The date of the note "In the news" on the overview page, whose text is in `src/index.njk`. The same `as_of` date dates the pensions and social care page. |
 | `src/_data/a11y.json` | What the accessibility statement reports. |
 | `src/assets/js/lib/` | Calculations and views. No DOM. Used by the build and the browser. |
 | `src/assets/js/tools/` | The four calculators' page scripts. |
@@ -88,7 +88,8 @@ Set on 29 September 2026 after a sweep of every built page. No build check holds
 | An option is an `article` with its own `h3`. It has no `aria-labelledby`, so it is not a region landmark. | Reform options |
 | A `section` with `aria-labelledby` is for a calculator only. | The four calculators |
 | A label with one value is a `dl`. Keep a space between `</dt>` and `<dd>`. | Figure details, calculator results, the options |
-| A chart is a `figure` with its title in a `figcaption`. | The history explorer and the rule comparison |
+| A chart is a `figure` with its title in a `figcaption`. The title states what the chart shows and is worked out from the result, never typed. | The history explorer and the rule comparison |
+| An `h3` without an `id` gets one at build time, made from its words, so changing the words changes the link. Give it an `id` by hand if another page links to it. Result headings that a calculator draws in the browser get no `id`. A page with a contents list gets "Back to contents" links at build time. Both are in `eleventy.config.js`. | Every page |
 | A date that a template prints is a `time` element: `timeTag` for a day, `monthOrDayTag` for a source that gives a month only. Dates typed inside register text stay plain. | Citations, check dates, the register of sources |
 | Words taken from a source are in `q` or in quotation marks. | Quoted passages |
 | Lists of links in the footer are `nav` elements with names. | Every page |

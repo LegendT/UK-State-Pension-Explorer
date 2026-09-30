@@ -3,7 +3,7 @@
   "outbound": [
     {
       "id": "debt-vs-deficit",
-      "from_page": "/reform-options/",
+      "from_page": "/reform-options/costs/",
       "url": "https://ukpublicfinances.org/deficit-vs-debt/",
       "site": "UK Public Finances Explorer",
       "label": "Debt and deficit in plain English",
@@ -16,7 +16,7 @@
     },
     {
       "id": "budget-simulator",
-      "from_page": "/reform-options/",
+      "from_page": "/reform-options/costs/",
       "url": "https://ukpublicfinances.org/budget-simulator/",
       "site": "UK Public Finances Explorer",
       "label": "Budget simulator",
@@ -29,7 +29,7 @@
     },
     {
       "id": "big-numbers",
-      "from_page": "/reform-options/",
+      "from_page": "/reform-options/costs/",
       "url": "https://ukpublicfinances.org/big-numbers/",
       "site": "UK Public Finances Explorer",
       "label": "Big numbers translator",
@@ -42,7 +42,7 @@
     },
     {
       "id": "migration",
-      "from_page": "/reform-options/",
+      "from_page": "/reform-options/costs/",
       "url": "https://ukmigrationexplorer.org/migration/",
       "site": "UK Migration Explorer",
       "label": "How migration is measured",

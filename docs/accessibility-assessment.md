@@ -6,7 +6,7 @@ Automated and scripted checks are a floor. They do not show conformance. A perso
 
 ## Scope
 
-All 11 built pages and the four calculators. Each calculator was tested in its default state, after a result changed, and with errors showing. Every page was also tested with all `details` elements open.
+All built pages, 14 on 30 September 2026, and the four calculators. Each calculator was tested in its default state, after a result changed, and with errors showing. Every page was also tested with all `details` elements open.
 
 ## Environment actually used
 
@@ -33,7 +33,9 @@ Both scripts print their counts. The counts are not copied here, because they ch
 ## Results of the last run
 
 - `npm run a11y`: 0 violations. 0 audits with sideways page scroll. 0 audits with script errors. Every contrast result that axe marked incomplete was measured: 0 below threshold, 0 that could not be measured. Lowest measured ratio 8.81:1.
-- `node scripts/a11y-manual-assist.mjs`: 0 problems on 11 pages.
+- `node scripts/a11y-manual-assist.mjs`: 0 problems on 14 pages.
+
+The last run was on 30 September 2026, after the work on the UX review: 100 audits of 14 pages.
 
 ### What those runs did not establish
 
@@ -77,7 +79,7 @@ Result values: **No failure found** (with the method), **Not applicable** (with 
 | 2.4.5 Multiple Ways | AA | No failure found | Main navigation, site map, and links in the text. |
 | 2.4.6 Headings and Labels | AA | No failure found | Read through by the author. No skipped levels (script). |
 | 2.4.7 Focus Visible | AA | No failure found | Script found an outline on every focused control. Not looked at by a person on every control. |
-| 2.4.11 Focus Not Obscured (Minimum) | AA | No failure found | Script: no focused control was covered. There is no sticky or fixed content. |
+| 2.4.11 Focus Not Obscured (Minimum) | AA | No failure found | Script: no focused control was covered. At 1024 px and wider the contents list stays in view in a column of its own, beside the content rather than over it. The scripts test 390 and 1280 px, not 1024 to 1279 px, where that column first appears. That range was looked at in screenshots only. |
 | 2.5.1 Pointer Gestures | A | Not applicable | No gestures. |
 | 2.5.2 Pointer Cancellation | A | No failure found | Native buttons and links only. |
 | 2.5.3 Label in Name | A | No failure found | Visible labels are the accessible names. axe `label-content-name-mismatch`. |

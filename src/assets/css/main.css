@@ -103,7 +103,8 @@ main > .tool, main > figure, main > .cards, main > .scroll-x, main > .rate-block
 
 .num { font-variant-numeric: tabular-nums; }
 .lede { font-size: 1.15rem; color: var(--ink-soft); }
-.scroll-x { overflow-x: auto; }
+/* Positioned so that text hidden for screen readers inside a table stays inside the scrolling region. */
+.scroll-x { overflow-x: auto; position: relative; }
 
 /* Blocks */
 
@@ -139,7 +140,8 @@ main > .tool, main > figure, main > .cards, main > .scroll-x, main > .rate-block
 .nav-menu ul { list-style: none; padding: 0; margin: var(--space-s) 0 0; }
 .nav-menu li { margin: 0; }
 .nav-menu a { display: block; padding: 0.6rem 0; min-height: 2.75rem; }
-.nav-menu a[aria-current="page"] { color: var(--ink); font-weight: 700; text-decoration: none; }
+/* "page" marks the page itself, "true" the section it belongs to. */
+.nav-menu a[aria-current], .section-nav a[aria-current="page"] { color: var(--ink); font-weight: 700; text-decoration: none; }
 
 .site-footer { margin-top: var(--space-xl); border-top: 1px solid var(--rule); background: var(--panel); font-size: 0.95rem; }
 .site-footer .wrap { padding-top: var(--space-l); padding-bottom: var(--space-l); }
@@ -201,9 +203,24 @@ main > .tool, main > figure, main > .cards, main > .scroll-x, main > .rate-block
 
 .contents { padding: var(--space-m); background: var(--panel); border-radius: var(--radius); }
 .contents h2 { margin-top: 0; font-size: 1.05rem; }
-.contents ul { margin: 0; padding-left: 1.2rem; }
-.contents a { display: inline-block; padding: 0.55rem 0; }
+.contents ul, .contents ol { margin: 0; padding-left: 1.2rem; }
+/* A block link keeps the list marker on its first line when it wraps. */
+.contents a { display: block; padding: 0.55rem 0; }
 .contents li + li { margin-top: 0; }
+.section-nav { margin-bottom: var(--space-m); }
+.to-contents { margin: var(--space-l) 0 0; font-size: 0.95rem; }
+.to-contents a { display: inline-block; padding: 0.55rem 0; }
+
+/* On a wide screen a long page keeps its contents list in view, in a column of its own. Everything
+   else stays in the first column, so the list never covers content or a focused control. Headings
+   lose the space that grid items no longer share by collapsing margins. */
+@media (min-width: 64em) {
+  main:has(> .contents:not(.section-nav)) { display: grid; grid-template-columns: minmax(0, 1fr) 15rem; column-gap: var(--space-xl); align-content: start; }
+  main:has(> .contents:not(.section-nav)) > * { grid-column: 1; }
+  main:has(> .contents:not(.section-nav)) > :is(h2, h3, h4, .to-contents) { margin-top: calc(var(--space-xl) - var(--space-m)); }
+  main > .contents:not(.section-nav) { grid-column: 2; grid-row: 1 / span 200; align-self: start; position: sticky; top: var(--space-m); max-height: calc(100vh - 2 * var(--space-m)); overflow-y: auto; margin-top: var(--space-l); }
+  main:has(> .contents:not(.section-nav)) .to-contents { display: none; }
+}
 
 details.more { border: 1px solid var(--rule); border-radius: var(--radius); margin-bottom: var(--space-m); }
 details.more > summary { padding: 0.7rem var(--space-m); min-height: 2.75rem; cursor: pointer; font-weight: 600; color: var(--accent); }
@@ -232,6 +249,12 @@ tr.calculated td, tr.calculated th { font-style: italic; }
 .chart-axis { stroke: var(--rule-strong); stroke-width: 1.5; }
 .chart-tick, .chart-label { fill: var(--ink-soft); font-size: 13px; font-family: inherit; }
 .chart-series path { stroke-width: 2.5; }
+/* The outline in the panel colour keeps a name readable where it crosses a line. */
+.chart-svg .chart-end { font-size: 13px; font-weight: 600; stroke: var(--accent-soft); stroke-width: 4px; paint-order: stroke; }
+.chart-mark { stroke: var(--rule-strong); stroke-width: 1; stroke-dasharray: 2 3; }
+.chart-mark-dot { fill: var(--paper); stroke: var(--rule-strong); stroke-width: 1; }
+.chart-mark-number { fill: var(--ink); font-size: 12px; font-weight: 700; }
+.chart-marks-key { font-size: 0.95rem; padding-left: 1.2rem; }
 .chart-series--1 { stroke: var(--series-1); fill: var(--series-1); }
 .chart-series--2 { stroke: var(--series-2); fill: var(--series-2); }
 .chart-series--3 { stroke: var(--series-3); fill: var(--series-3); }
@@ -249,7 +272,7 @@ tr.calculated td, tr.calculated th { font-style: italic; }
 }
 .tool > h2, .tool > h3 { margin-top: 0; }
 .tool-mode { font-weight: 700; }
-.fields { display: grid; gap: var(--space-m); margin-bottom: var(--space-m); }
+.fields { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-m); margin-bottom: var(--space-m); }
 .field label, .field legend { display: block; font-weight: 600; }
 .field .hint { display: block; color: var(--ink-soft); font-size: 0.9rem; }
 .error { display: block; color: var(--error); font-weight: 600; font-size: 0.95rem; }
@@ -263,6 +286,8 @@ input[type="text"], input[type="number"], select {
   width: 100%; max-width: 14rem; min-height: 2.75rem; padding: 0.4rem 0.6rem;
   border: 2px solid var(--rule-strong); border-radius: var(--radius);
 }
+/* A select takes the width of its longest option, up to the width of its column. */
+select { width: auto; max-width: 100%; }
 input[aria-invalid="true"] { border-color: var(--error); border-width: 3px; }
 .affix { display: flex; align-items: center; gap: 0.4rem; }
 

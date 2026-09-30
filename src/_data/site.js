@@ -49,6 +49,13 @@ const config = {
     { href: "/history/", label: "History" },
     { href: "/sources-and-method/", label: "Sources and method" },
   ],
+  // The pages of the reform options section, in reading order. Shown on each of them.
+  reformPages: [
+    { href: "/reform-options/", label: "The yearly increase: options and a calculator" },
+    { href: "/reform-options/costs/", label: "What it costs, and who receives what" },
+    { href: "/reform-options/social-care/", label: "Pensions and social care" },
+    { href: "/reform-options/entitlement/", label: "Means-testing, and the arguments" },
+  ],
   siblings: [
     {
       name: "UK Public Finances Explorer",

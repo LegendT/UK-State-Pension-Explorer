@@ -8,11 +8,11 @@ Status values: **Built**, **Built with a gap** (the gap is named), **Not built**
 
 | Requirement | Where | Check | Status |
 | --- | --- | --- | --- |
-| Neutral explainer, strongest arguments on each side | `/reform-options/#arguments`, same five questions for each option | Read through by the author only | Built with a gap: no second reader |
+| Neutral explainer, strongest arguments on each side | `/reform-options/entitlement/#arguments`, same five questions for each option | Read through by the author only | Built with a gap: no second reader |
 | Owner's concern is a question, not a conclusion | No default favours a rule. Default scenario is the one where three rules coincide, and the reason is stated | Tool 2 tested in a browser | Built |
 | Editorial page deferred | None | | Not built, as the scope says |
 
-## Section 2: seven main pages
+## Section 2: main pages
 
 | Page | Route | Evidence | Status |
 | --- | --- | --- | --- |
@@ -25,11 +25,11 @@ Status values: **Built**, **Built with a gap** (the gap is named), **Not built**
 | B The State Pension | `/state-pension/` | GOV.UK, legislation, DWP statistics | Built with a gap: share on the full rate, and numbers with a pension that is not increased abroad, not found |
 | C The triple lock | `/triple-lock/` | `history.json`, legislation | Built |
 | D Living on a pension | `/living-on-a-pension/` | MIS 2026, RLS, ONS, DWP | Built with a gap: see decision log item A |
-| E Reform options | `/reform-options/` | DWP, OBR, IFS, RF, PPI, ONS | Built with gaps: no costing found for a double lock of prices or earnings, or for means-testing. The rule announced for April 2030 is in the calculator, on four labelled assumptions |
+| E Reform options | `/reform-options/`, `/reform-options/costs/` and `/reform-options/entitlement/` | DWP, OBR, IFS, RF, PPI, ONS | Built with gaps: no costing found for a double lock of prices or earnings, or for means-testing. The rule announced for April 2030 is in the calculator, on four labelled assumptions |
 | E Public-finance context | `#public-finances`, `#cost-and-saving` | Tables `sp-spending-series`, `sp-longrun` | Built |
 | E Distributional context | `#who` | Tables `income-fifths`, `wealth-bands` | Built with a gap: carers' incomes and wealth by type for 65 and over not found |
 | E Sister-site links in context | `#public-finances`, `#cost-and-saving` | `links.json` | Built. Destination tools not exercised in a browser |
-| F Pensions and social care | `/reform-options/#social-care` | GOV.UK, nation governments, Health Foundation | Built as a dated section of the reform options page, not a page of its own. Owner's decisions, 29 and 30 September 2026. Rewritten after the announcement. Gap: the plan has no Bill, no costing method and no cost for the service |
+| F Pensions and social care | `/reform-options/social-care/` | GOV.UK, nation governments, Health Foundation | Built as a dated page, the third of four reform options pages. Owner's decisions, 29 and 30 September 2026, and decision 46. Rewritten after the announcement. Gap: the plan has no Bill, no costing method and no cost for the service |
 | G History | `/history/` | `history.json` | Built |
 | H Sources, method and corrections | `/sources-and-method/` | The three registers | Built with a gap: no correction route, no owner, no reviewer |
 | Utility pages | `/accessibility/`, `/privacy/`, `/site-map/`, `/404.html` | | Built |
@@ -91,7 +91,7 @@ See `docs/accessibility-assessment.md`. Status: **Built with a gap**. Automated 
 | Requirement | Where | Status |
 | --- | --- | --- |
 | Footer "Our other explainers" | `base.njk` | Built |
-| Contextual links, labelled with the site name | Four placed on `/reform-options/` | Built |
+| Contextual links, labelled with the site name | Four placed on `/reform-options/costs/` | Built |
 | Destination content checked | `links.json` `content_found` | Built. Read from served HTML. Tools not run |
 | Reciprocal links | `links.json` `reciprocal` | Not started. Needs a live domain and changes to two other repositories |
 

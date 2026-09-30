@@ -51,6 +51,7 @@ export function historyRows(options) {
       calculatedCash: rule ? other / 100 : null,
       start: i === 0,
       exceptional: year.exceptional,
+      annotation: year.annotation || "",
       note: year.note || "",
     };
   });
@@ -65,12 +66,32 @@ export function renderHistory(options) {
   const rows = historyRows(options);
   const name = SERIES_LABELS[series];
   const ruleName = rule ? RULE_LABELS[rule] : "";
-  const seriesList = [{ label: `${name}: published rate`, values: rows.map((row) => row.published) }];
-  if (rule) seriesList.push({ label: `Calculated: ${ruleName} applied from ${from}`, values: rows.map((row) => row.calculated) });
+  const seriesList = [{ label: `${name}: published rate`, short: "Published rate", values: rows.map((row) => row.published) }];
+  if (rule) seriesList.push({ label: `Calculated: ${ruleName} applied from ${from}`, short: "Calculated", values: rows.map((row) => row.calculated) });
+
+  // Years with a short annotation are marked on the chart and listed under it by number. Labels at
+  // the marks overlapped, because 2021/22 and 2022/23 are next to each other.
+  const marked = rows.map((row, index) => ({ row, index })).filter(({ row }) => row.annotation);
+  const marks = marked.map(({ index }, i) => ({ index, number: i + 1 }));
+  const markList = marked.length
+    ? `<ol class="chart-marks-key" aria-label="Years marked on the chart">${marked.map(({ row }) => `<li>${row.tax_year}: ${row.annotation}.</li>`).join("")}</ol>`
+    : "";
+
+  // The title states what the chart shows: whether the published rate rose in every year.
+  const falls = rows.slice(1).filter((row, i) => row.published < rows[i].published).length;
+  const rises = rows.slice(1).filter((row, i) => row.published > rows[i].published).length;
+  const measureWords = { cash: "in pounds", real: "in buying power", earnings: "compared with earnings" }[measure];
+  const subject = `The ${name.charAt(0).toLowerCase()}${name.slice(1)}`;
+  const message = falls
+    ? `${subject} fell ${measureWords} in ${falls} of the ${rows.length - 1} years to ${to}`
+    : rises === rows.length - 1
+      ? `${subject} rose ${measureWords} in every year from ${from} to ${to}`
+      : `${subject} did not fall ${measureWords} in any year from ${from} to ${to}`;
 
   const chart = lineChart({
+    marks,
     id: "history-chart",
-    title: `${name}, ${from} to ${to}`,
+    title: message,
     description:
       `Published weekly rate for each tax year${rule ? `, and a calculation of the ${ruleName.toLowerCase()} applied from ${from}` : ""}. ` +
       `The table after the chart gives every value.`,
@@ -111,7 +132,7 @@ export function renderHistory(options) {
   return (
     `<h3>${name}, ${from} to ${to}</h3>` +
     `<p>Full rate, before tax.</p>` +
-    `<figure class="chart"><figcaption><h4>${HISTORY_MEASURES[measure]}</h4></figcaption><div class="scroll-x" tabindex="0" role="region" aria-label="Chart: ${name}, ${from} to ${to}">${chart}</div></figure>` +
+    `<figure class="chart"><figcaption><h4>${message}</h4><p>${HISTORY_MEASURES[measure]}</p></figcaption><div class="scroll-x" tabindex="0" role="region" aria-label="Chart: ${name}, ${from} to ${to}">${chart}</div>${markList}</figure>` +
     comparison +
     `<div class="scroll-x" tabindex="0" role="region" aria-label="${name}, ${from} to ${to}, table"><table>` +
     `<caption>${name}, ${from} to ${to}. ${HISTORY_MEASURES[measure]}</caption>` +

@@ -71,6 +71,12 @@ export default function (eleventyConfig) {
     const shown = DISPLAY[record.display](record.value);
     return record.approximate ? `around ${shown}` : shown;
   });
+  // The first sentence of a figure's qualifications is the caveat that changes what the figure
+  // means, and is shown open. The rest is shown under "More about this figure".
+  eleventyConfig.addFilter("splitCaveat", (text) => {
+    const match = String(text || "").match(/^(.+?\.)\s+(?=[A-Z£0-9"'])([\s\S]+)$/);
+    return match ? [match[1], match[2]] : [text || "", ""];
+  });
   eleventyConfig.addFilter("upperFirst", (text) => text.charAt(0).toUpperCase() + text.slice(1));
   eleventyConfig.addFilter("figPence", function (id) {
     const record = this.ctx.figures[id];
@@ -121,6 +127,50 @@ export default function (eleventyConfig) {
     order: RULES,
     labels: RULE_LABELS,
   }));
+
+  // A short citation shows only the publisher. When two citations next to each other in one
+  // paragraph or list item name the same publisher but different sources, both show their title,
+  // so they do not look like the same source twice.
+  const CITE = /(Source: <a class="cite" href="([^"]+)">)([^<]+)<span class="visually-hidden">([^<]*)<\/span>/g;
+  const BLOCK = /<(p|dd|li)\b[^>]*>(?:(?!<\1\b|<\/\1>)[\s\S])*<\/\1>/g;
+  eleventyConfig.addTransform("tellCitationsApart", function (content) {
+    if (!(this.page.outputPath || "").endsWith(".html")) return content;
+    return content.replace(BLOCK, (block) => {
+      const refs = [...block.matchAll(CITE)];
+      const show = new Set();
+      refs.forEach((ref, i) => {
+        const next = refs[i + 1];
+        if (next && next[3] === ref[3] && next[2] !== ref[2]) show.add(i).add(i + 1);
+      });
+      let i = -1;
+      return block.replace(CITE, (whole, open, href, publisher, title) => (show.has(++i) ? `${open}${publisher}${title}` : whole));
+    });
+  });
+
+  // Every h3 gets an id taken from its words, so a reader can link to it. On a page with a contents
+  // list, each section after the first starts with a link back to the list, and so does the end of main.
+  const BACK = '<p class="to-contents"><a href="#contents-heading">Back to contents</a></p>\n';
+  const NOT_SECTIONS = new Set(["contents-heading", "section-heading"]);
+  eleventyConfig.addTransform("anchors", function (content) {
+    if (!(this.page.outputPath || "").endsWith(".html")) return content;
+    const used = new Set([...content.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]));
+    const html = content.replace(/<h3>([\s\S]*?)<\/h3>/g, (whole, inner) => {
+      const base = inner.replace(/<[^>]+>/g, "").replace(/&[a-z0-9#]+;/gi, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").slice(0, 60).replace(/^-|-$/g, "");
+      if (!base) return whole;
+      let id = base;
+      for (let n = 2; used.has(id); n++) id = `${base}-${n}`;
+      used.add(id);
+      return `<h3 id="${id}">${inner}</h3>`;
+    });
+    if (!html.includes('id="contents-heading"')) return html;
+    const start = html.indexOf("<main");
+    const end = html.indexOf("</main>");
+    const sections = [...html.slice(start, end).matchAll(/(<section\b[^>]*>\s*)?<h2 id="([^"]+)"/g)].filter((m) => !NOT_SECTIONS.has(m[2]));
+    const at = sections.slice(1).map((m) => start + m.index);
+    let out = html.slice(0, end) + BACK + html.slice(end);
+    for (const i of at.reverse()) out = out.slice(0, i) + BACK + out.slice(i);
+    return out;
+  });
 
   return {
     dir: { input: "src", includes: "_includes", data: "_data", output: "_site" },

@@ -7,17 +7,18 @@ Read, in this order, before doing anything:
 4. docs/accessibility-assessment.md
 5. README.md
 
-Do not read _archive/. Read research/ only when checking a figure. The record of the
-announcement of 29 September 2026 is research/06-announcement-2026-09-29.md.
+Do not read _archive/. Read research/ only when checking a figure. docs/ux-review.md is a
+frozen record: read it for the reasoning behind recommendations R1 to R10, and never edit it.
+Their state is in docs/HANDOVER.md, "UX review of 30 September 2026".
 
-State on 30 September 2026: see the opening paragraph of docs/HANDOVER.md and its
-section "The announcement of 29 September 2026". The site is an unpublished preview.
-Pull requests 1 to 6 are merged into main, which holds all the work, including the
-announced rule in the rule comparison. Run git status first.
+State on 30 September 2026: see the opening paragraph of docs/HANDOVER.md. The site is an
+unpublished preview. The work on the UX review is on the branch `ux-review`, pushed, in
+pull request 8, not merged. The local checkout is on `ux-review`. Run git status first.
 
 Next action: none. Wait for Anthony to say what to do. Nothing else is authorised.
 
-Waiting on Anthony: the table under "Waiting on the owner" in docs/HANDOVER.md.
+Waiting on Anthony: the table under "Waiting on the owner" in docs/HANDOVER.md, including
+decisions 48 to 52, which are the assistant's and not yet confirmed.
 
 Do not raise again unless asked: the items under "Known defects and limits" in
 docs/HANDOVER.md that are marked deferred, and defect 11.

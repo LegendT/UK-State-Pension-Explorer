@@ -1,7 +1,7 @@
 // Tool 2: compare the replacement rules. Presentation only.
 
 import { renderComparison } from "../lib/compare-view.js";
-import { announce, focusFirstError, readAmount, readJson, readPercent, setError } from "./common.js";
+import { announce, choose, focusFirstError, readAmount, readJson, readPercent, readSettings, setError, writeSettings } from "./common.js";
 
 const data = readJson("compare-data");
 const form = document.getElementById("compare-form");
@@ -81,13 +81,13 @@ function showReason() {
     : chosen().reason;
 }
 
-function update(message) {
+function update(message, quiet) {
   const count = readYears();
   const startPence = readAmount(start, "the starting weekly amount");
   const path = count === null ? null : currentPath();
   if (count === null || startPence === null || path === null) {
     if (path === null) document.getElementById("compare-edit").open = true;
-    focusFirstError(form);
+    if (!quiet) focusFirstError(form);
     result.innerHTML = `<h3>No result</h3><p>Correct the figures marked with an error, then select Show the result.</p>`;
     announce(status, "There is a problem with the figures entered. No result is shown.");
     return;
@@ -101,7 +101,13 @@ function update(message) {
     // Only the first letter, so a name such as the Institute for Fiscal Studies keeps its capitals.
     scenarioLabel: edited ? "your own figures" : chosen().label.charAt(0).toLowerCase() + chosen().label.slice(1),
   });
-  announce(status, message || "Result updated. It follows the form.");
+  // Edited yearly figures go in the address too, or a link would show a different result.
+  const figures = (key) => path.map((year) => (year[key] / 10).toFixed(1)).join(",");
+  writeSettings(
+    { scenario: scenario.value, years: String(count), start: start.value.trim(), first: first.value, measure: measure.value, floor: floor.checked ? "on" : "off", ...(edited ? { prices: figures("prices"), earnings: figures("earnings") } : {}) },
+    "compare",
+  );
+  if (!quiet) announce(status, message || "Result updated. It follows the form.");
 }
 
 function reset() {
@@ -141,3 +147,28 @@ form.addEventListener("submit", (event) => {
 });
 
 reset();
+
+// A link with settings in its address shows that result. Nothing is announced or focused on arrival.
+// Typed values are checked by the same rules as the form before anything is shown.
+const settings = readSettings();
+if (settings.has("scenario")) {
+  choose(scenario, settings.get("scenario"));
+  choose(first, settings.get("first"));
+  choose(measure, settings.get("measure"));
+  if (settings.has("years")) years.value = settings.get("years");
+  if (settings.has("start")) start.value = settings.get("start");
+  floor.checked = settings.get("floor") !== "off";
+  reset();
+  const prices = (settings.get("prices") || "").split(",");
+  const earnings = (settings.get("earnings") || "").split(",");
+  const inputs = [...rows.querySelectorAll("tr")].map((row) => row.querySelectorAll("input"));
+  if (settings.has("prices") && prices.length === inputs.length && earnings.length === inputs.length) {
+    inputs.forEach(([p, e], i) => {
+      p.value = prices[i];
+      e.value = earnings[i];
+    });
+    edited = true;
+    showReason();
+  }
+  update(undefined, true);
+}

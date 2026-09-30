@@ -2,7 +2,7 @@
 
 import { historyCsv, renderHistory } from "../lib/history-view.js";
 import { observed } from "../lib/history.js";
-import { announce, readJson } from "./common.js";
+import { announce, choose, readJson, readSettings, writeSettings } from "./common.js";
 
 const data = readJson("history-data");
 const form = document.getElementById("history-form");
@@ -26,10 +26,11 @@ function fillYears() {
   to.value = years[years.length - 1];
 }
 
-function update() {
+function update(quiet) {
   if (from.value >= to.value) {
     error.textContent = "Choose a last year that is later than the first year";
     from.setAttribute("aria-invalid", "true");
+    if (quiet) return;
     from.focus();
     announce(status, "There is a problem with the years chosen. The result has not changed.");
     return;
@@ -38,7 +39,8 @@ function update() {
   from.setAttribute("aria-invalid", "false");
   current = { years: data.years, series: series.value, from: from.value, to: to.value, measure: measure.value, rule: rule.value };
   result.innerHTML = renderHistory(current);
-  announce(status, "Result updated. It follows the form.");
+  writeSettings({ series: current.series, from: current.from, to: current.to, measure: current.measure, ...(current.rule ? { rule: current.rule } : {}) }, "explorer");
+  if (!quiet) announce(status, "Result updated. It follows the form.");
 }
 
 series.addEventListener("change", fillYears);
@@ -72,3 +74,15 @@ document.getElementById("history-copy").addEventListener("click", async () => {
 form.reset();
 fillYears();
 current = { years: data.years, series: series.value, from: from.value, to: to.value, measure: measure.value, rule: rule.value };
+
+// A link with settings in its address shows that result. Nothing is announced on arrival.
+const settings = readSettings();
+if (settings.has("series")) {
+  choose(series, settings.get("series"));
+  fillYears();
+  choose(from, settings.get("from"));
+  choose(to, settings.get("to"));
+  choose(measure, settings.get("measure"));
+  choose(rule, settings.get("rule") || "");
+  update(true);
+}
