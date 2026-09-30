@@ -12,16 +12,15 @@ frozen record: read it for the reasoning behind recommendations R1 to R10, and n
 Their state is in docs/HANDOVER.md, "UX review of 30 September 2026".
 
 State on 30 September 2026: see the opening paragraph of docs/HANDOVER.md. The site is an
-unpublished preview. The work on the UX review is on the branch `ux-review`, pushed, in
-pull request 8, not merged. The local checkout is on `ux-review`. Run git status first.
+unpublished preview. All work is merged into `main`, including the UX review work in pull
+request 8. Run git status first.
 
 Next action: none. Wait for Anthony to say what to do. Nothing else is authorised.
 
-Waiting on Anthony: the table under "Waiting on the owner" in docs/HANDOVER.md, including
-decisions 48 to 52, which are the assistant's and not yet confirmed.
+Waiting on Anthony: the table under "Waiting on the owner" in docs/HANDOVER.md.
 
 Do not raise again unless asked: the items under "Known defects and limits" in
-docs/HANDOVER.md that are marked deferred, and defect 11.
+docs/HANDOVER.md that are marked deferred. Defect 11 is open.
 
 Rules that have been broken before and must not be again: read ~/.claude/CLAUDE.md in
 full first. In this project: do not import .env into Netlify, do not push (Anthony types

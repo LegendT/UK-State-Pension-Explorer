@@ -57,7 +57,7 @@ Read these parts of the reform options pages in full: on `/reform-options/`, the
 
 1. Anyone can report an error through the route in `CORRECTION_URL`.
 2. Decide which kind it is: an error by this site, a change in policy or rates, or a revision by the producer of a statistic.
-3. Correct the register, not the page. Every page that uses the figure or claim then changes.
+3. Correct the register, not the page. Every page that uses the figure or claim then changes. In a figure's `qualifications`, put first the caveat that changes what the figure means: the first sentence is the one shown open on the page (decision 49).
 4. Search `src/` for the identifier to see every place it appears, including tables, scenarios and the news note.
 5. Add an entry to `src/_data/corrections.json` with `date` and `text` in plain words: what was wrong, what it now says, and why.
 6. If the claim cannot be corrected at once, remove it or mark it withdrawn. Do not leave a current label on a claim that is no longer supported.
