@@ -139,7 +139,7 @@ permalink: /reform-options/
 <p>Spending would still rise without the triple lock. The Institute for Fiscal Studies says: "{{ ("ifs-rise-without-tl" | figure).passage }}".</p>
 {{ m.sourceNote("ifs-rise-without-tl" | figure) }}
 
-{% call m.unavailable("costings for a double lock and for means-testing", 3) %}
+{% call m.unavailable("costings for a double lock and for means-testing", 4) %}
 <p>{{ ("no-costed-double-lock" | claim).statement }} {{ ("no-costed-means-test" | claim).statement }} We have not made our own estimates. A calculation that multiplied one person's difference by the number of pensioners would be wrong, because people receive different amounts and because tax and benefits change the result.</p>
 {% endcall %}
 
@@ -192,6 +192,7 @@ permalink: /reform-options/
 <p>{{ m.f("disabled-share-spa") }} of adults of State Pension age report a disability. {{ ("disability-income-artefact" | claim).statement }} {{ m.c("disability-income-artefact") }}</p>
 {{ m.sourceNote("disabled-share-spa" | figure) }}
 
+{#- Level 3 on purpose. This covers the whole section on who receives what, not the subsection above it. -#}
 {% call m.unavailable("some breakdowns", 3) %}
 <p>We did not find published figures for the incomes of pensioners who are carers, for wealth by type among people aged 65 and over, or for the number of people who would gain or lose under each reform. We have not filled these gaps with examples. Example households can show how a rule works. They cannot show how many people are affected.</p>
 {% endcall %}
@@ -205,7 +206,7 @@ permalink: /reform-options/
     <h3 id="opt-triple">Keep the triple lock</h3>
     <dl>
       <dt>The rule</dt> <dd>The highest of prices, earnings and 2.5%.</dd>
-      <dt>Effect on the pension</dt> <dd>It rises at least as fast as prices and as earnings, every year. Over time it rises faster than both. The source puts it this way: <q>{{ ("ifs-range-2050" | claim).passage }}</q>. {{ m.c("ifs-range-2050") }}</dd>
+      <dt>Effect on the pension</dt> <dd>It rises at least as fast as prices and as earnings, every year. Over time it rises faster than both. The level in future is uncertain. The Institute for Fiscal Studies gives <q>{{ ("ifs-range-2050" | claim).passage }}</q>. {{ m.c("ifs-range-2050") }}</dd>
       <dt>Who is affected</dt> <dd>Current pensioners, and future ones more so, because increases build up over time. {{ m.c("ppi-future-workers") }} People who live longer gain more. {{ m.c("ifs-longevity") }}</dd>
       <dt>Public finances</dt> <dd>The highest cost of the four rules, and the least predictable.</dd>
       <dt>A judgement, not a finding</dt> <dd>Whether the pension should rise as a share of earnings, and how far.</dd>
@@ -421,7 +422,7 @@ permalink: /reform-options/
 
 <p>In September 2026 news reports linked two things: a less generous yearly increase in the State Pension, and free social care for adults in England. This section sets out what has been decided, what has been proposed and what has only been reported. It then lists the questions any such trade-off would have to answer.</p>
 
-{% call m.note("The position on the morning of " ~ (news.as_of | displayDate), 3) %}
+{% call m.note("The position on the morning of " ~ (news.as_of | timeTag), 3) %}
 <p>This section was checked before the Prime Minister's speech to his party conference on {{ news.as_of | timeTag | safe }}. {{ m.c("speech-not-yet-given") }} Reports of what the speech would say are reports, not a record of what was said. We found no published proposal to replace the triple lock in order to pay for social care. That can change quickly. Treat this section as a dated record.</p>
 {% endcall %}
 

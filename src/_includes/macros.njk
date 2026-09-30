@@ -47,7 +47,8 @@
 
 {%- macro note(heading, level) -%}
 <div class="note" role="note">
-  <h{{ level or 3 }}>{{ heading }}</h{{ level or 3 }}>
+  {#- Headings come from the templates, never from a reader. One carries a time element. -#}
+  <h{{ level or 3 }}>{{ heading | safe }}</h{{ level or 3 }}>
   {{ caller() }}
 </div>
 {%- endmacro -%}
