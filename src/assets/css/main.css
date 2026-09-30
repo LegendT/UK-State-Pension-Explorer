@@ -296,6 +296,8 @@ button.secondary { color: var(--accent); background: var(--paper); }
 .option > :first-child { margin-top: 0; }
 /* An option that stands alone above the grid: the rule the government has announced. */
 .option + .option-grid { margin-top: var(--space-m); }
+/* A link that stands alone in a table cell: a taller target than the line it sits on. */
+.stand td a { display: inline-block; padding-block: 0.625rem; margin-block: -0.625rem; }
 
 /* Wider screens */
 @media (min-width: 40em) {
