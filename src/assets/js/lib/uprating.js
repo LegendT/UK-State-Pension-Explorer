@@ -9,13 +9,16 @@ export const MIN_PENCE = 100;
 export const MAX_PENCE = 100000;
 export const WEEKS = 52;
 
-export const RULES = ["triple-lock", "double-lock", "earnings", "prices"];
+// The first four are applied one year at a time, and the history explorer uses them.
+// "rule-2030" depends on the whole path, so compareRules handles it separately.
+export const RULES = ["triple-lock", "double-lock", "earnings", "prices", "rule-2030"];
 
 export const RULE_LABELS = {
   "triple-lock": "Triple lock",
   "double-lock": "Double lock (prices or earnings)",
   earnings: "Earnings link",
   prices: "Prices link",
+  "rule-2030": "Rule announced for April 2030",
 };
 
 export const MEASURE_LABELS = {
@@ -23,6 +26,7 @@ export const MEASURE_LABELS = {
   earnings: "earnings",
   floor: "the 2.5% minimum",
   "cash-floor": "the cash floor (0%)",
+  "catch-up": "keeping pace with earnings",
 };
 
 // "4.8" -> 48. Returns null when the text is not a number with at most one decimal place.
@@ -77,6 +81,26 @@ export function mechanism(startPence, pricesTenths, earningsTenths) {
   };
 }
 
+// One year of the rule announced for April 2030 (docs/model-specification.md, section 3).
+// The earnings target is startPence × targetNumerator ÷ targetDenominator, kept exact in
+// BigInt. Every candidate is put over the common denominator 1000 × targetDenominator.
+export function step2030(previousPence, input, startPence, targetNumerator, targetDenominator) {
+  const common = 1000n * targetDenominator;
+  const candidates = {
+    prices: BigInt(previousPence) * BigInt(1000 + input.prices) * targetDenominator,
+    floor: BigInt(previousPence) * BigInt(1000 + FLOOR_TENTHS) * targetDenominator,
+    "catch-up": BigInt(startPence) * targetNumerator * 1000n,
+  };
+  const highest = Object.values(candidates).reduce((a, b) => (b > a ? b : a));
+  const determining = Object.keys(candidates).filter((name) => candidates[name] === highest);
+  // Nearest 5p, exact half rounded up: floor((2x + 5c) / 10c) × 5.
+  const pence = Number(((2n * highest + 5n * common) / (10n * common)) * 5n);
+  const tenths = determining.includes("prices") ? input.prices
+    : determining.includes("floor") ? FLOOR_TENTHS
+    : (Number(highest) / Number(common) / previousPence - 1) * 1000;
+  return { pence, tenths, determining };
+}
+
 // path is [{ prices, earnings }] in tenths, one entry per year from year 1.
 export function compareRules(startPence, path, cashFloor = true) {
   const indexes = [{ prices: 1, earnings: 1 }];
@@ -93,10 +117,19 @@ export function compareRules(startPence, path, cashFloor = true) {
     const years = [{ year: 0, pence: startPence, tenths: null, determining: [], changePence: 0 }];
     let cashTotalPence = 0;
     let realTotalPence = 0;
+    let targetNumerator = 1n;
+    let targetDenominator = 1n;
     path.forEach((input, i) => {
       const previous = years[i].pence;
-      const { tenths, determining } = upratingFor(rule, input.prices, input.earnings, cashFloor);
-      const { pence } = applyIncrease(previous, tenths);
+      let tenths, determining, pence;
+      if (rule === "rule-2030") {
+        targetNumerator *= BigInt(1000 + input.earnings);
+        targetDenominator *= 1000n;
+        ({ pence, tenths, determining } = step2030(previous, input, startPence, targetNumerator, targetDenominator));
+      } else {
+        ({ tenths, determining } = upratingFor(rule, input.prices, input.earnings, cashFloor));
+        ({ pence } = applyIncrease(previous, tenths));
+      }
       years.push({ year: i + 1, pence, tenths, determining, changePence: pence - previous });
       cashTotalPence += pence * WEEKS;
       realTotalPence += (pence / indexes[i + 1].prices) * WEEKS;

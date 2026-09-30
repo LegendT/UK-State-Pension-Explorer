@@ -22,7 +22,7 @@ Percentage inputs accept one decimal place, from -10.0 to 25.0. A value outside 
 
 Starting amounts accept pounds and pence, from £1.00 to £1,000.00 a week.
 
-## 3. The four rules
+## 3. The five rules
 
 `prices` is the inflation input. `earnings` is the earnings growth input. Both are percentages for the same year.
 
@@ -32,6 +32,7 @@ Starting amounts accept pounds and pence, from £1.00 to £1,000.00 a week.
 | Double lock (prices or earnings) | The higher of `prices` and `earnings` |
 | Earnings link | `earnings` |
 | Prices link | `prices` |
+| The rule announced for April 2030 | The highest of `prices`, 2.5%, and the increase needed to bring the rate up to its earnings target. See "The rule announced for April 2030" below |
 
 ### Ties
 
@@ -41,7 +42,7 @@ Measures are compared as entered, to one decimal place. When two or three measur
 
 The triple lock can never produce a negative increase, because 2.5% is always available.
 
-The other three rules can produce a negative figure. The model has one declared option, **"The rate never falls in cash terms"**, which is on by default. With the option on, a negative result becomes 0% and the result says the cash floor decided the increase. With the option off, the rate falls.
+The rule announced for April 2030 cannot either, for the same reason. The other three rules can produce a negative figure. The model has one declared option, **"The rate never falls in cash terms"**, which is on by default. With the option on, a negative result becomes 0% and the result says the cash floor decided the increase. With the option off, the rate falls.
 
 The cash floor is an assumption of these hypothetical rules. It is not a statement of enacted law, and the site must say so beside the option.
 
@@ -49,7 +50,36 @@ The cash floor is an assumption of these hypothetical rules. It is not a stateme
 
 - A freeze. No specific proposal justifies it as a launch comparison.
 - A smoothed earnings rule with temporary inflation protection and catch-up. It is described in prose only, until its catch-up mechanism is fully specified.
-- The rule the government announced on 29 September 2026 for April 2030. It is described in prose only. The owner has decided that it will be added in a later phase (decision 38). The specification must be written here first, and must label as assumptions the earnings measure, the starting point and the catch-up test, because the government has published none of them.
+
+### The rule announced for April 2030
+
+Added on 30 September 2026 (decision 38). The government announced the rule on 29 September 2026 but has not published how it works. This section follows the description by the Institute for Fiscal Studies: each year the rate rises by the highest of prices, 2.5%, and "the amount needed to ensure the state pension keeps up with average earnings growth since the introduction of the new policy".
+
+**Earnings target.** For year *t*, target = year 0 rate × (1 + earnings in year 1 ÷ 100) × … × (1 + earnings in year *t* ÷ 100). It is the year 0 rate carried forward by all earnings growth since the rule began.
+
+**Each year's increase.** Three unrounded amounts are compared:
+
+| Candidate | Unrounded amount |
+| --- | --- |
+| Prices | previous rate × (1 + prices ÷ 100) |
+| The 2.5% minimum | previous rate × 1.025 |
+| Keeping pace with earnings | the earnings target for this year |
+
+The highest wins, and it is rounded to the nearest 5p as in section 4. The previous rate is the rounded rate of the year before, as for every rule. When two or three candidates share the highest amount exactly, the result names each of them.
+
+**Arithmetic.** The target is a product of up to 30 factors. It is kept as an exact fraction with whole-number (BigInt) arithmetic, so no rounding happens before the final 5p step. The percentage shown for a year when the target wins is (new unrounded amount ÷ previous rate − 1), shown to one decimal place for display only.
+
+**Assumptions, listed on the page and linked from every result:**
+
+1. **Starting point.** The rule starts from the year 0 rate, the rate in the year before the rule applies. The government's only example refers to the value "by 2030/31".
+2. **Earnings measure.** The target uses the same yearly earnings figure as the other rules. The government has not said which measure it would use.
+3. **Catching up.** Growth is compared on unrounded amounts, and the target is not itself rounded until the new rate is. The government has not said how the test would be run, or whether rounding carries forward.
+
+4. **The first year.** The tool applies the rule from the first year the reader chooses, like the other rules. The government's rule would start in April 2030. This is a simplification of the tool, and the page says so.
+
+No cash floor applies, because the 2.5% minimum is always available.
+
+A rule that follows earnings can still differ from the earnings link by small amounts: 10p a week at most in the steady growth scenario over 30 years. For the same reason it can come out a few pence above the triple lock: up to 25p a week in 20,000 random 30-year paths tried on 30 September 2026. The earnings link rounds each year from the previous rounded rate. The target is carried forward exactly and rounded once. This is a result of the rounding, not a difference in policy, and the page says so.
 
 ## 4. From a percentage to a weekly rate
 
@@ -122,10 +152,11 @@ Each scenario is a list of yearly `prices` and `earnings` figures with a named r
 | Scenario | Reason for including it |
 | --- | --- |
 | Steady growth, earnings above prices, both above 2.5% | Triple lock, double lock and earnings link give the same result |
-| Low inflation and low earnings growth, both below 2.5% | Only the 2.5% floor separates the triple lock from the rest |
+| Low inflation and low earnings growth, both below 2.5% | Only the 2.5% floor separates the triple lock from the double lock, the earnings link and the prices link. It also decides the rule announced for April 2030 |
 | Weak earnings, prices above earnings | Prices decide; the earnings link falls behind prices |
 | Volatile prices, alternating years | Shows the ratchet: the lock takes the higher measure each year |
 | A year of falling earnings | Tests negative growth and the cash floor |
+| The Institute for Fiscal Studies' example | Its stylised ten years for the rule announced for April 2030: prices 2.0% every year, earnings 4.0% except three years at 1.0%. Shows the catch-up |
 
 ## 7. Tool 3: what does the pension cover?
 
@@ -168,7 +199,7 @@ A preset fills the spending fields from a published research budget or from a pu
 
 - Observed rates and decisions are read from `src/_data/history.json`. They are never recalculated.
 - The basic State Pension and the new State Pension are separate series. The new State Pension series starts in 2016/17.
-- A reconstructed comparison applies one of the four rules of section 3, with the rounding of section 4, from a start year and start amount that are both displayed. It uses the prices and earnings figures recorded as used for each year's decision.
+- A reconstructed comparison applies one of the first four rules of section 3, with the rounding of section 4, from a start year and start amount that are both displayed. It uses the prices and earnings figures recorded as used for each year's decision.
 - A reconstructed value is marked as a calculation in the table, in the chart and in the download.
 - A year in which the actual decision departed from the usual rule is annotated.
 - Constant-price amounts use the consumer prices index level for the September before each rate took effect. If that index has not been verified, constant-price amounts are not offered.

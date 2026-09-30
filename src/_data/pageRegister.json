@@ -70,7 +70,7 @@
       "index": true,
       "published": null,
       "modified": "2026-09-30",
-      "modified_note": "Added the rule announced for April 2030 and rewrote the social care section after the announcement of 29 September 2026."
+      "modified_note": "Added the rule announced for April 2030 and rewrote the social care section after the announcement of 29 September 2026. Added the announced rule to the rule comparison."
     },
     {
       "path": "/history/",
@@ -97,8 +97,8 @@
       "canonical_path": "/sources-and-method/",
       "index": true,
       "published": null,
-      "modified": "2026-09-29",
-      "modified_note": "First written."
+      "modified": "2026-09-30",
+      "modified_note": "Added the rule announced for April 2030 to the method of the rule comparison."
     },
     {
       "path": "/accessibility/",

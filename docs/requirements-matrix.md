@@ -25,7 +25,7 @@ Status values: **Built**, **Built with a gap** (the gap is named), **Not built**
 | B The State Pension | `/state-pension/` | GOV.UK, legislation, DWP statistics | Built with a gap: share on the full rate, and numbers with a pension that is not increased abroad, not found |
 | C The triple lock | `/triple-lock/` | `history.json`, legislation | Built |
 | D Living on a pension | `/living-on-a-pension/` | MIS 2026, RLS, ONS, DWP | Built with a gap: see decision log item A |
-| E Reform options | `/reform-options/` | DWP, OBR, IFS, RF, PPI, ONS | Built with gaps: no costing found for a double lock of prices or earnings, or for means-testing. The rule announced for April 2030 is described but not yet in the calculator |
+| E Reform options | `/reform-options/` | DWP, OBR, IFS, RF, PPI, ONS | Built with gaps: no costing found for a double lock of prices or earnings, or for means-testing. The rule announced for April 2030 is in the calculator, on four labelled assumptions |
 | E Public-finance context | `#public-finances`, `#cost-and-saving` | Tables `sp-spending-series`, `sp-longrun` | Built |
 | E Distributional context | `#who` | Tables `income-fifths`, `wealth-bands` | Built with a gap: carers' incomes and wealth by type for 65 and over not found |
 | E Sister-site links in context | `#public-finances`, `#cost-and-saving` | `links.json` | Built. Destination tools not exercised in a browser |

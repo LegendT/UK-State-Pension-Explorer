@@ -224,7 +224,7 @@ permalink: /reform-options/
   <h3 id="opt-2030">The rule announced for April 2030</h3>
   <dl>
     <dt>The rule</dt> <dd>{{ ("rule-2030" | claim).statement }} {{ m.c("rule-2030") }} {{ ("ifs-rule-2030-mechanism" | claim).statement }} {{ m.c("ifs-rule-2030-mechanism") }} {{ ("rule-2030-name" | claim).statement }} {{ m.c("rule-2030-name") }} {{ ("press-double-lock" | claim).statement }} {{ m.c("press-double-lock") }} It is not the double lock described on this page.</dd>
-    <dt>Effect on the pension</dt> <dd>{{ ("rule-2030-no-fall" | claim).statement }} {{ m.c("rule-2030-no-fall") }} {{ ("ifs-rule-2030-catch-up" | claim).statement }} {{ ("ifs-ratchet-removed" | claim).statement }} {{ m.c("ifs-ratchet-removed") }} {{ ("ifs-real-rise-slower" | claim).statement }} {{ m.c("ifs-real-rise-slower") }} Looking back, the Institute says the pension would still have risen {{ m.f("rule-2030-real-rise-ifs") }} faster than prices from 2010 to 2026 under the rule. {{ m.cite(("rule-2030-real-rise-ifs" | figure).source) }}. The Resolution Foundation says that if the rule had applied since 2012 the pension this year would be {{ m.f("rule-2030-vs-tl-rf") }} lower than it is, and {{ m.f("rule-2030-vs-earnings-rf") }} higher than under an earnings link. {{ m.cite(("rule-2030-vs-tl-rf" | figure).source) }}.</dd>
+    <dt>Effect on the pension</dt> <dd>{{ ("rule-2030-no-fall" | claim).statement }} {{ m.c("rule-2030-no-fall") }} {{ ("ifs-rule-2030-catch-up" | claim).statement }} {{ ("ifs-ratchet-removed" | claim).statement }} {{ m.c("ifs-ratchet-removed") }} {{ ("ifs-real-rise-slower" | claim).statement }} {{ m.c("ifs-real-rise-slower") }} Looking back, the Institute says the pension would still have risen {{ m.f("rule-2030-real-rise-ifs") }} faster than prices from 2010 to 2026 under the rule. {{ m.cite(("rule-2030-real-rise-ifs" | figure).source) }}. The Resolution Foundation says that if the rule had applied since 2012 the pension this year would be {{ m.f("rule-2030-vs-tl-rf") }} lower than it is, and {{ m.f("rule-2030-vs-earnings-rf") }} higher than under an earnings link. {{ m.cite(("rule-2030-vs-tl-rf" | figure).source) }}. <a href="#compare">Try it in the rule comparison</a>.</dd>
     <dt>Who is affected</dt> <dd>Nobody before April 2030. {{ m.c("tl-kept-to-2030") }} After that, the same percentage would apply to every rate the rule covers. The announcement does not say whether it covers the same parts of a payment as the triple lock does now. {{ ("no-rule-2030-distribution" | claim).statement }} {{ ("no-rule-2030-pension-credit" | claim).statement }} {{ m.c("no-rule-2030-distribution") }}</dd>
     <dt>Public finances</dt> <dd>Small savings at first, growing over decades. <a href="#saving-2030">The estimates, and why they cannot yet be checked</a>.</dd>
     <dt>The law</dt> <dd>{{ ("rule-2030-legislate" | claim).statement }} Our reading: {{ ("rule-2030-needs-law" | claim).statement }} {{ m.c("rule-2030-needs-law") }} {{ ("no-rule-2030-detail" | claim).statement }}</dd>
@@ -238,7 +238,7 @@ permalink: /reform-options/
       <dt>The rule</dt> <dd>The highest of prices, earnings and 2.5%.</dd>
       <dt>Effect on the pension</dt> <dd>It rises at least as fast as prices and as earnings, every year. Over time it rises faster than both. The level in future is uncertain. The Institute for Fiscal Studies gives <q>{{ ("ifs-range-2050" | claim).passage }}</q>. {{ m.c("ifs-range-2050") }}</dd>
       <dt>Who is affected</dt> <dd>Current pensioners, and future ones more so, because increases build up over time. {{ m.c("ppi-future-workers") }} People who live longer gain more. {{ m.c("ifs-longevity") }}</dd>
-      <dt>Public finances</dt> <dd>The highest cost of the four rules in the calculator, and the least predictable.</dd>
+      <dt>Public finances</dt> <dd>The highest cost of the rules in the calculator, apart from small differences caused by rounding, and the least predictable.</dd>
       <dt>A judgement, not a finding</dt> <dd>Whether the pension should rise as a share of earnings, and how far.</dd>
     </dl>
   </article>
@@ -268,7 +268,7 @@ permalink: /reform-options/
       <dt>The rule</dt> <dd>The rise in the Consumer Prices Index.</dd>
       <dt>Effect on the pension</dt> <dd>It keeps its buying power against the official index. When pay rises faster than prices, which is the usual long-run pattern, it falls further behind pay each year.</dd>
       <dt>Who is affected</dt> <dd>Future pensioners most, because the gap with earnings grows with time.</dd>
-      <dt>Public finances</dt> <dd>The largest saving of the four rules in the calculator. See the table above.</dd>
+      <dt>Public finances</dt> <dd>The largest saving of the rules in the calculator. See the table above.</dd>
       <dt>The law</dt> <dd>It would pay less than the present legal minimum in most years, so the law would have to change. From 1980 to 2010 the law required only a prices link. {{ m.c("earnings-link-1980") }}</dd>
     </dl>
   </article>
@@ -278,7 +278,9 @@ permalink: /reform-options/
 
 <p>{{ ("ifs-rule-2030-illustration" | claim).statement }} {{ m.c("ifs-rule-2030-illustration") }} {{ ("ifs-rule-2030-illustration" | claim).note }}</p>
 
-<h3 id="smoothed">A smoothed earnings link, and why two rules are not in the calculator</h3>
+<p>The same example is a scenario in the <a href="#compare">rule comparison</a>. With the tool's assumptions, the pension follows earnings again from year 10. The Institute's text says year 9. Its chart is stylised and it does not publish the figures behind it, so we cannot say where the difference comes from.</p>
+
+<h3 id="smoothed">A smoothed earnings link: explained, but not in the calculator</h3>
 
 <p>{{ ("smoothed-link-definition" | claim).statement }} {{ m.c("smoothed-link-definition") }} {{ ("ifs-smoothed-similar" | claim).statement }} {{ m.c("ifs-smoothed-similar") }} Before the announcement it was proposed, in different forms, by three research bodies.</p>
 <ul>
@@ -288,8 +290,8 @@ permalink: /reform-options/
 </ul>
 <p>These are recommendations. They rest on evidence and on a view about what the pension should be worth.</p>
 
-{% call m.note("Why these two rules are not in the calculator", 4) %}
-<p>The proposals for a smoothed link differ in three details. They are the target level, how the pension catches up after a year of price protection, and over how long. For the rule announced for April 2030, the government has not published which measure of earnings would be used, or from what starting point. It gives an example only. {{ ("rule-2030-example" | claim).statement }} {{ m.c("rule-2030-example") }} For the smoothed link, a calculation would be our invention until those details are set. The announced rule is to be added to the comparison later, with each of these details labelled as an assumption. For now both rules are described here and left out of the comparison below.</p>
+{% call m.note("Why this rule is not in the calculator", 4) %}
+<p>The proposals for a smoothed link differ in three details. They are the target level, how the pension catches up after a year of price protection, and over how long. Until those are set, a calculation would be our invention. The rule is described here and left out of the comparison below. The rule announced for April 2030 is in the comparison, with its assumptions labelled.</p>
 {% endcall %}
 
 <p>A freeze, with no increase at all, is not among the options. We found no current proposal for one.</p>
@@ -297,7 +299,7 @@ permalink: /reform-options/
 <section class="tool" aria-labelledby="compare">
   <h2 id="compare">Try it: compare the rules</h2>
 
-  <p>This tool applies four rules to the same starting amount and the same yearly figures for prices and earnings. It shows where the rules differ and where they do not. The rule announced for April 2030 is not one of the four. <a href="#smoothed">Why it is not in the calculator</a>.</p>
+  <p>This tool applies five rules to the same starting amount and the same yearly figures for prices and earnings. It shows where the rules differ and where they do not. One of the five is the rule announced for April 2030. The government has not published how it works, so the tool makes four assumptions. <a href="#rule-2030-assumptions">The assumptions</a>.</p>
 
   {% call m.note("What this tool does and does not show", 3) %}
   <ul>
@@ -357,7 +359,7 @@ permalink: /reform-options/
 
     <details class="more" id="compare-edit">
       <summary>Change the figures for each year</summary>
-      <p>Per cent, from -10 to 25, with one decimal place. All four rules use the same figures.</p>
+      <p>Per cent, from -10 to 25, with one decimal place. All five rules use the same figures.</p>
       <div class="scroll-x" tabindex="0" role="region" aria-label="Figures for each year">
         <table>
           <caption>Rise in prices and earnings used for each year</caption>
@@ -376,7 +378,7 @@ permalink: /reform-options/
   <p class="visually-hidden" role="status" id="compare-status"></p>
 
   <div class="result" id="compare-result">
-    {{ { startPence: ("nsp-full-weekly" | figPence), path: scenario.path.slice(0, scenarios.default_years), cashFloor: true, firstYear: 2027, measure: "cash", scenarioLabel: scenario.label | lower } | renderComparison | safe }}
+    {{ { startPence: ("nsp-full-weekly" | figPence), path: scenario.path.slice(0, scenarios.default_years), cashFloor: true, firstYear: 2027, measure: "cash", scenarioLabel: (scenario.label.charAt(0) | lower) ~ scenario.label.slice(1) } | renderComparison | safe }}
   </div>
 
   <h3>The other scenarios</h3>
@@ -397,6 +399,17 @@ permalink: /reform-options/
     <li><strong>Compared with earnings.</strong> The rise in the amount divided by the rise in an earnings index built from the earnings figures. It is an index, not a share of any pay figure in pounds.</li>
     <li><strong>Totals.</strong> 52 weeks a year at that year's rate.</li>
   </ul>
+
+  <h4 id="rule-2030-assumptions">The rule announced for April 2030: the assumptions</h4>
+  <p>{{ ("ifs-rule-2030-mechanism" | claim).statement }} {{ m.c("ifs-rule-2030-mechanism") }} The tool follows that description. Each year it takes the highest of three amounts: last year's rate raised by prices, last year's rate raised by 2.5%, and the earnings target. The earnings target is the starting amount carried forward by all the earnings growth since the rule began.</p>
+  <p>The tool makes four assumptions. The first three fill in details the government has not published. The fourth keeps the tool simple.</p>
+  <ol>
+    <li><strong>Starting point.</strong> The rule starts from the starting amount, the rate in the year before the first year. {{ ("rule-2030-example" | claim).statement }} {{ m.c("rule-2030-example") }}</li>
+    <li><strong>Earnings measure.</strong> The target uses the same yearly earnings figure as the other rules.</li>
+    <li><strong>Catching up.</strong> The target is carried forward exactly and rounded to the nearest 5p only when it sets the rate. So the rule can differ from the earnings link by small amounts, even when both follow earnings. In the steady growth scenario the gap is 10p a week at most. For the same reason it can sometimes come out a few pence above the triple lock.</li>
+    <li><strong>The first year.</strong> The tool applies the rule from the first year you choose, like the other rules. The government's rule would start in April 2030. To match that, choose 2030/31 as the first year.</li>
+  </ol>
+  <p>A different choice on any of the first three would give different results. The tool shows how the rule behaves. It does not show what the government's rule will pay.</p>
   <p><a href="/sources-and-method/#models">Full method, reference examples and limits</a>.</p>
 
   <script type="application/json" id="compare-data">{{ { scenarios: scenarios.scenarios, default: scenarios.default, default_years: scenarios.default_years, default_start: ("nsp-full-weekly" | figPence) | plainPounds, default_first: 2027 } | json | safe }}</script>

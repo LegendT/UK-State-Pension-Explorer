@@ -67,7 +67,7 @@ test("steady growth: three rules coincide and the prices link diverges", () => {
   near(result.rules["triple-lock"].years[3].earningsIndex, 100.0075);
 });
 
-test("low growth: only the 2.5% minimum separates the triple lock", () => {
+test("low growth: only the 2.5% minimum separates the triple lock from the first three alternatives", () => {
   const result = compareRules(24130, path([[15, 20], [15, 20], [15, 20]]));
   assert.deepEqual(pence("triple-lock", result), [24735, 25355, 25990]);
   assert.deepEqual(pence("double-lock", result), [24615, 25105, 25605]);
@@ -121,4 +121,38 @@ test("inputs are parsed exactly and bad text is refused", () => {
   assert.equal(parsePence("£1,000"), 100000);
   assert.equal(parsePence("12.345"), null);
   assert.equal(parsePence("-5"), null);
+});
+
+test("the rule announced for April 2030 follows the reference in docs/reference-calculations.md, section 7", () => {
+  const ifs = compareRules(24130, path([[20, 40], [20, 40], [20, 40], [20, 10], [20, 10], [20, 10], [20, 40], [20, 40], [20, 40], [20, 40]]));
+  assert.deepEqual(pence("rule-2030", ifs), [25095, 26100, 27145, 27825, 28520, 29235, 29965, 30715, 31485, 32715]);
+  assert.deepEqual(ifs.rules["rule-2030"].years.slice(1).map((year) => year.determining.join("+")),
+    ["catch-up", "catch-up", "catch-up", "floor", "floor", "floor", "floor", "floor", "floor", "catch-up"]);
+  assert.deepEqual(pence("rule-2030", compareRules(24130, path([[20, 37], [20, 37], [20, 37], [20, 37], [20, 37]]))),
+    [25025, 25950, 26910, 27905, 28935]);
+  const falling = compareRules(24130, path([[10, -10], [30, 60], [20, 35]]));
+  assert.deepEqual(pence("rule-2030", falling), [24735, 25475, 26210]);
+  assert.deepEqual(falling.rules["rule-2030"].years.slice(1).map((year) => year.determining[0]), ["floor", "prices", "catch-up"]);
+});
+
+test("the rule announced for April 2030 names every candidate in a tie, and the cash floor does not change it", () => {
+  const tie = compareRules(24130, path([[40, 40]]));
+  assert.deepEqual(tie.rules["rule-2030"].years[1].determining, ["prices", "catch-up"]);
+  assert.equal(tie.rules["rule-2030"].years[1].pence, 25095);
+  const deflation = path([[-10, -20], [20, 10]]);
+  assert.deepEqual(pence("rule-2030", compareRules(24130, deflation, true)), pence("rule-2030", compareRules(24130, deflation, false)));
+});
+
+test("the rule announced for April 2030: the percentage shown, ties with the minimum, and 30 years", () => {
+  const shown = (result, year) => (result.rules["rule-2030"].years[year].tenths / 10).toFixed(1);
+  const ifs = compareRules(24130, path([[20, 40], [20, 40], [20, 40], [20, 10], [20, 10], [20, 10], [20, 40], [20, 40], [20, 40], [20, 40]]));
+  assert.equal(shown(ifs, 10), "3.9");
+  assert.equal(shown(compareRules(24130, path([[10, -10], [30, 60], [20, 35]])), 3), "2.9");
+  const pricesAndFloor = compareRules(24130, path([[25, 10]])).rules["rule-2030"].years[1];
+  assert.deepEqual([pricesAndFloor.pence, pricesAndFloor.determining], [24735, ["prices", "floor"]]);
+  const allThree = compareRules(24130, path([[25, 25]])).rules["rule-2030"].years[1];
+  assert.deepEqual([allThree.pence, allThree.determining], [24735, ["prices", "floor", "catch-up"]]);
+  const thirty = compareRules(24130, path(Array(30).fill([20, 37]))).rules["rule-2030"];
+  assert.equal(thirty.years[30].pence, 71765);
+  assert.equal(thirty.cashTotalPence, 69425720);
 });

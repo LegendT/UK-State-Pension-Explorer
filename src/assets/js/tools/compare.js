@@ -98,7 +98,8 @@ function update(message) {
     cashFloor: floor.checked,
     firstYear: Number(first.value),
     measure: measure.value,
-    scenarioLabel: edited ? "your own figures" : chosen().label.toLowerCase(),
+    // Only the first letter, so a name such as the Institute for Fiscal Studies keeps its capitals.
+    scenarioLabel: edited ? "your own figures" : chosen().label.charAt(0).toLowerCase() + chosen().label.slice(1),
   });
   announce(status, message || "Result updated. It follows the form.");
 }

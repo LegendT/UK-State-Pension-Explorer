@@ -5,7 +5,7 @@
 const W = 720;
 const H = 380;
 const PAD = { top: 16, right: 16, bottom: 56, left: 64 };
-const DASHES = ["", "8 4", "2 4", "10 4 2 4"];
+const DASHES = ["", "8 4", "2 4", "10 4 2 4", "12 3 3 3 3 3"];
 
 const escape = (text) =>
   String(text).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
@@ -16,6 +16,7 @@ function marker(index, x, y) {
     `<rect x="${x - 4}" y="${y - 4}" width="8" height="8"/>`,
     `<path d="M${x} ${y - 5}L${x + 5} ${y + 4}L${x - 5} ${y + 4}Z"/>`,
     `<path d="M${x} ${y - 5}L${x + 5} ${y}L${x} ${y + 5}L${x - 5} ${y}Z"/>`,
+    `<path d="M${x} ${y + 5}L${x + 5} ${y - 4}L${x - 5} ${y - 4}Z"/>`,
   ];
   return shapes[index % shapes.length];
 }
@@ -68,14 +69,14 @@ export function lineChart({ id, title, description, labels, series, yLabel, yPre
         .map((p, i) => (p ? `${i === 0 || !points[i - 1] ? "M" : "L"}${p[0]} ${p[1]}` : ""))
         .join("");
       const marks = points.map((p) => (p ? marker(index, Number(p[0]), Number(p[1])) : "")).join("");
-      return `<g class="chart-series chart-series--${index + 1}"><path d="${d}" fill="none" stroke-dasharray="${DASHES[index % 4]}"/><g class="chart-marks">${marks}</g></g>`;
+      return `<g class="chart-series chart-series--${index + 1}"><path d="${d}" fill="none" stroke-dasharray="${DASHES[index % DASHES.length]}"/><g class="chart-marks">${marks}</g></g>`;
     })
     .join("");
 
   const legend = series
     .map(
       (s, index) =>
-        `<li><svg class="chart-key chart-series chart-series--${index + 1}" viewBox="0 0 44 12" width="44" height="12" aria-hidden="true" focusable="false"><path d="M0 6H44" fill="none" stroke-dasharray="${DASHES[index % 4]}"/><g class="chart-marks">${marker(index, 22, 6)}</g></svg> ${escape(s.label)}</li>`,
+        `<li><svg class="chart-key chart-series chart-series--${index + 1}" viewBox="0 0 44 12" width="44" height="12" aria-hidden="true" focusable="false"><path d="M0 6H44" fill="none" stroke-dasharray="${DASHES[index % DASHES.length]}"/><g class="chart-marks">${marker(index, 22, 6)}</g></svg> ${escape(s.label)}</li>`,
     )
     .join("");
 
