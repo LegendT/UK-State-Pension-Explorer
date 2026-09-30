@@ -6,7 +6,7 @@ Automated and scripted checks are a floor. They do not show conformance. A perso
 
 ## Scope
 
-All 11 built pages and the four calculators. Each calculator was tested in its default state, after a result changed, and with errors showing. Every page was also tested with all `details` elements open.
+All built pages, 14 on 30 September 2026, and the four calculators. Each calculator was tested in its default state, after a result changed, and with errors showing. Every page was also tested with all `details` elements open.
 
 ## Environment actually used
 
@@ -33,7 +33,9 @@ Both scripts print their counts. The counts are not copied here, because they ch
 ## Results of the last run
 
 - `npm run a11y`: 0 violations. 0 audits with sideways page scroll. 0 audits with script errors. Every contrast result that axe marked incomplete was measured: 0 below threshold, 0 that could not be measured. Lowest measured ratio 8.81:1.
-- `node scripts/a11y-manual-assist.mjs`: 0 problems on 11 pages.
+- `node scripts/a11y-manual-assist.mjs`: 0 problems on 14 pages.
+
+The last run was on 30 September 2026, after reform options was split into four pages: 100 audits of 14 pages.
 
 ### What those runs did not establish
 

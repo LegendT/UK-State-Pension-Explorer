@@ -1,0 +1,201 @@
+---
+layout: base.njk
+permalink: /reform-options/social-care/
+---
+{%- import "macros.njk" as m with context -%}
+<h1>Pensions and social care: the plan announced in September 2026</h1>
+
+<p class="lede">On {{ ("pm-care-2026-09-29" | sourceRecord).published_date | timeTag | safe }} the Prime Minister announced two things together. One is a new rule for the yearly increase in the State Pension, from April 2030. {{ ("ifs-real-rise-slower" | claim).statement }} {{ m.c("ifs-real-rise-slower") }} The other is a National Care Service with free personal care for older people, using the savings. This page sets out what was announced, what is in law, what has only been reported, and which questions the plan leaves open.</p>
+
+{{ m.reformSection() }}
+
+{{ m.contents([
+  ["care-status", "What is announced, what is in law and what is reported"],
+  ["care-two-things", "A pension and a care service are different things"],
+  ["care-scope", "Who each policy covers"],
+  ["care-now", "Social care now, nation by nation"],
+  ["care-scale", "The sums involved"],
+  ["care-questions", "Ten questions, and what the announcement answers"],
+  ["care-not-assume", "What should not be assumed"]
+]) }}
+
+{% call m.note("The position on " ~ (news.as_of | timeTag), 2) %}
+<p>This page was last checked on {{ news.as_of | timeTag | safe }}. The plan is an announcement. It is not law. {{ ("no-rule-2030-detail" | claim).statement }} {{ m.c("no-rule-2030-detail") }} Treat this page as a dated record.</p>
+{% endcall %}
+
+<h2 id="care-status">What is announced, what is in law and what is reported</h2>
+
+<h3>Announced by the government, not yet law</h3>
+<ul>
+  <li>{{ ("tl-kept-to-2030" | claim).statement }} {{ ("rule-2030" | claim).statement }} <a href="/reform-options/#opt-2030">How the rule works</a>.</li>
+  <li>{{ ("rule-2030-legislate" | claim).statement }}</li>
+  <li>{{ ("ncs-next-parliament" | claim).statement }} {{ ("ncs-personal-care" | claim).statement }}</li>
+  <li>{{ ("ncs-not-bed-board" | claim).statement }} {{ ("ncs-home-deferred" | claim).statement }}</li>
+  <li>{{ ("ncs-phased" | claim).statement }}</li>
+  <li>{{ ("ncs-not-borrowing" | claim).statement }}</li>
+  <li>{{ ("ncs-savings-used" | claim).statement }} {{ ("ncs-savings-used" | claim).note }}</li>
+</ul>
+<p>All seven come from one announcement. {{ m.c("ncs-next-parliament") }} In his speech the Prime Minister put it this way: <q>{{ ("pm-speech-2030" | claim).passage }}</q> {{ m.c("pm-speech-2030") }} {{ ("pm-speech-2030" | claim).note }}</p>
+
+<h3>In law or in a government document</h3>
+<ul>
+  <li>{{ ("tl-policy-not-law" | claim).statement }} {{ m.c("tl-policy-not-law") }}</li>
+  <li>{{ ("care-cap-cancelled" | claim).statement }} {{ m.c("care-cap-cancelled") }}</li>
+  <li>{{ ("casey-first-terms" | claim).statement }} {{ ("casey-affordable" | claim).statement }} {{ m.c("casey-first-terms") }}</li>
+</ul>
+
+<h3>Earlier commitments</h3>
+<ul>
+  <li>{{ ("labour-manifesto-tl" | claim).statement }} {{ m.c("labour-manifesto-tl") }} {{ ("tl-this-parliament" | claim).statement }} {{ m.c("tl-this-parliament") }}</li>
+  <li>{{ ("casey-summer-2027" | claim).statement }} {{ ("care-funded-principle" | claim).statement }} {{ m.c("casey-summer-2027") }}</li>
+  <li>{{ ("casey-panel" | claim).statement }} {{ m.c("casey-panel") }}</li>
+  <li>{{ ("pc-final-2027" | claim).statement }} {{ ("pc-terms" | claim).statement }} {{ m.c("pc-terms") }}</li>
+</ul>
+
+<h3>Reported, not confirmed in a government document</h3>
+<ul>
+  <li>{{ ("ncs-england-reported" | claim).statement }} {{ m.c("ncs-england-reported") }}</li>
+  <li>{{ ("wales-funding-reported" | claim).statement }} {{ m.c("wales-funding-reported") }}</li>
+  <li>{{ ("minister-more-funding" | claim).statement }} {{ m.c("minister-more-funding") }}</li>
+</ul>
+
+<h3>What research bodies, charities and a union said</h3>
+<ul>
+  <li>{{ ("ifs-ratchet-removed" | claim).statement }} {{ ("ifs-savings-small-early" | claim).statement }} {{ m.c("ifs-savings-small-early") }}</li>
+  <li>{{ ("ifs-not-universal-care" | claim).statement }} {{ ("ifs-not-universal-care" | claim).note }} {{ ("ifs-floor-arbitrary" | claim).statement }} {{ m.c("ifs-not-universal-care") }}</li>
+  <li>{{ ("rf-response-2030" | claim).statement }} {{ m.c("rf-response-2030") }}</li>
+  <li>{{ ("ageuk-response" | claim).statement }} {{ ("hf-response" | claim).statement }} {{ ("kf-response" | claim).statement }} {{ m.c("ageuk-response") }}</li>
+  <li>{{ ("unite-response" | claim).statement }} {{ m.c("unite-response") }}</li>
+</ul>
+<p>The statements from Age UK, the Health Foundation and the King's Fund are as quoted in a trade news report. We did not find them on the organisations' own sites. The statement from Unite is as reported by PA News.</p>
+
+<h3>What the other parties said after the announcement</h3>
+<ul>
+  <li>{{ ("conservative-response" | claim).statement }} {{ m.c("conservative-response") }}</li>
+  <li>{{ ("libdem-response" | claim).statement }} {{ m.c("libdem-response") }}</li>
+  <li>{{ ("reform-response" | claim).statement }} {{ m.c("reform-response") }}</li>
+  <li>{{ ("snp-response" | claim).statement }} {{ m.c("snp-response") }}</li>
+  <li>{{ ("plaid-response" | claim).statement }} {{ m.c("plaid-response") }}</li>
+  <li>{{ ("green-response" | claim).statement }} {{ m.c("green-response") }}</li>
+</ul>
+<p>Only the statement from Reform UK comes from a party's own page. The others come from news reports of {{ ("pa-2026-09-29" | sourceRecord).published_date | timeTag | safe }}.</p>
+
+<h3>What the other parties said before the announcement</h3>
+<ul>
+  <li>{{ ("conservative-position" | claim).statement }} {{ m.c("conservative-position") }}</li>
+  <li>{{ ("libdem-position" | claim).statement }} {{ m.c("libdem-position") }}</li>
+  <li>{{ ("reform-position" | claim).statement }} {{ m.c("reform-position") }}</li>
+</ul>
+<p>These are the statements we found from before the announcement. Two date from 2025 or 2026. The Liberal Democrat page is undated. Two of the three come from news reports, not from a party document.</p>
+
+<h2 id="care-two-things">A pension and a care service are different things</h2>
+
+<dl>
+  <dt>A pension payment</dt>
+  <dd>Cash, paid to a person every 4 weeks, for as long as they live. The person decides how to spend it. The amount follows set rules about a person's National Insurance record. It does not depend on need.</dd>
+  <dt>A social care service</dt>
+  <dd>Help with washing, dressing, eating and getting about, at home or in a care home. It goes only to people assessed as needing it, when they need it. Many people never use it. Some need a great deal.</dd>
+</dl>
+
+<p>So a change that slows the growth of the pension for pensioners in general, and gives a service to some, is not an exchange of equal value for each person. It moves money from pensioners in general to people who need care. Whether that is fair is a judgement. Who gains and who loses is a question of fact that depends on the design.</p>
+
+<h2 id="care-scope">Who each policy covers</h2>
+
+{{ m.dataTable("care-by-nation", false) }}
+
+<p>The State Pension is the same across the UK. Social care is decided separately in England, Scotland, Wales and Northern Ireland. The commission on adult social care is for England.</p>
+
+{% call m.note("Why this matters", 3) %}
+<p>In our reading, the pension change would affect pensioners in all four nations, because the State Pension is paid across the UK. Northern Ireland sets its rates through its own orders, which we did not read. {{ ("no-ncs-nations" | claim).statement }} {{ m.c("no-ncs-nations") }} Scotland already provides free personal care. <a href="#care-now">Social care now, nation by nation</a>. Until the government says how each nation is treated, the two policies cannot be treated as covering the same people.</p>
+{% endcall %}
+
+<h2 id="care-now">Social care now, nation by nation</h2>
+
+<h3>England</h3>
+<p>Care is means-tested. A person with capital above {{ m.f("care-eng-upper-limit") }} pays the full cost. Below {{ m.f("care-eng-lower-limit") }}, capital is ignored. There is no limit on what a person can pay over a lifetime.</p>
+{{ m.sourceNote("care-eng-upper-limit" | figure) }}
+
+<h3>Scotland</h3>
+<p>Personal and nursing care are free for people assessed as needing them. For a person in a care home who pays their own fees, the payments are {{ m.f("care-scot-personal") }} a week for personal care and {{ m.f("care-scot-nursing") }} for nursing care. They do not cover accommodation.</p>
+{{ m.sourceNote("care-scot-personal" | figure) }}
+
+<h3>Wales</h3>
+<p>The most a person can be charged for care at home is {{ m.f("care-wales-max-charge") }} a week. For residential care the capital limit is {{ m.f("care-wales-residential-limit") }}. For care at home a different figure applies, {{ m.f("care-wales-home-limit") }}.</p>
+{{ m.sourceNote("care-wales-residential-limit" | figure) }}
+
+<h3>Northern Ireland</h3>
+<p>Care home fees are means-tested, with an upper capital limit of {{ m.f("care-ni-upper-limit") }}.</p>
+{{ m.sourceNote("care-ni-upper-limit" | figure) }}
+
+<h3>Cash benefits for care needs</h3>
+<p>Attendance Allowance is a cash benefit from the UK government, paid in England and Wales. It is not a care service and is not means-tested. {{ m.c("aa-scotland") }}</p>
+
+<h2 id="care-scale">The sums involved</h2>
+
+<p>These figures are from different sources, for different years and on different price bases. They are set out to show scale. They must not be added or subtracted as if they were one account.</p>
+
+<h3>Spending on adult social care in England</h3>
+<ul class="cards">
+  <li>{{ m.stat("care-eng-spend-gross" | figure, "What councils spent, before counting what people paid towards their own care.", 4) }}</li>
+  <li>{{ m.stat("care-eng-long-term" | figure, "People receiving council-arranged long-term care on one day.", 4) }}</li>
+</ul>
+
+<p>Age UK estimates that {{ m.f("care-unmet-need") }} people aged 65 and over in England have some unmet need for care.</p>
+{{ m.sourceNote("care-unmet-need" | figure) }}
+
+<h3>Estimated extra cost of care reform in England</h3>
+{% call m.scrollTable("Estimated extra yearly cost of three models of care reform in England") %}
+<table>
+  <caption>Estimated extra yearly cost of three models of care reform in England, 2023/24 prices</caption>
+  <thead><tr><th scope="col">Model</th><th scope="col" class="num">Extra cost a year</th><th scope="col">Year</th></tr></thead>
+  <tbody>
+    {%- for id, model in [["care-cost-cap","A cap on lifetime care costs, set at " ~ ("care-cap-level" | fig)],["care-cost-free-personal","Free personal care for people aged 65 and over"],["care-cost-universal","Universal care, free when used"]] %}
+    {%- set fg = id | figure %}
+    <tr><th scope="row">{{ model }}</th><td class="num">{{ id | figShown }}</td><td>{{ fg.period_label }}</td></tr>
+    {%- endfor %}
+  </tbody>
+</table>
+{% endcall %}
+{{ m.sourceNote("care-cost-universal" | figure) }}
+<p>{{ m.c("hf-broad-estimate") }} These are estimates of general models, made in 2024. None is the cost of the government's plan. {{ ("no-ncs-cost" | claim).statement }} {{ m.c("no-ncs-cost") }} The plan is nearest to the second model, free personal care, but the government has not said which ages or which level of need it covers.</p>
+
+<h3>Estimated saving from the pension change</h3>
+<p>The government estimates a saving of {{ m.f("saving-rule-2030-late-2030s") }} a year by the end of the 2030s and {{ m.f("saving-rule-2030-2050") }} a year by 2050. {{ ("ifs-savings-small-early" | claim).statement }} The estimates and their bases are in <a href="/reform-options/costs/#saving-2030">The rule announced for April 2030</a>.</p>
+{{ m.sourceNote("saving-rule-2030-late-2030s" | figure) }}
+
+{% call m.note("What the scale shows, and what it does not", 3) %}
+<p>The saving starts in April 2030 and builds up slowly. The care service is due to start in the next Parliament, in phases. So the early years of the service are the years when the saving is smallest. The government says the service will grow as the saving grows, and will not be paid for by borrowing. It has not said what the service costs in each year, or what pays for it if the saving falls short.</p>
+<p>The government's figure for the end of the 2030s and the Health Foundation's figures are for different years. The Health Foundation's are in the prices of 2023/24 and cover England. The government does not give its prices. So the two cannot be compared closely.</p>
+{% endcall %}
+
+<h2 id="care-questions">Ten questions, and what the announcement answers</h2>
+
+<p>These ten questions were written before the announcement, as the test for any such plan. Each now shows what the announcement says.</p>
+
+<ol>
+  <li><strong>What rule would replace the triple lock, from when, and for whom?</strong> <span class="status">Answered in part.</span> The rule and the date are given. The announcement does not say which parts of a payment the rule covers or which measure of earnings would be used. Its one example refers to 2030/31.</li>
+  <li><strong>What care would be covered?</strong> <span class="status">Answered in part.</span> {{ ("ncs-personal-care" | claim).statement }} {{ ("ncs-not-bed-board" | claim).statement }} It does not say whether care at home and care in a care home are treated the same.</li>
+  <li><strong>Who would be eligible?</strong> <span class="status">Answered in part.</span> Older people, based on need. No age, no level of need and no nation is given.</li>
+  <li><strong>Who loses income, who receives a service, and when?</strong> <span class="status">Not answered.</span> {{ ("no-rule-2030-distribution" | claim).statement }}</li>
+  <li><strong>What are the costs and savings, and against what baseline?</strong> <span class="status">Answered in part.</span> Two figures for the saving are given, with no prices and no method, and without saying what forecast they are measured against. {{ ("no-ncs-cost" | claim).statement }}</li>
+  <li><strong>Would the saving actually be used for care?</strong> <span class="status">Answered in part.</span> The government says it will be. {{ ("ncs-savings-used" | claim).note }}</li>
+  <li><strong>What pays for the early years?</strong> <span class="status">Answered in part.</span> The service is to be phased in as the saving grows, and not paid for by borrowing. {{ ("minister-more-funding" | claim).statement }}</li>
+  <li><strong>Can the service be delivered?</strong> <span class="status">Answered in part.</span> The announcement says the service will grow as staff and providers are built up. It gives no plan for that. The commission is due to report in summer 2027.</li>
+  <li><strong>What happens in Scotland, Wales and Northern Ireland?</strong> <span class="status">Not answered.</span> {{ ("no-ncs-nations" | claim).statement }}</li>
+  <li><strong>What happens to people on the lowest incomes?</strong> <span class="status">Not answered.</span> {{ ("no-rule-2030-pension-credit" | claim).statement }}</li>
+</ol>
+<p>Each answer rests on the government's announcement, unless another source is named above. {{ m.c("rule-2030") }}</p>
+
+<h2 id="care-not-assume">What should not be assumed</h2>
+
+<ul>
+  <li><strong>That the change is law.</strong> It is an announcement, with legislation promised.</li>
+  <li><strong>That the saving is there when the care service starts.</strong> <a href="#care-scale">The sums involved</a>.</li>
+  <li><strong>That each person who gives up pension income receives care of the same value.</strong> <a href="#care-two-things">A pension and a care service are different things</a>.</li>
+  <li><strong>That changing the rule means a cut in pounds.</strong> {{ ("rule-2030-no-fall" | claim).statement }}</li>
+  <li><strong>That a think tank's estimate is the cost of the government's plan.</strong></li>
+  <li><strong>That a name describes a rule.</strong> The government calls the rule an adjusted triple lock. Some news reports call it a double lock. <a href="/reform-options/#opt-2030">What the rule does</a>.</li>
+</ul>
+
+<p>{{ ("hf-affordable" | claim).statement }} {{ m.c("hf-affordable") }} That is a view about priorities. Others weigh the same figures differently.</p>
+

@@ -63,7 +63,7 @@ A11Y_ASSESSMENT_DATE=2026-10-01 AI_CRAWLER_POLICY=allow npm run build
 | `src/_data/scenarios.json` | Hypothetical scenarios for the rule comparison. |
 | `src/_data/pageRegister.json` | Title, description, dates and indexing for each page. |
 | `src/_data/links.json` | Links to the sister sites, and the planned links back. |
-| `src/_data/news.json` | The dated note on the overview page. Its `as_of` date also dates the social care section of the reform options page. |
+| `src/_data/news.json` | The dated note on the overview page. Its `as_of` date also dates the pensions and social care page. |
 | `src/_data/a11y.json` | What the accessibility statement reports. |
 | `src/assets/js/lib/` | Calculations and views. No DOM. Used by the build and the browser. |
 | `src/assets/js/tools/` | The four calculators' page scripts. |

@@ -1,8 +1,8 @@
 # Handover: first build
 
-Written 29 September 2026, updated 30 September 2026. The site is a **preview for review**. It is not published. The repository is https://github.com/LegendT/UK-State-Pension-Explorer. All work is merged into `main`: pull request 1, the first build, on 29 September 2026; pull request 2, from `first-build`, pull request 3, from `april-2030-rule`, and pull request 4, from `homepage-orientation`, on 30 September 2026. Pull request 3 carried the markup sweep and stylesheet fixes of `html-semantics` and the update for the government's announcement of 29 September 2026. Pull request 4 added a table of State Pension age by date of birth to the overview: decision 44. Pull request 5 corrected the handover. Pull request 6, from `rule-2030-calculator`, adds the announced rule to the rule comparison: decision 38. It was merged on 30 September 2026. Netlify builds `main` to the main address and a deploy preview of each pull request into `main`, all behind a sign-in.
+Written 29 September 2026, updated 30 September 2026. The site is a **preview for review**. It is not published. The repository is https://github.com/LegendT/UK-State-Pension-Explorer. All work up to pull request 7 is merged into `main`. The work on the UX review of 30 September 2026 is on the branch `ux-review` and is not committed: see "UX review of 30 September 2026". Merged: pull request 1, the first build, on 29 September 2026; pull request 2, from `first-build`, pull request 3, from `april-2030-rule`, and pull request 4, from `homepage-orientation`, on 30 September 2026. Pull request 3 carried the markup sweep and stylesheet fixes of `html-semantics` and the update for the government's announcement of 29 September 2026. Pull request 4 added a table of State Pension age by date of birth to the overview: decision 44. Pull request 5 corrected the handover. Pull request 6, from `rule-2030-calculator`, adds the announced rule to the rule comparison: decision 38. It was merged on 30 September 2026. Netlify builds `main` to the main address and a deploy preview of each pull request into `main`, all behind a sign-in.
 
-**Next action:** none is authorised. On 29 September 2026 the government announced a change to the triple lock from April 2030 and a National Care Service. The site was brought up to date on 30 September 2026, on the branch `april-2030-rule`: see "The announcement of 29 September 2026". It is merged into `main`. The rule is in the rule comparison, with its assumptions labelled: decisions 38 and 45.
+**Next action:** the owner decides whether to commit the work on `ux-review`, and whether to go ahead with R4 to R8 and R10. Nothing else is authorised. On 29 September 2026 the government announced a change to the triple lock from April 2030 and a National Care Service. The site was brought up to date on 30 September 2026, on the branch `april-2030-rule`: see "The announcement of 29 September 2026". It is merged into `main`. The rule is in the rule comparison, with its assumptions labelled: decisions 38 and 45.
 
 ## How to look at it
 
@@ -14,7 +14,7 @@ npm run serve        # http://127.0.0.1:8137
 
 ## Completed
 
-- Seven main pages, four utility pages, four calculators. Pensions and social care is a section of the reform options page.
+- Ten main pages, four utility pages, four calculators. Reform options is four pages, the third of them pensions and social care: decision 46.
 - On the overview, a section on State Pension age by date of birth, added on 30 September 2026.
 - Registers of figures, claims and sources, a page register and a link register.
 - Model specification, written before the code. Reference calculations by a separate method.
@@ -156,15 +156,48 @@ Answered on 29 September 2026: previews are protected with basic authentication,
 | The uncommitted edits on `html-semantics`? | Commit them first | Done: commits `8c78a0b` and `ad5dbb6` |
 | Which branch? | A new branch from `html-semantics` | Done: `april-2030-rule` |
 
+## UX review of 30 September 2026
+
+The review is `docs/ux-review.md`, a frozen record. The owner accepted these recommendations on 30 September 2026, and gave the go-ahead for R9, the chart label, R2, R3 and R1, in that order. Those are done on the branch `ux-review`, not committed. The rest need the owner's go-ahead.
+
+| No. | Recommendation | State |
+| --- | --- | --- |
+| R1 | Split reform options into four pages, option A: decision 46 | Done. `/reform-options/`, `/reform-options/costs/`, `/reform-options/social-care/` and `/reform-options/entitlement/`, with a list of the four pages on each. On a phone the old page was 90 screens before R2 and R3. With R2 and R3 the four are 27, 24, 23 and 11, 85 in all, so the split alone saves little length. It gives each page one main question |
+| R2 | Slim figure cards | Done. The first sentence of a figure's qualifications is shown open, and the rest is under "More about this figure". The two spending figures had their caveat moved to the front. The card markup is unchanged, so the README convention stands |
+| R3 | Short citations, and the check date once per section. Decision 17 keeps its words | Done in part. Citations show the publisher and date, and keep the title for screen readers. The registers on the sources page keep full titles. The check date moved into "More about this figure". Citing a source once per paragraph was not done: decision 47 |
+| R4 | Back-to-contents links, a contents list of `h2` headings that stays in view at 1024 px and wider, and an `id` on every `h3` | Accepted, not started |
+| R5 | Shorten the overview's news section to a few sentences and a link | Accepted, not started |
+| R6 | Statement headings where a section reports evidence. Needs the owner's reading | Accepted, not started |
+| R7 | Chart message titles and labels worked out from each result, annotations for policy events | Accepted, not started |
+| R8 | Settings in the page address for the rule comparison and the history explorer. Never for the budget tool | Accepted, not started |
+| R9 | Widen the drop-down lists that cut their text. A defect | Done at 1280 px. At 390 px one scenario name is still longer than the screen, so the closed list cuts it. Phones show it in full when the list opens, and the note under the settings repeats it |
+| R10 | Put the budget tool's instructions next to the fields they govern | Accepted, not started |
+
+The cut-off last year label on both charts, in F6 of the review, was fixed on its own, apart from R7.
+
+Checks run on 30 September 2026 after this work, Chrome 154, macOS:
+
+| Check | Command | Result |
+| --- | --- | --- |
+| Build checks | `npm run build` | No problems. 14 pages |
+| Calculator tests | `npm test` | 25 of 25 pass |
+| Automated accessibility | `npm run a11y` | 100 audits of 14 pages. 0 violations, 0 audits with sideways scroll. 1,976 results incomplete: every incomplete contrast result measured, 3,910, none below threshold, lowest 8.81:1 |
+| Scripted accessibility measurements | `node scripts/a11y-manual-assist.mjs` | 0 problems |
+| Chart label | `getBBox` of every chart label in Chrome | None outside the drawing area on the history and rule comparison charts |
+| Drop-down lists | Width of each option against its control in Chrome, 390 and 1280 px | All fit at 1280 px. At 390 px the longest scenario name is wider than the screen |
+| Content kept | Every line of the old reform options template compared with the four new ones | 16 lines not found, all changed on purpose: headings, contents lists, three edited sentences |
+| Rendered pages | Screenshots in Chrome | First screens of the four reform options pages at 390 and 1280 px, the figure cards on the State Pension and costs pages, the rule card at 390 px, and the history and rule comparison forms |
+
 ## Waiting on the owner
 
 As at 30 September 2026.
 
 | Item | What is needed |
 | --- | --- |
-| The deployed site | Netlify built `main` at commit `e654cf0` on 30 September 2026, and the main address answered 401 with `WWW-Authenticate: Basic`. Nobody has looked at the pages past the sign-in. Doing so needs the sign-in, which the owner enters |
+| The deployed site | Netlify builds `main` after every merge, and each build on 30 September 2026 was ready. `netlify api listSiteDeploys` shows the latest. The main address answered 401 with `WWW-Authenticate: Basic`. Nobody has looked at the pages past the sign-in. Doing so needs the sign-in, which the owner enters |
 | Two items the research left out | The speech's commitment on Income Tax for pensioners on low incomes, and a YouGov poll of 29 September 2026. See `research/06-announcement-2026-09-29.md` |
 | Markup conventions in the README | Written by the assistant after the sweep of 29 September. Not yet accepted by the owner |
+| The accepted UX recommendations | Whether to commit the work on `ux-review`, and a go-ahead for R4 to R8 and R10. See "UX review of 30 September 2026" |
 
 ## Tracked separately
 

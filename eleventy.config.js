@@ -71,6 +71,12 @@ export default function (eleventyConfig) {
     const shown = DISPLAY[record.display](record.value);
     return record.approximate ? `around ${shown}` : shown;
   });
+  // The first sentence of a figure's qualifications is the caveat that changes what the figure
+  // means, and is shown open. The rest is shown under "More about this figure".
+  eleventyConfig.addFilter("splitCaveat", (text) => {
+    const match = String(text || "").match(/^(.+?\.)\s+(?=[A-Z£0-9"'])([\s\S]+)$/);
+    return match ? [match[1], match[2]] : [text || "", ""];
+  });
   eleventyConfig.addFilter("upperFirst", (text) => text.charAt(0).toUpperCase() + text.slice(1));
   eleventyConfig.addFilter("figPence", function (id) {
     const record = this.ctx.figures[id];

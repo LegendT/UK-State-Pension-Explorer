@@ -1,0 +1,128 @@
+---
+layout: base.njk
+permalink: /reform-options/entitlement/
+---
+{%- import "macros.njk" as m with context -%}
+<h1>Means-testing and entitlement: the options and the arguments</h1>
+
+<p class="lede">Who should receive the State Pension, and how much. The options for changing entitlement, the main arguments for and against the triple lock, and what evidence can and cannot settle.</p>
+
+{{ m.reformSection() }}
+
+{{ m.contents([
+  ["entitlement", "Options for entitlement"],
+  ["arguments", "The main arguments, side by side"],
+  ["evidence-and-judgement", "What evidence can settle, and what it cannot"]
+]) }}
+
+{% call m.note("How to read this page", 2) %}
+<p>This page asks the same questions of every option, including keeping the present rule. Where a claim is a recommendation or a value judgement, it says whose it is. It recommends no option.</p>
+{% endcall %}
+
+<h2 id="entitlement">Options for entitlement</h2>
+
+<p>The State Pension is not means-tested. A person's income and savings do not affect it. The options below would change that, or would reach a similar aim another way.</p>
+
+<div class="option-grid">
+  <article class="option">
+    <h3 id="ent-income">Means-test by income</h3>
+    <dl>
+      <dt>The idea</dt> <dd>Reduce or withdraw the State Pension for people with income above a level.</dd>
+      <dt>Who is affected</dt> <dd>It depends entirely on the level and on how fast the pension is withdrawn. No proposal we found sets them.</dd>
+      <dt>Known difficulties</dt> <dd>Not everyone who is entitled claims a means-tested benefit. Take-up of Pension Credit is {{ m.f("pension-credit-take-up") }}. A withdrawal rate reduces the reward for saving. {{ m.c("ifs-no-means-test-reason") }}</dd>
+      <dt>Public finances</dt> <dd>{{ ("no-costed-means-test" | claim).statement }}</dd>
+    </dl>
+  </article>
+  <article class="option">
+    <h3 id="ent-assets">Means-test by assets as well as income</h3>
+    <dl>
+      <dt>The idea</dt> <dd>Count savings, and possibly property, as well as income.</dd>
+      <dt>Who is affected</dt> <dd>People with wealth and low income, including owners of homes that have risen in value. Whether the home counts changes the result greatly.</dd>
+      <dt>An example from abroad</dt> <dd>{{ ("australia-assets-test" | claim).statement }} {{ m.c("australia-assets-test") }} {{ ("australia-assets-test" | claim).note }}</dd>
+      <dt>Known difficulties</dt> <dd>Valuing assets, treating the home, and people who cannot turn an asset into income.</dd>
+    </dl>
+  </article>
+  <article class="option">
+    <h3 id="ent-tax">Keep the pension and redistribute through tax</h3>
+    <dl>
+      <dt>The idea</dt> <dd>Pay the State Pension to everyone entitled and recover more from people with higher incomes through the tax system.</dd>
+      <dt>How it works now</dt> <dd>The State Pension is already taxable. The Winter Fuel Payment is now recovered through tax from people with income over {{ m.f("winter-fuel-income-limit") }}.</dd>
+      <dt>A proposal</dt> <dd>{{ ("if-nic-proposal" | claim).statement }} {{ m.c("if-nic-proposal") }}</dd>
+      <dt>Known difficulties</dt> <dd>Tax looks at income, not wealth. A change in tax for pensioners also reaches pensioners with modest private pensions.</dd>
+    </dl>
+  </article>
+  <article class="option">
+    <h3 id="ent-targeted">Keep broad entitlement and strengthen targeted support</h3>
+    <dl>
+      <dt>The idea</dt> <dd>Leave the State Pension as it is and put more into Pension Credit, housing support or disability benefits.</dd>
+      <dt>Who is affected</dt> <dd>People on low incomes who claim. People who are entitled and do not claim get nothing. About {{ m.f("pension-credit-non-recipients") }} families did not claim Pension Credit.</dd>
+      <dt>A view</dt> <dd>{{ ("pc-safety-net" | claim).statement }} {{ m.c("pc-safety-net") }}</dd>
+      <dt>Known difficulties</dt> <dd>Take-up, and the effect on the reward for saving. {{ m.c("wp-savings-credit") }}</dd>
+    </dl>
+  </article>
+</div>
+
+<h3>Why the present system is not means-tested</h3>
+<p>{{ ("ifs-guarantee-3" | claim).statement }} {{ m.c("ifs-guarantee-3") }}</p>
+<p>{{ ("wp-beveridge" | claim).statement }} {{ m.c("wp-beveridge") }} {{ ("wp-above-means-test" | claim).statement }} {{ m.c("wp-above-means-test") }} The aim was that a person who saves can expect to keep the benefit of saving.</p>
+
+<p>Whether means-testing would help poorer pensioners depends on what is done with the money, on take-up, and on how people change their saving. The evidence does not settle it in advance.</p>
+
+<h2 id="arguments">The main arguments, side by side</h2>
+
+<p>These are the arguments for keeping the triple lock and for changing it. The government announced on {{ ("pm-care-2026-09-29" | sourceRecord).published_date | timeTag | safe }} that it will change it from April 2030. The arguments still matter, because the government has yet to legislate for the change, and it does not start until then.</p>
+
+<div class="option-grid">
+  <article class="option">
+    <h3 id="args-keep">For keeping the triple lock</h3>
+    <ul>
+      <li><strong>Most pensioners depend on it.</strong> {{ ("ppi-reliance" | claim).statement }} {{ m.c("ppi-reliance") }} {{ ("ageuk-largest-income" | claim).statement }} {{ m.c("ageuk-largest-income") }}</li>
+      <li><strong>Pensioner poverty has not gone away.</strong> {{ m.f("low-income-ahc") }} of pensioners are in relative low income after housing costs. {{ ("ageuk-women" | claim).statement }} {{ m.c("ageuk-women") }}</li>
+      <li><strong>It helps today's workers most.</strong> {{ ("ppi-future-workers" | claim).statement }} {{ m.c("ppi-future-workers") }}</li>
+      <li><strong>An older population costs more than the lock.</strong> {{ ("ppi-demographics" | claim).statement }} {{ m.c("ppi-demographics") }}</li>
+      <li><strong>The level is about 30% of typical pay.</strong> The full new State Pension is {{ m.f("nsp-share-median-earnings") }} of median full-time earnings. {{ m.c("pc-30-percent") }}</li>
+      <li><strong>It supports private saving.</strong> {{ ("pc-firm-foundation" | claim).statement }} {{ m.c("pc-firm-foundation") }}</li>
+    </ul>
+  </article>
+  <article class="option">
+    <h3 id="args-change">For changing it</h3>
+    <ul>
+      <li><strong>It has cost more than expected.</strong> {{ m.f("tl-cost-vs-earnings-2029-30") }} a year by 2029-30 compared with earnings uprating, against {{ m.f("tl-cost-initial-assumption") }} on the first assumption. {{ m.cite(("tl-cost-vs-earnings-2029-30" | figure).source) }}.</li>
+      <li><strong>Its future cost cannot be predicted.</strong> Between {{ m.f("ifs-tl-cost-2050-low") }} and {{ m.f("ifs-tl-cost-2050-high") }} a year in 2050. {{ m.cite(("ifs-tl-cost-2050-high" | figure).source) }}.</li>
+      <li><strong>It rewards volatility, not need.</strong> {{ ("rf-volatility" | claim).statement }} {{ m.c("rf-volatility") }}</li>
+      <li><strong>It has no stated target.</strong> {{ ("ifs-explicit-goal" | claim).statement }} {{ m.c("ifs-explicit-goal") }}</li>
+      <li><strong>Fairness between generations.</strong> {{ ("rf-living-standards" | claim).statement }} {{ m.c("rf-living-standards") }}</li>
+      <li><strong>It is not aimed at poverty.</strong> {{ ("rf-poverty-since-2011" | claim).statement }} {{ m.c("rf-poverty-since-2011") }} It applies the same percentage to the full rates, whatever the income of the person who receives them.</li>
+    </ul>
+  </article>
+</div>
+
+<p>Some of these points pull against each other on the facts. The Pensions Policy Institute and the Office for Budget Responsibility weigh the triple lock against demographics differently, using different dates and baselines. The Pensions Policy Institute is cited above. The Office for Budget Responsibility is cited on the page on <a href="/reform-options/costs/#public-finances">what the State Pension costs</a>. We have not tried to make them agree.</p>
+
+<h2 id="evidence-and-judgement">What evidence can settle, and what it cannot</h2>
+
+<h3>Evidence can establish</h3>
+<ul>
+  <li>What each rule does to the rate under given conditions.</li>
+  <li>Roughly what the bill is, and that estimates of cost and saving depend on the comparison chosen.</li>
+  <li>That savings from a change start small and grow.</li>
+  <li>How incomes, wealth and housing differ among pensioners today.</li>
+  <li>That not everyone claims a means-tested benefit.</li>
+</ul>
+
+<h3>Evidence cannot establish</h3>
+<ul>
+  <li>What prices and earnings will do, and so what any rule will cost.</li>
+  <li>How people would change their saving if the rules changed.</li>
+  <li>What a future government would do with money saved.</li>
+</ul>
+
+<h3>Judgements about fairness</h3>
+<ul>
+  <li>What the State Pension should be worth compared with pay.</li>
+  <li>How to weigh today's pensioners against today's workers, who are tomorrow's pensioners.</li>
+  <li>Whether the same payment for everyone with the same record is fairer than a payment that depends on resources.</li>
+  <li>How much certainty people are owed when they plan for retirement.</li>
+</ul>
+
+<p>A research body's recommendation is a conclusion from evidence and values. It is not an established fact. This page names the body each time.</p>

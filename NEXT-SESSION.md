@@ -12,8 +12,7 @@ announcement of 29 September 2026 is research/06-announcement-2026-09-29.md.
 
 State on 30 September 2026: see the opening paragraph of docs/HANDOVER.md and its
 section "The announcement of 29 September 2026". The site is an unpublished preview.
-Pull requests 1 to 6 are merged into main, which holds all the work, including the
-announced rule in the rule comparison. Run git status first.
+All work is merged into main, including the announced rule in the rule comparison. Run git status first.
 
 Next action: none. Wait for Anthony to say what to do. Nothing else is authorised.
 

@@ -190,7 +190,7 @@ permalink: /sources-and-method/
     <tbody>
       {%- for id, record in figures %}
       {%- set fg = id | figure %}
-      <tr id="fig-{{ id }}"><th scope="row">{{ fg.label }}</th><td class="num">{{ fg.shown }}</td><td>{{ fg.period_label }}</td><td>{{ m.classLabel(fg.classification) }}</td><td>{{ fg.geography }}</td><td>{{ m.cite(fg.source) }}. {{ fg.table_reference }}</td><td>{{ fg.checked_date | timeTag | safe }}</td></tr>
+      <tr id="fig-{{ id }}"><th scope="row">{{ fg.label }}</th><td class="num">{{ fg.shown }}</td><td>{{ fg.period_label }}</td><td>{{ m.classLabel(fg.classification) }}</td><td>{{ fg.geography }}</td><td>{{ m.cite(fg.source, true) }}. {{ fg.table_reference }}</td><td>{{ fg.checked_date | timeTag | safe }}</td></tr>
       {%- endfor %}
     </tbody>
   </table>
@@ -208,7 +208,7 @@ permalink: /sources-and-method/
     <tbody>
       {%- for id, record in claims %}
       {%- set cl = id | claim %}
-      <tr id="claim-{{ id }}"><th scope="row">{{ cl.statement }}</th><td>{{ { "rule": "Published rule", "enacted": "In law or a government document", "commitment": "Commitment", "proposal": "Proposal", "reported": "Reported", "commentary": "Commentary", "finding": "Research or official finding", "recommendation": "Recommendation", "not-found": "Not found" }[cl.kind] }}{% if cl.interpretation %}. Our reading or a judgement{% endif %}</td><td>{% if cl.passage %}"{{ cl.passage }}"{% else %}No passage quoted{% endif %}</td><td>{% if cl.source %}{{ m.cite(cl.source) }}{% else %}A record of a search. No source can show that something does not exist.{% endif %}</td><td>{{ cl.note or "" }}</td></tr>
+      <tr id="claim-{{ id }}"><th scope="row">{{ cl.statement }}</th><td>{{ { "rule": "Published rule", "enacted": "In law or a government document", "commitment": "Commitment", "proposal": "Proposal", "reported": "Reported", "commentary": "Commentary", "finding": "Research or official finding", "recommendation": "Recommendation", "not-found": "Not found" }[cl.kind] }}{% if cl.interpretation %}. Our reading or a judgement{% endif %}</td><td>{% if cl.passage %}"{{ cl.passage }}"{% else %}No passage quoted{% endif %}</td><td>{% if cl.source %}{{ m.cite(cl.source, true) }}{% else %}A record of a search. No source can show that something does not exist.{% endif %}</td><td>{{ cl.note or "" }}</td></tr>
       {%- endfor %}
     </tbody>
   </table>

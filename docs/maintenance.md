@@ -26,7 +26,7 @@ Each figure has a `next_review` trigger. Known dates:
 | 22 October 2026 | DWP take-up estimates, financial year ending 2025 | `pension-credit-take-up`, `pension-credit-unclaimed`, `pension-credit-non-recipients` |
 | 27 November 2026 | ONS Household Costs Indices | `hci-*` |
 | Spring 2027 | Pensions Commission final report | Claims `pc-*` |
-| Summer 2027 | Care commission report for England | Social care section of the reform options page |
+| Summer 2027 | Care commission report for England | The pensions and social care page, `/reform-options/social-care/` |
 | March 2027 | DWP Pensioners' Incomes and Households Below Average Income | `income-*`, `low-income-*`, `material-deprivation`, table `income-fifths` |
 | July 2027 | OBR Fiscal risks and sustainability | `sp-share-gdp-*`, `tl-share-of-rise`, `saving-*-2075`, table `sp-longrun` |
 | 21 September 2027 | DWP benefits statistics | `sp-recipients`, `*-mean-weekly*` |
@@ -39,19 +39,19 @@ Rechecking a source that has not changed updates `checked_date` only. It does no
 
 `src/_data/news.json` is a dated note. When policy status changes, rewrite it and change `as_of`. If nobody is maintaining it, leave the date in place. Never relabel an old note as current.
 
-The note of 30 September 2026 was written after the announcement of 29 September 2026. It rests on one government news story. Rewrite the note, the option card for the announced rule and the social care section of the reform options page when any of these is published:
+The note of 30 September 2026 was written after the announcement of 29 September 2026. It rests on one government news story. Rewrite the note, the option card for the announced rule and the pensions and social care page when any of these is published:
 
 - a Bill or draft clauses for the change to the triple lock;
 - a technical note from the Department for Work and Pensions or the Treasury, above all one that gives the earnings measure, the starting point or the method behind the savings;
 - the next forecast from the Office for Budget Responsibility;
-- the report of the Casey commission, due in summer 2027, when the owner also decides again whether social care is a section or a page;
+- the report of the Casey commission, due in summer 2027;
 - the final report of the Pensions Commission, due in spring 2027;
 - a statement from a party on its own site, to replace one that rests on a news report;
 - an official transcript of the Prime Minister's speech;
 - any government statement on which nations the care service covers;
 - any government estimate of what the care service costs.
 
-Read these parts of the reform options page in full: the note at the top, the card `#opt-2030`, `#how-2030-works`, `#saving-2030` and the whole of `#social-care`. Then search `src/` for "April 2030" and for `pm-care-2026-09-29` to find typed sentences elsewhere. The register entries of the announcement and the responses to it are the claims and figures with `checked_date` 2026-09-30.
+Read these parts of the reform options pages in full: on `/reform-options/`, the note at the top, the card `#opt-2030` and `#how-2030-works`. On `/reform-options/costs/`, `#saving-2030`. The whole of `/reform-options/social-care/`. Then search `src/` for "April 2030" and for `pm-care-2026-09-29` to find typed sentences elsewhere. The register entries of the announcement and the responses to it are the claims and figures with `checked_date` 2026-09-30.
 
 ## Corrections
 

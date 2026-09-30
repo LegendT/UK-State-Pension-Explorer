@@ -4,7 +4,8 @@
 
 const W = 720;
 const H = 380;
-const PAD = { top: 16, right: 16, bottom: 56, left: 64 };
+// right leaves room for half the width of the last year label, which is centred on its point.
+const PAD = { top: 16, right: 32, bottom: 56, left: 64 };
 const DASHES = ["", "8 4", "2 4", "10 4 2 4", "12 3 3 3 3 3"];
 
 const escape = (text) =>
