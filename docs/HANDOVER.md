@@ -1,8 +1,8 @@
 # Handover: first build
 
-Written 29 September 2026, updated 30 September 2026. The site is a **preview for review**. It is not published. The repository is https://github.com/LegendT/UK-State-Pension-Explorer. All work is merged into `main`: pull request 1, the first build, on 29 September 2026; pull request 2, from `first-build`, pull request 3, from `april-2030-rule`, and pull request 4, from `homepage-orientation`, on 30 September 2026. Pull request 3 carried the markup sweep and stylesheet fixes of `html-semantics` and the update for the government's announcement of 29 September 2026. Pull request 4 added a table of State Pension age by date of birth to the overview: decision 44. Netlify builds `main` to the main address and a deploy preview of each pull request into `main`, all behind a sign-in.
+Written 29 September 2026, updated 30 September 2026. The site is a **preview for review**. It is not published. The repository is https://github.com/LegendT/UK-State-Pension-Explorer. All work is merged into `main`: pull request 1, the first build, on 29 September 2026; pull request 2, from `first-build`, pull request 3, from `april-2030-rule`, and pull request 4, from `homepage-orientation`, on 30 September 2026. Pull request 3 carried the markup sweep and stylesheet fixes of `html-semantics` and the update for the government's announcement of 29 September 2026. Pull request 4 added a table of State Pension age by date of birth to the overview: decision 44. Pull request 5 corrected the handover. Pull request 6, from `rule-2030-calculator`, adds the announced rule to the rule comparison: decision 38. It was merged on 30 September 2026. Netlify builds `main` to the main address and a deploy preview of each pull request into `main`, all behind a sign-in.
 
-**Next action:** none is authorised. On 29 September 2026 the government announced a change to the triple lock from April 2030 and a National Care Service. The site was brought up to date on 30 September 2026, on the branch `april-2030-rule`: see "The announcement of 29 September 2026". It is merged into `main`. The rule is now in the rule comparison, with its assumptions labelled: decision 38.
+**Next action:** none is authorised. On 29 September 2026 the government announced a change to the triple lock from April 2030 and a National Care Service. The site was brought up to date on 30 September 2026, on the branch `april-2030-rule`: see "The announcement of 29 September 2026". It is merged into `main`. The rule is in the rule comparison, with its assumptions labelled: decisions 38 and 45.
 
 ## How to look at it
 
@@ -121,7 +121,7 @@ Not checked on the deployed preview: the other three calculators, any browser bu
 - The download and copy buttons of the history explorer were not pressed in a test.
 - The sister sites' tools were read from served HTML. They were not run.
 - House of Commons Library briefings and Hansard could not be opened.
-- Nothing on the main site address beyond the sign-in, and nothing on a production domain. The deploy preview of pull request 1 was checked, and the deploy previews of pull requests 2 to 4 were not: see "Checks on the deployed preview". Fetched share previews on a social platform were not checked.
+- Nothing on the main site address beyond the sign-in, and nothing on a production domain. The deploy preview of pull request 1 was checked, and the deploy previews of pull requests 2 to 6 were not: see "Checks on the deployed preview". Fetched share previews on a social platform were not checked.
 - Search console verification, sitemap submission, indexing.
 
 ## Owner decisions needed for launch
@@ -162,7 +162,7 @@ As at 30 September 2026.
 
 | Item | What is needed |
 | --- | --- |
-| The deployed site | Netlify built `main` at commit `82632cb` on 30 September 2026, and the main address answered 401 with `WWW-Authenticate: Basic`. Nobody has looked at the pages past the sign-in. Doing so needs the sign-in, which the owner enters |
+| The deployed site | Netlify built `main` at commit `e654cf0` on 30 September 2026, and the main address answered 401 with `WWW-Authenticate: Basic`. Nobody has looked at the pages past the sign-in. Doing so needs the sign-in, which the owner enters |
 | Two items the research left out | The speech's commitment on Income Tax for pensioners on low incomes, and a YouGov poll of 29 September 2026. See `research/06-announcement-2026-09-29.md` |
 | Markup conventions in the README | Written by the assistant after the sweep of 29 September. Not yet accepted by the owner |
 
@@ -171,7 +171,7 @@ As at 30 September 2026.
 | Item | Status |
 | --- | --- |
 | Reciprocal links on UK Public Finances Explorer and UK Migration Explorer | Not started. Needs a live domain. No other repository was changed |
-| Deployed checks | Done for the deploy preview of pull request 1. See "Checks on the deployed preview". Not done for pull requests 2 to 4, for the main site address beyond the sign-in, or for a production domain |
+| Deployed checks | Done for the deploy preview of pull request 1. See "Checks on the deployed preview". Not done for pull requests 2 to 6, for the main site address beyond the sign-in, or for a production domain |
 | Search console | Not started. Needs account and domain access |
 
 ## Found in passing
