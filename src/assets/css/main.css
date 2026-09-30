@@ -207,6 +207,11 @@ main > .tool, main > figure, main > .cards, main > .scroll-x, main > .rate-block
 /* A block link keeps the list marker on its first line when it wraps. */
 .contents a { display: block; padding: 0.55rem 0; }
 .contents li + li { margin-top: 0; }
+/* The current section gets a bar in the gutter, not bold: bold re-wraps long links and moves the list.
+   The bar is a border because forced colours keep borders and remove backgrounds. The offset clears
+   the list marker: the list's 1.2rem padding plus most of the panel's 1rem. */
+.contents a[aria-current="location"] { position: relative; color: var(--ink); text-decoration: none; }
+.contents a[aria-current="location"]::before { content: ""; position: absolute; left: -1.85rem; top: 0.45rem; bottom: 0.45rem; border-left: 3px solid var(--accent); }
 .section-nav { margin-bottom: var(--space-m); }
 .to-contents { margin: var(--space-l) 0 0; font-size: 0.95rem; }
 .to-contents a { display: inline-block; padding: 0.55rem 0; }
