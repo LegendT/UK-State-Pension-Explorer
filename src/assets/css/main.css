@@ -294,6 +294,8 @@ button.secondary { color: var(--accent); background: var(--paper); }
 .option-grid { display: grid; gap: var(--space-m); }
 .option { padding: var(--space-m); border: 1px solid var(--rule); border-radius: var(--radius); }
 .option > :first-child { margin-top: 0; }
+/* An option that stands alone above the grid: the rule the government has announced. */
+.option + .option-grid { margin-top: var(--space-m); }
 
 /* Wider screens */
 @media (min-width: 40em) {

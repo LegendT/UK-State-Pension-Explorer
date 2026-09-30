@@ -12,6 +12,11 @@ permalink: /reform-options/
 <p>The page asks the same questions of every option, including keeping the present rule. Where the evidence is strong, the page says so. Where a claim is a recommendation or a value judgement, the page says whose it is. It recommends no option.</p>
 {% endcall %}
 
+{% call m.note("A change was announced on " ~ (("pm-care-2026-09-29" | sourceRecord).published_date | timeTag), 2) %}
+<p>{{ ("tl-kept-to-2030" | claim).statement }} {{ ("rule-2030" | claim).statement }} {{ ("ncs-savings-used" | claim).statement }} {{ m.c("rule-2030") }}</p>
+<p>This is an announcement. It is not law. {{ ("rule-2030-legislate" | claim).statement }} The options on this page are still the ones to compare, and <a href="#opt-2030">the announced rule</a> is now one of them. <a href="#social-care">Pensions and social care</a> sets out the plan and what it leaves open.</p>
+{% endcall %}
+
 {{ m.contents([
   ["two-decisions", "Two different decisions"],
   ["public-finances", "What the State Pension costs"],
@@ -19,8 +24,8 @@ permalink: /reform-options/
   ["who", "Who receives what: incomes, wealth and poverty"],
   ["increases", "Options for the yearly increase"],
   ["compare", "Try it: compare the rules"],
+  ["social-care", "Pensions and social care: the plan announced in September 2026"],
   ["entitlement", "Options for entitlement"],
-  ["social-care", "Pensions and social care: a reported trade-off"],
   ["arguments", "The main arguments, side by side"],
   ["evidence-and-judgement", "What evidence can settle, and what it cannot"]
 ]) }}
@@ -96,16 +101,16 @@ permalink: /reform-options/
   <caption>Estimates of extra yearly spending because of the triple lock</caption>
   <thead><tr><th scope="col">Estimate</th><th scope="col">Compared with</th><th scope="col">Year measured</th><th scope="col">Before or after tax and benefit effects</th><th scope="col">Who made it</th></tr></thead>
   <tbody>
-    {%- for id, against in [["tl-cost-ifs-2023","Prices or earnings since 2011"],["tl-cost-rf-gross-2026","A smoothed earnings link since 2012, as the report describes it"],["tl-cost-rf-net-2026","A smoothed earnings link since 2012, as the report describes it"],["tl-cost-vs-earnings-2029-30","Earnings since 2012"],["tl-cost-vs-cpi-2029-30","Prices since 2012"]] %}
+    {%- for id, against in [["tl-cost-ifs-2023","Prices or earnings since 2011"],["tl-cost-ifs-2026","Average earnings since 2011"],["tl-cost-rf-gross-2026","A smoothed earnings link since 2012, as the report describes it"],["tl-cost-rf-net-2026","A smoothed earnings link since 2012, as the report describes it"],["tl-cost-vs-earnings-2029-30","Earnings since 2012"],["tl-cost-vs-cpi-2029-30","Prices since 2012"]] %}
     {%- set fg = id | figure %}
     <tr><th scope="row">{{ id | figShown }} a year</th><td>{{ against }}</td><td>{{ fg.period_label }}</td><td>{{ fg.gross_net }}</td><td>{{ m.cite(fg.source) }}</td></tr>
     {%- endfor %}
   </tbody>
 </table>
 {% endcall %}
-<div class="source"><p>Each estimate is for one year, not a running total. All were checked against their sources on {{ ("tl-cost-ifs-2023" | figure).checked_date | timeTag | safe }}. The estimates differ because they compare with different rules, measure different years and come from different forecasts. None is wrong because another is different.</p></div>
+<div class="source"><p>Each estimate is for one year, not a running total. All were checked against their sources on {{ ("tl-cost-ifs-2023" | figure).checked_date | timeTag | safe }}, except the 2026-27 estimate by the Institute for Fiscal Studies, checked on {{ ("tl-cost-ifs-2026" | figure).checked_date | timeTag | safe }}. The estimates differ because they compare with different rules, measure different years and come from different forecasts. None is wrong because another is different.</p></div>
 
-<p>The Office for Budget Responsibility also says the cost by 2029-30 is around three times what was first assumed: {{ m.f("tl-cost-vs-earnings-2029-30") }} against {{ m.f("tl-cost-initial-assumption") }}. That compares two differences from earnings uprating. It does not mean State Pension spending is three times what was expected.</p>
+<p>The Office for Budget Responsibility also says the cost by 2029-30 is around three times what was first assumed. It gives {{ m.f("tl-cost-vs-earnings-2029-30") }} against {{ m.f("tl-cost-initial-assumption") }}. That compares two differences from earnings uprating. It does not mean State Pension spending is three times what was expected.</p>
 {{ m.sourceNote("tl-cost-initial-assumption" | figure) }}
 
 <h3>The saving from a change</h3>
@@ -120,6 +125,8 @@ permalink: /reform-options/
   <thead><tr><th scope="col">Change</th><th scope="col">Estimated saving</th><th scope="col">When</th><th scope="col">Basis</th><th scope="col">Who made it</th></tr></thead>
   <tbody>
     {%- for id, change, suffix in [
+      ["saving-rule-2030-late-2030s","The rule announced for April 2030"," a year"],
+      ["saving-rule-2030-2050","The rule announced for April 2030"," a year"],
       ["saving-smoothed-rf-2030","Smoothed earnings link from 2027-28"," a year"],
       ["saving-earnings-gad-2031","Earnings link from April 2026",", built up over five years"],
       ["saving-earnings-ifs-2050","Pension kept at its present share of earnings from 2025"," a year"],
@@ -131,7 +138,7 @@ permalink: /reform-options/
   </tbody>
 </table>
 {% endcall %}
-<div class="source"><p>Estimates and projections, not forecasts of what will happen. None describes a cut to pensions already in payment. The sources do not say so in those words. This is our reading of what each one models. Checked against the sources on {{ ("saving-earnings-2075" | figure).checked_date | timeTag | safe }}.</p></div>
+<div class="source"><p>Estimates and projections, not forecasts of what will happen. None describes a cut to pensions already in payment. The sources do not say so in those words. This is our reading of what each one models. Checked against the sources on {{ ("saving-earnings-2075" | figure).checked_date | timeTag | safe }}, except the two rows for the rule announced for April 2030, checked on {{ ("saving-rule-2030-2050" | figure).checked_date | timeTag | safe }}. The government does not say what its two figures are measured against. We take it to be keeping the triple lock.</p></div>
 
 <p>The pattern is consistent across sources. In the next few years the saving is small compared with the bill. Over decades it becomes large. The Institute for Fiscal Studies puts the cost of keeping the triple lock in 2050 at between {{ m.f("ifs-tl-cost-2050-low") }} and {{ m.f("ifs-tl-cost-2050-high") }} a year, a wide range because the result depends on how volatile prices and earnings turn out to be.</p>
 {{ m.sourceNote("ifs-tl-cost-2050-high" | figure) }}
@@ -139,7 +146,19 @@ permalink: /reform-options/
 <p>Spending would still rise without the triple lock. The Institute for Fiscal Studies says: "{{ ("ifs-rise-without-tl" | figure).passage }}".</p>
 {{ m.sourceNote("ifs-rise-without-tl" | figure) }}
 
-{% call m.unavailable("costings for a double lock and for means-testing", 4) %}
+<h4 id="saving-2030">The rule announced for April 2030</h4>
+
+<p>The government estimates a saving of {{ m.f("saving-rule-2030-late-2030s") }} a year by the end of the 2030s, and {{ m.f("saving-rule-2030-2050") }} a year by 2050.</p>
+{{ m.sourceNote("saving-rule-2030-2050" | figure) }}
+
+<p>{{ ("ifs-savings-small-early" | claim).statement }} {{ m.c("ifs-savings-small-early") }} To show the scale, the Institute looks back. If the announced rule had applied since 2011, spending in 2026-27 would be {{ m.f("rule-2030-counterfactual-ifs-2026") }} lower. That is a look back, not a forecast.</p>
+{{ m.sourceNote("rule-2030-counterfactual-ifs-2026" | figure) }}
+
+{% call m.note("Why the government's figures cannot yet be checked", 5) %}
+<p>The government's figure for 2050 is higher than the top of the Institute for Fiscal Studies' range, above, for what the triple lock itself would cost in 2050. That range is in the prices of 2025. The government does not give the prices its figures are in, so the two may not be on the same basis. {{ ("no-rule-2030-detail" | claim).statement }} {{ m.c("no-rule-2030-detail") }}</p>
+{% endcall %}
+
+{% call m.unavailable("costings for a double lock of prices or earnings, and for means-testing", 4) %}
 <p>{{ ("no-costed-double-lock" | claim).statement }} {{ ("no-costed-means-test" | claim).statement }} We have not made our own estimates. A calculation that multiplied one person's difference by the number of pensioners would be wrong, because people receive different amounts and because tax and benefits change the result.</p>
 {% endcall %}
 
@@ -199,7 +218,18 @@ permalink: /reform-options/
 
 <h2 id="increases">Options for the yearly increase</h2>
 
-<p>The page describes each option the same way. The law sets a minimum of earnings for any option. A rule that pays less than earnings growth would need a change in the law. {{ m.c("legal-earnings-floor") }}</p>
+<p>The page describes each option the same way, including the rule the government announced on {{ ("pm-care-2026-09-29" | sourceRecord).published_date | timeTag | safe }}. The law sets a minimum of earnings for any option. A rule that pays less than earnings growth would need a change in the law. {{ m.c("legal-earnings-floor") }}</p>
+
+<article class="option">
+  <h3 id="opt-2030">The rule announced for April 2030</h3>
+  <dl>
+    <dt>The rule</dt> <dd>{{ ("rule-2030" | claim).statement }} {{ m.c("rule-2030") }} {{ ("ifs-rule-2030-mechanism" | claim).statement }} {{ m.c("ifs-rule-2030-mechanism") }} {{ ("rule-2030-name" | claim).statement }} {{ ("press-double-lock" | claim).statement }} {{ m.c("press-double-lock") }} It is not the double lock described on this page.</dd>
+    <dt>Effect on the pension</dt> <dd>{{ ("rule-2030-no-fall" | claim).statement }} {{ m.c("rule-2030-no-fall") }} {{ ("ifs-rule-2030-catch-up" | claim).statement }} {{ ("ifs-ratchet-removed" | claim).statement }} {{ m.c("ifs-ratchet-removed") }} {{ ("ifs-real-rise-slower" | claim).statement }} {{ m.c("ifs-real-rise-slower") }} Looking back, the Institute says the pension would still have risen {{ m.f("rule-2030-real-rise-ifs") }} faster than prices from 2010 to 2026 under the rule. {{ m.cite(("rule-2030-real-rise-ifs" | figure).source) }}. The Resolution Foundation says that if the rule had applied since 2012 the pension this year would be {{ m.f("rule-2030-vs-tl-rf") }} lower than it is, and {{ m.f("rule-2030-vs-earnings-rf") }} higher than under an earnings link. {{ m.cite(("rule-2030-vs-tl-rf" | figure).source) }}.</dd>
+    <dt>Who is affected</dt> <dd>Nobody before April 2030. {{ m.c("tl-kept-to-2030") }} After that, the same percentage would apply to every rate the rule covers. The announcement does not say whether it covers the same parts of a payment as the triple lock does now. {{ ("no-rule-2030-distribution" | claim).statement }} {{ ("no-rule-2030-pension-credit" | claim).statement }} {{ m.c("no-rule-2030-distribution") }}</dd>
+    <dt>Public finances</dt> <dd>Small savings at first, growing over decades. <a href="#saving-2030">The estimates, and why they cannot yet be checked</a>.</dd>
+    <dt>The law</dt> <dd>{{ ("rule-2030-legislate" | claim).statement }} Our reading: {{ ("rule-2030-needs-law" | claim).statement }} {{ m.c("rule-2030-needs-law") }} {{ ("no-rule-2030-detail" | claim).statement }}</dd>
+  </dl>
+</article>
 
 <div class="option-grid">
   <article class="option">
@@ -244,9 +274,13 @@ permalink: /reform-options/
   </article>
 </div>
 
-<h3 id="smoothed">A fifth option, explained but not in the calculator: a smoothed earnings link</h3>
+<h3 id="how-2030-works">How the announced rule works: an example</h3>
 
-<p>{{ ("smoothed-link-definition" | claim).statement }} {{ m.c("smoothed-link-definition") }} It is the rule proposed, in different forms, by three research bodies.</p>
+<p>{{ ("ifs-rule-2030-illustration" | claim).statement }} {{ m.c("ifs-rule-2030-illustration") }} {{ ("ifs-rule-2030-illustration" | claim).note }}</p>
+
+<h3 id="smoothed">A smoothed earnings link, and why two rules are not in the calculator</h3>
+
+<p>{{ ("smoothed-link-definition" | claim).statement }} {{ m.c("smoothed-link-definition") }} {{ ("ifs-smoothed-similar" | claim).statement }} {{ m.c("ifs-smoothed-similar") }} Before the announcement it was proposed, in different forms, by three research bodies.</p>
 <ul>
   <li>{{ ("ifs-guarantee-1" | claim).statement }} {{ ("ifs-guarantee-2" | claim).statement }} {{ ("ifs-not-immediately" | claim).statement }} {{ m.c("ifs-guarantee-1") }}</li>
   <li>{{ ("rf-smoothed-recommendation" | claim).statement }} {{ m.c("rf-smoothed-recommendation") }}</li>
@@ -254,8 +288,8 @@ permalink: /reform-options/
 </ul>
 <p>These are recommendations. They rest on evidence and on a view about what the pension should be worth.</p>
 
-{% call m.note("Why this rule is not in the calculator", 4) %}
-<p>The result of a smoothed link depends on details that the proposals set differently: the target level, how the pension catches up after a year of price protection, and over how long. Until those are specified and checked, a calculation would be our invention. The rule is described here and left out of the comparison below.</p>
+{% call m.note("Why these two rules are not in the calculator", 4) %}
+<p>The proposals for a smoothed link differ in three details. They are the target level, how the pension catches up after a year of price protection, and over how long. For the rule announced for April 2030, the government has not published which measure of earnings would be used, or from what starting point. It gives an example only. {{ ("rule-2030-example" | claim).statement }} {{ m.c("rule-2030-example") }} Until those are specified and checked, a calculation would be our invention. Both rules are described here and left out of the comparison below.</p>
 {% endcall %}
 
 <p>A freeze, with no increase at all, is not among the options. We found no current proposal for one.</p>
@@ -263,7 +297,7 @@ permalink: /reform-options/
 <section class="tool" aria-labelledby="compare">
   <h2 id="compare">Try it: compare the rules</h2>
 
-  <p>This tool applies four rules to the same starting amount and the same yearly figures for prices and earnings. It shows where the rules differ and where they do not.</p>
+  <p>This tool applies four rules to the same starting amount and the same yearly figures for prices and earnings. It shows where the rules differ and where they do not. The rule announced for April 2030 is not one of the four. <a href="#smoothed">Why it is not in the calculator</a>.</p>
 
   {% call m.note("What this tool does and does not show", 3) %}
   <ul>
@@ -369,62 +403,78 @@ permalink: /reform-options/
   <script type="module" src="/assets/js/tools/compare.js"></script>
 </section>
 
-<h2 id="entitlement">Options for entitlement</h2>
+<h2 id="social-care">Pensions and social care: the plan announced in September 2026</h2>
 
-<p>The State Pension is not means-tested. A person's income and savings do not affect it. The options below would change that, or would reach a similar aim another way.</p>
+<p>On {{ ("pm-care-2026-09-29" | sourceRecord).published_date | timeTag | safe }} the Prime Minister announced two things together. One is a less generous rule for the yearly increase in the State Pension, from April 2030. The other is a National Care Service with free personal care for older people, using the savings. This section sets out what was announced, what is in law, what has only been reported, and which questions the plan leaves open.</p>
 
-<div class="option-grid">
-  <article class="option">
-    <h3 id="ent-income">Means-test by income</h3>
-    <dl>
-      <dt>The idea</dt> <dd>Reduce or withdraw the State Pension for people with income above a level.</dd>
-      <dt>Who is affected</dt> <dd>It depends entirely on the level and on how fast the pension is withdrawn. No proposal we found sets them.</dd>
-      <dt>Known difficulties</dt> <dd>Not everyone who is entitled claims a means-tested benefit. Take-up of Pension Credit is {{ m.f("pension-credit-take-up") }}. A withdrawal rate reduces the reward for saving. {{ m.c("ifs-no-means-test-reason") }}</dd>
-      <dt>Public finances</dt> <dd>{{ ("no-costed-means-test" | claim).statement }}</dd>
-    </dl>
-  </article>
-  <article class="option">
-    <h3 id="ent-assets">Means-test by assets as well as income</h3>
-    <dl>
-      <dt>The idea</dt> <dd>Count savings, and possibly property, as well as income.</dd>
-      <dt>Who is affected</dt> <dd>People with wealth and low income, including owners of homes that have risen in value. Whether the home counts changes the result greatly.</dd>
-      <dt>An example from abroad</dt> <dd>{{ ("australia-assets-test" | claim).statement }} {{ m.c("australia-assets-test") }} {{ ("australia-assets-test" | claim).note }}</dd>
-      <dt>Known difficulties</dt> <dd>Valuing assets, treating the home, and people who cannot turn an asset into income.</dd>
-    </dl>
-  </article>
-  <article class="option">
-    <h3 id="ent-tax">Keep the pension and redistribute through tax</h3>
-    <dl>
-      <dt>The idea</dt> <dd>Pay the State Pension to everyone entitled and recover more from people with higher incomes through the tax system.</dd>
-      <dt>How it works now</dt> <dd>The State Pension is already taxable. The Winter Fuel Payment is now recovered through tax from people with income over {{ m.f("winter-fuel-income-limit") }}.</dd>
-      <dt>A proposal</dt> <dd>{{ ("if-nic-proposal" | claim).statement }} {{ m.c("if-nic-proposal") }}</dd>
-      <dt>Known difficulties</dt> <dd>Tax looks at income, not wealth. A change in tax for pensioners also reaches pensioners with modest private pensions.</dd>
-    </dl>
-  </article>
-  <article class="option">
-    <h3 id="ent-targeted">Keep broad entitlement and strengthen targeted support</h3>
-    <dl>
-      <dt>The idea</dt> <dd>Leave the State Pension as it is and put more into Pension Credit, housing support or disability benefits.</dd>
-      <dt>Who is affected</dt> <dd>People on low incomes who claim. People who are entitled and do not claim get nothing. About {{ m.f("pension-credit-non-recipients") }} families did not claim Pension Credit.</dd>
-      <dt>A view</dt> <dd>{{ ("pc-safety-net" | claim).statement }} {{ m.c("pc-safety-net") }}</dd>
-      <dt>Known difficulties</dt> <dd>Take-up, and the effect on the reward for saving. {{ m.c("wp-savings-credit") }}</dd>
-    </dl>
-  </article>
-</div>
-
-<h3>Why the present system is not means-tested</h3>
-<p>{{ ("ifs-guarantee-3" | claim).statement }} {{ m.c("ifs-guarantee-3") }}</p>
-<p>{{ ("wp-beveridge" | claim).statement }} {{ m.c("wp-beveridge") }} {{ ("wp-above-means-test" | claim).statement }} {{ m.c("wp-above-means-test") }} The aim was that a person who saves can expect to keep the benefit of saving.</p>
-
-<p>Whether means-testing would help poorer pensioners depends on what is done with the money, on take-up, and on how people change their saving. The evidence does not settle it in advance.</p>
-
-<h2 id="social-care">Pensions and social care: a reported trade-off</h2>
-
-<p>In September 2026 news reports linked two things: a less generous yearly increase in the State Pension, and free social care for adults in England. This section sets out what has been decided, what has been proposed and what has only been reported. It then lists the questions any such trade-off would have to answer.</p>
-
-{% call m.note("The position on the morning of " ~ (news.as_of | timeTag), 3) %}
-<p>This section was checked before the Prime Minister's speech to his party conference on {{ news.as_of | timeTag | safe }}. {{ m.c("speech-not-yet-given") }} Reports of what the speech would say are reports, not a record of what was said. We found no published proposal to replace the triple lock in order to pay for social care. That can change quickly. Treat this section as a dated record.</p>
+{% call m.note("The position on " ~ (news.as_of | timeTag), 3) %}
+<p>This section was last checked on {{ news.as_of | timeTag | safe }}. The plan is an announcement. It is not law. {{ ("no-rule-2030-detail" | claim).statement }} {{ m.c("no-rule-2030-detail") }} Treat this section as a dated record.</p>
 {% endcall %}
+
+<h3 id="care-status">What is announced, what is in law and what is reported</h3>
+
+<h4>Announced by the government, not yet law</h4>
+<ul>
+  <li>{{ ("tl-kept-to-2030" | claim).statement }} {{ ("rule-2030" | claim).statement }} <a href="#opt-2030">How the rule works</a>.</li>
+  <li>{{ ("rule-2030-legislate" | claim).statement }}</li>
+  <li>{{ ("ncs-next-parliament" | claim).statement }} {{ ("ncs-personal-care" | claim).statement }}</li>
+  <li>{{ ("ncs-not-bed-board" | claim).statement }} {{ ("ncs-home-deferred" | claim).statement }}</li>
+  <li>{{ ("ncs-phased" | claim).statement }}</li>
+  <li>{{ ("ncs-not-borrowing" | claim).statement }}</li>
+  <li>{{ ("ncs-savings-used" | claim).statement }} {{ ("ncs-savings-used" | claim).note }}</li>
+</ul>
+<p>All seven come from one announcement. {{ m.c("ncs-next-parliament") }} In his speech the Prime Minister put it this way: <q>{{ ("pm-speech-2030" | claim).passage }}</q> {{ m.c("pm-speech-2030") }} {{ ("pm-speech-2030" | claim).note }}</p>
+
+<h4>In law or in a government document</h4>
+<ul>
+  <li>{{ ("tl-policy-not-law" | claim).statement }} {{ m.c("tl-policy-not-law") }}</li>
+  <li>{{ ("care-cap-cancelled" | claim).statement }} {{ m.c("care-cap-cancelled") }}</li>
+  <li>{{ ("casey-first-terms" | claim).statement }} {{ ("casey-affordable" | claim).statement }} {{ m.c("casey-first-terms") }}</li>
+</ul>
+
+<h4>Earlier commitments</h4>
+<ul>
+  <li>{{ ("labour-manifesto-tl" | claim).statement }} {{ m.c("labour-manifesto-tl") }} {{ ("tl-this-parliament" | claim).statement }} {{ m.c("tl-this-parliament") }}</li>
+  <li>{{ ("casey-summer-2027" | claim).statement }} {{ ("care-funded-principle" | claim).statement }} {{ m.c("casey-summer-2027") }}</li>
+  <li>{{ ("casey-panel" | claim).statement }} {{ m.c("casey-panel") }}</li>
+  <li>{{ ("pc-final-2027" | claim).statement }} {{ ("pc-terms" | claim).statement }} {{ m.c("pc-terms") }}</li>
+</ul>
+
+<h4>Reported, not confirmed in a government document</h4>
+<ul>
+  <li>{{ ("ncs-england-reported" | claim).statement }} {{ m.c("ncs-england-reported") }}</li>
+  <li>{{ ("wales-funding-reported" | claim).statement }} {{ m.c("wales-funding-reported") }}</li>
+  <li>{{ ("minister-more-funding" | claim).statement }} {{ m.c("minister-more-funding") }}</li>
+</ul>
+
+<h4>What research bodies and charities said</h4>
+<ul>
+  <li>{{ ("ifs-ratchet-removed" | claim).statement }} {{ ("ifs-savings-small-early" | claim).statement }} {{ m.c("ifs-savings-small-early") }}</li>
+  <li>{{ ("ifs-not-universal-care" | claim).statement }} {{ ("ifs-not-universal-care" | claim).note }} {{ ("ifs-floor-arbitrary" | claim).statement }} {{ m.c("ifs-not-universal-care") }}</li>
+  <li>{{ ("rf-response-2030" | claim).statement }} {{ m.c("rf-response-2030") }}</li>
+  <li>{{ ("ageuk-response" | claim).statement }} {{ ("hf-response" | claim).statement }} {{ ("kf-response" | claim).statement }} {{ m.c("ageuk-response") }}</li>
+  <li>{{ ("unite-response" | claim).statement }} {{ m.c("unite-response") }}</li>
+</ul>
+<p>The statements from Age UK, the Health Foundation and the King's Fund are as quoted in a trade news report. We did not find them on the organisations' own sites.</p>
+
+<h4>What the other parties said after the announcement</h4>
+<ul>
+  <li>{{ ("conservative-response" | claim).statement }} {{ m.c("conservative-response") }}</li>
+  <li>{{ ("libdem-response" | claim).statement }} {{ m.c("libdem-response") }}</li>
+  <li>{{ ("reform-response" | claim).statement }} {{ m.c("reform-response") }}</li>
+  <li>{{ ("snp-response" | claim).statement }} {{ m.c("snp-response") }}</li>
+  <li>{{ ("plaid-response" | claim).statement }} {{ m.c("plaid-response") }}</li>
+  <li>{{ ("green-response" | claim).statement }} {{ m.c("green-response") }}</li>
+</ul>
+<p>Only the statement from Reform UK comes from a party's own page. The others come from news reports of {{ ("pa-2026-09-29" | sourceRecord).published_date | timeTag | safe }}.</p>
+
+<h4>What the other parties said before the announcement</h4>
+<ul>
+  <li>{{ ("conservative-position" | claim).statement }} {{ m.c("conservative-position") }}</li>
+  <li>{{ ("libdem-position" | claim).statement }} {{ m.c("libdem-position") }}</li>
+  <li>{{ ("reform-position" | claim).statement }} {{ m.c("reform-position") }}</li>
+</ul>
+<p>These are the statements we found that date from 2025 or 2026 and come before the announcement. Two of the three come from news reports, not from a party document.</p>
 
 <h3 id="care-two-things">A pension and a care service are different things</h3>
 
@@ -441,60 +491,10 @@ permalink: /reform-options/
 
 {{ m.dataTable("care-by-nation", false) }}
 
-<p>The State Pension is the same across the UK. Social care is decided separately in England, Scotland, Wales and Northern Ireland. The commission and the proposed National Care Service are for England.</p>
+<p>The State Pension is the same across the UK. Social care is decided separately in England, Scotland, Wales and Northern Ireland. The commission on adult social care is for England.</p>
 
 {% call m.note("Why this matters", 4) %}
-<p>A lower State Pension increase would affect pensioners in all four nations. A care service for England would serve people in England. No source we found explains how pensioners in Scotland, Wales and Northern Ireland would be treated. Until a proposal says, the two cannot be treated as covering the same people.</p>
-{% endcall %}
-
-<h3 id="care-status">What is decided, proposed and reported</h3>
-
-<h4>In law or in a government document</h4>
-<ul>
-  <li>{{ ("tl-this-parliament" | claim).statement }} {{ m.c("tl-this-parliament") }}</li>
-  <li>{{ ("tl-policy-not-law" | claim).statement }} {{ m.c("tl-policy-not-law") }}</li>
-  <li>{{ ("care-cap-cancelled" | claim).statement }} {{ m.c("care-cap-cancelled") }}</li>
-  <li>{{ ("casey-first-terms" | claim).statement }} {{ ("casey-affordable" | claim).statement }} {{ m.c("casey-first-terms") }}</li>
-</ul>
-
-<h4>Announced commitments</h4>
-<ul>
-  <li>{{ ("casey-summer-2027" | claim).statement }} {{ m.c("casey-summer-2027") }}</li>
-  <li>{{ ("care-funded-principle" | claim).statement }} {{ m.c("care-funded-principle") }}</li>
-  <li>{{ ("casey-panel" | claim).statement }} {{ m.c("casey-panel") }}</li>
-  <li>{{ ("labour-manifesto-tl" | claim).statement }} {{ m.c("labour-manifesto-tl") }}</li>
-  <li>{{ ("pc-final-2027" | claim).statement }} {{ ("pc-terms" | claim).statement }} {{ m.c("pc-terms") }}</li>
-</ul>
-
-<h4>Proposals with costings</h4>
-<ul>
-  <li>The Resolution Foundation proposes a smoothed earnings link and estimates a saving of {{ "saving-smoothed-rf-2030" | figShown }} in 2029-30. It does not tie the saving to social care. {{ m.cite(("saving-smoothed-rf-2030" | figure).source) }}.</li>
-  <li>The Health Foundation has costed three models of care reform for England. They are estimates of general models, not of a government plan. See <a href="#care-scale">The sums involved</a>.</li>
-</ul>
-
-<h4>Reported</h4>
-<ul>
-  <li>{{ ("minister-sticking-2026-09-28" | claim).statement }} {{ m.c("minister-sticking-2026-09-28") }}</li>
-  <li>{{ ("next-manifesto-unconfirmed" | claim).statement }} {{ m.c("next-manifesto-unconfirmed") }}</li>
-  <li>{{ ("care-speculation" | claim).statement }} {{ m.c("care-speculation") }}</li>
-  <li>{{ ("care-not-before-election" | claim).statement }} {{ m.c("care-not-before-election") }}</li>
-</ul>
-
-<h4>Commentary</h4>
-<ul>
-  <li>{{ ("peston-inference" | claim).statement }} {{ m.c("peston-inference") }}</li>
-</ul>
-
-<h4>Positions of other parties</h4>
-<ul>
-  <li>{{ ("conservative-position" | claim).statement }} {{ m.c("conservative-position") }}</li>
-  <li>{{ ("libdem-position" | claim).statement }} {{ m.c("libdem-position") }}</li>
-  <li>{{ ("reform-position" | claim).statement }} {{ m.c("reform-position") }}</li>
-</ul>
-<p>These are the statements we found that date from 2025 or 2026. Two of the three come from news reports, not from a party document. For the Green Party, the Scottish National Party and Plaid Cymru we found statements from 2024 only, so they are not listed.</p>
-
-{% call m.unavailable("a published proposal for the trade-off", 4) %}
-<p>{{ ("no-published-trade-off" | claim).statement }} {{ ("no-published-trade-off" | claim).note }}</p>
+<p>The pension change would affect pensioners in all four nations. {{ ("no-ncs-nations" | claim).statement }} {{ m.c("no-ncs-nations") }} Scotland already provides free personal care. <a href="#care-now">Social care now, nation by nation</a>. Until the government says how each nation is treated, the two policies cannot be treated as covering the same people.</p>
 {% endcall %}
 
 <h3 id="care-now">Social care now, nation by nation</h3>
@@ -545,48 +545,100 @@ permalink: /reform-options/
 </table>
 {% endcall %}
 {{ m.sourceNote("care-cost-universal" | figure) }}
-<p>{{ m.c("hf-broad-estimate") }} The design of the government's National Care Service has not been published, so none of these figures is its cost.</p>
+<p>{{ m.c("hf-broad-estimate") }} These are estimates of general models, made in 2024. None is the cost of the government's plan. {{ ("no-ncs-cost" | claim).statement }} {{ m.c("no-ncs-cost") }} The plan is nearest to the second model, free personal care, but the government has not said which ages or which level of need it covers.</p>
 
-<h4>Estimated saving from changing the pension increase</h4>
-<p>The nearest published estimate is a saving of {{ "saving-smoothed-rf-2030" | figShown }} in 2029-30 from a smoothed earnings link starting in 2027-28, after tax and benefit effects.</p>
-{{ m.sourceNote("saving-smoothed-rf-2030" | figure) }}
-
-<p>Over the long term the saving grows. The estimates and their bases are in <a href="#cost-and-saving">What the triple lock has cost, and what a change would save</a>.</p>
+<h4>Estimated saving from the pension change</h4>
+<p>The government estimates a saving of {{ m.f("saving-rule-2030-late-2030s") }} a year by the end of the 2030s and {{ m.f("saving-rule-2030-2050") }} a year by 2050. {{ ("ifs-savings-small-early" | claim).statement }} The estimates and their bases are in <a href="#saving-2030">The rule announced for April 2030</a>.</p>
+{{ m.sourceNote("saving-rule-2030-late-2030s" | figure) }}
 
 {% call m.note("What the scale shows, and what it does not", 4) %}
-<p>In the first years after a change, the published estimate of the pension saving is a small part of the published estimate for universal care. The two estimates are for different years and in different prices, so the comparison is rough. It does not show that the trade-off is impossible, because a plan could be smaller, could start later, or could use other money as well. It does show that a plan would need to say where the rest comes from, and when.</p>
+<p>The saving starts in April 2030 and builds up slowly. The care service is due to start in the next Parliament, in phases. So the early years of the service are the years when the saving is smallest. The government says the service will grow as the saving grows, and will not be paid for by borrowing. It has not said what the service costs in each year, or what pays for it if the saving falls short.</p>
+<p>The government's figure for the end of the 2030s and the Health Foundation's figures are for different years. The Health Foundation's are in the prices of 2023/24 and cover England. The government does not give its prices. So the two cannot be compared closely.</p>
 {% endcall %}
 
-<h3 id="care-questions">Questions a proposal must answer</h3>
+<h3 id="care-questions">Ten questions, and what the announcement answers</h3>
 
-<p>No proposal has been published, so these questions cannot yet be answered. They are the test to apply when one is.</p>
+<p>These ten questions were written before the announcement, as the test for any such plan. Each now shows what the announcement says.</p>
 
 <ol>
-  <li><strong>What rule would replace the triple lock, from when, and for whom?</strong> Including whether pensions already in payment are affected, and what happens in a year of high inflation.</li>
-  <li><strong>What care would be covered?</strong> Personal care only, or accommodation too. At home, in a care home, or both.</li>
-  <li><strong>Who would be eligible?</strong> Which level of need, which ages, which nations.</li>
-  <li><strong>Who loses income, who receives a service, and when?</strong> Any loss depends on the rule chosen and on how prices and earnings move. It would be spread across all pensioners. The service goes to some people, at the time they need it.</li>
-  <li><strong>What are the costs and savings, and against what baseline?</strong> Before or after tax and benefit effects. In cash or in constant prices. For one year or added up over several.</li>
-  <li><strong>Would the saving actually be used for care?</strong> Spending is decided year by year. A saving in one budget is not tied to another unless the law or the plan ties it.</li>
-  <li><strong>What pays for the early years?</strong> Care costs begin when the service begins. Pension savings build up slowly.</li>
-  <li><strong>Can the service be delivered?</strong> Staff, care homes and councils would need to be in place.</li>
-  <li><strong>What happens in Scotland, Wales and Northern Ireland?</strong></li>
-  <li><strong>What happens to people on the lowest incomes?</strong> Including whether Pension Credit would rise to make up the difference, given that many who are entitled do not claim it.</li>
+  <li><strong>What rule would replace the triple lock, from when, and for whom?</strong> <span class="status">Answered in part.</span> The rule and the date are given. The announcement does not say which parts of a payment the rule covers or which measure of earnings would be used. Its one example refers to 2030/31.</li>
+  <li><strong>What care would be covered?</strong> <span class="status">Answered in part.</span> {{ ("ncs-personal-care" | claim).statement }} {{ ("ncs-not-bed-board" | claim).statement }} It does not say whether care at home and care in a care home are treated the same.</li>
+  <li><strong>Who would be eligible?</strong> <span class="status">Answered in part.</span> Older people, based on need. No age, no level of need and no nation is given.</li>
+  <li><strong>Who loses income, who receives a service, and when?</strong> <span class="status">Not answered.</span> {{ ("no-rule-2030-distribution" | claim).statement }}</li>
+  <li><strong>What are the costs and savings, and against what baseline?</strong> <span class="status">Answered in part.</span> Two figures for the saving are given, with no prices and no method, and without saying what forecast they are measured against. {{ ("no-ncs-cost" | claim).statement }}</li>
+  <li><strong>Would the saving actually be used for care?</strong> <span class="status">Answered in part.</span> The government says it will be. {{ ("ncs-savings-used" | claim).note }}</li>
+  <li><strong>What pays for the early years?</strong> <span class="status">Answered in part.</span> The service is to be phased in as the saving grows, and not paid for by borrowing. {{ ("minister-more-funding" | claim).statement }}</li>
+  <li><strong>Can the service be delivered?</strong> <span class="status">Answered in part.</span> The announcement says the service will grow as staff and providers are built up. It gives no plan for that. The commission is due to report in summer 2027.</li>
+  <li><strong>What happens in Scotland, Wales and Northern Ireland?</strong> <span class="status">Not answered.</span> {{ ("no-ncs-nations" | claim).statement }}</li>
+  <li><strong>What happens to people on the lowest incomes?</strong> <span class="status">Not answered.</span> {{ ("no-rule-2030-pension-credit" | claim).statement }}</li>
 </ol>
+<p>Each answer rests on the government's announcement, unless another source is named above. {{ m.c("rule-2030") }}</p>
 
 <h3 id="care-not-assume">What should not be assumed</h3>
 
 <ul>
-  <li><strong>That what the triple lock has cost is money now available.</strong> Past increases are in today's rates. Only future increases can change. <a href="#cost-and-saving">Past cost is not future saving</a>.</li>
-  <li><strong>That each person who gives up pension income receives care of the same value.</strong> A pension change would reach every pensioner. A care service would reach the people who need care. Who gains and who loses depends on a design that has not been published.</li>
-  <li><strong>That changing the rule means a cut in pounds.</strong> Under the alternatives discussed, the pension would still rise each year. <a href="#compare">Compare the rules</a>.</li>
-  <li><strong>That a think tank's estimate is the cost of a government plan.</strong></li>
-  <li><strong>That a report of what a politician will say is what they said.</strong></li>
+  <li><strong>That the change is law.</strong> It is an announcement, with legislation promised.</li>
+  <li><strong>That the saving is there when the care service starts.</strong> <a href="#care-scale">The sums involved</a>.</li>
+  <li><strong>That each person who gives up pension income receives care of the same value.</strong> <a href="#care-two-things">A pension and a care service are different things</a>.</li>
+  <li><strong>That changing the rule means a cut in pounds.</strong> {{ ("rule-2030-no-fall" | claim).statement }}</li>
+  <li><strong>That a think tank's estimate is the cost of the government's plan.</strong></li>
+  <li><strong>That a name describes a rule.</strong> The government calls the rule an adjusted triple lock. Some news reports call it a double lock. <a href="#opt-2030">What the rule does</a>.</li>
 </ul>
 
 <p>{{ ("hf-affordable" | claim).statement }} {{ m.c("hf-affordable") }} That is a view about priorities. Others weigh the same figures differently.</p>
 
+<h2 id="entitlement">Options for entitlement</h2>
+
+<p>The State Pension is not means-tested. A person's income and savings do not affect it. The options below would change that, or would reach a similar aim another way.</p>
+
+<div class="option-grid">
+  <article class="option">
+    <h3 id="ent-income">Means-test by income</h3>
+    <dl>
+      <dt>The idea</dt> <dd>Reduce or withdraw the State Pension for people with income above a level.</dd>
+      <dt>Who is affected</dt> <dd>It depends entirely on the level and on how fast the pension is withdrawn. No proposal we found sets them.</dd>
+      <dt>Known difficulties</dt> <dd>Not everyone who is entitled claims a means-tested benefit. Take-up of Pension Credit is {{ m.f("pension-credit-take-up") }}. A withdrawal rate reduces the reward for saving. {{ m.c("ifs-no-means-test-reason") }}</dd>
+      <dt>Public finances</dt> <dd>{{ ("no-costed-means-test" | claim).statement }}</dd>
+    </dl>
+  </article>
+  <article class="option">
+    <h3 id="ent-assets">Means-test by assets as well as income</h3>
+    <dl>
+      <dt>The idea</dt> <dd>Count savings, and possibly property, as well as income.</dd>
+      <dt>Who is affected</dt> <dd>People with wealth and low income, including owners of homes that have risen in value. Whether the home counts changes the result greatly.</dd>
+      <dt>An example from abroad</dt> <dd>{{ ("australia-assets-test" | claim).statement }} {{ m.c("australia-assets-test") }} {{ ("australia-assets-test" | claim).note }}</dd>
+      <dt>Known difficulties</dt> <dd>Valuing assets, treating the home, and people who cannot turn an asset into income.</dd>
+    </dl>
+  </article>
+  <article class="option">
+    <h3 id="ent-tax">Keep the pension and redistribute through tax</h3>
+    <dl>
+      <dt>The idea</dt> <dd>Pay the State Pension to everyone entitled and recover more from people with higher incomes through the tax system.</dd>
+      <dt>How it works now</dt> <dd>The State Pension is already taxable. The Winter Fuel Payment is now recovered through tax from people with income over {{ m.f("winter-fuel-income-limit") }}.</dd>
+      <dt>A proposal</dt> <dd>{{ ("if-nic-proposal" | claim).statement }} {{ m.c("if-nic-proposal") }}</dd>
+      <dt>Known difficulties</dt> <dd>Tax looks at income, not wealth. A change in tax for pensioners also reaches pensioners with modest private pensions.</dd>
+    </dl>
+  </article>
+  <article class="option">
+    <h3 id="ent-targeted">Keep broad entitlement and strengthen targeted support</h3>
+    <dl>
+      <dt>The idea</dt> <dd>Leave the State Pension as it is and put more into Pension Credit, housing support or disability benefits.</dd>
+      <dt>Who is affected</dt> <dd>People on low incomes who claim. People who are entitled and do not claim get nothing. About {{ m.f("pension-credit-non-recipients") }} families did not claim Pension Credit.</dd>
+      <dt>A view</dt> <dd>{{ ("pc-safety-net" | claim).statement }} {{ m.c("pc-safety-net") }}</dd>
+      <dt>Known difficulties</dt> <dd>Take-up, and the effect on the reward for saving. {{ m.c("wp-savings-credit") }}</dd>
+    </dl>
+  </article>
+</div>
+
+<h3>Why the present system is not means-tested</h3>
+<p>{{ ("ifs-guarantee-3" | claim).statement }} {{ m.c("ifs-guarantee-3") }}</p>
+<p>{{ ("wp-beveridge" | claim).statement }} {{ m.c("wp-beveridge") }} {{ ("wp-above-means-test" | claim).statement }} {{ m.c("wp-above-means-test") }} The aim was that a person who saves can expect to keep the benefit of saving.</p>
+
+<p>Whether means-testing would help poorer pensioners depends on what is done with the money, on take-up, and on how people change their saving. The evidence does not settle it in advance.</p>
+
 <h2 id="arguments">The main arguments, side by side</h2>
+
+<p>These are the arguments for keeping the triple lock and for changing it. The government announced on {{ ("pm-care-2026-09-29" | sourceRecord).published_date | timeTag | safe }} that it will change it from April 2030. The arguments still matter, because the government has yet to legislate for the change, and it does not start until then.</p>
 
 <div class="option-grid">
   <article class="option">

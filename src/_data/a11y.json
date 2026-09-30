@@ -30,7 +30,7 @@
     },
     {
       "check": "Keyboard order and visible focus",
-      "result": "A script pressed Tab through every page. Every control was reached, in reading order, with a visible focus outline, and none was covered by other content.",
+      "result": "A script pressed Tab through every page. Every control was reached, in reading order, with an outline style set when focused, and none was covered by other content. A person has not looked at the outline on every control.",
       "environment": "Chrome 154 on macOS (Apple silicon), driven by script.",
       "date": "2026-09-29"
     },

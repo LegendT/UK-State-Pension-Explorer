@@ -62,6 +62,8 @@ permalink: /triple-lock/
 
 <p>{{ ("tl-this-parliament" | claim).statement }} {{ m.c("tl-this-parliament") }}</p>
 
+<p>On {{ ("pm-care-2026-09-29" | sourceRecord).published_date | timeTag | safe }} the government announced a change. {{ ("tl-kept-to-2030" | claim).statement }} {{ ("rule-2030" | claim).statement }} {{ m.c("rule-2030") }} {{ ("rule-2030-legislate" | claim).statement }} Until Parliament changes the law, the rules on this page apply. <a href="/reform-options/#opt-2030">What the announced rule does</a>.</p>
+
 <h2 id="worked-example">A worked example: April 2026</h2>
 
 <p>This example uses the published decision for {{ latest.tax_year }} and the full new State Pension.</p>
@@ -176,6 +178,7 @@ permalink: /triple-lock/
   <li><strong>April 2016.</strong> The new State Pension began, with a first full rate of {{ (history.years | where("tax_year", "2016/17") | first).new_pence | money }} a week.</li>
   <li><strong>April 2021.</strong> {{ ("tl-2021-act" | claim).statement }} The increase was 2.5%. {{ m.c("tl-2021-act") }}</li>
   <li><strong>April 2022.</strong> {{ ("tl-2022-act" | claim).statement }} {% set y2022 = history.years | where("tax_year", "2022/23") | first %}Earnings growth had been {{ y2022.earnings_tenths | percent }}. The increase was {{ y2022.applied_tenths | percent }}. {{ m.c("tl-2022-act") }}</li>
+  <li><strong>September 2026.</strong> The government announced a different rule from April 2030. {{ ("rule-2030-legislate" | claim).statement }} {{ m.c("rule-2030-legislate") }}</li>
 </ul>
 
 <p><a href="/history/">See every rate and decision since 2010</a>.</p>
@@ -190,7 +193,7 @@ permalink: /triple-lock/
   <li><strong>The adjustment is yearly and looks back.</strong> It cannot follow prices as they change during the year.</li>
   <li><strong>It raises the rate, not entitlement.</strong> A person who receives less than the full rate gets the same percentage on a smaller amount.</li>
   <li><strong>It does not cover every part of a payment.</strong> Some parts rise with prices only.</li>
-  <li><strong>It is a commitment, not law.</strong> A government can change it.</li>
+  <li><strong>It is a commitment, not law.</strong> A government can change it. On {{ ("pm-care-2026-09-29" | sourceRecord).published_date | timeTag | safe }} the government said it will, from April 2030.</li>
 </ul>
 
 <p>Whether the rule should stay is a separate question. <a href="/reform-options/">Reform options</a> sets out the evidence on each side.</p>

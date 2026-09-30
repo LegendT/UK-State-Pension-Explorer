@@ -539,26 +539,6 @@
     "licence": "Open Government Licence v3.0",
     "note": null
   },
-  "pa-2026-09-28": {
-    "publisher": "PA News, published by the Stratford Herald",
-    "title": "Burnham vows to end 'politics as usual' in first Labour leader conference speech",
-    "url": "https://www.stratford-herald.com/national/burnham-vows-to-end-politics-as-usual-in-first-labour-leader-conference-speech-172277/",
-    "published_date": "2026-09-28",
-    "updated_date": null,
-    "checked_date": "2026-09-29",
-    "licence": "Copyright of the publisher. Short quotation only.",
-    "note": "A news report written before the speech was given. It is evidence of what was reported, not of what was said in the speech."
-  },
-  "itv-peston-2026-09-27": {
-    "publisher": "ITV News",
-    "title": "Peston: Will Burnham reform the pension triple lock to pay for social care?",
-    "url": "https://www.itv.com/news/2026-09-27/peston-will-burnham-reform-the-pensions-triple-lock-to-pay-for-social-care",
-    "published_date": "2026-09-27",
-    "updated_date": null,
-    "checked_date": "2026-09-29",
-    "licence": "Copyright of the publisher. Short quotation only.",
-    "note": "Commentary by a journalist."
-  },
   "labour-manifesto-2024": {
     "publisher": "Labour Party",
     "title": "Labour Party Manifesto 2024",
@@ -848,5 +828,125 @@
     "checked_date": "2026-09-29",
     "licence": "Open Government Licence v3.0",
     "note": "Accredited official statistics."
+  },
+  "pm-care-2026-09-29": {
+    "publisher": "Prime Minister's Office, 10 Downing Street",
+    "title": "Prime Minister Andy Burnham sets out plans for a new National Care Service",
+    "url": "https://www.gov.uk/government/news/prime-minister-andy-burnham-sets-out-plans-for-a-new-national-care-service",
+    "published_date": "2026-09-29",
+    "updated_date": null,
+    "checked_date": "2026-09-30",
+    "licence": "Open Government Licence v3.0",
+    "note": "A government news story. It is an announcement, not law. It names no nation and gives no method for its estimates."
+  },
+  "ifs-new-tl-comment-2026": {
+    "publisher": "Institute for Fiscal Studies",
+    "title": "How will the new triple lock work and what effects will it have?",
+    "url": "https://ifs.org.uk/articles/how-will-new-triple-lock-work-and-what-effects-will-it-have",
+    "published_date": "2026-09-29",
+    "updated_date": null,
+    "checked_date": "2026-09-30",
+    "licence": "Copyright of the publisher. Short quotation only.",
+    "note": "By Jonathan Cribb, Heidi Karjalainen and Helen Miller. The authors' description of the rule. The government has not published the mechanism. The site refuses automated reading, so it was read in a browser."
+  },
+  "ifs-new-tl-response-2026": {
+    "publisher": "Institute for Fiscal Studies",
+    "title": "New triple lock much improved but not perfect, and not enough to fund universal social care",
+    "url": "https://ifs.org.uk/articles/new-triple-lock-much-improved-not-perfect-and-not-enough-fund-universal-social-care",
+    "published_date": "2026-09-29",
+    "updated_date": null,
+    "checked_date": "2026-09-30",
+    "licence": "Copyright of the publisher. Short quotation only.",
+    "note": "A response by Jonathan Cribb. The site refuses automated reading, so it was read in a browser."
+  },
+  "speech-2026-09-29": {
+    "publisher": "The New World",
+    "title": "\"We will hope again\": Andy Burnham's full speech to the 2026 Labour Party Conference",
+    "url": "https://www.thenewworld.co.uk/we-will-hope-again-andy-burnhams-full-speech-to-the-2026-labour-party-conference/",
+    "published_date": "2026-09-29",
+    "updated_date": null,
+    "checked_date": "2026-09-30",
+    "licence": "Copyright of the publisher. Short quotation only.",
+    "note": "The speech as printed by a newspaper. It is not an official transcript. We found none."
+  },
+  "rf-response-2026-09-29": {
+    "publisher": "Resolution Foundation",
+    "title": "Recycling savings from ending the triple lock into social care is good news for vulnerable pensioners",
+    "url": "https://www.resolutionfoundation.org/press-releases/recycling-savings-from-ending-the-triple-lock-into-social-care-is-good-news-for-vulnerable-pensioners/",
+    "published_date": "2026-09-29",
+    "updated_date": null,
+    "checked_date": "2026-09-30",
+    "licence": "Copyright of the publisher. Short quotation only.",
+    "note": "A press release. It gives no method for its figures."
+  },
+  "pa-2026-09-29": {
+    "publisher": "PA News, published by The Oldham Times",
+    "title": "Burnham sets out plan to reform triple lock to pay for social care",
+    "url": "https://www.theoldhamtimes.co.uk/news/national/26591717.burnham-sets-plan-reform-triple-lock-pay-social-care/",
+    "published_date": "2026-09-29",
+    "updated_date": null,
+    "checked_date": "2026-09-30",
+    "licence": "Copyright of the publisher. Short quotation only.",
+    "note": "A news report. It is evidence of what was reported."
+  },
+  "lbc-2026-09-29": {
+    "publisher": "LBC",
+    "title": "Andy Burnham vows to end triple lock to fund free social care - but rivals warn Labour will still need to put up taxes",
+    "url": "https://www.lbc.co.uk/article/burnham-triple-lock-reaction-5HjdjDT_2/",
+    "published_date": "2026-09-29",
+    "updated_date": null,
+    "checked_date": "2026-09-30",
+    "licence": "Copyright of the publisher. Short quotation only.",
+    "note": "A news report. It is evidence of what was reported. It quotes posts on a social media site that we did not open."
+  },
+  "reform-2026-09-29": {
+    "publisher": "Reform UK",
+    "title": "Nigel Farage: \"Reform UK will always protect our pensioners and maintain the triple lock\"",
+    "url": "https://www.reformparty.uk/news/nigel-farage-reform-uk-will-always-protect-our-pensioners-and-maintain-the-triple-lock",
+    "published_date": "2026-09-29",
+    "updated_date": null,
+    "checked_date": "2026-09-30",
+    "licence": "Copyright of the publisher. Short quotation only.",
+    "note": "A party news page. The site refuses automated reading, so it was read in a browser."
+  },
+  "bbc-swinney-2026-09-29": {
+    "publisher": "BBC News, published by Yahoo News",
+    "title": "Burnham's plan to end pension triple lock a bad idea, Swinney says",
+    "url": "https://www.yahoo.com/news/politics/articles/burnhams-plan-end-pension-triple-162806101.html",
+    "published_date": "2026-09-29",
+    "updated_date": null,
+    "checked_date": "2026-09-30",
+    "licence": "Copyright of the publisher. Short quotation only.",
+    "note": "A news report. It is evidence of what was reported."
+  },
+  "nation-cymru-plaid-2026-09-29": {
+    "publisher": "Nation.Cymru",
+    "title": "Plaid tells Burnham 'new politics' must mean more powers for Wales",
+    "url": "https://nation.cymru/news/plaid-tells-burnham-new-politics-must-mean-more-powers-for-wales/",
+    "published_date": "2026-09-29",
+    "updated_date": null,
+    "checked_date": "2026-09-30",
+    "licence": "Copyright of the publisher. Short quotation only.",
+    "note": "A news report. It is evidence of what was reported."
+  },
+  "nation-cymru-kinnock-2026-09-29": {
+    "publisher": "Nation.Cymru",
+    "title": "Kinnock promises Wales funding for national care service",
+    "url": "https://nation.cymru/news/kinnock-promises-wales-funding-for-national-care-service/",
+    "published_date": "2026-09-29",
+    "updated_date": null,
+    "checked_date": "2026-09-30",
+    "licence": "Copyright of the publisher. Short quotation only.",
+    "note": "A news report of a television interview. It is evidence of what was reported."
+  },
+  "hm-responses-2026-09-29": {
+    "publisher": "Healthcare Management",
+    "title": "Burnham Pledges Landmark National Care Service at Labour Conference",
+    "url": "https://www.healthcare-management.uk/breaking-news-burnham-promises-build-national-care-service",
+    "published_date": "2026-09-29",
+    "updated_date": null,
+    "checked_date": "2026-09-30",
+    "licence": "Copyright of the publisher. Short quotation only.",
+    "note": "A trade news report that quotes several organisations. We did not find these statements on the organisations' own sites."
   }
 }

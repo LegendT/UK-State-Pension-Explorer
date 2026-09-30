@@ -169,7 +169,7 @@ export function renderComparison(options) {
   return (
     `<h3>Result: ${scenarioLabel}, starting from ${money(startPence)} a week</h3>` +
     `<p><span class="status">Hypothetical</span> An illustration using the figures shown. It is not a forecast and has no probability. ` +
-    `The cash floor is ${cashFloor ? "on: no rule can lower the amount in pounds" : "off: a rule can lower the amount in pounds"}.</p>` +
+    `The cash floor is ${cashFloor ? "on, so no rule can lower the amount in pounds" : "off, so a rule can lower the amount in pounds"}.</p>` +
     summary(result, labels) +
     `<figure class="chart"><figcaption><h4>${info.label}: ${info.unit}</h4></figcaption><div class="scroll-x" tabindex="0" role="region" aria-label="Chart: ${info.label}">${chart}</div></figure>` +
     values +

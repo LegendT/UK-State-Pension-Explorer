@@ -27,11 +27,6 @@
       "browser": "Chrome 154"
     },
     {
-      "id": "peston-inference",
-      "date": "2026-09-29",
-      "browser": "Chrome 154"
-    },
-    {
       "id": "australia-assets-test",
       "date": "2026-09-29",
       "browser": "Chrome 154"
@@ -41,6 +36,76 @@
       "date": "2026-09-29",
       "browser": "Chrome 154",
       "note": "The same passage as care-cost-cap."
+    },
+    {
+      "id": "tl-cost-ifs-2026",
+      "date": "2026-09-30",
+      "browser": "Chrome 154"
+    },
+    {
+      "id": "rule-2030-counterfactual-ifs-2026",
+      "date": "2026-09-30",
+      "browser": "Chrome 154"
+    },
+    {
+      "id": "rule-2030-real-rise-ifs",
+      "date": "2026-09-30",
+      "browser": "Chrome 154"
+    },
+    {
+      "id": "ifs-rule-2030-mechanism",
+      "date": "2026-09-30",
+      "browser": "Chrome 154"
+    },
+    {
+      "id": "ifs-rule-2030-catch-up",
+      "date": "2026-09-30",
+      "browser": "Chrome 154"
+    },
+    {
+      "id": "ifs-ratchet-removed",
+      "date": "2026-09-30",
+      "browser": "Chrome 154"
+    },
+    {
+      "id": "ifs-smoothed-similar",
+      "date": "2026-09-30",
+      "browser": "Chrome 154"
+    },
+    {
+      "id": "ifs-savings-small-early",
+      "date": "2026-09-30",
+      "browser": "Chrome 154"
+    },
+    {
+      "id": "ifs-not-universal-care",
+      "date": "2026-09-30",
+      "browser": "Chrome 154"
+    },
+    {
+      "id": "ifs-floor-arbitrary",
+      "date": "2026-09-30",
+      "browser": "Chrome 154"
+    },
+    {
+      "id": "ifs-real-rise-slower",
+      "date": "2026-09-30",
+      "browser": "Chrome 154"
+    },
+    {
+      "id": "reform-response",
+      "date": "2026-09-30",
+      "browser": "Chrome 154"
+    },
+    {
+      "id": "ifs-rule-2030-illustration",
+      "date": "2026-09-30",
+      "browser": "Chrome 154"
+    },
+    {
+      "id": "rule-2030-needs-law",
+      "date": "2026-09-30",
+      "browser": "Chrome 154"
     }
   ]
 }

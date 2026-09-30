@@ -30,6 +30,8 @@ permalink: /
 
 <p>The <strong>triple lock</strong> is the rule for the yearly increase. Each April the full rates rise by the highest of three figures: the rise in prices, the rise in average earnings, or 2.5%. {{ m.c("tl-definition") }}</p>
 
+<p>On {{ ("pm-care-2026-09-29" | sourceRecord).published_date | timeTag | safe }} the government announced that it will change the rule from April 2030, if Parliament passes the law it needs. The government says the triple lock stays until then. {{ m.c("rule-2030") }} <a href="/reform-options/#opt-2030">What the announced rule does</a>.</p>
+
 <p><strong>Entitlement and increases are different questions.</strong> Entitlement decides who gets a State Pension and how much of the full rate. The yearly increase decides how the rates change over time. A proposal to change one does not change the other.</p>
 
 <h2 id="journeys">Where to go next</h2>
@@ -42,7 +44,7 @@ permalink: /
 
 <h2 id="in-the-news">In the news: what is decided and what is not</h2>
 
-<p>This is a dated note. It describes the position on the morning of {{ news.as_of | timeTag | safe }}, before the Prime Minister's speech to his party conference that day. {{ m.c("speech-not-yet-given") }} It will go out of date. It is not a live news feed.</p>
+<p>This is a dated note. It describes the position on {{ news.as_of | timeTag | safe }}, after the Prime Minister's announcement of {{ ("pm-care-2026-09-29" | sourceRecord).published_date | timeTag | safe }}. It will go out of date. It is not a live news feed.</p>
 
 {%- for group in news.groups %}
 <h3>{{ group.heading }}</h3>
