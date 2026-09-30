@@ -67,3 +67,21 @@ export function focusFirstError(form) {
   const first = form.querySelector('[aria-invalid="true"]');
   if (first) first.focus();
 }
+
+// A result's settings go in the page address, so that a copied link shows the same result.
+// Never used by the budget explorer, whose figures stay on the device.
+export function writeSettings(settings, hash) {
+  const url = new URL(window.location.href);
+  url.search = new URLSearchParams(settings).toString();
+  url.hash = hash;
+  window.history.replaceState(null, "", url);
+}
+
+export function readSettings() {
+  return new URLSearchParams(window.location.search);
+}
+
+// The address can hold anything, so a value is used only if the list offers it.
+export function choose(select, value) {
+  if (value !== null && [...select.options].some((option) => option.value === value)) select.value = value;
+}

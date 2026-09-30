@@ -5,7 +5,7 @@
 Rates for the next tax year are usually announced in the autumn and confirmed in the rates publication. They take effect in the first full week of the tax year.
 
 1. Read the new rates in the DWP publication "Benefit and pension rates" and in the Up-rating Order on legislation.gov.uk.
-2. In `src/_data/history.json`, add a year to `years` with the rates in pence, the increase, what decided it, the prices and earnings figures as used, the effective date, the September price index and the two source addresses. Update `next_year`.
+2. In `src/_data/history.json`, add a year to `years` with the rates in pence, the increase, what decided it, the prices and earnings figures as used, the effective date, the September price index and the two source addresses. Add an `annotation` only for a year that the history chart should mark: one short sentence, taken from the year's `note`. Update `next_year`.
 3. In `src/_data/figures.json`, update `nsp-full-weekly`, `bsp-full-weekly`, `nsp-full-52-weeks` (value and formula), `cpi-linked-uprating-2026`, `nsp-per-qualifying-year`, `pension-credit-single`, `pension-credit-couple`, `attendance-allowance-lower`, `attendance-allowance-higher` and `personal-allowance`. Change `period_label`, `effective_from`, `passage` and `checked_date` as well as the value.
 4. Add a source record for the new rates publication and Order.
 5. Do not publish a rate as current before its effective date. Until then it is an announced rate and must be labelled as one.
@@ -37,7 +37,7 @@ Rechecking a source that has not changed updates `checked_date` only. It does no
 
 ## The news note
 
-`src/_data/news.json` is a dated note. When policy status changes, rewrite it and change `as_of`. If nobody is maintaining it, leave the date in place. Never relabel an old note as current.
+`src/_data/news.json` holds the date of the note "In the news" on the overview, whose text is in `src/index.njk`. When policy status changes, rewrite the note and change `as_of`. If nobody is maintaining it, leave the date in place. Never relabel an old note as current.
 
 The note of 30 September 2026 was written after the announcement of 29 September 2026. It rests on one government news story. Rewrite the note, the option card for the announced rule and the pensions and social care page when any of these is published:
 

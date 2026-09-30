@@ -30,7 +30,7 @@ permalink: /reform-options/costs/
 <p>Official sources give slightly different figures for the same year. The DWP tables give {{ m.f("sp-spend-2024-25") }}. The account of the National Insurance Fund gives {{ m.f("nif-state-pension-2024-25") }}, on a cash basis. They differ in accounting basis and coverage. This site uses the DWP tables for spending and says so each time.</p>
 {% endcall %}
 
-<h3>The long-term projection</h3>
+<h3>The long-term projection: the triple lock and an older population drive the rise</h3>
 
 {{ m.dataTable("sp-longrun") }}
 
@@ -87,7 +87,7 @@ permalink: /reform-options/costs/
 <p>The Office for Budget Responsibility also says the cost by 2029-30 is around three times what was first assumed. It gives {{ m.f("tl-cost-vs-earnings-2029-30") }} against {{ m.f("tl-cost-initial-assumption") }}. That compares two differences from earnings uprating. It does not mean State Pension spending is three times what was expected.</p>
 {{ m.sourceNote("tl-cost-initial-assumption" | figure) }}
 
-<h3>The saving from a change</h3>
+<h3>The saving from a change: small at first, large over decades</h3>
 
 {% call m.note("Past cost is not future saving", 4) %}
 <p>The increases of past years are part of today's rates. Changing the rule does not reverse them. A change only affects increases from the date it starts, so the saving begins small and grows.</p>
@@ -142,7 +142,7 @@ permalink: /reform-options/costs/
 
 <p>An average pensioner does not exist. The evidence below is about the spread.</p>
 
-<h3>Income</h3>
+<h3>Income: the State Pension matters most to those with the lowest incomes</h3>
 
 {{ m.dataTable("income-fifths") }}
 
@@ -151,7 +151,7 @@ permalink: /reform-options/costs/
 
 <p>On this page, "low income" and "high income" mean a position in these distributions, unless a source's own definition is given.</p>
 
-<h3>Poverty and deprivation</h3>
+<h3>Poverty and deprivation: fewer pensioners are in low income once housing costs are counted</h3>
 
 <ul class="cards cards--three">
   <li>{{ m.stat("low-income-ahc" | figure, "After rent, mortgage interest and similar costs are taken off.", 4) }}</li>
@@ -161,7 +161,7 @@ permalink: /reform-options/costs/
 
 <p>Fewer pensioners are in low income after housing costs than before, because most own their home outright. {{ m.c("hbai-owners") }} For a pensioner who rents, housing costs work the other way.</p>
 
-<h3>Housing and wealth</h3>
+<h3>Housing and wealth: wealth is spread more unevenly than income</h3>
 
 <p>Of households headed by someone aged 65 or over, {{ m.f("tenure-own-outright") }} own outright, {{ m.f("tenure-mortgage") }} are buying with a mortgage, {{ m.f("tenure-social-rent") }} rent from a social landlord and {{ m.f("tenure-private-rent") }} rent privately.</p>
 {{ m.sourceNote("tenure-own-outright" | figure) }}

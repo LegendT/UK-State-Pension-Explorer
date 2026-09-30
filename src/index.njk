@@ -86,21 +86,13 @@ permalink: /
 
 <h2 id="in-the-news">In the news: what is decided and what is not</h2>
 
-<p>This is a dated note. It describes the position on {{ news.as_of | timeTag | safe }}, after the Prime Minister's announcement of {{ ("pm-care-2026-09-29" | sourceRecord).published_date | timeTag | safe }}. It will go out of date. It is not a live news feed.</p>
+<p>On {{ ("pm-care-2026-09-29" | sourceRecord).published_date | timeTag | safe }} the Prime Minister announced a change to the yearly increase. {{ ("tl-kept-to-2030" | claim).statement }} {{ ("rule-2030" | claim).statement }} {{ m.c("rule-2030") }}</p>
 
-{%- for group in news.groups %}
-<h3>{{ group.heading }}</h3>
-<p>{{ group.meaning }}</p>
-<ul>
-  {%- for item in group.entries %}
-  {#- One citation for each source, however many claims in the entry rest on it. -#}
-  {%- set cited = [] %}
-  <li>{{ item.text }} {% for id in item.claims %}{% set r = id | claim %}{% set key = r.source.url if r.source else id %}{% if key not in cited %}{% set _ = cited.push(key) %}{{ m.c(id) }} {% endif %}{% endfor %}{% for id in item.figures %}{% set fg = id | figure %}{% if fg.source.url not in cited %}{% set _ = cited.push(fg.source.url) %}<span class="ref">Source: {{ m.cite(fg.source) }}.</span> {% endif %}{% endfor %}</li>
-  {%- endfor %}
-</ul>
-{%- endfor %}
+<p>This is an announcement. It is not law. {{ ("rule-2030-legislate" | claim).statement }} {{ ("ncs-savings-used" | claim).statement }} {{ m.c("ncs-savings-used") }} {{ ("no-rule-2030-detail" | claim).statement }} {{ m.c("no-rule-2030-detail") }}</p>
 
-<p><a href="/reform-options/social-care/">Read the full assessment of pensions and social care</a>.</p>
+<p>This is a dated note, correct on {{ news.as_of | timeTag | safe }}. It is not a live news feed.</p>
+
+<p><a href="/reform-options/social-care/">What is announced, what is in law and what is only reported</a>, with what research bodies and other parties said, is on the pensions and social care page.</p>
 
 <h2 id="next-year">Next year's rate is not yet decided</h2>
 

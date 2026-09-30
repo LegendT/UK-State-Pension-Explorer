@@ -33,6 +33,8 @@ function show(entry, measure) {
   return entry.earningsIndex.toFixed(1);
 }
 
+// Rules equal to the penny in every year, for the written summary. The chart merges lines by the
+// values it plots instead, which differ by measure, so the two are kept apart on purpose.
 function groupsOfEqualRules(result) {
   const groups = [];
   for (const rule of RULES) {
@@ -98,6 +100,25 @@ function signed(pence) {
   return `${pence < 0 ? "−" : "+"}${money(Math.abs(Math.round(pence)))}`;
 }
 
+const SHORT = { "triple-lock": "Triple lock", "double-lock": "Double lock", earnings: "Earnings link", prices: "Prices link", "rule-2030": "April 2030 rule" };
+const IN_A_SENTENCE = { "triple-lock": "the triple lock", "double-lock": "the double lock", earnings: "the earnings link", prices: "the prices link", "rule-2030": "the rule announced for April 2030" };
+const COUNT = { 3: "three", 4: "four" };
+
+// The chart's title states which rules end highest and lowest in this result. Worked out each time,
+// because a typed title would be false for another scenario.
+function message(result, measure, years) {
+  const ends = RULES.map((rule) => ({ rule, v: Math.round(value(result.rules[rule].years.at(-1), measure) * (measure === "earnings" ? 10 : 100)) }));
+  const top = Math.max(...ends.map((e) => e.v));
+  const bottom = Math.min(...ends.map((e) => e.v));
+  if (top === bottom) return `All five rules end at the same amount after ${years}`;
+  const who = (rules) => (rules.length >= 3 ? `${COUNT[rules.length]} rules` : rules.map((rule) => IN_A_SENTENCE[rule]).join(" and "));
+  const verb = (rules) => (rules.length === 1 ? "ends" : "end");
+  const high = ends.filter((e) => e.v === top).map((e) => e.rule);
+  const low = ends.filter((e) => e.v === bottom).map((e) => e.rule);
+  const text = `${who(high)} ${verb(high)} highest after ${years}, and ${who(low)} ${verb(low)} lowest`;
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
 // options: { startPence, path, cashFloor, firstYear, measure, scenarioLabel }
 export function renderComparison(options) {
   const { startPence, path, cashFloor, firstYear, measure, scenarioLabel } = options;
@@ -106,13 +127,17 @@ export function renderComparison(options) {
   const ruleNames = RULES.map((rule) => RULE_LABELS[rule]);
   const info = MEASURES[measure];
 
+  const years = path.length === 1 ? "1 year" : `${path.length} years`;
+
   const chart = lineChart({
     id: "compare-chart",
-    title: `${info.label}: weekly amount under five rules, ${scenarioLabel}`,
-    description: `A line for each rule over ${path.length} years. The table after the chart gives every value.`,
+    title: message(result, measure, years),
+    noun: "rules",
+    description: `The five rules over ${path.length} years. Rules with the same result in every year share one line. The table after the chart gives every value.`,
     labels: labels.map((label, i) => (i === 0 ? "Start" : label)),
     series: RULES.map((rule) => ({
       label: RULE_LABELS[rule],
+      short: SHORT[rule],
       values: result.rules[rule].years.map((entry) => value(entry, measure)),
     })),
     yLabel: measure === "earnings" ? "Index (start = 100)" : "Pounds a week",
@@ -152,7 +177,6 @@ export function renderComparison(options) {
     "Weekly difference from the triple lock",
   );
 
-  const years = path.length === 1 ? "1 year" : `${path.length} years`;
   const totals = table(
     `Total paid over the ${years}, counting 52 weeks a year`,
     ["Rule", "Total in cash", "Cash total compared with the triple lock", "Total in starting-year prices", "That total compared with the triple lock"],
@@ -172,7 +196,7 @@ export function renderComparison(options) {
     `The cash floor is ${cashFloor ? "on, so no rule can lower the amount in pounds" : "off, so a rule can lower the amount in pounds"}.</p>` +
     `<p>The rule announced for April 2030 is our reading of it, on four assumptions. It is not what the government's rule will pay. <a href="#rule-2030-assumptions">The assumptions</a>.</p>` +
     summary(result, labels) +
-    `<figure class="chart"><figcaption><h4>${info.label}: ${info.unit}</h4></figcaption><div class="scroll-x" tabindex="0" role="region" aria-label="Chart: ${info.label}">${chart}</div></figure>` +
+    `<figure class="chart"><figcaption><h4>${message(result, measure, years)}</h4><p>${info.label}: ${info.unit}</p></figcaption><div class="scroll-x" tabindex="0" role="region" aria-label="Chart: ${info.label}">${chart}</div></figure>` +
     values +
     difference +
     `<h4>Totals over the period</h4>` +
