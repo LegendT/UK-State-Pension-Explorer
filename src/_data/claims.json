@@ -1408,5 +1408,65 @@
     "note": null,
     "checked_date": "2026-09-30",
     "review_status": "checked-with-ai-assistance"
+  },
+  "spa-born-before-1960": {
+    "kind": "enacted",
+    "statement": "Everyone born before 6 April 1960 has reached State Pension age. The last to do so were born between 6 October 1954 and 5 April 1960, and reached it at 66.",
+    "source_id": "dwp-spa-timetable",
+    "passage": "6 October 1954 – 5 April 1960",
+    "interpretation": true,
+    "note": "Our reading of the timetable. People born on 5 April 1960 reached 66 on 5 April 2026.",
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "spa-born-1960-61": {
+    "kind": "enacted",
+    "statement": "People born between 6 April 1960 and 5 March 1961 reach State Pension age at 66 and between 1 and 11 months, depending on their month of birth.",
+    "source_id": "dwp-spa-timetable",
+    "passage": "people born between 6 April 1960 and 5 March 1961 will reach their State Pension age at 66 years and the specified number of months",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "spa-born-1961-77": {
+    "kind": "enacted",
+    "statement": "For people born between 6 March 1961 and 5 April 1977, State Pension age is 67.",
+    "source_id": "dwp-spa-timetable",
+    "passage": "6 March 1961 – 5 April 1977",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "spa-born-1977-78": {
+    "kind": "enacted",
+    "statement": "For people born between 6 April 1977 and 5 April 1978, State Pension age falls between 67 and 68. The law sets a date for each month of birth, from 6 May 2044 to 6 March 2046.",
+    "source_id": "dwp-spa-timetable",
+    "passage": "6 April 1977 – 5 May 1977",
+    "interpretation": false,
+    "note": "Table 5 of the timetable gives the date for each month of birth.",
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "spa-born-from-1978": {
+    "kind": "enacted",
+    "statement": "For people born on or after 6 April 1978, State Pension age is 68.",
+    "source_id": "dwp-spa-timetable",
+    "passage": "6 April 1978 onwards",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "spa-68-review": {
+    "kind": "enacted",
+    "statement": "The timetable for the rise from 67 to 68 could change as a result of a review.",
+    "source_id": "dwp-spa-timetable",
+    "passage": "the timetable for the increase in the State Pension age from 67 to 68 could change as a result of the review",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
   }
 }
