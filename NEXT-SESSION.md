@@ -7,13 +7,15 @@ Read, in this order, before doing anything:
 4. docs/accessibility-assessment.md
 5. README.md
 
-Do not read _archive/. Read research/ only when checking a figure.
+Do not read _archive/. Read research/ only when checking a figure. The record of the
+announcement of 29 September 2026 is research/06-announcement-2026-09-29.md.
 
-State on 30 September 2026: see the opening paragraph of docs/HANDOVER.md. The site is
-an unpublished preview. Pull request 1 is merged into main. Pull request 2 is open from
-first-build. The branch html-semantics follows first-build with the markup sweep and the
-stylesheet fixes, and is not pushed. Netlify's own password page is off. Basic
-authentication is the one sign-in.
+State on 30 September 2026: see the opening paragraph of docs/HANDOVER.md and its
+section "The announcement of 29 September 2026". The site is an unpublished preview.
+Pull request 1 is merged into main. Pull request 2 is open from first-build. The branch
+html-semantics follows first-build. The branch april-2030-rule follows html-semantics
+and holds the update for the announcement. That work is not committed and nothing on
+either branch is pushed. Run git status first.
 
 Next action: none. Wait for Anthony to say what to do. Nothing else is authorised.
 

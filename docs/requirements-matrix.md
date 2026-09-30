@@ -12,7 +12,7 @@ Status values: **Built**, **Built with a gap** (the gap is named), **Not built**
 | Owner's concern is a question, not a conclusion | No default favours a rule. Default scenario is the one where three rules coincide, and the reason is stated | Tool 2 tested in a browser | Built |
 | Editorial page deferred | None | | Not built, as the scope says |
 
-## Section 2: eight main pages
+## Section 2: seven main pages
 
 | Page | Route | Evidence | Status |
 | --- | --- | --- | --- |
@@ -20,16 +20,16 @@ Status values: **Built**, **Built with a gap** (the gap is named), **Not built**
 | A Rate block first, both rates, qualification, sources, date visible | `/` `.rate-block` | Rates checked twice against GOV.UK | Built |
 | A Forecast link and "Which pension applies?" | `/` | | Built |
 | A Future rate separate from current | `/#next-year` | `earnings-first-estimate-2026` | Built |
-| A Dated news context in four classes | `/#in-the-news` | `claims.json` | Built with a gap: written before the conference speech |
+| A Dated news context in four classes | `/#in-the-news` | `claims.json` | Built. Rewritten on 30 September 2026, after the announcement |
 | A Shared footer | `base.njk` | `site.js` `siblings` | Built |
 | B The State Pension | `/state-pension/` | GOV.UK, legislation, DWP statistics | Built with a gap: share on the full rate, and numbers with a pension that is not increased abroad, not found |
 | C The triple lock | `/triple-lock/` | `history.json`, legislation | Built |
 | D Living on a pension | `/living-on-a-pension/` | MIS 2026, RLS, ONS, DWP | Built with a gap: see decision log item A |
-| E Reform options | `/reform-options/` | DWP, OBR, IFS, RF, PPI, ONS | Built with a gap: no costing found for a double lock or for means-testing |
+| E Reform options | `/reform-options/` | DWP, OBR, IFS, RF, PPI, ONS | Built with gaps: no costing found for a double lock of prices or earnings, or for means-testing. The rule announced for April 2030 is described but not yet in the calculator |
 | E Public-finance context | `#public-finances`, `#cost-and-saving` | Tables `sp-spending-series`, `sp-longrun` | Built |
 | E Distributional context | `#who` | Tables `income-fifths`, `wealth-bands` | Built with a gap: carers' incomes and wealth by type for 65 and over not found |
 | E Sister-site links in context | `#public-finances`, `#cost-and-saving` | `links.json` | Built. Destination tools not exercised in a browser |
-| F Pensions and social care | `/reform-options/#social-care` | GOV.UK, nation governments, Health Foundation | Built as a dated section of the reform options page, not a page of its own. Owner's decision, 29 September 2026. Gap: dated before the speech |
+| F Pensions and social care | `/reform-options/#social-care` | GOV.UK, nation governments, Health Foundation | Built as a dated section of the reform options page, not a page of its own. Owner's decisions, 29 and 30 September 2026. Rewritten after the announcement. Gap: the plan has no Bill, no costing method and no cost for the service |
 | G History | `/history/` | `history.json` | Built |
 | H Sources, method and corrections | `/sources-and-method/` | The three registers | Built with a gap: no correction route, no owner, no reviewer |
 | Utility pages | `/accessibility/`, `/privacy/`, `/site-map/`, `/404.html` | | Built |

@@ -12,7 +12,7 @@ Rates for the next tax year are usually announced in the autumn and confirmed in
 6. Run `npm test`. The history test fails if a new rate does not follow from the last one, the increase and 5p rounding. If it fails, check the data before anything else.
 7. Run `python3 scripts/check-passages.py` and `npm run build`.
 8. Read every page that names a tax year in its text. The worked example on the triple lock page names months and years in words.
-9. Set `modified` in `src/_data/pageRegister.json` for each page whose content changed. Add a line to `policy_changes` in `src/_data/corrections.json`.
+9. Set `modified` in `src/_data/pageRegister.json` for each page whose content changed. Once the site is published, add a line to `policy_changes` in `src/_data/corrections.json`. Before publication there is nothing to correct: decision 40.
 10. Titles, descriptions and share images carry no amounts, so they do not change. The build fails if an amount in pounds appears in a title or description.
 
 ## When a source publishes a new edition
@@ -39,7 +39,16 @@ Rechecking a source that has not changed updates `checked_date` only. It does no
 
 `src/_data/news.json` is a dated note. When policy status changes, rewrite it and change `as_of`. If nobody is maintaining it, leave the date in place. Never relabel an old note as current.
 
-The note of 29 September 2026 was written before the Prime Minister's conference speech. Read the speech once a transcript is published and rewrite the note and the social care section of the reform options page.
+The note of 30 September 2026 was written after the announcement of 29 September 2026. It rests on one government news story. Rewrite the note, the option card for the announced rule and the social care section of the reform options page when any of these is published:
+
+- a Bill or draft clauses for the change to the triple lock;
+- a technical note from the Department for Work and Pensions or the Treasury, above all one that gives the earnings measure, the starting point or the method behind the savings;
+- the next forecast from the Office for Budget Responsibility;
+- the report of the Casey commission, due in summer 2027, when the owner also decides again whether social care is a section or a page;
+- the final report of the Pensions Commission, due in spring 2027;
+- a statement from a party on its own site, to replace one that rests on a news report.
+
+Search `src/` for "April 2030" and for `pm-care-2026-09-29` to find every typed sentence about the rule. The claims that begin `rule-2030`, `ncs-` and `no-rule-2030` hold the rest.
 
 ## Corrections
 
