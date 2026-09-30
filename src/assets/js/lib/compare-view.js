@@ -51,7 +51,7 @@ function summary(result, labels) {
   const equal = groupsOfEqualRules(result).filter((group) => group.rules.length > 1);
 
   if (equal.length === 1 && equal[0].rules.length === RULES.length) {
-    lines.push(`<p><strong>All four rules give the same result with these figures.</strong></p>`);
+    lines.push(`<p><strong>All five rules give the same result with these figures.</strong></p>`);
   } else {
     for (const group of equal) {
       lines.push(`<p><strong>${list(group.rules.map((rule) => RULE_LABELS[rule]))} give the same result with these figures.</strong></p>`);
@@ -108,7 +108,7 @@ export function renderComparison(options) {
 
   const chart = lineChart({
     id: "compare-chart",
-    title: `${info.label}: weekly amount under four rules, ${scenarioLabel}`,
+    title: `${info.label}: weekly amount under five rules, ${scenarioLabel}`,
     description: `A line for each rule over ${path.length} years. The table after the chart gives every value.`,
     labels: labels.map((label, i) => (i === 0 ? "Start" : label)),
     series: RULES.map((rule) => ({
@@ -170,6 +170,7 @@ export function renderComparison(options) {
     `<h3>Result: ${scenarioLabel}, starting from ${money(startPence)} a week</h3>` +
     `<p><span class="status">Hypothetical</span> An illustration using the figures shown. It is not a forecast and has no probability. ` +
     `The cash floor is ${cashFloor ? "on, so no rule can lower the amount in pounds" : "off, so a rule can lower the amount in pounds"}.</p>` +
+    `<p>The rule announced for April 2030 is our reading of it, on four assumptions. It is not what the government's rule will pay. <a href="#rule-2030-assumptions">The assumptions</a>.</p>` +
     summary(result, labels) +
     `<figure class="chart"><figcaption><h4>${info.label}: ${info.unit}</h4></figcaption><div class="scroll-x" tabindex="0" role="region" aria-label="Chart: ${info.label}">${chart}</div></figure>` +
     values +

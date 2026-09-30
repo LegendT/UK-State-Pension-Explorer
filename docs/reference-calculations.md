@@ -21,6 +21,7 @@ To reproduce: `python3 scripts/reference.py`. To compare with the calculators: `
 | Totals in cash and in starting-year prices | Section 3 |
 | Budget entered by week, 4 weeks and month, with and without tax | Section 4 |
 | History rebuilt under each rule from three start points | Section 5 |
+| The rule announced for April 2030: the Institute for Fiscal Studies' example, steady growth over 5 and 30 years, ties of two and three candidates, falling earnings, and the percentage shown for a catch-up year | Section 7 |
 
 ## Checked in the browser as well
 
@@ -36,6 +37,7 @@ On 29 September 2026 the four calculators were run in Chrome with these inputs a
 | 3 | Monthly: income £1,000, spending £1,100, no tax | Shortfall £1,200 a year, £23.08 a week, labelled before tax | Same |
 | 4 | New State Pension from 2016/17, prices link | £216.70 in 2026/27 | Same |
 | 4 | Basic State Pension from 2020/21, triple lock applied mechanically | £194.20 in 2026/27 | Same |
+| 2 | The Institute for Fiscal Studies' example, 10 years, from £241.30. Checked on 30 September 2026 | Rule announced for April 2030: £327.15 in year 10, cash total £150,176.00 | Same |
 
 ## Output of the last run
 
@@ -106,4 +108,12 @@ basic 2020/21 earnings ['134.25', '145.40', '153.40', '166.45', '173.25', '181.5
 basic 2020/21 prices ['134.90', '139.10', '153.15', '163.40', '166.20', '172.50']
 == 6. published rates reproduced from the previous published rate
 all published rates reproduced
+== 7. the rule announced for April 2030 (docs/model-specification.md, section 3)
+-- IFS example [('250.95', 'catch-up', '4.0%'), ('261.00', 'catch-up', '4.0%'), ('271.45', 'catch-up', '4.0%'), ('278.25', 'floor', '2.5%'), ('285.20', 'floor', '2.5%'), ('292.35', 'floor', '2.5%'), ('299.65', 'floor', '2.5%'), ('307.15', 'floor', '2.5%'), ('314.85', 'floor', '2.5%'), ('327.15', 'catch-up', '3.9%')] cash total 150176.00
+-- steady (p2.0,e3.7 x5) [('250.25', 'catch-up', '3.7%'), ('259.50', 'catch-up', '3.7%'), ('269.10', 'catch-up', '3.7%'), ('279.05', 'catch-up', '3.7%'), ('289.35', 'catch-up', '3.7%')] cash total 70057.00
+-- tie: p4.0 e4.0 [('250.95', 'prices+catch-up', '4.0%')] cash total 13049.40
+-- falling earnings [('247.35', 'floor', '2.5%'), ('254.75', 'prices', '3.0%'), ('262.10', 'catch-up', '2.9%')] cash total 39738.40
+-- tie: p2.5 e1.0 (prices and the minimum) [('247.35', 'prices+floor', '2.5%')] cash total 12862.20
+-- tie: p2.5 e2.5 (all three) [('247.35', 'prices+floor+catch-up', '2.5%')] cash total 12862.20
+-- steady (p2.0,e3.7 x30): year 30 ('717.65', 'catch-up', '3.7%') cash total 694257.20
 ```

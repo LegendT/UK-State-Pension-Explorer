@@ -87,3 +87,41 @@ for series in ["basic", "new"]:
             assert int(r * 100) == cur, (series, y["tax_year"], r, cur)
         prev = cur
 print("all published rates reproduced")
+
+print("== 7. the rule announced for April 2030 (docs/model-specification.md, section 3)")
+# Worked with exact fractions from the specification, not from the JavaScript.
+from fractions import Fraction as F
+
+def round5(x):
+    # nearest 5p, half up, x in pounds as a Fraction
+    units = x / F(5, 100)
+    whole = units.numerator // units.denominator
+    if units - whole >= F(1, 2):
+        whole += 1
+    return F(whole * 5, 100)
+
+def run_2030(start, path):
+    start = F(D(start)); rate_ = start; target = start; rows = []
+    for (p, e) in path:
+        target *= 1 + F(D(e)) / 100
+        cands = {"prices": rate_ * (1 + F(D(p)) / 100), "floor": rate_ * F(1025, 1000), "catch-up": target}
+        top = max(cands.values())
+        won = [k for k, v in cands.items() if v == top]
+        pct = (top / rate_ - 1) * 100
+        rate_ = round5(top)
+        rows.append((f"{float(rate_):.2f}", "+".join(won), f"{float(pct):.1f}%"))
+    return rows
+
+paths7 = {
+ "IFS example": [("2.0","4.0")]*3 + [("2.0","1.0")]*3 + [("2.0","4.0")]*4,
+ "steady (p2.0,e3.7 x5)": [("2.0","3.7")]*5,
+ "tie: p4.0 e4.0": [("4.0","4.0")],
+ "falling earnings": [("1.0","-1.0"),("3.0","6.0"),("2.0","3.5")],
+ "tie: p2.5 e1.0 (prices and the minimum)": [("2.5","1.0")],
+ "tie: p2.5 e2.5 (all three)": [("2.5","2.5")],
+}
+for name, path in paths7.items():
+    rows = run_2030("241.30", path)
+    print("--", name, rows, "cash total", f"{sum(D(r[0]) for r in rows) * 52:.2f}")
+rows = run_2030("241.30", [("2.0","3.7")]*30)
+print("-- steady (p2.0,e3.7 x30): year 30", rows[-1], "cash total", f"{sum(D(r[0]) for r in rows) * 52:.2f}")

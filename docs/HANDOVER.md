@@ -2,7 +2,7 @@
 
 Written 29 September 2026, updated 30 September 2026. The site is a **preview for review**. It is not published. The repository is https://github.com/LegendT/UK-State-Pension-Explorer. All work is merged into `main`: pull request 1, the first build, on 29 September 2026; pull request 2, from `first-build`, pull request 3, from `april-2030-rule`, and pull request 4, from `homepage-orientation`, on 30 September 2026. Pull request 3 carried the markup sweep and stylesheet fixes of `html-semantics` and the update for the government's announcement of 29 September 2026. Pull request 4 added a table of State Pension age by date of birth to the overview: decision 44. Netlify builds `main` to the main address and a deploy preview of each pull request into `main`, all behind a sign-in.
 
-**Next action:** none is authorised. On 29 September 2026 the government announced a change to the triple lock from April 2030 and a National Care Service. The site was brought up to date on 30 September 2026, on the branch `april-2030-rule`: see "The announcement of 29 September 2026". It is merged into `main`. The owner decides when the calculator work in decision 38 starts.
+**Next action:** none is authorised. On 29 September 2026 the government announced a change to the triple lock from April 2030 and a National Care Service. The site was brought up to date on 30 September 2026, on the branch `april-2030-rule`: see "The announcement of 29 September 2026". It is merged into `main`. The rule is now in the rule comparison, with its assumptions labelled: decision 38.
 
 ## How to look at it
 
@@ -95,7 +95,7 @@ Not checked on the deployed preview: the other three calculators, any browser bu
 
 ## Known defects and limits
 
-1. **The announced rule rests on one government news story.** No Bill, no technical note, no costing method and no cost for the care service was found on 30 September 2026. The mechanism on the site is the Institute for Fiscal Studies' description, not the government's. The rule is described in prose and is not yet in the rule comparison: decision 38. The maintenance guide lists what should trigger a rewrite.
+1. **The announced rule rests on one government news story.** No Bill, no technical note, no costing method and no cost for the care service was found on 30 September 2026. The mechanism on the site is the Institute for Fiscal Studies' description, not the government's. The rule is in the rule comparison on the Institute's description, with four labelled assumptions: decision 38. The maintenance guide lists what should trigger a rewrite.
 2. **Most responses to the announcement rest on news reports.** Only Reform UK's comes from the party's own page. The statements of Age UK, the Health Foundation and the King's Fund are as quoted in a trade report. No official transcript of the speech was found.
 3. **Example budgets are not like for like.** Private renters at the 2026 minimum, social renters at the 2025 minimum, owners at the 2025 moderate standard.
 4. **Not found, and shown as gaps:** the share of people on the full rate, the number whose pension is not increased abroad, costings for a double lock and for means-testing, incomes of pensioner carers.
@@ -149,7 +149,7 @@ Answered on 29 September 2026: previews are protected with basic authentication,
 | --- | --- | --- |
 | Social care: section or page? | Section for now. Decide again when Casey reports | Done: decision 36 |
 | The name of the rule? | "The rule announced for April 2030", with the government's name given where the rule is described | Done: decision 37 |
-| Add the rule to the rule comparison? | Yes, as a later phase | Not started: decision 38 |
+| Add the rule to the rule comparison? | Yes, as a later phase | Done on 30 September 2026: decision 38 |
 | Responses from parties and other bodies? | Read them at source and add them now. Label what is left | Done: decision 39 |
 | Findings R7 to R17? | All now | Done: decision 43 |
 | A policy change entry in `corrections.json`? | No | Decision 40 |
@@ -162,7 +162,6 @@ As at 30 September 2026.
 
 | Item | What is needed |
 | --- | --- |
-| The rule comparison | The go-ahead for the later phase in decision 38: specification, code, tests and a reference calculation for the announced rule |
 | The deployed site | Netlify built `main` at commit `82632cb` on 30 September 2026, and the main address answered 401 with `WWW-Authenticate: Basic`. Nobody has looked at the pages past the sign-in. Doing so needs the sign-in, which the owner enters |
 | Two items the research left out | The speech's commitment on Income Tax for pensioners on low incomes, and a YouGov poll of 29 September 2026. See `research/06-announcement-2026-09-29.md` |
 | Markup conventions in the README | Written by the assistant after the sweep of 29 September. Not yet accepted by the owner |

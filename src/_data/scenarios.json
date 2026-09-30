@@ -6,7 +6,7 @@
     {
       "id": "steady",
       "label": "Steady growth",
-      "reason": "Prices rise by 2.0% and earnings by 3.7% every year. These are the long-run averages the Office for Budget Responsibility assumes in its July 2026 report. Earnings are always the highest measure, so three of the four rules give the same result.",
+      "reason": "Prices rise by 2.0% and earnings by 3.7% every year. These are the long-run averages the Office for Budget Responsibility assumes in its July 2026 report. Earnings are always the highest measure, so the triple lock, the double lock and the earnings link give the same result. The rule announced for April 2030 follows earnings too, but can differ from the earnings link by up to 10p a week, because its earnings target is rounded once rather than each year.",
       "source_id": "obr-frs-2026",
       "path": [
         {
@@ -134,7 +134,7 @@
     {
       "id": "low",
       "label": "Low inflation, low pay growth",
-      "reason": "Prices rise by 2.0% and earnings by 2.2% every year. Both are below 2.5%, so the 2.5% minimum decides the triple lock every year. It shows what the minimum alone is worth.",
+      "reason": "Prices rise by 2.0% and earnings by 2.2% every year. Both are below 2.5%, so the 2.5% minimum decides the triple lock every year. It shows what the minimum alone is worth. The minimum also decides the rule announced for April 2030, so it gives the same result as the triple lock.",
       "source_id": null,
       "path": [
         {
@@ -262,7 +262,7 @@
     {
       "id": "weak-earnings",
       "label": "Weak earnings",
-      "reason": "Prices rise by 3.0% and earnings by 1.5% every year. Prices decide the triple lock and the double lock. The earnings link falls behind prices.",
+      "reason": "Prices rise by 3.0% and earnings by 1.5% every year. Prices decide the triple lock, the double lock and the rule announced for April 2030. The earnings link falls behind prices.",
       "source_id": null,
       "path": [
         {
@@ -390,7 +390,7 @@
     {
       "id": "volatile",
       "label": "Volatile prices",
-      "reason": "Years of high inflation and low pay growth (6.0% and 2.0%) alternate with years of low inflation and catch-up pay growth (1.0% and 5.0%). It shows how rules that take the higher measure each year pull ahead of both prices and earnings.",
+      "reason": "Years of high inflation and low pay growth (6.0% and 2.0%) alternate with years of low inflation and catch-up pay growth (1.0% and 5.0%). It shows how rules that take the higher measure each year pull ahead of both prices and earnings. The rule announced for April 2030 takes prices or 2.5% each year and stays above its earnings target, so it never needs to catch up.",
       "source_id": null,
       "path": [
         {
@@ -518,7 +518,7 @@
     {
       "id": "falling-earnings",
       "label": "A year of falling earnings",
-      "reason": "Earnings fall by 1.0% in the first year while prices rise by 1.0%. Pay then recovers by 6.0% with prices up 3.0%, and later years are steady at 2.0% and 3.5%. It tests negative growth and the cash floor.",
+      "reason": "Earnings fall by 1.0% in the first year while prices rise by 1.0%. Pay then recovers by 6.0% with prices up 3.0%, and later years are steady at 2.0% and 3.5%. It tests negative growth and the cash floor. With the cash floor on, the rule announced for April 2030 ends lower than the earnings link: its earnings target counts the fall in pay, while the cash floor holds the earnings link still in that year.",
       "source_id": null,
       "path": [
         {
@@ -640,6 +640,134 @@
         {
           "prices": 20,
           "earnings": 35
+        }
+      ]
+    },
+    {
+      "id": "ifs-example",
+      "label": "The Institute for Fiscal Studies' example",
+      "reason": "The first ten years are the example the Institute for Fiscal Studies uses to explain the rule announced for April 2030. Prices rise by 2.0% every year. Earnings rise by 4.0%, except for three years at 1.0%. After the weak years the rule pays 2.5% until the pension is back in line with earnings, and then follows earnings. After year 10 the same 2.0% and 4.0% continue.",
+      "source_id": "ifs-new-tl-comment-2026",
+      "path": [
+        {
+          "prices": 20,
+          "earnings": 40
+        },
+        {
+          "prices": 20,
+          "earnings": 40
+        },
+        {
+          "prices": 20,
+          "earnings": 40
+        },
+        {
+          "prices": 20,
+          "earnings": 10
+        },
+        {
+          "prices": 20,
+          "earnings": 10
+        },
+        {
+          "prices": 20,
+          "earnings": 10
+        },
+        {
+          "prices": 20,
+          "earnings": 40
+        },
+        {
+          "prices": 20,
+          "earnings": 40
+        },
+        {
+          "prices": 20,
+          "earnings": 40
+        },
+        {
+          "prices": 20,
+          "earnings": 40
+        },
+        {
+          "prices": 20,
+          "earnings": 40
+        },
+        {
+          "prices": 20,
+          "earnings": 40
+        },
+        {
+          "prices": 20,
+          "earnings": 40
+        },
+        {
+          "prices": 20,
+          "earnings": 40
+        },
+        {
+          "prices": 20,
+          "earnings": 40
+        },
+        {
+          "prices": 20,
+          "earnings": 40
+        },
+        {
+          "prices": 20,
+          "earnings": 40
+        },
+        {
+          "prices": 20,
+          "earnings": 40
+        },
+        {
+          "prices": 20,
+          "earnings": 40
+        },
+        {
+          "prices": 20,
+          "earnings": 40
+        },
+        {
+          "prices": 20,
+          "earnings": 40
+        },
+        {
+          "prices": 20,
+          "earnings": 40
+        },
+        {
+          "prices": 20,
+          "earnings": 40
+        },
+        {
+          "prices": 20,
+          "earnings": 40
+        },
+        {
+          "prices": 20,
+          "earnings": 40
+        },
+        {
+          "prices": 20,
+          "earnings": 40
+        },
+        {
+          "prices": 20,
+          "earnings": 40
+        },
+        {
+          "prices": 20,
+          "earnings": 40
+        },
+        {
+          "prices": 20,
+          "earnings": 40
+        },
+        {
+          "prices": 20,
+          "earnings": 40
         }
       ]
     }

@@ -19,6 +19,7 @@
   --series-2: #8a4b12;
   --series-3: #4b3f8f;
   --series-4: #3d5c1f;
+  --series-5: #8a1c4b;         /* 8.8:1 on --paper, 7.6:1 on --accent-soft */
   --measure: 40rem;
   --space-s: 0.5rem;
   --space-m: 1rem;
@@ -45,6 +46,7 @@
     --series-2: #f0b07a;
     --series-3: #b9b0f5;
     --series-4: #a9d080;
+    --series-5: #f2a0c0;       /* 9.0:1 on --paper, 6.7:1 on --accent-soft */
   }
 }
 
@@ -234,6 +236,7 @@ tr.calculated td, tr.calculated th { font-style: italic; }
 .chart-series--2 { stroke: var(--series-2); fill: var(--series-2); }
 .chart-series--3 { stroke: var(--series-3); fill: var(--series-3); }
 .chart-series--4 { stroke: var(--series-4); fill: var(--series-4); }
+.chart-series--5 { stroke: var(--series-5); fill: var(--series-5); }
 .chart-marks { stroke: var(--paper); stroke-width: 1; }
 .chart-legend { list-style: none; padding: 0; margin: var(--space-s) 0; display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; font-size: 0.95rem; }
 .chart-legend li { margin: 0; }
