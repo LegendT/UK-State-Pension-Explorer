@@ -23,7 +23,7 @@ The accessibility scripts use the Chrome already on the computer. Set `CHROME_PA
 | `npm test` | Tests the calculators against separately worked values. |
 | `npm run serve` | Serves `_site` at http://127.0.0.1:8137 |
 | `npm run a11y` | axe-core on every page and state. Writes `reports/a11y.json`. |
-| `node scripts/a11y-manual-assist.mjs` | Reflow, text spacing, target size, keyboard, headings, no JavaScript. |
+| `npm run a11y:manual` | Reflow, text spacing, target size, keyboard, headings, no JavaScript, and the "On this page" marking. Run it after changing `contents.js`, the contents macro or the `.contents` styles. |
 | `python3 scripts/check-passages.py` | Looks for every quoted passage in its live source. |
 | `python3 scripts/check-values.py` | Looks for unquoted figure values in their source text. |
 | `python3 scripts/reference.py` | Prints the reference calculations. |
@@ -67,6 +67,7 @@ A11Y_ASSESSMENT_DATE=2026-10-01 AI_CRAWLER_POLICY=allow npm run build
 | `src/_data/a11y.json` | What the accessibility statement reports. |
 | `src/assets/js/lib/` | Calculations and views. No DOM. Used by the build and the browser. |
 | `src/assets/js/tools/` | The four calculators' page scripts. |
+| `src/assets/js/contents.js` | Marks the section being read in the "On this page" list. |
 | `test/` | Tests. |
 | `scripts/` | Build check, accessibility runs, source checks, reference calculations. |
 | `research/` | The research record behind the registers. |

@@ -1,6 +1,8 @@
 // Measurements that support the manual part of the assessment. They do not replace a person.
 // Reflow at 320 CSS px (1.4.10), text spacing (1.4.12), target size (2.5.8), heading order,
 // keyboard focus order and visible focus (2.1.1, 2.4.3, 2.4.7, 2.4.11), and no-JavaScript reading.
+// Also checks that the "On this page" list marks the section being read. Run it after changing
+// src/assets/js/contents.js, the contents macro or the .contents styles.
 // Usage: npm run build && node scripts/a11y-manual-assist.mjs
 
 import { createServer } from "node:http";
@@ -22,6 +24,8 @@ const pages = JSON.parse(readFileSync("src/_data/pageRegister.json", "utf8")).pa
 const browser = await puppeteer.launch({ executablePath: CHROME, headless: true });
 const report = { run: new Date().toISOString(), browser: await browser.version(), pages: {} };
 const problems = [];
+let contentsChecked = 0;
+let followedChecked = 0;
 
 for (const path of pages) {
   const out = {};
@@ -130,11 +134,57 @@ for (const path of pages) {
   if (out.noScript.formsShown || out.noScript.noticesShown !== out.noScript.tools) problems.push(`${path} without JavaScript: ${JSON.stringify(out.noScript)}`);
   await third.close();
 
+  // "On this page": the link for the section being read is marked while scrolling and after a jump.
+  const fourth = await browser.newPage();
+  await fourth.setViewport({ width: 1400, height: 900 });
+  await fourth.goto(base + path, { waitUntil: "networkidle0" });
+  if (await fourth.$("main > .contents:not(.section-nav)")) {
+    contentsChecked += 1;
+    const links = "main > .contents:not(.section-nav) a";
+    const frames = () => fourth.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
+    const current = () => fourth.evaluate((sel) => [...document.querySelectorAll(sel)].findIndex((a) => a.getAttribute("aria-current") === "location"), links);
+    const count = await fourth.$$eval(links, (a) => a.length);
+    const mid = Math.floor(count / 2);
+    const steps = [];
+    await fourth.evaluate(() => scrollTo(0, document.body.scrollHeight)); await frames();
+    steps.push(["bottom marks the last link", (await current()) === count - 1]);
+    await (await fourth.$$(links))[0].click(); await frames();
+    steps.push(["following the first link marks it", (await current()) === 0]);
+    await fourth.evaluate(() => scrollBy(0, 4000)); await frames();
+    steps.push(["scrolling on moves the mark from the first link", ![0, -1].includes(await current())]);
+    await (await fourth.$$(links))[mid].click(); await frames();
+    steps.push(["following a middle link marks it", (await current()) === mid]);
+    await fourth.evaluate(() => scrollBy(0, -400)); await frames();
+    steps.push(["scrolling back up moves the mark off it", ![mid, -1].includes(await current())]);
+    // In a tall window a last heading can stay below the marking line even at the bottom of the page,
+    // so only the followed-link hold marks it. Pages where that happens are counted.
+    await fourth.setViewport({ width: 1400, height: 2000 });
+    await (await fourth.$$(links))[count - 1].click(); await frames();
+    const belowLine = await fourth.evaluate((sel) => {
+      const last = [...document.querySelectorAll(sel)].at(-1);
+      return document.getElementById(last.hash.slice(1)).getBoundingClientRect().top > innerHeight / 4;
+    }, links);
+    if (belowLine) followedChecked += 1;
+    steps.push(["following the last link marks it", (await current()) === count - 1]);
+    await fourth.setViewport({ width: 1400, height: 450 });
+    await fourth.evaluate(() => scrollTo(0, document.body.scrollHeight)); await frames();
+    steps.push(["in a short window the marked link is in view", await fourth.evaluate((sel) => {
+      const nav = document.querySelector(sel), box = nav.getBoundingClientRect(), mark = nav.querySelector('[aria-current="location"]')?.getBoundingClientRect();
+      return Boolean(mark) && mark.top >= box.top && mark.bottom <= box.bottom;
+    }, "main > .contents:not(.section-nav)")]);
+    out.contents = steps.filter(([, ok]) => !ok).map(([name]) => name);
+    if (out.contents.length) problems.push(`${path} On this page: ${out.contents.join("; ")}`);
+  }
+  await fourth.close();
+
   report.pages[path] = out;
   console.log(`${path}  reflow ${out.reflow.pageOverflowPx}px  spacing clipped ${out.textSpacing.clipped.length}  targets ${out.targets.total} (under 24: ${out.targets.under24.length}, 24 to 43: ${out.targets.under44.length}, inline exempt: ${out.targets.inlineExempt})  headings ${out.headings.count} skips ${out.headings.skips.length}  tab stops ${out.keyboard.reached}/${expected}  no-JS words ${out.noScript.words}`);
 }
 
 await browser.close();
+// Every page with the list lost it, or the selector no longer matches: either way nothing was checked.
+if (!contentsChecked) problems.push("On this page: no page with the list was found, so the marking was not checked");
+if (contentsChecked && !followedChecked) problems.push("On this page: no last heading stayed below the marking line, so the hold on a followed link was not checked");
 server.close();
 mkdirSync("reports", { recursive: true });
 writeFileSync("reports/a11y-manual-assist.json", JSON.stringify(report, null, 2));

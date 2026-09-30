@@ -9,7 +9,8 @@
     "build": "rm -rf _site && eleventy && node scripts/check-build.mjs",
     "test": "node --test",
     "serve": "http-server _site -p 8137 -c-1 --silent",
-    "a11y": "node scripts/a11y.mjs"
+    "a11y": "node scripts/a11y.mjs",
+    "a11y:manual": "node scripts/a11y-manual-assist.mjs"
   },
   "engines": {
     "node": ">=22"
