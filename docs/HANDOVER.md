@@ -1,6 +1,6 @@
 # Handover: first build
 
-Written 29 September 2026, updated 30 September 2026. The site is a **preview for review**. It is not published. The repository is https://github.com/LegendT/UK-State-Pension-Explorer. All work is merged into `main`: pull request 1, the first build, on 29 September 2026; pull request 2, from `first-build`, and pull request 3, from `april-2030-rule`, on 30 September 2026. Pull request 3 carried the markup sweep and stylesheet fixes of `html-semantics` and the update for the government's announcement of 29 September 2026. Netlify builds `main` to the main address and a deploy preview of each pull request into `main`, all behind a sign-in.
+Written 29 September 2026, updated 30 September 2026. The site is a **preview for review**. It is not published. The repository is https://github.com/LegendT/UK-State-Pension-Explorer. All work is merged into `main`: pull request 1, the first build, on 29 September 2026; pull request 2, from `first-build`, pull request 3, from `april-2030-rule`, and pull request 4, from `homepage-orientation`, on 30 September 2026. Pull request 3 carried the markup sweep and stylesheet fixes of `html-semantics` and the update for the government's announcement of 29 September 2026. Pull request 4 added a table of State Pension age by date of birth to the overview: decision 44. Netlify builds `main` to the main address and a deploy preview of each pull request into `main`, all behind a sign-in.
 
 **Next action:** none is authorised. On 29 September 2026 the government announced a change to the triple lock from April 2030 and a National Care Service. The site was brought up to date on 30 September 2026, on the branch `april-2030-rule`: see "The announcement of 29 September 2026". It is merged into `main`. The owner decides when the calculator work in decision 38 starts.
 
@@ -15,6 +15,7 @@ npm run serve        # http://127.0.0.1:8137
 ## Completed
 
 - Seven main pages, four utility pages, four calculators. Pensions and social care is a section of the reform options page.
+- On the overview, a section on State Pension age by date of birth, added on 30 September 2026.
 - Registers of figures, claims and sources, a page register and a link register.
 - Model specification, written before the code. Reference calculations by a separate method.
 - Build checks for metadata, canonicals, indexing, sitemap, internal links, registers and sister links.
@@ -120,7 +121,7 @@ Not checked on the deployed preview: the other three calculators, any browser bu
 - The download and copy buttons of the history explorer were not pressed in a test.
 - The sister sites' tools were read from served HTML. They were not run.
 - House of Commons Library briefings and Hansard could not be opened.
-- Nothing on the main site address beyond the sign-in, and nothing on a production domain. The deploy preview of pull request 1 was checked, and the deploy previews of pull requests 2 and 3 were not: see "Checks on the deployed preview". Fetched share previews on a social platform were not checked.
+- Nothing on the main site address beyond the sign-in, and nothing on a production domain. The deploy preview of pull request 1 was checked, and the deploy previews of pull requests 2 to 4 were not: see "Checks on the deployed preview". Fetched share previews on a social platform were not checked.
 - Search console verification, sitemap submission, indexing.
 
 ## Owner decisions needed for launch
@@ -133,7 +134,7 @@ Given on 29 September 2026. The record is `docs/decision-log.md`, numbers 29 to 
 
 | Question | Answer | State |
 | --- | --- | --- |
-| Should pensions and social care stay a main page? | No. A dated section of the reform options page | Done in the working copy. After the change, `npm run build`, `npm test`, `npm run a11y` and `node scripts/a11y-manual-assist.mjs` were run again on 29 September 2026, with the results in "Checks performed". The section was looked at in Chrome at 390 and 1280 pixels wide. Committed. Not deployed when this was written |
+| Should pensions and social care stay a main page? | No. A dated section of the reform options page | Done in the working copy. After the change, `npm run build`, `npm test`, `npm run a11y` and `node scripts/a11y-manual-assist.mjs` were run again on 29 September 2026, with the results in "Checks performed". The section was looked at in Chrome at 390 and 1280 pixels wide. Committed, and merged into `main` on 30 September 2026. It was then rewritten after the announcement: see decision 36 |
 | May `scripts/seed/` be deleted? | Yes | Deleted |
 | Should the fiscal-claim page be linked? | No | Register entry marked declined |
 | Should Netlify's own password page be turned off? | Yes | Done on 30 September 2026 with the Netlify CLI. Checked on the main address |
@@ -162,8 +163,7 @@ As at 30 September 2026.
 | Item | What is needed |
 | --- | --- |
 | The rule comparison | The go-ahead for the later phase in decision 38: specification, code, tests and a reference calculation for the announced rule |
-| The deployed site | Netlify built `main` at commit `af84cc7` on 30 September 2026, and the main address answered 401 with `WWW-Authenticate: Basic`. Nobody has looked at the pages past the sign-in. Doing so needs the sign-in, which the owner enters |
-| Decisions 35, 41 and 42 | Made by the assistant and not confirmed: straight quotation marks and the `q` element, deleting the overtaken claims, and treating the GOV.UK news story as the text of the announcement |
+| The deployed site | Netlify built `main` at commit `82632cb` on 30 September 2026, and the main address answered 401 with `WWW-Authenticate: Basic`. Nobody has looked at the pages past the sign-in. Doing so needs the sign-in, which the owner enters |
 | Two items the research left out | The speech's commitment on Income Tax for pensioners on low incomes, and a YouGov poll of 29 September 2026. See `research/06-announcement-2026-09-29.md` |
 | Markup conventions in the README | Written by the assistant after the sweep of 29 September. Not yet accepted by the owner |
 
@@ -172,7 +172,7 @@ As at 30 September 2026.
 | Item | Status |
 | --- | --- |
 | Reciprocal links on UK Public Finances Explorer and UK Migration Explorer | Not started. Needs a live domain. No other repository was changed |
-| Deployed checks | Done for the deploy preview of pull request 1. See "Checks on the deployed preview". Not done for pull requests 2 and 3, for the main site address beyond the sign-in, or for a production domain |
+| Deployed checks | Done for the deploy preview of pull request 1. See "Checks on the deployed preview". Not done for pull requests 2 to 4, for the main site address beyond the sign-in, or for a production domain |
 | Search console | Not started. Needs account and domain access |
 
 ## Found in passing
