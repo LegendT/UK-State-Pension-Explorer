@@ -2,7 +2,7 @@
 
 Short record of decisions made during the first build, 29 September 2026. Newest last.
 
-**Who decided.** Numbers 13, 26 and 29 to 33 are the owner's. Numbers 1 to 11, 14 to 17, 19, 20, 22, 23, 25, 27 and 28 were made by the assistant during the build and accepted by the owner on 29 September 2026. The count of routes in number 2 was replaced by number 29. Number 12 was amended by number 31. Number 18 was confirmed by number 30. Number 24 was replaced by number 29. Number 21 was reopened by the owner: see number 34, which records a search made by the assistant and leaves a question for the owner.
+**Who decided.** Numbers 13, 26 and 29 to 33 are the owner's. Number 35 is the assistant's and is not confirmed. Numbers 1 to 11, 14 to 17, 19, 20, 22, 23, 25, 27 and 28 were made by the assistant during the build and accepted by the owner on 29 September 2026. The count of routes in number 2 was replaced by number 29. Number 12 was amended by number 31. Number 18 was confirmed by number 30. Number 24 was replaced by number 29. Number 21 was reopened by the owner: see number 34, which records a search made by the assistant and leaves a question for the owner.
 
 | No. | Decision | Reason | Reversible |
 | --- | --- | --- | --- |
@@ -38,8 +38,9 @@ Short record of decisions made during the first build, 29 September 2026. Newest
 | 30 | The fiscal-claim page on UK Migration Explorer is not linked. The register entry is marked declined. | Owner's decision. Confirms number 18. | Yes |
 | 31 | No analytics in the preview. Cloudflare Web Analytics at launch. | Owner's decision. Matches the sister sites. The privacy page and the Content Security Policy must change first. | Yes |
 | 32 | `scripts/seed/` and `.preview-password` were deleted from the owner's computer. Neither was ever committed. | Owner's decision. The seed scripts could overwrite the registers. The owner has stored the sign-in elsewhere. | No |
-| 33 | Netlify's own password page is to be turned off, leaving basic authentication as the one sign-in. | Owner's decision. Visitors were asked twice. The setting is in the Netlify screen and had not been changed when this was written. | Yes |
+| 33 | Netlify's own password page is to be turned off, leaving basic authentication as the one sign-in. | Owner's decision. Visitors were asked twice. Removed on 30 September 2026 with `netlify api updateSite`, and confirmed by reading the setting back. | Yes |
 | 34 | The Greens, SNP and Plaid Cymru are still left out of the party positions, after a second search on 29 September 2026. Whether to list their 2024 positions, marked as 2024, is for the owner. | No statement of position from 2025 or 2026 was found. The 2024 general election manifestos were read at source this time: the SNP and Plaid Cymru commit to keeping the triple lock, and the Greens commit to uprating by inflation and wages without naming it. Plaid Cymru's page is now 404 and was read in an Internet Archive copy of 14 January 2026. The 2026 Holyrood and Senedd manifestos of the SNP and Plaid Cymru do not mention the State Pension. Not searched: written questions, social media, and news sites that refuse scripts. Replaces the reason given in number 21. | Yes |
+| 35 | Quoted passages use straight quotation marks, and a source's words inside a sentence are marked with `q`, styled to straight marks. | Assistant's decision during the wording pass of 29 September 2026, not confirmed by the owner. Straight marks were already used elsewhere on the site. | Yes |
 
 ## Contradictions and proposed scope changes
 

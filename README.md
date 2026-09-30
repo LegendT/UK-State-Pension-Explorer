@@ -100,7 +100,7 @@ The exception is the preview banner. It has `role="note"` and no heading, becaus
 
 ## Conventions
 
-- British English. No em dashes. No emoji.
+- British English. No em dashes. No emoji. Straight quotation marks.
 - No figure is typed into a page. Use `{{ "id" | fig }}` or the `figure` filter.
 - A date the site does not hold is left out. It is never taken from a build.
 - Tools calculate in whole pence and tenths of a per cent.
