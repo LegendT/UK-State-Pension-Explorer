@@ -42,7 +42,7 @@ Status values: **Built**, **Built with a gap** (the gap is named), **Not built**
 | Tool 1: measure or tie, percentage, weekly, annual | `lib/uprating.js` `mechanism` | `test/uprating.test.js`, browser | Built |
 | Tool 1: historical and hypothetical kept distinct after an edit | `tools/mechanism.js` | Browser: label changes on edit | Built |
 | Tool 1: history from published decisions, not recalculated | Reads `history.json` | Browser: 2022/23 shows 3.1% with 8.3% earnings | Built |
-| Tool 2: four rules, same path and start | `lib/uprating.js` `compareRules` | Tests, browser | Built |
+| Tool 2: five rules, same path and start, including the rule announced for April 2030 on four labelled assumptions | `lib/uprating.js` `compareRules`, `step2030` | Tests, reference section 7, browser | Built |
 | Tool 2: timing, negative growth, floors, rounding, base, earnings comparison stated | Spec section 6, and on the page | | Built |
 | Tool 2: lower amount against cash cut | `lib/compare-view.js` `summary` | Test "a lower amount than the triple lock is not a cash cut" | Built |
 | Tool 2: cumulative is for the period, cash and constant kept apart | Totals table and text | Tests | Built |
