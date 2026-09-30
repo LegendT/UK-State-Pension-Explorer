@@ -46,9 +46,12 @@ The note of 30 September 2026 was written after the announcement of 29 September
 - the next forecast from the Office for Budget Responsibility;
 - the report of the Casey commission, due in summer 2027, when the owner also decides again whether social care is a section or a page;
 - the final report of the Pensions Commission, due in spring 2027;
-- a statement from a party on its own site, to replace one that rests on a news report.
+- a statement from a party on its own site, to replace one that rests on a news report;
+- an official transcript of the Prime Minister's speech;
+- any government statement on which nations the care service covers;
+- any government estimate of what the care service costs.
 
-Search `src/` for "April 2030" and for `pm-care-2026-09-29` to find every typed sentence about the rule. The claims that begin `rule-2030`, `ncs-` and `no-rule-2030` hold the rest.
+Read these parts of the reform options page in full: the note at the top, the card `#opt-2030`, `#how-2030-works`, `#saving-2030` and the whole of `#social-care`. Then search `src/` for "April 2030" and for `pm-care-2026-09-29` to find typed sentences elsewhere. The register entries of the announcement and the responses to it are the claims and figures with `checked_date` 2026-09-30.
 
 ## Corrections
 

@@ -223,7 +223,7 @@ permalink: /reform-options/
 <article class="option">
   <h3 id="opt-2030">The rule announced for April 2030</h3>
   <dl>
-    <dt>The rule</dt> <dd>{{ ("rule-2030" | claim).statement }} {{ m.c("rule-2030") }} {{ ("ifs-rule-2030-mechanism" | claim).statement }} {{ m.c("ifs-rule-2030-mechanism") }} {{ ("rule-2030-name" | claim).statement }} {{ ("press-double-lock" | claim).statement }} {{ m.c("press-double-lock") }} It is not the double lock described on this page.</dd>
+    <dt>The rule</dt> <dd>{{ ("rule-2030" | claim).statement }} {{ m.c("rule-2030") }} {{ ("ifs-rule-2030-mechanism" | claim).statement }} {{ m.c("ifs-rule-2030-mechanism") }} {{ ("rule-2030-name" | claim).statement }} {{ m.c("rule-2030-name") }} {{ ("press-double-lock" | claim).statement }} {{ m.c("press-double-lock") }} It is not the double lock described on this page.</dd>
     <dt>Effect on the pension</dt> <dd>{{ ("rule-2030-no-fall" | claim).statement }} {{ m.c("rule-2030-no-fall") }} {{ ("ifs-rule-2030-catch-up" | claim).statement }} {{ ("ifs-ratchet-removed" | claim).statement }} {{ m.c("ifs-ratchet-removed") }} {{ ("ifs-real-rise-slower" | claim).statement }} {{ m.c("ifs-real-rise-slower") }} Looking back, the Institute says the pension would still have risen {{ m.f("rule-2030-real-rise-ifs") }} faster than prices from 2010 to 2026 under the rule. {{ m.cite(("rule-2030-real-rise-ifs" | figure).source) }}. The Resolution Foundation says that if the rule had applied since 2012 the pension this year would be {{ m.f("rule-2030-vs-tl-rf") }} lower than it is, and {{ m.f("rule-2030-vs-earnings-rf") }} higher than under an earnings link. {{ m.cite(("rule-2030-vs-tl-rf" | figure).source) }}.</dd>
     <dt>Who is affected</dt> <dd>Nobody before April 2030. {{ m.c("tl-kept-to-2030") }} After that, the same percentage would apply to every rate the rule covers. The announcement does not say whether it covers the same parts of a payment as the triple lock does now. {{ ("no-rule-2030-distribution" | claim).statement }} {{ ("no-rule-2030-pension-credit" | claim).statement }} {{ m.c("no-rule-2030-distribution") }}</dd>
     <dt>Public finances</dt> <dd>Small savings at first, growing over decades. <a href="#saving-2030">The estimates, and why they cannot yet be checked</a>.</dd>
@@ -238,7 +238,7 @@ permalink: /reform-options/
       <dt>The rule</dt> <dd>The highest of prices, earnings and 2.5%.</dd>
       <dt>Effect on the pension</dt> <dd>It rises at least as fast as prices and as earnings, every year. Over time it rises faster than both. The level in future is uncertain. The Institute for Fiscal Studies gives <q>{{ ("ifs-range-2050" | claim).passage }}</q>. {{ m.c("ifs-range-2050") }}</dd>
       <dt>Who is affected</dt> <dd>Current pensioners, and future ones more so, because increases build up over time. {{ m.c("ppi-future-workers") }} People who live longer gain more. {{ m.c("ifs-longevity") }}</dd>
-      <dt>Public finances</dt> <dd>The highest cost of the four rules, and the least predictable.</dd>
+      <dt>Public finances</dt> <dd>The highest cost of the four rules in the calculator, and the least predictable.</dd>
       <dt>A judgement, not a finding</dt> <dd>Whether the pension should rise as a share of earnings, and how far.</dd>
     </dl>
   </article>
@@ -268,7 +268,7 @@ permalink: /reform-options/
       <dt>The rule</dt> <dd>The rise in the Consumer Prices Index.</dd>
       <dt>Effect on the pension</dt> <dd>It keeps its buying power against the official index. When pay rises faster than prices, which is the usual long-run pattern, it falls further behind pay each year.</dd>
       <dt>Who is affected</dt> <dd>Future pensioners most, because the gap with earnings grows with time.</dd>
-      <dt>Public finances</dt> <dd>The largest saving of the four. See the table above.</dd>
+      <dt>Public finances</dt> <dd>The largest saving of the four rules in the calculator. See the table above.</dd>
       <dt>The law</dt> <dd>It would pay less than the present legal minimum in most years, so the law would have to change. From 1980 to 2010 the law required only a prices link. {{ m.c("earnings-link-1980") }}</dd>
     </dl>
   </article>
@@ -289,7 +289,7 @@ permalink: /reform-options/
 <p>These are recommendations. They rest on evidence and on a view about what the pension should be worth.</p>
 
 {% call m.note("Why these two rules are not in the calculator", 4) %}
-<p>The proposals for a smoothed link differ in three details. They are the target level, how the pension catches up after a year of price protection, and over how long. For the rule announced for April 2030, the government has not published which measure of earnings would be used, or from what starting point. It gives an example only. {{ ("rule-2030-example" | claim).statement }} {{ m.c("rule-2030-example") }} Until those are specified and checked, a calculation would be our invention. Both rules are described here and left out of the comparison below.</p>
+<p>The proposals for a smoothed link differ in three details. They are the target level, how the pension catches up after a year of price protection, and over how long. For the rule announced for April 2030, the government has not published which measure of earnings would be used, or from what starting point. It gives an example only. {{ ("rule-2030-example" | claim).statement }} {{ m.c("rule-2030-example") }} For the smoothed link, a calculation would be our invention until those details are set. The announced rule is to be added to the comparison later, with each of these details labelled as an assumption. For now both rules are described here and left out of the comparison below.</p>
 {% endcall %}
 
 <p>A freeze, with no increase at all, is not among the options. We found no current proposal for one.</p>
@@ -405,7 +405,7 @@ permalink: /reform-options/
 
 <h2 id="social-care">Pensions and social care: the plan announced in September 2026</h2>
 
-<p>On {{ ("pm-care-2026-09-29" | sourceRecord).published_date | timeTag | safe }} the Prime Minister announced two things together. One is a less generous rule for the yearly increase in the State Pension, from April 2030. The other is a National Care Service with free personal care for older people, using the savings. This section sets out what was announced, what is in law, what has only been reported, and which questions the plan leaves open.</p>
+<p>On {{ ("pm-care-2026-09-29" | sourceRecord).published_date | timeTag | safe }} the Prime Minister announced two things together. One is a new rule for the yearly increase in the State Pension, from April 2030. {{ ("ifs-real-rise-slower" | claim).statement }} {{ m.c("ifs-real-rise-slower") }} The other is a National Care Service with free personal care for older people, using the savings. This section sets out what was announced, what is in law, what has only been reported, and which questions the plan leaves open.</p>
 
 {% call m.note("The position on " ~ (news.as_of | timeTag), 3) %}
 <p>This section was last checked on {{ news.as_of | timeTag | safe }}. The plan is an announcement. It is not law. {{ ("no-rule-2030-detail" | claim).statement }} {{ m.c("no-rule-2030-detail") }} Treat this section as a dated record.</p>
@@ -447,7 +447,7 @@ permalink: /reform-options/
   <li>{{ ("minister-more-funding" | claim).statement }} {{ m.c("minister-more-funding") }}</li>
 </ul>
 
-<h4>What research bodies and charities said</h4>
+<h4>What research bodies, charities and a union said</h4>
 <ul>
   <li>{{ ("ifs-ratchet-removed" | claim).statement }} {{ ("ifs-savings-small-early" | claim).statement }} {{ m.c("ifs-savings-small-early") }}</li>
   <li>{{ ("ifs-not-universal-care" | claim).statement }} {{ ("ifs-not-universal-care" | claim).note }} {{ ("ifs-floor-arbitrary" | claim).statement }} {{ m.c("ifs-not-universal-care") }}</li>
@@ -455,7 +455,7 @@ permalink: /reform-options/
   <li>{{ ("ageuk-response" | claim).statement }} {{ ("hf-response" | claim).statement }} {{ ("kf-response" | claim).statement }} {{ m.c("ageuk-response") }}</li>
   <li>{{ ("unite-response" | claim).statement }} {{ m.c("unite-response") }}</li>
 </ul>
-<p>The statements from Age UK, the Health Foundation and the King's Fund are as quoted in a trade news report. We did not find them on the organisations' own sites.</p>
+<p>The statements from Age UK, the Health Foundation and the King's Fund are as quoted in a trade news report. We did not find them on the organisations' own sites. The statement from Unite is as reported by PA News.</p>
 
 <h4>What the other parties said after the announcement</h4>
 <ul>
@@ -474,7 +474,7 @@ permalink: /reform-options/
   <li>{{ ("libdem-position" | claim).statement }} {{ m.c("libdem-position") }}</li>
   <li>{{ ("reform-position" | claim).statement }} {{ m.c("reform-position") }}</li>
 </ul>
-<p>These are the statements we found that date from 2025 or 2026 and come before the announcement. Two of the three come from news reports, not from a party document.</p>
+<p>These are the statements we found from before the announcement. Two date from 2025 or 2026. The Liberal Democrat page is undated. Two of the three come from news reports, not from a party document.</p>
 
 <h3 id="care-two-things">A pension and a care service are different things</h3>
 
@@ -485,7 +485,7 @@ permalink: /reform-options/
   <dd>Help with washing, dressing, eating and getting about, at home or in a care home. It goes only to people assessed as needing it, when they need it. Many people never use it. Some need a great deal.</dd>
 </dl>
 
-<p>So a change that takes a little from every pensioner and gives a service to some is not an exchange of equal value for each person. It moves money from pensioners in general to people who need care. Whether that is fair is a judgement. Who gains and who loses is a question of fact that depends on the design.</p>
+<p>So a change that slows the growth of the pension for pensioners in general, and gives a service to some, is not an exchange of equal value for each person. It moves money from pensioners in general to people who need care. Whether that is fair is a judgement. Who gains and who loses is a question of fact that depends on the design.</p>
 
 <h3 id="care-scope">Who each policy covers</h3>
 
@@ -494,7 +494,7 @@ permalink: /reform-options/
 <p>The State Pension is the same across the UK. Social care is decided separately in England, Scotland, Wales and Northern Ireland. The commission on adult social care is for England.</p>
 
 {% call m.note("Why this matters", 4) %}
-<p>The pension change would affect pensioners in all four nations. {{ ("no-ncs-nations" | claim).statement }} {{ m.c("no-ncs-nations") }} Scotland already provides free personal care. <a href="#care-now">Social care now, nation by nation</a>. Until the government says how each nation is treated, the two policies cannot be treated as covering the same people.</p>
+<p>In our reading, the pension change would affect pensioners in all four nations, because the State Pension is paid across the UK. Northern Ireland sets its rates through its own orders, which we did not read. {{ ("no-ncs-nations" | claim).statement }} {{ m.c("no-ncs-nations") }} Scotland already provides free personal care. <a href="#care-now">Social care now, nation by nation</a>. Until the government says how each nation is treated, the two policies cannot be treated as covering the same people.</p>
 {% endcall %}
 
 <h3 id="care-now">Social care now, nation by nation</h3>

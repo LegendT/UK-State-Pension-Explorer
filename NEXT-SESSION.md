@@ -14,7 +14,7 @@ State on 30 September 2026: see the opening paragraph of docs/HANDOVER.md and it
 section "The announcement of 29 September 2026". The site is an unpublished preview.
 Pull request 1 is merged into main. Pull request 2 is open from first-build. The branch
 html-semantics follows first-build. The branch april-2030-rule follows html-semantics
-and holds the update for the announcement. That work is not committed and nothing on
+and holds the update for the announcement. That work is committed. Nothing on
 either branch is pushed. Run git status first.
 
 Next action: none. Wait for Anthony to say what to do. Nothing else is authorised.

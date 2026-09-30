@@ -2,7 +2,7 @@
 
 Short record of decisions made during the first build, 29 September 2026, and after the announcement of that day. Newest last.
 
-**Who decided.** Numbers 13, 26, 29 to 33, 36 to 40 and 43 are the owner's. Numbers 35, 41 and 42 are the assistant's and are not confirmed. Numbers 1 to 11, 14 to 17, 19, 20, 22, 23, 25, 27 and 28 were made by the assistant during the build and accepted by the owner on 29 September 2026. The count of routes in number 2 was replaced by number 29. Number 12 was amended by number 31. Number 18 was confirmed by number 30. Number 24 chose the words "a reported trade-off". They stayed in the section heading under number 29 and were removed under number 36. Number 6 is amended by number 38. Number 21 was reopened by the owner: see number 34, which records a search made by the assistant and leaves a question for the owner.
+**Who decided.** Numbers 13, 26, 29 to 33, 36 to 40 and 43 are the owner's. Numbers 35, 41 and 42 are the assistant's and are not confirmed. Numbers 1 to 11, 14 to 17, 19, 20, 22, 23, 25, 27 and 28 were made by the assistant during the build and accepted by the owner on 29 September 2026. The count of routes in number 2 was replaced by number 29. Number 12 was amended by number 31. Number 18 was confirmed by number 30. Number 24 chose the words "a reported trade-off". They stayed in the section heading under number 29 and were removed under number 36. Number 6 is amended by number 38. Number 21 was reopened by the owner: see number 34, which records a search made by the assistant and left a question for the owner. Number 39 overtook that question.
 
 | No. | Decision | Reason | Reversible |
 | --- | --- | --- | --- |

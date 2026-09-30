@@ -2,7 +2,7 @@
 
 Written 29 September 2026, updated 30 September 2026. The site is a **preview for review**. It is not published. The repository is https://github.com/LegendT/UK-State-Pension-Explorer. Pull request 1, the first build, is merged into `main`. Pull request 2 is open from the branch `first-build`. The branch `html-semantics` follows `first-build` and holds the markup sweep and the stylesheet fixes. The branch `april-2030-rule` follows `html-semantics` and holds the update for the government's announcement of 29 September 2026. Netlify builds a deploy preview of each pull request, behind a sign-in.
 
-**Next action:** none is authorised. On 29 September 2026 the government announced a change to the triple lock from April 2030 and a National Care Service. The site was brought up to date on 30 September 2026, on the branch `april-2030-rule`: see "The announcement of 29 September 2026". The owner decides whether `html-semantics` and `april-2030-rule` join `first-build`, whether to merge pull request 2, and when the calculator work in decision 38 starts. The announcement work is not committed: run `git status` to see it. Run `git log origin/first-build..april-2030-rule` to see the commits that have not been pushed.
+**Next action:** none is authorised. On 29 September 2026 the government announced a change to the triple lock from April 2030 and a National Care Service. The site was brought up to date on 30 September 2026, on the branch `april-2030-rule`: see "The announcement of 29 September 2026". The owner decides whether `html-semantics` and `april-2030-rule` join `first-build`, whether to merge pull request 2, and when the calculator work in decision 38 starts. The announcement work is committed on `april-2030-rule`. Run `git log origin/first-build..april-2030-rule` to see the commits that have not been pushed.
 
 ## How to look at it
 
@@ -90,7 +90,7 @@ Found by these checks:
 - **The site was titled "ukstatepensionexplorer".** Netlify sets `SITE_NAME` on every build. The setting is now `SITE_TITLE`. Fixed after this deploy, so the deploy checked still shows the wrong name.
 - **The Content Security Policy blocks Netlify's own preview toolbar**, which Netlify adds to deploy previews. Chrome reported one blocked inline style and one blocked frame from `app.netlify.com`. The site is not affected. The toolbar can be switched off in Netlify.
 
-Not checked on the deployed preview: the other three calculators, any browser but Chrome, a fetched share preview on a social platform, and anything on the main site address. Pull request 1 has since been merged, so that address may now have a deploy. It was not looked at.
+Not checked on the deployed preview: the other three calculators, any browser but Chrome, a fetched share preview on a social platform, and anything on the main site address. Pull request 1 has since been merged, so that address may now have a deploy. On 30 September 2026 the main address was checked for the sign-in only: it answered 401 with `WWW-Authenticate: Basic`. Nothing else on it was looked at.
 
 ## Known defects and limits
 
@@ -120,7 +120,7 @@ Not checked on the deployed preview: the other three calculators, any browser bu
 - The download and copy buttons of the history explorer were not pressed in a test.
 - The sister sites' tools were read from served HTML. They were not run.
 - House of Commons Library briefings and Hansard could not be opened.
-- Nothing on the main site address or a production domain. The deploy preview of pull request 1 was checked, and the deploy preview of pull request 2 was not: see "Checks on the deployed preview". Fetched share previews on a social platform were not checked.
+- Nothing on the main site address beyond the sign-in, and nothing on a production domain. The deploy preview of pull request 1 was checked, and the deploy preview of pull request 2 was not: see "Checks on the deployed preview". Fetched share previews on a social platform were not checked.
 - Search console verification, sitemap submission, indexing.
 
 ## Owner decisions needed for launch
@@ -138,7 +138,7 @@ Given on 29 September 2026. The record is `docs/decision-log.md`, numbers 29 to 
 | Should the fiscal-claim page be linked? | No | Register entry marked declined |
 | Should Netlify's own password page be turned off? | Yes | Done on 30 September 2026 with the Netlify CLI. Checked on the main address |
 | May `.preview-password` be deleted? | Yes | Deleted |
-| Are the decisions in the decision log accepted? | 22 accepted as written. Analytics amended to Cloudflare at launch. Number 21, the three parties left out, reopened | See number 34 |
+| Are the decisions in the decision log accepted? | 22 accepted as written. Analytics amended to Cloudflare at launch. Number 21, the three parties left out, reopened | See number 34, overtaken by number 39 |
 
 Answered on 29 September 2026: previews are protected with basic authentication, hosting is Netlify, and four unused variables were deleted from Netlify.
 
@@ -163,8 +163,8 @@ As at 30 September 2026.
 | --- | --- |
 | The rule comparison | The go-ahead for the later phase in decision 38: specification, code, tests and a reference calculation for the announced rule |
 | `html-semantics` and `april-2030-rule` | Whether they join `first-build` and go to pull request 2 |
-| Commit and push | The announcement work on `april-2030-rule` is not committed. A critique ran on it on 30 September 2026 and a stamp was written for the tree as it stood before the handoff check edited this file and `NEXT-SESSION.md`. The push gate will refuse the later tree. Either `/push uncritiqued` or a fresh critique |
-| Decisions 41 and 42 | Made by the assistant and not confirmed: deleting the overtaken claims, and treating the GOV.UK news story as the text of the announcement |
+| Push | The announcement work on `april-2030-rule` is committed and not pushed. A critique of the committed work ran on 30 September 2026 and stamped the tree. Anthony types `/push` |
+| Decisions 35, 41 and 42 | Made by the assistant and not confirmed: straight quotation marks and the `q` element, deleting the overtaken claims, and treating the GOV.UK news story as the text of the announcement |
 | Two items the research left out | The speech's commitment on Income Tax for pensioners on low incomes, and a YouGov poll of 29 September 2026. See `research/06-announcement-2026-09-29.md` |
 | Markup conventions in the README | Written by the assistant after the sweep of 29 September. Not yet accepted by the owner |
 
