@@ -32,10 +32,10 @@ Both scripts print their counts. The counts are not copied here, because they ch
 
 ## Results of the last run
 
-- `npm run a11y`: 0 violations. 0 audits with sideways page scroll. 0 audits with script errors. Every contrast result that axe marked incomplete was measured, 4,125 of them: 0 below threshold, 0 that could not be measured.
+- `npm run a11y`: 0 violations. 0 audits with sideways page scroll. 0 audits with script errors. Every contrast result that axe marked incomplete was measured, 4,143 of them: 0 below threshold, 0 that could not be measured.
 - `node scripts/a11y-manual-assist.mjs`: 0 problems on 14 pages.
 
-The last run was on 1 October 2026, after defect 11 and decision 58: 100 audits of 14 pages. See `docs/HANDOVER.md`, "Defect 11, 1 October 2026".
+The last run was on 1 October 2026, after the corrections of decision 60: 100 audits of 14 pages. See `docs/HANDOVER.md`, "External audit of 1 October 2026".
 
 ### What those runs did not establish
 
@@ -81,7 +81,7 @@ Result values: **No failure found** (with the method), **Not applicable** (with 
 | 2.4.7 Focus Visible | AA | No failure found | Script found an outline on every focused control. Not looked at by a person on every control. |
 | 2.4.11 Focus Not Obscured (Minimum) | AA | No failure found | Script: no focused control was covered. At 1024 px and wider the contents list stays in view in a column of its own, beside the content rather than over it. The scripts test 390 and 1280 px, not 1024 to 1279 px, where that column first appears. That range was looked at in screenshots only. |
 | 2.5.1 Pointer Gestures | A | Not applicable | No gestures. |
-| 2.5.2 Pointer Cancellation | A | No failure found | Native buttons and links only. |
+| 2.5.2 Pointer Cancellation | A | No failure found | Native buttons and links, and the overview cards. `cards.js` acts on the `click` event, which fires on release, and does nothing on a press alone. |
 | 2.5.3 Label in Name | A | No failure found | Visible labels are the accessible names. axe `label-content-name-mismatch`. |
 | 2.5.4 Motion Actuation | A | Not applicable | None. |
 | 2.5.7 Dragging Movements | AA | Not applicable | Nothing is dragged. No sliders. |

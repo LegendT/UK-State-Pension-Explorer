@@ -10,15 +10,16 @@ Read, in this order, before doing anything:
 Do not read _archive/. Read research/ only when checking a figure. docs/ux-review.md is a
 frozen record: read it for the reasoning behind recommendations R1 to R10, and never edit it.
 
-State on 1 October 2026: see the opening paragraphs of docs/HANDOVER.md. The site is an
-unpublished preview. All work up to pull request 12 is merged into `main`. The branch
-`review-points-1-oct` carries review points W1, W2 and W4 and waits on Anthony's /push.
-Run git status first.
+State on 1 October 2026: see the opening paragraphs of docs/HANDOVER.md. The site is a
+preview for review, not published. All work is merged into `main` up to pull request 13.
+Pull request 14, from `audit-corrections`, is open: the corrections from an external factual
+audit, decision 60. Run git status first.
 
 Next action: none. Wait for Anthony to say what to do. Nothing else is authorised.
 
-Waiting on Anthony: the table under "Waiting on the owner" in docs/HANDOVER.md. Anthony asked to
-go through launch dependencies 1 to 10 one by one, with options and recommendations.
+Waiting on Anthony: the table under "Waiting on the owner" in docs/HANDOVER.md. Anthony
+asked to go through launch dependencies 1 to 10 one by one, with options and
+recommendations. W5 is decided with them.
 
 Do not raise again unless asked: the items under "Known defects and limits" in
 docs/HANDOVER.md that are marked deferred: at present, defect 10.
@@ -27,6 +28,6 @@ Rules that have been broken before and must not be again: read ~/.claude/CLAUDE.
 full first. In this project: do not import .env into Netlify, do not push (Anthony types
 /push), and do not call the site WCAG 2.2 AA conformant. When running the critique skill,
 write the repository path out in full in the reader's command, or the push gate's stamp is
-refused.
+refused. NEXT-SESSION.md is written by /handoff-check only.
 
 Run /handoff-check before leaving this context.
