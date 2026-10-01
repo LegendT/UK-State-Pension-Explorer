@@ -1,6 +1,6 @@
 # Handover: first build
 
-Written 29 September 2026, updated 30 September 2026. The site is a **preview for review**. It is not published. The repository is https://github.com/LegendT/UK-State-Pension-Explorer. All work is merged into `main`, up to pull request 9. Pull request 10, from `handover-review-note`, is open: it adds the marking of the current section in the "On this page" list, decision 53, and carries the handover note that records pull request 9. Pull request 8 carried the work on the UX review of 30 September 2026, and pull request 9 recorded the owner's answers on it: see "UX review of 30 September 2026". Merged: pull request 1, the first build, on 29 September 2026; pull request 2, from `first-build`, pull request 3, from `april-2030-rule`, and pull request 4, from `homepage-orientation`, on 30 September 2026. Pull request 3 carried the markup sweep and stylesheet fixes of `html-semantics` and the update for the government's announcement of 29 September 2026. Pull request 4 added a table of State Pension age by date of birth to the overview: decision 44. Pull request 5 corrected the handover. Pull request 6, from `rule-2030-calculator`, adds the announced rule to the rule comparison: decision 38. It was merged on 30 September 2026. Pull request 7, from `handover-pr6`, recorded pull request 6 in this handover. Netlify builds `main` to the main address and a deploy preview of each pull request into `main`, all behind a sign-in.
+Written 29 September 2026, updated 1 October 2026. The site is a **preview for review**. It is not published. The repository is https://github.com/LegendT/UK-State-Pension-Explorer. All work is merged into `main`, up to pull request 10. Pull request 10, from `handover-review-note`, added the marking of the current section in the "On this page" list, decision 53, and carried the handover note that records pull request 9. It was merged on 30 September 2026. Pull request 8 carried the work on the UX review of 30 September 2026, and pull request 9 recorded the owner's answers on it: see "UX review of 30 September 2026". Merged: pull request 1, the first build, on 29 September 2026; pull request 2, from `first-build`, pull request 3, from `april-2030-rule`, and pull request 4, from `homepage-orientation`, on 30 September 2026. Pull request 3 carried the markup sweep and stylesheet fixes of `html-semantics` and the update for the government's announcement of 29 September 2026. Pull request 4 added a table of State Pension age by date of birth to the overview: decision 44. Pull request 5 corrected the handover. Pull request 6, from `rule-2030-calculator`, adds the announced rule to the rule comparison: decision 38. It was merged on 30 September 2026. Pull request 7, from `handover-pr6`, recorded pull request 6 in this handover. Netlify builds `main` to the main address and a deploy preview of each pull request into `main`, all behind a sign-in.
 
 **Next action:** none is authorised. On 29 September 2026 the government announced a change to the triple lock from April 2030 and a National Care Service. The site was brought up to date on 30 September 2026, on the branch `april-2030-rule`: see "The announcement of 29 September 2026". It is merged into `main`. The rule is in the rule comparison, with its assumptions labelled: decisions 38 and 45.
 
@@ -204,7 +204,7 @@ Checks run on 30 September 2026 after R4 to R8 and R10, Chrome 154, macOS:
 
 ## "On this page" marking, 30 September 2026
 
-Asked for by the owner: the contents list shows which section is being read, while scrolling and after following a link. Decision 53. In pull request 10, open, not merged. It was pushed with `/push uncritiqued`: the second reader's last run came before the final changes to the check script.
+Asked for by the owner: the contents list shows which section is being read, while scrolling and after following a link. Decision 53. Merged in pull request 10. It was pushed with `/push uncritiqued`: the second reader's last run came before the final changes to the check script.
 
 | Check | Command | Result |
 | --- | --- | --- |
@@ -221,7 +221,6 @@ As at 30 September 2026.
 
 | Item | What is needed |
 | --- | --- |
-| Pull request 10 | Review and merge. See "On this page" marking |
 | The deployed site | Netlify builds `main` after every merge, and each build on 30 September 2026 was ready. `netlify api listSiteDeploys` shows the latest. The main address answered 401 with `WWW-Authenticate: Basic`. Nobody has looked at the pages past the sign-in. Doing so needs the sign-in, which the owner enters |
 | Two items the research left out | The speech's commitment on Income Tax for pensioners on low incomes, and a YouGov poll of 29 September 2026. See `research/06-announcement-2026-09-29.md` |
 | Markup conventions in the README | Written by the assistant after the sweep of 29 September. Not yet accepted by the owner |

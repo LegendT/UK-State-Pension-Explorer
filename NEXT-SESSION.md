@@ -11,10 +11,8 @@ Do not read _archive/. Read research/ only when checking a figure. docs/ux-revie
 frozen record: read it for the reasoning behind recommendations R1 to R10, and never edit it.
 Their state is in docs/HANDOVER.md, "UX review of 30 September 2026".
 
-State on 30 September 2026: see the opening paragraph of docs/HANDOVER.md. The site is an
-unpublished preview. All work is merged into `main`, up to pull request 9. Pull request 10,
-from `handover-review-note`, is open and waits on Anthony: see the section on the "On this page" marking in
-docs/HANDOVER.md. Run git status first.
+State on 1 October 2026: see the opening paragraph of docs/HANDOVER.md. The site is an
+unpublished preview. All work is merged into `main`, up to pull request 10. Run git status first.
 
 Next action: none. Wait for Anthony to say what to do. Nothing else is authorised.
 
