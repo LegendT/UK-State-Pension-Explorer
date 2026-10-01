@@ -865,7 +865,7 @@
     "url": "https://www.thenewworld.co.uk/we-will-hope-again-andy-burnhams-full-speech-to-the-2026-labour-party-conference/",
     "published_date": "2026-09-29",
     "updated_date": null,
-    "checked_date": "2026-09-30",
+    "checked_date": "2026-10-01",
     "licence": "Copyright of the publisher. Short quotation only.",
     "note": "The speech as printed by a newspaper. It is not an official transcript. We found none."
   },
@@ -908,6 +908,16 @@
     "checked_date": "2026-09-30",
     "licence": "Copyright of the publisher. Short quotation only.",
     "note": "A party news page. The site refuses automated reading, so it was read in a browser."
+  },
+  "yougov-2026-09-29": {
+    "publisher": "YouGov",
+    "title": "Britons support changing triple lock to fund care service by 48% to 28%",
+    "url": "https://yougov.com/en-gb/articles/55654-britons-support-changing-triple-lock-to-fund-care-service-by-48-to-28",
+    "published_date": "2026-09-29",
+    "updated_date": null,
+    "checked_date": "2026-10-01",
+    "licence": "Copyright of the publisher. Short quotation only.",
+    "note": "An online survey of 4,503 adults aged 18 and over in Great Britain, with fieldwork on 29 September 2026, commissioned by YouGov. The share who did not know comes from the chart data published with the article."
   },
   "bbc-swinney-2026-09-29": {
     "publisher": "BBC News, published by Yahoo News",

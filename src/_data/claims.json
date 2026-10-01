@@ -1099,6 +1099,16 @@
     "checked_date": "2026-09-30",
     "review_status": "checked-with-ai-assistance"
   },
+  "pm-speech-income-tax": {
+    "kind": "commitment",
+    "statement": "In a speech on 29 September 2026 the Prime Minister said pensioners on low incomes would not be \"dragged into paying income tax\" in this Parliament. Neither the speech nor the government's news story of that day says who counts as being on a low income, or how it would be done.",
+    "source_id": "speech-2026-09-29",
+    "passage": "I can also confirm today our commitment to ensure that the low-income pensioners won't be dragged into paying income tax in this Parliament.",
+    "interpretation": false,
+    "note": "From the speech as printed by a newspaper. Not an official transcript. The GOV.UK news story of 29 September 2026 does not mention Income Tax.",
+    "checked_date": "2026-10-01",
+    "review_status": "checked-with-ai-assistance"
+  },
   "ifs-rule-2030-mechanism": {
     "kind": "finding",
     "statement": "The Institute for Fiscal Studies describes the rule as the highest of three things each year: inflation, 2.5%, or the amount needed for the pension to keep up with the growth in average earnings since the rule began.",
@@ -1287,6 +1297,26 @@
     "interpretation": false,
     "note": null,
     "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "yougov-rule-2030": {
+    "kind": "finding",
+    "statement": "In a YouGov online poll of 4,503 adults in Great Britain on 29 September 2026, 48% supported changing the triple lock in 2030 to help fund a care service, 28% opposed it and 25% did not know.",
+    "source_id": "yougov-2026-09-29",
+    "passage": "Connecting the triple lock change with contributing funding to a National Care Service increases support – but not by much, at 48%, while the number opposed remains largely the same at 28%",
+    "interpretation": false,
+    "note": "The 25% who did not know is from the chart data published with the article.",
+    "checked_date": "2026-10-01",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "yougov-question": {
+    "kind": "finding",
+    "statement": "The question described the change as making pensions \"only increase by whatever is highest out of inflation or 2.5%\". It did not mention the part of the announced rule that keeps the pension's value relative to earnings.",
+    "source_id": "yougov-2026-09-29",
+    "passage": "Andy Burnham has announced he plans to change the triple lock in 2030 so that pensions only increase by whatever is highest out of inflation or 2.5%.",
+    "interpretation": true,
+    "note": "The second sentence compares the question with the GOV.UK news story of 29 September 2026.",
+    "checked_date": "2026-10-01",
     "review_status": "checked-with-ai-assistance"
   },
   "ageuk-response": {

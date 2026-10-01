@@ -2,6 +2,8 @@
 
 Written 29 September 2026, updated 1 October 2026. The site is a **preview for review**. It is not published. The repository is https://github.com/LegendT/UK-State-Pension-Explorer. All work is merged into `main`, up to pull request 10. Pull request 10, from `handover-review-note`, added the marking of the current section in the "On this page" list, decision 53, and carried the handover note that records pull request 9. It was merged on 30 September 2026. Pull request 8 carried the work on the UX review of 30 September 2026, and pull request 9 recorded the owner's answers on it: see "UX review of 30 September 2026". Merged: pull request 1, the first build, on 29 September 2026; pull request 2, from `first-build`, pull request 3, from `april-2030-rule`, and pull request 4, from `homepage-orientation`, on 30 September 2026. Pull request 3 carried the markup sweep and stylesheet fixes of `html-semantics` and the update for the government's announcement of 29 September 2026. Pull request 4 added a table of State Pension age by date of birth to the overview: decision 44. Pull request 5 corrected the handover. Pull request 6, from `rule-2030-calculator`, adds the announced rule to the rule comparison: decision 38. It was merged on 30 September 2026. Pull request 7, from `handover-pr6`, recorded pull request 6 in this handover. Netlify builds `main` to the main address and a deploy preview of each pull request into `main`, all behind a sign-in.
 
+**Branch `defect-11-and-research`**, 1 October 2026, not pushed: defect 11 closed, decisions 54 to 57, and the two items the research of 30 September left out, decision 58. See "Defect 11, 1 October 2026" and "Two items added, 1 October 2026".
+
 **Next action:** none is authorised. On 29 September 2026 the government announced a change to the triple lock from April 2030 and a National Care Service. The site was brought up to date on 30 September 2026, on the branch `april-2030-rule`: see "The announcement of 29 September 2026". It is merged into `main`. The rule is in the rule comparison, with its assumptions labelled: decisions 38 and 45.
 
 ## How to look at it
@@ -232,6 +234,20 @@ Not checked: a screen reader, forced colours, a real phone.
 
 The base style for `dt` and `dd` is new. It also changes about 15 description lists that were there before, such as "Distinctions that matter", which used the browser's default indent and normal weight.
 
+## Two items added, 1 October 2026
+
+Decision 58. Records in `research/06-announcement-2026-09-29.md`, section A2 and record `ann-speech`.
+
+| Check | Command | Result |
+| --- | --- | --- |
+| Passages | `python3 scripts/check-passages.py` | 199 checked, 178 by script and 21 by the browser record. None missing. The three new passages are among those found by script |
+| Build and registers | `npm run build` | No problems. 150 claims, 96 sources |
+| Automated accessibility | `npm run a11y` | 0 violations. 1,955 incomplete results, 15 more than before, from the new text. Every incomplete contrast result measured, 4,125, none below threshold |
+| Behaviour | `npm run a11y:manual` | 0 problems |
+| Rendered | Screenshots in Chrome | The note on the State Pension page at 1400 px, the poll section at 390 px |
+
+The Income Tax commitment rests on the speech as printed by a newspaper. No government document states it. Hansard could not be read: parliament.uk refused automated requests.
+
 ## Waiting on the owner
 
 As at 1 October 2026.
@@ -239,7 +255,7 @@ As at 1 October 2026.
 | Item | What is needed |
 | --- | --- |
 | The deployed site | Netlify builds `main` after every merge, and each build on 30 September 2026 was ready. `netlify api listSiteDeploys` shows the latest. The main address answered 401 with `WWW-Authenticate: Basic`. Nobody has looked at the pages past the sign-in. Doing so needs the sign-in, which the owner enters |
-| Two items the research left out | The speech's commitment on Income Tax for pensioners on low incomes, and a YouGov poll of 29 September 2026. See `research/06-announcement-2026-09-29.md` |
+| Branch `defect-11-and-research` | Three commits, not pushed: the merge of pull request 10 recorded, defect 11, and the two items the research left out (decision 58). Review, then `/push`. Decisions 55 and 56 need a yes or no |
 | Markup conventions in the README | Written by the assistant after the sweep of 29 September, and changed on 1 October 2026. Not yet accepted by the owner |
 | Decision 55 | Which bold-label lists became description lists. See defect 11 |
 | Decision 56 | The source note as a description list, a line for each pair, and the extra length. See defect 11 |
