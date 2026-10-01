@@ -1,6 +1,6 @@
 # Handover: first build
 
-Written 29 September 2026, updated 1 October 2026. The site is a **preview for review**. It is not published. The repository is https://github.com/LegendT/UK-State-Pension-Explorer. All work is merged into `main`, up to pull request 15. Pull request 10, from `handover-review-note`, added the marking of the current section in the "On this page" list, decision 53, and carried the handover note that records pull request 9. It was merged on 30 September 2026. Pull request 8 carried the work on the UX review of 30 September 2026, and pull request 9 recorded the owner's answers on it: see "UX review of 30 September 2026". Merged: pull request 1, the first build, on 29 September 2026; pull request 2, from `first-build`, pull request 3, from `april-2030-rule`, and pull request 4, from `homepage-orientation`, on 30 September 2026. Pull request 3 carried the markup sweep and stylesheet fixes of `html-semantics` and the update for the government's announcement of 29 September 2026. Pull request 4 added a table of State Pension age by date of birth to the overview: decision 44. Pull request 5 corrected the handover. Pull request 6, from `rule-2030-calculator`, adds the announced rule to the rule comparison: decision 38. It was merged on 30 September 2026. Pull request 7, from `handover-pr6`, recorded pull request 6 in this handover. Netlify builds `main` to the main address and a deploy preview of each pull request into `main`, all behind a sign-in.
+Written 29 September 2026, updated 1 October 2026. The site is a **preview for review**. It is not published. The repository is https://github.com/LegendT/UK-State-Pension-Explorer. Work up to pull request 15 is merged into `main`. Not merged: the branch `summary-differences` (decisions 63 and 64) and, cut from it, `frontend-sweep` (decision 65). Pull request 10, from `handover-review-note`, added the marking of the current section in the "On this page" list, decision 53, and carried the handover note that records pull request 9. It was merged on 30 September 2026. Pull request 8 carried the work on the UX review of 30 September 2026, and pull request 9 recorded the owner's answers on it: see "UX review of 30 September 2026". Merged: pull request 1, the first build, on 29 September 2026; pull request 2, from `first-build`, pull request 3, from `april-2030-rule`, and pull request 4, from `homepage-orientation`, on 30 September 2026. Pull request 3 carried the markup sweep and stylesheet fixes of `html-semantics` and the update for the government's announcement of 29 September 2026. Pull request 4 added a table of State Pension age by date of birth to the overview: decision 44. Pull request 5 corrected the handover. Pull request 6, from `rule-2030-calculator`, adds the announced rule to the rule comparison: decision 38. It was merged on 30 September 2026. Pull request 7, from `handover-pr6`, recorded pull request 6 in this handover. Netlify builds `main` to the main address and a deploy preview of each pull request into `main`, all behind a sign-in.
 
 **Pull request 11**, from `defect-11-and-research`, merged on 1 October 2026: defect 11 closed, decisions 54 to 57, and the two items the research of 30 September left out, decision 58. See "Defect 11, 1 October 2026" and "Two items added, 1 October 2026". The owner's answers of the same day were merged in pull request 12: see "Owner's answers of 1 October 2026". Review points W1 to W4 from its critique were merged in pull request 13. The corrections from an external factual audit were merged in pull request 14: see "External audit of 1 October 2026".
 
@@ -373,6 +373,34 @@ The owner noted that the comparison did not seem to save any money. It did, but 
 
 A sentence first written as "Most get less than the full rate" was changed to the sourced average, because the share on the full rate is a known gap (number 4 under "Known defects and limits"). After the critique (Sonnet 5.5), the gap says "than the triple lock" to screen readers, and the triple lock's row says "for comparison".
 
+## Front-end sweep, 1 October 2026
+
+An axe baseline of every page, then the markup (`html-engineering`), then the styles (`css-engineering`), then the same axe run again to compare. On the branch `frontend-sweep`, not pushed. The runners and saved results are in `frontend-sweep/`, which is not committed.
+
+What changed, file by file:
+
+| File | Change | Finding |
+| --- | --- | --- |
+| `src/assets/js/tools/budget.js` | The details of a loaded example budget were run-on "Label: value" lines in a `ul`, two pairs on one line. Now a `dl`, a pair each for prices, area, housing, left out and source. The text before it is paragraphs | W1 |
+| `src/assets/js/tools/compare.js` | A `ResizeObserver` writes the pinned summary's height to `--summary-size` | C1, decision 65 |
+| `src/assets/css/main.css` | The padding and scroll padding under the pinned summary are `var(--summary-size, 16rem)`. The comment said "two rules to a row"; it is one | C1, C4 |
+
+No template changed. The page map of the built output is identical before and after; W1 is markup the browser draws when an example is loaded.
+
+| Check | Command | Before | After |
+| --- | --- | --- | --- |
+| Automated accessibility | `node frontend-sweep/run.mjs`: axe-core 4.11.4, Chrome 154, 15 pages at 320, 768 and 1280 px, at rest, reduced motion and dark, 135 audits | 0 violations, 2,712 incomplete | 0 violations, 2,712 incomplete. Nothing new, nothing fixed |
+| Incomplete contrast | `node frontend-sweep/measure.mjs after` | | All 2,712 measured, none below threshold, lowest 8.81:1. All are table cells cut off by the scrolling wrappers |
+| Project's own checks | `npm run a11y`, `npm run a11y:manual` | | 0 violations, 4,031 incomplete measured, none below threshold; 0 problems. Its `tool3-preset-result` state loads an example budget, so it is the axe run that covers W1: 0 violations at 390 and 1280 |
+| Validator | `npx html-validate "_site/**/*.html"` | 103 | 103, the same rules. Left as they are: `prefer-native-element` on the 35 scroll regions, as the README says; trailing whitespace 45, `doctype-style` 15 and `long-title` 7, which are style, not markup; `wcag/h32` on the comparison form, which has no submit button because it updates as it changes (decision 62) |
+| Calculator tests | `npm test` | 28 of 28 | 28 of 28 |
+| Screenshots | Every page at 3 widths | | Only the comparison page differs, at 320 and 768, by the padding under the summary |
+| Focus not obscured | Tab through the comparison, 1.4.12 text spacing | 320x568: 15 of 42 stops fully hidden, footer 141 px under | 320x568 and 320x512: none fully hidden, footer clear |
+
+Checked by hand or by script, not by axe: focus visible on every focusable element on every page, light and dark, 3:1 or better; no tab index above 0 and no reordered layout; no images, dragging or content shown on hover; error messages name the field and say how to fix it; there is no animation, so reduced motion has nothing to stop. Not checked: Safari, Firefox, forced colours, a screen reader, a real phone.
+
+Items left open are in "Waiting on the owner", each marked with its step and finding. Critique: a second reader (Sonnet 5.5) found two weak points, R1 and R2 below.
+
 ## Waiting on the owner
 
 As at 1 October 2026.
@@ -389,7 +417,18 @@ As at 1 October 2026.
 | Rule comparison: typed figures | The page types "10p a week at most" and "2.5%" in its text. Under the README rule they would come from the registers |
 | Rule comparison: the gap shown | The summary gives the gap in the last year. The total over the period, in the full result's totals table, could be shown as well |
 | Rule comparison: "less" is not a cut | The full result says a lower amount is a smaller rise, not a cut. The pinned summary does not, for want of room |
-| Rule comparison: pinned summary | Its padding is a fixed 16rem. Pinning it with `position: sticky; bottom: 0` inside the layout needs no padding and adapts to larger text |
+| Sweep, markup, W1 link | The source of a loaded example budget is plain text. Passing the source's address through the `budgetData` filter in `eleventy.config.js` would make it a link with a check date, like every other source. Changes a transform |
+| Sweep, markup, K1 | About 16 dates typed in templates are not `time` elements: `index.njk` lines 29 and 38 to 43, `state-pension.njk` lines 39 and 61, `history.njk` line 23 |
+| Sweep, markup, K2 | Table source notes (`macros.njk` line 142, 11 places) and the budget "Left out" notes (6) are "Label:" paragraphs, not the `dl` the figure notes use. Pages get longer, as with decision 56 |
+| Sweep, markup, K3 | "Showing:" on the triple lock tool (`triple-lock.njk` line 121) is a label and value in one paragraph; could be a one-pair `dl` |
+| Sweep, markup, K4 | The calculated column in the history table uses `em` (`history-view.js` line 114). A `span` with a class says it without stress emphasis |
+| Sweep, markup, K5 | Terms defined in running text are `strong` (`index.njk` lines 73 and 75, `state-pension.njk` line 39). `dfn` is the element; needs a reset for its italic |
+| Sweep, markup, K6 | The budget headline is a label and value in one paragraph (`budget-view.js` line 45) |
+| Sweep, markup, K7 | `next_review` is free text, so its dates cannot be `time`. Needs a date field in `figures.json` |
+| Sweep, styles, C2 | Chart text renders at about 9 px on a 320 px screen (13 units in a 720-unit view box). Not an AA failure. Shared with the charts drawn at build time |
+| Sweep, styles, C3 | Four links that stand alone in a paragraph are about 21 px tall. They pass AA by the spacing exception of SC 2.5.8: each centre is at least 14.5 px from any other target, more than the 12 px radius, and `npm run a11y:manual` counts none under 24. They are short of the 44 px house standard. A class on those paragraphs and the "Back to contents" padding would fix them |
+| Sweep, critique, R1 | The CSS comment above the pinned summary does not say that `compare.js` sets `--summary-size`, or that 16rem is the fallback. One clause |
+| Sweep, critique, R2 | With text spacing at 320x512 the pinned summary is 396 px, leaving 116 px. No focus stop is fully hidden, but one is 81% covered. The observer could unpin the summary when it passes half the screen. Changes when decision 62 pins it; overlaps "phone keyboard" above |
 
 ## Tracked separately
 
