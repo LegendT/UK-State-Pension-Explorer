@@ -153,12 +153,13 @@ permalink: /state-pension/
 
 <h2 id="extra-help">Pension Credit and other help</h2>
 
-<p>These are separate from the State Pension. Each has its own rules, and none is paid automatically with the State Pension.</p>
+<p>These are separate from the State Pension, and each has its own rules. Some have to be claimed, and some are paid automatically.</p>
 
 <h3>Pension Credit</h3>
 <p>Pension Credit is a means-tested benefit for people over State Pension age on a low income. The part called Guarantee Credit tops up weekly income to {{ m.f("pension-credit-single") }} for a single person or {{ m.f("pension-credit-couple") }} for a couple. Extra amounts apply for severe disability and for carers.</p>
 {{ m.sourceNote("pension-credit-single" | figure) }}
 
+<p>{{ ("pc-mixed-age" | claim).statement }} {{ m.c("pc-mixed-age") }}</p>
 <p>Many people who are entitled do not claim. In the latest estimate, {{ m.f("pension-credit-take-up") }} of entitled families claimed. About {{ m.f("pension-credit-non-recipients") }} families did not, and {{ m.f("pension-credit-unclaimed") }} went unclaimed.</p>
 {{ m.sourceNote("pension-credit-take-up" | figure) }}
 <p><a href="https://www.gov.uk/pension-credit">Check whether you can get Pension Credit on GOV.UK</a>.</p>
@@ -167,18 +168,18 @@ permalink: /state-pension/
 <p>{{ ("housing-benefit" | claim).statement }} {{ m.c("housing-benefit") }} {{ ("council-tax-reduction" | claim).statement }} {{ m.c("council-tax-reduction") }}</p>
 
 <h3>Help with the costs of disability</h3>
-<p>Attendance Allowance is for people over State Pension age who need help or supervision because of a disability or health condition. It is {{ m.f("attendance-allowance-lower") }} or {{ m.f("attendance-allowance-higher") }} a week and is not means-tested. It covers England and Wales. {{ m.c("aa-scotland") }}</p>
+<p>Attendance Allowance is for people over State Pension age who need help or supervision because of a disability or health condition. It is {{ m.f("attendance-allowance-lower") }} or {{ m.f("attendance-allowance-higher") }} a week and is not means-tested. It covers England and Wales. {{ m.c("aa-scotland") }} {{ ("aa-northern-ireland" | claim).statement }} {{ m.c("aa-northern-ireland") }}</p>
 {{ m.sourceNote("attendance-allowance-lower" | figure) }}
 
 <h3>Winter Fuel Payment</h3>
-<p>The Winter Fuel Payment is paid to people over State Pension age in England, Wales and Northern Ireland. For people with a total income over {{ m.f("winter-fuel-income-limit") }}, HM Revenue and Customs takes the payment back through the tax system.</p>
+<p>The Winter Fuel Payment is paid to people over State Pension age in England, Wales and Northern Ireland. {{ ("wfp-automatic" | claim).statement }} {{ m.c("wfp-automatic") }} For people with a total income over {{ m.f("winter-fuel-income-limit") }}, HM Revenue and Customs takes the payment back through the tax system.</p>
 {{ m.sourceNote("winter-fuel-income-limit" | figure) }}
 
 <h2 id="financing">How it is paid for</h2>
 
 <p>The State Pension is paid from the National Insurance Fund. {{ m.c("pay-as-you-go") }}</p>
 
-<p>This is the main difference from a workplace or personal pension. In those, contributions are invested in a pot that belongs to the saver. In the State Pension there is no pot. A person's contributions build an entitlement under the rules, and the money paid in by today's workers and employers pays today's pensions.</p>
+<p>This is the main difference from a defined contribution workplace or personal pension. In those, contributions are invested in a pot that belongs to the saver. A defined benefit workplace pension is different again: it promises an income under the scheme's rules, usually linked to pay and years of service. In the State Pension there is no pot. A person's contributions build an entitlement under the rules, and the money paid in by today's workers and employers pays today's pensions.</p>
 
 <ul class="cards cards--three">
   <li>{{ m.stat("nif-contributions-2024-25" | figure, "Money paid into the Fund in the year.") }}</li>

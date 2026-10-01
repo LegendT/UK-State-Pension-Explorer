@@ -34,7 +34,7 @@ permalink: /reform-options/
   <dd>This changes who receives the State Pension, or how much, depending on their income or savings. It affects some people and not others. <a href="/reform-options/entitlement/">The options for entitlement</a> are on a page of their own.</dd>
 </dl>
 
-<p>Assessing a person's resources is also different from assessing their needs. A means test looks at income or savings. It does not look at what a person has to spend on rent, disability or care.</p>
+<p>Assessing a person's resources is also different from assessing their needs. A means test looks at income or savings, but some also allow for what a person has to spend. {{ ("care-means-test-allowances" | claim).statement }} {{ m.c("care-means-test-allowances") }} The detailed rules of each scheme matter.</p>
 
 
 <h2 id="increases">Options for the yearly increase</h2>
@@ -57,7 +57,7 @@ permalink: /reform-options/
     <h3 id="opt-triple">Keep the triple lock</h3>
     <dl>
       <dt>The rule</dt> <dd>The highest of prices, earnings and 2.5%.</dd>
-      <dt>Effect on the pension</dt> <dd>It rises at least as fast as prices and as earnings, every year. Over time it rises faster than both. The level in future is uncertain. The Institute for Fiscal Studies gives <q>{{ ("ifs-range-2050" | claim).passage }}</q>. {{ m.c("ifs-range-2050") }}</dd>
+      <dt>Effect on the pension</dt> <dd>It rises at least as fast as prices and as earnings, every year. Over time it tends to rise faster than both, when the measure that wins changes from year to year. The level in future is uncertain. The Institute for Fiscal Studies gives <q>{{ ("ifs-range-2050" | claim).passage }}</q>. {{ m.c("ifs-range-2050") }}</dd>
       <dt>Who is affected</dt> <dd>Current pensioners, and future ones more so, because increases build up over time. {{ m.c("ppi-future-workers") }} People who live longer gain more. {{ m.c("ifs-longevity") }}</dd>
       <dt>Public finances</dt> <dd>The highest cost of the rules in the calculator, apart from small differences caused by rounding, and the least predictable.</dd>
       <dt>A judgement, not a finding</dt> <dd>Whether the pension should rise as a share of earnings, and how far.</dd>
@@ -67,7 +67,7 @@ permalink: /reform-options/
     <h3 id="opt-double">Double lock: prices or earnings</h3>
     <dl>
       <dt>The rule</dt> <dd>The higher of prices and earnings. The 2.5% minimum is removed.</dd>
-      <dt>Effect on the pension</dt> <dd>The same as the triple lock in any year when prices or earnings rise by 2.5% or more. Lower in other years. It still rises faster than both prices and earnings over time, because it takes the higher each year.</dd>
+      <dt>Effect on the pension</dt> <dd>The same increase as the triple lock in any year when prices or earnings rise by 2.5% or more, though the amount can stay lower because of earlier years. A smaller increase in other years. Over time it tends to rise faster than both prices and earnings, when the higher of the two changes from year to year.</dd>
       <dt>Who is affected</dt> <dd>The same people, by less. Modelling from 2018 put the effect on pensioner poverty in 2050 at {{ "ppi-poverty-double-lock" | figShown }} more people than under the triple lock. {{ m.cite(("ppi-poverty-earnings-link" | figure).source) }}.</dd>
       <dt>Public finances</dt> <dd>{{ ("no-costed-double-lock" | claim).statement }}</dd>
       <dt>A precedent</dt> <dd>{{ ("double-lock-2017" | claim).statement }} {{ m.c("double-lock-2017") }}</dd>
@@ -89,7 +89,7 @@ permalink: /reform-options/
       <dt>The rule</dt> <dd>The rise in the Consumer Prices Index.</dd>
       <dt>Effect on the pension</dt> <dd>It keeps its buying power against the official index. When pay rises faster than prices, which is the usual long-run pattern, it falls further behind pay each year.</dd>
       <dt>Who is affected</dt> <dd>Future pensioners most, because the gap with earnings grows with time.</dd>
-      <dt>Public finances</dt> <dd>The largest saving of the rules in the calculator. See <a href="/reform-options/costs/#cost-and-saving">what a change would save</a>.</dd>
+      <dt>Public finances</dt> <dd>Usually the largest saving of the rules in the calculator, when earnings grow faster than prices. The order depends on the figures for each year. See <a href="/reform-options/costs/#cost-and-saving">what a change would save</a>.</dd>
       <dt>The law</dt> <dd>It would pay less than the present legal minimum in most years, so the law would have to change. From 1980 to 2010 the law required only a prices link. {{ m.c("earnings-link-1980") }}</dd>
     </dl>
   </article>

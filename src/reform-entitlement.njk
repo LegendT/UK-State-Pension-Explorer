@@ -80,7 +80,7 @@ permalink: /reform-options/entitlement/
       <li><strong>Pensioner poverty has not gone away.</strong> {{ m.f("low-income-ahc") }} of pensioners are in relative low income after housing costs. {{ ("ageuk-women" | claim).statement }} {{ m.c("ageuk-women") }}</li>
       <li><strong>It helps today's workers most.</strong> {{ ("ppi-future-workers" | claim).statement }} {{ m.c("ppi-future-workers") }}</li>
       <li><strong>An older population costs more than the lock.</strong> {{ ("ppi-demographics" | claim).statement }} {{ m.c("ppi-demographics") }}</li>
-      <li><strong>The level is about 30% of typical pay.</strong> The full new State Pension is {{ m.f("nsp-share-median-earnings") }} of median full-time earnings. {{ m.c("pc-30-percent") }}</li>
+      <li><strong>The level is about 30% of typical pay.</strong> In {{ ("nsp-share-median-earnings" | figure).period_label }} the full new State Pension was {{ m.f("nsp-share-median-earnings") }} of median full-time earnings. {{ m.c("pc-30-percent") }}</li>
       <li><strong>It supports private saving.</strong> {{ ("pc-firm-foundation" | claim).statement }} {{ m.c("pc-firm-foundation") }}</li>
     </ul>
   </article>
@@ -88,7 +88,7 @@ permalink: /reform-options/entitlement/
     <h3 id="args-change">For changing it</h3>
     <ul>
       <li><strong>It has cost more than expected.</strong> {{ m.f("tl-cost-vs-earnings-2029-30") }} a year by 2029-30 compared with earnings uprating, against {{ m.f("tl-cost-initial-assumption") }} on the first assumption. {{ m.cite(("tl-cost-vs-earnings-2029-30" | figure).source) }}.</li>
-      <li><strong>Its future cost cannot be predicted.</strong> Between {{ m.f("ifs-tl-cost-2050-low") }} and {{ m.f("ifs-tl-cost-2050-high") }} a year in 2050. {{ m.cite(("ifs-tl-cost-2050-high" | figure).source) }}.</li>
+      <li><strong>Its future cost can only be estimated, with wide uncertainty.</strong> Between {{ m.f("ifs-tl-cost-2050-low") }} and {{ m.f("ifs-tl-cost-2050-high") }} a year in 2050. {{ m.cite(("ifs-tl-cost-2050-high" | figure).source) }}.</li>
       <li><strong>It rewards volatility, not need.</strong> {{ ("rf-volatility" | claim).statement }} {{ m.c("rf-volatility") }}</li>
       <li><strong>It has no stated target.</strong> {{ ("ifs-explicit-goal" | claim).statement }} {{ m.c("ifs-explicit-goal") }}</li>
       <li><strong>Fairness between generations.</strong> {{ ("rf-living-standards" | claim).statement }} {{ m.c("rf-living-standards") }}</li>

@@ -1,7 +1,9 @@
 // Tool 3: what does the pension cover? Presentation only.
 // Nothing entered here is stored, put in the address bar or sent anywhere.
 
+import { PERIODS, PERIOD_LABELS } from "../lib/budget.js";
 import { renderBudget } from "../lib/budget-view.js";
+import { parsePence } from "../lib/uprating.js";
 import { announce, focusFirstError, readAmount, readJson, setError } from "./common.js";
 
 const data = readJson("budget-data");
@@ -33,13 +35,30 @@ function showHousehold() {
   about.innerHTML = "";
 }
 
+// The helpers fill in weekly amounts, so they set the period to a week. Amounts already entered
+// for another period are converted first, so that none of them changes its meaning. Fields the
+// helper is about to fill are left alone, so the note names only conversions that stay.
+function toWeekly(filled = []) {
+  const from = period.value;
+  period.value = "week";
+  if (from === "week") return "";
+  let converted = false;
+  for (const field of [...data.income, ...data.categories].filter((item) => !filled.includes(item.id)).map((item) => input(item.id)).concat(tax)) {
+    const pence = parsePence(field.value);
+    if (field.value.trim() === "" || pence === null) continue;
+    field.value = (Math.round((pence * PERIODS[from]) / PERIODS.week) / 100).toFixed(2);
+    converted = true;
+  }
+  return converted ? ` Amounts you had entered for ${PERIOD_LABELS[from]} were converted to a week.` : "";
+}
+
 function loadPreset() {
   const chosen = data.presets.find((item) => item.id === preset.value);
   if (!chosen) {
     about.innerHTML = "<p>Choose an example budget first.</p>";
     return;
   }
-  period.value = "week";
+  const note = toWeekly(data.categories.map((category) => category.id));
   for (const category of data.categories) {
     const pence = chosen.pence[category.id] || 0;
     input(category.id).value = pence ? (pence / 100).toFixed(2) : "";
@@ -54,14 +73,14 @@ function loadPreset() {
     `<li>Left out: ${chosen.exclusions}</li>` +
     (chosen.note ? `<li>${chosen.note}</li>` : "") +
     `<li>Source: ${chosen.source}. ${chosen.table_reference}</li></ul>`;
-  announce(status, `Example budget loaded into the spending fields: ${chosen.label}.`);
+  announce(status, `Example budget loaded into the spending fields: ${chosen.label}.${note}`);
 }
 
 function fillPension() {
-  period.value = "week";
+  const note = toWeekly(["state-pension"]);
   input("state-pension").value = data.full_new_rate;
   setError(input("state-pension"), "");
-  announce(status, `State Pension set to the full new rate, ${data.full_new_rate} pounds a week. The period is set to a week.`);
+  announce(status, `State Pension set to the full new rate, ${data.full_new_rate} pounds a week. The period is set to a week.${note}`);
 }
 
 function rows(list) {
@@ -99,12 +118,16 @@ form.addEventListener("submit", (event) => {
   announce(status, "Result updated. It follows the form.");
 });
 
-document.getElementById("budget-clear").addEventListener("click", () => {
+function clearAll() {
   form.reset();
   for (const field of form.querySelectorAll('input[type="text"]')) setError(field, "");
   presetLabel = "";
   showHousehold();
   result.innerHTML = EMPTY;
+}
+
+document.getElementById("budget-clear").addEventListener("click", () => {
+  clearAll();
   announce(status, "Everything you entered has been cleared.");
 });
 
@@ -112,8 +135,9 @@ for (const radio of form.querySelectorAll('input[name="budget-household"]')) rad
 document.getElementById("budget-load").addEventListener("click", loadPreset);
 document.getElementById("budget-fill-pension").addEventListener("click", fillPension);
 
-// A page restored from the browser's history can bring typed values back. Clear them.
-window.addEventListener("pageshow", (event) => {
-  if (event.persisted) form.reset();
-  showHousehold();
+// A page restored from the browser's history can bring back typed values and the result that shows
+// them, so every showing of the page starts clear.
+window.addEventListener("pageshow", () => {
+  clearAll();
+  status.textContent = "";
 });
