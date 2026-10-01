@@ -206,10 +206,14 @@ main > .tool, main > figure, main > .cards, main > .scroll-x, main > .rate-block
 .unavailable > :first-child { margin-top: 0; }
 .unavailable > :last-child { margin-bottom: 0; }
 
-/* The link holds the card's name only. Its ::after covers the card, so the whole card is still the target. */
+/* The link holds the card's name only. Without script its ::after covers the card, so the whole card
+   is the target. With script, cards.js does that instead, so the description can be selected. */
 .journeys li { position: relative; padding: var(--space-m); border: 1px solid var(--rule-strong); border-radius: var(--radius); }
 .journeys a { font-weight: 600; }
 .journeys a::after { content: ""; position: absolute; inset: 0; border-radius: var(--radius); }
+.js .journeys a::after { content: none; }
+.js .journeys li { cursor: pointer; }
+.journeys li:focus-within { box-shadow: 0 0 0 2px var(--accent); }
 .journeys p { margin: 0; color: var(--ink-soft); }
 
 .contents { padding: var(--space-m); background: var(--panel); border-radius: var(--radius); }

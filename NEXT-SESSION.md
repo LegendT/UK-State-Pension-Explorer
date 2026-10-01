@@ -11,14 +11,14 @@ Do not read _archive/. Read research/ only when checking a figure. docs/ux-revie
 frozen record: read it for the reasoning behind recommendations R1 to R10, and never edit it.
 
 State on 1 October 2026: see the opening paragraphs of docs/HANDOVER.md. The site is an
-unpublished preview. All work up to pull request 10 is merged into `main`. Pull request 11,
-from `defect-11-and-research`, is open and waits on Anthony: defect 11 (decisions 54 to 57)
-and the two items the research left out (decision 58). Run git status first.
+unpublished preview. All work up to pull request 11 is merged into `main`. The branch
+`owner-answers-1-oct` carries the owner's answers of 1 October 2026 and waits on Anthony's
+/push. Run git status first.
 
 Next action: none. Wait for Anthony to say what to do. Nothing else is authorised.
 
-Waiting on Anthony: the table under "Waiting on the owner" in docs/HANDOVER.md, including
-decisions 55 and 56 and the critique suggestions of 1 October 2026.
+Waiting on Anthony: the table under "Waiting on the owner" in docs/HANDOVER.md. He asked to
+go through launch dependencies 1 to 10 one by one, with options and recommendations.
 
 Do not raise again unless asked: the items under "Known defects and limits" in
 docs/HANDOVER.md that are marked deferred: at present, defect 10.

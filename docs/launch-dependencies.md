@@ -14,7 +14,7 @@ Things only the owner can supply or decide. The build works locally without them
 | 8 | Accessibility assessment by a person, with VoiceOver and Safari and with NVDA on Windows. | `A11Y_ASSESSMENT_DATE`, and update `src/_data/a11y.json` and `docs/accessibility-assessment.md`. | Any claim of conformance |
 | 9 | Analytics. | Cloudflare Web Analytics at launch, as on the sister sites. Owner's decision, 29 September 2026. Not added yet. Before it is added, update the privacy page and the Content Security Policy, and confirm that it does not record the settings that the rule comparison and the history explorer put in the page address. The privacy page promises that amounts entered in a calculator are never included. | Adding analytics |
 | 10 | Review owner and review date for each source. | The registers carry a `next_review` trigger for each figure. No person is assigned. | Scope section 8 |
-| 11 | Decision on the two register dates due in October 2026: Pension Credit take-up (22 October) and the inputs for the 2027/28 increase (20 and 21 October). | Update the registers when published. | Currency of three figures |
+| 11 | Decision on the three releases due in October 2026: the revised earnings figure (20 October), the September prices figure (21 October) and Pension Credit take-up (22 October). | Update the registers when published. | Currency of three figures |
 
 ## After publication, reported separately
 
