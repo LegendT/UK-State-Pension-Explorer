@@ -177,7 +177,7 @@ main > .tool, main > figure, main > .cards, main > .scroll-x, main > .rate-block
 
 /* Rule comparison. The summary stays in view while the figures change, as on the budget simulator
    of UK Public Finances. On a narrow screen tall enough to spare the room it is pinned to the foot,
-   two rules to a row, and the page is padded so it covers nothing and a focused field scrolls clear
+   one rule to a row, and the page is padded so it covers nothing and a focused field scrolls clear
    of it. On a short screen, or zoomed in, it follows the form. At 1024 px and wider it sits beside
    the form and stays in view. It holds nothing that takes focus. */
 .compare-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-l); align-items: start; }
@@ -190,8 +190,8 @@ main > .tool, main > figure, main > .cards, main > .scroll-x, main > .rate-block
 .compare-summary dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
 @media (min-height: 32rem) {
   .js .compare-summary { position: fixed; inset: auto 0 0 0; z-index: 20; border-width: 2px 0 0; border-radius: 0; }
-  .js body:has(.compare-summary) { padding-bottom: 16rem; }
-  .js:has(.compare-summary) { scroll-padding-bottom: 16rem; }
+  .js body:has(.compare-summary) { padding-bottom: var(--summary-size, 16rem); }
+  .js:has(.compare-summary) { scroll-padding-bottom: var(--summary-size, 16rem); }
 }
 @media (min-width: 64rem) {
   .compare-layout { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); }
