@@ -32,10 +32,10 @@ Both scripts print their counts. The counts are not copied here, because they ch
 
 ## Results of the last run
 
-- `npm run a11y`: 0 violations. 0 audits with sideways page scroll. 0 audits with script errors. Every contrast result that axe marked incomplete was measured, 4,143 of them: 0 below threshold, 0 that could not be measured.
-- `node scripts/a11y-manual-assist.mjs`: 0 problems on 14 pages.
+- `npm run a11y`: 0 violations. 0 audits with sideways page scroll. 0 audits with script errors. Every contrast result that axe marked incomplete was measured, 4,031 of them: 0 below threshold, 0 that could not be measured.
+- `node scripts/a11y-manual-assist.mjs`: 0 problems on 15 pages.
 
-The last run was on 1 October 2026, after the corrections of decision 60: 100 audits of 14 pages. See `docs/HANDOVER.md`, "External audit of 1 October 2026".
+The last run was on 1 October 2026, after decision 63: 106 audits of 15 pages. See `docs/HANDOVER.md`, "The saving in the rule comparison, 1 October 2026".
 
 ### What those runs did not establish
 

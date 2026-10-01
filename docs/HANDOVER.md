@@ -260,6 +260,7 @@ Merged in pull request 12, from `owner-answers-1-oct`, on 1 October 2026.
 | Markup conventions in the README | Accepted | Recorded in the README |
 | Primary source for a spoken commitment | The best full printing, labelled, replaced if an official text appears | Decision 59 |
 | Critique suggestions | Rounding note on the poll, a link from question 10 to the tax note, and the check's scroll: yes. Two more build checks: not asked for | All three done. The behaviour check now scrolls to the second section and at least a window past the first heading |
+| "Back to contents" links | Confirm keeping several on a page. The assistant's reading: SC 2.4.4 is met, because each goes to the same place. See "Sources and the rule comparison, 1 October 2026" |
 | Launch dependencies 1 to 10 | Later on 1 October 2026, not next | On the waiting list |
 
 | Check | Command | Result |
@@ -337,7 +338,7 @@ Asked for by the owner. Merged in pull request 15, from `compare-page-and-source
 
 - **Sources** are drawn as chips, so they read apart from the sentence: decision 61.
 - **The rule comparison** has its own page, `/reform-options/compare/`. Its result redraws as the figures change, and a summary of each rule's amount stays in view: decision 62.
-- **"Back to contents" links.** The owner asked whether several on one page break the guideline on link text. They do not. SC 2.4.4 asks that a link's purpose be clear from its text or context, and every one goes to the same place. The cost is repetition in a screen reader's list of links, below 1024 px only. Kept as they are.
+- **"Back to contents" links.** The owner asked whether several on one page break the guideline on link text. They do not, in the assistant's reading. SC 2.4.4 asks that a link's purpose be clear from its text or context, and every one goes to the same place. The cost is repetition in a screen reader's list of links, below 1024 px only. Kept as they are, on the assistant's recommendation. Not yet confirmed by the owner.
 
 | Check | Command | Result |
 | --- | --- | --- |
@@ -356,7 +357,7 @@ Not checked: a screen reader, a real phone, touch, an on-screen keyboard.
 
 After pull request 15 was merged, the owner found the rule comparison on the deployed preview not updating when the inputs changed. The owner then ran a deploy without the cache, and it worked. The likely cause, not proven: `netlify.toml` let browsers reuse anything under `/assets/` for an hour without asking, and the file names do not change between versions, so a browser could run the old `compare.js`, which waits for a button the new page no longer has. A Netlify deploy without cache clears the build cache, not a browser's copy, so that deploy may not be what fixed it.
 
-The rule now makes a browser check with the server before reusing a file (`max-age=0, must-revalidate`, which is also Netlify's default for files that are not fingerprinted). A browser that cached a file under the old rule can still keep it for up to an hour after this is deployed. On the branch `asset-cache-revalidate`, not pushed. Not checked on the deployed site: that needs the sign-in, and the header is set by Netlify, not by the local server.
+The rule now makes a browser check with the server before reusing a file (`max-age=0, must-revalidate`, which is also Netlify's default for files that are not fingerprinted). A browser that cached a file under the old rule can still keep it for up to an hour after this is deployed. On the branch `summary-differences`, with decision 63, not pushed. Not checked on the deployed site: that needs the sign-in, and the header is set by Netlify, not by the local server.
 
 ## The saving in the rule comparison, 1 October 2026
 

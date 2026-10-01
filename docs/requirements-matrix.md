@@ -25,11 +25,11 @@ Status values: **Built**, **Built with a gap** (the gap is named), **Not built**
 | B The State Pension | `/state-pension/` | GOV.UK, legislation, DWP statistics | Built with a gap: share on the full rate, and numbers with a pension that is not increased abroad, not found |
 | C The triple lock | `/triple-lock/` | `history.json`, legislation | Built |
 | D Living on a pension | `/living-on-a-pension/` | MIS 2026, RLS, ONS, DWP | Built with a gap: see decision log item A |
-| E Reform options | `/reform-options/`, `/reform-options/costs/` and `/reform-options/entitlement/` | DWP, OBR, IFS, RF, PPI, ONS | Built with gaps: no costing found for a double lock of prices or earnings, or for means-testing. The rule announced for April 2030 is in the calculator, on four labelled assumptions |
+| E Reform options | `/reform-options/`, `/reform-options/compare/`, `/reform-options/costs/` and `/reform-options/entitlement/` | DWP, OBR, IFS, RF, PPI, ONS | Built with gaps: no costing found for a double lock of prices or earnings, or for means-testing. The rule announced for April 2030 is in the calculator, on four labelled assumptions |
 | E Public-finance context | `#public-finances`, `#cost-and-saving` | Tables `sp-spending-series`, `sp-longrun` | Built |
 | E Distributional context | `#who` | Tables `income-fifths`, `wealth-bands` | Built with a gap: carers' incomes and wealth by type for 65 and over not found |
 | E Sister-site links in context | `#public-finances`, `#cost-and-saving` | `links.json` | Built. Destination tools not exercised in a browser |
-| F Pensions and social care | `/reform-options/social-care/` | GOV.UK, nation governments, Health Foundation | Built as a dated page, the third of four reform options pages. Owner's decisions, 29 and 30 September 2026, and decision 46. Rewritten after the announcement. Gap: the plan has no Bill, no costing method and no cost for the service |
+| F Pensions and social care | `/reform-options/social-care/` | GOV.UK, nation governments, Health Foundation | Built as a dated page, the fourth of five reform options pages. Owner's decisions, 29 and 30 September 2026, and decision 46. Rewritten after the announcement. Gap: the plan has no Bill, no costing method and no cost for the service |
 | G History | `/history/` | `history.json` | Built |
 | H Sources, method and corrections | `/sources-and-method/` | The three registers | Built with a gap: no correction route, no owner, no reviewer |
 | Utility pages | `/accessibility/`, `/privacy/`, `/site-map/`, `/404.html` | | Built |
