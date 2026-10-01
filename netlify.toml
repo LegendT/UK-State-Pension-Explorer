@@ -35,8 +35,9 @@
     Permissions-Policy = "geolocation=(), microphone=(), camera=()"
     Content-Security-Policy = "default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'"
 
-# Assets are not fingerprinted, so they are cached for a short time only.
+# Assets are not fingerprinted, so a browser must check with the server before reusing one, or a
+# visitor can run an old script against a new page. See docs/HANDOVER.md, "Asset caching".
 [[headers]]
   for = "/assets/*"
   [headers.values]
-    Cache-Control = "public, max-age=3600"
+    Cache-Control = "public, max-age=0, must-revalidate"
