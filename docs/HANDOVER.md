@@ -1,8 +1,8 @@
 # Handover: first build
 
-Written 29 September 2026, updated 1 October 2026. The site is a **preview for review**. It is not published. The repository is https://github.com/LegendT/UK-State-Pension-Explorer. All work is merged into `main`, up to pull request 10. Pull request 10, from `handover-review-note`, added the marking of the current section in the "On this page" list, decision 53, and carried the handover note that records pull request 9. It was merged on 30 September 2026. Pull request 8 carried the work on the UX review of 30 September 2026, and pull request 9 recorded the owner's answers on it: see "UX review of 30 September 2026". Merged: pull request 1, the first build, on 29 September 2026; pull request 2, from `first-build`, pull request 3, from `april-2030-rule`, and pull request 4, from `homepage-orientation`, on 30 September 2026. Pull request 3 carried the markup sweep and stylesheet fixes of `html-semantics` and the update for the government's announcement of 29 September 2026. Pull request 4 added a table of State Pension age by date of birth to the overview: decision 44. Pull request 5 corrected the handover. Pull request 6, from `rule-2030-calculator`, adds the announced rule to the rule comparison: decision 38. It was merged on 30 September 2026. Pull request 7, from `handover-pr6`, recorded pull request 6 in this handover. Netlify builds `main` to the main address and a deploy preview of each pull request into `main`, all behind a sign-in.
+Written 29 September 2026, updated 1 October 2026. The site is a **preview for review**. It is not published. The repository is https://github.com/LegendT/UK-State-Pension-Explorer. All work is merged into `main`, up to pull request 12. Pull request 10, from `handover-review-note`, added the marking of the current section in the "On this page" list, decision 53, and carried the handover note that records pull request 9. It was merged on 30 September 2026. Pull request 8 carried the work on the UX review of 30 September 2026, and pull request 9 recorded the owner's answers on it: see "UX review of 30 September 2026". Merged: pull request 1, the first build, on 29 September 2026; pull request 2, from `first-build`, pull request 3, from `april-2030-rule`, and pull request 4, from `homepage-orientation`, on 30 September 2026. Pull request 3 carried the markup sweep and stylesheet fixes of `html-semantics` and the update for the government's announcement of 29 September 2026. Pull request 4 added a table of State Pension age by date of birth to the overview: decision 44. Pull request 5 corrected the handover. Pull request 6, from `rule-2030-calculator`, adds the announced rule to the rule comparison: decision 38. It was merged on 30 September 2026. Pull request 7, from `handover-pr6`, recorded pull request 6 in this handover. Netlify builds `main` to the main address and a deploy preview of each pull request into `main`, all behind a sign-in.
 
-**Pull request 11**, from `defect-11-and-research`, merged on 1 October 2026: defect 11 closed, decisions 54 to 57, and the two items the research of 30 September left out, decision 58. See "Defect 11, 1 October 2026" and "Two items added, 1 October 2026". The owner's answers of the same day are on the branch `owner-answers-1-oct`: see "Owner's answers of 1 October 2026".
+**Pull request 11**, from `defect-11-and-research`, merged on 1 October 2026: defect 11 closed, decisions 54 to 57, and the two items the research of 30 September left out, decision 58. See "Defect 11, 1 October 2026" and "Two items added, 1 October 2026". The owner's answers of the same day were merged in pull request 12: see "Owner's answers of 1 October 2026". Review points W1 to W4 from its critique are on the branch `review-points-1-oct`, not pushed.
 
 **Next action:** none is authorised. On 29 September 2026 the government announced a change to the triple lock from April 2030 and a National Care Service. The site was brought up to date on 30 September 2026, on the branch `april-2030-rule`: see "The announcement of 29 September 2026". It is merged into `main`. The rule is in the rule comparison, with its assumptions labelled: decisions 38 and 45.
 
@@ -123,7 +123,7 @@ Not checked on the deployed preview: the other three calculators, any browser bu
 - The download and copy buttons of the history explorer were not pressed in a test.
 - The sister sites' tools were read from served HTML. They were not run.
 - House of Commons Library briefings and Hansard could not be opened.
-- Nothing on the main site address beyond the sign-in, and nothing on a production domain. The deploy preview of pull request 1 was checked, and the deploy previews of pull requests 2 to 11 were not: see "Checks on the deployed preview". Fetched share previews on a social platform were not checked.
+- Nothing on the main site address beyond the sign-in, and nothing on a production domain. The deploy preview of pull request 1 was checked, and the deploy previews of pull requests 2 to 12 were not: see "Checks on the deployed preview". Fetched share previews on a social platform were not checked.
 - Search console verification, sitemap submission, indexing.
 
 ## Owner decisions needed for launch
@@ -250,7 +250,7 @@ The Income Tax commitment rests on the speech as printed by a newspaper. No gove
 
 ## Owner's answers of 1 October 2026
 
-On the branch `owner-answers-1-oct`, not pushed.
+Merged in pull request 12, from `owner-answers-1-oct`, on 1 October 2026.
 
 | Question | Answer | Done |
 | --- | --- | --- |
@@ -273,6 +273,29 @@ On the branch `owner-answers-1-oct`, not pushed.
 
 Not checked: touch, a double-click on a card's description, a screen reader, forced colours, a real phone.
 
+## Review points of 1 October 2026
+
+From the critique of pull request 12. On the branch `review-points-1-oct`, not pushed. The owner asked for the recommendations to be applied.
+
+| ID | Point | Done |
+| --- | --- | --- |
+| W1 | The overlay was removed by the page's general `js` class, so a card lost its overlay if `cards.js` failed to load | Overtaken by W3: the overlay now stays in every case. `cards.js` still marks the list itself, and only the description's pointer cursor depends on that mark |
+| W2 | The card's focus ring was a box-shadow, which forced colours do not draw | Now a 3px outline, shown for keyboard focus only (`:has(a:focus-visible)`), on the owner's answer. Seen in Chrome with forced colours emulated. In Chrome, keyboard focus drew it and a mouse click did not |
+| W3 | A double-click on a card's description followed the link before it could select a word | Done on the owner's answer. Heydon Pickering's page and the other sources read have no fix for double-click. The description is raised above the overlay, his "raise" idea, and `cards.js` makes a click on it follow the link after 300 ms unless a second click comes. The name and padding follow at once. Without script the description is not a link target |
+| W4 | The decision log's header did not say that number 59 refines number 42 | The header now says so |
+| `NEXT-SESSION.md` | Edited by hand during the session, against the README | The owner confirmed on 1 October 2026 that only the handoff check writes it |
+| W5 | Launch dependency 11 is upkeep, not an owner's decision | To be decided with launch dependencies 1 to 10 |
+
+| Check | Command | Result |
+| --- | --- | --- |
+| Build | `npm run build` | No problems |
+| Calculator tests | `npm test` | 25 of 25 pass |
+| Automated accessibility | `npm run a11y` | 0 violations. Every incomplete contrast result measured, 4,125, none below threshold |
+| Behaviour | `npm run a11y:manual` | 0 problems |
+| Cards | A script in Chrome | A single click on the description followed the link after the wait. A double-click selected the word and stayed. A drag selected text and stayed. A click on the padding followed the link in 130 ms. Without script, the padding followed and the description did not. Keyboard focus drew the ring and a mouse click did not |
+
+Not checked: touch, a screen reader, a real phone. Forced colours were emulated, not tested on Windows.
+
 ## Waiting on the owner
 
 As at 1 October 2026.
@@ -280,14 +303,14 @@ As at 1 October 2026.
 | Item | What is needed |
 | --- | --- |
 | The deployed site | Netlify builds `main` after every merge, and each build on 30 September 2026 was ready. `netlify api listSiteDeploys` shows the latest. The main address answered 401 with `WWW-Authenticate: Basic`. Nobody has looked at the pages past the sign-in. Doing so needs the sign-in, which the owner enters |
-| Launch dependencies 1 to 10 | To go through one by one with the owner later on 1 October 2026, at the owner's request. See `docs/launch-dependencies.md` |
+| Launch dependencies 1 to 10 | To go through one by one with the owner later on 1 October 2026, at the owner's request. See `docs/launch-dependencies.md`. W5 is decided with them |
 
 ## Tracked separately
 
 | Item | Status |
 | --- | --- |
 | Reciprocal links on UK Public Finances Explorer and UK Migration Explorer | Not started. Needs a live domain. No other repository was changed |
-| Deployed checks | Done for the deploy preview of pull request 1. See "Checks on the deployed preview". Not done for pull requests 2 to 11, for the main site address beyond the sign-in, or for a production domain |
+| Deployed checks | Done for the deploy preview of pull request 1. See "Checks on the deployed preview". Not done for pull requests 2 to 12, for the main site address beyond the sign-in, or for a production domain |
 | Search console | Not started. Needs account and domain access |
 
 ## Found in passing
