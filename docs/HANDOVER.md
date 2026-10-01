@@ -1,6 +1,6 @@
 # Handover: first build
 
-Written 29 September 2026, updated 1 October 2026. The site is a **preview for review**. It is not published. The repository is https://github.com/LegendT/UK-State-Pension-Explorer. All work is merged into `main`, up to pull request 14. Pull request 10, from `handover-review-note`, added the marking of the current section in the "On this page" list, decision 53, and carried the handover note that records pull request 9. It was merged on 30 September 2026. Pull request 8 carried the work on the UX review of 30 September 2026, and pull request 9 recorded the owner's answers on it: see "UX review of 30 September 2026". Merged: pull request 1, the first build, on 29 September 2026; pull request 2, from `first-build`, pull request 3, from `april-2030-rule`, and pull request 4, from `homepage-orientation`, on 30 September 2026. Pull request 3 carried the markup sweep and stylesheet fixes of `html-semantics` and the update for the government's announcement of 29 September 2026. Pull request 4 added a table of State Pension age by date of birth to the overview: decision 44. Pull request 5 corrected the handover. Pull request 6, from `rule-2030-calculator`, adds the announced rule to the rule comparison: decision 38. It was merged on 30 September 2026. Pull request 7, from `handover-pr6`, recorded pull request 6 in this handover. Netlify builds `main` to the main address and a deploy preview of each pull request into `main`, all behind a sign-in.
+Written 29 September 2026, updated 1 October 2026. The site is a **preview for review**. It is not published. The repository is https://github.com/LegendT/UK-State-Pension-Explorer. All work is merged into `main`, up to pull request 15. Pull request 10, from `handover-review-note`, added the marking of the current section in the "On this page" list, decision 53, and carried the handover note that records pull request 9. It was merged on 30 September 2026. Pull request 8 carried the work on the UX review of 30 September 2026, and pull request 9 recorded the owner's answers on it: see "UX review of 30 September 2026". Merged: pull request 1, the first build, on 29 September 2026; pull request 2, from `first-build`, pull request 3, from `april-2030-rule`, and pull request 4, from `homepage-orientation`, on 30 September 2026. Pull request 3 carried the markup sweep and stylesheet fixes of `html-semantics` and the update for the government's announcement of 29 September 2026. Pull request 4 added a table of State Pension age by date of birth to the overview: decision 44. Pull request 5 corrected the handover. Pull request 6, from `rule-2030-calculator`, adds the announced rule to the rule comparison: decision 38. It was merged on 30 September 2026. Pull request 7, from `handover-pr6`, recorded pull request 6 in this handover. Netlify builds `main` to the main address and a deploy preview of each pull request into `main`, all behind a sign-in.
 
 **Pull request 11**, from `defect-11-and-research`, merged on 1 October 2026: defect 11 closed, decisions 54 to 57, and the two items the research of 30 September left out, decision 58. See "Defect 11, 1 October 2026" and "Two items added, 1 October 2026". The owner's answers of the same day were merged in pull request 12: see "Owner's answers of 1 October 2026". Review points W1 to W4 from its critique were merged in pull request 13. The corrections from an external factual audit were merged in pull request 14: see "External audit of 1 October 2026".
 
@@ -260,6 +260,7 @@ Merged in pull request 12, from `owner-answers-1-oct`, on 1 October 2026.
 | Markup conventions in the README | Accepted | Recorded in the README |
 | Primary source for a spoken commitment | The best full printing, labelled, replaced if an official text appears | Decision 59 |
 | Critique suggestions | Rounding note on the poll, a link from question 10 to the tax note, and the check's scroll: yes. Two more build checks: not asked for | All three done. The behaviour check now scrolls to the second section and at least a window past the first heading |
+| "Back to contents" links | Confirm keeping several on a page. The assistant's reading: SC 2.4.4 is met, because each goes to the same place. See "Sources and the rule comparison, 1 October 2026" |
 | Launch dependencies 1 to 10 | Later on 1 October 2026, not next | On the waiting list |
 
 | Check | Command | Result |
@@ -333,11 +334,11 @@ The critique of the corrections raised ten smaller points, A1 to A10, put to the
 
 ## Sources and the rule comparison, 1 October 2026
 
-Asked for by the owner. On the branch `compare-page-and-sources`, not pushed. Decisions 61 and 62.
+Asked for by the owner. Merged in pull request 15, from `compare-page-and-sources`, on 1 October 2026. Decisions 61 and 62.
 
 - **Sources** are drawn as chips, so they read apart from the sentence: decision 61.
 - **The rule comparison** has its own page, `/reform-options/compare/`. Its result redraws as the figures change, and a summary of each rule's amount stays in view: decision 62.
-- **"Back to contents" links.** The owner asked whether several on one page break the guideline on link text. They do not. SC 2.4.4 asks that a link's purpose be clear from its text or context, and every one goes to the same place. The cost is repetition in a screen reader's list of links, below 1024 px only. Kept as they are.
+- **"Back to contents" links.** The owner asked whether several on one page break the guideline on link text. They do not, in the assistant's reading. SC 2.4.4 asks that a link's purpose be clear from its text or context, and every one goes to the same place. The cost is repetition in a screen reader's list of links, below 1024 px only. Kept as they are, on the assistant's recommendation. Not yet confirmed by the owner.
 
 | Check | Command | Result |
 | --- | --- | --- |
@@ -351,6 +352,26 @@ Asked for by the owner. On the branch `compare-page-and-sources`, not pushed. De
 The critique of this work (Sonnet 5.5) found a real fault: typing a new number of years left the rows at the old count, so a copied link lost its figures. The rows now redraw as the number is typed. Also fixed after it: the bar's styles were written for wide screens first, against the house rule, and are now mobile-first; the bar pins only on a screen at least 32rem tall, so at 400% zoom it follows the form; it no longer scrolls inside itself; the summary carries the "Hypothetical" label; the scenario sources use `m.ref`; the "No result" block is a note; "The other scenarios" is "The scenarios"; and an old link to the assumptions is sent on. Three points were not applied and wait on the owner, in the table below.
 
 Not checked: a screen reader, a real phone, touch, an on-screen keyboard.
+
+## Asset caching, 1 October 2026
+
+After pull request 15 was merged, the owner found the rule comparison on the deployed preview not updating when the inputs changed. The owner then ran a deploy without the cache, and it worked. The likely cause, not proven: `netlify.toml` let browsers reuse anything under `/assets/` for an hour without asking, and the file names do not change between versions, so a browser could run the old `compare.js`, which waits for a button the new page no longer has. A Netlify deploy without cache clears the build cache, not a browser's copy, so that deploy may not be what fixed it.
+
+The rule now makes a browser check with the server before reusing a file (`max-age=0, must-revalidate`, which is also Netlify's default for files that are not fingerprinted). A browser that cached a file under the old rule can still keep it for up to an hour after this is deployed. On the branch `summary-differences`, with decision 63, not pushed. Not checked on the deployed site: that needs the sign-in, and the header is set by Netlify, not by the local server.
+
+## The saving in the rule comparison, 1 October 2026
+
+The owner noted that the comparison did not seem to save any money. It did, but the summary listed five amounts with no gap shown, for one person. Decision 63: the summary now gives each rule's gap from the triple lock, and a paragraph after it gives the number of people receiving the State Pension (13.3 million in March 2026; the DWP forecast for 2030/31) and the average new State Pension, with a link to what a change would save. The tool does not multiply them. On the branch `summary-differences`, with the asset caching change, not pushed.
+
+| Check | Command | Result |
+| --- | --- | --- |
+| Build | `npm run build` | No problems |
+| Calculator tests | `npm test` | 28 of 28 pass. A new test of the summary's gap failed on the first version of its index rounding |
+| Automated accessibility | `npm run a11y` | 0 violations. Every incomplete contrast result measured, 4,031, none below threshold |
+| Behaviour | `npm run a11y:manual` | 0 problems |
+| Rendered | Screenshots in Chrome | The summary at 1400 and 390 px. The pinned summary is now about 235 px on a phone, so the page's padding at the foot went from 14rem to 16rem |
+
+A sentence first written as "Most get less than the full rate" was changed to the sourced average, because the share on the full rate is a known gap (number 4 under "Known defects and limits"). After the critique (Sonnet 5.5), the gap says "than the triple lock" to screen readers, and the triple lock's row says "for comparison".
 
 ## Waiting on the owner
 
@@ -366,6 +387,9 @@ As at 1 October 2026.
 | Rule comparison: while typing | A half-typed figure, such as "-", replaces the result and the summary with "Not available" after 400 ms. The alternative keeps the last result, marked out of date, until the figure is valid |
 | Rule comparison: phone keyboard | The pinned summary and an on-screen keyboard share a small screen. The alternative shrinks the summary to one line while a field has focus. Not tested on a real phone |
 | Rule comparison: typed figures | The page types "10p a week at most" and "2.5%" in its text. Under the README rule they would come from the registers |
+| Rule comparison: the gap shown | The summary gives the gap in the last year. The total over the period, in the full result's totals table, could be shown as well |
+| Rule comparison: "less" is not a cut | The full result says a lower amount is a smaller rise, not a cut. The pinned summary does not, for want of room |
+| Rule comparison: pinned summary | Its padding is a fixed 16rem. Pinning it with `position: sticky; bottom: 0` inside the layout needs no padding and adapts to larger text |
 
 ## Tracked separately
 

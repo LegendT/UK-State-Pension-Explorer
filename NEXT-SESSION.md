@@ -11,9 +11,9 @@ Do not read _archive/. Read research/ only when checking a figure. docs/ux-revie
 frozen record: read it for the reasoning behind recommendations R1 to R10, and never edit it.
 
 State on 1 October 2026: see the opening paragraphs of docs/HANDOVER.md. The site is a
-preview for review, not published. All work is merged into `main` up to pull request 13.
-Pull request 14, from `audit-corrections`, is open: the corrections from an external factual
-audit, decision 60. Run git status first.
+preview for review, not published. All work is merged into `main` up to pull request 15.
+The branch `summary-differences` holds the asset caching fix (decision 64) and the gaps in
+the rule comparison's summary (decision 63), not pushed. Run git status first.
 
 Next action: none. Wait for Anthony to say what to do. Nothing else is authorised.
 
