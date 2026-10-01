@@ -1,21 +1,25 @@
-// Makes each card under "Where to go next" follow its link when clicked anywhere, after Heydon
-// Pickering's cards pattern in Inclusive Components. It replaces the link's ::after overlay, so the
-// description can be selected: a press of 200 ms or more, a pointer that moves while pressed, or a
-// click that leaves text selected is taken as selecting text and ignored. Without this script the
-// overlay does the same job.
+// Cards under "Where to go next". The link's ::after overlay makes the name and padding of each card
+// follow the link at once. The description is raised above the overlay (see main.css), so it can be
+// selected by dragging, double-clicking or triple-clicking. This script makes a click on the
+// description follow the link too, after a short wait: a second click in that time is a double-click
+// to select a word, so the link is not followed. Neither Heydon Pickering's cards pattern nor the
+// other sources read on 1 October 2026 had a fix for double-click, because the first click of a
+// double-click cannot be told from a single click until the second arrives. A double-click slower
+// than the wait still follows the link.
 
-// The list is marked only once this script runs, so the overlay stays if the script fails to load.
+const WAIT = 300; // ms
 const list = document.querySelector(".journeys");
-list?.classList.add("cards-scripted");
+list.classList.add("cards-scripted");
 
-for (const card of list ? list.querySelectorAll("li") : []) {
-  const link = card.querySelector("a");
-  let down = 0, x = 0, y = 0;
-  card.addEventListener("mousedown", (event) => { down = Date.now(); x = event.clientX; y = event.clientY; });
-  card.addEventListener("mouseup", (event) => {
-    // The link handles its own clicks, and a modified click is the reader's to decide.
-    if (event.target.closest("a") || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
-    if (Date.now() - down >= 200 || Math.hypot(event.clientX - x, event.clientY - y) > 4 || String(getSelection())) return;
-    link.click();
+for (const text of list.querySelectorAll("li > p")) {
+  const link = text.parentElement.querySelector("a");
+  let timer;
+  text.addEventListener("mousedown", (event) => { if (event.detail > 1) clearTimeout(timer); });
+  text.addEventListener("click", (event) => {
+    clearTimeout(timer);
+    // A double-click selects a word. A modified click does nothing here: to open the page in a new
+    // tab, use the card's name, which is the link.
+    if (event.detail > 1 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    timer = setTimeout(() => { if (getSelection().isCollapsed) link.click(); }, WAIT);
   });
 }
