@@ -309,7 +309,7 @@ An AI-assisted factual audit by another tool, of commit `82632cb` (pull request 
 | F05 | "A means test does not look at rent, disability or care" | Says some allow for what a person has to spend. New claim `care-means-test-allowances` and source `dhsc-care-statutory-guidance`, Annex C, paragraph 49 |
 | F06 | 71% and 23% applied to all pensioners | Says recent retirees, as the IFS does. The register's quoted passage now starts with "For recent retirees", the definitions say recent retirees, and the period names the 2023 study |
 | F07 to F09 | The rule comparison said what the rules always do | Says what they tend to do. The calculator shows cases where the rules coincide |
-| F10 | Attendance Allowance in Northern Ireland was left out | Table row and State Pension page. New claim `aa-northern-ireland` and source `nidirect-attendance-allowance` |
+| F10 | Attendance Allowance in Northern Ireland was left out | Table row and State Pension page say it is also paid there, with claim packs from the Disability and Carers Service. New claim `aa-northern-ireland` and source `nidirect-attendance-allowance` |
 | F11 | Rounding could take an amount below the cash floor | `compareRules` applies the floor after rounding. New test, which failed without the fix |
 | F12 | The page promised to clear entries on leaving, but a restored page kept the result | Every showing of the page clears the form and the result. The privacy wording says what the page does |
 | F13 | CPI was "the main official measure" | "An official measure". ONS calls CPIH its lead measure |
@@ -320,14 +320,16 @@ An AI-assisted factual audit by another tool, of commit `82632cb` (pull request 
 
 | Check | Command | Result |
 | --- | --- | --- |
-| Passages | `python3 scripts/check-passages.py` | 203 checked, none missing, including the new and changed ones |
+| Passages | `python3 scripts/check-passages.py` | 204 checked, none missing, including the new and changed ones. Re-run after the A points |
 | Build | `npm run build` | No problems. 154 claims, 99 sources |
 | Calculator tests | `npm test` | 26 of 26 pass. Without the F11 fix, the new test fails |
 | Automated accessibility | `npm run a11y` | 0 violations. Every incomplete contrast result measured, 4,137, none below threshold |
 | Behaviour | `npm run a11y:manual` | 0 problems |
 | Budget tool | A script in Chrome | A monthly £1,000 became £230.77 a week when the pension helper ran, and the status said so. A yearly £5,200 became £100.00 when a budget loaded. A restored-page event cleared the result; with the old code the result kept the amounts. An ordinary page show also clears it |
 
-Not checked: a real restore from the browser's back-forward cache (headless Chrome reloaded the page instead), and the audit's register of 271 items, which was not supplied. The critique of the corrections left 15 smaller points that were not applied: see the list given to the owner on 1 October 2026.
+Not checked: a real restore from the browser's back-forward cache (headless Chrome reloaded the page instead), and the audit's register of 271 items, which was not supplied.
+
+The critique of the corrections raised ten smaller points, A1 to A10, put to the owner the same day. Applied on the owner's answer: each claim's quoted passage now covers every fact it states (A1), the richest-fifth figure has a passage (A2), the year of the earnings ratio comes from the register (A3), the budget tool's conversion note names only conversions that stay (A4), and the Pension Credit couple rule sits before the take-up paragraph (A10). A5 needed no change: the triple lock page makes no promise about reloading. A7, applying the cash floor after rounding in the history explorer too, was declined, and the reason is beside the code in `uprating.js`. A6, A8 and A9 are deferred, in the table below.
 
 ## Waiting on the owner
 
@@ -337,6 +339,9 @@ As at 1 October 2026.
 | --- | --- |
 | The deployed site | Netlify builds `main` after every merge, and each build on 30 September 2026 was ready. `netlify api listSiteDeploys` shows the latest. The main address answered 401 with `WWW-Authenticate: Basic`. Nobody has looked at the pages past the sign-in. Doing so needs the sign-in, which the owner enters |
 | Launch dependencies 1 to 10 | To go through one by one with the owner later on 1 October 2026, at the owner's request. See `docs/launch-dependencies.md`. W5 is decided with them |
+| A6, deferred | Add the expected values of the new cash-floor test, 241.32 pounds at minus 1%, to `scripts/reference.py` and `docs/reference-calculations.md` |
+| A8, deferred | The register sentence on the method page says "headline figures". Name every kind of record instead |
+| A9, deferred | The 71% and 23% figures have the basis "individual", but the underlying 2023 study counted households. Check the study, then align the basis |
 
 ## Tracked separately
 

@@ -36,13 +36,14 @@ function showHousehold() {
 }
 
 // The helpers fill in weekly amounts, so they set the period to a week. Amounts already entered
-// for another period are converted first, so that none of them changes its meaning.
-function toWeekly() {
+// for another period are converted first, so that none of them changes its meaning. Fields the
+// helper is about to fill are left alone, so the note names only conversions that stay.
+function toWeekly(filled = []) {
   const from = period.value;
   period.value = "week";
   if (from === "week") return "";
   let converted = false;
-  for (const field of [...data.income, ...data.categories].map((item) => input(item.id)).concat(tax)) {
+  for (const field of [...data.income, ...data.categories].filter((item) => !filled.includes(item.id)).map((item) => input(item.id)).concat(tax)) {
     const pence = parsePence(field.value);
     if (field.value.trim() === "" || pence === null) continue;
     field.value = (Math.round((pence * PERIODS[from]) / PERIODS.week) / 100).toFixed(2);
@@ -57,7 +58,7 @@ function loadPreset() {
     about.innerHTML = "<p>Choose an example budget first.</p>";
     return;
   }
-  const note = toWeekly();
+  const note = toWeekly(data.categories.map((category) => category.id));
   for (const category of data.categories) {
     const pence = chosen.pence[category.id] || 0;
     input(category.id).value = pence ? (pence / 100).toFixed(2) : "";
@@ -76,7 +77,7 @@ function loadPreset() {
 }
 
 function fillPension() {
-  const note = toWeekly();
+  const note = toWeekly(["state-pension"]);
   input("state-pension").value = data.full_new_rate;
   setError(input("state-pension"), "");
   announce(status, `State Pension set to the full new rate, ${data.full_new_rate} pounds a week. The period is set to a week.${note}`);

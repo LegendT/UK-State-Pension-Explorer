@@ -130,7 +130,8 @@ export function compareRules(startPence, path, cashFloor = true) {
         ({ tenths, determining } = upratingFor(rule, input.prices, input.earnings, cashFloor));
         ({ pence } = applyIncrease(previous, tenths));
         // Rounding to 5p can take a starting amount that is not a multiple of 5p below where it
-        // was, so the cash floor is applied after rounding as well.
+        // was, so the cash floor is applied after rounding as well. The history explorer does not
+        // need this: it starts from published rates, which are always multiples of 5p.
         if (cashFloor) pence = Math.max(pence, previous);
       }
       years.push({ year: i + 1, pence, tenths, determining, changePence: pence - previous });
