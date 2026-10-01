@@ -67,12 +67,13 @@ function loadPreset() {
   presetLabel = chosen.label;
   about.innerHTML =
     `<p><strong>Loaded: ${chosen.label}.</strong> Amounts are weekly, so the period is now set to a week. Change any amount to match your own spending.</p>` +
-    `<ul><li>A research budget: what research found a standard of living costs. It is not what people spend and not an entitlement.</li>` +
-    `<li>Prices: ${chosen.price_date}. Area: ${chosen.geography}.</li>` +
-    `<li>Housing: ${chosen.housing}</li>` +
-    `<li>Left out: ${chosen.exclusions}</li>` +
-    (chosen.note ? `<li>${chosen.note}</li>` : "") +
-    `<li>Source: ${chosen.source}. ${chosen.table_reference}</li></ul>`;
+    `<p>A research budget: what research found a standard of living costs. It is not what people spend and not an entitlement.</p>` +
+    (chosen.note ? `<p>${chosen.note}</p>` : "") +
+    `<dl><div><dt>Prices</dt> <dd>${chosen.price_date}</dd></div>` +
+    `<div><dt>Area</dt> <dd>${chosen.geography}</dd></div>` +
+    `<div><dt>Housing</dt> <dd>${chosen.housing}</dd></div>` +
+    `<div><dt>Left out</dt> <dd>${chosen.exclusions}</dd></div>` +
+    `<div><dt>Source</dt> <dd>${chosen.source}. ${chosen.table_reference}</dd></div></dl>`;
   announce(status, `Example budget loaded into the spending fields: ${chosen.label}.${note}`);
 }
 

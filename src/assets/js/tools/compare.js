@@ -165,6 +165,12 @@ form.addEventListener("change", later);
 
 reset();
 
+// The pinned summary's height changes with its contents, the width and the reader's text settings,
+// so the page padding that keeps it from covering anything is its measured height, not a guess.
+new ResizeObserver(([entry]) => {
+  document.documentElement.style.setProperty("--summary-size", `${Math.ceil(entry.borderBoxSize[0].blockSize)}px`);
+}).observe(summary.parentElement);
+
 // A link with settings in its address shows that result. Nothing is announced or focused on arrival.
 // Typed values are checked by the same rules as the form before anything is shown.
 const settings = readSettings();
