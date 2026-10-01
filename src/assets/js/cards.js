@@ -4,7 +4,11 @@
 // click that leaves text selected is taken as selecting text and ignored. Without this script the
 // overlay does the same job.
 
-for (const card of document.querySelectorAll(".journeys li")) {
+// The list is marked only once this script runs, so the overlay stays if the script fails to load.
+const list = document.querySelector(".journeys");
+list?.classList.add("cards-scripted");
+
+for (const card of list ? list.querySelectorAll("li") : []) {
   const link = card.querySelector("a");
   let down = 0, x = 0, y = 0;
   card.addEventListener("mousedown", (event) => { down = Date.now(); x = event.clientX; y = event.clientY; });
