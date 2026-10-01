@@ -150,10 +150,12 @@ for (const path of pages) {
     steps.push(["bottom marks the last link", (await current()) === count - 1]);
     await (await fourth.$$(links))[0].click(); await frames();
     steps.push(["following the first link marks it", (await current()) === 0]);
-    // Scroll to the second section, not a fixed distance: a first section can be longer than any fixed step.
+    // Scroll to the second section, and at least a window past the first heading so the followed
+    // link's hold lets go: a first section can be longer than any fixed step, or shorter than a window.
     await fourth.evaluate((sel) => {
-      const second = document.getElementById(document.querySelectorAll(sel)[1].hash.slice(1));
-      scrollTo(0, second.getBoundingClientRect().top + scrollY);
+      const [first, second] = [...document.querySelectorAll(sel)].slice(0, 2).map((a) => document.getElementById(a.hash.slice(1)));
+      const top = (el) => el.getBoundingClientRect().top + scrollY;
+      scrollTo(0, Math.max(top(second), top(first) + innerHeight));
     }, links); await frames();
     steps.push(["scrolling on moves the mark from the first link", ![0, -1].includes(await current())]);
     await (await fourth.$$(links))[mid].click(); await frames();

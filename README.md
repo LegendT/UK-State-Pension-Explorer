@@ -68,6 +68,7 @@ A11Y_ASSESSMENT_DATE=2026-10-01 AI_CRAWLER_POLICY=allow npm run build
 | `src/assets/js/lib/` | Calculations and views. No DOM. Used by the build and the browser. |
 | `src/assets/js/tools/` | The four calculators' page scripts. |
 | `src/assets/js/contents.js` | Marks the section being read in the "On this page" list. |
+| `src/assets/js/cards.js` | Makes each card under "Where to go next" on the overview follow its link when clicked anywhere, unless the reader is selecting text. |
 | `test/` | Tests. |
 | `scripts/` | Build check, accessibility runs, source checks, reference calculations. |
 | `research/` | The research record behind the registers. |
@@ -80,7 +81,7 @@ Netlify builds a preview from `main`, using `netlify.toml`. The preview asks for
 
 ## Markup conventions
 
-Set on 29 September 2026 after a sweep of every built page, and changed on 1 October 2026 for defect 11 of the handover. Section 8 of `scripts/check-build.mjs` holds the rules a pattern can test: table regions named by their captions, a space between `</dt>` and `<dd>`, a chart named by its title alone and starting with its `figcaption`, notes that start with a heading, named sections for calculators only, and named `nav` elements. The others need reading.
+Set on 29 September 2026 after a sweep of every built page, and changed on 1 October 2026 for defect 11 of the handover. Accepted by the owner on 1 October 2026. Section 8 of `scripts/check-build.mjs` holds the rules a pattern can test: table regions named by their captions, a space between `</dt>` and `<dd>`, a chart named by its title alone and starting with its `figcaption`, notes that start with a heading, named sections for calculators only, and named `nav` elements. The others need reading.
 
 | Rule | Where it applies |
 | --- | --- |
@@ -91,7 +92,7 @@ Set on 29 September 2026 after a sweep of every built page, and changed on 1 Oct
 | A label with one value is a `dl`. So is a list of names, each with its description. Keep a space between `</dt>` and `<dd>`. A list of points that each open with a bold sentence stays a `ul`: the sentence is the point, not a name. A numbered sequence stays an `ol`. | Figure details, calculator results, the options, the measures, the situations on the overview, the history of the triple lock, the accessibility statement |
 | The period, place, range and source under a figure are a `dl` with a `div` round each pair. The status labels come before it and the caveat after it, each in its own paragraph. | Every source note, from `m.sourceNote` |
 | A chart is a `figure` with its title in a `figcaption`. The title states what the chart shows and is worked out from the result, never typed. The image is named by its `title` alone. Its `desc` is joined with `aria-describedby`. | The history explorer and the rule comparison |
-| A link that stands for a card holds the card's name only. The description follows it as a paragraph, and the link's `::after` covers the card so the whole card can be clicked. | "Where to go next" on the overview |
+| A link that stands for a card holds the card's name only. The description follows it as a paragraph. Without script, the link's `::after` covers the card so the whole card can be clicked. With script, `cards.js` does that instead, after Heydon Pickering's cards pattern, so the description can still be selected. The card shows a focus ring while its link has focus. | "Where to go next" on the overview |
 | An `h3` without an `id` gets one at build time, made from its words, so changing the words changes the link. Give it an `id` by hand if another page links to it. Result headings that a calculator draws in the browser get no `id`. A page with a contents list gets "Back to contents" links at build time. Both are in `eleventy.config.js`. | Every page |
 | A date that a template prints is a `time` element: `timeTag` for a day, `monthOrDayTag` for a source that gives a month only. Dates typed inside register text stay plain. | Citations, check dates, the register of sources |
 | Words taken from a source are in `q` or in quotation marks. | Quoted passages |
