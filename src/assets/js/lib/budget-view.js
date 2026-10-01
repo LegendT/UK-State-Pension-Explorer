@@ -47,8 +47,8 @@ export function renderBudget(input) {
     (result.shortfall
       ? `<p>A shortfall means the spending entered is more than the income entered. The tool has not changed any of your figures to make them fit.</p>`
       : "") +
-    `<div class="scroll-x" tabindex="0" role="region" aria-label="Summary of income, tax and spending"><table>` +
-    `<caption>Summary</caption><thead><tr><th scope="col">Item</th><th scope="col" class="num">A week</th><th scope="col" class="num">A year</th></tr></thead><tbody>` +
+    `<div class="scroll-x" tabindex="0" role="region" aria-labelledby="budget-summary-caption"><table>` +
+    `<caption id="budget-summary-caption">Summary of income, tax and spending</caption><thead><tr><th scope="col">Item</th><th scope="col" class="num">A week</th><th scope="col" class="num">A year</th></tr></thead><tbody>` +
     `<tr><th scope="row">Income before tax</th>${pair(result.incomePence)}</tr>` +
     (result.taxKnown
       ? `<tr><th scope="row">Tax you entered</th>${pair(result.taxPence)}</tr><tr><th scope="row">Income after that tax</th>${pair(result.incomeAfterTaxPence)}</tr>`
@@ -57,11 +57,11 @@ export function renderBudget(input) {
     `<tr><th scope="row">${balanceName}</th>${pair(result.balancePence)}</tr>` +
     `</tbody></table></div>` +
     (incomeRows
-      ? `<div class="scroll-x" tabindex="0" role="region" aria-label="Income by source"><table><caption>Income by source, before tax</caption>` +
+      ? `<div class="scroll-x" tabindex="0" role="region" aria-labelledby="budget-income-caption"><table><caption id="budget-income-caption">Income by source, before tax</caption>` +
         `<thead><tr><th scope="col">Source</th><th scope="col" class="num">A week</th><th scope="col" class="num">A year</th></tr></thead><tbody>${incomeRows}</tbody></table></div>`
       : "") +
     (spendingRows
-      ? `<div class="scroll-x" tabindex="0" role="region" aria-label="Spending by category"><table><caption>Spending by category</caption>` +
+      ? `<div class="scroll-x" tabindex="0" role="region" aria-labelledby="budget-spending-caption"><table><caption id="budget-spending-caption">Spending by category</caption>` +
         `<thead><tr><th scope="col">Category</th><th scope="col" class="num">A week</th><th scope="col" class="num">A year</th><th scope="col" class="num">Share of spending</th></tr></thead><tbody>${spendingRows}</tbody></table></div>`
       : "") +
     `<p>Weekly amounts are the yearly amount divided by 52, rounded to the nearest penny. A year is counted as 52 weeks, 13 four-week periods or 12 months.</p>` +

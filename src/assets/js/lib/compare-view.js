@@ -85,9 +85,9 @@ function summary(result, labels) {
   return lines.join("");
 }
 
-function table(caption, head, rows, label) {
+function table(caption, head, rows, id) {
   return (
-    `<div class="scroll-x" tabindex="0" role="region" aria-label="${label}"><table><caption>${caption}</caption>` +
+    `<div class="scroll-x" tabindex="0" role="region" aria-labelledby="${id}"><table><caption id="${id}">${caption}</caption>` +
     `<thead><tr>${head.map((cell, i) => `<th scope="col"${i ? ' class="num"' : ""}>${cell}</th>`).join("")}</tr></thead>` +
     `<tbody>${rows
       .map((row) => `<tr>${row.map((cell, i) => (i ? `<td class="num">${cell}</td>` : `<th scope="row">${cell}</th>`)).join("")}</tr>`)
@@ -157,14 +157,14 @@ export function renderComparison(options) {
         return `${percent(entry.tenths)}, ${list(entry.determining.map((name) => MEASURE_LABELS[name]))}`;
       }),
     ]),
-    "The figures used for each year",
+    "compare-inputs-caption",
   );
 
   const values = table(
-    `${info.label}: ${info.unit}`,
+    `${info.label}, by rule and year: ${info.unit}`,
     ["Tax year", ...ruleNames],
     labels.map((label, i) => [label, ...RULES.map((rule) => show(result.rules[rule].years[i], measure))]),
-    `${info.label}, by rule and year`,
+    "compare-values-caption",
   );
 
   const difference = table(
@@ -174,7 +174,7 @@ export function renderComparison(options) {
       label,
       ...RULES.slice(1).map((rule) => signed(result.rules[rule].years[i + 1].differencePence)),
     ]),
-    "Weekly difference from the triple lock",
+    "compare-difference-caption",
   );
 
   const totals = table(
@@ -187,7 +187,7 @@ export function renderComparison(options) {
       money(Math.round(result.rules[rule].realTotalPence)),
       rule === "triple-lock" ? "Not applicable" : signed(result.rules[rule].realTotalDifferencePence),
     ]),
-    "Totals over the period",
+    "compare-totals-caption",
   );
 
   return (

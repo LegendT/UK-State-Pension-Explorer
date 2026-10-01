@@ -181,7 +181,7 @@ permalink: /reform-options/
     <details class="more" id="compare-edit">
       <summary>Change the figures for each year</summary>
       <p>Per cent, from -10 to 25, with one decimal place. All five rules use the same figures.</p>
-      <div class="scroll-x" tabindex="0" role="region" aria-label="Figures for each year">
+      <div class="scroll-x" tabindex="0" role="region">
         <table>
           <caption>Rise in prices and earnings used for each year</caption>
           <thead><tr><th scope="col">Tax year</th><th scope="col">Rise in prices (%)</th><th scope="col">Rise in earnings (%)</th></tr></thead>
@@ -212,14 +212,14 @@ permalink: /reform-options/
   <p>The scenarios were chosen to show different behaviour, including scenarios where several rules give the same answer. A result changes with the starting amount, the number of years and the figures. No single scenario shows what will happen.</p>
 
   <h3>How the tool calculates</h3>
-  <ul>
-    <li><strong>Timing.</strong> The starting amount is the rate in the year before the first year. Each year has one figure for prices and one for earnings, and they set that year's increase.</li>
-    <li><strong>A simplification.</strong> In practice an April increase uses figures from the year before. The tool does not model that delay. It treats each year's figure as the change in prices, or earnings, between one year and the next.</li>
-    <li><strong>Rounding.</strong> Each year's weekly amount is rounded to the nearest 5p, and the rounded amount is the base for the next year.</li>
-    <li><strong>Buying power.</strong> The cash amount divided by a price index built from the prices figures. The starting year is 1.</li>
-    <li><strong>Compared with earnings.</strong> The rise in the amount divided by the rise in an earnings index built from the earnings figures. It is an index, not a share of any pay figure in pounds.</li>
-    <li><strong>Totals.</strong> 52 weeks a year at that year's rate.</li>
-  </ul>
+  <dl>
+    <dt>Timing</dt> <dd>The starting amount is the rate in the year before the first year. Each year has one figure for prices and one for earnings, and they set that year's increase.</dd>
+    <dt>A simplification</dt> <dd>In practice an April increase uses figures from the year before. The tool does not model that delay. It treats each year's figure as the change in prices, or earnings, between one year and the next.</dd>
+    <dt>Rounding</dt> <dd>Each year's weekly amount is rounded to the nearest 5p, and the rounded amount is the base for the next year.</dd>
+    <dt>Buying power</dt> <dd>The cash amount divided by a price index built from the prices figures. The starting year is 1.</dd>
+    <dt>Compared with earnings</dt> <dd>The rise in the amount divided by the rise in an earnings index built from the earnings figures. It is an index, not a share of any pay figure in pounds.</dd>
+    <dt>Totals</dt> <dd>52 weeks a year at that year's rate.</dd>
+  </dl>
 
   <h4 id="rule-2030-assumptions">The rule announced for April 2030: the assumptions</h4>
   <p>{{ ("ifs-rule-2030-mechanism" | claim).statement }} {{ m.c("ifs-rule-2030-mechanism") }} The tool follows that description. Each year it takes the highest of three amounts: last year's rate raised by prices, last year's rate raised by 2.5%, and the earnings target. The earnings target is the starting amount carried forward by all the earnings growth since the rule began.</p>

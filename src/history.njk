@@ -26,7 +26,7 @@ permalink: /history/
 
 <h2 id="decisions">Every rate and decision</h2>
 
-{% call m.scrollTable("Full State Pension rates and the increase applied each year") %}
+{% call m.scrollTable() %}
 <table>
   <caption>Full weekly rates and the increase applied each year, as published</caption>
   <thead>
@@ -73,7 +73,7 @@ permalink: /history/
 {% set changed = 0 %}{% set counted = 0 %}{% for year in history.years %}{% if year.earnings_tenths !== null %}{% set counted = counted + 1 %}{% if year.earnings_tenths != year.earnings_current_tenths %}{% set changed = changed + 1 %}{% endif %}{% endif %}{% endfor %}
 In {{ changed }} of the {{ counted }} years from 2011/12, the figure published now is different.</p>
 
-{% call m.scrollTable("Earnings growth as used in each decision and as published now") %}
+{% call m.scrollTable() %}
 <table>
   <caption>Earnings growth: the figure used in each decision, and the figure published now</caption>
   <thead><tr><th scope="col">For tax year</th><th scope="col" class="num">Used in the decision</th><th scope="col" class="num">Published now</th></tr></thead>
@@ -157,12 +157,12 @@ In {{ changed }} of the {{ counted }} years from 2011/12, the figure published n
   </div>
 
   <h3>How the measures are worked out</h3>
-  <ul>
-    <li><strong>Cash.</strong> The published rate.</li>
-    <li><strong>Buying power.</strong> The published rate × the price index for the latest year ÷ the price index for that year. The index is the Consumer Prices Index level for the September before each rate took effect.</li>
-    <li><strong>Compared with earnings.</strong> The rise in the rate since the first year shown, divided by the rise in earnings over the same years. The rise in earnings is built from the figures used in each decision. It is an index, not a share of any pay figure in pounds.</li>
-    <li><strong>A calculation under another rule.</strong> The rule is applied year by year from the published rate of the first year, with rounding to the nearest 5p and no fall in pounds. It does not apply the special rules of exceptional years.</li>
-  </ul>
+  <dl>
+    <dt>Cash</dt> <dd>The published rate.</dd>
+    <dt>Buying power</dt> <dd>The published rate × the price index for the latest year ÷ the price index for that year. The index is the Consumer Prices Index level for the September before each rate took effect.</dd>
+    <dt>Compared with earnings</dt> <dd>The rise in the rate since the first year shown, divided by the rise in earnings over the same years. The rise in earnings is built from the figures used in each decision. It is an index, not a share of any pay figure in pounds.</dd>
+    <dt>A calculation under another rule</dt> <dd>The rule is applied year by year from the published rate of the first year, with rounding to the nearest 5p and no fall in pounds. It does not apply the special rules of exceptional years.</dd>
+  </dl>
   <div class="source">
     <p>Source for the price index: <a href="{{ history.sources.prices_index_url }}">{{ history.sources.prices_index }}</a> Checked against the source on {{ history.checked_date | timeTag | safe }}.</p>
   </div>

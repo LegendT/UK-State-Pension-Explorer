@@ -171,6 +171,26 @@ for (const link of links.outbound) {
   }
 }
 
+// 8. The markup conventions in the README that a pattern can hold. The others need reading.
+for (const [url, html] of written) {
+  for (const [div, attrs, inner] of html.matchAll(/<div class="scroll-x"([^>]*)>([\s\S]*?)<\/div>/g)) {
+    const caption = (inner.match(/^\s*<table[^>]*>\s*<caption id="([^"]+)"/) || [])[1];
+    const by = meta(attrs, /aria-labelledby="([^"]+)"/);
+    if (/^\s*<table/.test(inner) && (!caption || by !== caption)) fail(`${url}: a scrolling table is not named by its caption: ${div.slice(0, 120)}`);
+    if (!by && !/aria-label="[^"]+"/.test(attrs)) fail(`${url}: a scrolling region has no name`);
+  }
+  if (/<\/dt><dd>/.test(html)) fail(`${url}: a dt runs into its dd with no space`);
+  for (const [svg] of html.matchAll(/<svg[^>]*role="img"[^>]*>/g)) {
+    if (!/aria-labelledby="([^" ]+)-title" aria-describedby="\1-desc"/.test(svg)) fail(`${url}: a chart's name is not its title alone: ${svg}`);
+  }
+  for (const [, inner] of html.matchAll(/<figure class="chart">([\s\S]*?)<\/figure>/g)) if (!/^\s*<figcaption>/.test(inner)) fail(`${url}: a chart does not start with its figcaption`);
+  for (const [, cls, first] of html.matchAll(/<div class="([^"]*)" role="note">\s*<([a-z0-9]+)/g)) {
+    if (!/^h[2-6]$/.test(first) && !cls.includes("preview")) fail(`${url}: a ${cls} note does not start with a heading`);
+  }
+  for (const [section] of html.matchAll(/<section[^>]*aria-labelledby[^>]*>/g)) if (!section.includes('class="tool"')) fail(`${url}: a named section that is not a calculator: ${section}`);
+  for (const [nav] of html.matchAll(/<nav\b[^>]*>/g)) if (!/aria-label(ledby)?="/.test(nav)) fail(`${url}: a nav has no name`);
+}
+
 console.log(`check-build: ${written.size} pages, ${Object.keys(figures).length} figures, ${Object.keys(claims).length} claims, ${Object.keys(sources).length} sources, environment "${site.env}".`);
 for (const [kind, list] of Object.entries(unused)) if (list.length) console.log(`check-build: ${list.length} ${kind} in the register are not used on any page: ${list.join(", ")}`);
 if (problems.length) {

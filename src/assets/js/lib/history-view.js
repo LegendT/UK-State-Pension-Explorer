@@ -134,8 +134,8 @@ export function renderHistory(options) {
     `<p>Full rate, before tax.</p>` +
     `<figure class="chart"><figcaption><h4>${message}</h4><p>${HISTORY_MEASURES[measure]}</p></figcaption><div class="scroll-x" tabindex="0" role="region" aria-label="Chart: ${name}, ${from} to ${to}">${chart}</div>${markList}</figure>` +
     comparison +
-    `<div class="scroll-x" tabindex="0" role="region" aria-label="${name}, ${from} to ${to}, table"><table>` +
-    `<caption>${name}, ${from} to ${to}. ${HISTORY_MEASURES[measure]}</caption>` +
+    `<div class="scroll-x" tabindex="0" role="region" aria-labelledby="history-table-caption"><table>` +
+    `<caption id="history-table-caption">${name}, ${from} to ${to}. ${HISTORY_MEASURES[measure]}</caption>` +
     `<thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>`
   );
 }

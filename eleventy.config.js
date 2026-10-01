@@ -147,6 +147,16 @@ export default function (eleventyConfig) {
     });
   });
 
+  // A scrolling table region with no name is named by its table's caption, so the two cannot differ.
+  eleventyConfig.addTransform("tableRegions", function (content) {
+    if (!(this.page.outputPath || "").endsWith(".html")) return content;
+    let n = 0;
+    return content.replace(/<div class="scroll-x" tabindex="0" role="region">(\s*<table[^>]*>\s*)<caption>/g, (whole, table) => {
+      const id = `table-caption-${++n}`;
+      return `<div class="scroll-x" tabindex="0" role="region" aria-labelledby="${id}">${table}<caption id="${id}">`;
+    });
+  });
+
   // Every h3 gets an id taken from its words, so a reader can link to it. On a page with a contents
   // list, each section after the first starts with a link back to the list, and so does the end of main.
   const BACK = '<p class="to-contents"><a href="#contents-heading">Back to contents</a></p>\n';
