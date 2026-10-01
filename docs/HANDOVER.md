@@ -1,8 +1,8 @@
 # Handover: first build
 
-Written 29 September 2026, updated 1 October 2026. The site is a **preview for review**. It is not published. The repository is https://github.com/LegendT/UK-State-Pension-Explorer. All work is merged into `main`, up to pull request 12. Pull request 10, from `handover-review-note`, added the marking of the current section in the "On this page" list, decision 53, and carried the handover note that records pull request 9. It was merged on 30 September 2026. Pull request 8 carried the work on the UX review of 30 September 2026, and pull request 9 recorded the owner's answers on it: see "UX review of 30 September 2026". Merged: pull request 1, the first build, on 29 September 2026; pull request 2, from `first-build`, pull request 3, from `april-2030-rule`, and pull request 4, from `homepage-orientation`, on 30 September 2026. Pull request 3 carried the markup sweep and stylesheet fixes of `html-semantics` and the update for the government's announcement of 29 September 2026. Pull request 4 added a table of State Pension age by date of birth to the overview: decision 44. Pull request 5 corrected the handover. Pull request 6, from `rule-2030-calculator`, adds the announced rule to the rule comparison: decision 38. It was merged on 30 September 2026. Pull request 7, from `handover-pr6`, recorded pull request 6 in this handover. Netlify builds `main` to the main address and a deploy preview of each pull request into `main`, all behind a sign-in.
+Written 29 September 2026, updated 1 October 2026. The site is a **preview for review**. It is not published. The repository is https://github.com/LegendT/UK-State-Pension-Explorer. All work is merged into `main`, up to pull request 13. Pull request 10, from `handover-review-note`, added the marking of the current section in the "On this page" list, decision 53, and carried the handover note that records pull request 9. It was merged on 30 September 2026. Pull request 8 carried the work on the UX review of 30 September 2026, and pull request 9 recorded the owner's answers on it: see "UX review of 30 September 2026". Merged: pull request 1, the first build, on 29 September 2026; pull request 2, from `first-build`, pull request 3, from `april-2030-rule`, and pull request 4, from `homepage-orientation`, on 30 September 2026. Pull request 3 carried the markup sweep and stylesheet fixes of `html-semantics` and the update for the government's announcement of 29 September 2026. Pull request 4 added a table of State Pension age by date of birth to the overview: decision 44. Pull request 5 corrected the handover. Pull request 6, from `rule-2030-calculator`, adds the announced rule to the rule comparison: decision 38. It was merged on 30 September 2026. Pull request 7, from `handover-pr6`, recorded pull request 6 in this handover. Netlify builds `main` to the main address and a deploy preview of each pull request into `main`, all behind a sign-in.
 
-**Pull request 11**, from `defect-11-and-research`, merged on 1 October 2026: defect 11 closed, decisions 54 to 57, and the two items the research of 30 September left out, decision 58. See "Defect 11, 1 October 2026" and "Two items added, 1 October 2026". The owner's answers of the same day were merged in pull request 12: see "Owner's answers of 1 October 2026". Review points W1 to W4 from its critique are on the branch `review-points-1-oct`, not pushed.
+**Pull request 11**, from `defect-11-and-research`, merged on 1 October 2026: defect 11 closed, decisions 54 to 57, and the two items the research of 30 September left out, decision 58. See "Defect 11, 1 October 2026" and "Two items added, 1 October 2026". The owner's answers of the same day were merged in pull request 12: see "Owner's answers of 1 October 2026". Review points W1 to W4 from its critique were merged in pull request 13. The corrections from an external factual audit are on the branch `audit-corrections`, not pushed: see "External audit of 1 October 2026".
 
 **Next action:** none is authorised. On 29 September 2026 the government announced a change to the triple lock from April 2030 and a National Care Service. The site was brought up to date on 30 September 2026, on the branch `april-2030-rule`: see "The announcement of 29 September 2026". It is merged into `main`. The rule is in the rule comparison, with its assumptions labelled: decisions 38 and 45.
 
@@ -123,7 +123,7 @@ Not checked on the deployed preview: the other three calculators, any browser bu
 - The download and copy buttons of the history explorer were not pressed in a test.
 - The sister sites' tools were read from served HTML. They were not run.
 - House of Commons Library briefings and Hansard could not be opened.
-- Nothing on the main site address beyond the sign-in, and nothing on a production domain. The deploy preview of pull request 1 was checked, and the deploy previews of pull requests 2 to 12 were not: see "Checks on the deployed preview". Fetched share previews on a social platform were not checked.
+- Nothing on the main site address beyond the sign-in, and nothing on a production domain. The deploy preview of pull request 1 was checked, and the deploy previews of pull requests 2 to 13 were not: see "Checks on the deployed preview". Fetched share previews on a social platform were not checked.
 - Search console verification, sitemap submission, indexing.
 
 ## Owner decisions needed for launch
@@ -275,7 +275,7 @@ Not checked: touch, a double-click on a card's description, a screen reader, for
 
 ## Review points of 1 October 2026
 
-From the critique of pull request 12. On the branch `review-points-1-oct`, not pushed. The owner asked for the recommendations to be applied.
+From the critique of pull request 12. Merged in pull request 13, from `review-points-1-oct`, on 1 October 2026. The owner asked for the recommendations to be applied, and chose the fix for W3.
 
 | ID | Point | Done |
 | --- | --- | --- |
@@ -296,6 +296,39 @@ From the critique of pull request 12. On the branch `review-points-1-oct`, not p
 
 Not checked: touch, a screen reader, a real phone. Forced colours were emulated, not tested on Windows.
 
+## External audit of 1 October 2026
+
+An AI-assisted factual audit by another tool, of commit `82632cb` (pull request 4), in `~/Documents/Codex/2026-09-30/ver/outputs/pension-explorer-audit.html`. Verified against `main` at pull request 13 and against the sources: all 16 findings were still true. Decision 60. On the branch `audit-corrections`, not pushed.
+
+| ID | Finding | Correction |
+| --- | --- | --- |
+| F01 | Qualifying years for the full basic State Pension gave the men's bands to everyone | Claim `bsp-30-years` gives the bands for men and for women, from GOV.UK |
+| F02 | "Workplace or personal pension" was described as a pot | Says defined contribution, and what a defined benefit pension is. No claim on how common each is |
+| F03 | "None is paid automatically" | Says some are paid automatically. New claim `wfp-automatic` in the Winter Fuel Payment section |
+| F04 | Housing Benefit left out mixed-age couples | Claim `housing-benefit` gives the couple rule. New claim `pc-mixed-age` and source `govuk-pension-credit` |
+| F05 | "A means test does not look at rent, disability or care" | Says some allow for what a person has to spend. New claim `care-means-test-allowances` and source `dhsc-care-statutory-guidance`, Annex C, paragraph 49 |
+| F06 | 71% and 23% applied to all pensioners | Says recent retirees, as the IFS does. The register's quoted passage now starts with "For recent retirees", the definitions say recent retirees, and the period names the 2023 study |
+| F07 to F09 | The rule comparison said what the rules always do | Says what they tend to do. The calculator shows cases where the rules coincide |
+| F10 | Attendance Allowance in Northern Ireland was left out | Table row and State Pension page. New claim `aa-northern-ireland` and source `nidirect-attendance-allowance` |
+| F11 | Rounding could take an amount below the cash floor | `compareRules` applies the floor after rounding. New test, which failed without the fix |
+| F12 | The page promised to clear entries on leaving, but a restored page kept the result | Every showing of the page clears the form and the result. The privacy wording says what the page does |
+| F13 | CPI was "the main official measure" | "An official measure". ONS calls CPIH its lead measure |
+| F14 | "Every figure used on the site" is in the register | Says headline figures, and that other records exist |
+| F15 | "6 April 2027 when they take effect" | Says April 2027 and points to the up-rating order. 6 April 2027 is a Tuesday |
+| F16 | The budget helpers changed the period without converting amounts | `toWeekly` in `budget.js` converts entered amounts first and says so |
+| Wording | Tax, the 30.2% ratio, "cannot be predicted" | Changed. The full name of a spending category was not checked against its source and is left |
+
+| Check | Command | Result |
+| --- | --- | --- |
+| Passages | `python3 scripts/check-passages.py` | 203 checked, none missing, including the new and changed ones |
+| Build | `npm run build` | No problems. 154 claims, 99 sources |
+| Calculator tests | `npm test` | 26 of 26 pass. Without the F11 fix, the new test fails |
+| Automated accessibility | `npm run a11y` | 0 violations. Every incomplete contrast result measured, 4,137, none below threshold |
+| Behaviour | `npm run a11y:manual` | 0 problems |
+| Budget tool | A script in Chrome | A monthly £1,000 became £230.77 a week when the pension helper ran, and the status said so. A yearly £5,200 became £100.00 when a budget loaded. A restored-page event cleared the result; with the old code the result kept the amounts. An ordinary page show also clears it |
+
+Not checked: a real restore from the browser's back-forward cache (headless Chrome reloaded the page instead), and the audit's register of 271 items, which was not supplied. The critique of the corrections left 15 smaller points that were not applied: see the list given to the owner on 1 October 2026.
+
 ## Waiting on the owner
 
 As at 1 October 2026.
@@ -310,7 +343,7 @@ As at 1 October 2026.
 | Item | Status |
 | --- | --- |
 | Reciprocal links on UK Public Finances Explorer and UK Migration Explorer | Not started. Needs a live domain. No other repository was changed |
-| Deployed checks | Done for the deploy preview of pull request 1. See "Checks on the deployed preview". Not done for pull requests 2 to 12, for the main site address beyond the sign-in, or for a production domain |
+| Deployed checks | Done for the deploy preview of pull request 1. See "Checks on the deployed preview". Not done for pull requests 2 to 13, for the main site address beyond the sign-in, or for a production domain |
 | Search console | Not started. Needs account and domain access |
 
 ## Found in passing

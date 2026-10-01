@@ -175,9 +175,29 @@
     "url": "https://www.gov.uk/housing-benefit",
     "published_date": null,
     "updated_date": "2024-10-17",
-    "checked_date": "2026-09-29",
+    "checked_date": "2026-10-01",
     "licence": "Open Government Licence v3.0",
     "note": null
+  },
+  "govuk-pension-credit": {
+    "publisher": "Department for Work and Pensions",
+    "title": "Pension Credit",
+    "url": "https://www.gov.uk/pension-credit",
+    "published_date": null,
+    "updated_date": null,
+    "checked_date": "2026-10-01",
+    "licence": "Open Government Licence v3.0",
+    "note": "The page date was not recorded."
+  },
+  "dhsc-care-statutory-guidance": {
+    "publisher": "Department of Health and Social Care",
+    "title": "Care and support statutory guidance",
+    "url": "https://www.gov.uk/government/publications/care-act-statutory-guidance/care-and-support-statutory-guidance",
+    "published_date": null,
+    "updated_date": null,
+    "checked_date": "2026-10-01",
+    "licence": "Open Government Licence v3.0",
+    "note": "Annex C, treatment of income. The page date was not recorded."
   },
   "govuk-council-tax-reduction": {
     "publisher": "GOV.UK",
@@ -756,6 +776,16 @@
     "published_date": null,
     "updated_date": null,
     "checked_date": "2026-09-29",
+    "licence": "Open Government Licence v3.0",
+    "note": "The page date was not recorded."
+  },
+  "nidirect-attendance-allowance": {
+    "publisher": "Northern Ireland Executive (nidirect)",
+    "title": "Attendance Allowance",
+    "url": "https://www.nidirect.gov.uk/articles/attendance-allowance",
+    "published_date": null,
+    "updated_date": null,
+    "checked_date": "2026-10-01",
     "licence": "Open Government Licence v3.0",
     "note": "The page date was not recorded."
   },

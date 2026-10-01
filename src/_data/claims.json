@@ -191,12 +191,42 @@
   },
   "housing-benefit": {
     "kind": "rule",
-    "statement": "New claims for Housing Benefit are open to people who have reached State Pension age.",
+    "statement": "A single person who has reached State Pension age can make a new claim for Housing Benefit. A couple normally can only if both have reached State Pension age. There are exceptions, for example for supported, sheltered or temporary housing.",
     "source_id": "govuk-housing-benefit",
-    "passage": "You can only make a new claim for Housing Benefit if either of the following apply: you have reached State Pension age",
+    "passage": "You can make a new claim for Housing Benefit if any of the following apply: you and your partner have both reached State Pension age",
     "interpretation": false,
     "note": null,
-    "checked_date": "2026-09-29",
+    "checked_date": "2026-10-01",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "pc-mixed-age": {
+    "kind": "rule",
+    "statement": "A couple can normally get Pension Credit only if both have reached State Pension age, or one of them gets Housing Benefit for people over State Pension age.",
+    "source_id": "govuk-pension-credit",
+    "passage": "You'll be eligible if either: you and your partner have both reached State Pension age",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-01",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "wfp-automatic": {
+    "kind": "rule",
+    "statement": "Most people who are eligible get the Winter Fuel Payment automatically.",
+    "source_id": "govuk-winter-fuel",
+    "passage": "Most people get the Winter Fuel Payment automatically if they're eligible.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-01",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "care-means-test-allowances": {
+    "kind": "rule",
+    "statement": "In England, the means test for council-funded care must leave a person enough income after housing costs and disability-related spending.",
+    "source_id": "dhsc-care-statutory-guidance",
+    "passage": "This must be after any housing costs such as rent and council tax net of any benefits provided to support these costs – and after any disability related expenditure.",
+    "interpretation": false,
+    "note": "Annex C, paragraph 49, on the minimum income guarantee. Paragraph 39 says the council should allow for necessary disability-related expenditure.",
+    "checked_date": "2026-10-01",
     "review_status": "checked-with-ai-assistance"
   },
   "council-tax-reduction": {
@@ -939,6 +969,16 @@
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance"
   },
+  "aa-northern-ireland": {
+    "kind": "enacted",
+    "statement": "Northern Ireland has its own Attendance Allowance.",
+    "source_id": "nidirect-attendance-allowance",
+    "passage": "To get Attendance Allowance you must: be habitually resident and in Northern Ireland",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-01",
+    "review_status": "checked-with-ai-assistance"
+  },
   "hf-affordable": {
     "kind": "commentary",
     "statement": "The Health Foundation argues that reform is affordable if the government chooses it.",
@@ -961,12 +1001,12 @@
   },
   "bsp-30-years": {
     "kind": "rule",
-    "statement": "People born between 1945 and 1951 usually need 30 qualifying years for the full basic State Pension. People born earlier need more.",
+    "statement": "For the full basic State Pension, men born between 1945 and 1951 usually need 30 qualifying years, and men born earlier 44. Women born between 1950 and 1953 usually need 30, and women born earlier 39.",
     "source_id": "govuk-basic-state-pension",
-    "passage": "30 qualifying years if you were born between 1945 and 1951",
+    "passage": "30 qualifying years if you were born between 1950 and 1953",
     "interpretation": false,
-    "note": "GOV.UK gives the bands by year of birth and by sex. Women born between 1950 and 1953 also need 30 years.",
-    "checked_date": "2026-09-29",
+    "note": "GOV.UK gives the bands by year of birth and by sex. The page also says men born between 1945 and 1951 usually need 30 years.",
+    "checked_date": "2026-10-01",
     "review_status": "checked-with-ai-assistance"
   },
   "tl-kept-to-2030": {

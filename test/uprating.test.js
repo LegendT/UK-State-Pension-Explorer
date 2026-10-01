@@ -156,3 +156,10 @@ test("the rule announced for April 2030: the percentage shown, ties with the min
   assert.equal(thirty.years[30].pence, 71765);
   assert.equal(thirty.cashTotalPence, 69425720);
 });
+
+test("the cash floor holds after rounding a starting amount that is not a multiple of 5p", () => {
+  const amounts = (floor) => Object.fromEntries(Object.entries(compareRules(24132, path([[-10, -10]]), floor).rules).map(([rule, r]) => [rule, r.years[1].pence]));
+  const on = amounts(true);
+  for (const rule of ["double-lock", "earnings", "prices"]) assert.equal(on[rule], 24132, rule);
+  assert.equal(amounts(false).prices, 23890);
+});

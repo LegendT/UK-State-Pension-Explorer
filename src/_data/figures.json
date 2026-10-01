@@ -25,7 +25,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": "When rates for 2027/28 are confirmed, and again on 6 April 2027 when they take effect."
+    "next_review": "When the rates for 2027/28 are confirmed, and again when the up-rating takes effect in April 2027. Check the date in the up-rating order."
   },
   "nsp-full-52-weeks": {
     "label": "Full new State Pension over 52 weeks",
@@ -55,7 +55,7 @@
     ],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": "When rates for 2027/28 are confirmed, and again on 6 April 2027 when they take effect."
+    "next_review": "When the rates for 2027/28 are confirmed, and again when the up-rating takes effect in April 2027. Check the date in the up-rating order."
   },
   "bsp-full-weekly": {
     "label": "Full basic State Pension",
@@ -83,7 +83,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": "When rates for 2027/28 are confirmed, and again on 6 April 2027 when they take effect."
+    "next_review": "When the rates for 2027/28 are confirmed, and again when the up-rating takes effect in April 2027. Check the date in the up-rating order."
   },
   "cpi-linked-uprating-2026": {
     "label": "Increase applied to protected payments, Additional State Pension and deferral increases",
@@ -111,7 +111,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": "When rates for 2027/28 are confirmed, and again on 6 April 2027 when they take effect."
+    "next_review": "When the rates for 2027/28 are confirmed, and again when the up-rating takes effect in April 2027. Check the date in the up-rating order."
   },
   "nsp-min-qualifying-years": {
     "label": "Qualifying years needed for any new State Pension",
@@ -223,7 +223,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": "When rates for 2027/28 are confirmed, and again on 6 April 2027 when they take effect."
+    "next_review": "When the rates for 2027/28 are confirmed, and again when the up-rating takes effect in April 2027. Check the date in the up-rating order."
   },
   "pension-credit-couple": {
     "label": "Pension Credit standard minimum guarantee, couple",
@@ -251,7 +251,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": "When rates for 2027/28 are confirmed, and again on 6 April 2027 when they take effect."
+    "next_review": "When the rates for 2027/28 are confirmed, and again when the up-rating takes effect in April 2027. Check the date in the up-rating order."
   },
   "pension-credit-take-up": {
     "label": "Pension Credit take-up",
@@ -447,7 +447,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": "When rates for 2027/28 are confirmed, and again on 6 April 2027 when they take effect."
+    "next_review": "When the rates for 2027/28 are confirmed, and again when the up-rating takes effect in April 2027. Check the date in the up-rating order."
   },
   "attendance-allowance-higher": {
     "label": "Attendance Allowance, higher rate",
@@ -475,7 +475,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": "When rates for 2027/28 are confirmed, and again on 6 April 2027 when they take effect."
+    "next_review": "When the rates for 2027/28 are confirmed, and again when the up-rating takes effect in April 2027. Check the date in the up-rating order."
   },
   "winter-fuel-income-limit": {
     "label": "Income above which a Winter Fuel Payment is recovered",
@@ -3088,16 +3088,16 @@
     "next_review": null
   },
   "sp-share-income-poorest": {
-    "label": "State Pension as a share of income, poorest fifth of pensioners",
-    "definition": "The average share of income that comes from the State Pension, for pensioners in the bottom fifth of pensioner incomes.",
+    "label": "State Pension as a share of income, poorest fifth of recent retirees",
+    "definition": "The average share of income that comes from the State Pension, for recent retirees in the bottom fifth of incomes.",
     "value": 71,
     "display": "percent",
     "unit": "per cent",
     "range": null,
-    "population": "Pensioners in the bottom fifth of incomes.",
+    "population": "Recent retirees in the bottom fifth of incomes. The underlying study looked at households with someone aged 66 to 70 where no one is in paid work.",
     "basis": "individual",
     "geography": "United Kingdom.",
-    "period_label": "As published in July 2025",
+    "period_label": "From a study published in 2023, quoted in July 2025",
     "effective_from": null,
     "effective_to": null,
     "price_basis": "not applicable",
@@ -3105,27 +3105,27 @@
     "frequency": null,
     "source_id": "ifs-pensions-review-final",
     "table_reference": "Report text.",
-    "passage": "the state pension on average accounts for 71% of income for low-income ... pensioners (bottom fifth of income), but even for the richest fifth the state pension makes up 23% of their overall income",
+    "passage": "For recent retirees, the state pension on average accounts for 71% of income for low-income",
     "classification": "estimate",
     "provisional": false,
     "qualifications": "The passage runs across a page break in the source.",
     "formula": null,
     "inputs": [],
-    "checked_date": "2026-09-29",
+    "checked_date": "2026-10-01",
     "review_status": "checked-with-ai-assistance",
     "next_review": null
   },
   "sp-share-income-richest": {
-    "label": "State Pension as a share of income, richest fifth of pensioners",
-    "definition": "The average share of income that comes from the State Pension, for pensioners in the top fifth of pensioner incomes.",
+    "label": "State Pension as a share of income, richest fifth of recent retirees",
+    "definition": "The average share of income that comes from the State Pension, for recent retirees in the top fifth of incomes.",
     "value": 23,
     "display": "percent",
     "unit": "per cent",
     "range": null,
-    "population": "Pensioners in the top fifth of incomes.",
+    "population": "Recent retirees in the top fifth of incomes. The underlying study looked at households with someone aged 66 to 70 where no one is in paid work.",
     "basis": "individual",
     "geography": "United Kingdom.",
-    "period_label": "As published in July 2025",
+    "period_label": "From a study published in 2023, quoted in July 2025",
     "effective_from": null,
     "effective_to": null,
     "price_basis": "not applicable",
@@ -3139,7 +3139,7 @@
     "qualifications": null,
     "formula": null,
     "inputs": [],
-    "checked_date": "2026-09-29",
+    "checked_date": "2026-10-01",
     "review_status": "checked-with-ai-assistance",
     "next_review": null
   },
