@@ -1,11 +1,12 @@
 // Tool 2: compare the replacement rules. Presentation only.
 
-import { renderComparison } from "../lib/compare-view.js";
+import { renderComparison, renderSummary } from "../lib/compare-view.js";
 import { announce, choose, focusFirstError, readAmount, readJson, readPercent, readSettings, setError, writeSettings } from "./common.js";
 
 const data = readJson("compare-data");
 const form = document.getElementById("compare-form");
 const result = document.getElementById("compare-result");
+const summary = document.getElementById("compare-summary");
 const status = document.getElementById("compare-status");
 const scenario = document.getElementById("compare-scenario");
 const reason = document.getElementById("compare-reason");
@@ -81,33 +82,34 @@ function showReason() {
     : chosen().reason;
 }
 
-function update(message, quiet) {
+// mode: "load" shows the result without announcing it or moving focus. "live" announces it but
+// leaves focus where the reader is typing. Otherwise an error also takes focus to the first field.
+function update(message, mode) {
   const count = readYears();
   const startPence = readAmount(start, "the starting weekly amount");
   const path = count === null ? null : currentPath();
   if (count === null || startPence === null || path === null) {
     if (path === null) document.getElementById("compare-edit").open = true;
-    if (!quiet) focusFirstError(form);
-    result.innerHTML = `<h3>No result</h3><p>Correct the figures marked with an error, then select Show the result.</p>`;
-    announce(status, "There is a problem with the figures entered. No result is shown.");
+    if (!mode) focusFirstError(form);
+    result.innerHTML = `<div class="unavailable" role="note"><h3>Not available: a result</h3><p>Correct the figures marked with an error.</p></div>`;
+    summary.innerHTML = `<p>No result. Correct the figures marked with an error.</p>`;
+    if (mode !== "load") announce(status, "There is a problem with the figures entered. No result is shown.");
     return;
   }
+  const options = { startPence, path, cashFloor: floor.checked, firstYear: Number(first.value), measure: measure.value };
   result.innerHTML = renderComparison({
-    startPence,
-    path,
-    cashFloor: floor.checked,
-    firstYear: Number(first.value),
-    measure: measure.value,
+    ...options,
     // Only the first letter, so a name such as the Institute for Fiscal Studies keeps its capitals.
     scenarioLabel: edited ? "your own figures" : chosen().label.charAt(0).toLowerCase() + chosen().label.slice(1),
   });
+  summary.innerHTML = renderSummary(options);
   // Edited yearly figures go in the address too, or a link would show a different result.
   const figures = (key) => path.map((year) => (year[key] / 10).toFixed(1)).join(",");
   writeSettings(
     { scenario: scenario.value, years: String(count), start: start.value.trim(), first: first.value, measure: measure.value, floor: floor.checked ? "on" : "off", ...(edited ? { prices: figures("prices"), earnings: figures("earnings") } : {}) },
     "compare",
   );
-  if (!quiet) announce(status, message || "Result updated. It follows the form.");
+  if (mode !== "load") announce(status, message || "Result updated.");
 }
 
 function reset() {
@@ -120,10 +122,13 @@ function reset() {
 
 scenario.addEventListener("change", reset);
 first.addEventListener("change", () => drawRows(readYears() || data.default_years, chosen().path));
-years.addEventListener("change", () => {
+// On input as well as change, so the rows match the number typed before the result follows it.
+const redraw = () => {
   const count = readYears();
-  if (count !== null) drawRows(count, chosen().path);
-});
+  if (count !== null && count !== rows.querySelectorAll("tr").length) drawRows(count, chosen().path);
+};
+years.addEventListener("input", redraw);
+years.addEventListener("change", redraw);
 rows.addEventListener("input", () => {
   edited = true;
   showReason();
@@ -141,10 +146,22 @@ document.getElementById("compare-reset").addEventListener("click", () => {
   update("All settings are back to the starting scenario.");
 });
 
+// There is no submit button, so Enter does not submit. The handler stays for a scripted submit,
+// which the accessibility checks use to show a result.
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   update();
 });
+
+// The result follows the form. A change redraws it after a short pause, so typing a figure is not
+// announced at every key.
+let pending;
+const later = () => {
+  clearTimeout(pending);
+  pending = setTimeout(() => update(undefined, "live"), 400);
+};
+form.addEventListener("input", later);
+form.addEventListener("change", later);
 
 reset();
 
@@ -170,5 +187,5 @@ if (settings.has("scenario")) {
     edited = true;
     showReason();
   }
-  update(undefined, true);
+  update(undefined, "load");
 }

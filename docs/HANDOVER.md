@@ -1,8 +1,8 @@
 # Handover: first build
 
-Written 29 September 2026, updated 1 October 2026. The site is a **preview for review**. It is not published. The repository is https://github.com/LegendT/UK-State-Pension-Explorer. All work is merged into `main`, up to pull request 13. Pull request 10, from `handover-review-note`, added the marking of the current section in the "On this page" list, decision 53, and carried the handover note that records pull request 9. It was merged on 30 September 2026. Pull request 8 carried the work on the UX review of 30 September 2026, and pull request 9 recorded the owner's answers on it: see "UX review of 30 September 2026". Merged: pull request 1, the first build, on 29 September 2026; pull request 2, from `first-build`, pull request 3, from `april-2030-rule`, and pull request 4, from `homepage-orientation`, on 30 September 2026. Pull request 3 carried the markup sweep and stylesheet fixes of `html-semantics` and the update for the government's announcement of 29 September 2026. Pull request 4 added a table of State Pension age by date of birth to the overview: decision 44. Pull request 5 corrected the handover. Pull request 6, from `rule-2030-calculator`, adds the announced rule to the rule comparison: decision 38. It was merged on 30 September 2026. Pull request 7, from `handover-pr6`, recorded pull request 6 in this handover. Netlify builds `main` to the main address and a deploy preview of each pull request into `main`, all behind a sign-in.
+Written 29 September 2026, updated 1 October 2026. The site is a **preview for review**. It is not published. The repository is https://github.com/LegendT/UK-State-Pension-Explorer. All work is merged into `main`, up to pull request 14. Pull request 10, from `handover-review-note`, added the marking of the current section in the "On this page" list, decision 53, and carried the handover note that records pull request 9. It was merged on 30 September 2026. Pull request 8 carried the work on the UX review of 30 September 2026, and pull request 9 recorded the owner's answers on it: see "UX review of 30 September 2026". Merged: pull request 1, the first build, on 29 September 2026; pull request 2, from `first-build`, pull request 3, from `april-2030-rule`, and pull request 4, from `homepage-orientation`, on 30 September 2026. Pull request 3 carried the markup sweep and stylesheet fixes of `html-semantics` and the update for the government's announcement of 29 September 2026. Pull request 4 added a table of State Pension age by date of birth to the overview: decision 44. Pull request 5 corrected the handover. Pull request 6, from `rule-2030-calculator`, adds the announced rule to the rule comparison: decision 38. It was merged on 30 September 2026. Pull request 7, from `handover-pr6`, recorded pull request 6 in this handover. Netlify builds `main` to the main address and a deploy preview of each pull request into `main`, all behind a sign-in.
 
-**Pull request 11**, from `defect-11-and-research`, merged on 1 October 2026: defect 11 closed, decisions 54 to 57, and the two items the research of 30 September left out, decision 58. See "Defect 11, 1 October 2026" and "Two items added, 1 October 2026". The owner's answers of the same day were merged in pull request 12: see "Owner's answers of 1 October 2026". Review points W1 to W4 from its critique were merged in pull request 13. The corrections from an external factual audit are in pull request 14, from `audit-corrections`, open: see "External audit of 1 October 2026".
+**Pull request 11**, from `defect-11-and-research`, merged on 1 October 2026: defect 11 closed, decisions 54 to 57, and the two items the research of 30 September left out, decision 58. See "Defect 11, 1 October 2026" and "Two items added, 1 October 2026". The owner's answers of the same day were merged in pull request 12: see "Owner's answers of 1 October 2026". Review points W1 to W4 from its critique were merged in pull request 13. The corrections from an external factual audit were merged in pull request 14: see "External audit of 1 October 2026".
 
 **Next action:** none is authorised. On 29 September 2026 the government announced a change to the triple lock from April 2030 and a National Care Service. The site was brought up to date on 30 September 2026, on the branch `april-2030-rule`: see "The announcement of 29 September 2026". It is merged into `main`. The rule is in the rule comparison, with its assumptions labelled: decisions 38 and 45.
 
@@ -16,7 +16,7 @@ npm run serve        # http://127.0.0.1:8137
 
 ## Completed
 
-- Ten main pages, four utility pages, four calculators. Reform options is four pages, the third of them pensions and social care: decision 46.
+- Eleven main pages, four utility pages, four calculators. Reform options is five pages: the options, the rule comparison (decision 62), costs, pensions and social care, and entitlement.
 - On the overview, a section on State Pension age by date of birth, added on 30 September 2026.
 - Registers of figures, claims and sources, a page register and a link register.
 - Model specification, written before the code. Reference calculations by a separate method.
@@ -298,7 +298,7 @@ Not checked: touch, a screen reader, a real phone. Forced colours were emulated,
 
 ## External audit of 1 October 2026
 
-An AI-assisted factual audit by another tool, of commit `82632cb` (pull request 4), in `~/Documents/Codex/2026-09-30/ver/outputs/pension-explorer-audit.html`. Verified against `main` at pull request 13 and against the sources: all 16 findings were still true. Decision 60. In pull request 14, from `audit-corrections`, open.
+An AI-assisted factual audit by another tool, of commit `82632cb` (pull request 4), in `~/Documents/Codex/2026-09-30/ver/outputs/pension-explorer-audit.html`. Verified against `main` at pull request 13 and against the sources: all 16 findings were still true. Decision 60. Merged in pull request 14, from `audit-corrections`, on 1 October 2026.
 
 | ID | Finding | Correction |
 | --- | --- | --- |
@@ -331,6 +331,27 @@ Not checked: a real restore from the browser's back-forward cache (headless Chro
 
 The critique of the corrections raised ten smaller points, A1 to A10, put to the owner the same day. Applied on the owner's answer: each claim's quoted passage now covers every fact it states (A1), the richest-fifth figure has a passage (A2), the year of the earnings ratio comes from the register (A3), the budget tool's conversion note names only conversions that stay (A4), and the Pension Credit couple rule sits before the take-up paragraph (A10). A5 needed no change: the triple lock page makes no promise about reloading. A7, applying the cash floor after rounding in the history explorer too, was declined on the owner's answer, and the reason is beside the code in `uprating.js`. A6, A8 and A9 are deferred, in the table below.
 
+## Sources and the rule comparison, 1 October 2026
+
+Asked for by the owner. On the branch `compare-page-and-sources`, not pushed. Decisions 61 and 62.
+
+- **Sources** are drawn as chips, so they read apart from the sentence: decision 61.
+- **The rule comparison** has its own page, `/reform-options/compare/`. Its result redraws as the figures change, and a summary of each rule's amount stays in view: decision 62.
+- **"Back to contents" links.** The owner asked whether several on one page break the guideline on link text. They do not. SC 2.4.4 asks that a link's purpose be clear from its text or context, and every one goes to the same place. The cost is repetition in a screen reader's list of links, below 1024 px only. Kept as they are.
+
+| Check | Command | Result |
+| --- | --- | --- |
+| Build | `npm run build` | No problems. 15 pages |
+| Calculator tests | `npm test` | 26 of 26 pass |
+| Automated accessibility | `npm run a11y` | 0 violations in 106 audits of 15 pages. Every incomplete contrast result measured, 4,027, none below threshold. The two states of the rule comparison now run on its new page |
+| Behaviour | `npm run a11y:manual` | 0 problems. The first run found three: a link in the pinned summary under 24 px, which also read as focus moving backwards because the summary is fixed, and a site map link under 24 px. The summary link was removed and the site map line follows the others. After the review, a 320 px run found the page 20 px too wide: the form in a grid column could not shrink, and the summary's four columns did not fit. Both fixed |
+| Rule comparison | A script in Chrome | A new starting amount changed the summary at 1400 and 390 px, wrote the address and announced "Result updated." A link to the old page with settings opened the new page with them. The options page without settings stayed |
+| Rendered | Screenshots in Chrome | Chips at 390 px light and dark and at 1400 px. The comparison at 1400 px, summary beside the form, and at 390 px, pinned summary about a fifth of the screen |
+
+The critique of this work (Sonnet 5.5) found a real fault: typing a new number of years left the rows at the old count, so a copied link lost its figures. The rows now redraw as the number is typed. Also fixed after it: the bar's styles were written for wide screens first, against the house rule, and are now mobile-first; the bar pins only on a screen at least 32rem tall, so at 400% zoom it follows the form; it no longer scrolls inside itself; the summary carries the "Hypothetical" label; the scenario sources use `m.ref`; the "No result" block is a note; "The other scenarios" is "The scenarios"; and an old link to the assumptions is sent on. Three points were not applied and wait on the owner, in the table below.
+
+Not checked: a screen reader, a real phone, touch, an on-screen keyboard.
+
 ## Waiting on the owner
 
 As at 1 October 2026.
@@ -342,6 +363,9 @@ As at 1 October 2026.
 | A6, deferred | Add the expected values of the new cash-floor test, 241.32 pounds at minus 1%, to `scripts/reference.py` and `docs/reference-calculations.md` |
 | A8, deferred | The register sentence on the method page says "headline figures". Name every kind of record instead |
 | A9, deferred | The 71% and 23% figures have the basis "individual", but the underlying 2023 study counted households. Check the study, then align the basis |
+| Rule comparison: while typing | A half-typed figure, such as "-", replaces the result and the summary with "Not available" after 400 ms. The alternative keeps the last result, marked out of date, until the figure is valid |
+| Rule comparison: phone keyboard | The pinned summary and an on-screen keyboard share a small screen. The alternative shrinks the summary to one line while a field has focus. Not tested on a real phone |
+| Rule comparison: typed figures | The page types "10p a week at most" and "2.5%" in its text. Under the README rule they would come from the registers |
 
 ## Tracked separately
 
