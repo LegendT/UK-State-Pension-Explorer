@@ -358,6 +358,20 @@ After pull request 15 was merged, the owner found the rule comparison on the dep
 
 The rule now makes a browser check with the server before reusing a file (`max-age=0, must-revalidate`, which is also Netlify's default for files that are not fingerprinted). A browser that cached a file under the old rule can still keep it for up to an hour after this is deployed. On the branch `asset-cache-revalidate`, not pushed. Not checked on the deployed site: that needs the sign-in, and the header is set by Netlify, not by the local server.
 
+## The saving in the rule comparison, 1 October 2026
+
+The owner noted that the comparison did not seem to save any money. It did, but the summary listed five amounts with no gap shown, for one person. Decision 63: the summary now gives each rule's gap from the triple lock, and a paragraph after it gives the number of people receiving the State Pension (13.3 million in March 2026; the DWP forecast for 2030/31) and the average new State Pension, with a link to what a change would save. The tool does not multiply them. On the branch `summary-differences`, with the asset caching change, not pushed.
+
+| Check | Command | Result |
+| --- | --- | --- |
+| Build | `npm run build` | No problems |
+| Calculator tests | `npm test` | 28 of 28 pass. A new test of the summary's gap failed on the first version of its index rounding |
+| Automated accessibility | `npm run a11y` | 0 violations. Every incomplete contrast result measured, 4,031, none below threshold |
+| Behaviour | `npm run a11y:manual` | 0 problems |
+| Rendered | Screenshots in Chrome | The summary at 1400 and 390 px. The pinned summary is now about 235 px on a phone, so the page's padding at the foot went from 14rem to 16rem |
+
+A sentence first written as "Most get less than the full rate" was changed to the sourced average, because the share on the full rate is a known gap (number 4 under "Known defects and limits"). After the critique (Sonnet 5.5), the gap says "than the triple lock" to screen readers, and the triple lock's row says "for comparison".
+
 ## Waiting on the owner
 
 As at 1 October 2026.
@@ -372,6 +386,9 @@ As at 1 October 2026.
 | Rule comparison: while typing | A half-typed figure, such as "-", replaces the result and the summary with "Not available" after 400 ms. The alternative keeps the last result, marked out of date, until the figure is valid |
 | Rule comparison: phone keyboard | The pinned summary and an on-screen keyboard share a small screen. The alternative shrinks the summary to one line while a field has focus. Not tested on a real phone |
 | Rule comparison: typed figures | The page types "10p a week at most" and "2.5%" in its text. Under the README rule they would come from the registers |
+| Rule comparison: the gap shown | The summary gives the gap in the last year. The total over the period, in the full result's totals table, could be shown as well |
+| Rule comparison: "less" is not a cut | The full result says a lower amount is a smaller rise, not a cut. The pinned summary does not, for want of room |
+| Rule comparison: pinned summary | Its padding is a fixed 16rem. Pinning it with `position: sticky; bottom: 0` inside the layout needs no padding and adapts to larger text |
 
 ## Tracked separately
 

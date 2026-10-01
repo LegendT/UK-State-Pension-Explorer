@@ -209,13 +209,29 @@ export function renderComparison(options) {
   );
 }
 
-// The amount under each rule in the last year, for the summary that stays in view while the
-// figures change. The full result, with the chart and tables, follows the form.
+// How far a rule ends from the triple lock, in the measure shown. Worked from the rounded values
+// the summary prints, so the gap never contradicts the two amounts beside it.
+export function gap(entry, base, measure) {
+  const d =
+    measure === "cash" ? entry.pence - base.pence
+    : measure === "real" ? Math.round(entry.realPence) - Math.round(base.realPence)
+    : Math.round(entry.earningsIndex * 10) - Math.round(base.earningsIndex * 10);
+  if (d === 0) return "the same";
+  const size = measure === "earnings" ? `${(Math.abs(d) / 10).toFixed(1)} points` : money(Math.abs(d));
+  return `${size} ${d < 0 ? "less" : "more"}<span class="visually-hidden"> than the triple lock</span>`;
+}
+
+// The amount under each rule in the last year, and how far it is from the triple lock, for the
+// summary that stays in view while the figures change. For one person on the full rate: the
+// full result, with the chart and tables, follows the form.
 export function renderSummary({ startPence, path, cashFloor, firstYear, measure }) {
   const result = compareRules(startPence, path, cashFloor);
   const last = path.length;
   const info = MEASURES[measure];
-  const rows = RULES.map((rule) => `<div><dt>${SHORT[rule]}</dt> <dd>${show(result.rules[rule].years[last], measure)}</dd></div>`).join("");
-  return `<p><span class="status">Hypothetical</span> After ${last === 1 ? "1 year" : `${last} years`}, in ${taxYear(firstYear + last - 1)}. ${info.label}: ${info.unit}.</p><dl>${rows}</dl>`;
+  const base = result.rules["triple-lock"].years[last];
+  const rows = RULES.map((rule) => {
+    const entry = result.rules[rule].years[last];
+    return `<div><dt>${SHORT[rule]}</dt> <dd>${show(entry, measure)}</dd> <dd>${rule === "triple-lock" ? "for comparison" : gap(entry, base, measure)}</dd></div>`;
+  }).join("");
+  return `<p><span class="status">Hypothetical</span> One person on the full rate, after ${last === 1 ? "1 year" : `${last} years`}, in ${taxYear(firstYear + last - 1)}. ${info.label}: ${info.unit}.</p><dl>${rows}</dl>`;
 }
-

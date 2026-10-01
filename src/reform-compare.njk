@@ -98,6 +98,10 @@ permalink: /reform-options/compare/
   </div>
   </div>
 
+  {#- How many people a rule reaches. Shown as context only: the tool does not multiply by it. -#}
+  {%- set forecast = tables["sp-spending-series"].rows | last %}
+  <p>The amounts in this tool are for one person on the full rate. In {{ ("sp-recipients" | figure).period_label }}, {{ m.f("sp-recipients") }} people were receiving the State Pension. {{ m.ref(("sp-recipients" | figure).source) }} For {{ forecast[0] }}, the Department for Work and Pensions forecasts {{ forecast[4] }} million people on average in Great Britain. {{ m.ref(tables["sp-spending-series"].source_id | sourceRecord) }} The average new State Pension in payment in {{ ("nsp-mean-weekly" | figure).period_label }} was {{ m.f("nsp-mean-weekly") }} a week, below the full rate then in force. {{ m.ref(("nsp-mean-weekly" | figure).source) }} The rules raise a pension by a percentage, so a smaller pension changes by less. A national saving also depends on Income Tax and Pension Credit, so this tool cannot work it out. <a href="/reform-options/costs/#cost-and-saving">What a change would save</a>.</p>
+
   <p class="visually-hidden" role="status" id="compare-status"></p>
 
   <div class="result" id="compare-result">
