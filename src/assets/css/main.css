@@ -71,8 +71,10 @@ h4 { font-size: 1rem; }
 /* Straight quotation marks, as in the quoted passages elsewhere. */
 q { quotes: '"' '"'; }
 p, ul, ol, dl, table, figure { margin: 0 0 var(--space-m); }
-p, li { text-wrap: pretty; }
+p, li, dd { text-wrap: pretty; }
 li + li { margin-top: 0.25rem; }
+dt { font-weight: 600; }
+dd { margin: 0 0 var(--space-s); }
 
 a { color: var(--accent); text-underline-offset: 0.15em; }
 a:hover { text-decoration-thickness: 2px; }
@@ -172,6 +174,12 @@ main > .tool, main > figure, main > .cards, main > .scroll-x, main > .rate-block
 .source details { margin-top: 0.25rem; }
 .source summary { min-height: 2.75rem; padding: 0.6rem 0; cursor: pointer; color: var(--accent); font-weight: 600; }
 .source dl { margin: var(--space-s) 0 0; }
+/* One line for each of period, place, range and source, the value running on after its label. */
+.source > .statuses { margin-bottom: 0.25rem; }
+.source .facts { margin: 0 0 var(--space-s); }
+.facts dt, .source .facts dd { display: inline; margin: 0; }
+/* A citation that is a value on its own is not inline in a sentence, so padding gives it the 24px target of SC 2.5.8. */
+.facts .cite { padding-block: 4px; }
 .source dt { font-weight: 600; color: var(--ink); }
 .source dd { margin: 0 0 var(--space-s); }
 
@@ -198,8 +206,11 @@ main > .tool, main > figure, main > .cards, main > .scroll-x, main > .rate-block
 .unavailable > :first-child { margin-top: 0; }
 .unavailable > :last-child { margin-bottom: 0; }
 
-.journeys a { display: block; padding: var(--space-m); border: 1px solid var(--rule-strong); border-radius: var(--radius); font-weight: 600; height: 100%; }
-.journeys span { display: block; font-weight: 400; color: var(--ink-soft); }
+/* The link holds the card's name only. Its ::after covers the card, so the whole card is still the target. */
+.journeys li { position: relative; padding: var(--space-m); border: 1px solid var(--rule-strong); border-radius: var(--radius); }
+.journeys a { font-weight: 600; }
+.journeys a::after { content: ""; position: absolute; inset: 0; border-radius: var(--radius); }
+.journeys p { margin: 0; color: var(--ink-soft); }
 
 .contents { padding: var(--space-m); background: var(--panel); border-radius: var(--radius); }
 .contents h2 { margin-top: 0; font-size: 1.05rem; }

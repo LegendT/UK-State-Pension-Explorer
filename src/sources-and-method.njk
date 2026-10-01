@@ -92,7 +92,7 @@ permalink: /sources-and-method/
 </ul>
 
 <h3>The five rules</h3>
-{% call m.scrollTable("The five rules for the yearly increase") %}
+{% call m.scrollTable() %}
 <table>
   <caption>The increase each rule applies</caption>
   <thead><tr><th scope="col">Rule</th><th scope="col">Increase applied</th></tr></thead>
@@ -106,13 +106,13 @@ permalink: /sources-and-method/
 </table>
 {% endcall %}
 
-<ul>
-  <li><strong>Ties.</strong> When two or three measures are equal highest, the result names each of them.</li>
-  <li><strong>Falling prices or earnings.</strong> The triple lock and the rule announced for April 2030 always give at least 2.5%. For the other rules, a negative figure becomes 0% when the cash floor is on. The cash floor is an assumption of these hypothetical rules, not a statement of the law. It can be switched off in the rule comparison.</li>
-  <li><strong>Rounding.</strong> The new weekly amount is rounded to the nearest 5p, and an exact half rounds up. The rounded amount is the base for the next year. {{ m.c("rounding-5p") }}</li>
-  <li><strong>A year.</strong> 52 weeks at one rate. This is an equivalent. It is not what a person receives in a tax year.</li>
-  <li><strong>Timing.</strong> The rule comparison does not model the delay between the figures and the April increase. The history explorer uses the figures recorded for each decision.</li>
-</ul>
+<dl>
+  <dt>Ties</dt> <dd>When two or three measures are equal highest, the result names each of them.</dd>
+  <dt>Falling prices or earnings</dt> <dd>The triple lock and the rule announced for April 2030 always give at least 2.5%. For the other rules, a negative figure becomes 0% when the cash floor is on. The cash floor is an assumption of these hypothetical rules, not a statement of the law. It can be switched off in the rule comparison.</dd>
+  <dt>Rounding</dt> <dd>The new weekly amount is rounded to the nearest 5p, and an exact half rounds up. The rounded amount is the base for the next year. {{ m.c("rounding-5p") }}</dd>
+  <dt>A year</dt> <dd>52 weeks at one rate. This is an equivalent. It is not what a person receives in a tax year.</dd>
+  <dt>Timing</dt> <dd>The rule comparison does not model the delay between the figures and the April increase. The history explorer uses the figures recorded for each decision.</dd>
+</dl>
 
 <h3>What the calculators leave out</h3>
 <ul>
@@ -183,7 +183,7 @@ permalink: /sources-and-method/
 <p>Every figure used on the site, {{ figures | length }} in all. Each page takes its figures from this register.</p>
 <details class="more">
   <summary>Show the register of figures</summary>
-  {% call m.scrollTable("Register of figures") %}
+  {% call m.scrollTable() %}
   <table>
     <caption>Register of figures</caption>
     <thead><tr><th scope="col">Figure</th><th scope="col" class="num">Value</th><th scope="col">Period</th><th scope="col">Kind</th><th scope="col">Where</th><th scope="col">Source</th><th scope="col">Checked</th></tr></thead>
@@ -201,7 +201,7 @@ permalink: /sources-and-method/
 <p>Statements that are not figures, {{ claims | length }} in all, each with the passage it rests on. "Our reading" marks a statement that includes interpretation or reports a judgement.</p>
 <details class="more">
   <summary>Show the register of claims</summary>
-  {% call m.scrollTable("Register of claims") %}
+  {% call m.scrollTable() %}
   <table>
     <caption>Register of claims</caption>
     <thead><tr><th scope="col">Statement</th><th scope="col">Kind</th><th scope="col">What the source says</th><th scope="col">Source</th><th scope="col">Notes</th></tr></thead>
@@ -219,7 +219,7 @@ permalink: /sources-and-method/
 <p>{{ sources | length }} sources.</p>
 <details class="more">
   <summary>Show the register of sources</summary>
-  {% call m.scrollTable("Register of sources") %}
+  {% call m.scrollTable() %}
   <table>
     <caption>Register of sources</caption>
     <thead><tr><th scope="col">Source</th><th scope="col">Publisher</th><th scope="col">Published</th><th scope="col">Checked</th><th scope="col">Notes</th></tr></thead>

@@ -135,7 +135,7 @@ export function lineChart({ id, title, description, labels, series: input, yLabe
     .join("");
 
   return (
-    `<svg class="chart-svg" viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="${id}-title ${id}-desc">` +
+    `<svg class="chart-svg" viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="${id}-title" aria-describedby="${id}-desc">` +
     `<title id="${id}-title">${escape(title)}</title><desc id="${id}-desc">${escape(description)}</desc>` +
     grid +
     `<line class="chart-axis" x1="${PAD.left}" x2="${W - PAD.right}" y1="${H - PAD.bottom}" y2="${H - PAD.bottom}"/>` +

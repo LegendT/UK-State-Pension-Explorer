@@ -56,7 +56,7 @@ permalink: /living-on-a-pension/
 
 <p>The researchers model a household that receives the State Pension or Pension Credit and every other benefit it is entitled to. They compare its income after rent and Council Tax with the budget.</p>
 
-{% call m.scrollTable("Share of the Minimum Income Standard covered by pension income") %}
+{% call m.scrollTable() %}
 <table>
   <caption>Share of the Minimum Income Standard budget covered, April 2026</caption>
   <thead><tr><th scope="col">Household</th><th scope="col">Housing</th><th scope="col">Income from</th><th scope="col" class="num">Share covered</th></tr></thead>
@@ -77,7 +77,7 @@ permalink: /living-on-a-pension/
 
 <p>The Retirement Living Standards are produced by the same research centre for Pensions UK. They describe three levels: minimum, moderate and comfortable.</p>
 
-{% call m.scrollTable("Retirement Living Standards, yearly spending") %}
+{% call m.scrollTable() %}
 <table>
   <caption>Retirement Living Standards: yearly spending, UK outside London, April 2025 prices</caption>
   <thead><tr><th scope="col">Standard</th><th scope="col" class="num">One person</th><th scope="col" class="num">Two people</th></tr></thead>
@@ -145,7 +145,7 @@ permalink: /living-on-a-pension/
 
 <p>The Office for National Statistics publishes a measure of costs for different types of household.</p>
 
-{% call m.scrollTable("Rise in household costs, retired and non-retired households") %}
+{% call m.scrollTable() %}
 <table>
   <caption>Rise in household costs to June 2026</caption>
   <thead><tr><th scope="col">Household type</th><th scope="col" class="num">Over 1 year</th><th scope="col" class="num">Over 5 years</th></tr></thead>
@@ -268,7 +268,7 @@ permalink: /living-on-a-pension/
   {%- set s = preset.source_id | sourceRecord %}
   <details class="more">
     <summary>{{ preset.label }}</summary>
-    <div class="scroll-x" tabindex="0" role="region" aria-label="{{ preset.label }}">
+    <div class="scroll-x" tabindex="0" role="region">
     <table>
       <caption>{{ preset.label }}: weekly budget, {{ preset.price_date }} prices</caption>
       <thead><tr><th scope="col">Category</th><th scope="col" class="num">A week</th></tr></thead>

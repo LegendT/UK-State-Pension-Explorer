@@ -41,12 +41,12 @@ permalink: /reform-options/costs/
 {{ m.sourceNote("sp-share-gdp-2075-76" | figure) }}
 
 <p>Four things drive the bill, and only one of them is the yearly increase.</p>
-<ul>
-  <li><strong>The number of pensioners.</strong> The number of people of pensionable age in the UK is projected to rise from {{ m.f("pop-pensionable-2024") }} in 2024 to {{ m.f("pop-pensionable-2034") }} in 2034.</li>
-  <li><strong>State Pension age.</strong> A higher age means fewer recipients. The fall in recipients forecast for 2027/28 in the table above comes with the rise to 67.</li>
-  <li><strong>Entitlement.</strong> More people on the new State Pension, and fewer on the older system, changes the average amount.</li>
-  <li><strong>The yearly increase.</strong> The subject of <a href="/reform-options/#increases">the options for the yearly increase</a>.</li>
-</ul>
+<dl>
+  <dt>The number of pensioners</dt> <dd>The number of people of pensionable age in the UK is projected to rise from {{ m.f("pop-pensionable-2024") }} in 2024 to {{ m.f("pop-pensionable-2034") }} in 2034.</dd>
+  <dt>State Pension age</dt> <dd>A higher age means fewer recipients. The fall in recipients forecast for 2027/28 in the table above comes with the rise to 67.</dd>
+  <dt>Entitlement</dt> <dd>More people on the new State Pension, and fewer on the older system, changes the average amount.</dd>
+  <dt>The yearly increase</dt> <dd>The subject of <a href="/reform-options/#increases">the options for the yearly increase</a>.</dd>
+</dl>
 {{ m.sourceNote("pop-pensionable-2034" | figure) }}
 
 <p>The balance between pensioners and people of working age is measured in several ways. On the measure used by the Office for National Statistics there were {{ m.f("oadr-2024") }} people of pensionable age for every 1,000 of working age in 2024, projected to be {{ m.f("oadr-2049") }} in 2049. Measures that use a fixed age, such as 65, show a steeper change, because they do not move with State Pension age.</p>
@@ -70,7 +70,7 @@ permalink: /reform-options/costs/
 
 <h3>The cost so far: a difference, not a bill</h3>
 
-{% call m.scrollTable("Estimates of extra yearly spending because of the triple lock") %}
+{% call m.scrollTable() %}
 <table>
   <caption>Estimates of extra yearly spending because of the triple lock</caption>
   <thead><tr><th scope="col">Estimate</th><th scope="col">Compared with</th><th scope="col">Year measured</th><th scope="col">Before or after tax and benefit effects</th><th scope="col">Who made it</th></tr></thead>
@@ -93,7 +93,7 @@ permalink: /reform-options/costs/
 <p>The increases of past years are part of today's rates. Changing the rule does not reverse them. A change only affects increases from the date it starts, so the saving begins small and grows.</p>
 {% endcall %}
 
-{% call m.scrollTable("Estimates of the saving from changing the yearly increase") %}
+{% call m.scrollTable() %}
 <table>
   <caption>Estimates of the saving from changing the yearly increase, compared with keeping the triple lock</caption>
   <thead><tr><th scope="col">Change</th><th scope="col">Estimated saving</th><th scope="col">When</th><th scope="col">Basis</th><th scope="col">Who made it</th></tr></thead>

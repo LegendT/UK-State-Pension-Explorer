@@ -80,7 +80,7 @@ Netlify builds a preview from `main`, using `netlify.toml`. The preview asks for
 
 ## Markup conventions
 
-Set on 29 September 2026 after a sweep of every built page. No build check holds these yet. They are a reading, made with the page map of the built site.
+Set on 29 September 2026 after a sweep of every built page, and changed on 1 October 2026 for defect 11 of the handover. Section 8 of `scripts/check-build.mjs` holds the rules a pattern can test: table regions named by their captions, a space between `</dt>` and `<dd>`, a chart named by its title alone and starting with its `figcaption`, notes that start with a heading, named sections for calculators only, and named `nav` elements. The others need reading.
 
 | Rule | Where it applies |
 | --- | --- |
@@ -88,13 +88,15 @@ Set on 29 September 2026 after a sweep of every built page. No build check holds
 | A note or a "not available" block is a `div` with `role="note"` and a heading as its first child, one level below the section it sits in. Pass the level to `m.note` and `m.unavailable`. | Every page, and the results the calculators write |
 | An option is an `article` with its own `h3`. It has no `aria-labelledby`, so it is not a region landmark. | Reform options |
 | A `section` with `aria-labelledby` is for a calculator only. | The four calculators |
-| A label with one value is a `dl`. Keep a space between `</dt>` and `<dd>`. | Figure details, calculator results, the options |
-| A chart is a `figure` with its title in a `figcaption`. The title states what the chart shows and is worked out from the result, never typed. | The history explorer and the rule comparison |
+| A label with one value is a `dl`. So is a list of names, each with its description. Keep a space between `</dt>` and `<dd>`. A list of points that each open with a bold sentence stays a `ul`: the sentence is the point, not a name. A numbered sequence stays an `ol`. | Figure details, calculator results, the options, the measures, the situations on the overview, the history of the triple lock, the accessibility statement |
+| The period, place, range and source under a figure are a `dl` with a `div` round each pair. The status labels come before it and the caveat after it, each in its own paragraph. | Every source note, from `m.sourceNote` |
+| A chart is a `figure` with its title in a `figcaption`. The title states what the chart shows and is worked out from the result, never typed. The image is named by its `title` alone. Its `desc` is joined with `aria-describedby`. | The history explorer and the rule comparison |
+| A link that stands for a card holds the card's name only. The description follows it as a paragraph, and the link's `::after` covers the card so the whole card can be clicked. | "Where to go next" on the overview |
 | An `h3` without an `id` gets one at build time, made from its words, so changing the words changes the link. Give it an `id` by hand if another page links to it. Result headings that a calculator draws in the browser get no `id`. A page with a contents list gets "Back to contents" links at build time. Both are in `eleventy.config.js`. | Every page |
 | A date that a template prints is a `time` element: `timeTag` for a day, `monthOrDayTag` for a source that gives a month only. Dates typed inside register text stay plain. | Citations, check dates, the register of sources |
 | Words taken from a source are in `q` or in quotation marks. | Quoted passages |
 | Lists of links in the footer are `nav` elements with names. | Every page |
-| A wrapper that scrolls a table or chart keeps `tabindex="0"`, `role="region"` and a name. `html-validate` reports each one under `prefer-native-element`. That report is declined. | Every wide table and chart |
+| A wrapper that scrolls a table or chart keeps `tabindex="0"`, `role="region"` and a name. A table's wrapper is named by its `caption` with `aria-labelledby`. In a template, leave the name off and the `tableRegions` transform in `eleventy.config.js` adds it. A script that draws a table gives the caption an `id` itself. A chart's wrapper keeps a short typed name, "Chart: …". Naming it from the `figcaption` would make a screen reader hear the title twice, once for the region and once for the image inside it. `html-validate` reports each wrapper under `prefer-native-element`. That report is declined. | Every wide table and chart |
 
 The exception is the preview banner. It has `role="note"` and no heading, because a heading there would come before the `h1`. It goes at launch.
 

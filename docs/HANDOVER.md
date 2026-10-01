@@ -1,6 +1,8 @@
 # Handover: first build
 
-Written 29 September 2026, updated 30 September 2026. The site is a **preview for review**. It is not published. The repository is https://github.com/LegendT/UK-State-Pension-Explorer. All work is merged into `main`, up to pull request 9. Pull request 10, from `handover-review-note`, is open: it adds the marking of the current section in the "On this page" list, decision 53, and carries the handover note that records pull request 9. Pull request 8 carried the work on the UX review of 30 September 2026, and pull request 9 recorded the owner's answers on it: see "UX review of 30 September 2026". Merged: pull request 1, the first build, on 29 September 2026; pull request 2, from `first-build`, pull request 3, from `april-2030-rule`, and pull request 4, from `homepage-orientation`, on 30 September 2026. Pull request 3 carried the markup sweep and stylesheet fixes of `html-semantics` and the update for the government's announcement of 29 September 2026. Pull request 4 added a table of State Pension age by date of birth to the overview: decision 44. Pull request 5 corrected the handover. Pull request 6, from `rule-2030-calculator`, adds the announced rule to the rule comparison: decision 38. It was merged on 30 September 2026. Pull request 7, from `handover-pr6`, recorded pull request 6 in this handover. Netlify builds `main` to the main address and a deploy preview of each pull request into `main`, all behind a sign-in.
+Written 29 September 2026, updated 1 October 2026. The site is a **preview for review**. It is not published. The repository is https://github.com/LegendT/UK-State-Pension-Explorer. All work is merged into `main`, up to pull request 10. Pull request 10, from `handover-review-note`, added the marking of the current section in the "On this page" list, decision 53, and carried the handover note that records pull request 9. It was merged on 30 September 2026. Pull request 8 carried the work on the UX review of 30 September 2026, and pull request 9 recorded the owner's answers on it: see "UX review of 30 September 2026". Merged: pull request 1, the first build, on 29 September 2026; pull request 2, from `first-build`, pull request 3, from `april-2030-rule`, and pull request 4, from `homepage-orientation`, on 30 September 2026. Pull request 3 carried the markup sweep and stylesheet fixes of `html-semantics` and the update for the government's announcement of 29 September 2026. Pull request 4 added a table of State Pension age by date of birth to the overview: decision 44. Pull request 5 corrected the handover. Pull request 6, from `rule-2030-calculator`, adds the announced rule to the rule comparison: decision 38. It was merged on 30 September 2026. Pull request 7, from `handover-pr6`, recorded pull request 6 in this handover. Netlify builds `main` to the main address and a deploy preview of each pull request into `main`, all behind a sign-in.
+
+**Pull request 11**, from `defect-11-and-research`, 1 October 2026, open, not merged: defect 11 closed, decisions 54 to 57, and the two items the research of 30 September left out, decision 58. See "Defect 11, 1 October 2026" and "Two items added, 1 October 2026".
 
 **Next action:** none is authorised. On 29 September 2026 the government announced a change to the triple lock from April 2030 and a National Care Service. The site was brought up to date on 30 September 2026, on the branch `april-2030-rule`: see "The announcement of 29 September 2026". It is merged into `main`. The rule is in the rule comparison, with its assumptions labelled: decisions 38 and 45.
 
@@ -105,13 +107,13 @@ Not checked on the deployed preview: the other three calculators, any browser bu
 8. **Field errors use `role="alert"`.** With many errors at once, screen reader announcements may compete. Not tested.
 9. **The government's savings figures cannot be checked.** They come with no price basis, baseline or method. The page says so, and says why they cannot be set beside the Institute for Fiscal Studies' range for 2050.
 10. **After launch, deploy previews and branch deploys would be open.** The launch steps delete `BASIC_AUTH` everywhere. Keeping it for those two contexts needs the production guard to check the Netlify context. Deferred to launch planning.
-11. **Markup left as it is after the sweep of 29 September 2026.** Open. Reopened by the owner on 30 September 2026, after an earlier handoff prompt had parked it. All six items were checked against the build that day and are still true. Each needs design work or a decision, and none is a failure of an automated check.
-    - The lists of a bold label and a value, 109 items on ten pages, should be description lists.
-    - The source note under each figure packs kind, period, place and source into one paragraph. It should be a description list.
-    - The names of scrolling table regions are typed apart from the captions. 21 of 33 differ from them.
-    - The name of each chart joins its title and its whole description.
-    - Each card under "Where to go next" on the overview puts two sentences inside the link.
-    - No build check holds the markup conventions in the README.
+11. **Markup left after the sweep of 29 September 2026.** Dealt with on 1 October 2026, on the branch `defect-11-and-research`. Decisions 54 to 57. Two parts wait on the owner's confirmation.
+    - The lists of a bold label and a value: 33 items in 9 lists that pair a name with its description are now description lists. The other lists stay as they were: decision 55. To be confirmed.
+    - The source note under each figure: period, place, range and source are a description list, a line each. The costs page is about 10% longer: decision 56. To be confirmed.
+    - The names of scrolling table regions: each now comes from its caption. Done: decision 54.
+    - The name of each chart: its title alone, with the description joined as a description. Done: decision 54.
+    - The cards under "Where to go next": the link holds the name only. Done: decision 57.
+    - A build check for the markup conventions: section 8 of `scripts/check-build.mjs` holds the rules a pattern can test. Each of its eight tests was shown to fail on a planted defect.
 
 ## Checks not performed
 
@@ -121,7 +123,7 @@ Not checked on the deployed preview: the other three calculators, any browser bu
 - The download and copy buttons of the history explorer were not pressed in a test.
 - The sister sites' tools were read from served HTML. They were not run.
 - House of Commons Library briefings and Hansard could not be opened.
-- Nothing on the main site address beyond the sign-in, and nothing on a production domain. The deploy preview of pull request 1 was checked, and the deploy previews of pull requests 2 to 8 were not: see "Checks on the deployed preview". Fetched share previews on a social platform were not checked.
+- Nothing on the main site address beyond the sign-in, and nothing on a production domain. The deploy preview of pull request 1 was checked, and the deploy previews of pull requests 2 to 11 were not: see "Checks on the deployed preview". Fetched share previews on a social platform were not checked.
 - Search console verification, sitemap submission, indexing.
 
 ## Owner decisions needed for launch
@@ -163,7 +165,7 @@ The review is `docs/ux-review.md`, a frozen record. The owner accepted these rec
 | No. | Recommendation | State |
 | --- | --- | --- |
 | R1 | Split reform options into four pages, option A: decision 46 | Done. `/reform-options/`, `/reform-options/costs/`, `/reform-options/social-care/` and `/reform-options/entitlement/`, with a list of the four pages on each. On a phone the old page was 90 screens before R2 and R3. With R2 and R3 the four are 27, 24, 23 and 11, 85 in all, so the split alone saves little length. It gives each page one main question |
-| R2 | Slim figure cards | Done. The first sentence of a figure's qualifications is shown open, and the rest is under "More about this figure". The two spending figures had their caveat moved to the front. The card markup is unchanged, so the README convention stands |
+| R2 | Slim figure cards | Done. The first sentence of a figure's qualifications is shown open, and the rest is under "More about this figure". The two spending figures had their caveat moved to the front. The card markup was unchanged then. On 1 October 2026 the source note under each card became a description list, a line for each pair, and the costs page grew about 10%: decision 56, not yet confirmed |
 | R3 | Short citations, and the check date once per section. Decision 17 keeps its words | Done in part. Citations show the publisher and date, and keep the title for screen readers. The registers on the sources page keep full titles. The check date moved into "More about this figure". Citing a source once per paragraph was not done: decision 47 |
 | R4 | Back-to-contents links, a contents list of `h2` headings that stays in view at 1024 px and wider, and an `id` on every `h3` | Done. A build step in `eleventy.config.js` gives every `h3` an `id` from its words and adds "Back to contents" before each section on a page with a contents list. At 1024 px and wider the list sits in its own column and stays in view, and the back links are hidden |
 | R5 | Shorten the overview's news section to a few sentences and a link | Done. Three short paragraphs built from the claims register, and a link to the social care page. Every item it dropped is on another page. The overview went from 15.7 to 10.2 phone screens. `news.json` keeps only its date |
@@ -204,7 +206,7 @@ Checks run on 30 September 2026 after R4 to R8 and R10, Chrome 154, macOS:
 
 ## "On this page" marking, 30 September 2026
 
-Asked for by the owner: the contents list shows which section is being read, while scrolling and after following a link. Decision 53. In pull request 10, open, not merged. It was pushed with `/push uncritiqued`: the second reader's last run came before the final changes to the check script.
+Asked for by the owner: the contents list shows which section is being read, while scrolling and after following a link. Decision 53. Merged in pull request 10. It was pushed with `/push uncritiqued`: the second reader's last run came before the final changes to the check script.
 
 | Check | Command | Result |
 | --- | --- | --- |
@@ -215,23 +217,56 @@ Asked for by the owner: the contents list shows which section is being read, whi
 
 Not checked: a screen reader, a real phone, smooth scrolling.
 
+## Defect 11, 1 October 2026
+
+In pull request 11, from `defect-11-and-research`, open. Decisions 54 to 57. The outcome of each item is under "Known defects and limits", number 11.
+
+| Check | Command | Result |
+| --- | --- | --- |
+| Build and registers | `npm run build` | No problems. Section 8 is new. Each of its eight tests was planted against a built page and failed with its own message: a typed region name, a caption with no `id`, `</dt><dd>`, a chart that does not start with its `figcaption`, a note that does not start with a heading, a `nav` with no name, a named section that is not a calculator, a chart named by its title and description |
+| Calculator tests | `npm test` | 25 of 25 pass |
+| Budget tables | `renderBudget` called in Node | Each of the three regions is named by its caption. These tables are drawn only after a reader submits, so the build check does not see them |
+| Automated accessibility | `npm run a11y` | 0 violations. 1,940 incomplete results, the same count as before. Every incomplete contrast result measured, 4,110, none below threshold |
+| Behaviour | `npm run a11y:manual` | 0 problems. The first run found 5. The overview cards drew focus on `::after`, which the checker cannot see: moved back to the link. Citations alone in a `dd` were under 24px: given padding. The "On this page" check scrolled a fixed 4,000 px, shorter than the first section of the costs page once its notes grew: it now scrolls to the second section. With the hold on a followed link made permanent in the built script, the changed step failed on all 9 pages with the list |
+| Rendered | Screenshots in Chrome | Figure cards before and after, at 1400 px. Overview cards with keyboard focus at 1400 px light, and at 390 px dark. The situations list at 390 px. The history of the triple lock at 1400 px dark. "Distinctions that matter" before and after |
+
+Not checked: a screen reader, forced colours, a real phone.
+
+The base style for `dt` and `dd` is new. It also changes about 15 description lists that were there before, such as "Distinctions that matter", which used the browser's default indent and normal weight.
+
+## Two items added, 1 October 2026
+
+Decision 58. Records in `research/06-announcement-2026-09-29.md`, section A2 and record `ann-speech`.
+
+| Check | Command | Result |
+| --- | --- | --- |
+| Passages | `python3 scripts/check-passages.py` | 199 checked, 178 by script and 21 by the browser record. None missing. The three new passages are among those found by script |
+| Build and registers | `npm run build` | No problems. 150 claims, 96 sources |
+| Automated accessibility | `npm run a11y` | 0 violations. 1,955 incomplete results, 15 more than before, from the new text. Every incomplete contrast result measured, 4,125, none below threshold |
+| Behaviour | `npm run a11y:manual` | 0 problems |
+| Rendered | Screenshots in Chrome | The note on the State Pension page at 1400 px, the poll section at 390 px |
+
+The Income Tax commitment rests on the speech as printed by a newspaper. No government document states it. Hansard could not be read: parliament.uk refused automated requests.
+
 ## Waiting on the owner
 
-As at 30 September 2026.
+As at 1 October 2026.
 
 | Item | What is needed |
 | --- | --- |
-| Pull request 10 | Review and merge. See "On this page" marking |
 | The deployed site | Netlify builds `main` after every merge, and each build on 30 September 2026 was ready. `netlify api listSiteDeploys` shows the latest. The main address answered 401 with `WWW-Authenticate: Basic`. Nobody has looked at the pages past the sign-in. Doing so needs the sign-in, which the owner enters |
-| Two items the research left out | The speech's commitment on Income Tax for pensioners on low incomes, and a YouGov poll of 29 September 2026. See `research/06-announcement-2026-09-29.md` |
-| Markup conventions in the README | Written by the assistant after the sweep of 29 September. Not yet accepted by the owner |
+| Pull request 11 | Review and merge. Three commits: the merge of pull request 10 recorded, defect 11, and the two items the research left out (decision 58). Decisions 55 and 56 need a yes or no |
+| Suggestions from the critique of 1 October 2026, not applied | A rounding note on the poll, whose three figures add to 101. A search of the Labour Party's site for an official text of the speech. A link from the care page's question on the lowest incomes to the Income Tax note. The "On this page" check to scroll at least a window past the first heading. Build checks for the overview cards and the source notes. Also a question: what counts as a primary source for a spoken commitment when no official transcript exists. The newspaper's printing was used, as under decision 42 |
+| Markup conventions in the README | Written by the assistant after the sweep of 29 September, and changed on 1 October 2026. Not yet accepted by the owner |
+| Decision 55 | Which bold-label lists became description lists. See defect 11 |
+| Decision 56 | The source note as a description list, a line for each pair, and the extra length. See defect 11 |
 
 ## Tracked separately
 
 | Item | Status |
 | --- | --- |
 | Reciprocal links on UK Public Finances Explorer and UK Migration Explorer | Not started. Needs a live domain. No other repository was changed |
-| Deployed checks | Done for the deploy preview of pull request 1. See "Checks on the deployed preview". Not done for pull requests 2 to 10, for the main site address beyond the sign-in, or for a production domain |
+| Deployed checks | Done for the deploy preview of pull request 1. See "Checks on the deployed preview". Not done for pull requests 2 to 11, for the main site address beyond the sign-in, or for a production domain |
 | Search console | Not started. Needs account and domain access |
 
 ## Found in passing

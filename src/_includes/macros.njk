@@ -13,8 +13,14 @@
 {%- macro sourceNote(f) -%}
 {%- set caveat = f.qualifications | splitCaveat -%}
 <div class="source">
-  <p><span class="status">{{ classLabel(f.classification) }}</span>{% if f.provisional %} <span class="status">Can be revised</span>{% endif %}
-  {{ f.period_label }}. {{ f.geography }}{% if f.range %} Range: {{ f.range }}.{% endif %}{% if caveat[0] %} {{ caveat[0] }}{% endif %} Source: {{ cite(f.source) }}.</p>
+  <p class="statuses"><span class="status">{{ classLabel(f.classification) }}</span>{% if f.provisional %} <span class="status">Can be revised</span>{% endif %}</p>
+  <dl class="facts">
+    <div><dt>Period</dt> <dd>{{ f.period_label }}</dd></div>
+    <div><dt>Place</dt> <dd>{{ f.geography }}</dd></div>
+    {%- if f.range %}<div><dt>Range</dt> <dd>{{ f.range }}</dd></div>{% endif %}
+    <div><dt>Source</dt> <dd>{{ cite(f.source) }}</dd></div>
+  </dl>
+  {%- if caveat[0] %}<p>{{ caveat[0] }}</p>{% endif %}
   <details>
     <summary>More about this figure<span class="visually-hidden">: {{ f.label }}</span></summary>
     <dl>
@@ -88,8 +94,9 @@
 <a href="{{ link.url }}">{{ link.label }} ({{ link.site }})</a>
 {%- endmacro -%}
 
-{%- macro scrollTable(label) -%}
-<div class="scroll-x" tabindex="0" role="region" aria-label="{{ label }}">
+{#- A scrolling wrapper for a table. It is named by the table's caption at build time: see "tableRegions" in eleventy.config.js. -#}
+{%- macro scrollTable() -%}
+<div class="scroll-x" tabindex="0" role="region">
 {{ caller() }}
 </div>
 {%- endmacro -%}
@@ -117,7 +124,7 @@
 {%- macro dataTable(id, numeric) -%}
 {%- set t = tables[id] -%}
 {%- set s = (t.source_id | sourceRecord) if t.source_id else null -%}
-<div class="scroll-x" tabindex="0" role="region" aria-label="{{ t.caption }}">
+<div class="scroll-x" tabindex="0" role="region">
 <table>
   <caption>{{ t.caption }}</caption>
   <thead><tr>{% for col in t.columns %}<th scope="col"{% if t.align[loop.index0] == "r" %} class="num"{% endif %}>{{ col }}</th>{% endfor %}</tr></thead>

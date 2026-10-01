@@ -9,19 +9,19 @@ Read, in this order, before doing anything:
 
 Do not read _archive/. Read research/ only when checking a figure. docs/ux-review.md is a
 frozen record: read it for the reasoning behind recommendations R1 to R10, and never edit it.
-Their state is in docs/HANDOVER.md, "UX review of 30 September 2026".
 
-State on 30 September 2026: see the opening paragraph of docs/HANDOVER.md. The site is an
-unpublished preview. All work is merged into `main`, up to pull request 9. Pull request 10,
-from `handover-review-note`, is open and waits on Anthony: see the section on the "On this page" marking in
-docs/HANDOVER.md. Run git status first.
+State on 1 October 2026: see the opening paragraphs of docs/HANDOVER.md. The site is an
+unpublished preview. All work up to pull request 10 is merged into `main`. Pull request 11,
+from `defect-11-and-research`, is open and waits on Anthony: defect 11 (decisions 54 to 57)
+and the two items the research left out (decision 58). Run git status first.
 
 Next action: none. Wait for Anthony to say what to do. Nothing else is authorised.
 
-Waiting on Anthony: the table under "Waiting on the owner" in docs/HANDOVER.md.
+Waiting on Anthony: the table under "Waiting on the owner" in docs/HANDOVER.md, including
+decisions 55 and 56 and the critique suggestions of 1 October 2026.
 
 Do not raise again unless asked: the items under "Known defects and limits" in
-docs/HANDOVER.md that are marked deferred: at present, defect 10. Defect 11 is open.
+docs/HANDOVER.md that are marked deferred: at present, defect 10.
 
 Rules that have been broken before and must not be again: read ~/.claude/CLAUDE.md in
 full first. In this project: do not import .env into Netlify, do not push (Anthony types

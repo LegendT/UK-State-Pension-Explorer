@@ -30,7 +30,7 @@ permalink: /
 
 <p>The table shows State Pension age under the law today. It is not a check of your own entitlement. For that, use GOV.UK's <a href="https://www.gov.uk/state-pension-age">State Pension age calculator</a> and <a href="https://www.gov.uk/check-state-pension">State Pension forecast</a>.</p>
 
-{% call m.scrollTable("State Pension age by date of birth") %}
+{% call m.scrollTable() %}
 <table class="stand">
   <caption>State Pension age by date of birth, under current law</caption>
   <thead><tr><th scope="col">Born</th><th scope="col">State Pension age</th><th scope="col">Read next</th></tr></thead>
@@ -59,12 +59,12 @@ permalink: /
 <p>The rule announced for April 2030 is about the yearly increase. The announcement does not change State Pension age. {{ m.c("rule-2030") }} <a href="/reform-options/#opt-2030">What the announced rule does</a>.</p>
 
 <h3 id="situations">Other things that change your situation</h3>
-<ul>
-  <li><strong>Caring for someone, or thinking about care.</strong> <a href="/reform-options/social-care/">Pensions and social care</a>, including the plan for a National Care Service. {{ ("ni-credits" | claim).statement }} {{ m.c("ni-credits") }} <a href="/state-pension/#qualifying">National Insurance and qualifying years</a>.</li>
-  <li><strong>Living in Scotland, Wales or Northern Ireland.</strong> Each nation runs its own social care. <a href="/reform-options/social-care/#care-now">Social care now, nation by nation</a>.</li>
-  <li><strong>Living abroad.</strong> In some countries the State Pension does not rise each year. {{ m.c("overseas-frozen") }} <a href="/state-pension/#overseas">People who live abroad</a>.</li>
-  <li><strong>On a low income.</strong> Pension Credit is a separate benefit that has to be claimed. <a href="/state-pension/#extra-help">Pension Credit and other help</a>.</li>
-</ul>
+<dl>
+  <dt>Caring for someone, or thinking about care</dt> <dd><a href="/reform-options/social-care/">Pensions and social care</a>, including the plan for a National Care Service. {{ ("ni-credits" | claim).statement }} {{ m.c("ni-credits") }} <a href="/state-pension/#qualifying">National Insurance and qualifying years</a>.</dd>
+  <dt>Living in Scotland, Wales or Northern Ireland</dt> <dd>Each nation runs its own social care. <a href="/reform-options/social-care/#care-now">Social care now, nation by nation</a>.</dd>
+  <dt>Living abroad</dt> <dd>In some countries the State Pension does not rise each year. {{ m.c("overseas-frozen") }} <a href="/state-pension/#overseas">People who live abroad</a>.</dd>
+  <dt>On a low income</dt> <dd>Pension Credit is a separate benefit that has to be claimed. <a href="/state-pension/#extra-help">Pension Credit and other help</a>.</dd>
+</dl>
 
 <h2 id="three-things">Three things to know first</h2>
 
@@ -79,9 +79,9 @@ permalink: /
 <h2 id="journeys">Where to go next</h2>
 
 <ul class="cards cards--three journeys">
-  <li><a href="/state-pension/">Understand the rules <span>Who gets the State Pension, how much, and how the yearly increase works. Start with <em>The State Pension</em>, then <em>The triple lock</em>.</span></a></li>
-  <li><a href="/living-on-a-pension/">Understand buying power <span>What research says a standard of living costs, what retired households spend, and a budget you can fill in yourself.</span></a></li>
-  <li><a href="/reform-options/">Explore reform <span>The options for changing increases or entitlement, what they would cost or save, and who would be affected.</span></a></li>
+  <li><a href="/state-pension/">Understand the rules</a> <p>Who gets the State Pension, how much, and how the yearly increase works. Start with <em>The State Pension</em>, then <em>The triple lock</em>.</p></li>
+  <li><a href="/living-on-a-pension/">Understand buying power</a> <p>What research says a standard of living costs, what retired households spend, and a budget you can fill in yourself.</p></li>
+  <li><a href="/reform-options/">Explore reform</a> <p>The options for changing increases or entitlement, what they would cost or save, and who would be affected.</p></li>
 </ul>
 
 <h2 id="in-the-news">In the news: what is decided and what is not</h2>

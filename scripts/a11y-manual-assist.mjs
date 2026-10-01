@@ -150,7 +150,11 @@ for (const path of pages) {
     steps.push(["bottom marks the last link", (await current()) === count - 1]);
     await (await fourth.$$(links))[0].click(); await frames();
     steps.push(["following the first link marks it", (await current()) === 0]);
-    await fourth.evaluate(() => scrollBy(0, 4000)); await frames();
+    // Scroll to the second section, not a fixed distance: a first section can be longer than any fixed step.
+    await fourth.evaluate((sel) => {
+      const second = document.getElementById(document.querySelectorAll(sel)[1].hash.slice(1));
+      scrollTo(0, second.getBoundingClientRect().top + scrollY);
+    }, links); await frames();
     steps.push(["scrolling on moves the mark from the first link", ![0, -1].includes(await current())]);
     await (await fourth.$$(links))[mid].click(); await frames();
     steps.push(["following a middle link marks it", (await current()) === mid]);

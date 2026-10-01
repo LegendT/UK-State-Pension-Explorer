@@ -1,6 +1,6 @@
 # 06 — The announcement of 29 September 2026: the triple lock and a National Care Service
 
-Research file for UK State Pension Explorer. Retrieval date for every record: **2026-09-30**.
+Research file for UK State Pension Explorer. Retrieval date for every record: **2026-09-30**, except section A2 and the notes marked 1 October 2026, which are **2026-10-01**.
 
 ## How to read this file
 
@@ -8,7 +8,7 @@ Status categories and check statuses are those of `05-reform-politics-care.md`. 
 
 - **BROWSER-CHECKED** — the site refuses automated download. The page was opened in Chrome 154 and each quote was matched against the page text by script, after the same normalising as `scripts/check-passages.py`.
 
-**Method note.** Pages were downloaded with `curl` and converted to text, and quotes were copied from that text. The GOV.UK story was read through the content API. Two sites refused automated download and were read in a browser: ifs.org.uk and reformparty.uk. Every quote that went into the registers was then checked by `python3 scripts/check-passages.py`, which found 167 by script and 21 by the browser record, with none missing.
+**Method note.** Pages were downloaded with `curl` and converted to text, and quotes were copied from that text. The GOV.UK story was read through the content API. Two sites refused automated download and were read in a browser: ifs.org.uk and reformparty.uk. Every quote that went into the registers was then checked by `python3 scripts/check-passages.py`, which found 167 by script and 21 by the browser record, with none missing. On 1 October 2026, after section A2, it found 178 by script and 21 by the browser record.
 
 **Known limits, stated once:**
 
@@ -35,7 +35,7 @@ Status categories and check statuses are those of `05-reform-politics-care.md`. 
 - Status: ANNOUNCED COMMITMENT · Date: 29 September 2026
 - Publisher / title / URL: The New World, "'We will hope again': Andy Burnham's full speech to the 2026 Labour Party Conference", https://www.thenewworld.co.uk/we-will-hope-again-andy-burnhams-full-speech-to-the-2026-labour-party-conference/
 - Quotes: "From there, in April 2030, we will adjust it." · "The state pension will continue to rise every year at least by prices or 2.5%." · "And it will hold its value relative to earnings over time so that pensioners will always share in the rising prosperity of the nation."
-- Not used on the site: "I can also confirm today our commitment to ensure that the low-income pensioners won't be dragged into paying income tax in this Parliament." The site has no section on that commitment. For the owner to decide.
+- Used on the site from 1 October 2026, as claim `pm-speech-income-tax`, on the State Pension page under "Tax and how it is paid": "I can also confirm today our commitment to ensure that the low-income pensioners won't be dragged into paying income tax in this Parliament." Searched on 1 October 2026: the whole speech on the page mentions Income Tax once, in this sentence; the GOV.UK story does not mention it; and no government document on or after 29 September states the commitment. NOT-FOUND: who counts as on a low income, and how it would be done. The nearest official text is Budget 2025's commitment on Simple Assessment from 2027-28, already claim `simple-assessment-2027`. The Chancellor's "In this Parliament, they won't have to pay the tax" of 27 November 2025 was found only in a trade report (Pensions Age, 28 November 2025) and was not used. Hansard could not be read: parliament.uk refused automated requests.
 - Check status: FETCHED-AND-QUOTED from a newspaper's transcript. Only the paragraphs on pensions and care were read.
 
 ## B. Research bodies
@@ -89,6 +89,18 @@ All SECONDARY-ONLY. Age UK, the Health Foundation and the King's Fund are as quo
 - The Secretary of State for Wales, reported by Nation.Cymru from a television interview: "The right proportion of that funding will come to Wales, it will then be up to the government of the day to implement a new national care service." SECONDARY-ONLY.
 - The GOV.UK story names no nation. NOT-FOUND: any government statement on Scotland or Northern Ireland.
 
+## A2. Added on 1 October 2026
+
+**Record `yougov-2026-09-29`**
+- Claim: In an online poll of 4,503 adults in Great Britain on 29 September 2026, 48% supported the change to the triple lock from 2030 to help fund a care service, 28% opposed it and 25% did not know.
+- Status: OPINION POLL · Who: YouGov, self-commissioned · Date: 29 September 2026 · Geography: Great Britain
+- Publisher / title / URL: YouGov, "Britons support changing triple lock to fund care service by 48% to 28%", https://yougov.com/en-gb/articles/55654-britons-support-changing-triple-lock-to-fund-care-service-by-48-to-28
+- Quotes: "Sample size: An online survey of 4,503 adults aged 18+ in Great Britain" · "Fieldwork: 29 September 2026" · "Andy Burnham has announced he plans to change the triple lock in 2030 so that pensions only increase by whatever is highest out of inflation or 2.5%. The money will be used to help fund part of a national care service. Do you support or oppose this policy?" · "Connecting the triple lock change with contributing funding to a National Care Service increases support – but not by much, at 48%, while the number opposed remains largely the same at 28%"
+- Chart data, https://datawrapper.dwcdn.net/1WFlo/1/dataset.csv, for that question: strongly support 17, somewhat support 31, somewhat oppose 14, strongly oppose 14, don't know 25. The poll also asked about the change without the care service (43% for, 30% against) and about a free care service alone (74% for, 11% against). Not used: the site reports the question about the announced plan only.
+- Not used: support by party vote. Subgroups are smaller samples and the article gives no margins.
+- Limit: the question describes the rule as "inflation or 2.5%" and leaves out the earnings part of the announced rule. The site says so.
+- Check status: FETCHED-AND-QUOTED on 1 October 2026, page and chart data.
+
 ## F. Not found
 
 - A Bill, draft clauses or a technical note.
@@ -101,6 +113,6 @@ All SECONDARY-ONLY. Age UK, the Health Foundation and the King's Fund are as quo
 
 ## G. Not used
 
-- A YouGov poll of 29 September 2026 on support for the change. Opinion, not evidence about the policy. For the owner to decide.
+- A YouGov poll of 29 September 2026 on support for the change. Used from 1 October 2026: see record `yougov-2026-09-29` in section A2.
 - Nuffield Trust comments, seen only in a trade report.
 - A Reuters line, seen in a search summary only, that the change depends on winning the next election. The GOV.UK story says the government will legislate during this Parliament.

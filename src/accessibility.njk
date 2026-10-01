@@ -34,33 +34,33 @@ permalink: /accessibility/
 {%- for item in a11y.done %}{% set key = item.environment ~ item.date %}{% if key not in runs %}{% set _ = runs.push(key) %}{% endif %}{% endfor %}
 {%- set oneRun = (runs | length) == 1 %}
 {% if oneRun %}<p>Every test below used {{ a11y.done[0].environment }} They ran on {{ a11y.done[0].date | timeTag | safe }}.</p>{% endif %}
-<ul>
+<dl>
   {%- for item in a11y.done %}
-  <li><strong>{{ item.check }}.</strong> {{ item.result }}{% if not oneRun %} {{ item.environment }} Tested on {{ item.date | timeTag | safe }}.{% endif %}</li>
+  <dt>{{ item.check }}</dt> <dd>{{ item.result }}{% if not oneRun %} {{ item.environment }} Tested on {{ item.date | timeTag | safe }}.{% endif %}</dd>
   {%- endfor %}
-</ul>
+</dl>
 {% else %}
 <p>No test results are recorded yet.</p>
 {% endif %}
 
 <h2 id="not-tested">What has not been tested</h2>
 {% if a11y.not_done | length %}
-<ul>
+<dl>
   {%- for item in a11y.not_done %}
-  <li><strong>{{ item.check }}.</strong> {{ item.reason }}</li>
+  <dt>{{ item.check }}</dt> <dd>{{ item.reason }}</dd>
   {%- endfor %}
-</ul>
+</dl>
 {% else %}
 <p>Nothing is recorded as outstanding.</p>
 {% endif %}
 
 <h2 id="known-issues">Known problems</h2>
 {% if a11y.known_issues | length %}
-<ul>
+<dl>
   {%- for item in a11y.known_issues %}
-  <li><strong>{{ item.issue }}.</strong> {{ item.detail }} WCAG {{ item.criterion }}.</li>
+  <dt>{{ item.issue }}</dt> <dd>{{ item.detail }} WCAG {{ item.criterion }}.</dd>
   {%- endfor %}
-</ul>
+</dl>
 {% else %}
 <p>No failure found in testing is still open. That covers only the tests listed above.</p>
 {% endif %}
