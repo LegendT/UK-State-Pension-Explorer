@@ -51,7 +51,8 @@ const config = {
   ],
   // The pages of the reform options section, in reading order. Shown on each of them.
   reformPages: [
-    { href: "/reform-options/", label: "The yearly increase: options and a calculator" },
+    { href: "/reform-options/", label: "The yearly increase: options" },
+    { href: "/reform-options/compare/", label: "Compare the rules" },
     { href: "/reform-options/costs/", label: "What it costs, and who receives what" },
     { href: "/reform-options/social-care/", label: "Pensions and social care" },
     { href: "/reform-options/entitlement/", label: "Means-testing, and the arguments" },

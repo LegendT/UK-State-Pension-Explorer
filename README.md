@@ -68,6 +68,7 @@ A11Y_ASSESSMENT_DATE=2026-10-01 AI_CRAWLER_POLICY=allow npm run build
 | `src/assets/js/lib/` | Calculations and views. No DOM. Used by the build and the browser. |
 | `src/assets/js/tools/` | The four calculators' page scripts. |
 | `src/assets/js/contents.js` | Marks the section being read in the "On this page" list. |
+| `src/assets/js/moved.js` | Sends a link to the old rule comparison, with settings in its address, on to `/reform-options/compare/`. |
 | `src/assets/js/cards.js` | Makes a click on the description of each card under "Where to go next" on the overview follow the card's link after 300 ms, unless a second click makes it a double-click or the reader has selected text. |
 | `test/` | Tests. |
 | `scripts/` | Build check, accessibility runs, source checks, reference calculations. |
@@ -92,6 +93,8 @@ Set on 29 September 2026 after a sweep of every built page, and changed on 1 Oct
 | A label with one value is a `dl`. So is a list of names, each with its description. Keep a space between `</dt>` and `<dd>`. A list of points that each open with a bold sentence stays a `ul`: the sentence is the point, not a name. A numbered sequence stays an `ol`. | Figure details, calculator results, the options, the measures, the situations on the overview, the history of the triple lock, the accessibility statement |
 | The period, place, range and source under a figure are a `dl` with a `div` round each pair. The status labels come before it and the caveat after it, each in its own paragraph. | Every source note, from `m.sourceNote` |
 | A chart is a `figure` with its title in a `figcaption`. The title states what the chart shows and is worked out from the result, never typed. The image is named by its `title` alone. Its `desc` is joined with `aria-describedby`. | The history explorer and the rule comparison |
+| A source after a sentence is `m.ref`, or `m.c` for a claim, drawn as a chip by `.ref`. Do not type "Source:" and a citation by hand. | Every page |
+| A calculator whose result is below its form keeps a summary of the result in view: beside the form when there is room, pinned to the foot of the screen when there is not. The pinned summary holds nothing that takes focus. | The rule comparison |
 | A link that stands for a card holds the card's name only. The description follows it as a paragraph. The link's `::after` covers the card, so the name and padding follow the link. The description is raised above it, so it can be selected by dragging or double-clicking. Once `cards.js` runs, a click on the description follows the link after 300 ms, unless a second click makes it a double-click. Without script the description is not a link target. The card shows a 3px outline while its link has keyboard focus. | "Where to go next" on the overview |
 | An `h3` without an `id` gets one at build time, made from its words, so changing the words changes the link. Give it an `id` by hand if another page links to it. Result headings that a calculator draws in the browser get no `id`. A page with a contents list gets "Back to contents" links at build time. Both are in `eleventy.config.js`. | Every page |
 | A date that a template prints is a `time` element: `timeTag` for a day, `monthOrDayTag` for a source that gives a month only. Dates typed inside register text stay plain. | Citations, check dates, the register of sources |

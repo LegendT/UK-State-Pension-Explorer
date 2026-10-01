@@ -1,0 +1,140 @@
+---
+layout: base.njk
+permalink: /reform-options/compare/
+---
+{%- import "macros.njk" as m with context -%}
+{%- set scenario = scenarios.scenarios | where("id", scenarios.default) | first -%}
+<h1>Compare the rules for the yearly increase</h1>
+
+<p class="lede">Five rules for the yearly increase, applied to the same starting amount and the same figures for prices and earnings. Change any figure and the result changes with it. The rules are explained on <a href="/reform-options/">the yearly increase: options</a>.</p>
+
+{{ m.reformSection() }}
+
+<section class="tool" aria-labelledby="compare">
+  <h2 id="compare">Try the rules</h2>
+
+  <p>This tool applies five rules to the same starting amount and the same yearly figures for prices and earnings. It shows where the rules differ and where they do not. One of the five is the rule announced for April 2030. The government has not published how it works, so the tool makes three assumptions about it, and one more to keep the tool simple. <a href="#rule-2030-assumptions">The assumptions</a>.</p>
+
+  {% call m.note("What this tool does and does not show", 3) %}
+  <ul>
+    <li>It models <strong>one full rate</strong>, weekly and <strong>before tax</strong>. It is not your entitlement.</li>
+    <li>The yearly figures are <strong>illustrations</strong>. They are not forecasts and have no probability.</li>
+    <li>It leaves out Income Tax, Pension Credit and every other benefit. A difference shown here is not a difference in money to spend.</li>
+    <li>You cannot use it to work out national savings.</li>
+    <li>As you change the figures, the settings go in the page address, so a copied link shows the same result. The tool sends and stores nothing else. <a href="/privacy/#tools">Privacy</a>.</li>
+  </ul>
+  {% endcall %}
+
+  <div class="no-js-only">
+    {% call m.note("The calculator needs JavaScript", 3) %}
+    <p>The form is not available, because JavaScript is off or did not load. The result below shows the first scenario.</p>
+    {% endcall %}
+  </div>
+
+  <div class="compare-layout">
+  <form id="compare-form" class="js-only" novalidate>
+    <fieldset>
+      <legend>Settings</legend>
+      <div class="fields">
+        <div class="field">
+          <label for="compare-scenario">Scenario</label>
+          <select id="compare-scenario" name="compare-scenario">
+            {%- for item in scenarios.scenarios %}
+            <option value="{{ item.id }}"{% if item.id == scenarios.default %} selected{% endif %}>{{ item.label }}</option>
+            {%- endfor %}
+          </select>
+        </div>
+        {{ m.field("compare-years", "Number of years", scenarios.default_years, "From 1 to 30.", "", "", "numeric") }}
+        {{ m.field("compare-start", "Starting weekly amount", ("nsp-full-weekly" | figPence) | plainPounds, "A full rate, in pounds. The full new State Pension for 2026/27 is filled in.", "£", "") }}
+        <div class="field">
+          <label for="compare-first">First year under the rule</label>
+          <span class="hint" id="compare-first-hint">This changes the year labels only. The starting amount is the rate for the year before.</span>
+          <select id="compare-first" name="compare-first" aria-describedby="compare-first-hint">
+            {%- for y in range(2027, 2037) %}
+            <option value="{{ y }}">{{ y }}/{{ (y + 1) % 100 }}</option>
+            {%- endfor %}
+          </select>
+        </div>
+        <div class="field">
+          <label for="compare-measure">Show amounts as</label>
+          <select id="compare-measure" name="compare-measure">
+            <option value="cash">Cash: the money of each year</option>
+            <option value="real">Buying power: the prices of the starting year</option>
+            <option value="earnings">Compared with earnings: an index</option>
+          </select>
+        </div>
+      </div>
+      <div class="choice">
+        <input type="checkbox" id="compare-floor" name="compare-floor" checked aria-describedby="compare-floor-hint">
+        <label for="compare-floor">The amount never falls in pounds (a cash floor of 0%)</label>
+      </div>
+      <p class="hint" id="compare-floor-hint">This is an assumption of these hypothetical rules. It is not a statement of the law. It matters only when prices or earnings fall.</p>
+      <dl class="reason"><dt>Why this scenario is here</dt> <dd id="compare-reason">{{ scenario.reason }}</dd></dl>
+    </fieldset>
+
+    <details class="more" id="compare-edit">
+      <summary>Change the figures for each year</summary>
+      <p>Per cent, from -10 to 25, with one decimal place. All five rules use the same figures.</p>
+      <div class="scroll-x" tabindex="0" role="region">
+        <table>
+          <caption>Rise in prices and earnings used for each year</caption>
+          <thead><tr><th scope="col">Tax year</th><th scope="col">Rise in prices (%)</th><th scope="col">Rise in earnings (%)</th></tr></thead>
+          <tbody id="compare-rows"></tbody>
+        </table>
+      </div>
+    </details>
+
+    <div class="buttons">
+      <button type="button" class="secondary" id="compare-reset">Reset everything</button>
+    </div>
+  </form>
+
+  {#- Stays in view while the figures change: beside the form on wide screens, pinned to the foot of a narrow one. -#}
+  <div class="compare-summary js-only">
+    <h3 id="compare-summary-heading">At a glance</h3>
+    <div id="compare-summary">
+      {{ { startPence: ("nsp-full-weekly" | figPence), path: scenario.path.slice(0, scenarios.default_years), cashFloor: true, firstYear: 2027, measure: "cash" } | renderSummary | safe }}
+    </div>
+  </div>
+  </div>
+
+  <p class="visually-hidden" role="status" id="compare-status"></p>
+
+  <div class="result" id="compare-result">
+    {{ { startPence: ("nsp-full-weekly" | figPence), path: scenario.path.slice(0, scenarios.default_years), cashFloor: true, firstYear: 2027, measure: "cash", scenarioLabel: (scenario.label.charAt(0) | lower) ~ scenario.label.slice(1) } | renderComparison | safe }}
+  </div>
+
+  <h3>The scenarios</h3>
+  <dl>
+    {%- for item in scenarios.scenarios %}
+    <dt>{{ item.label }}</dt>
+    <dd>{{ item.reason }}{% if item.source_id %} {% set s = item.source_id | sourceRecord %}{{ m.ref(s, "Source for the two rates") }}{% endif %}</dd>
+    {%- endfor %}
+  </dl>
+  <p>The scenarios were chosen to show different behaviour, including scenarios where several rules give the same answer. A result changes with the starting amount, the number of years and the figures. No single scenario shows what will happen.</p>
+
+  <h3>How the tool calculates</h3>
+  <dl>
+    <dt>Timing</dt> <dd>The starting amount is the rate in the year before the first year. Each year has one figure for prices and one for earnings, and they set that year's increase.</dd>
+    <dt>A simplification</dt> <dd>In practice an April increase uses figures from the year before. The tool does not model that delay. It treats each year's figure as the change in prices, or earnings, between one year and the next.</dd>
+    <dt>Rounding</dt> <dd>Each year's weekly amount is rounded to the nearest 5p, and the rounded amount is the base for the next year.</dd>
+    <dt>Buying power</dt> <dd>The cash amount divided by a price index built from the prices figures. The starting year is 1.</dd>
+    <dt>Compared with earnings</dt> <dd>The rise in the amount divided by the rise in an earnings index built from the earnings figures. It is an index, not a share of any pay figure in pounds.</dd>
+    <dt>Totals</dt> <dd>52 weeks a year at that year's rate.</dd>
+  </dl>
+
+  <h4 id="rule-2030-assumptions">The rule announced for April 2030: the assumptions</h4>
+  <p>{{ ("ifs-rule-2030-mechanism" | claim).statement }} {{ m.c("ifs-rule-2030-mechanism") }} The tool follows that description. Each year it takes the highest of three amounts: last year's rate raised by prices, last year's rate raised by 2.5%, and the earnings target. The earnings target is the starting amount carried forward by all the earnings growth since the rule began.</p>
+  <p>The tool makes four assumptions. The first three fill in details the government has not published. The fourth keeps the tool simple.</p>
+  <ol>
+    <li><strong>Starting point.</strong> The rule starts from the starting amount, the rate in the year before the first year. {{ ("rule-2030-example" | claim).statement }} {{ m.c("rule-2030-example") }}</li>
+    <li><strong>Earnings measure.</strong> The target uses the same yearly earnings figure as the other rules.</li>
+    <li><strong>Catching up.</strong> The target is carried forward exactly and rounded to the nearest 5p only when it sets the rate. So the rule can differ from the earnings link by small amounts, even when both follow earnings. In the steady growth scenario the gap is 10p a week at most. For the same reason it can sometimes come out a few pence above the triple lock.</li>
+    <li><strong>The first year.</strong> The tool applies the rule from the first year you choose, like the other rules. The government's rule would start in April 2030. To match that, choose 2030/31 as the first year.</li>
+  </ol>
+  <p>A different choice on any of the first three would give different results. The tool shows how the rule behaves. It does not show what the government's rule will pay.</p>
+  <p><a href="/sources-and-method/#models">Full method, reference examples and limits</a>.</p>
+
+  <script type="application/json" id="compare-data">{{ { scenarios: scenarios.scenarios, default: scenarios.default, default_years: scenarios.default_years, default_start: ("nsp-full-weekly" | figPence) | plainPounds, default_first: 2027 } | json | safe }}</script>
+  <script type="module" src="/assets/js/tools/compare.js"></script>
+</section>

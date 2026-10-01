@@ -101,10 +101,15 @@
 </div>
 {%- endmacro -%}
 
+{#- A source after a sentence, drawn as a chip so it reads apart from the sentence. -#}
+{%- macro ref(s, label) -%}
+<span class="ref">{{ label or "Source" }}: {{ cite(s) }}.</span>
+{%- endmacro -%}
+
 {#- A citation for a claim in the claims register. -#}
 {%- macro c(id) -%}
 {%- set r = id | claim -%}
-{% if r.source %}<span class="ref">Source: {{ cite(r.source) }}.</span>{% else %}<span class="ref">A record of a search: <a href="/sources-and-method/#claim-{{ id }}">what was searched, and when</a>.</span>{% endif %}
+{% if r.source %}{{ ref(r.source) }}{% else %}<span class="ref">A record of a search: <a href="/sources-and-method/#claim-{{ id }}">what was searched, and when</a>.</span>{% endif %}
 {%- endmacro -%}
 
 {#- A figure in running text, with its period. -#}

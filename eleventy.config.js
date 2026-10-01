@@ -1,5 +1,5 @@
 import { lineChart } from "./src/assets/js/lib/chart.js";
-import { renderComparison } from "./src/assets/js/lib/compare-view.js";
+import { renderComparison, renderSummary } from "./src/assets/js/lib/compare-view.js";
 import { historyCsv, renderHistory } from "./src/assets/js/lib/history-view.js";
 import { money, percent } from "./src/assets/js/lib/format.js";
 import { compareRules, mechanism, RULES, RULE_LABELS } from "./src/assets/js/lib/uprating.js";
@@ -49,6 +49,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("renderHistory", (options) => renderHistory(options));
   eleventyConfig.addFilter("historyCsv", (options) => historyCsv(options));
   eleventyConfig.addFilter("renderComparison", (options) => renderComparison(options));
+  eleventyConfig.addFilter("renderSummary", (options) => renderSummary(options));
   eleventyConfig.addFilter("json", (value) => JSON.stringify(value).replace(/</g, "\\u003c"));
   eleventyConfig.addFilter("where", (rows, key, value) => rows.filter((row) => row[key] === value));
   eleventyConfig.addFilter("fail", (message) => {

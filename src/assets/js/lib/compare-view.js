@@ -208,3 +208,14 @@ export function renderComparison(options) {
     inputs
   );
 }
+
+// The amount under each rule in the last year, for the summary that stays in view while the
+// figures change. The full result, with the chart and tables, follows the form.
+export function renderSummary({ startPence, path, cashFloor, firstYear, measure }) {
+  const result = compareRules(startPence, path, cashFloor);
+  const last = path.length;
+  const info = MEASURES[measure];
+  const rows = RULES.map((rule) => `<div><dt>${SHORT[rule]}</dt> <dd>${show(result.rules[rule].years[last], measure)}</dd></div>`).join("");
+  return `<p><span class="status">Hypothetical</span> After ${last === 1 ? "1 year" : `${last} years`}, in ${taxYear(firstYear + last - 1)}. ${info.label}: ${info.unit}.</p><dl>${rows}</dl>`;
+}
+
