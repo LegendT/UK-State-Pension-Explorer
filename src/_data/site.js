@@ -8,8 +8,15 @@ if (!["development", "preview", "production"].includes(env)) {
 }
 
 const production = env === "production";
-// On Netlify a preview takes the address of its own deploy. Production never does: it needs SITE_URL.
-const url = (process.env.SITE_URL || (production ? "" : process.env.DEPLOY_PRIME_URL || "http://localhost:8080")).replace(/\/$/, "");
+// On Netlify a preview takes the address of its own deploy, even when SITE_URL is set for every
+// context, so a preview never names the published site as its canonical. Production needs SITE_URL.
+const url = (production ? process.env.SITE_URL || "" : process.env.DEPLOY_PRIME_URL || process.env.SITE_URL || "http://localhost:8080").replace(/\/$/, "");
+
+// Decision 68: only Netlify's production context may build the published site. Deploy previews
+// and branch deploys stay previews, behind the sign-in, whatever SITE_ENV says elsewhere.
+if (production && process.env.NETLIFY && process.env.CONTEXT !== "production") {
+  throw new Error(`Build stopped. SITE_ENV is production in the Netlify context "${process.env.CONTEXT}". Only the production context may publish.`);
+}
 
 // Basic authentication for the preview. The value is "user:password" and comes from the
 // environment only, so it is never in the repository. See src/_headers.njk.
@@ -40,6 +47,9 @@ const config = {
   reviewDate: process.env.REVIEW_DATE || "",
   accessibilityAssessmentDate: process.env.A11Y_ASSESSMENT_DATE || "",
   aiCrawlerPolicy: process.env.AI_CRAWLER_POLICY || "",
+  // Cloudflare Web Analytics: decision 74. The token is public, as it is in the page, and is used
+  // in production only. Not a launch blocker: with no token the site loads nothing from elsewhere.
+  analyticsToken: production ? process.env.CLOUDFLARE_ANALYTICS_TOKEN || "" : "",
   nav: [
     { href: "/", label: "Overview" },
     { href: "/state-pension/", label: "The State Pension" },

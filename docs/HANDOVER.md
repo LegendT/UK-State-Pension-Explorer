@@ -421,6 +421,35 @@ Gone through one by one with the owner, with options and recommendations. Decisi
 
 Checks made while deciding: WHOIS for three `.org` names (all "Domain not found"; the `.uk` names gave no answer either way); Cloudflare's Web Analytics FAQ on query strings; `src/_data/site.js` for what the production guard needs; a word count of `main` in the built pages, about 58,000 words in 14 of them; `src/_data/figures.json`, 51 of 124 figures with no `next_review`. No code was changed.
 
+## Launch preparation, 2 October 2026
+
+On the owner's go of the same day, on the branch `launch-prep`, not pushed.
+
+**History check, decision 69.** 81 commits, every branch. No scanner is installed, so the history was searched by pattern: secret and token shapes, private keys, `password` and `secret` assignments, and the values in the local `.env`. Nothing secret was found. `.env` was never committed, and holds no secret. The `BASIC_AUTH` value was not searched for, because reading it from Netlify would put it in the session. Never committed and never in `_site`: `.env`, `.preview-password`, `scripts/seed/`. What a public repository would show: the author email `legendarytone@gmail.com` on every commit; three lines with the path `/Users/anthonygeorge/Projects/...` in `research/00-sibling-inspection.md` and `NEXT-SESSION.md`; `_archive/`, which holds the two scope documents; and the handover and decision log as they are. No session links. UK Migration Explorer's repository is public.
+
+**Review triggers, decision 75.** The 51 figures with no `next_review` now have one: each April for rules, a single study until newer work replaces it, or the date of the next edition where `docs/maintenance.md` gives one. Three Office for Budget Responsibility figures cite the July 2025 report although a July 2026 edition is in the registers; their trigger says to check it. The ToneBan tickets are not added: ToneBan has no project for this site.
+
+**Context split and analytics, decisions 68 and 74.** The changes:
+
+| File | Change |
+| --- | --- |
+| `netlify.toml` | No `X-Robots-Tag` header. `[context.production.environment]` holds `SITE_ENV = "preview"`, the launch switch. The Content Security Policy allows the Cloudflare script and its endpoint |
+| `src/_headers.njk` and its data file | Written for every build that is not production: `X-Robots-Tag: noindex`, and the sign-in when `BASIC_AUTH` is set |
+| `src/_data/site.js` | A production build on Netlify outside the production context stops. Outside production the canonical is the deploy's own address even when `SITE_URL` is set. `analyticsToken` from `CLOUDFLARE_ANALYTICS_TOKEN`, production only |
+| `scripts/check-build.mjs` | A build that is not production fails without `noindex` in `_headers` |
+| `src/_includes/base.njk`, `src/privacy.njk` | The Cloudflare script, and the privacy wording for it, only when the token is set |
+
+| Check | Command | Result |
+| --- | --- | --- |
+| Contexts | Builds with Netlify's variables set by hand | Production in a deploy preview context: stopped. Production context with every launch variable and a token: passes, the script and token in the page, the privacy wording shown, no `_headers`, no `noindex`, canonical on the domain. Without the token: no script, "This site has no analytics". Deploy preview with `SITE_URL` set: canonical on the deploy's address, no script, `_headers` with `noindex` and the sign-in. Branch deploy with no `BASIC_AUTH`: stopped. Production with `BASIC_AUTH`: stopped |
+| Build check | Planted defects | `noindex` removed from a built `_headers`: failed with its message. `X-Robots-Tag` put back in `netlify.toml` with a production build: failed with its message |
+| Build | `npm run build` | No problems |
+| Calculator tests | `npm test` | 28 of 28 pass |
+| Automated accessibility | `npm run a11y` | 0 violations in 106 audits of 15 pages. Every incomplete contrast result measured, 4,031, none below threshold. These run on a development build, so the privacy wording for a set token was not audited |
+| Behaviour | `npm run a11y:manual` | 0 problems |
+
+Not checked: anything on Netlify. Whether Netlify applies `_headers` and `netlify.toml` headers together as expected needs a deploy preview, which needs a push. What the Cloudflare beacon sends needs the live site.
+
 ## Waiting on the owner
 
 As at 2 October 2026.
@@ -429,9 +458,9 @@ As at 2 October 2026.
 | --- | --- |
 | The deployed site | Netlify builds `main` after every merge, and each build on 30 September 2026 was ready. `netlify api listSiteDeploys` shows the latest. The main address answered 401 with `WWW-Authenticate: Basic`. Nobody has looked at the pages past the sign-in. Doing so needs the sign-in, which the owner enters |
 | Launch: the owner's own steps | Attach `ukstatepensionexplorer.org` to the Netlify project at launch (decision 67); registered on 2 October 2026, and on that day the project had no custom domain and the name gave no DNS answer. Review every page (71). The accessibility round (73). Scope `BASIC_AUTH` to previews in Netlify, when the build work of decision 68 is ready |
-| Launch: build work, needs a go | Decisions 68 and 74: the context split, the `noindex` header in `_headers`, the guard reading `CONTEXT`, the Cloudflare script, the Content Security Policy and the privacy page. Tested on a deploy preview |
-| Launch: data work, needs a go | Decision 75: a `next_review` trigger for the 51 figures with none, and ToneBan tickets for the dated triggers |
-| Launch: repository public, needs a go | Decision 69: check the history for anything that must not be public, then make the repository public before launch |
+| Launch: `launch-prep` | Built and checked locally: see "Launch preparation, 2 October 2026". Needs a push, then a look at its deploy preview. The launch steps are in `docs/launch-dependencies.md` |
+| Launch: ToneBan tickets | Decision 75. ToneBan has no project for this site. Create one, or name the project the tickets go under |
+| Launch: repository public | Decision 69. History checked: nothing secret. The owner decides whether the email, the home paths and `_archive/` may be public, then makes it public |
 | A6, deferred | Add the expected values of the new cash-floor test, 241.32 pounds at minus 1%, to `scripts/reference.py` and `docs/reference-calculations.md` |
 | A8, deferred | The register sentence on the method page says "headline figures". Name every kind of record instead |
 | A9, deferred | The 71% and 23% figures have the basis "individual", but the underlying 2023 study counted households. Check the study, then align the basis |
