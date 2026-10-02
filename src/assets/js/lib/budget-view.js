@@ -1,42 +1,47 @@
 // Tool 3 results as an HTML string. No DOM.
 
-import { budget, weekly, PERIOD_LABELS } from "./budget.js";
+import { budget, weekly, PERIODS, PERIOD_LABELS } from "./budget.js";
 import { money } from "./format.js";
 
 function pair(yearlyPence) {
   return `<td class="num">${money(Math.round(weekly(yearlyPence)))}</td><td class="num">${money(yearlyPence)}</td>`;
 }
 
-// input: { period, income: [{id,label,pence}], spending: [{id,label,pence}], taxPence, presetLabel }
-function balance(result) {
+// The headline and the summary give amounts for the period the reader enters, so they match the form.
+const EACH = { ...PERIOD_LABELS, "four-weeks": "every 4 weeks" };
+const inPeriod = (yearlyPence, period) => `${money(Math.round(Math.abs(yearlyPence) / PERIODS[period]))} ${EACH[period]}`;
+
+function balance(result, period) {
   const balanceName = result.taxKnown ? "Balance after the tax you entered" : "Balance before tax";
-  const amount = money(Math.abs(Math.round(weekly(result.balancePence))));
-  const yearly = money(Math.abs(result.balancePence));
+  const amount = money(Math.round(Math.abs(result.balancePence) / PERIODS[period]));
+  const yearly = period === "year" ? "" : ` (${money(Math.abs(result.balancePence))} a year)`;
   let headline;
-  if (result.balancePence < 0) headline = `Shortfall of ${amount} a week (${yearly} a year)`;
+  if (result.balancePence < 0) headline = `Shortfall of ${amount} ${EACH[period]}${yearly}`;
   else if (result.balancePence === 0) headline = "Income and spending are equal";
-  else headline = `${amount} a week left over (${yearly} a year)`;
+  else headline = `${amount} left over ${EACH[period]}${yearly}`;
   return { balanceName, headline };
 }
+
+// input: { period, income: [{id,label,pence}], spending: [{id,label,pence}], taxPence, presetLabel }
 
 // The summary kept in view beside the form, or pinned to the foot of a narrow screen.
 export function renderBudgetSummary(input) {
   const result = budget(input);
-  const { balanceName, headline } = balance(result);
-  const week = (pence) => money(Math.round(weekly(pence)));
+  const { balanceName, headline } = balance(result, input.period);
+  const each = (pence) => inPeriod(pence, input.period);
   return (
     `<p><span class="status">Your own figures</span> ${balanceName}.</p>` +
     `<p class="headline">${headline}</p>` +
-    `<dl><div><dt>Income</dt> <dd>${week(result.incomePence)} a week</dd></div>` +
-    (result.taxKnown ? `<div><dt>Income Tax</dt> <dd>${week(result.taxPence)} a week</dd></div>` : "") +
-    `<div><dt>Spending</dt> <dd>${week(result.spendingPence)} a week</dd></div></dl>`
+    `<dl><div><dt>Income</dt> <dd>${each(result.incomePence)}</dd></div>` +
+    (result.taxKnown ? `<div><dt>Income Tax</dt> <dd>${each(result.taxPence)}</dd></div>` : "") +
+    `<div><dt>Spending</dt> <dd>${each(result.spendingPence)}</dd></div></dl>`
   );
 }
 
 export function renderBudget(input) {
   const result = budget(input);
   const labels = Object.fromEntries([...input.income, ...input.spending].map((row) => [row.id, row.label]));
-  const { balanceName, headline } = balance(result);
+  const { balanceName, headline } = balance(result, input.period);
 
   const taxNote = result.taxKnown
     ? `<p>The balance uses the tax figure you entered. This tool did not work it out or check it.</p>`

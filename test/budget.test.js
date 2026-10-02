@@ -72,3 +72,21 @@ test("a helper's weekly amount in the chosen period", () => {
   // 241.31 a week is 1,045.6767 a month, which rounds up.
   assert.equal(fromWeekly(24131, "month"), 104568);
 });
+
+test("the summary and the headline give amounts for the period the reader enters", async () => {
+  const { renderBudget, renderBudgetSummary } = await import("../src/assets/js/lib/budget-view.js");
+  const figures = (period, income, spending) => ({ period, income: [{ id: "a", label: "A", pence: income }], spending: [{ id: "b", label: "B", pence: spending }], taxPence: null });
+  const plain = (html) => html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+  const text = (...args) => plain(renderBudgetSummary(figures(...args)));
+  // Worked by hand, not from scripts/reference.py: each amount is the yearly amount divided by the periods in a year.
+  // 1,045.63 and 2,000.00 a month: 12,547.56 and 24,000.00 a year, a shortfall of 954.37 a month.
+  const month = text("month", 104563, 200000);
+  assert.match(month, /Shortfall of £954\.37 a calendar month \(£11,452\.44 a year\)/);
+  assert.match(month, /Income £1,045\.63 a calendar month/);
+  assert.match(month, /Spending £2,000\.00 a calendar month/);
+  assert.match(plain(renderBudget(figures("month", 104563, 200000))), /Balance before tax: Shortfall of £954\.37 a calendar month \(£11,452\.44 a year\)/);
+  assert.match(text("week", 24130, 10000), /£141\.30 left over a week \(£7,347\.60 a year\)/);
+  assert.match(text("four-weeks", 96520, 0), /£965\.20 left over every 4 weeks \(£12,547\.60 a year\)/);
+  // A year needs no yearly figure in brackets.
+  assert.match(text("year", 1254760, 0), /£12,547\.60 left over a year Income/);
+});
