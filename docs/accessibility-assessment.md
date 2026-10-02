@@ -6,7 +6,7 @@ Automated and scripted checks are a floor. They do not show conformance. A perso
 
 ## Scope
 
-All built pages, 14 on 30 September 2026, and the four calculators. Each calculator was tested in its default state, after a result changed, and with errors showing. Every page was also tested with all `details` elements open.
+All built pages, 14 on 30 September 2026 and 15 since the rule comparison got its own page on 1 October 2026, and the four calculators. Each calculator was tested in its default state, after a result changed, and with errors showing. Every page was also tested with all `details` elements open.
 
 ## Environment actually used
 
@@ -35,7 +35,7 @@ Both scripts print their counts. The counts are not copied here, because they ch
 - `npm run a11y`: 0 violations. 0 audits with sideways page scroll. 0 audits with script errors. Every contrast result that axe marked incomplete was measured, 4,031 of them: 0 below threshold, 0 that could not be measured.
 - `node scripts/a11y-manual-assist.mjs`: 0 problems on 15 pages.
 
-The last run was on 1 October 2026, after decision 63: 106 audits of 15 pages. See `docs/HANDOVER.md`, "The saving in the rule comparison, 1 October 2026".
+The last run was on 1 October 2026, after decision 65: 106 audits of 15 pages, with the same results. See `docs/HANDOVER.md`, "Front-end sweep, 1 October 2026", which also ran axe at 320, 768 and 1280 px.
 
 ### What those runs did not establish
 
@@ -111,4 +111,4 @@ Result values: **No failure found** (with the method), **Not applicable** (with 
 5. A phone, by touch.
 6. Firefox and Safari.
 7. Usability sessions with disabled and older readers, where feasible.
-8. A working route to report a barrier.
+8. A working route to report a barrier. At launch it is a GitHub issue, which needs a GitHub account: decision 69.

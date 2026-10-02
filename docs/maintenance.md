@@ -17,7 +17,7 @@ Rates for the next tax year are usually announced in the autumn and confirmed in
 
 ## When a source publishes a new edition
 
-Each figure has a `next_review` trigger. Known dates:
+Most figures have a `next_review` trigger; 51 of 124 had none on 2 October 2026. The owner reviews every source: decision 75. Known dates:
 
 | Date | Source | Figures |
 | --- | --- | --- |

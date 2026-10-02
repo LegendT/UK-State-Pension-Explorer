@@ -1,6 +1,6 @@
 # Handover: first build
 
-Written 29 September 2026, updated 1 October 2026. The site is a **preview for review**. It is not published. The repository is https://github.com/LegendT/UK-State-Pension-Explorer. All work is merged into `main`, up to pull request 17. Pull request 16, from `summary-differences`, carried decisions 63 and 64, and pull request 17, from `frontend-sweep`, the front-end sweep and decision 65. Both were merged on 1 October 2026. Pull request 10, from `handover-review-note`, added the marking of the current section in the "On this page" list, decision 53, and carried the handover note that records pull request 9. It was merged on 30 September 2026. Pull request 8 carried the work on the UX review of 30 September 2026, and pull request 9 recorded the owner's answers on it: see "UX review of 30 September 2026". Merged: pull request 1, the first build, on 29 September 2026; pull request 2, from `first-build`, pull request 3, from `april-2030-rule`, and pull request 4, from `homepage-orientation`, on 30 September 2026. Pull request 3 carried the markup sweep and stylesheet fixes of `html-semantics` and the update for the government's announcement of 29 September 2026. Pull request 4 added a table of State Pension age by date of birth to the overview: decision 44. Pull request 5 corrected the handover. Pull request 6, from `rule-2030-calculator`, adds the announced rule to the rule comparison: decision 38. It was merged on 30 September 2026. Pull request 7, from `handover-pr6`, recorded pull request 6 in this handover. Netlify builds `main` to the main address and a deploy preview of each pull request into `main`, all behind a sign-in.
+Written 29 September 2026, updated 2 October 2026. The site is a **preview for review**. It is not published. The repository is https://github.com/LegendT/UK-State-Pension-Explorer. All work is merged into `main`, up to pull request 17. Pull request 16, from `summary-differences`, carried decisions 63 and 64, and pull request 17, from `frontend-sweep`, the front-end sweep and decision 65. Both were merged on 1 October 2026. Pull request 10, from `handover-review-note`, added the marking of the current section in the "On this page" list, decision 53, and carried the handover note that records pull request 9. It was merged on 30 September 2026. Pull request 8 carried the work on the UX review of 30 September 2026, and pull request 9 recorded the owner's answers on it: see "UX review of 30 September 2026". Merged: pull request 1, the first build, on 29 September 2026; pull request 2, from `first-build`, pull request 3, from `april-2030-rule`, and pull request 4, from `homepage-orientation`, on 30 September 2026. Pull request 3 carried the markup sweep and stylesheet fixes of `html-semantics` and the update for the government's announcement of 29 September 2026. Pull request 4 added a table of State Pension age by date of birth to the overview: decision 44. Pull request 5 corrected the handover. Pull request 6, from `rule-2030-calculator`, adds the announced rule to the rule comparison: decision 38. It was merged on 30 September 2026. Pull request 7, from `handover-pr6`, recorded pull request 6 in this handover. Netlify builds `main` to the main address and a deploy preview of each pull request into `main`, all behind a sign-in.
 
 **Pull request 11**, from `defect-11-and-research`, merged on 1 October 2026: defect 11 closed, decisions 54 to 57, and the two items the research of 30 September left out, decision 58. See "Defect 11, 1 October 2026" and "Two items added, 1 October 2026". The owner's answers of the same day were merged in pull request 12: see "Owner's answers of 1 October 2026". Review points W1 to W4 from its critique were merged in pull request 13. The corrections from an external factual audit were merged in pull request 14: see "External audit of 1 October 2026".
 
@@ -103,10 +103,10 @@ Not checked on the deployed preview: the other three calculators, any browser bu
 4. **Not found, and shown as gaps:** the share of people on the full rate, the number whose pension is not increased abroad, costings for a double lock and for means-testing, incomes of pensioner carers.
 5. **Typed wording that will age:** the worked example on the triple lock page names months and years in words. The first year in the rule comparison starts at 2027/28. Both are in the maintenance guide.
 6. **One check date is printed for two figures** in a few combined source notes. Where the dates differ, in the two table notes of the cost and saving section, the note prints both.
-7. **The preview on Netlify uses basic authentication** and sends `noindex` on every file. Both were seen working on the deploy preview. Both must be removed at launch. The user name and password are in the `BASIC_AUTH` variable in Netlify. Netlify's own password protection was switched off on 30 September 2026 with the Netlify CLI, on the owner's instruction. The main address then answered 401 with `WWW-Authenticate: Basic`, so basic authentication is the one sign-in.
+7. **The preview on Netlify uses basic authentication** and sends `noindex` on every file. Both were seen working on the deploy preview. Both must be removed from the production context at launch. Deploy previews and branch deploys keep them: decision 68. The user name and password are in the `BASIC_AUTH` variable in Netlify. Netlify's own password protection was switched off on 30 September 2026 with the Netlify CLI, on the owner's instruction. The main address then answered 401 with `WWW-Authenticate: Basic`, so basic authentication is the one sign-in.
 8. **Field errors use `role="alert"`.** With many errors at once, screen reader announcements may compete. Not tested.
 9. **The government's savings figures cannot be checked.** They come with no price basis, baseline or method. The page says so, and says why they cannot be set beside the Institute for Fiscal Studies' range for 2050.
-10. **After launch, deploy previews and branch deploys would be open.** The launch steps delete `BASIC_AUTH` everywhere. Keeping it for those two contexts needs the production guard to check the Netlify context. Deferred to launch planning.
+10. **After launch, deploy previews and branch deploys would be open.** The launch steps first written would have deleted `BASIC_AUTH` everywhere. Keeping it for those two contexts needs the production guard to check the Netlify context. Deferred to launch planning. The approach was chosen on 2 October 2026, decision 68; the build work waits on the owner's go.
 11. **Markup left after the sweep of 29 September 2026.** Dealt with on 1 October 2026 and merged in pull request 11. Decisions 54 to 57, confirmed by the owner the same day.
     - The lists of a bold label and a value: 33 items in 9 lists that pair a name with its description are now description lists. The other lists stay as they were: decision 55. Confirmed.
     - The source note under each figure: period, place, range and source are a description list, a line each. The costs page is about 10% longer: decision 56. Confirmed.
@@ -128,7 +128,7 @@ Not checked on the deployed preview: the other three calculators, any browser bu
 
 ## Owner decisions needed for launch
 
-See `docs/launch-dependencies.md`. In short: name, domain, the launch steps for hosting, correction route, owner, reviewer, AI crawler policy, accessibility assessment by a person. Analytics is decided: Cloudflare Web Analytics at launch, not added yet.
+See `docs/launch-dependencies.md`. Every item was decided on 2 October 2026: see "Launch dependencies, 2 October 2026". What is left is doing them.
 
 ## Owner's answers
 
@@ -261,7 +261,7 @@ Merged in pull request 12, from `owner-answers-1-oct`, on 1 October 2026.
 | Primary source for a spoken commitment | The best full printing, labelled, replaced if an official text appears | Decision 59 |
 | Critique suggestions | Rounding note on the poll, a link from question 10 to the tax note, and the check's scroll: yes. Two more build checks: not asked for | All three done. The behaviour check now scrolls to the second section and at least a window past the first heading |
 | "Back to contents" links | Confirm keeping several on a page. The assistant's reading: SC 2.4.4 is met, because each goes to the same place. See "Sources and the rule comparison, 1 October 2026" |
-| Launch dependencies 1 to 10 | Later on 1 October 2026, not next | On the waiting list |
+| Launch dependencies 1 to 10 | Later on 1 October 2026, not next | Done on 2 October 2026: decisions 66 to 75 |
 
 | Check | Command | Result |
 | --- | --- | --- |
@@ -285,7 +285,7 @@ From the critique of pull request 12. Merged in pull request 13, from `review-po
 | W3 | A double-click on a card's description followed the link before it could select a word | Done on the owner's answer. Heydon Pickering's page and the other sources read have no fix for double-click. The description is raised above the overlay, his "raise" idea, and `cards.js` makes a click on it follow the link after 300 ms unless a second click comes. The wait is the one in the option the owner chose. The name and padding follow at once. Without script the description is not a link target |
 | W4 | The decision log's header did not say that number 59 refines number 42 | The header now says so |
 | `NEXT-SESSION.md` | Edited by hand during the session, against the README | The owner confirmed on 1 October 2026 that only the handoff check writes it |
-| W5 | Launch dependency 11 is upkeep, not an owner's decision | To be decided with launch dependencies 1 to 10 |
+| W5 | Launch dependency 11 is upkeep, not an owner's decision | Taken off the list on 2 October 2026: decision 76 |
 
 | Check | Command | Result |
 | --- | --- | --- |
@@ -357,11 +357,11 @@ Not checked: a screen reader, a real phone, touch, an on-screen keyboard.
 
 After pull request 15 was merged, the owner found the rule comparison on the deployed preview not updating when the inputs changed. The owner then ran a deploy without the cache, and it worked. The likely cause, not proven: `netlify.toml` let browsers reuse anything under `/assets/` for an hour without asking, and the file names do not change between versions, so a browser could run the old `compare.js`, which waits for a button the new page no longer has. A Netlify deploy without cache clears the build cache, not a browser's copy, so that deploy may not be what fixed it.
 
-The rule now makes a browser check with the server before reusing a file (`max-age=0, must-revalidate`, which is also Netlify's default for files that are not fingerprinted). A browser that cached a file under the old rule can still keep it for up to an hour after this is deployed. On the branch `summary-differences`, with decision 63, not pushed. Not checked on the deployed site: that needs the sign-in, and the header is set by Netlify, not by the local server.
+The rule now makes a browser check with the server before reusing a file (`max-age=0, must-revalidate`, which is also Netlify's default for files that are not fingerprinted). A browser that cached a file under the old rule can still keep it for up to an hour after this is deployed. On the branch `summary-differences`, with decision 63; merged in pull request 16 on 1 October 2026. Not checked on the deployed site: that needs the sign-in, and the header is set by Netlify, not by the local server.
 
 ## The saving in the rule comparison, 1 October 2026
 
-The owner noted that the comparison did not seem to save any money. It did, but the summary listed five amounts with no gap shown, for one person. Decision 63: the summary now gives each rule's gap from the triple lock, and a paragraph after it gives the number of people receiving the State Pension (13.3 million in March 2026; the DWP forecast for 2030/31) and the average new State Pension, with a link to what a change would save. The tool does not multiply them. On the branch `summary-differences`, with the asset caching change, not pushed.
+The owner noted that the comparison did not seem to save any money. It did, but the summary listed five amounts with no gap shown, for one person. Decision 63: the summary now gives each rule's gap from the triple lock, and a paragraph after it gives the number of people receiving the State Pension (13.3 million in March 2026; the DWP forecast for 2030/31) and the average new State Pension, with a link to what a change would save. The tool does not multiply them. On the branch `summary-differences`, with the asset caching change; merged in pull request 16 on 1 October 2026.
 
 | Check | Command | Result |
 | --- | --- | --- |
@@ -375,7 +375,7 @@ A sentence first written as "Most get less than the full rate" was changed to th
 
 ## Front-end sweep, 1 October 2026
 
-An axe baseline of every page, then the markup (`html-engineering`), then the styles (`css-engineering`), then the same axe run again to compare. On the branch `frontend-sweep`, not pushed. The runners and saved results are in `frontend-sweep/`, which is not committed.
+An axe baseline of every page, then the markup (`html-engineering`), then the styles (`css-engineering`), then the same axe run again to compare. Merged in pull request 17 on 1 October 2026. The runners and saved results are in `frontend-sweep/`, which `.gitignore` leaves out, on the owner's decision of 2 October 2026.
 
 What changed, file by file:
 
@@ -401,14 +401,37 @@ Checked by hand or by script, not by axe: focus visible on every focusable eleme
 
 Items left open are in "Waiting on the owner", each marked with its step and finding. Critique: a second reader (Sonnet 5.5) found two weak points, R1 and R2 below.
 
+## Launch dependencies, 2 October 2026
+
+Gone through one by one with the owner, with options and recommendations. Decisions 66 to 76. The record of each is in `docs/launch-dependencies.md`, in its last column.
+
+| No. | Decided |
+| --- | --- |
+| 1 | Name: "UK State Pension Explorer" |
+| 2 | Domain: `ukstatepensionexplorer.org`, registered through Netlify the same day. Not attached to the project |
+| 3 | Netlify split by deploy context, so previews keep the sign-in. Needs build work |
+| 4 | Corrections and barriers by GitHub issue, for launch. The repository goes public first. Against the assistant's recommendation of email, because an issue needs an account |
+| 5 | Owner: Anthony George, `Person` |
+| 6 | Reviewer: the owner, for launch |
+| 7 | AI crawlers: `allow`. Against the assistant's recommendation of `refuse-training` |
+| 8 | The owner's own accessibility round before launch; NVDA and user sessions after. Statement stays "incomplete" |
+| 9 | Cloudflare Web Analytics at launch, in the build work of item 3 |
+| 10 | The owner reviews every source. Blank triggers filled and dated triggers made ToneBan tickets |
+| 11 | Taken off the list: upkeep, already in `docs/maintenance.md` (W5) |
+
+Checks made while deciding: WHOIS for three `.org` names (all "Domain not found"; the `.uk` names gave no answer either way); Cloudflare's Web Analytics FAQ on query strings; `src/_data/site.js` for what the production guard needs; a word count of `main` in the built pages, about 58,000 words in 14 of them; `src/_data/figures.json`, 51 of 124 figures with no `next_review`. No code was changed.
+
 ## Waiting on the owner
 
-As at 1 October 2026.
+As at 2 October 2026.
 
 | Item | What is needed |
 | --- | --- |
 | The deployed site | Netlify builds `main` after every merge, and each build on 30 September 2026 was ready. `netlify api listSiteDeploys` shows the latest. The main address answered 401 with `WWW-Authenticate: Basic`. Nobody has looked at the pages past the sign-in. Doing so needs the sign-in, which the owner enters |
-| Launch dependencies 1 to 10 | To go through one by one with the owner later on 1 October 2026, at the owner's request. See `docs/launch-dependencies.md`. W5 is decided with them |
+| Launch: the owner's own steps | Attach `ukstatepensionexplorer.org` to the Netlify project at launch (decision 67); registered on 2 October 2026, and on that day the project had no custom domain and the name gave no DNS answer. Review every page (71). The accessibility round (73). Scope `BASIC_AUTH` to previews in Netlify, when the build work of decision 68 is ready |
+| Launch: build work, needs a go | Decisions 68 and 74: the context split, the `noindex` header in `_headers`, the guard reading `CONTEXT`, the Cloudflare script, the Content Security Policy and the privacy page. Tested on a deploy preview |
+| Launch: data work, needs a go | Decision 75: a `next_review` trigger for the 51 figures with none, and ToneBan tickets for the dated triggers |
+| Launch: repository public, needs a go | Decision 69: check the history for anything that must not be public, then make the repository public before launch |
 | A6, deferred | Add the expected values of the new cash-floor test, 241.32 pounds at minus 1%, to `scripts/reference.py` and `docs/reference-calculations.md` |
 | A8, deferred | The register sentence on the method page says "headline figures". Name every kind of record instead |
 | A9, deferred | The 71% and 23% figures have the basis "individual", but the underlying 2023 study counted households. Check the study, then align the basis |

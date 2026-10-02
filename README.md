@@ -1,6 +1,6 @@
 # UK State Pension Explorer
 
-A plain-English explainer of the UK State Pension, the triple lock, what a pension can cover, and the evidence for and against reform. A sister site to UK Public Finances Explorer and UK Migration Explorer. The name is a working title.
+A plain-English explainer of the UK State Pension, the triple lock, what a pension can cover, and the evidence for and against reform. A sister site to UK Public Finances Explorer and UK Migration Explorer. The name was confirmed on 2 October 2026: decision 66.
 
 **Status: a preview for review. It is not published and must not be described as meeting WCAG 2.2 AA.** See `docs/HANDOVER.md`.
 
