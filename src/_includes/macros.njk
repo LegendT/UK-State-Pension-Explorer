@@ -101,9 +101,14 @@
 </div>
 {%- endmacro -%}
 
-{#- A source after a sentence, drawn as a chip so it reads apart from the sentence. -#}
+{#- A source after a sentence, on a line of its own under it, small and muted: decision 77. -#}
 {%- macro ref(s, label) -%}
 <span class="ref">{{ label or "Source" }}: {{ cite(s) }}.</span>
+{%- endmacro -%}
+
+{#- A link onward from a short entry, on a line of its own, so it does not run into the source before it. -#}
+{%- macro more(href, text) -%}
+<span class="onward">More: <a href="{{ href }}">{{ text }}</a></span>
 {%- endmacro -%}
 
 {#- A citation for a claim in the claims register. -#}

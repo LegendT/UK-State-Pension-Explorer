@@ -166,14 +166,15 @@ main > .tool, main > figure, main > .cards, main > .scroll-x, main > .rate-block
 .rate-block .rate-second { font-size: 1.2rem; font-weight: 700; }
 .rate-block > * { max-width: var(--measure); }
 
-/* A source after a sentence: a chip, smaller and muted, so it reads apart from the sentence. The
-   border repeats on each line when a long name wraps. */
-.ref {
-  font-size: 0.85em; color: var(--ink-soft);
-  border: 1px solid var(--rule-strong); border-radius: var(--radius);
-  padding: 0.1em 0.45em;
-  -webkit-box-decoration-break: clone; box-decoration-break: clone;
-}
+/* A source after a sentence sits on a line of its own under it, smaller and muted, so it reads
+   apart from the sentence and stays next to the one it supports: decision 77. A link onward from
+   a short entry gets a line of its own too, so it does not run into the source. */
+.ref { display: block; font-size: 0.85em; color: var(--ink-soft); margin-block: 0.45rem 0.4rem; }
+.onward { display: block; margin-block-start: 0.25rem; }
+/* On a line of their own these links are not in a sentence, so they are padded to at least 24px
+   tall (SC 2.5.8): lowest measured 24.8px, at 320, 390 and 1280px, on 2 October 2026. */
+.ref a, .onward a { padding-block: 0.4em; }
+.ref time { white-space: nowrap; }
 
 /* Rule comparison. The summary stays in view while the figures change, as on the budget simulator
    of UK Public Finances. On a narrow screen tall enough to spare the room it is pinned to the foot,

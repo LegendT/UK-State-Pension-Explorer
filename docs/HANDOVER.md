@@ -452,6 +452,24 @@ After the owner supplied the Cloudflare token, the script became the dashboard's
 
 Not checked: anything on Netlify. Whether Netlify applies `_headers` and `netlify.toml` headers together as expected needs a deploy preview, which needs a push. What the Cloudflare beacon sends needs the live site.
 
+## Sources on their own line, 2 October 2026
+
+Asked for by the owner, who found the source chips of decision 61 still clumsy. Decision 77. On the branch `sources-own-line`, from `launch-prep`, not pushed.
+
+- `.ref` is a line of its own under the sentence: small, muted, no border. Its links are padded to at least 24 px, and a date in a source does not break.
+- `m.more`, drawn by `.onward`, puts a link onward on a line of its own, "More: …". Used in the overview's short entries: the situations list and the two notes on the April 2030 rule, the four places where a source ran straight into a link.
+
+| Check | Command | Result |
+| --- | --- | --- |
+| Build | `npm run build` | No problems |
+| Calculator tests | `npm test` | 28 of 28 pass |
+| Automated accessibility | `npm run a11y` | 0 violations. Every incomplete contrast result measured, 4,031, none below threshold |
+| Behaviour | `npm run a11y:manual` | 0 problems |
+| Source and onward link height | A script in Chrome, 11 pages at 320, 390 and 1280 px | Before the padding, 6 at 390 px and 10 at 1280 px were under 24 px and too close to another link for the spacing exception. After it, none under 24 px: lowest 24.8 px |
+| Rendered | Screenshots in Chrome | The situations list at 390 px light and 1280 px dark, a source in a list item and in a paragraph, a source with a date, and a source link with keyboard focus. The focus ring first covered the line above; the space above a source was raised from 0.15rem to 0.45rem |
+
+Not checked: a screen reader, a real phone, forced colours. The checker's count of inline links still counts a source link as inline, because its line holds other text; the height script above is what shows they meet 24 px.
+
 ## Waiting on the owner
 
 As at 2 October 2026.
