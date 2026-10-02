@@ -578,7 +578,7 @@ The list, each item with the step that found it:
 
 ## Budget explorer keeps the period, 2 October 2026
 
-Reported by the owner: choosing a period, then loading an example budget further down the form, set the period back to a week. That was decisions 11 and 60 working as written. Decision 80 reverses number 11 and amends number 60: the example and the full new State Pension are converted to the reader's period, and the period stays. On the branch `budget-keep-period`, not pushed. `fromWeekly` in `src/assets/js/lib/budget.js` does the conversion; `toWeekly` in the tool script is gone.
+Reported by the owner: choosing a period, then loading an example budget further down the form, set the period back to a week. That was decisions 11 and 60 working as written. Decision 80 reverses number 11 and amends number 60: the example and the full new State Pension are converted to the reader's period, and the period stays. On the branch `budget-keep-period`; merged in pull request 20 on 2 October 2026. `fromWeekly` in `src/assets/js/lib/budget.js` does the conversion; `toWeekly` in the tool script is gone.
 
 | Check | Command | Result |
 | --- | --- | --- |
@@ -592,6 +592,23 @@ Reported by the owner: choosing a period, then loading an example budget further
 Critique (Sonnet 5.5): R1 to R6 applied, R7 declined with its reason beside `convertedNote`, R8 deferred to "Waiting on the owner".
 
 Not checked: a screen reader, the couple examples. Changing the period after loading still reads the amounts in the fields as the new period, as before: they are not converted.
+
+## Budget summary in the reader's period, 2 October 2026
+
+Reported by the owner: changing the inputs did not update "At a glance". Locally every change redrew it, at a month, at 1280 px: food, insurance, other housing, alcohol and rent each moved the spending figure. But the summary gave weekly amounts while the owner entered monthly ones, so it matched nothing typed. Decision 81: the summary and the full result's headline use the reader's period. The owner also said the summary really froze; where, and in which browser, is not yet known. On the branch `budget-glance-update`, not pushed.
+
+| Check | Command | Result |
+| --- | --- | --- |
+| Calculator tests | `npm test` | 30 of 30 pass. The new test of the summary and the headline, at every period, fails on the old view |
+| Build | `npm run build` | No problems |
+| Budget explorer in Chrome | A script at 1280 and 390 px | A month, the moderate owner example, the pension: spending £2,717.60 a calendar month; food 586.39 to 180 gave £2,311.21. The full result's headline the same. Pinned summary at 390 px 209 px tall. No script errors |
+| Automated accessibility | `npm run a11y` | 0 violations, 1,885 incomplete. Every incomplete contrast result measured, 3,690, none below threshold |
+| Behaviour | `npm run a11y:manual` | 0 problems |
+| Rendered | Screenshots at 1280 and 390 px | The summary after the food change |
+
+After the critique (Sonnet 5.5), R1 to R6 applied: the cause is not given as settled, "left over" comes before the period, the test covers a week and the full result's headline, and section 7 of the model specification names the period. In Chrome at 390 px the summary read correctly at each of the four periods.
+
+Not checked: a screen reader; the freeze the owner saw.
 
 ## Waiting on the owner
 

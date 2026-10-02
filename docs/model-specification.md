@@ -179,7 +179,7 @@ The reader chooses one period for all inputs. Amounts are converted to a yearly 
 | Calendar month | × 12 |
 | Year | × 1 |
 
-Weekly results are the yearly amount ÷ 52, rounded to the nearest penny for display only.
+Weekly results are the yearly amount ÷ 52, rounded to the nearest penny for display only. The headline balance and the summary kept in view give amounts for the period the reader entered: the yearly amount ÷ the periods in a year, with the yearly amount after it unless the period is a year (decision 81).
 
 ### Outputs
 
