@@ -176,11 +176,13 @@ main > .tool, main > figure, main > .cards, main > .scroll-x, main > .rate-block
 .ref a, .onward a { padding-block: 0.4em; }
 .ref time { white-space: nowrap; }
 
-/* The tools: decisions 62 and 78. The summary stays in view while the figures change, as on the
-   budget simulator of UK Public Finances. On a narrow screen tall enough to spare the room it is pinned to the foot,
-   one rule to a row, and the page is padded so it covers nothing and a focused field scrolls clear
-   of it. On a short screen, or zoomed in, it follows the form. At 1024 px and wider it sits beside
-   the form and stays in view. It holds nothing that takes focus. */
+/* The tools: decisions 62, 78 and 79. The summary stays in view while the figures change, as on
+   the budget simulator of UK Public Finances. On a narrow screen tall enough to spare the room it
+   is pinned to the foot, one rule to a row, and the page is padded so it covers nothing and a
+   focused field scrolls clear of it. On a short screen, or zoomed in, it follows the form, and so
+   does a summary that would take more than half the screen: pinSummary in common.js marks it
+   unpinned. At 1024 px and wider it sits beside the form and stays in view. It holds nothing that
+   takes focus. */
 .tool-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-l); align-items: start; }
 .tool-summary { padding: var(--space-s) var(--space-m); background: var(--panel); border: 1px solid var(--rule-strong); border-radius: var(--radius); font-size: 0.9rem; }
 .tool-summary h3 { margin: 0 0 0.25rem; font-size: 0.95rem; }
@@ -194,17 +196,17 @@ main > .tool, main > figure, main > .cards, main > .scroll-x, main > .rate-block
 .tool-summary dl div { display: contents; }
 .tool-summary dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
 @media (min-height: 32rem) {
-  .js .tool-summary { position: fixed; inset: auto 0 0 0; z-index: 20; border-width: 2px 0 0; border-radius: 0; }
-  .js body:has(.tool-summary) { padding-bottom: var(--summary-size, 16rem); }
-  .js:has(.tool-summary) { scroll-padding-bottom: var(--summary-size, 16rem); }
+  .js .tool-summary:not(.unpinned) { position: fixed; inset: auto 0 0 0; z-index: 20; border-width: 2px 0 0; border-radius: 0; }
+  .js body:has(.tool-summary:not(.unpinned)) { padding-bottom: var(--summary-size, 16rem); }
+  .js:has(.tool-summary:not(.unpinned)) { scroll-padding-bottom: var(--summary-size, 16rem); }
 }
 @media (min-width: 64rem) {
   .tool-layout { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); }
-  .js .tool-summary { position: sticky; inset: auto; top: var(--space-m); padding: var(--space-m); border-width: 1px; border-radius: var(--radius); font-size: 1rem; }
+  .js .tool-summary:not(.unpinned) { position: sticky; inset: auto; top: var(--space-m); padding: var(--space-m); border-width: 1px; border-radius: var(--radius); font-size: 1rem; }
   .tool-summary h3 { font-size: 1rem; margin-bottom: var(--space-s); }
   .tool-summary p { font-size: 0.9rem; margin-bottom: var(--space-s); }
-  .js body:has(.tool-summary) { padding-bottom: 0; }
-  .js:has(.tool-summary) { scroll-padding-bottom: 0; }
+  .js body:has(.tool-summary:not(.unpinned)) { padding-bottom: 0; }
+  .js:has(.tool-summary:not(.unpinned)) { scroll-padding-bottom: 0; }
 }
 
 /* Figures with their source */

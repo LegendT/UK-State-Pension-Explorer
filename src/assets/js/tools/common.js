@@ -109,10 +109,22 @@ export function live(form, redraw) {
 
 // The pinned summary's height changes with its contents, the width and the reader's text settings,
 // so the page padding that keeps it from covering anything is its measured height, not a guess.
+// A pinned summary that would take more than half the screen is not pinned: it follows the form
+// (decision 79). It pins again only below two fifths, so a phone's address bar showing and hiding
+// cannot flip it back and forth. In the page it is narrower than pinned, so taller, which also keeps
+// it unpinned. At 1024 px and wider it sits beside the form, and the class is never set.
+const wide = window.matchMedia("(min-width: 64rem)");
 export function pinSummary(summary) {
-  new ResizeObserver(([entry]) => {
-    document.documentElement.style.setProperty("--summary-size", `${Math.ceil(entry.borderBoxSize[0].blockSize)}px`);
-  }).observe(summary);
+  const fit = () => {
+    const size = Math.ceil(summary.getBoundingClientRect().height);
+    const share = size / window.innerHeight;
+    const unpinned = summary.classList.contains("unpinned");
+    if (unpinned && (wide.matches || share < 0.4)) summary.classList.remove("unpinned");
+    else if (!unpinned && !wide.matches && share > 0.5) summary.classList.add("unpinned");
+    document.documentElement.style.setProperty("--summary-size", `${size}px`);
+  };
+  new ResizeObserver(fit).observe(summary);
+  window.addEventListener("resize", fit);
 }
 
 // The summary stays in view, but the full result is below the form and easy to miss. After a

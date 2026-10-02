@@ -520,9 +520,23 @@ Asked for by the owner: on the history explorer the chart below the form changes
 | Behaviour | `npm run a11y:manual` | 0 problems, including no focused control covered by the taller pinned summary at its default text spacing |
 | Tools in Chrome | A script at 390 px | All four: no note on arrival, then the note in the summary after a change. The status message read back on each path: a change, a loaded decision, a loaded example, the pension helper, the comparison's reset. One announcement for a change followed by Tab on the history explorer; none for Tab with nothing new on the triple lock calculator. No script errors |
 | Rendered | Screenshots | Summaries with the note: history at 390 and 1280 px, triple lock, budget and comparison at 390 px |
-| Pinned height | Text spacing of SC 1.4.12 at 320 x 512, comparison after a change | 478 px of 512. It was 396 px without the note: see R2 under "Waiting on the owner" |
+| Pinned height | Text spacing of SC 1.4.12 at 320 x 512, comparison after a change | 478 px of 512. It was 396 px without the note: decision 79 now unpins it |
 
 Not checked: a screen reader, a real phone. The note is the same after every change, so a second change looks like the first.
+
+## Pinned summary on a crowded screen, 2 October 2026
+
+Decision 79, point R2 of the front-end sweep, on the owner's go. A pinned summary that would take more than half the screen follows the form instead. The rules use `:not(.unpinned)` in the existing `min-height` and `min-width` queries, with no `max-width` query, and the class is never set at 1024 px and wider. On the branch `tools-section`, not pushed.
+
+| Check | Command | Result |
+| --- | --- | --- |
+| Pinning | A script in Chrome, after a change | Comparison with the text spacing of SC 1.4.12 at 320 x 512 and 320 x 568: not pinned, 518 px tall in the page, no padding left at the foot. At 390 x 844 the comparison and budget summaries stay pinned (294 and 184 px). At 1280 x 900, and at 1280 x 520 with text spacing, the comparison's stays beside the form with no padding at the foot |
+| Address bar | The comparison at 390 px wide, the window height moved 640, 600, 640, 600, 640, 560, 600, 640, 800 | The class changed twice: unpinned at 560 (52% of the screen), pinned again at 800 (40%). It unpins above half the screen and pins again below two fifths |
+| Keyboard | `npm run a11y:manual` | 0 problems. The comparison: 42 of 42 stops by Tab, none covered |
+| Calculator tests | `npm test` | 28 of 28 pass |
+| Automated accessibility | `npm run a11y` | 0 violations in 130 audits |
+
+Not checked: a real phone with large text set in the system, rather than the test's text spacing.
 
 ## Waiting on the owner
 
@@ -554,7 +568,6 @@ As at 2 October 2026.
 | Sweep, styles, C2 | Chart text renders at about 9 px on a 320 px screen (13 units in a 720-unit view box). Not an AA failure. Shared with the charts drawn at build time |
 | Sweep, styles, C3 | Four links that stand alone in a paragraph are about 21 px tall. They pass AA by the spacing exception of SC 2.5.8: each centre is at least 14.5 px from any other target, more than the 12 px radius, and `npm run a11y:manual` counts none under 24. They are short of the 44 px house standard. A class on those paragraphs and the "Back to contents" padding would fix them |
 | Sweep, critique, R1 | The CSS comment above the pinned summary does not say that `pinSummary` in `common.js` sets `--summary-size`, or that 16rem is the fallback. One clause |
-| Sweep, critique, R2 | With text spacing at 320x512 the pinned summary of the comparison was 396 px, leaving 116 px; since the "Updated" note of 2 October 2026 it is 478 px after a change, leaving 34 px. No focus stop was fully hidden on 1 October; not re-measured with the note. The observer could unpin the summary when it passes half the screen. Changes when decision 62 pins it; overlaps "phone keyboard" above |
 
 ## Tracked separately
 
