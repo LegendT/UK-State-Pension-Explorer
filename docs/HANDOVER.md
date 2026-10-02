@@ -494,6 +494,20 @@ Not done: an address with history explorer settings on `/history/` is not sent o
 
 Not checked: a screen reader, a real phone, forced colours. Whether announcing "Result updated." 400 ms after each pause in typing is too frequent for a screen reader user needs a person.
 
+## Form spacing on the tools, 2 October 2026
+
+Asked for by the owner: inputs and the text around them were too close together on the tools pages. One set of rules in `main.css`, under "Form rhythm", for every form. A label and its hint read as one unit, 0.2rem apart. The control sits 0.5rem below them. Each part of a fieldset is 1rem from the next, and fields are 1.5rem apart. A hint that belongs to a button or a checkbox sits 0.5rem below it. A group of fields adds no margin of its own inside a fieldset, so every fieldset ends 1rem below its last item: measured 17 px on each fieldset of the triple lock and budget forms. Before, an input touched the hint above it, a button touched the text after it, and fieldsets ending in a group of fields were twice as deep at the foot.
+
+Left as it is: hints written directly in a fieldset, such as "Enter income before tax", are body size and colour, while hints under a field are smaller and grey. Styling them all as hints would make those instructions quieter, which is a choice about emphasis, not spacing.
+
+| Check | Command | Result |
+| --- | --- | --- |
+| Build | `npm run build` | No problems |
+| Calculator tests | `npm test` | 28 of 28 pass |
+| Automated accessibility | `npm run a11y` | 0 violations in 130 audits. Every incomplete contrast result measured, 3,687, none below threshold |
+| Behaviour | `npm run a11y:manual` | 0 problems, including text spacing |
+| Rendered | Screenshots, before and after | Every fieldset of the budget explorer at 390 px with an example loaded; the triple lock form at 1280 px; the rule comparison and history forms at 390 px |
+
 ## Waiting on the owner
 
 As at 2 October 2026.

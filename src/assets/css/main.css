@@ -343,6 +343,19 @@ tr.calculated td, tr.calculated th { font-style: italic; }
 .error:empty { display: none; }
 fieldset { border: 1px solid var(--rule); border-radius: var(--radius); padding: var(--space-m); margin: 0 0 var(--space-m); min-width: 0; }
 legend { font-weight: 700; padding: 0 var(--space-s); }
+/* Form rhythm, by proximity: a label and its hint read as one unit and the control sits a clear
+   step below them; each part of a fieldset is one larger step from the next; fields are further
+   apart again, so each reads as a group. A hint that belongs to a button stays close to it. */
+.field > .hint, .field > .error { margin-top: 0.2rem; }
+.field > :is(input, select, .affix) { margin-top: var(--space-s); }
+fieldset > * { margin-block: 0; }
+fieldset > * + * { margin-top: var(--space-m); }
+fieldset > legend + * { margin-top: 0; }
+fieldset > :is(button, .choice) + .hint { margin-top: var(--space-s); }
+fieldset > .fields { margin-bottom: 0; }
+fieldset > .choice + .choice { margin-top: 0; }
+fieldset > div:empty { display: none; }
+fieldset .fields { row-gap: var(--space-l); }
 
 input[type="text"], input[type="number"], select {
   font: inherit; color: var(--ink); background: var(--paper);
