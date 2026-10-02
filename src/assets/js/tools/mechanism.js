@@ -40,7 +40,7 @@ function load(quiet) {
   const from = previousRate(record, series.value);
   if (from === null) {
     loaded = null;
-    result.innerHTML = `<h3>No increase to show</h3><p>The new State Pension began in 2016/17. Its first full rate was set, not increased from an earlier rate. Choose a later year, or choose the basic State Pension.</p>`;
+    result.innerHTML = `<div class="unavailable" role="note"><h3>Not available: an increase for that choice</h3><p>The new State Pension began in 2016/17. Its first full rate was set, not increased from an earlier rate. Choose a later year, or choose the basic State Pension.</p></div>`;
     glance.innerHTML = `<p>No increase to show for that choice.</p>`;
     mode.textContent = "Past decision";
     announce(status, "No increase to show for that choice.");

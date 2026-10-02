@@ -40,7 +40,7 @@ export function renderBudget(input) {
 
   const taxNote = result.taxKnown
     ? `<p>The balance uses the tax figure you entered. This tool did not work it out or check it.</p>`
-    : `<p><strong>This balance is before tax.</strong> You did not enter a tax amount, so the balance is not money available to spend. If tax is due, the amount left is smaller.</p>`;
+    : `<div class="note" role="note"><h4>This balance is before tax</h4><p>You did not enter a tax amount, so the balance is not money available to spend. If tax is due, the amount left is smaller.</p></div>`;
 
   const spendingRows = result.spendingRows
     .filter((row) => row.yearlyPence > 0)

@@ -91,7 +91,7 @@
 <main id="main" class="wrap" tabindex="-1">
 {{ content | safe }}
 {%- if entry.modified %}
-<p class="page-dates">Content of this page last changed on {{ entry.modified | timeTag | safe }}. Each figure shows the date it was checked against its source under "More about this figure".</p>
+<p class="page-dates">Content of this page last changed on {{ entry.modified | timeTag | safe }}.{% if entry.figure_cards %} Each figure shows the date it was checked against its source under "More about this figure".{% endif %}</p>
 {%- endif %}
 </main>
 <footer class="site-footer">
@@ -112,7 +112,7 @@
         <li><a href="/site-map/">Site map</a></li>
       </ul>
     </nav>
-    <p>{{ site.name }} is an educational project. It is not a government service and does not give financial advice. Rates and rules change, so each figure shows its source, and the date it was checked under "More about this figure".</p>
+    <p>{{ site.name }} is an educational project. It is not a government service and does not give financial advice.{% if entry.figure_cards %} Rates and rules change, so each figure shows its source, and the date it was checked under "More about this figure".{% endif %}</p>
     <p>Contains public sector information licensed under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government Licence v3.0</a>.</p>
   </div>
 </footer>

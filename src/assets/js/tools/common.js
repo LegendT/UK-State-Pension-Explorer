@@ -103,6 +103,15 @@ export function live(form, redraw) {
       redraw();
     }, 400);
   };
+  // A button (load, fill, reset, clear) or a form reset changes fields without this function, so
+  // the last values no longer match what is drawn. Forget them, and the next change always redraws.
+  const forget = () => {
+    last = null;
+  };
+  document.addEventListener("click", (event) => {
+    if (event.target.closest("button")) forget();
+  });
+  form.closest("form")?.addEventListener("reset", forget);
   form.addEventListener("input", later);
   form.addEventListener("change", later);
 }

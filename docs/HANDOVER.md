@@ -476,7 +476,7 @@ Asked for by the owner: take the tools out into their own sections, as on UK Pub
 
 - `/tools/` lists the four tools, and "Tools" is in the main menu. `/tools/triple-lock/`, `/tools/history/` and `/tools/budget/` are new. The rule comparison stays at `/reform-options/compare/`.
 - Each tool works like the rule comparison: the result follows the form 400 ms after the last change, and an "At a glance" summary stays in view. The shared parts are `live` and `pinSummary` in `common.js`, and `.tool-layout` and `.tool-summary` in the stylesheet, renamed from the comparison's own classes.
-- The triple lock, history and living on a pension pages keep their headings and a short pointer where the tool was, so links to `#tool`, `#explorer` and `#budget` still land.
+- The triple lock, history and living on a pension pages keep a short pointer where the tool was, under a heading with the same `id`, so links to `#tool`, `#explorer` and `#budget` still land. The headings were renamed to name the tool in the front-end sweep of 2 October 2026 (W1).
 - Form fields sit in two columns only where each column is at least 20rem, so the lists in a tool's narrower form column are not cut.
 
 | Check | Command | Result |
@@ -537,6 +537,44 @@ Decision 79, point R2 of the front-end sweep, on the owner's go. A pinned summar
 | Automated accessibility | `npm run a11y` | 0 violations in 130 audits |
 
 Not checked: a real phone with large text set in the system, rather than the test's text spacing.
+
+## Front-end sweep, 2 October 2026
+
+The second sweep, over all 19 pages, on the branch `tools-section`, not pushed. Steps: axe baseline (`a11y-verify`), markup (`html-engineering`), styles (`css-engineering`), axe again and compare. The runners and results are in `frontend-sweep/`, which git leaves out; the first sweep's files moved to `frontend-sweep/2026-10-01/`.
+
+Changed, template by template:
+
+| File | Change | Finding |
+| --- | --- | --- |
+| `src/_includes/base.njk` | The page foot and the site footer say check dates are under "More about this figure" only where `entry.figure_cards` is set. Both were printed on every page, false on 12 of 18. The footer sentence was found by the critique after the first fix | H1, option (b), the owner's choice. Reading the cards from the page content instead of a register field was weighed: the field is what the owner chose, and the build check stops it drifting |
+| `src/_data/pageRegister.json` | `figure_cards: true` on the six pages with figure cards: overview, State Pension, living on a pension, reform options, costs, social care | H1 |
+| `scripts/check-build.mjs` | Fails when `figure_cards` does not match the built page. Planted both ways, on `/` and `/privacy/`: each failed with its own message | H1 |
+| `src/triple-lock.njk`, `src/history.njk`, `src/living-on-a-pension.njk` | The pointer headings and their contents entries name the tool: "The triple lock calculator", "The history explorer", "The budget explorer". The `id`s are kept | W1 |
+| `src/assets/js/lib/budget-view.js` | "This balance is before tax" is a note with a heading, not a bold paragraph | W2 |
+| `src/assets/js/tools/mechanism.js` | "No increase to show" is the "Not available" note | W3 |
+| `src/assets/js/tools/common.js` | Not a sweep finding: a fault from commit `81f37b6`, found by the sweep's second reader. After a button changed the fields, typing the value last typed did not redraw. The last values are now forgotten on any button click or form reset | Bug |
+
+No stylesheet change: `css-engineering` found nothing at P1 or P2.
+
+| Check | Command | Before | After |
+| --- | --- | --- | --- |
+| Automated accessibility | `node frontend-sweep/run.mjs`: axe-core 4.11.4, Chrome 154, 19 pages at 320, 768 and 1280 px, at rest, reduced motion and dark, 171 audits | 0 violations, 2,714 incomplete | 0 violations, 2,714 incomplete. New 0, fixed 0, unchanged 2,714 |
+| Incomplete contrast | `node frontend-sweep/measure.mjs` | All 2,714 measured, none below threshold, lowest 8.81:1 | The same |
+| Validator | `npx html-validate "_site/**/*.html"` | 111: whitespace 45, `prefer-native-element` 35, `doctype-style` 19, `long-title` 8, `wcag/h32` 4 | 111, the same rules. `wcag/h32` is the four tool forms with no submit button, decisions 62 and 78. Declined as before |
+| Page map | `page-map.mjs` | | Three headings renamed (W1), nothing else |
+| Calculator tests | `npm test` | 28 of 28 | 28 of 28 |
+| Screenshots | 19 pages at 3 widths | | 13 pages differ, the expected set: the 12 that lost the foot sentence, and living on a pension (W1). Taken before the footer sentence was gated too, which changes the same 12 pages |
+| Behaviour | `npm run a11y:manual` | | 0 problems on 19 pages: no sideways scroll, no clipped text, no target under 24 px, no skipped heading, every tab stop reached and visible and not covered |
+| Redraw fault | A script in Chrome | Typing 5, loading a decision, typing 5 again left the decision shown | The same steps redraw to 5.0%; a Tab with nothing new announces nothing |
+
+The list, each item with the step that found it:
+
+- **wrong:** none left. H1 (step 2) and the redraw fault (step 2's reader) are fixed.
+- **weak:** W4, the "All tools" link as a named `nav` (step 2), and W5, the budget total row in a `tfoot` (step 2): declined by the owner on 2 October 2026.
+- **noise:** a comment above the wrong function in `budget-view.js`; the tool pages' opening sentence repeats their lede; an unused `id` on the "At a glance" headings; breakpoints written in both `rem` and `em` (step 3).
+- **incomplete:** 2,714 contrast results, all table cells clipped by their scrolling wrappers, none new, all measured (step 1 and step 4).
+- **unverified by tooling:** a screen reader, a real phone, touch, forced colours, Safari and Firefox (step 4).
+- **unchanged:** no violations. Already on the waiting list and left alone: K2, K3 and K4 from the first sweep, and C2 and C3.
 
 ## Waiting on the owner
 

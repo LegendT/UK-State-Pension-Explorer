@@ -62,7 +62,7 @@ A11Y_ASSESSMENT_DATE=2026-10-01 AI_CRAWLER_POLICY=allow npm run build
 | `src/_data/tables.json` | Sourced tables. |
 | `src/_data/budgets.json` | Budget categories and example budgets. |
 | `src/_data/scenarios.json` | Hypothetical scenarios for the rule comparison. |
-| `src/_data/pageRegister.json` | Title, description, dates and indexing for each page. |
+| `src/_data/pageRegister.json` | Title, description, dates and indexing for each page. `figure_cards` marks the pages with figure cards, where the page foot says check dates are under "More about this figure"; `npm run build` fails if it does not match the page. |
 | `src/_data/links.json` | Links to the sister sites, and the planned links back. |
 | `src/_data/news.json` | The date of the note "In the news" on the overview page, whose text is in `src/index.njk`. The same `as_of` date dates the pensions and social care page. |
 | `src/_data/a11y.json` | What the accessibility statement reports. |

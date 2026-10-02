@@ -1,5 +1,5 @@
 {
-  "note": "One entry for each page. 'published' stays empty until the site is published. 'modified' changes only when the content changes in substance, never on a rebuild or a source recheck.",
+  "note": "One entry for each page. 'published' stays empty until the site is published. 'modified' changes only when the content changes in substance, never on a rebuild or a source recheck. 'figure_cards' is true where the page has figure cards with \"More about this figure\", so the page foot says where the check dates are; the build fails if it does not match the page.",
   "pages": [
     {
       "path": "/",
@@ -14,7 +14,8 @@
       "index": true,
       "published": null,
       "modified": "2026-09-30",
-      "modified_note": "Added the announcement of 29 September 2026, rewrote the news note, and added a table of State Pension age by date of birth."
+      "modified_note": "Added the announcement of 29 September 2026, rewrote the news note, and added a table of State Pension age by date of birth.",
+      "figure_cards": true
     },
     {
       "path": "/state-pension/",
@@ -28,7 +29,8 @@
       "index": true,
       "published": null,
       "modified": "2026-09-29",
-      "modified_note": "First written."
+      "modified_note": "First written.",
+      "figure_cards": true
     },
     {
       "path": "/triple-lock/",
@@ -56,7 +58,8 @@
       "index": true,
       "published": null,
       "modified": "2026-10-02",
-      "modified_note": "The tool moved to a page of its own on 2 October 2026; a short pointer stays."
+      "modified_note": "The tool moved to a page of its own on 2 October 2026; a short pointer stays.",
+      "figure_cards": true
     },
     {
       "path": "/reform-options/",
@@ -70,7 +73,8 @@
       "index": true,
       "published": null,
       "modified": "2026-10-01",
-      "modified_note": "Split into four pages on 30 September 2026. On 1 October 2026 the rule comparison moved to its own page."
+      "modified_note": "Split into four pages on 30 September 2026. On 1 October 2026 the rule comparison moved to its own page.",
+      "figure_cards": true
     },
     {
       "path": "/reform-options/compare/",
@@ -98,7 +102,8 @@
       "index": true,
       "published": null,
       "modified": "2026-09-30",
-      "modified_note": "Moved from the reform options page, which was split into four pages on 30 September 2026."
+      "modified_note": "Moved from the reform options page, which was split into four pages on 30 September 2026.",
+      "figure_cards": true
     },
     {
       "path": "/reform-options/social-care/",
@@ -112,7 +117,8 @@
       "index": true,
       "published": null,
       "modified": "2026-09-30",
-      "modified_note": "Moved from the reform options page, which was split into four pages on 30 September 2026."
+      "modified_note": "Moved from the reform options page, which was split into four pages on 30 September 2026.",
+      "figure_cards": true
     },
     {
       "path": "/reform-options/entitlement/",
