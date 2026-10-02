@@ -10,7 +10,7 @@ permalink: /privacy/
 <ul>
   <li>Everything you enter is worked out in your own browser.</li>
   <li>Apart from the page address described below, the site does not send it to us or to anyone else, and does not save it.</li>
-  <li>The rule comparison and the history explorer put their settings in the page address when you show a result, so that a copied link shows the same result. The settings are what you chose and typed in the form, including any amount you entered, so do not share the link if an amount is your own. Like any page address, it is sent to the web host when the page loads, and your browser keeps it in its history.</li>
+  <li>The rule comparison and the history explorer put their settings in the page address when you show a result, so that a copied link shows the same result. The settings are what you chose and typed in the form, including any amount you entered, so do not share the link if an amount is your own. Like any page address, it is sent to the web host when the page loads, and your browser keeps it in its history.{% if site.analyticsToken %} The analytics service also sees it: see <a href="#analytics">Analytics</a>.{% endif %}</li>
   <li>The budget explorer and the triple lock calculator put nothing in the page address, and the site keeps nothing you enter in them. If your browser brings the budget explorer back when you return to it, the page clears your amounts and the result. A browser can still offer to fill in a form from its own memory. That is a browser setting, not this site.</li>
   <li>The budget explorer has a button, "Clear everything I entered", that clears it at once.</li>
 </ul>
@@ -18,9 +18,9 @@ permalink: /privacy/
 
 <h2 id="analytics">Analytics</h2>
 {% if site.analyticsToken %}
-<p>This site uses <a href="https://www.cloudflare.com/web-analytics/">Cloudflare Web Analytics</a> to count visits. It records aggregate information, such as how many people viewed a page and which site they came from. It sets no cookies and stores nothing on your device, and it does not build a profile of you. Cloudflare says it does not record the part of a page address after a question mark. That is where the rule comparison and the history explorer keep their settings, including any amount typed into them, so on Cloudflare's word those are not recorded. Amounts entered in the budget explorer are never put in the address. Read the <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare privacy policy</a>.</p>
+<p>This site uses <a href="https://www.cloudflare.com/web-analytics/">Cloudflare Web Analytics</a> to count visits. Your browser fetches its counting script from Cloudflare, so Cloudflare receives the technical details of that request, as a web host does. Cloudflare says the service records aggregate information, such as how many people viewed a page and which site they came from, sets no cookies, stores nothing on your device and builds no profile of you. It also says it does not record the part of a page address after a question mark, which is where the rule comparison and the history explorer keep their settings, including any amount typed into them. The budget explorer and the triple lock calculator put nothing in the address. Read the <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare privacy policy</a>.</p>
 {% else %}
-<p>This {{ "site" if site.production else "preview" }} has no analytics and loads nothing from any other website.{% if not site.production %} The site is planned to use Cloudflare Web Analytics once it is published, and this page will then say what is collected. Amounts entered in a calculator will never be included.{% endif %}</p>
+<p>This preview has no analytics and loads nothing from any other website. The published site uses Cloudflare Web Analytics, and this page then says what is collected. Amounts entered in the budget explorer and the triple lock calculator are never in the page address.</p>
 {% endif %}
 
 <h2 id="hosting">The company that hosts the site</h2>

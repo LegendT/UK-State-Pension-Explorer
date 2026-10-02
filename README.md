@@ -40,7 +40,7 @@ The accessibility scripts use the Chrome already on the computer. Set `CHROME_PA
 
 A production build stops unless the launch decisions it can check are set. It also stops while `BASIC_AUTH` is set, if `netlify.toml` sends an `X-Robots-Tag` header, or on Netlify outside the production context. A preview's `noindex` header is written to `_site/_headers`. See `docs/launch-dependencies.md`.
 
-In production only, `CLOUDFLARE_ANALYTICS_TOKEN` adds Cloudflare Web Analytics and the privacy page says so. Without it the site loads nothing from any other website: decision 74.
+A production build adds Cloudflare Web Analytics, with the token in `src/_data/site.js`, and the privacy page says so. Development and preview builds load nothing from any other website: decision 74.
 
 ```
 SITE_ENV=production SITE_TITLE="..." SITE_URL=https://... CORRECTION_URL=https://... \

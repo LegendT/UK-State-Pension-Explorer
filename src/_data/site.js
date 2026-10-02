@@ -1,6 +1,7 @@
 // Site configuration. Nothing here invents a launch decision: the production domain,
 // correction route, owner and crawler policy come from the environment, and a
-// production build stops when one is missing. See docs/launch-dependencies.md.
+// production build stops when one is missing. The analytics token is typed in below, because it
+// is public. See docs/launch-dependencies.md.
 
 const env = process.env.SITE_ENV || "development";
 if (!["development", "preview", "production"].includes(env)) {
@@ -47,9 +48,9 @@ const config = {
   reviewDate: process.env.REVIEW_DATE || "",
   accessibilityAssessmentDate: process.env.A11Y_ASSESSMENT_DATE || "",
   aiCrawlerPolicy: process.env.AI_CRAWLER_POLICY || "",
-  // Cloudflare Web Analytics: decision 74. The token is public, as it is in the page, and is used
-  // in production only. Not a launch blocker: with no token the site loads nothing from elsewhere.
-  analyticsToken: production ? process.env.CLOUDFLARE_ANALYTICS_TOKEN || "" : "",
+  // Cloudflare Web Analytics, production only: decision 74. Not a secret: it is printed in every page.
+  // ponytail: typed here, as on UK Public Finances, not a Netlify variable nobody has to remember.
+  analyticsToken: production ? "325728f9446f4b2881adb0f5fb398f12" : "",
   nav: [
     { href: "/", label: "Overview" },
     { href: "/state-pension/", label: "The State Pension" },

@@ -435,9 +435,9 @@ On the owner's go of the same day, on the branch `launch-prep`, not pushed.
 | --- | --- |
 | `netlify.toml` | No `X-Robots-Tag` header. `[context.production.environment]` holds `SITE_ENV = "preview"`, the launch switch. The Content Security Policy allows the Cloudflare script and its endpoint |
 | `src/_headers.njk` and its data file | Written for every build that is not production: `X-Robots-Tag: noindex`, and the sign-in when `BASIC_AUTH` is set |
-| `src/_data/site.js` | A production build on Netlify outside the production context stops. Outside production the canonical is the deploy's own address even when `SITE_URL` is set. `analyticsToken` from `CLOUDFLARE_ANALYTICS_TOKEN`, production only |
+| `src/_data/site.js` | A production build on Netlify outside the production context stops. Outside production the canonical is the deploy's own address even when `SITE_URL` is set. `analyticsToken`, the Cloudflare token the owner supplied on 2 October 2026, in production only |
 | `scripts/check-build.mjs` | A build that is not production fails without `noindex` in `_headers` |
-| `src/_includes/base.njk`, `src/privacy.njk` | The Cloudflare script, and the privacy wording for it, only when the token is set |
+| `src/_includes/base.njk`, `src/privacy.njk` | The Cloudflare script, and the privacy wording for it, in production builds only. The token was typed into `site.js` on 2 October 2026, after these checks: see below |
 
 | Check | Command | Result |
 | --- | --- | --- |
@@ -447,6 +447,8 @@ On the owner's go of the same day, on the branch `launch-prep`, not pushed.
 | Calculator tests | `npm test` | 28 of 28 pass |
 | Automated accessibility | `npm run a11y` | 0 violations in 106 audits of 15 pages. Every incomplete contrast result measured, 4,031, none below threshold. These run on a development build, so the privacy wording for a set token was not audited |
 | Behaviour | `npm run a11y:manual` | 0 problems |
+
+After the owner supplied the Cloudflare token, the script became the dashboard's own form, `type="module"`, and the token moved into `site.js`, as on UK Public Finances. Run again then: a production context build passes with the script and token in the page and the Cloudflare wording on the privacy page; a deploy preview build passes with no Cloudflare reference anywhere in `_site` and the preview wording; `npm run build` and `npm test`, 28 of 28. The beacon answers with `access-control-allow-origin: *`, which a module script loaded from another site needs.
 
 Not checked: anything on Netlify. Whether Netlify applies `_headers` and `netlify.toml` headers together as expected needs a deploy preview, which needs a push. What the Cloudflare beacon sends needs the live site.
 
