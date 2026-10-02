@@ -181,8 +181,8 @@
       "canonical_path": "/privacy/",
       "index": true,
       "published": null,
-      "modified": "2026-09-30",
-      "modified_note": "Names the host and the analytics planned for launch."
+      "modified": "2026-10-02",
+      "modified_note": "Says what Cloudflare Web Analytics records, shown once the analytics token is set in production."
     },
     {
       "path": "/site-map/",

@@ -1,6 +1,6 @@
-// The preview's password rule. Written only when BASIC_AUTH is set, and never in production.
+// The preview's rules: noindex, and the password when BASIC_AUTH is set. Never written in production.
 export default {
   eleventyComputed: {
-    permalink: (data) => (data.site.basicAuth && !data.site.production ? "/_headers" : false),
+    permalink: (data) => (data.site.production ? false : "/_headers"),
   },
 };

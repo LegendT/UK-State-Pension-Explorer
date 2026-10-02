@@ -128,10 +128,13 @@ if (site.production) {
   if (!robots.includes(`Sitemap: ${site.url}/sitemap.xml`)) fail("robots.txt does not name the sitemap");
   if (/^Disallow: \/\s*$/m.test(robots.split("User-agent: *")[1].split("User-agent:")[0])) fail("robots.txt blocks all crawlers in production");
   // Any X-Robots-Tag line that is not a comment, whatever its value or quoting.
-  if (existsSync("netlify.toml") && /^[ \t]*X-Robots-Tag\b/m.test(readFileSync("netlify.toml", "utf8"))) fail("netlify.toml still sends an X-Robots-Tag header. Remove it for production.");
+  if (existsSync("netlify.toml") && /^[ \t]*["']?X-Robots-Tag\b/im.test(readFileSync("netlify.toml", "utf8"))) fail("netlify.toml sends an X-Robots-Tag header to every context, the published site included. Previews get noindex from _headers.");
   if (existsSync(join(OUT, "_headers"))) fail("_headers was written in a production build");
-} else if (existsSync(sitemapPath)) {
-  fail("a sitemap was written in a build that is not production");
+} else {
+  if (existsSync(sitemapPath)) fail("a sitemap was written in a build that is not production");
+  // Decision 68: a preview's noindex comes from _headers, so it covers the CSV and images too.
+  const headersPath = join(OUT, "_headers");
+  if (!existsSync(headersPath) || !/^[ \t]+X-Robots-Tag: noindex$/m.test(readFileSync(headersPath, "utf8"))) fail("_headers does not send X-Robots-Tag: noindex in a build that is not production");
 }
 
 // 6. Registers: required fields and known sources. Unused entries are reported, not failed.

@@ -1,8 +1,12 @@
 ---
-# Written only when BASIC_AUTH is set. The permalink is in _headers.11tydata.js.
+# Written for every build that is not production. The permalink is in _headers.11tydata.js.
 # "safe" keeps the password as typed. Without it, characters such as & would be written as HTML entities.
 eleventyExcludeFromCollections: true
 ---
-# Written by the build from the BASIC_AUTH variable. Do not commit a copy of this file.
+# Written by the build. Do not commit a copy of this file.
+# noindex covers files that cannot carry a noindex tag, such as the CSV and the share images.
 /*
+  X-Robots-Tag: noindex
+{%- if site.basicAuth %}
   Basic-Auth: {{ site.basicAuth | safe }}
+{%- endif %}

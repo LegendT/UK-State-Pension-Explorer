@@ -139,7 +139,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "Each April, and sooner if the rule is changed in law."
   },
   "nsp-full-rate-years": {
     "label": "Qualifying years for the full rate, for a record that began after April 2016",
@@ -167,7 +167,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "Each April, and sooner if the rule is changed in law."
   },
   "nsp-per-qualifying-year": {
     "label": "New State Pension added by each qualifying year after 5 April 2016",
@@ -195,7 +195,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "When the rates for 2027/28 are confirmed, and again when the up-rating takes effect in April 2027. Check the date in the up-rating order."
   },
   "pension-credit-single": {
     "label": "Pension Credit standard minimum guarantee, single person",
@@ -363,7 +363,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "When rates and limits for 2027 to 2028 are published."
   },
   "deferral-weeks-new": {
     "label": "Weeks of deferral for each 1% increase, new State Pension",
@@ -391,7 +391,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "Each April, and sooner if the rule is changed in law."
   },
   "deferral-weeks-basic": {
     "label": "Weeks of deferral for each 1% increase, basic State Pension",
@@ -419,7 +419,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "Each April, and sooner if the rule is changed in law."
   },
   "attendance-allowance-lower": {
     "label": "Attendance Allowance, lower rate",
@@ -503,7 +503,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "Before winter 2027 to 2028, when the government confirms the income limit for that winter."
   },
   "sp-recipients": {
     "label": "People receiving the State Pension",
@@ -783,7 +783,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "Each April, and sooner if the Department for Work and Pensions publishes its next benefit expenditure and caseload tables."
   },
   "sp-spend-2024-25": {
     "label": "State Pension spending, latest outturn",
@@ -979,7 +979,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "July 2027, with the next Fiscal risks and sustainability report."
   },
   "tl-cost-vs-earnings-2029-30": {
     "label": "Extra yearly spending from the triple lock compared with earnings uprating",
@@ -1007,7 +1007,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "July 2027, with the next Fiscal risks and sustainability report. A July 2026 edition exists; check whether it updates this figure."
   },
   "tl-cost-vs-cpi-2029-30": {
     "label": "Extra yearly spending from the triple lock compared with prices uprating",
@@ -1035,7 +1035,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "July 2027, with the next Fiscal risks and sustainability report. A July 2026 edition exists; check whether it updates this figure."
   },
   "tl-cost-initial-assumption": {
     "label": "What the triple lock was first assumed to cost by 2029-30",
@@ -1063,7 +1063,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "July 2027, with the next Fiscal risks and sustainability report. A July 2026 edition exists; check whether it updates this figure."
   },
   "tl-cost-ifs-2023": {
     "label": "Extra yearly spending from the triple lock, 2023 estimate",
@@ -1091,7 +1091,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "Each April. It comes from a single study, so it changes only if the Institute for Fiscal Studies publishes newer work that replaces it."
   },
   "tl-cost-rf-gross-2026": {
     "label": "Extra yearly spending from the triple lock, 2026 estimate, gross",
@@ -1119,7 +1119,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "Each April. It comes from a single study, so it changes only if the Resolution Foundation publishes newer work that replaces it."
   },
   "tl-cost-rf-net-2026": {
     "label": "Extra yearly spending from the triple lock, 2026 estimate, net",
@@ -1147,7 +1147,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null,
+    "next_review": "Each April. It comes from a single study, so it changes only if the Resolution Foundation publishes newer work that replaces it.",
     "approximate": true
   },
   "saving-earnings-2075": {
@@ -1232,7 +1232,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null,
+    "next_review": "Each April. The Government Actuary reports on each year's up-rating; replace it if a later report gives a new figure.",
     "approximate": true
   },
   "saving-smoothed-rf-2030": {
@@ -1261,7 +1261,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null,
+    "next_review": "Each April. It comes from a single study, so it changes only if the Resolution Foundation publishes newer work that replaces it.",
     "approximate": true
   },
   "saving-earnings-ifs-2050": {
@@ -1290,7 +1290,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null,
+    "next_review": "Each April. It comes from a single study, so it changes only if the Institute for Fiscal Studies publishes newer work that replaces it.",
     "approximate": true
   },
   "ifs-tl-cost-2050-low": {
@@ -1319,7 +1319,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "Each April. It comes from a single study, so it changes only if the Institute for Fiscal Studies publishes newer work that replaces it."
   },
   "ifs-tl-cost-2050-high": {
     "label": "Cost of the triple lock in 2050, high end of range",
@@ -1347,7 +1347,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "Each April. It comes from a single study, so it changes only if the Institute for Fiscal Studies publishes newer work that replaces it."
   },
   "ifs-rise-without-tl": {
     "label": "Rise in spending by 2050 even with earnings indexation",
@@ -1375,7 +1375,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "Each April. It comes from a single study, so it changes only if the Institute for Fiscal Studies publishes newer work that replaces it."
   },
   "pop-pensionable-2024": {
     "label": "People of pensionable age",
@@ -1403,7 +1403,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "Each April, and sooner if the Office for National Statistics publishes new national population projections."
   },
   "pop-pensionable-2034": {
     "label": "People of pensionable age, projected",
@@ -1431,7 +1431,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "Each April, and sooner if the Office for National Statistics publishes new national population projections."
   },
   "oadr-2024": {
     "label": "People of pensionable age for every 1,000 people of working age",
@@ -1459,7 +1459,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "Each April, and sooner if the Office for National Statistics publishes new national population projections."
   },
   "oadr-2049": {
     "label": "People of pensionable age for every 1,000 people of working age, projected",
@@ -1487,7 +1487,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "Each April, and sooner if the Office for National Statistics publishes new national population projections."
   },
   "pensioner-taxpayers": {
     "label": "Income Tax payers above State Pension age",
@@ -1515,7 +1515,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "Each April, and sooner if HM Revenue and Customs publishes Income Tax liabilities statistics for a later tax year."
   },
   "nif-contributions-2024-25": {
     "label": "National Insurance contributions paid into the Fund",
@@ -1543,7 +1543,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "Each April, and sooner if HM Revenue and Customs publishes the National Insurance Fund account for the year ended 31 March 2026."
   },
   "nif-state-pension-2024-25": {
     "label": "State Pension paid from the Fund",
@@ -1571,7 +1571,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "Each April, and sooner if HM Revenue and Customs publishes the National Insurance Fund account for the year ended 31 March 2026."
   },
   "nif-balance-2025": {
     "label": "Balance of the Fund",
@@ -1599,7 +1599,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "Each April, and sooner if HM Revenue and Customs publishes the National Insurance Fund account for the year ended 31 March 2026."
   },
   "mis-single-ex-rent": {
     "label": "Minimum Income Standard, single pensioner, excluding rent",
@@ -2439,7 +2439,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "March 2027, when the next edition is expected."
   },
   "tenure-own-outright": {
     "label": "Households headed by someone aged 65 or over that own outright",
@@ -2467,7 +2467,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "March 2027, when the next edition is expected."
   },
   "tenure-mortgage": {
     "label": "Households headed by someone aged 65 or over buying with a mortgage",
@@ -2495,7 +2495,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "March 2027, when the next edition is expected."
   },
   "tenure-social-rent": {
     "label": "Households headed by someone aged 65 or over renting from a social landlord",
@@ -2523,7 +2523,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "March 2027, when the next edition is expected."
   },
   "tenure-private-rent": {
     "label": "Households headed by someone aged 65 or over renting privately",
@@ -2551,7 +2551,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "March 2027, when the next edition is expected."
   },
   "wealth-single-p25": {
     "label": "Total wealth, single households over State Pension age: lowest quarter boundary",
@@ -2915,7 +2915,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "Each April, and sooner if the Department of Health and Social Care publishes its adult social care finance report for 2025 to 2026."
   },
   "care-eng-long-term": {
     "label": "People receiving long-term care, England",
@@ -2943,7 +2943,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "Each April, and sooner if the Department of Health and Social Care publishes its adult social care activity report for 2025 to 2026."
   },
   "care-unmet-need": {
     "label": "Older people with unmet need for care, England",
@@ -2971,7 +2971,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "Each April, and sooner if Age UK publishes a newer State of Health and Care of Older People report."
   },
   "care-cost-free-personal": {
     "label": "Extra yearly cost of free personal care, England",
@@ -2999,7 +2999,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null,
+    "next_review": "Each April. It comes from a single study, so it changes only if the Health Foundation publishes newer work that replaces it.",
     "approximate": true
   },
   "care-cost-cap": {
@@ -3028,7 +3028,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "Each April. It comes from a single study, so it changes only if the Health Foundation publishes newer work that replaces it."
   },
   "care-cost-universal": {
     "label": "Extra yearly cost of universal care, England",
@@ -3056,7 +3056,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null,
+    "next_review": "Each April. It comes from a single study, so it changes only if the Health Foundation publishes newer work that replaces it.",
     "approximate": true
   },
   "nsp-share-median-earnings": {
@@ -3085,7 +3085,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "Each April. It comes from a single study, so it changes only if the Institute for Fiscal Studies publishes newer work that replaces it."
   },
   "sp-share-income-poorest": {
     "label": "State Pension as a share of income, poorest fifth of recent retirees",
@@ -3113,7 +3113,7 @@
     "inputs": [],
     "checked_date": "2026-10-01",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "Each April. It comes from a single study, so it changes only if the Institute for Fiscal Studies publishes newer work that replaces it."
   },
   "sp-share-income-richest": {
     "label": "State Pension as a share of income, richest fifth of recent retirees",
@@ -3141,7 +3141,7 @@
     "inputs": [],
     "checked_date": "2026-10-01",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "Each April. It comes from a single study, so it changes only if the Institute for Fiscal Studies publishes newer work that replaces it."
   },
   "ppi-poverty-earnings-link": {
     "label": "Extra pensioners in poverty by 2050 under an earnings link",
@@ -3169,7 +3169,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null,
+    "next_review": "Each April. It comes from a single study, so it changes only if the Pensions Policy Institute publishes newer work that replaces it.",
     "approximate": true
   },
   "earnings-first-estimate-2026": {
@@ -3254,7 +3254,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null,
+    "next_review": "Each April. It comes from a single study, so it changes only if the Pensions Policy Institute publishes newer work that replaces it.",
     "approximate": true
   },
   "care-cap-level": {
@@ -3283,7 +3283,7 @@
     "inputs": [],
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null,
+    "next_review": "Each April. It comes from a single study, so it changes only if the Health Foundation publishes newer work that replaces it.",
     "approximate": false
   },
   "saving-rule-2030-late-2030s": {
@@ -3368,7 +3368,7 @@
     "inputs": [],
     "checked_date": "2026-09-30",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "Each April. It comes from a single study, so it changes only if the Institute for Fiscal Studies publishes newer work that replaces it."
   },
   "rule-2030-counterfactual-ifs-2026": {
     "label": "How much lower spending would be if the announced rule had applied since 2011",
@@ -3396,7 +3396,7 @@
     "inputs": [],
     "checked_date": "2026-09-30",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "Each April. It comes from a single study, so it changes only if the Institute for Fiscal Studies publishes newer work that replaces it."
   },
   "rule-2030-real-rise-ifs": {
     "label": "Real rise in the pension if the announced rule had applied from 2010 to 2026",
@@ -3424,7 +3424,7 @@
     "inputs": [],
     "checked_date": "2026-09-30",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "Each April. It comes from a single study, so it changes only if the Institute for Fiscal Studies publishes newer work that replaces it."
   },
   "rule-2030-vs-tl-rf": {
     "label": "How much lower the pension would be this year if the announced rule had applied since 2012",
@@ -3452,7 +3452,7 @@
     "inputs": [],
     "checked_date": "2026-09-30",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "Each April. It comes from a single study, so it changes only if the Resolution Foundation publishes newer work that replaces it."
   },
   "rule-2030-vs-earnings-rf": {
     "label": "How much higher the pension would be than under an earnings link if the announced rule had applied since 2012",
@@ -3480,6 +3480,6 @@
     "inputs": [],
     "checked_date": "2026-09-30",
     "review_status": "checked-with-ai-assistance",
-    "next_review": null
+    "next_review": "Each April. It comes from a single study, so it changes only if the Resolution Foundation publishes newer work that replaces it."
   }
 }

@@ -1,6 +1,6 @@
 # UK State Pension Explorer
 
-A plain-English explainer of the UK State Pension, the triple lock, what a pension can cover, and the evidence for and against reform. A sister site to UK Public Finances Explorer and UK Migration Explorer. The name is a working title.
+A plain-English explainer of the UK State Pension, the triple lock, what a pension can cover, and the evidence for and against reform. A sister site to UK Public Finances Explorer and UK Migration Explorer. The name was confirmed on 2 October 2026: decision 66.
 
 **Status: a preview for review. It is not published and must not be described as meeting WCAG 2.2 AA.** See `docs/HANDOVER.md`.
 
@@ -38,9 +38,9 @@ The accessibility scripts use the Chrome already on the computer. Set `CHROME_PA
 | preview | `noindex` on every page | None | Preview banner |
 | production | Indexable | `/sitemap.xml` | None |
 
-A production build stops unless the launch decisions it can check are set. It also stops while `BASIC_AUTH` is set or while `netlify.toml` still sends the `noindex` header. See `docs/launch-dependencies.md`.
+A production build stops unless the launch decisions it can check are set. It also stops while `BASIC_AUTH` is set, if `netlify.toml` sends an `X-Robots-Tag` header, or on Netlify outside the production context. A preview's `noindex` header is written to `_site/_headers`. See `docs/launch-dependencies.md`.
 
-The command below passes only after that header has been removed from `netlify.toml`.
+A production build adds Cloudflare Web Analytics, with the token in `src/_data/site.js`, and the privacy page says so. Development and preview builds load nothing from any other website: decision 74.
 
 ```
 SITE_ENV=production SITE_TITLE="..." SITE_URL=https://... CORRECTION_URL=https://... \
@@ -78,7 +78,7 @@ A11Y_ASSESSMENT_DATE=2026-10-01 AI_CRAWLER_POLICY=allow npm run build
 
 ## Hosting
 
-Netlify builds a preview from `main`, using `netlify.toml`. The preview asks for a user name and password. They are set in the `BASIC_AUTH` variable in Netlify, as `user:password`, and the build writes them to `_site/_headers`. `BASIC_AUTH=user:password npm run build` shows that the rule is written. It does not show that the sign-in works, because the local server ignores that file. That was checked on the Netlify deploy preview on 29 September 2026. Repository, private: https://github.com/LegendT/UK-State-Pension-Explorer
+Netlify builds a preview from `main`, using `netlify.toml`, until `SITE_ENV` under `[context.production.environment]` is set to `production` at launch. Deploy previews and branch deploys stay previews after launch: decision 68. A preview asks for a user name and password. They are set in the `BASIC_AUTH` variable in Netlify, as `user:password`, and the build writes them to `_site/_headers`. `BASIC_AUTH=user:password npm run build` shows that the rule is written. It does not show that the sign-in works, because the local server ignores that file. That was checked on the Netlify deploy preview on 29 September 2026. Repository, private: https://github.com/LegendT/UK-State-Pension-Explorer
 
 ## Markup conventions
 
