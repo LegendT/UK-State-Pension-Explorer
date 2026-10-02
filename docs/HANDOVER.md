@@ -1,6 +1,6 @@
 # Handover: first build
 
-Written 29 September 2026, updated 2 October 2026. The site is a **preview for review**. It is not published. The repository is https://github.com/LegendT/UK-State-Pension-Explorer. All work is merged into `main`, up to pull request 17. Pull request 16, from `summary-differences`, carried decisions 63 and 64, and pull request 17, from `frontend-sweep`, the front-end sweep and decision 65. Both were merged on 1 October 2026. Pull request 10, from `handover-review-note`, added the marking of the current section in the "On this page" list, decision 53, and carried the handover note that records pull request 9. It was merged on 30 September 2026. Pull request 8 carried the work on the UX review of 30 September 2026, and pull request 9 recorded the owner's answers on it: see "UX review of 30 September 2026". Merged: pull request 1, the first build, on 29 September 2026; pull request 2, from `first-build`, pull request 3, from `april-2030-rule`, and pull request 4, from `homepage-orientation`, on 30 September 2026. Pull request 3 carried the markup sweep and stylesheet fixes of `html-semantics` and the update for the government's announcement of 29 September 2026. Pull request 4 added a table of State Pension age by date of birth to the overview: decision 44. Pull request 5 corrected the handover. Pull request 6, from `rule-2030-calculator`, adds the announced rule to the rule comparison: decision 38. It was merged on 30 September 2026. Pull request 7, from `handover-pr6`, recorded pull request 6 in this handover. Netlify builds `main` to the main address and a deploy preview of each pull request into `main`, all behind a sign-in.
+Written 29 September 2026, updated 2 October 2026. The site is a **preview for review**. It is not published. The repository is https://github.com/LegendT/UK-State-Pension-Explorer. All work is merged into `main`, up to pull request 19. Pull request 18, from `launch-prep`, carried the launch dependency decisions 66 to 76, the review triggers, the Netlify context split and Cloudflare analytics; pull request 19, from `tools-section`, carried sources on their own line (decision 77), the tools on their own pages (decision 78), the form spacing, the "Updated" note, decision 79 and the second front-end sweep. Both were merged on 2 October 2026. Pull request 16, from `summary-differences`, carried decisions 63 and 64, and pull request 17, from `frontend-sweep`, the front-end sweep and decision 65. Both were merged on 1 October 2026. Pull request 10, from `handover-review-note`, added the marking of the current section in the "On this page" list, decision 53, and carried the handover note that records pull request 9. It was merged on 30 September 2026. Pull request 8 carried the work on the UX review of 30 September 2026, and pull request 9 recorded the owner's answers on it: see "UX review of 30 September 2026". Merged: pull request 1, the first build, on 29 September 2026; pull request 2, from `first-build`, pull request 3, from `april-2030-rule`, and pull request 4, from `homepage-orientation`, on 30 September 2026. Pull request 3 carried the markup sweep and stylesheet fixes of `html-semantics` and the update for the government's announcement of 29 September 2026. Pull request 4 added a table of State Pension age by date of birth to the overview: decision 44. Pull request 5 corrected the handover. Pull request 6, from `rule-2030-calculator`, adds the announced rule to the rule comparison: decision 38. It was merged on 30 September 2026. Pull request 7, from `handover-pr6`, recorded pull request 6 in this handover. Netlify builds `main` to the main address and a deploy preview of each pull request into `main`, all behind a sign-in.
 
 **Pull request 11**, from `defect-11-and-research`, merged on 1 October 2026: defect 11 closed, decisions 54 to 57, and the two items the research of 30 September left out, decision 58. See "Defect 11, 1 October 2026" and "Two items added, 1 October 2026". The owner's answers of the same day were merged in pull request 12: see "Owner's answers of 1 October 2026". Review points W1 to W4 from its critique were merged in pull request 13. The corrections from an external factual audit were merged in pull request 14: see "External audit of 1 October 2026".
 
@@ -106,7 +106,7 @@ Not checked on the deployed preview: the other three calculators, any browser bu
 7. **The preview on Netlify uses basic authentication** and sends `noindex` on every file. Both were seen working on the deploy preview. Both must be removed from the production context at launch. Deploy previews and branch deploys keep them: decision 68. The user name and password are in the `BASIC_AUTH` variable in Netlify. Netlify's own password protection was switched off on 30 September 2026 with the Netlify CLI, on the owner's instruction. The main address then answered 401 with `WWW-Authenticate: Basic`, so basic authentication is the one sign-in.
 8. **Field errors use `role="alert"`.** With many errors at once, screen reader announcements may compete. Not tested.
 9. **The government's savings figures cannot be checked.** They come with no price basis, baseline or method. The page says so, and says why they cannot be set beside the Institute for Fiscal Studies' range for 2050.
-10. **After launch, deploy previews and branch deploys would be open.** The launch steps first written would have deleted `BASIC_AUTH` everywhere. Keeping it for those two contexts needs the production guard to check the Netlify context. Deferred to launch planning. The approach was chosen on 2 October 2026, decision 68; the build work waits on the owner's go.
+10. **After launch, deploy previews and branch deploys would be open.** The launch steps first written would have deleted `BASIC_AUTH` everywhere. Keeping it for those two contexts needs the production guard to check the Netlify context. Deferred to launch planning. The approach was chosen on 2 October 2026, decision 68, built the same day and merged in pull request 18. What is left is a look at the deployed preview past the sign-in.
 11. **Markup left after the sweep of 29 September 2026.** Dealt with on 1 October 2026 and merged in pull request 11. Decisions 54 to 57, confirmed by the owner the same day.
     - The lists of a bold label and a value: 33 items in 9 lists that pair a name with its description are now description lists. The other lists stay as they were: decision 55. Confirmed.
     - The source note under each figure: period, place, range and source are a description list, a line each. The costs page is about 10% longer: decision 56. Confirmed.
@@ -409,7 +409,7 @@ Gone through one by one with the owner, with options and recommendations. Decisi
 | --- | --- |
 | 1 | Name: "UK State Pension Explorer" |
 | 2 | Domain: `ukstatepensionexplorer.org`, registered through Netlify the same day. Not attached to the project |
-| 3 | Netlify split by deploy context, so previews keep the sign-in. Needs build work |
+| 3 | Netlify split by deploy context, so previews keep the sign-in. Built and merged in pull request 18 |
 | 4 | Corrections and barriers by GitHub issue, for launch. The repository goes public first. Against the assistant's recommendation of email, because an issue needs an account |
 | 5 | Owner: Anthony George, `Person` |
 | 6 | Reviewer: the owner, for launch |
@@ -423,7 +423,7 @@ Checks made while deciding: WHOIS for three `.org` names (all "Domain not found"
 
 ## Launch preparation, 2 October 2026
 
-On the owner's go of the same day, on the branch `launch-prep`, not pushed.
+On the owner's go of the same day, on the branch `launch-prep`; merged in pull request 18 on 2 October 2026.
 
 **History check, decision 69.** 81 commits, every branch. No scanner is installed, so the history was searched by pattern: secret and token shapes, private keys, `password` and `secret` assignments, and the values in the local `.env`. Nothing secret was found. `.env` was never committed, and holds no secret. The `BASIC_AUTH` value was not searched for, because reading it from Netlify would put it in the session. Never committed and never in `_site`: `.env`, `.preview-password`, `scripts/seed/`. What a public repository would show: the author email `legendarytone@gmail.com` on every commit; three lines with the path `/Users/anthonygeorge/Projects/...` in `research/00-sibling-inspection.md` and `NEXT-SESSION.md`; `_archive/`, which holds the two scope documents; and the handover and decision log as they are. No session links. UK Migration Explorer's repository is public.
 
@@ -454,7 +454,7 @@ Not checked: anything on Netlify. Whether Netlify applies `_headers` and `netlif
 
 ## Sources on their own line, 2 October 2026
 
-Asked for by the owner, who found the source chips of decision 61 still clumsy. Decision 77. On the branch `sources-own-line`, from `launch-prep`, not pushed.
+Asked for by the owner, who found the source chips of decision 61 still clumsy. Decision 77. On the branch `sources-own-line`; merged in pull request 19 on 2 October 2026.
 
 - `.ref` is a line of its own under the sentence: small, muted, no border. Its links are padded to at least 24 px, and a date in a source does not break.
 - `m.more`, drawn by `.onward`, puts a link onward on a line of its own, "More: …". Used in the overview's short entries: the situations list and the two notes on the April 2030 rule, the four places where a source ran straight into a link.
@@ -472,7 +472,7 @@ Not checked: a screen reader, a real phone, forced colours. The checker's count 
 
 ## Tools on their own pages, 2 October 2026
 
-Asked for by the owner: take the tools out into their own sections, as on UK Public Finances, and keep their results from being lost below the fold. Decision 78. On the branch `tools-section`, from `sources-own-line`, not pushed.
+Asked for by the owner: take the tools out into their own sections, as on UK Public Finances, and keep their results from being lost below the fold. Decision 78. On the branch `tools-section`; merged in pull request 19 on 2 October 2026.
 
 - `/tools/` lists the four tools, and "Tools" is in the main menu. `/tools/triple-lock/`, `/tools/history/` and `/tools/budget/` are new. The rule comparison stays at `/reform-options/compare/`.
 - Each tool works like the rule comparison: the result follows the form 400 ms after the last change, and an "At a glance" summary stays in view. The shared parts are `live` and `pinSummary` in `common.js`, and `.tool-layout` and `.tool-summary` in the stylesheet, renamed from the comparison's own classes.
@@ -510,7 +510,7 @@ Left as it is: hints written directly in a fieldset, such as "Enter income befor
 
 ## "Updated" in the tool summaries, 2 October 2026
 
-Asked for by the owner: on the history explorer the chart below the form changes and is easy to miss. After any change, each tool's "At a glance" summary now ends with an "Updated" label and a sentence: "The chart and table below have changed too" on the history explorer, "The chart and tables below" on the rule comparison, "The full result below" on the triple lock calculator, "The full breakdown below" on the budget explorer. It is not shown on arrival. Screen readers hear the same sentence in the status message, including after loading a past decision or an example budget, filling in the pension, and resetting the comparison. A redraw now happens only when a value differs from the last one, so typing a figure and then leaving the field is announced once. On the history explorer, choosing a first year after the last keeps the summary of the result still shown and adds the error under it. On the branch `tools-section`, not pushed. No decision number: it follows decision 78. Text only, because the pinned summary holds nothing that takes focus (a link there was removed on 1 October 2026), and not a pop-up or a flash, which can be missed or gone before it is read.
+Asked for by the owner: on the history explorer the chart below the form changes and is easy to miss. After any change, each tool's "At a glance" summary now ends with an "Updated" label and a sentence: "The chart and table below have changed too" on the history explorer, "The chart and tables below" on the rule comparison, "The full result below" on the triple lock calculator, "The full breakdown below" on the budget explorer. It is not shown on arrival. Screen readers hear the same sentence in the status message, including after loading a past decision or an example budget, filling in the pension, and resetting the comparison. A redraw now happens only when a value differs from the last one, so typing a figure and then leaving the field is announced once. On the history explorer, choosing a first year after the last keeps the summary of the result still shown and adds the error under it. On the branch `tools-section`; merged in pull request 19 on 2 October 2026. No decision number: it follows decision 78. Text only, because the pinned summary holds nothing that takes focus (a link there was removed on 1 October 2026), and not a pop-up or a flash, which can be missed or gone before it is read.
 
 | Check | Command | Result |
 | --- | --- | --- |
@@ -526,7 +526,7 @@ Not checked: a screen reader, a real phone. The note is the same after every cha
 
 ## Pinned summary on a crowded screen, 2 October 2026
 
-Decision 79, point R2 of the front-end sweep, on the owner's go. A pinned summary that would take more than half the screen follows the form instead. The rules use `:not(.unpinned)` in the existing `min-height` and `min-width` queries, with no `max-width` query, and the class is never set at 1024 px and wider. On the branch `tools-section`, not pushed.
+Decision 79, point R2 of the front-end sweep, on the owner's go. A pinned summary that would take more than half the screen follows the form instead. The rules use `:not(.unpinned)` in the existing `min-height` and `min-width` queries, with no `max-width` query, and the class is never set at 1024 px and wider. On the branch `tools-section`; merged in pull request 19 on 2 October 2026.
 
 | Check | Command | Result |
 | --- | --- | --- |
@@ -540,7 +540,7 @@ Not checked: a real phone with large text set in the system, rather than the tes
 
 ## Front-end sweep, 2 October 2026
 
-The second sweep, over all 19 pages, on the branch `tools-section`, not pushed. Steps: axe baseline (`a11y-verify`), markup (`html-engineering`), styles (`css-engineering`), axe again and compare. The runners and results are in `frontend-sweep/`, which git leaves out; the first sweep's files moved to `frontend-sweep/2026-10-01/`.
+The second sweep, over all 19 pages, on the branch `tools-section`; merged in pull request 19 on 2 October 2026. Steps: axe baseline (`a11y-verify`), markup (`html-engineering`), styles (`css-engineering`), axe again and compare. The runners and results are in `frontend-sweep/`, which git leaves out; the first sweep's files moved to `frontend-sweep/2026-10-01/`.
 
 Changed, template by template:
 
@@ -584,7 +584,7 @@ As at 2 October 2026.
 | --- | --- |
 | The deployed site | Netlify builds `main` after every merge, and each build on 30 September 2026 was ready. `netlify api listSiteDeploys` shows the latest. The main address answered 401 with `WWW-Authenticate: Basic`. Nobody has looked at the pages past the sign-in. Doing so needs the sign-in, which the owner enters |
 | Launch: the owner's own steps | Attach `ukstatepensionexplorer.org` to the Netlify project at launch (decision 67); registered on 2 October 2026, and on that day the project had no custom domain and the name gave no DNS answer. Review every page (71). The accessibility round (73). Scope `BASIC_AUTH` to previews in Netlify, when the build work of decision 68 is ready |
-| Launch: `launch-prep` | Built and checked locally: see "Launch preparation, 2 October 2026". Needs a push, then a look at its deploy preview. The launch steps are in `docs/launch-dependencies.md` |
+| Launch: deploy preview | Merged in pull requests 18 and 19 on 2 October 2026; Netlify's checks passed on both previews. Not yet looked at past the sign-in: the sign-in itself, and `X-Robots-Tag: noindex` on a page and on the CSV, the part of decision 68 no local build can prove. The launch steps are in `docs/launch-dependencies.md` |
 | Launch: ToneBan tickets | Decision 75. ToneBan has no project for this site. Create one, or name the project the tickets go under |
 | Launch: repository public | Decision 69. History checked: nothing secret. The owner decides whether the email, the home paths and `_archive/` may be public, then makes it public |
 | A6, deferred | Add the expected values of the new cash-floor test, 241.32 pounds at minus 1%, to `scripts/reference.py` and `docs/reference-calculations.md` |

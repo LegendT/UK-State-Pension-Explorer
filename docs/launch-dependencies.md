@@ -15,15 +15,15 @@ The owner decided each item on 2 October 2026, from options the assistant put: d
 | 7 | AI crawler policy. The sister sites differ: UK Public Finances allows named AI crawlers, UK Migration Explorer refuses training crawlers. | `AI_CRAWLER_POLICY` = `allow` or `refuse-training`. The list for `refuse-training` is in `src/_data/crawlers.json` and was copied from UK Migration Explorer without checking each operator's documentation. | Publication | `allow`: decision 72 |
 | 8 | Accessibility assessment by a person, with VoiceOver and Safari and with NVDA on Windows. | `A11Y_ASSESSMENT_DATE`, and update `src/_data/a11y.json` and `docs/accessibility-assessment.md`. | Publication, because the production build stops without the date. Any claim of conformance | A round by the owner before launch, with what the owner's own equipment allows. NVDA and sessions with users after launch. The statement stays "incomplete": decision 73 |
 | 9 | Analytics. | Cloudflare Web Analytics, as on the sister sites. The owner added the site in Cloudflare on 2 October 2026, and its token is in `src/_data/site.js`. The privacy page and the Content Security Policy are ready for it. Cloudflare's FAQ says it does not log query strings, where the rule comparison and the history explorer put their settings. Check the beacon's request on the live site. The privacy page says, on Cloudflare's word, that the part of an address after a question mark is not recorded. | Nothing now | Built in production builds, with the owner's token: decision 74 |
-| 10 | Review owner and review date for each source. | Most figures in the registers carry a `next_review` trigger. 51 of 124 have none. | Scope section 8 | The owner reviews every source. The 51 blank triggers are to be filled, "each April" unless the source says otherwise, and the dated triggers made ToneBan tickets, on the owner's go: decision 75 |
+| 10 | Review owner and review date for each source. | Every figure in the registers carries a `next_review` trigger: the 51 that had none were filled on 2 October 2026. | Scope section 8 | The owner reviews every source. Dated triggers become ToneBan tickets once the owner names the ToneBan project: decision 75 |
 
 ## Launch steps under decisions 68 and 74
 
-Built on 2 October 2026 on the branch `launch-prep`: the build sends a preview's `noindex` from `_headers`, a production build is refused outside Netlify's production context, a preview keeps its own address as its canonical even when `SITE_URL` is set, and the Cloudflare script is added in production builds. Not yet seen on a real deploy preview.
+Built on 2 October 2026 on the branch `launch-prep`, merged in pull request 18: the build sends a preview's `noindex` from `_headers`, a production build is refused outside Netlify's production context, a preview keeps its own address as its canonical even when `SITE_URL` is set, and the Cloudflare script is added in production builds. Netlify built the deploy previews of pull requests 18 and 19 and their header checks passed; nobody has yet looked past the sign-in.
 
 Before launch:
 
-1. Look at a deploy preview of `launch-prep`: the sign-in, and `X-Robots-Tag: noindex` on a page and on the CSV.
+1. Look at the deployed preview past the sign-in: the sign-in, and `X-Robots-Tag: noindex` on a page and on the CSV.
 2. In Netlify, set the launch variables of items 1, 2 and 4 to 8 for all contexts, or for production at least. Outside production, `SITE_URL` is ignored.
 3. Attach `ukstatepensionexplorer.org` to the Netlify project.
 
