@@ -3,7 +3,7 @@
 import { mechanism, MEASURE_LABELS } from "../lib/uprating.js";
 import { SERIES_LABELS } from "../lib/history.js";
 import { money, percent, list } from "../lib/format.js";
-import { announce, escapeHtml, live, pinSummary, readAmount, readJson, readPercent, setError } from "./common.js";
+import { announce, escapeHtml, live, pinSummary, readAmount, readJson, readPercent, setError, updatedNote } from "./common.js";
 
 const data = readJson("mechanism-data");
 const form = document.getElementById("mechanism-form");
@@ -75,8 +75,9 @@ function showPast(quiet) {
   glance.innerHTML =
     `<p>${escapeHtml(SERIES_LABELS[loaded.series])}, ${escapeHtml(record.tax_year)}, as published.</p>` +
     `<p class="headline">${percent(record.applied_tenths)} increase, decided by ${escapeHtml(MEASURE_NAMES[record.measure])}</p>` +
-    `<dl><div><dt>Weekly rate after</dt> <dd>${money(to)}</dd></div><div><dt>Weekly increase</dt> <dd>${money(to - from)}</dd></div></dl>`;
-  if (!quiet) announce(status, `Showing the decision for ${record.tax_year}: ${percent(record.applied_tenths)}.`);
+    `<dl><div><dt>Weekly rate after</dt> <dd>${money(to)}</dd></div><div><dt>Weekly increase</dt> <dd>${money(to - from)}</dd></div></dl>` +
+    (quiet ? "" : updatedNote("The full result below has changed too."));
+  if (!quiet) announce(status, `Showing the decision for ${record.tax_year}: ${percent(record.applied_tenths)}. The full result below has changed.`);
 }
 
 function showOwn() {
@@ -110,8 +111,9 @@ function showOwn() {
   glance.innerHTML =
     `<p><span class="status">Hypothetical</span> Your own figures, before tax.</p>` +
     `<p class="headline">${percent(out.tenths)} increase, decided by ${escapeHtml(decided)}</p>` +
-    `<dl><div><dt>Weekly amount after</dt> <dd>${money(out.pence)}</dd></div><div><dt>Weekly increase</dt> <dd>${money(out.increasePence)}</dd></div></dl>`;
-  announce(status, `Hypothetical result: ${percent(out.tenths)} increase, new weekly amount ${money(out.pence)}.`);
+    `<dl><div><dt>Weekly amount after</dt> <dd>${money(out.pence)}</dd></div><div><dt>Weekly increase</dt> <dd>${money(out.increasePence)}</dd></div></dl>` +
+    updatedNote("The full result below has changed too.");
+  announce(status, `Hypothetical result: ${percent(out.tenths)} increase, new weekly amount ${money(out.pence)}. The full result below has changed.`);
 }
 
 document.getElementById("mechanism-load").addEventListener("click", () => load());

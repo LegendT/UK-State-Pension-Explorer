@@ -4,7 +4,7 @@
 import { PERIODS, PERIOD_LABELS } from "../lib/budget.js";
 import { renderBudget, renderBudgetSummary } from "../lib/budget-view.js";
 import { parsePence } from "../lib/uprating.js";
-import { announce, live, pinSummary, readAmount, readJson, setError } from "./common.js";
+import { announce, live, pinSummary, readAmount, readJson, setError, updatedNote } from "./common.js";
 
 const data = readJson("budget-data");
 const form = document.getElementById("budget-form");
@@ -78,7 +78,7 @@ function loadPreset() {
     `<div><dt>Left out</dt> <dd>${chosen.exclusions}</dd></div>` +
     `<div><dt>Source</dt> <dd>${chosen.source}. ${chosen.table_reference}</dd></div></dl>`;
   update("quiet");
-  announce(status, `Example budget loaded into the spending fields: ${chosen.label}.${note}`);
+  announce(status, `Example budget loaded into the spending fields: ${chosen.label}.${note}${lastResult ? " The breakdown below has changed." : ""}`);
 }
 
 function fillPension() {
@@ -86,7 +86,7 @@ function fillPension() {
   input("state-pension").value = data.full_new_rate;
   setError(input("state-pension"), "");
   update("quiet");
-  announce(status, `State Pension set to the full new rate, ${data.full_new_rate} pounds a week. The period is set to a week.${note}`);
+  announce(status, `State Pension set to the full new rate, ${data.full_new_rate} pounds a week. The period is set to a week.${note}${lastResult ? " The breakdown below has changed." : ""}`);
 }
 
 function rows(list) {
@@ -135,8 +135,8 @@ function update(mode) {
   if (html === lastResult) return;
   lastResult = html;
   result.innerHTML = html;
-  glance.innerHTML = renderBudgetSummary(figures);
-  if (mode !== "quiet") announce(status, "Result updated.");
+  glance.innerHTML = renderBudgetSummary(figures) + updatedNote("The full breakdown below has changed too.");
+  if (mode !== "quiet") announce(status, "Result updated. The breakdown below has changed.");
 }
 
 // There is no submit button; the handler stays for a scripted submit.

@@ -88,11 +88,20 @@ export function choose(select, value) {
 
 // A tool's result follows its form. A change redraws it after a short pause, so typing a figure is
 // not announced at every key.
+// Typing a figure and then leaving the field fires "input" and then "change" with nothing new, so
+// a redraw happens only when a value differs from the last redraw's.
 export function live(form, redraw) {
   let pending;
+  let last = null;
+  const values = () => [...form.querySelectorAll("input, select")].map((field) => (field.type === "checkbox" || field.type === "radio" ? field.checked : field.value)).join("|");
   const later = () => {
     clearTimeout(pending);
-    pending = setTimeout(redraw, 400);
+    pending = setTimeout(() => {
+      const now = values();
+      if (now === last) return;
+      last = now;
+      redraw();
+    }, 400);
   };
   form.addEventListener("input", later);
   form.addEventListener("change", later);
@@ -104,4 +113,11 @@ export function pinSummary(summary) {
   new ResizeObserver(([entry]) => {
     document.documentElement.style.setProperty("--summary-size", `${Math.ceil(entry.borderBoxSize[0].blockSize)}px`);
   }).observe(summary);
+}
+
+// The summary stays in view, but the full result is below the form and easy to miss. After a
+// change, the summary says the result below changed too. Text only: the pinned summary holds
+// nothing that takes focus. Not shown on arrival, when nothing has changed.
+export function updatedNote(sentence) {
+  return `<p class="tool-updated"><span class="status">Updated</span> ${sentence}</p>`;
 }

@@ -2,7 +2,7 @@
 
 import { historyCsv, renderHistory, renderHistorySummary } from "../lib/history-view.js";
 import { observed } from "../lib/history.js";
-import { announce, choose, live, pinSummary, readJson, readSettings, writeSettings } from "./common.js";
+import { announce, choose, live, pinSummary, readJson, readSettings, updatedNote, writeSettings } from "./common.js";
 
 const data = readJson("history-data");
 const form = document.getElementById("history-form");
@@ -32,7 +32,8 @@ function update(quiet) {
   if (from.value >= to.value) {
     error.textContent = "Choose a last year that is later than the first year";
     from.setAttribute("aria-invalid", "true");
-    glance.innerHTML = `<p>No change. Choose a last year that is later than the first year.</p>`;
+    // The result below is unchanged, so the summary keeps describing it.
+    glance.innerHTML = renderHistorySummary(current) + `<p class="tool-updated">Not changed: choose a last year that is later than the first year.</p>`;
     if (quiet === "load") return;
     if (!quiet) from.focus();
     announce(status, "There is a problem with the years chosen. The result has not changed.");
@@ -42,9 +43,9 @@ function update(quiet) {
   from.setAttribute("aria-invalid", "false");
   current = { years: data.years, series: series.value, from: from.value, to: to.value, measure: measure.value, rule: rule.value };
   result.innerHTML = renderHistory(current);
-  glance.innerHTML = renderHistorySummary(current);
+  glance.innerHTML = renderHistorySummary(current) + (quiet === "load" ? "" : updatedNote("The chart and table below have changed too."));
   writeSettings({ series: current.series, from: current.from, to: current.to, measure: current.measure, ...(current.rule ? { rule: current.rule } : {}) }, "explorer");
-  if (quiet !== "load") announce(status, "Result updated.");
+  if (quiet !== "load") announce(status, "Result updated. The chart and table below have changed.");
 }
 
 series.addEventListener("change", fillYears);
