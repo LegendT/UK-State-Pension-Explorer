@@ -1,7 +1,7 @@
 // Expected values come from scripts/reference.py, recorded in docs/reference-calculations.md.
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { budget, weekly } from "../src/assets/js/lib/budget.js";
+import { budget, fromWeekly, weekly } from "../src/assets/js/lib/budget.js";
 
 test("weekly entry with tax entered", () => {
   const result = budget({
@@ -60,4 +60,15 @@ test("grouped spending rows add up to the total", () => {
     taxPence: null,
   });
   assert.equal(result.spendingRows.reduce((sum, row) => sum + row.yearlyPence, 0), result.spendingPence);
+});
+
+test("a helper's weekly amount in the chosen period", () => {
+  // Worked by hand, not from scripts/reference.py: the conversion is one multiplication and one division.
+  // 241.30 a week is 12,547.60 a year: 1,045.63 a month (1,045.6333 rounded), 965.20 every 4 weeks.
+  assert.equal(fromWeekly(24130, "week"), 24130);
+  assert.equal(fromWeekly(24130, "four-weeks"), 96520);
+  assert.equal(fromWeekly(24130, "month"), 104563);
+  assert.equal(fromWeekly(24130, "year"), 1254760);
+  // 241.31 a week is 1,045.6767 a month, which rounds up.
+  assert.equal(fromWeekly(24131, "month"), 104568);
 });

@@ -576,6 +576,23 @@ The list, each item with the step that found it:
 - **unverified by tooling:** a screen reader, a real phone, touch, forced colours, Safari and Firefox (step 4).
 - **unchanged:** no violations. Already on the waiting list and left alone: K2, K3 and K4 from the first sweep, and C2 and C3.
 
+## Budget explorer keeps the period, 2 October 2026
+
+Reported by the owner: choosing a period, then loading an example budget further down the form, set the period back to a week. That was decisions 11 and 60 working as written. Decision 80 reverses number 11 and amends number 60: the example and the full new State Pension are converted to the reader's period, and the period stays. On the branch `budget-keep-period`, not pushed. `fromWeekly` in `src/assets/js/lib/budget.js` does the conversion; `toWeekly` in the tool script is gone.
+
+| Check | Command | Result |
+| --- | --- | --- |
+| Calculator tests | `npm test` | 29 of 29 pass. The new test of `fromWeekly` failed with it returning its input, and with `Math.floor` in place of `Math.round` |
+| Build | `npm run build` | No problems |
+| Budget explorer in Chrome | A script at 390 px | The first example and the pension button at each period. A month: rent 593.36 (136.93 a week as published), pension 1045.63. 4 weeks: 547.72 and 965.20. A year: 7120.36 and 12547.60. A week: the published amounts. The period stayed as chosen each time; the note and the status message say what was converted and the amount entered. No script errors |
+| Automated accessibility | `npm run a11y` | 0 violations, 1,885 incomplete. Every incomplete contrast result measured, 3,690, none below threshold |
+| Behaviour | `npm run a11y:manual` | 0 problems |
+| Rendered | Screenshot at 390 px | The period and example fieldsets after loading at a month |
+
+Critique (Sonnet 5.5): R1 to R6 applied, R7 declined with its reason beside `convertedNote`, R8 deferred to "Waiting on the owner".
+
+Not checked: a screen reader, the couple examples. Changing the period after loading still reads the amounts in the fields as the new period, as before: they are not converted.
+
 ## Waiting on the owner
 
 As at 2 October 2026.
@@ -605,6 +622,7 @@ As at 2 October 2026.
 | Sweep, markup, K7 | `next_review` is free text, so its dates cannot be `time`. Needs a date field in `figures.json` |
 | Sweep, styles, C2 | Chart text renders at about 9 px on a 320 px screen (13 units in a 720-unit view box). Not an AA failure. Shared with the charts drawn at build time |
 | Sweep, styles, C3 | Four links that stand alone in a paragraph are about 21 px tall. They pass AA by the spacing exception of SC 2.5.8: each centre is at least 14.5 px from any other target, more than the 12 px radius, and `npm run a11y:manual` counts none under 24. They are short of the 44 px house standard. A class on those paragraphs and the "Back to contents" padding would fix them |
+| Budget explorer: status after a helper | Deferred from the critique of decision 80 (R8). `loadPreset` and `fillPension` in `budget.js` read `lastResult` after `update` has set it, so "The breakdown below has changed" is announced when the breakdown first appears. Save `lastResult` before `update`. There before decision 80 |
 | Sweep, critique, R1 | The CSS comment above the pinned summary does not say that `pinSummary` in `common.js` sets `--summary-size`, or that 16rem is the fallback. One clause |
 
 ## Tracked separately
