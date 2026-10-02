@@ -11,20 +11,22 @@ Do not read _archive/. Read research/ only when checking a figure. docs/ux-revie
 frozen record: read it for the reasoning behind recommendations R1 to R10, and never edit it.
 
 State on 2 October 2026: see the opening paragraphs of docs/HANDOVER.md. The site is a
-preview for review, not published. All work is merged into `main`, up to pull request 17
-(pull request 16: decisions 63 and 64; pull request 17: the front-end sweep, decision 65).
-The local branch `handover-pr17` holds handover corrections recording those merges and the
-`.gitignore` entry for `frontend-sweep/`, not pushed; check whether they are committed.
-Run git status first.
+preview for review, not published. All work is merged into `main`, up to pull request 19
+(pull request 18: launch dependency decisions 66 to 76 and the launch build work; pull
+request 19: decisions 77 to 79, the tools on their own pages and the second front-end
+sweep). Merging `main` does not launch the site: see "Launch steps" in
+docs/launch-dependencies.md. The local branch `handover-pr19` holds handover corrections
+recording those merges and a `.gitignore` entry; check whether they are committed. Run git
+status first.
 
 Next action: none. Wait for Anthony to say what to do. Nothing else is authorised.
 
-Waiting on Anthony: the table under "Waiting on the owner" in docs/HANDOVER.md, including
-the rows starting "Sweep,". Anthony asked to go through launch dependencies 1 to 10 one by
-one, with options and recommendations. W5 is decided with them.
+Waiting on Anthony: the table under "Waiting on the owner" in docs/HANDOVER.md, in
+particular the rows starting "Launch:".
 
 Do not raise again unless asked: the items under "Known defects and limits" in
-docs/HANDOVER.md that are marked deferred: at present, defect 10.
+docs/HANDOVER.md that are marked deferred, and the items the owner declined (W4 and W5 of
+the second front-end sweep).
 
 Rules that have been broken before and must not be again: read ~/.claude/CLAUDE.md in
 full first. In this project: do not import .env into Netlify, do not push (Anthony types

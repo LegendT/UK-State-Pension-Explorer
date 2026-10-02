@@ -1,8 +1,9 @@
 // Tool 3: what does the pension cover? Presentation only.
 // Nothing entered here is stored, put in the address bar or sent anywhere.
 
-import { PERIODS, PERIOD_LABELS } from "../lib/budget.js";
+import { PERIOD_LABELS, fromWeekly } from "../lib/budget.js";
 import { renderBudget, renderBudgetSummary } from "../lib/budget-view.js";
+import { money } from "../lib/format.js";
 import { parsePence } from "../lib/uprating.js";
 import { announce, live, pinSummary, readAmount, readJson, setError, updatedNote } from "./common.js";
 
@@ -38,22 +39,12 @@ function showHousehold() {
   about.innerHTML = "";
 }
 
-// The helpers fill in weekly amounts, so they set the period to a week. Amounts already entered
-// for another period are converted first, so that none of them changes its meaning. Fields the
-// helper is about to fill are left alone, so the note names only conversions that stay.
-function toWeekly(filled = []) {
-  const from = period.value;
-  period.value = "week";
-  if (from === "week") return "";
-  let converted = false;
-  for (const field of [...data.income, ...data.categories].filter((item) => !filled.includes(item.id)).map((item) => input(item.id)).concat(tax)) {
-    const pence = parsePence(field.value);
-    if (field.value.trim() === "" || pence === null) continue;
-    field.value = (Math.round((pence * PERIODS[from]) / PERIODS.week) / 100).toFixed(2);
-    converted = true;
-  }
-  return converted ? ` Amounts you had entered for ${PERIOD_LABELS[from]} were converted to a week.` : "";
-}
+// The helpers hold weekly amounts. They are converted to the period the reader chose, which stays as it is.
+// A period chosen after loading does not convert the fields: they are read as the new period, as typed
+// amounts always are, so the note after loading names the period at the time. Declined on 2 October 2026.
+const asPeriod = (weeklyPence) => (fromWeekly(weeklyPence, period.value) / 100).toFixed(2);
+const convertedNote = () =>
+  period.value === "week" ? "" : ` Weekly amounts were converted to amounts for ${PERIOD_LABELS[period.value]}, to the nearest penny.`;
 
 function loadPreset() {
   const chosen = data.presets.find((item) => item.id === preset.value);
@@ -61,15 +52,15 @@ function loadPreset() {
     about.innerHTML = "<p>Choose an example budget first.</p>";
     return;
   }
-  const note = toWeekly(data.categories.map((category) => category.id));
+  const note = convertedNote();
   for (const category of data.categories) {
     const pence = chosen.pence[category.id] || 0;
-    input(category.id).value = pence ? (pence / 100).toFixed(2) : "";
+    input(category.id).value = pence ? asPeriod(pence) : "";
     setError(input(category.id), "");
   }
   presetLabel = chosen.label;
   about.innerHTML =
-    `<p><strong>Loaded: ${chosen.label}.</strong> Amounts are weekly, so the period is now set to a week. Change any amount to match your own spending.</p>` +
+    `<p><strong>Loaded: ${chosen.label}.</strong>${note} The weekly amounts as published are under <a href="#example-budgets">The example budgets</a>. Change any amount to match your own spending.</p>` +
     `<p>A research budget: what research found a standard of living costs. It is not what people spend and not an entitlement.</p>` +
     (chosen.note ? `<p>${chosen.note}</p>` : "") +
     `<dl><div><dt>Prices</dt> <dd>${chosen.price_date}</dd></div>` +
@@ -82,11 +73,12 @@ function loadPreset() {
 }
 
 function fillPension() {
-  const note = toWeekly(["state-pension"]);
-  input("state-pension").value = data.full_new_rate;
+  const pence = fromWeekly(parsePence(data.full_new_rate), period.value);
+  const note = period.value === "week" ? "" : ` Entered as ${money(pence)} for ${PERIOD_LABELS[period.value]}, to the nearest penny.`;
+  input("state-pension").value = (pence / 100).toFixed(2);
   setError(input("state-pension"), "");
   update("quiet");
-  announce(status, `State Pension set to the full new rate, ${data.full_new_rate} pounds a week. The period is set to a week.${note}${lastResult ? " The breakdown below has changed." : ""}`);
+  announce(status, `State Pension set to the full new rate, ${data.full_new_rate} pounds a week.${note}${lastResult ? " The breakdown below has changed." : ""}`);
 }
 
 function rows(list) {
