@@ -6,7 +6,7 @@ Automated and scripted checks are a floor. They do not show conformance. A perso
 
 ## Scope
 
-All built pages, 14 on 30 September 2026 and 15 since the rule comparison got its own page on 1 October 2026, and the four calculators. Each calculator was tested in its default state, after a result changed, and with errors showing. Every page was also tested with all `details` elements open.
+All built pages, 14 on 30 September 2026, 15 since the rule comparison got its own page on 1 October 2026, and 19 since every tool got its own page on 2 October 2026, and the four calculators. Each calculator was tested in its default state, after a result changed, and with errors showing. Every page was also tested with all `details` elements open.
 
 ## Environment actually used
 
@@ -32,10 +32,10 @@ Both scripts print their counts. The counts are not copied here, because they ch
 
 ## Results of the last run
 
-- `npm run a11y`: 0 violations. 0 audits with sideways page scroll. 0 audits with script errors. Every contrast result that axe marked incomplete was measured, 4,031 of them: 0 below threshold, 0 that could not be measured.
-- `node scripts/a11y-manual-assist.mjs`: 0 problems on 15 pages.
+- `npm run a11y`: 0 violations. 0 audits with sideways page scroll. 0 audits with script errors. Every contrast result that axe marked incomplete was measured, 3,686 of them: 0 below threshold, 0 that could not be measured.
+- `node scripts/a11y-manual-assist.mjs`: 0 problems on 19 pages.
 
-The last run was on 1 October 2026, after decision 65: 106 audits of 15 pages, with the same results. See `docs/HANDOVER.md`, "Front-end sweep, 1 October 2026", which also ran axe at 320, 768 and 1280 px.
+The last run was on 2 October 2026, after decision 78: 130 audits of 19 pages. See `docs/HANDOVER.md`, "Tools on their own pages, 2 October 2026". The front-end sweep of 1 October 2026 also ran axe at 320, 768 and 1280 px.
 
 ### What those runs did not establish
 
@@ -79,7 +79,7 @@ Result values: **No failure found** (with the method), **Not applicable** (with 
 | 2.4.5 Multiple Ways | AA | No failure found | Main navigation, site map, and links in the text. |
 | 2.4.6 Headings and Labels | AA | No failure found | Read through by the author. No skipped levels (script). |
 | 2.4.7 Focus Visible | AA | No failure found | Script found an outline on every focused control. Not looked at by a person on every control. |
-| 2.4.11 Focus Not Obscured (Minimum) | AA | No failure found | Script: no focused control was covered, including on the rule comparison, where a summary is pinned to the foot of screens narrower than 1024 px. The page is padded at the foot and scrolls a focused field clear of the summary, which holds nothing that takes focus. At 1024 px and wider the contents list stays in view in a column of its own, beside the content rather than over it. The scripts test 390 and 1280 px, not 1024 to 1279 px, where that column first appears. That range was looked at in screenshots only. |
+| 2.4.11 Focus Not Obscured (Minimum) | AA | No failure found | Script: no focused control was covered, including on the four tools, where a summary is pinned to the foot of screens narrower than 1024 px. The page is padded at the foot and scrolls a focused field clear of the summary, which holds nothing that takes focus. At 1024 px and wider the contents list stays in view in a column of its own, beside the content rather than over it. The scripts test 390 and 1280 px, not 1024 to 1279 px, where that column first appears. That range was looked at in screenshots only. |
 | 2.5.1 Pointer Gestures | A | Not applicable | No gestures. |
 | 2.5.2 Pointer Cancellation | A | No failure found | Native buttons and links, and the overview cards. `cards.js` acts on the `click` event, which fires on release, and does nothing on a press alone. |
 | 2.5.3 Label in Name | A | No failure found | Visible labels are the accessible names. axe `label-content-name-mismatch`. |
@@ -89,7 +89,7 @@ Result values: **No failure found** (with the method), **Not applicable** (with 
 | 3.1.1 Language of Page | A | No failure found | `lang="en-GB"`. Checked by the build. |
 | 3.1.2 Language of Parts | AA | Not applicable | No passages in another language. |
 | 3.2.1 On Focus | A | No failure found | Nothing changes on focus. |
-| 3.2.2 On Input | A | Not assessed | The rule comparison redraws its result as the figures change, 400 ms after the last change, on the same page. Focus stays where it was and the page does not move. The other calculators change their results only when a button is pressed. Five choices change other fields at once: household (shows or hides a field, empties it, clears the example choice), scenario (refills the yearly figures and discards edits), number of years and first year (redraw the yearly rows), and pension series (refills the year lists). Each is described beside the control. A person has not judged whether that is enough. |
+| 3.2.2 On Input | A | Not assessed | Every calculator redraws its result as the figures change, 400 ms after the last change, on the same page: the rule comparison since 1 October 2026 and the other three since 2 October 2026 (decision 78). Focus stays where it was and the page does not move. Loading a past decision or an example budget is still a button. Five choices change other fields at once: household (shows or hides a field, empties it, clears the example choice), scenario (refills the yearly figures and discards edits), number of years and first year (redraw the yearly rows), and pension series (refills the year lists). Each is described beside the control. A person has not judged whether that is enough. |
 | 3.2.3 Consistent Navigation | AA | No failure found | One shared layout. |
 | 3.2.4 Consistent Identification | AA | No failure found | Shared components. |
 | 3.2.6 Consistent Help | A | Not applicable now. Not assessed for launch | No help mechanism exists yet. The place for it is the same on each page. |
@@ -100,7 +100,7 @@ Result values: **No failure found** (with the method), **Not applicable** (with 
 | 3.3.7 Redundant Entry | A | Not applicable | No multi-step process. |
 | 3.3.8 Accessible Authentication (Minimum) | AA | Not applicable | No sign-in. |
 | 4.1.2 Name, Role, Value | A | No failure found | Native controls. axe. Screen reader output not assessed. |
-| 4.1.3 Status Messages | AA | Not assessed | Each calculator has a `role="status"` region that receives one message after a change. On the rule comparison the message comes 400 ms after the last change, so typing a figure is not announced at every key. Whether screen readers announce it has not been tested. |
+| 4.1.3 Status Messages | AA | Not assessed | Each calculator has a `role="status"` region that receives one message after a change. The message comes 400 ms after the last change, so typing a figure is not announced at every key. A helper that fills fields, such as loading an example budget, announces what it did instead. Whether screen readers announce it has not been tested. |
 
 ## Outstanding before any claim of conformance
 

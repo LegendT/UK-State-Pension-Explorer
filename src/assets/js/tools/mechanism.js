@@ -3,7 +3,7 @@
 import { mechanism, MEASURE_LABELS } from "../lib/uprating.js";
 import { SERIES_LABELS } from "../lib/history.js";
 import { money, percent, list } from "../lib/format.js";
-import { announce, escapeHtml, focusFirstError, readAmount, readJson, readPercent } from "./common.js";
+import { announce, escapeHtml, live, pinSummary, readAmount, readJson, readPercent, setError } from "./common.js";
 
 const data = readJson("mechanism-data");
 const form = document.getElementById("mechanism-form");
@@ -15,6 +15,7 @@ const prices = document.getElementById("mechanism-prices");
 const earnings = document.getElementById("mechanism-earnings");
 const start = document.getElementById("mechanism-start");
 const mode = document.getElementById("mechanism-mode");
+const glance = document.getElementById("mechanism-glance");
 
 let loaded = null; // the past decision now in the fields, or null for the reader's own figures
 
@@ -34,12 +35,13 @@ function previousRate(record, key) {
   return index > 0 ? data.years[index - 1][`${key}_pence`] : null;
 }
 
-function load() {
+function load(quiet) {
   const record = data.years.find((item) => item.tax_year === year.value);
   const from = previousRate(record, series.value);
   if (from === null) {
     loaded = null;
     result.innerHTML = `<h3>No increase to show</h3><p>The new State Pension began in 2016/17. Its first full rate was set, not increased from an earlier rate. Choose a later year, or choose the basic State Pension.</p>`;
+    glance.innerHTML = `<p>No increase to show for that choice.</p>`;
     mode.textContent = "Past decision";
     announce(status, "No increase to show for that choice.");
     return;
@@ -47,11 +49,12 @@ function load() {
   prices.value = (record.prices_tenths / 10).toFixed(1);
   earnings.value = (record.earnings_tenths / 10).toFixed(1);
   start.value = (from / 100).toFixed(2);
+  for (const field of [prices, earnings, start]) setError(field, "");
   loaded = { record, series: series.value, from };
-  showPast();
+  showPast(quiet);
 }
 
-function showPast() {
+function showPast(quiet) {
   const { record, from } = loaded;
   const to = record[`${loaded.series}_pence`];
   mode.textContent = `Past decision: ${record.tax_year}, as published`;
@@ -69,7 +72,11 @@ function showPast() {
     `</dl>` +
     (record.note ? `<div class="note" role="note"><h4>An exceptional year</h4><p>${escapeHtml(record.note)}</p></div>` : "") +
     `<p>These are the published decision and the published rates. This tool did not calculate them.</p>`;
-  announce(status, `Showing the decision for ${record.tax_year}: ${percent(record.applied_tenths)}.`);
+  glance.innerHTML =
+    `<p>${escapeHtml(SERIES_LABELS[loaded.series])}, ${escapeHtml(record.tax_year)}, as published.</p>` +
+    `<p class="headline">${percent(record.applied_tenths)} increase, decided by ${escapeHtml(MEASURE_NAMES[record.measure])}</p>` +
+    `<dl><div><dt>Weekly rate after</dt> <dd>${money(to)}</dd></div><div><dt>Weekly increase</dt> <dd>${money(to - from)}</dd></div></dl>`;
+  if (!quiet) announce(status, `Showing the decision for ${record.tax_year}: ${percent(record.applied_tenths)}.`);
 }
 
 function showOwn() {
@@ -77,9 +84,9 @@ function showOwn() {
   const e = readPercent(earnings, "the rise in earnings");
   const s = readAmount(start, "the starting weekly amount");
   if (p === null || e === null || s === null) {
-    focusFirstError(form);
     announce(status, "There is a problem with the figures entered. No result is shown.");
-    result.innerHTML = `<h3>No result</h3><p>Correct the figures marked with an error, then select Show the result.</p>`;
+    result.innerHTML = `<h3>No result</h3><p>Correct the figures marked with an error.</p>`;
+    glance.innerHTML = `<p>No result. Correct the figures marked with an error.</p>`;
     return;
   }
   const out = mechanism(s, p, e);
@@ -100,13 +107,18 @@ function showOwn() {
     row("52 weeks at the new amount", money(out.annualPence)) +
     `</dl>` +
     `<p>This is an example using figures you entered. It is not a forecast and it is not your entitlement. It is before tax.</p>`;
+  glance.innerHTML =
+    `<p><span class="status">Hypothetical</span> Your own figures, before tax.</p>` +
+    `<p class="headline">${percent(out.tenths)} increase, decided by ${escapeHtml(decided)}</p>` +
+    `<dl><div><dt>Weekly amount after</dt> <dd>${money(out.pence)}</dd></div><div><dt>Weekly increase</dt> <dd>${money(out.increasePence)}</dd></div></dl>`;
   announce(status, `Hypothetical result: ${percent(out.tenths)} increase, new weekly amount ${money(out.pence)}.`);
 }
 
-document.getElementById("mechanism-load").addEventListener("click", load);
+document.getElementById("mechanism-load").addEventListener("click", () => load());
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
+// The result follows the figures: the published decision until one is changed, then a hypothetical
+// result, until a decision is loaded again. There is no submit button; the handler stays for a scripted submit.
+function update() {
   const same =
     loaded &&
     prices.value === (loaded.record.prices_tenths / 10).toFixed(1) &&
@@ -118,11 +130,18 @@ form.addEventListener("submit", (event) => {
     loaded = null;
     showOwn();
   }
-});
-
-// The label changes as soon as a loaded figure is edited, before any result is shown.
-for (const input of [prices, earnings, start]) {
-  input.addEventListener("input", () => {
-    if (loaded) mode.textContent = "Hypothetical: your own figures (select Show the result)";
-  });
 }
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  update();
+});
+// Only the figures redraw the result. Choosing a year or a pension waits for "Load this decision",
+// because loading replaces the figures.
+const figures = document.getElementById("mechanism-figures");
+live(figures, update);
+
+// The decision the page was built with is in the fields, so it is the one loaded at the start.
+form.reset();
+load(true);
+pinSummary(glance.parentElement);

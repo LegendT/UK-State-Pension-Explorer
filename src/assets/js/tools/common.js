@@ -85,3 +85,23 @@ export function readSettings() {
 export function choose(select, value) {
   if (value !== null && [...select.options].some((option) => option.value === value)) select.value = value;
 }
+
+// A tool's result follows its form. A change redraws it after a short pause, so typing a figure is
+// not announced at every key.
+export function live(form, redraw) {
+  let pending;
+  const later = () => {
+    clearTimeout(pending);
+    pending = setTimeout(redraw, 400);
+  };
+  form.addEventListener("input", later);
+  form.addEventListener("change", later);
+}
+
+// The pinned summary's height changes with its contents, the width and the reader's text settings,
+// so the page padding that keeps it from covering anything is its measured height, not a guess.
+export function pinSummary(summary) {
+  new ResizeObserver(([entry]) => {
+    document.documentElement.style.setProperty("--summary-size", `${Math.ceil(entry.borderBoxSize[0].blockSize)}px`);
+  }).observe(summary);
+}

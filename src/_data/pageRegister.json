@@ -41,8 +41,8 @@
       "canonical_path": "/triple-lock/",
       "index": true,
       "published": null,
-      "modified": "2026-09-30",
-      "modified_note": "Added the announcement of 29 September 2026."
+      "modified": "2026-10-02",
+      "modified_note": "The tool moved to a page of its own on 2 October 2026; a short pointer stays."
     },
     {
       "path": "/living-on-a-pension/",
@@ -55,8 +55,8 @@
       "canonical_path": "/living-on-a-pension/",
       "index": true,
       "published": null,
-      "modified": "2026-09-29",
-      "modified_note": "First written."
+      "modified": "2026-10-02",
+      "modified_note": "The tool moved to a page of its own on 2 October 2026; a short pointer stays."
     },
     {
       "path": "/reform-options/",
@@ -132,15 +132,71 @@
       "path": "/history/",
       "group": "main",
       "title": "State Pension history: rates and increases since 2010",
-      "purpose": "Show published rates and decisions, with exceptional years. Hosts the history explorer.",
+      "purpose": "Show published rates and decisions, with exceptional years. Points to the history explorer.",
       "description": "Full State Pension rates and the increase applied each year from 2010, with the exceptions. Comparisons under other rules are calculations, not what anyone was paid.",
       "shareImage": "share-default",
       "template": "history",
       "canonical_path": "/history/",
       "index": true,
       "published": null,
-      "modified": "2026-09-29",
-      "modified_note": "First written."
+      "modified": "2026-10-02",
+      "modified_note": "The tool moved to a page of its own on 2 October 2026; a short pointer stays."
+    },
+    {
+      "path": "/tools/",
+      "group": "main",
+      "title": "Tools: calculators for the State Pension",
+      "purpose": "List the four tools, each on a page of its own.",
+      "description": "Four tools: how the triple lock sets an increase, the State Pension since 2010, a budget you fill in, and a comparison of rules for the yearly increase.",
+      "shareImage": "share-default",
+      "template": "tools/index",
+      "canonical_path": "/tools/",
+      "index": true,
+      "published": null,
+      "modified": "2026-10-02",
+      "modified_note": "Given its own page on 2 October 2026, so the result can be seen while the form changes."
+    },
+    {
+      "path": "/tools/triple-lock/",
+      "group": "tool",
+      "title": "Triple lock calculator",
+      "purpose": "Tool 1: how the triple lock chooses and applies the yearly increase, for a past decision or the reader's own figures, updating as the figures change.",
+      "description": "See how the triple lock chose each year's State Pension increase, or try your own figures. Results with your own figures are examples, not forecasts.",
+      "shareImage": "share-illustrative",
+      "template": "tools/triple-lock",
+      "canonical_path": "/tools/triple-lock/",
+      "index": true,
+      "published": null,
+      "modified": "2026-10-02",
+      "modified_note": "Given its own page on 2 October 2026, so the result can be seen while the form changes."
+    },
+    {
+      "path": "/tools/budget/",
+      "group": "tool",
+      "title": "Budget explorer: what does the pension cover?",
+      "purpose": "Tool 3: a household budget against pension income, updating as amounts are entered. Nothing entered leaves the device.",
+      "description": "Enter a pensioner household's income and spending, or start from a research budget, to see what is left. Nothing you enter leaves your device.",
+      "shareImage": "share-default",
+      "template": "tools/budget",
+      "canonical_path": "/tools/budget/",
+      "index": true,
+      "published": null,
+      "modified": "2026-10-02",
+      "modified_note": "Given its own page on 2 October 2026, so the result can be seen while the form changes."
+    },
+    {
+      "path": "/tools/history/",
+      "group": "tool",
+      "title": "State Pension history explorer",
+      "purpose": "Tool 4: published full rates since 2010 as a chart and table, with calculations under other rules, updating as the choices change.",
+      "description": "Chart the full State Pension rates since 2010 in cash, buying power or against earnings. Calculations under other rules are not what anyone was paid.",
+      "shareImage": "share-default",
+      "template": "tools/history",
+      "canonical_path": "/tools/history/",
+      "index": true,
+      "published": null,
+      "modified": "2026-10-02",
+      "modified_note": "Given its own page on 2 October 2026, so the result can be seen while the form changes."
     },
     {
       "path": "/sources-and-method/",

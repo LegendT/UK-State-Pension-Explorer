@@ -470,6 +470,30 @@ Asked for by the owner, who found the source chips of decision 61 still clumsy. 
 
 Not checked: a screen reader, a real phone, forced colours. The checker's count of inline links still counts a source link as inline, because its line holds other text; the height script above is what shows they meet 24 px.
 
+## Tools on their own pages, 2 October 2026
+
+Asked for by the owner: take the tools out into their own sections, as on UK Public Finances, and keep their results from being lost below the fold. Decision 78. On the branch `tools-section`, from `sources-own-line`, not pushed.
+
+- `/tools/` lists the four tools, and "Tools" is in the main menu. `/tools/triple-lock/`, `/tools/history/` and `/tools/budget/` are new. The rule comparison stays at `/reform-options/compare/`.
+- Each tool works like the rule comparison: the result follows the form 400 ms after the last change, and an "At a glance" summary stays in view. The shared parts are `live` and `pinSummary` in `common.js`, and `.tool-layout` and `.tool-summary` in the stylesheet, renamed from the comparison's own classes.
+- The triple lock, history and living on a pension pages keep their headings and a short pointer where the tool was, so links to `#tool`, `#explorer` and `#budget` still land.
+- Form fields sit in two columns only where each column is at least 20rem, so the lists in a tool's narrower form column are not cut.
+
+| Check | Command | Result |
+| --- | --- | --- |
+| Build | `npm run build` | No problems. 19 pages |
+| Calculator tests | `npm test` | 28 of 28 pass |
+| Automated accessibility | `npm run a11y` | 0 violations in 130 audits of 19 pages, the tool states on their new pages. Every incomplete contrast result measured, 3,686, none below threshold |
+| Behaviour | `npm run a11y:manual` | 0 problems on 19 pages, including no focused control covered by a pinned summary |
+| Tools in Chrome | A script, at 390 and 1280 px | Triple lock: the summary shows the published decision on arrival; typing 9 in prices gave "9.0% increase, decided by prices", £250.95, labelled hypothetical; loading 2022/23 gave 3.1%. History: a new pension and a rule redrew the summary and wrote the address; a first year after the last showed the error and kept the result. Budget: empty until an amount is typed; £241.30 gave £241.30 left over; a loaded example gave a shortfall of £169.19; clearing emptied both and the address stayed empty. No script errors |
+| Rendered | Screenshots | The three tools at 390 px with the summary pinned to the foot, and at 1280 px with it beside the form |
+
+Known limit: at 1024 px and wider the closed "Example budget" list on the budget explorer cuts its longest names, because the form column is narrower than the full width it had. The open list shows each name in full, and the note after loading repeats it, as on a phone since R9.
+
+Not done: an address with history explorer settings on `/history/` is not sent on to `/tools/history/`, as `moved.js` does for the rule comparison. Nothing is published, so no such link is known outside previews.
+
+Not checked: a screen reader, a real phone, forced colours. Whether announcing "Result updated." 400 ms after each pause in typing is too frequent for a screen reader user needs a person.
+
 ## Waiting on the owner
 
 As at 2 October 2026.
@@ -484,7 +508,7 @@ As at 2 October 2026.
 | A6, deferred | Add the expected values of the new cash-floor test, 241.32 pounds at minus 1%, to `scripts/reference.py` and `docs/reference-calculations.md` |
 | A8, deferred | The register sentence on the method page says "headline figures". Name every kind of record instead |
 | A9, deferred | The 71% and 23% figures have the basis "individual", but the underlying 2023 study counted households. Check the study, then align the basis |
-| Rule comparison: while typing | A half-typed figure, such as "-", replaces the result and the summary with "Not available" after 400 ms. The alternative keeps the last result, marked out of date, until the figure is valid |
+| Tools: while typing | A half-typed figure, such as "-", replaces the result and the summary with "Not available" after 400 ms. Since decision 78 this applies to all four tools, not only the rule comparison. The alternative keeps the last result, marked out of date, until the figure is valid |
 | Rule comparison: phone keyboard | The pinned summary and an on-screen keyboard share a small screen. The alternative shrinks the summary to one line while a field has focus. Not tested on a real phone |
 | Rule comparison: typed figures | The page types "10p a week at most" and "2.5%" in its text. Under the README rule they would come from the registers |
 | Rule comparison: the gap shown | The summary gives the gap in the last year. The total over the period, in the full result's totals table, could be shown as well |

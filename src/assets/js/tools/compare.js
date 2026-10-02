@@ -1,7 +1,7 @@
 // Tool 2: compare the replacement rules. Presentation only.
 
 import { renderComparison, renderSummary } from "../lib/compare-view.js";
-import { announce, choose, focusFirstError, readAmount, readJson, readPercent, readSettings, setError, writeSettings } from "./common.js";
+import { announce, choose, focusFirstError, live, pinSummary, readAmount, readJson, readPercent, readSettings, setError, writeSettings } from "./common.js";
 
 const data = readJson("compare-data");
 const form = document.getElementById("compare-form");
@@ -153,23 +153,10 @@ form.addEventListener("submit", (event) => {
   update();
 });
 
-// The result follows the form. A change redraws it after a short pause, so typing a figure is not
-// announced at every key.
-let pending;
-const later = () => {
-  clearTimeout(pending);
-  pending = setTimeout(() => update(undefined, "live"), 400);
-};
-form.addEventListener("input", later);
-form.addEventListener("change", later);
+live(form, () => update(undefined, "live"));
 
 reset();
-
-// The pinned summary's height changes with its contents, the width and the reader's text settings,
-// so the page padding that keeps it from covering anything is its measured height, not a guess.
-new ResizeObserver(([entry]) => {
-  document.documentElement.style.setProperty("--summary-size", `${Math.ceil(entry.borderBoxSize[0].blockSize)}px`);
-}).observe(summary.parentElement);
+pinSummary(summary.parentElement);
 
 // A link with settings in its address shows that result. Nothing is announced or focused on arrival.
 // Typed values are checked by the same rules as the form before anything is shown.
