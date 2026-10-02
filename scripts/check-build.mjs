@@ -65,6 +65,9 @@ for (const [url, html] of written) {
   }
   const image = meta(html, /property="og:image" content="([^"]+)"/);
   if (image && !existsSync(join(OUT, image.replace(site.url, "")))) fail(`${url} share image is missing: ${image}`);
+  // The foot says where check dates are only on pages with figure cards, so the register must say which those are.
+  const cards = /<summary[^>]*>More about this figure/.test(html);
+  if (cards !== Boolean(entry.figure_cards)) fail(`${url} ${cards ? "has figure cards but" : "has no figure cards but"} figure_cards is ${Boolean(entry.figure_cards)} in the page register`);
   const noindex = /<meta name="robots" content="noindex">/.test(html);
   if (site.production && entry.index && noindex) fail(`${url} is noindex in a production build`);
   if ((!site.production || !entry.index) && !noindex) fail(`${url} should be noindex`);

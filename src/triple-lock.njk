@@ -16,7 +16,7 @@ permalink: /triple-lock/
   ["timing", "When the figures are measured and when the pension rises"],
   ["law", "What the law requires"],
   ["worked-example", "A worked example: April 2026"],
-  ["tool", "Try it: how the triple lock works"],
+  ["tool", "The triple lock calculator"],
   ["compounding", "Why one year's increase affects every later year"],
   ["history", "How the rule came about, and the exceptions"],
   ["limits", "What the rule protects against, and its limits"]
@@ -81,83 +81,9 @@ permalink: /triple-lock/
 
 <p>Rounding means the increase in pounds is not always exactly the headline percentage. In the same year the basic State Pension went from {{ before.basic_pence | money }} to {{ latest.basic_pence | money }}. The unrounded result was {{ exBasic.unroundedPence | pounds4 }}.</p>
 
-<section class="tool" aria-labelledby="tool">
-  <h2 id="tool">Try it: how the triple lock works</h2>
+<h2 id="tool">The triple lock calculator</h2>
 
-  <p>This tool shows how the increase is chosen and applied. It works on <strong>one part</strong> of the State Pension: a full rate that follows the triple lock. Do not enter your whole pension payment. Other parts of a payment can rise by a different rule.</p>
-  <p>All amounts are weekly and before tax. The tool does not send or store anything you enter.</p>
-
-  <div class="no-js-only">
-    {% call m.note("The calculator needs JavaScript", 3) %}
-    <p>The calculator is not available, because JavaScript is off or did not load. The worked example above and the table of <a href="/history/#decisions">every decision since 2010</a> show the same method.</p>
-    {% endcall %}
-  </div>
-
-  <form id="mechanism-form" class="js-only" novalidate>
-    <fieldset>
-      <legend>Start from a past decision</legend>
-      <div class="fields">
-        <div class="field">
-          <label for="mechanism-year">Tax year</label>
-          <select id="mechanism-year" name="mechanism-year">
-            {%- for year in history.years | reverse %}{% if year.measure != "pre-triple-lock" %}
-            <option value="{{ year.tax_year }}">{{ year.tax_year }}</option>
-            {%- endif %}{% endfor %}
-          </select>
-        </div>
-        <div class="field">
-          <label for="mechanism-series">Pension</label>
-          <select id="mechanism-series" name="mechanism-series">
-            <option value="new">Full new State Pension</option>
-            <option value="basic">Full basic State Pension</option>
-          </select>
-        </div>
-      </div>
-      <button type="button" class="secondary" id="mechanism-load">Load this decision</button>
-    </fieldset>
-
-    <fieldset>
-      <legend>Figures used</legend>
-      <p>Showing: <span class="tool-mode" id="mechanism-mode">Past decision: {{ latest.tax_year }}, as published</span></p>
-      <p>Change any figure to see a hypothetical result. The result will then be labelled hypothetical.</p>
-      <div class="fields">
-        {{ m.field("mechanism-prices", "Rise in prices", latest.prices_tenths | plainPercent, "Per cent, from -10 to 25. One decimal place.", "", "%") }}
-        {{ m.field("mechanism-earnings", "Rise in earnings", latest.earnings_tenths | plainPercent, "Per cent, from -10 to 25. One decimal place.", "", "%") }}
-        {{ m.field("mechanism-start", "Weekly amount before the increase", before.new_pence | plainPounds, "A full rate, in pounds. From 1 to 1,000.", "£", "") }}
-      </div>
-      <button type="submit">Show the result</button>
-    </fieldset>
-  </form>
-
-  <p class="visually-hidden" role="status" id="mechanism-status"></p>
-
-  <div class="result" id="mechanism-result">
-    <h3>Full new State Pension, {{ latest.tax_year }}: what was decided</h3>
-    <p class="headline">{{ latest.applied_tenths | percent }} increase, decided by earnings</p>
-    <dl>
-      <dt>Prices, year to the September before</dt> <dd>{{ latest.prices_tenths | percent }}</dd>
-      <dt>Earnings, May to July before, as used in the decision</dt> <dd>{{ latest.earnings_tenths | percent }}</dd>
-      <dt>Minimum</dt> <dd>2.5%</dd>
-      <dt>Weekly rate before</dt> <dd>{{ before.new_pence | money }}</dd>
-      <dt>Weekly rate after, as published</dt> <dd>{{ latest.new_pence | money }}</dd>
-      <dt>Weekly increase</dt> <dd>{{ (latest.new_pence - before.new_pence) | money }}</dd>
-      <dt>52 weeks at the new rate</dt> <dd>{{ (latest.new_pence * 52) | money }}</dd>
-    </dl>
-    <p>These are the published decision and the published rates. This tool did not calculate them.</p>
-  </div>
-
-  <h3>How the tool calculates a hypothetical result</h3>
-  <ol>
-    <li>Increase = the highest of prices, earnings and 2.5%. If two or three are equal highest, the result names each of them.</li>
-    <li>New amount = amount before × (1 + increase ÷ 100).</li>
-    <li>The new amount is rounded to the nearest 5p. An exact half rounds up.</li>
-    <li>52-week equivalent = rounded weekly amount × 52.</li>
-  </ol>
-  <p>The tool does not calculate past decisions. It reads them from the published record, because the figure used at the time can differ from the figure published now, and because some years had special rules. <a href="/sources-and-method/#models">Full method and limits</a>.</p>
-
-  <script type="application/json" id="mechanism-data">{{ { years: history.years } | json | safe }}</script>
-  <script type="module" src="/assets/js/tools/mechanism.js"></script>
-</section>
+<p>The <a href="/tools/triple-lock/">triple lock calculator</a> shows how the increase is chosen and applied, for any past decision since 2010 or for figures you choose.</p>
 
 <h2 id="compounding">Why one year's increase affects every later year</h2>
 

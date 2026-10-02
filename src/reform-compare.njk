@@ -31,7 +31,7 @@ permalink: /reform-options/compare/
     {% endcall %}
   </div>
 
-  <div class="compare-layout">
+  <div class="tool-layout">
   <form id="compare-form" class="js-only" novalidate>
     <fieldset>
       <legend>Settings</legend>
@@ -90,7 +90,7 @@ permalink: /reform-options/compare/
   </form>
 
   {#- Stays in view while the figures change: beside the form on wide screens, pinned to the foot of a narrow one. -#}
-  <div class="compare-summary js-only">
+  <div class="tool-summary js-only">
     <h3 id="compare-summary-heading">At a glance</h3>
     <div id="compare-summary">
       {{ { startPence: ("nsp-full-weekly" | figPence), path: scenario.path.slice(0, scenarios.default_years), cashFloor: true, firstYear: 2027, measure: "cash" } | renderSummary | safe }}

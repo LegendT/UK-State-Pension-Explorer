@@ -2,9 +2,9 @@
 // Nothing entered here is stored, put in the address bar or sent anywhere.
 
 import { PERIODS, PERIOD_LABELS } from "../lib/budget.js";
-import { renderBudget } from "../lib/budget-view.js";
+import { renderBudget, renderBudgetSummary } from "../lib/budget-view.js";
 import { parsePence } from "../lib/uprating.js";
-import { announce, focusFirstError, readAmount, readJson, setError } from "./common.js";
+import { announce, live, pinSummary, readAmount, readJson, setError, updatedNote } from "./common.js";
 
 const data = readJson("budget-data");
 const form = document.getElementById("budget-form");
@@ -14,7 +14,10 @@ const period = document.getElementById("budget-period");
 const preset = document.getElementById("budget-preset");
 const about = document.getElementById("budget-preset-about");
 const tax = document.getElementById("budget-tax");
+const glance = document.getElementById("budget-glance");
 const EMPTY = result.innerHTML;
+const GLANCE_EMPTY = glance.innerHTML;
+let lastResult = "";
 
 let presetLabel = "";
 
@@ -74,14 +77,16 @@ function loadPreset() {
     `<div><dt>Housing</dt> <dd>${chosen.housing}</dd></div>` +
     `<div><dt>Left out</dt> <dd>${chosen.exclusions}</dd></div>` +
     `<div><dt>Source</dt> <dd>${chosen.source}. ${chosen.table_reference}</dd></div></dl>`;
-  announce(status, `Example budget loaded into the spending fields: ${chosen.label}.${note}`);
+  update("quiet");
+  announce(status, `Example budget loaded into the spending fields: ${chosen.label}.${note}${lastResult ? " The breakdown below has changed." : ""}`);
 }
 
 function fillPension() {
   const note = toWeekly(["state-pension"]);
   input("state-pension").value = data.full_new_rate;
   setError(input("state-pension"), "");
-  announce(status, `State Pension set to the full new rate, ${data.full_new_rate} pounds a week. The period is set to a week.${note}`);
+  update("quiet");
+  announce(status, `State Pension set to the full new rate, ${data.full_new_rate} pounds a week. The period is set to a week.${note}${lastResult ? " The breakdown below has changed." : ""}`);
 }
 
 function rows(list) {
@@ -97,8 +102,16 @@ function rows(list) {
   return ok ? out : null;
 }
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
+// The result follows the form. Until an amount is entered there is nothing to show.
+// mode: "quiet" redraws without announcing, for a helper that announces what it did.
+function update(mode) {
+  const fields = [...form.querySelectorAll('input[type="text"]')].filter((field) => !field.closest("[hidden]"));
+  if (fields.every((field) => field.value.trim() === "")) {
+    lastResult = "";
+    result.innerHTML = EMPTY;
+    glance.innerHTML = GLANCE_EMPTY;
+    return;
+  }
   const income = rows(data.income);
   const spending = rows(data.categories);
   let taxPence = null;
@@ -110,14 +123,29 @@ form.addEventListener("submit", (event) => {
     setError(tax, "");
   }
   if (!income || !spending || !taxOk) {
-    focusFirstError(form);
-    result.innerHTML = `<h3>No result</h3><p>Correct the amounts marked with an error, then select Show my budget.</p>`;
-    announce(status, "There is a problem with the amounts entered. No result is shown.");
+    lastResult = "";
+    result.innerHTML = `<h3>No result</h3><p>Correct the amounts marked with an error.</p>`;
+    glance.innerHTML = `<p>No result. Correct the amounts marked with an error.</p>`;
+    if (mode !== "quiet") announce(status, "There is a problem with the amounts entered. No result is shown.");
     return;
   }
-  result.innerHTML = renderBudget({ period: period.value, income, spending, taxPence, presetLabel });
-  announce(status, "Result updated. It follows the form.");
+  const figures = { period: period.value, income, spending, taxPence, presetLabel };
+  const html = renderBudget(figures);
+  // Choosing an example or a household fires a change without changing any amount. Say nothing then.
+  if (html === lastResult) return;
+  lastResult = html;
+  result.innerHTML = html;
+  glance.innerHTML = renderBudgetSummary(figures) + updatedNote("The full breakdown below has changed too.");
+  if (mode !== "quiet") announce(status, "Result updated. The breakdown below has changed.");
+}
+
+// There is no submit button; the handler stays for a scripted submit.
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  update();
 });
+live(form, update);
+pinSummary(glance.parentElement);
 
 function clearAll() {
   form.reset();
@@ -125,6 +153,8 @@ function clearAll() {
   presetLabel = "";
   showHousehold();
   result.innerHTML = EMPTY;
+  glance.innerHTML = GLANCE_EMPTY;
+  lastResult = "";
 }
 
 document.getElementById("budget-clear").addEventListener("click", () => {

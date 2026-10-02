@@ -85,3 +85,60 @@ export function readSettings() {
 export function choose(select, value) {
   if (value !== null && [...select.options].some((option) => option.value === value)) select.value = value;
 }
+
+// A tool's result follows its form. A change redraws it after a short pause, so typing a figure is
+// not announced at every key.
+// Typing a figure and then leaving the field fires "input" and then "change" with nothing new, so
+// a redraw happens only when a value differs from the last redraw's.
+export function live(form, redraw) {
+  let pending;
+  let last = null;
+  const values = () => [...form.querySelectorAll("input, select")].map((field) => (field.type === "checkbox" || field.type === "radio" ? field.checked : field.value)).join("|");
+  const later = () => {
+    clearTimeout(pending);
+    pending = setTimeout(() => {
+      const now = values();
+      if (now === last) return;
+      last = now;
+      redraw();
+    }, 400);
+  };
+  // A button (load, fill, reset, clear) or a form reset changes fields without this function, so
+  // the last values no longer match what is drawn. Forget them, and the next change always redraws.
+  const forget = () => {
+    last = null;
+  };
+  document.addEventListener("click", (event) => {
+    if (event.target.closest("button")) forget();
+  });
+  form.closest("form")?.addEventListener("reset", forget);
+  form.addEventListener("input", later);
+  form.addEventListener("change", later);
+}
+
+// The pinned summary's height changes with its contents, the width and the reader's text settings,
+// so the page padding that keeps it from covering anything is its measured height, not a guess.
+// A pinned summary that would take more than half the screen is not pinned: it follows the form
+// (decision 79). It pins again only below two fifths, so a phone's address bar showing and hiding
+// cannot flip it back and forth. In the page it is narrower than pinned, so taller, which also keeps
+// it unpinned. At 1024 px and wider it sits beside the form, and the class is never set.
+const wide = window.matchMedia("(min-width: 64rem)");
+export function pinSummary(summary) {
+  const fit = () => {
+    const size = Math.ceil(summary.getBoundingClientRect().height);
+    const share = size / window.innerHeight;
+    const unpinned = summary.classList.contains("unpinned");
+    if (unpinned && (wide.matches || share < 0.4)) summary.classList.remove("unpinned");
+    else if (!unpinned && !wide.matches && share > 0.5) summary.classList.add("unpinned");
+    document.documentElement.style.setProperty("--summary-size", `${size}px`);
+  };
+  new ResizeObserver(fit).observe(summary);
+  window.addEventListener("resize", fit);
+}
+
+// The summary stays in view, but the full result is below the form and easy to miss. After a
+// change, the summary says the result below changed too. Text only: the pinned summary holds
+// nothing that takes focus. Not shown on arrival, when nothing has changed.
+export function updatedNote(sentence) {
+  return `<p class="tool-updated"><span class="status">Updated</span> ${sentence}</p>`;
+}

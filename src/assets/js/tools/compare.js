@@ -1,7 +1,7 @@
 // Tool 2: compare the replacement rules. Presentation only.
 
 import { renderComparison, renderSummary } from "../lib/compare-view.js";
-import { announce, choose, focusFirstError, readAmount, readJson, readPercent, readSettings, setError, writeSettings } from "./common.js";
+import { announce, choose, focusFirstError, live, pinSummary, updatedNote, readAmount, readJson, readPercent, readSettings, setError, writeSettings } from "./common.js";
 
 const data = readJson("compare-data");
 const form = document.getElementById("compare-form");
@@ -102,14 +102,14 @@ function update(message, mode) {
     // Only the first letter, so a name such as the Institute for Fiscal Studies keeps its capitals.
     scenarioLabel: edited ? "your own figures" : chosen().label.charAt(0).toLowerCase() + chosen().label.slice(1),
   });
-  summary.innerHTML = renderSummary(options);
+  summary.innerHTML = renderSummary(options) + (mode === "load" ? "" : updatedNote("The chart and tables below have changed too."));
   // Edited yearly figures go in the address too, or a link would show a different result.
   const figures = (key) => path.map((year) => (year[key] / 10).toFixed(1)).join(",");
   writeSettings(
     { scenario: scenario.value, years: String(count), start: start.value.trim(), first: first.value, measure: measure.value, floor: floor.checked ? "on" : "off", ...(edited ? { prices: figures("prices"), earnings: figures("earnings") } : {}) },
     "compare",
   );
-  if (mode !== "load") announce(status, message || "Result updated.");
+  if (mode !== "load") announce(status, message || "Result updated. The chart and tables below have changed.");
 }
 
 function reset() {
@@ -143,7 +143,7 @@ document.getElementById("compare-reset").addEventListener("click", () => {
   measure.value = "cash";
   setError(start, "");
   reset();
-  update("All settings are back to the starting scenario.");
+  update("All settings are back to the starting scenario. The chart and tables below have changed.");
 });
 
 // There is no submit button, so Enter does not submit. The handler stays for a scripted submit,
@@ -153,23 +153,10 @@ form.addEventListener("submit", (event) => {
   update();
 });
 
-// The result follows the form. A change redraws it after a short pause, so typing a figure is not
-// announced at every key.
-let pending;
-const later = () => {
-  clearTimeout(pending);
-  pending = setTimeout(() => update(undefined, "live"), 400);
-};
-form.addEventListener("input", later);
-form.addEventListener("change", later);
+live(form, () => update(undefined, "live"));
 
 reset();
-
-// The pinned summary's height changes with its contents, the width and the reader's text settings,
-// so the page padding that keeps it from covering anything is its measured height, not a guess.
-new ResizeObserver(([entry]) => {
-  document.documentElement.style.setProperty("--summary-size", `${Math.ceil(entry.borderBoxSize[0].blockSize)}px`);
-}).observe(summary.parentElement);
+pinSummary(summary.parentElement);
 
 // A link with settings in its address shows that result. Nothing is announced or focused on arrival.
 // Typed values are checked by the same rules as the form before anything is shown.

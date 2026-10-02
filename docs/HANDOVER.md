@@ -452,6 +452,130 @@ After the owner supplied the Cloudflare token, the script became the dashboard's
 
 Not checked: anything on Netlify. Whether Netlify applies `_headers` and `netlify.toml` headers together as expected needs a deploy preview, which needs a push. What the Cloudflare beacon sends needs the live site.
 
+## Sources on their own line, 2 October 2026
+
+Asked for by the owner, who found the source chips of decision 61 still clumsy. Decision 77. On the branch `sources-own-line`, from `launch-prep`, not pushed.
+
+- `.ref` is a line of its own under the sentence: small, muted, no border. Its links are padded to at least 24 px, and a date in a source does not break.
+- `m.more`, drawn by `.onward`, puts a link onward on a line of its own, "More: …". Used in the overview's short entries: the situations list and the two notes on the April 2030 rule, the four places where a source ran straight into a link.
+
+| Check | Command | Result |
+| --- | --- | --- |
+| Build | `npm run build` | No problems |
+| Calculator tests | `npm test` | 28 of 28 pass |
+| Automated accessibility | `npm run a11y` | 0 violations. Every incomplete contrast result measured, 4,031, none below threshold |
+| Behaviour | `npm run a11y:manual` | 0 problems |
+| Source and onward link height | A script in Chrome, 11 pages at 320, 390 and 1280 px | Before the padding, 6 at 390 px and 10 at 1280 px were under 24 px and too close to another link for the spacing exception. After it, none under 24 px: lowest 24.8 px |
+| Rendered | Screenshots in Chrome | The situations list at 390 px light and 1280 px dark, a source in a list item and in a paragraph, a source with a date, and a source link with keyboard focus. The focus ring first covered the line above; the space above a source was raised from 0.15rem to 0.45rem |
+
+Not checked: a screen reader, a real phone, forced colours. The checker's count of inline links still counts a source link as inline, because its line holds other text; the height script above is what shows they meet 24 px.
+
+## Tools on their own pages, 2 October 2026
+
+Asked for by the owner: take the tools out into their own sections, as on UK Public Finances, and keep their results from being lost below the fold. Decision 78. On the branch `tools-section`, from `sources-own-line`, not pushed.
+
+- `/tools/` lists the four tools, and "Tools" is in the main menu. `/tools/triple-lock/`, `/tools/history/` and `/tools/budget/` are new. The rule comparison stays at `/reform-options/compare/`.
+- Each tool works like the rule comparison: the result follows the form 400 ms after the last change, and an "At a glance" summary stays in view. The shared parts are `live` and `pinSummary` in `common.js`, and `.tool-layout` and `.tool-summary` in the stylesheet, renamed from the comparison's own classes.
+- The triple lock, history and living on a pension pages keep a short pointer where the tool was, under a heading with the same `id`, so links to `#tool`, `#explorer` and `#budget` still land. The headings were renamed to name the tool in the front-end sweep of 2 October 2026 (W1).
+- Form fields sit in two columns only where each column is at least 20rem, so the lists in a tool's narrower form column are not cut.
+
+| Check | Command | Result |
+| --- | --- | --- |
+| Build | `npm run build` | No problems. 19 pages |
+| Calculator tests | `npm test` | 28 of 28 pass |
+| Automated accessibility | `npm run a11y` | 0 violations in 130 audits of 19 pages, the tool states on their new pages. Every incomplete contrast result measured, 3,686, none below threshold |
+| Behaviour | `npm run a11y:manual` | 0 problems on 19 pages, including no focused control covered by a pinned summary |
+| Tools in Chrome | A script, at 390 and 1280 px | Triple lock: the summary shows the published decision on arrival; typing 9 in prices gave "9.0% increase, decided by prices", £250.95, labelled hypothetical; loading 2022/23 gave 3.1%. History: a new pension and a rule redrew the summary and wrote the address; a first year after the last showed the error and kept the result. Budget: empty until an amount is typed; £241.30 gave £241.30 left over; a loaded example gave a shortfall of £169.19; clearing emptied both and the address stayed empty. No script errors |
+| Rendered | Screenshots | The three tools at 390 px with the summary pinned to the foot, and at 1280 px with it beside the form |
+
+Known limit: at 1024 px and wider the closed "Example budget" list on the budget explorer cuts its longest names, because the form column is narrower than the full width it had. The open list shows each name in full, and the note after loading repeats it, as on a phone since R9.
+
+Not done: an address with history explorer settings on `/history/` is not sent on to `/tools/history/`, as `moved.js` does for the rule comparison. Nothing is published, so no such link is known outside previews.
+
+Not checked: a screen reader, a real phone, forced colours. Whether announcing "Result updated." 400 ms after each pause in typing is too frequent for a screen reader user needs a person.
+
+## Form spacing on the tools, 2 October 2026
+
+Asked for by the owner: inputs and the text around them were too close together on the tools pages. One set of rules in `main.css`, under "Form rhythm", for every form. A label and its hint read as one unit, 0.2rem apart. The control sits 0.5rem below them. Each part of a fieldset is 1rem from the next, and fields are 1.5rem apart. A hint that belongs to a button or a checkbox sits 0.5rem below it. A group of fields adds no margin of its own inside a fieldset, so every fieldset ends 1rem below its last item: measured 17 px on each fieldset of the triple lock and budget forms. Before, an input touched the hint above it, a button touched the text after it, and fieldsets ending in a group of fields were twice as deep at the foot.
+
+Left as it is: hints written directly in a fieldset, such as "Enter income before tax", are body size and colour, while hints under a field are smaller and grey. Styling them all as hints would make those instructions quieter, which is a choice about emphasis, not spacing.
+
+| Check | Command | Result |
+| --- | --- | --- |
+| Build | `npm run build` | No problems |
+| Calculator tests | `npm test` | 28 of 28 pass |
+| Automated accessibility | `npm run a11y` | 0 violations in 130 audits. Every incomplete contrast result measured, 3,687, none below threshold |
+| Behaviour | `npm run a11y:manual` | 0 problems, including text spacing |
+| Rendered | Screenshots, before and after | Every fieldset of the budget explorer at 390 px with an example loaded; the triple lock form at 1280 px; the rule comparison and history forms at 390 px |
+
+## "Updated" in the tool summaries, 2 October 2026
+
+Asked for by the owner: on the history explorer the chart below the form changes and is easy to miss. After any change, each tool's "At a glance" summary now ends with an "Updated" label and a sentence: "The chart and table below have changed too" on the history explorer, "The chart and tables below" on the rule comparison, "The full result below" on the triple lock calculator, "The full breakdown below" on the budget explorer. It is not shown on arrival. Screen readers hear the same sentence in the status message, including after loading a past decision or an example budget, filling in the pension, and resetting the comparison. A redraw now happens only when a value differs from the last one, so typing a figure and then leaving the field is announced once. On the history explorer, choosing a first year after the last keeps the summary of the result still shown and adds the error under it. On the branch `tools-section`, not pushed. No decision number: it follows decision 78. Text only, because the pinned summary holds nothing that takes focus (a link there was removed on 1 October 2026), and not a pop-up or a flash, which can be missed or gone before it is read.
+
+| Check | Command | Result |
+| --- | --- | --- |
+| Build | `npm run build` | No problems |
+| Calculator tests | `npm test` | 28 of 28 pass |
+| Automated accessibility | `npm run a11y` | 0 violations in 130 audits. 1,885 incomplete results; every incomplete contrast result measured, 3,690, none below threshold |
+| Behaviour | `npm run a11y:manual` | 0 problems, including no focused control covered by the taller pinned summary at its default text spacing |
+| Tools in Chrome | A script at 390 px | All four: no note on arrival, then the note in the summary after a change. The status message read back on each path: a change, a loaded decision, a loaded example, the pension helper, the comparison's reset. One announcement for a change followed by Tab on the history explorer; none for Tab with nothing new on the triple lock calculator. No script errors |
+| Rendered | Screenshots | Summaries with the note: history at 390 and 1280 px, triple lock, budget and comparison at 390 px |
+| Pinned height | Text spacing of SC 1.4.12 at 320 x 512, comparison after a change | 478 px of 512. It was 396 px without the note: decision 79 now unpins it |
+
+Not checked: a screen reader, a real phone. The note is the same after every change, so a second change looks like the first.
+
+## Pinned summary on a crowded screen, 2 October 2026
+
+Decision 79, point R2 of the front-end sweep, on the owner's go. A pinned summary that would take more than half the screen follows the form instead. The rules use `:not(.unpinned)` in the existing `min-height` and `min-width` queries, with no `max-width` query, and the class is never set at 1024 px and wider. On the branch `tools-section`, not pushed.
+
+| Check | Command | Result |
+| --- | --- | --- |
+| Pinning | A script in Chrome, after a change | Comparison with the text spacing of SC 1.4.12 at 320 x 512 and 320 x 568: not pinned, 518 px tall in the page, no padding left at the foot. At 390 x 844 the comparison and budget summaries stay pinned (294 and 184 px). At 1280 x 900, and at 1280 x 520 with text spacing, the comparison's stays beside the form with no padding at the foot |
+| Address bar | The comparison at 390 px wide, the window height moved 640, 600, 640, 600, 640, 560, 600, 640, 800 | The class changed twice: unpinned at 560 (52% of the screen), pinned again at 800 (40%). It unpins above half the screen and pins again below two fifths |
+| Keyboard | `npm run a11y:manual` | 0 problems. The comparison: 42 of 42 stops by Tab, none covered |
+| Calculator tests | `npm test` | 28 of 28 pass |
+| Automated accessibility | `npm run a11y` | 0 violations in 130 audits |
+
+Not checked: a real phone with large text set in the system, rather than the test's text spacing.
+
+## Front-end sweep, 2 October 2026
+
+The second sweep, over all 19 pages, on the branch `tools-section`, not pushed. Steps: axe baseline (`a11y-verify`), markup (`html-engineering`), styles (`css-engineering`), axe again and compare. The runners and results are in `frontend-sweep/`, which git leaves out; the first sweep's files moved to `frontend-sweep/2026-10-01/`.
+
+Changed, template by template:
+
+| File | Change | Finding |
+| --- | --- | --- |
+| `src/_includes/base.njk` | The page foot and the site footer say check dates are under "More about this figure" only where `entry.figure_cards` is set. Both were printed on every page, false on 12 of 18. The footer sentence was found by the critique after the first fix | H1, option (b), the owner's choice. Reading the cards from the page content instead of a register field was weighed: the field is what the owner chose, and the build check stops it drifting |
+| `src/_data/pageRegister.json` | `figure_cards: true` on the six pages with figure cards: overview, State Pension, living on a pension, reform options, costs, social care | H1 |
+| `scripts/check-build.mjs` | Fails when `figure_cards` does not match the built page. Planted both ways, on `/` and `/privacy/`: each failed with its own message | H1 |
+| `src/triple-lock.njk`, `src/history.njk`, `src/living-on-a-pension.njk` | The pointer headings and their contents entries name the tool: "The triple lock calculator", "The history explorer", "The budget explorer". The `id`s are kept | W1 |
+| `src/assets/js/lib/budget-view.js` | "This balance is before tax" is a note with a heading, not a bold paragraph | W2 |
+| `src/assets/js/tools/mechanism.js` | "No increase to show" is the "Not available" note | W3 |
+| `src/assets/js/tools/common.js` | Not a sweep finding: a fault from commit `81f37b6`, found by the sweep's second reader. After a button changed the fields, typing the value last typed did not redraw. The last values are now forgotten on any button click or form reset | Bug |
+
+No stylesheet change: `css-engineering` found nothing at P1 or P2.
+
+| Check | Command | Before | After |
+| --- | --- | --- | --- |
+| Automated accessibility | `node frontend-sweep/run.mjs`: axe-core 4.11.4, Chrome 154, 19 pages at 320, 768 and 1280 px, at rest, reduced motion and dark, 171 audits | 0 violations, 2,714 incomplete | 0 violations, 2,714 incomplete. New 0, fixed 0, unchanged 2,714 |
+| Incomplete contrast | `node frontend-sweep/measure.mjs` | All 2,714 measured, none below threshold, lowest 8.81:1 | The same |
+| Validator | `npx html-validate "_site/**/*.html"` | 111: whitespace 45, `prefer-native-element` 35, `doctype-style` 19, `long-title` 8, `wcag/h32` 4 | 111, the same rules. `wcag/h32` is the four tool forms with no submit button, decisions 62 and 78. Declined as before |
+| Page map | `page-map.mjs` | | Three headings renamed (W1), nothing else |
+| Calculator tests | `npm test` | 28 of 28 | 28 of 28 |
+| Screenshots | 19 pages at 3 widths | | 13 pages differ, the expected set: the 12 that lost the foot sentence, and living on a pension (W1). Taken before the footer sentence was gated too, which changes the same 12 pages |
+| Behaviour | `npm run a11y:manual` | | 0 problems on 19 pages: no sideways scroll, no clipped text, no target under 24 px, no skipped heading, every tab stop reached and visible and not covered |
+| Redraw fault | A script in Chrome | Typing 5, loading a decision, typing 5 again left the decision shown | The same steps redraw to 5.0%; a Tab with nothing new announces nothing |
+
+The list, each item with the step that found it:
+
+- **wrong:** none left. H1 (step 2) and the redraw fault (step 2's reader) are fixed.
+- **weak:** W4, the "All tools" link as a named `nav` (step 2), and W5, the budget total row in a `tfoot` (step 2): declined by the owner on 2 October 2026.
+- **noise:** a comment above the wrong function in `budget-view.js`; the tool pages' opening sentence repeats their lede; an unused `id` on the "At a glance" headings; breakpoints written in both `rem` and `em` (step 3).
+- **incomplete:** 2,714 contrast results, all table cells clipped by their scrolling wrappers, none new, all measured (step 1 and step 4).
+- **unverified by tooling:** a screen reader, a real phone, touch, forced colours, Safari and Firefox (step 4).
+- **unchanged:** no violations. Already on the waiting list and left alone: K2, K3 and K4 from the first sweep, and C2 and C3.
+
 ## Waiting on the owner
 
 As at 2 October 2026.
@@ -466,7 +590,7 @@ As at 2 October 2026.
 | A6, deferred | Add the expected values of the new cash-floor test, 241.32 pounds at minus 1%, to `scripts/reference.py` and `docs/reference-calculations.md` |
 | A8, deferred | The register sentence on the method page says "headline figures". Name every kind of record instead |
 | A9, deferred | The 71% and 23% figures have the basis "individual", but the underlying 2023 study counted households. Check the study, then align the basis |
-| Rule comparison: while typing | A half-typed figure, such as "-", replaces the result and the summary with "Not available" after 400 ms. The alternative keeps the last result, marked out of date, until the figure is valid |
+| Tools: while typing | A half-typed figure, such as "-", replaces the result and the summary with "Not available" after 400 ms. Since decision 78 this applies to all four tools, not only the rule comparison. The alternative keeps the last result, marked out of date, until the figure is valid |
 | Rule comparison: phone keyboard | The pinned summary and an on-screen keyboard share a small screen. The alternative shrinks the summary to one line while a field has focus. Not tested on a real phone |
 | Rule comparison: typed figures | The page types "10p a week at most" and "2.5%" in its text. Under the README rule they would come from the registers |
 | Rule comparison: the gap shown | The summary gives the gap in the last year. The total over the period, in the full result's totals table, could be shown as well |
@@ -481,8 +605,7 @@ As at 2 October 2026.
 | Sweep, markup, K7 | `next_review` is free text, so its dates cannot be `time`. Needs a date field in `figures.json` |
 | Sweep, styles, C2 | Chart text renders at about 9 px on a 320 px screen (13 units in a 720-unit view box). Not an AA failure. Shared with the charts drawn at build time |
 | Sweep, styles, C3 | Four links that stand alone in a paragraph are about 21 px tall. They pass AA by the spacing exception of SC 2.5.8: each centre is at least 14.5 px from any other target, more than the 12 px radius, and `npm run a11y:manual` counts none under 24. They are short of the 44 px house standard. A class on those paragraphs and the "Back to contents" padding would fix them |
-| Sweep, critique, R1 | The CSS comment above the pinned summary does not say that `compare.js` sets `--summary-size`, or that 16rem is the fallback. One clause |
-| Sweep, critique, R2 | With text spacing at 320x512 the pinned summary is 396 px, leaving 116 px. No focus stop is fully hidden, but one is 81% covered. The observer could unpin the summary when it passes half the screen. Changes when decision 62 pins it; overlaps "phone keyboard" above |
+| Sweep, critique, R1 | The CSS comment above the pinned summary does not say that `pinSummary` in `common.js` sets `--summary-size`, or that 16rem is the fallback. One clause |
 
 ## Tracked separately
 

@@ -58,6 +58,7 @@ const config = {
     { href: "/living-on-a-pension/", label: "Living on a pension" },
     { href: "/reform-options/", label: "Reform options" },
     { href: "/history/", label: "History" },
+    { href: "/tools/", label: "Tools" },
     { href: "/sources-and-method/", label: "Sources and method" },
   ],
   // The pages of the reform options section, in reading order. Shown on each of them.

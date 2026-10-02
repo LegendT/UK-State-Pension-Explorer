@@ -1,0 +1,98 @@
+---
+layout: base.njk
+permalink: /tools/history/
+---
+{%- import "macros.njk" as m with context -%}
+{%- set first = history.years | first -%}
+{%- set latest = history.years | last -%}
+<h1>State Pension history explorer</h1>
+
+<p class="lede">The full rates since 2010 as a chart and table: in cash, in buying power or against earnings, with a calculation of what another rule would have produced. The record itself is on <a href="/history/">the history page</a>. <a href="/tools/">All tools</a>.</p>
+
+<section class="tool" aria-labelledby="explorer">
+  <h2 id="explorer">Explore the history</h2>
+
+  <p>Choose a pension, a range of years and how to show the amounts. You can add a calculation of what another rule would have produced from the first year you choose.</p>
+
+  <div class="no-js-only">
+    {% call m.note("The explorer needs JavaScript", 3) %}
+    <p>The form is not available, because JavaScript is off or did not load. The chart and table below show the basic State Pension in cash. The full record is in the table and the download on <a href="/history/#decisions">the history page</a>.</p>
+    {% endcall %}
+  </div>
+
+  <div class="tool-layout">
+  <form id="history-form" class="js-only" novalidate>
+    <fieldset>
+      <legend>What to show</legend>
+      <div class="fields">
+        <div class="field">
+          <label for="history-series">Pension</label>
+          <select id="history-series" name="history-series">
+            <option value="basic">Full basic State Pension</option>
+            <option value="new">Full new State Pension (from 2016/17)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="history-measure">Show amounts as</label>
+          <select id="history-measure" name="history-measure">
+            <option value="cash">Cash: the money of each year</option>
+            <option value="real">Buying power: the prices of the latest year</option>
+            <option value="earnings">Compared with earnings: an index</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="history-from">First year</label>
+          <span class="error" id="history-error" role="alert"></span>
+          <select id="history-from" name="history-from" aria-describedby="history-error"></select>
+        </div>
+        <div class="field">
+          <label for="history-to">Last year</label>
+          <select id="history-to" name="history-to"></select>
+        </div>
+        <div class="field">
+          <label for="history-rule">Add a calculation under another rule</label>
+          <span class="hint" id="history-rule-hint">It starts from the published rate in the first year you chose.</span>
+          <select id="history-rule" name="history-rule" aria-describedby="history-rule-hint">
+            <option value="">None: published rates only</option>
+            <option value="triple-lock">Triple lock, applied mechanically</option>
+            <option value="double-lock">Double lock (prices or earnings)</option>
+            <option value="earnings">Earnings link</option>
+            <option value="prices">Prices link</option>
+          </select>
+        </div>
+      </div>
+      <div class="buttons">
+        <button type="button" class="secondary" id="history-download">Download the table shown (CSV)</button>
+        <button type="button" class="secondary" id="history-copy">Copy the table shown</button>
+      </div>
+    </fieldset>
+  </form>
+  <div class="tool-summary js-only">
+    <h3 id="history-glance-heading">At a glance</h3>
+    <div id="history-glance">
+      <p>The result appears here as you fill in the form.</p>
+    </div>
+  </div>
+  </div>
+
+  <p class="visually-hidden" role="status" id="history-status"></p>
+
+  <div class="result" id="history-result">
+    {{ { years: history.years, series: "basic", from: first.tax_year, to: latest.tax_year, measure: "cash", rule: "" } | renderHistory | safe }}
+  </div>
+
+  <h3>How the measures are worked out</h3>
+  <dl>
+    <dt>Cash</dt> <dd>The published rate.</dd>
+    <dt>Buying power</dt> <dd>The published rate × the price index for the latest year ÷ the price index for that year. The index is the Consumer Prices Index level for the September before each rate took effect.</dd>
+    <dt>Compared with earnings</dt> <dd>The rise in the rate since the first year shown, divided by the rise in earnings over the same years. The rise in earnings is built from the figures used in each decision. It is an index, not a share of any pay figure in pounds.</dd>
+    <dt>A calculation under another rule</dt> <dd>The rule is applied year by year from the published rate of the first year, with rounding to the nearest 5p and no fall in pounds. It does not apply the special rules of exceptional years.</dd>
+  </dl>
+  <div class="source">
+    <p>Source for the price index: <a href="{{ history.sources.prices_index_url }}">{{ history.sources.prices_index }}</a> Checked against the source on {{ history.checked_date | timeTag | safe }}.</p>
+  </div>
+  <p><a href="/sources-and-method/#models">Full method, reference examples and limits</a>. For future years, which are hypothetical, use the <a href="/reform-options/compare/">rule comparison</a>.</p>
+
+  <script type="application/json" id="history-data">{{ { years: history.years } | json | safe }}</script>
+  <script type="module" src="/assets/js/tools/history.js"></script>
+</section>

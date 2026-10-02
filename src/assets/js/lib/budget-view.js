@@ -8,21 +8,39 @@ function pair(yearlyPence) {
 }
 
 // input: { period, income: [{id,label,pence}], spending: [{id,label,pence}], taxPence, presetLabel }
-export function renderBudget(input) {
-  const result = budget(input);
-  const labels = Object.fromEntries([...input.income, ...input.spending].map((row) => [row.id, row.label]));
+function balance(result) {
   const balanceName = result.taxKnown ? "Balance after the tax you entered" : "Balance before tax";
   const amount = money(Math.abs(Math.round(weekly(result.balancePence))));
   const yearly = money(Math.abs(result.balancePence));
-
   let headline;
   if (result.balancePence < 0) headline = `Shortfall of ${amount} a week (${yearly} a year)`;
   else if (result.balancePence === 0) headline = "Income and spending are equal";
   else headline = `${amount} a week left over (${yearly} a year)`;
+  return { balanceName, headline };
+}
+
+// The summary kept in view beside the form, or pinned to the foot of a narrow screen.
+export function renderBudgetSummary(input) {
+  const result = budget(input);
+  const { balanceName, headline } = balance(result);
+  const week = (pence) => money(Math.round(weekly(pence)));
+  return (
+    `<p><span class="status">Your own figures</span> ${balanceName}.</p>` +
+    `<p class="headline">${headline}</p>` +
+    `<dl><div><dt>Income</dt> <dd>${week(result.incomePence)} a week</dd></div>` +
+    (result.taxKnown ? `<div><dt>Income Tax</dt> <dd>${week(result.taxPence)} a week</dd></div>` : "") +
+    `<div><dt>Spending</dt> <dd>${week(result.spendingPence)} a week</dd></div></dl>`
+  );
+}
+
+export function renderBudget(input) {
+  const result = budget(input);
+  const labels = Object.fromEntries([...input.income, ...input.spending].map((row) => [row.id, row.label]));
+  const { balanceName, headline } = balance(result);
 
   const taxNote = result.taxKnown
     ? `<p>The balance uses the tax figure you entered. This tool did not work it out or check it.</p>`
-    : `<p><strong>This balance is before tax.</strong> You did not enter a tax amount, so the balance is not money available to spend. If tax is due, the amount left is smaller.</p>`;
+    : `<div class="note" role="note"><h4>This balance is before tax</h4><p>You did not enter a tax amount, so the balance is not money available to spend. If tax is due, the amount left is smaller.</p></div>`;
 
   const spendingRows = result.spendingRows
     .filter((row) => row.yearlyPence > 0)
