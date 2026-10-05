@@ -74,7 +74,7 @@ A11Y_ASSESSMENT_DATE=2026-10-01 AI_CRAWLER_POLICY=allow npm run build
 | `test/` | Tests. |
 | `scripts/` | Build check, accessibility runs, source checks, reference calculations. |
 | `research/` | The research record behind the registers. |
-| `docs/` | Specification, decisions, assessment, maintenance, handover. |
+| `docs/` | Specification, decisions, assessment, maintenance, handover. The handover holds the current state only: decision 83. |
 | `NEXT-SESSION.md` | A prompt for the first message of a new session. Written by the handoff check. Not edited by hand. |
 
 ## Hosting
@@ -110,6 +110,6 @@ The exception is the preview banner. It has `role="note"` and no heading, becaus
 ## Conventions
 
 - British English. No em dashes. No emoji. Straight quotation marks.
-- No figure is typed into a page. Use `{{ "id" | fig }}` or the `figure` filter.
+- No figure is typed into a page. Use `{{ "id" | fig }}` or the `figure` filter. Decision 84 allows two exceptions. The first is the 2.5% of the triple lock: it is part of the rule's wording and rests on the claims register. The second is a result of the model that a test holds, such as "10p a week at most" in the rule comparison.
 - A date the site does not hold is left out. It is never taken from a build.
 - Tools calculate in whole pence and tenths of a per cent.

@@ -32,10 +32,10 @@ Both scripts print their counts. The counts are not copied here, because they ch
 
 ## Results of the last run
 
-- `npm run a11y`: 0 violations. 0 audits with sideways page scroll. 0 audits with script errors. Every contrast result that axe marked incomplete was measured, 3,686 of them: 0 below threshold, 0 that could not be measured.
+- `npm run a11y`: 0 violations. 0 audits with sideways page scroll. 0 audits with script errors. Every contrast result that axe marked incomplete was measured, 3,690 of them: 0 below threshold, 0 that could not be measured.
 - `node scripts/a11y-manual-assist.mjs`: 0 problems on 19 pages.
 
-The last run was on 2 October 2026, after decision 78: 130 audits of 19 pages. See `docs/HANDOVER.md`, "Tools on their own pages, 2 October 2026". The front-end sweep of 1 October 2026 also ran axe at 320, 768 and 1280 px.
+The last run was on 5 October 2026, after two figures had their basis corrected: 130 audits of 19 pages. The front-end sweep of 1 October 2026 also ran axe at 320, 768 and 1280 px.
 
 ### What those runs did not establish
 
