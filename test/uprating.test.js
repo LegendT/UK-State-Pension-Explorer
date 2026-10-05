@@ -152,9 +152,13 @@ test("the rule announced for April 2030: the percentage shown, ties with the min
   assert.deepEqual([pricesAndFloor.pence, pricesAndFloor.determining], [24735, ["prices", "floor"]]);
   const allThree = compareRules(24130, path([[25, 25]])).rules["rule-2030"].years[1];
   assert.deepEqual([allThree.pence, allThree.determining], [24735, ["prices", "floor", "catch-up"]]);
-  const thirty = compareRules(24130, path(Array(30).fill([20, 37]))).rules["rule-2030"];
+  const steady = compareRules(24130, path(Array(30).fill([20, 37]))).rules;
+  const thirty = steady["rule-2030"];
   assert.equal(thirty.years[30].pence, 71765);
   assert.equal(thirty.cashTotalPence, 69425720);
+  // "10p a week at most" is typed in src/reform-compare.njk, in the steady scenario's reason in
+  // src/_data/scenarios.json and in section 3 of docs/model-specification.md. This holds them to the model.
+  assert.equal(Math.max(...thirty.years.map((year, i) => Math.abs(year.pence - steady.earnings.years[i].pence))), 10);
 });
 
 test("the cash floor holds after rounding a starting amount that is not a multiple of 5p", () => {

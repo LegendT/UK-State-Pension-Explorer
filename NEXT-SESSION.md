@@ -8,25 +8,24 @@ Read, in this order, before doing anything:
 5. README.md
 
 Do not read _archive/. Read research/ only when checking a figure. docs/ux-review.md is a
-frozen record: read it for the reasoning behind recommendations R1 to R10, and never edit it.
+frozen record: never edit it. docs/HANDOVER.md holds current state only (decision 83): do
+not add a dated section to it.
 
-State on 2 October 2026: see the opening paragraphs of docs/HANDOVER.md. The site is a
-preview for review, not published. All work is merged into `main`, up to pull request 19
-(pull request 18: launch dependency decisions 66 to 76 and the launch build work; pull
-request 19: decisions 77 to 79, the tools on their own pages and the second front-end
-sweep). Merging `main` does not launch the site: see "Launch steps" in
-docs/launch-dependencies.md. The local branch `handover-pr19` holds handover corrections
-recording those merges and a `.gitignore` entry; check whether they are committed. Run git
-status first.
+State on 5 October 2026: see the opening paragraphs of docs/HANDOVER.md. The site is a
+preview for review, not published. All work is merged into `main`, up to pull request 21.
+The branch `critique-recommendations` holds the changes of 5 October 2026. They were not
+committed when this was written. Run git status first, and check whether the branch has
+been committed, pushed and merged before relying on either sentence.
 
-Next action: none. Wait for Anthony to say what to do. Nothing else is authorised.
+Next action: none for the assistant. The launch steps in docs/launch-dependencies.md are
+Anthony's. Wait for Anthony to say what to do. Nothing else is authorised.
 
-Waiting on Anthony: the table under "Waiting on the owner" in docs/HANDOVER.md, in
-particular the rows starting "Launch:".
+Waiting on Anthony: "Launch steps" in docs/launch-dependencies.md, and the table under
+"Waiting on the owner" in docs/HANDOVER.md, in particular decision 84, which is the
+assistant's and not yet confirmed.
 
-Do not raise again unless asked: the items under "Known defects and limits" in
-docs/HANDOVER.md that are marked deferred, and the items the owner declined (W4 and W5 of
-the second front-end sweep).
+Do not raise again unless asked: the items under "Known defects and limits" and under
+"Declined: do not raise again" in docs/HANDOVER.md.
 
 Rules that have been broken before and must not be again: read ~/.claude/CLAUDE.md in
 full first. In this project: do not import .env into Netlify, do not push (Anthony types

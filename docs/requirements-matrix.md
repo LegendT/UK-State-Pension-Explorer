@@ -109,5 +109,5 @@ See `docs/accessibility-assessment.md`. Status: **Built with a gap**. Automated 
 | HTML site map | `/site-map/` | | Built |
 | Environment indexing controls | `site.js`, `base.njk`, `robots.njk` | Builds in three environments | Built |
 | AI crawler policy | `launch-dependencies.md` item 7: `allow`, decision 72 | | Set at launch |
-| Deployed checks | Netlify deploy preview of pull request 1 | `curl` and Chrome, recorded in `docs/HANDOVER.md` | Done for the deploy preview. Not done for the main site address or a production domain |
+| Deployed checks | Netlify deploy preview of pull request 1 | `curl` and Chrome, recorded in `docs/HANDOVER.md` as it stood at commit `75d0574` | Done for the deploy preview. Not done for the main site address or a production domain |
 | Search console | | | Not done: needs account and domain |
