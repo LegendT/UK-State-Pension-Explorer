@@ -8,7 +8,7 @@ The owner decided each item on 2 October 2026, from options the assistant put: d
 | --- | --- | --- | --- | --- |
 | 1 | Name of the site: "UK State Pension Explorer". | `SITE_TITLE`. The two share images in `scripts/share/` carry the name and must be made again if it changes. | Publication | Keep "UK State Pension Explorer": decision 66 |
 | 2 | Production domain, with HTTPS and no path. | `SITE_URL` | Canonicals, sitemap, social cards, reciprocal links | `https://ukstatepensionexplorer.org`, registered by the owner through Netlify on 2 October 2026 (WHOIS: created 09:06 UTC, registrar Name.com). Not yet attached to the Netlify project: decision 67 |
-| 3 | Hosting. | Netlify, project `ukstatepensionexplorer`, set by the owner on 29 September 2026. `netlify.toml` builds a preview with security headers. The build writes the preview's `noindex` header and basic authentication, from the `BASIC_AUTH` variable in Netlify, to `_headers`. | Publication | Split by deploy context, so deploy previews and branch deploys keep the sign-in after launch. Built on the branch `launch-prep`; the launch steps are below: decision 68 |
+| 3 | Hosting. | Netlify, project `ukstatepensionexplorer`, set by the owner on 29 September 2026. `netlify.toml` builds a preview with security headers. The build writes the preview's `noindex` header and basic authentication, from the `BASIC_AUTH` variable in Netlify, to `_headers`. | Publication | Split by deploy context, so deploy previews and branch deploys keep the sign-in after launch. Built and merged in pull request 18; the launch steps are below: decision 68 |
 | 4 | A working route to report an error or an accessibility barrier. | `CORRECTION_URL` | Publication. Scope sections 2H and 6 | A new GitHub issue on the repository, for launch. The repository must be public by then, after its history is checked: decision 69 |
 | 5 | Owner of the content, and whether a person or an organisation. | `OWNER_NAME`, `OWNER_TYPE` | Publication. Structured data publisher | Anthony George, `Person`: decision 70 |
 | 6 | A reviewer who is not the author, and the date of the review. | `REVIEWER_NAME`, `REVIEW_DATE` | Publication. Scope section 7, stage 3 | The owner, for launch. A second person later if one is found: decision 71 |
@@ -21,7 +21,7 @@ The owner decided each item on 2 October 2026, from options the assistant put: d
 
 The owner wants to launch on 5 October 2026 if possible, and before 20 October 2026 if not: decision 82. The releases of 20 to 22 October 2026 in `docs/maintenance.md` are then the first update of the published site.
 
-The build work of decisions 68 and 74 was merged in pull request 18 on 2 October 2026. A production build was made in a scratch directory on 5 October 2026 and read by hand: see "Last checks" in `docs/HANDOVER.md`. Nobody has fetched a page past the sign-in since the deploy preview of pull request 1 on 29 September 2026, so the headers as served now are not confirmed.
+The build work of decisions 68 and 74 was merged in pull request 18 on 2 October 2026. A production build was made in a scratch directory on 5 October 2026 and read by hand: see "Last checks" in `docs/HANDOVER.md`. The preview was looked at past the sign-in on 6 October 2026, step 2 below; the headers as served were not read.
 
 This is the one ordered list. Each step is the owner's unless it says otherwise.
 
