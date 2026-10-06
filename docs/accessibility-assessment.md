@@ -1,6 +1,6 @@
 # Accessibility assessment: WCAG 2.2 Level A and AA
 
-Assessed 29 September 2026. Status: **incomplete**. The site must not be described as meeting WCAG 2.2 AA.
+Assessed 29 September 2026; the automated and scripted tests were last run on 5 October 2026. Status: **incomplete**. The site must not be described as meeting WCAG 2.2 AA.
 
 Automated and scripted checks are a floor. They do not show conformance. A person has not yet tested the site with a screen reader, with a keyboard, on a phone or in a second browser.
 

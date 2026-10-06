@@ -11,20 +11,18 @@ Do not read _archive/. Read research/ only when checking a figure. docs/ux-revie
 docs/pre-launch-review.md are frozen records: never edit them. docs/HANDOVER.md holds
 current state only (decision 83): do not add a dated section to it.
 
-State on 5 October 2026: see the opening paragraphs of docs/HANDOVER.md. The site is a
-preview for review, not published. All work is merged into `main`, up to pull request 22.
-The branch `pre-launch-review` holds the pre-launch review of 5 October 2026 and its
-corrections. They were not committed when this was written. Run git status first, and
-check with gh pr list whether the branch has been committed, pushed and merged before
-relying on either sentence.
+State on 6 October 2026: see the opening paragraphs of docs/HANDOVER.md. The site is a
+preview for review, not published. All work is merged into `main`, up to pull request 24.
+The pre-launch review of 5 October 2026 is merged (pull request 23). Launch steps 1 and 2
+in docs/launch-dependencies.md are done. Three doc edits from the handoff check of
+6 October 2026 may be uncommitted on `main`: run git status first.
 
-Next action: none for the assistant. The launch steps in docs/launch-dependencies.md are
-Anthony's, and step 1 is to merge that branch. Wait for Anthony to say what to do. Nothing
-else is authorised.
+Next action: none for the assistant. Launch step 3, the review of every page, is Anthony's.
+Wait for Anthony to say what to do. Nothing else is authorised.
 
-Waiting on Anthony: "Launch steps" in docs/launch-dependencies.md, and the table under
-"Waiting on the owner" in docs/HANDOVER.md. Decision 86 is the assistant's and not yet
-confirmed.
+Waiting on Anthony: "Launch steps" in docs/launch-dependencies.md from step 3, and the
+table under "Waiting on the owner" in docs/HANDOVER.md. Decision 86 is the assistant's
+and not yet confirmed.
 
 Do not raise again unless asked: the items under "Known defects and limits" and under
 "Declined: do not raise again" in docs/HANDOVER.md.

@@ -2,7 +2,7 @@
 
 Written 29 September 2026. Cut to the current state on 5 October 2026: decision 83.
 
-The site is a **preview for review**. It is not published. The repository is https://github.com/LegendT/UK-State-Pension-Explorer. All work is merged into `main`, up to pull request 22. The branch `pre-launch-review` holds the pre-launch review of 5 October 2026 and its corrections, recorded in `docs/pre-launch-review.md`. `gh pr list` says whether it has been merged.
+The site is a **preview for review**. It is not published. The repository is https://github.com/LegendT/UK-State-Pension-Explorer. All work is merged into `main`, up to pull request 24 on 6 October 2026, which `gh pr list --state merged --limit 1` confirms. The pre-launch review of 5 October 2026 and its corrections (pull request 23) are recorded in `docs/pre-launch-review.md`. Launch steps 1 and 2 are done.
 
 **This file holds state only.** Do not add a dated section. The record of a change, with its checks, goes in the description of its pull request, and a decision goes in `docs/decision-log.md`. The record up to pull request 21 is this file as it stood before the cut: `git show 75d0574:docs/HANDOVER.md`.
 
@@ -54,7 +54,7 @@ The deployed preview was checked past the sign-in on 6 October 2026, in the owne
 7. **The preview on Netlify uses basic authentication** and sends `noindex` on every file. Both were seen working on the deploy preview. Both must be removed from the production context at launch. Deploy previews and branch deploys keep them: decision 68. The user name and password are in the `BASIC_AUTH` variable in Netlify. Netlify's own password protection was switched off on 30 September 2026 with the Netlify CLI, on the owner's instruction. The main address then answered 401 with `WWW-Authenticate: Basic`, so basic authentication is the one sign-in.
 8. **Field errors use `role="alert"`.** With many errors at once, screen reader announcements may compete. Not tested.
 9. **The government's savings figures can be read but not reproduced.** The Department for Work and Pensions gives the baseline, the coverage and the prices. It does not give the paths of earnings and prices it assumed. The costs page says so.
-10. **After launch, deploy previews and branch deploys would be open.** Closed: decision 68, built and merged in pull request 18 on 2 October 2026. What is left is the look at the deployed preview past the sign-in.
+10. **After launch, deploy previews and branch deploys would be open.** Closed: decision 68, built and merged in pull request 18 on 2 October 2026. The look at the deployed preview past the sign-in was done on 6 October 2026: see "Last checks".
 11. **Markup left after the sweep of 29 September 2026.** Closed on 1 October 2026 and merged in pull request 11: decisions 54 to 57. Section 8 of `scripts/check-build.mjs` holds the rules a pattern can test.
 
 ## Checks not performed
@@ -94,7 +94,7 @@ As at 5 October 2026.
 
 | Item | What is needed |
 | --- | --- |
-| Launch | The steps, in order, are in `docs/launch-dependencies.md`, "Launch steps". The first is to merge the branch of the pre-launch review. The second is a look at the deployed preview past the sign-in. Nobody has had one since the deploy preview of pull request 1 on 29 September 2026 |
+| Launch | The steps, in order, are in `docs/launch-dependencies.md`, "Launch steps". Steps 1 and 2 were done on 6 October 2026. The next is step 3, the owner's review of every page |
 | Budget explorer: the freeze the owner saw | Reported with decision 81 on 2 October 2026: "At a glance" stopped updating. Not reproduced. Needed from the owner: the browser, whether it was the deployed preview or a local build, and the steps. Rule out an old script first: reload the page without the cache and try again. A reviewer ran the owner's steps and 268 scripted steps at four screen sizes on 5 October 2026, and the summary matched the full result every time. The nearest things found: on a short screen the summary is not pinned and leaves the screen once a tax figure is added; and a press on a button that lies under the pinned summary does not reach the button. A different freeze was found and fixed the same day: the rule comparison stopped responding when every rule gave almost the same amount |
 | "Back to contents" links | Confirm keeping several on a page. Asked on 1 October 2026 and not yet answered. The assistant's reading: SC 2.4.4 is met, because each link goes to the same place. The cost is repetition in a screen reader's list of links, below 1024 px only |
 | New since 30 September 2026, not yet on the site | Found on 5 October 2026 and listed with their addresses in `docs/pre-launch-review.md`: the Institute for Fiscal Studies' analysis of 30 September 2026, which puts the saving in 2039 to 2040 between £4 billion and £20 billion; the department's projection of pensioner poverty; the Scottish Government's letter of 1 October 2026; the Scottish National Party's statement of 2 October 2026; the pensions minister's article of 2 October 2026; a workforce plan promised for the end of the year; and two changes to the care commission's terms of reference on 1 October 2026. Each needs a source record and claims. The assistant adds them on the owner's word |
