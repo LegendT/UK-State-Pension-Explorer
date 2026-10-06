@@ -20,7 +20,7 @@ permalink: /history/
 
 <h2 id="two-series">Two separate series</h2>
 
-<p>The basic State Pension and the new State Pension are different things. The new State Pension began on 6 April 2016, so it has no rate before {{ (history.years | where("tax_year", "2016/17") | first).tax_year }}. This page never joins the two into one line, because no person's pension moved from one to the other.</p>
+<p>The basic State Pension and the new State Pension are different things. The new State Pension began on <time datetime="2016-04-06">6 April 2016</time>, so it has no rate before {{ (history.years | where("tax_year", "2016/17") | first).tax_year }}. This page never joins the two into one line, because no person's pension moved from one to the other.</p>
 
 <p>Both are full rates, before tax. They are not what each person received. <a href="/state-pension/#what-people-receive">What people actually receive</a>.</p>
 
@@ -30,7 +30,7 @@ permalink: /history/
 <table>
   <caption>Full weekly rates and the increase applied each year, as published</caption>
   <thead>
-    <tr><th scope="col">Tax year</th><th scope="col">Took effect</th><th scope="col" class="num">Basic State Pension</th><th scope="col" class="num">New State Pension</th><th scope="col" class="num">Increase applied</th><th scope="col" class="num">Prices</th><th scope="col" class="num">Earnings, as used</th><th scope="col">Decided by</th></tr>
+    <tr><th scope="col">Tax year</th><th scope="col">Took effect</th><th scope="col" class="num">Basic State Pension</th><th scope="col" class="num">New State Pension</th><th scope="col" class="num">Increase applied</th><th scope="col" class="num">Prices</th><th scope="col" class="num">Earnings, at the time</th><th scope="col">Decided by</th></tr>
   </thead>
   <tbody>
     {%- for year in history.years %}
@@ -41,7 +41,7 @@ permalink: /history/
       <td class="num">{% if year.new_pence %}{{ year.new_pence | money }}{% else %}Did not exist{% endif %}</td>
       <td class="num">{{ year.applied_tenths | percent }}</td>
       <td class="num">{% if year.prices_tenths !== null %}{{ year.prices_tenths | percent }}{% else %}Not a test that year{% endif %}</td>
-      <td class="num">{% if year.earnings_tenths !== null %}{{ year.earnings_tenths | percent }}{% else %}Not a test that year{% endif %}</td>
+      <td class="num">{% if year.earnings_tenths !== null %}{{ year.earnings_tenths | percent }}{% if year.earnings_not_used %} (not used){% endif %}{% else %}Not a test that year{% endif %}</td>
       <td>{{ { "prices": "Prices (CPI)", "earnings": "Earnings", "floor": "The 2.5% minimum", "rpi": "Prices (RPI, this year only)", "pre-triple-lock": "The higher of 2.5% or RPI" }[year.measure] }}</td>
     </tr>
     {%- endfor %}
@@ -49,7 +49,7 @@ permalink: /history/
 </table>
 {% endcall %}
 <div class="source">
-  <p><span class="status">Published rate</span> Great Britain. Prices are the rise in the Consumer Prices Index over the year to the September before. Earnings are for May to July of the year before, as used in the decision. In 2016/17 the basic State Pension rose on 11 April and the new State Pension began on 6 April.</p>
+  <p><span class="status">Published rate</span> Great Britain. Prices are the rise in the Consumer Prices Index over the year to the September before. Earnings are for May to July of the year before, as published at the time of the decision. In 2022/23 the earnings figure was not used. In 2016/17 the basic State Pension rose on 11 April and the new State Pension began on 6 April.</p>
   <p>Sources: <a href="{{ history.sources.rates_url }}">{{ history.sources.rates }}</a> <a href="{{ history.sources.decisions_url }}">{{ history.sources.decisions }}</a> Checked against the sources on {{ history.checked_date | timeTag | safe }}.</p>
 </div>
 
@@ -69,17 +69,17 @@ permalink: /history/
 
 <h2 id="revisions">Why the earnings figures differ from those published now</h2>
 
-<p>The Office for National Statistics revises its earnings figures. The figure used in a decision is the one published at the time.
+<p>The Office for National Statistics revises its earnings figures. The figure in a decision is the one published at the time.
 {% set changed = 0 %}{% set counted = 0 %}{% for year in history.years %}{% if year.earnings_tenths !== null %}{% set counted = counted + 1 %}{% if year.earnings_tenths != year.earnings_current_tenths %}{% set changed = changed + 1 %}{% endif %}{% endif %}{% endfor %}
 In {{ changed }} of the {{ counted }} years from 2011/12, the figure published now is different.</p>
 
 {% call m.scrollTable() %}
 <table>
-  <caption>Earnings growth: the figure used in each decision, and the figure published now</caption>
-  <thead><tr><th scope="col">For tax year</th><th scope="col" class="num">Used in the decision</th><th scope="col" class="num">Published now</th></tr></thead>
+  <caption>Earnings growth: the figure at the time of each decision, and the figure published now</caption>
+  <thead><tr><th scope="col">For tax year</th><th scope="col" class="num">At the time of the decision</th><th scope="col" class="num">Published now</th></tr></thead>
   <tbody>
     {%- for year in history.years %}{% if year.earnings_tenths !== null %}
-    <tr><th scope="row">{{ year.tax_year }}</th><td class="num">{{ year.earnings_tenths | percent }}</td><td class="num">{{ year.earnings_current_tenths | percent }}</td></tr>
+    <tr><th scope="row">{{ year.tax_year }}</th><td class="num">{{ year.earnings_tenths | percent }}{% if year.earnings_not_used %} (not used){% endif %}</td><td class="num">{{ year.earnings_current_tenths | percent }}</td></tr>
     {%- endif %}{% endfor %}
   </tbody>
 </table>
@@ -89,7 +89,7 @@ In {{ changed }} of the {{ counted }} years from 2011/12, the figure published n
   <p>Source for the figures published now: <a href="{{ history.sources.earnings_current_url }}">{{ history.sources.earnings_current }}</a> Checked against the source on {{ history.checked_date | timeTag | safe }}.</p>
 </div>
 
-<p>The calculations on this page use the figures as used in each decision. A calculation from the figures published now would give slightly different results.</p>
+<p>The calculations on this page use the figures as they stood at each decision. A calculation from the figures published now would give slightly different results.</p>
 
 <h2 id="explorer">The history explorer</h2>
 

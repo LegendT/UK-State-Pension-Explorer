@@ -26,7 +26,7 @@ export function reconstruct(years, series, startYear, rule) {
   });
 }
 
-// Amount in the prices of the latest year, using the CPI index for the September before each rate.
+// Amount in the prices of the last year given, using the CPI index for the September before each rate.
 export function inLatestPrices(pence, year, latestYear) {
   return (pence * latestYear.cpi_index) / year.cpi_index;
 }

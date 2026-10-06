@@ -1,50 +1,50 @@
 {
   "standard": "WCAG 2.2 Level AA",
   "status": "incomplete",
-  "assessed_on": "2026-09-29",
+  "assessed_on": "2026-10-05",
   "note": "Filled in from docs/accessibility-assessment.md after each round of testing.",
   "done": [
     {
       "check": "Automated rules",
       "result": "axe-core 4.11 ran on every page, at phone and desktop widths, in light and dark schemes, and with each calculator showing a result and an error. It found no violations. Where it could not judge the contrast of some text, a script measured each case, and none was below the required ratio.",
       "environment": "Chrome 154 on macOS (Apple silicon), driven by script.",
-      "date": "2026-09-29"
+      "date": "2026-10-05"
     },
     {
       "check": "Reflow",
       "result": "At 320 CSS pixels wide, no page scrolls sideways. Wide tables and charts scroll inside their own area.",
       "environment": "Chrome 154 on macOS (Apple silicon), driven by script.",
-      "date": "2026-09-29"
+      "date": "2026-10-05"
     },
     {
       "check": "Text spacing",
       "result": "With the spacing of WCAG 1.4.12 applied, no text was cut off on any page.",
       "environment": "Chrome 154 on macOS (Apple silicon), driven by script.",
-      "date": "2026-09-29"
+      "date": "2026-10-05"
     },
     {
       "check": "Target size",
       "result": "No control is smaller than 24 by 24 CSS pixels, apart from links inside a sentence, which the guidelines exempt. Some controls are between 24 and 43 pixels high, below our own aim of 44.",
       "environment": "Chrome 154 on macOS (Apple silicon), driven by script.",
-      "date": "2026-09-29"
+      "date": "2026-10-05"
     },
     {
       "check": "Keyboard order and visible focus",
       "result": "A script pressed Tab through every page. Every control was reached, in reading order, with an outline style set when focused, and none was covered by other content. A person has not looked at the outline on every control.",
       "environment": "Chrome 154 on macOS (Apple silicon), driven by script.",
-      "date": "2026-09-29"
+      "date": "2026-10-05"
     },
     {
       "check": "Headings",
       "result": "No page skips a heading level.",
       "environment": "Chrome 154 on macOS (Apple silicon), driven by script.",
-      "date": "2026-09-29"
+      "date": "2026-10-05"
     },
     {
       "check": "Without JavaScript",
       "result": "Every explanation can be read. Each calculator shows a notice and a worked example or default result.",
       "environment": "Chrome 154 on macOS (Apple silicon), driven by script.",
-      "date": "2026-09-29"
+      "date": "2026-10-05"
     }
   ],
   "not_done": [
@@ -79,6 +79,10 @@
     {
       "check": "Independent audit",
       "reason": "No one has carried one out."
+    },
+    {
+      "check": "The \"Out of date\" note in the calculators",
+      "reason": "Added on 5 October 2026. When a figure is half typed, the last result stays with this note. It was looked at in screenshots. The automated rules did not scan that state, and nobody has heard it with a screen reader."
     },
     {
       "check": "Changes to a form when a choice is made",

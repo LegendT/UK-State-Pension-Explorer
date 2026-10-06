@@ -189,6 +189,9 @@ main > .tool, main > figure, main > .cards, main > .scroll-x, main > .rate-block
 .tool-summary p { margin: 0 0 0.25rem; font-size: 0.85rem; }
 .tool-summary .headline { font-size: 0.95rem; font-weight: 700; }
 .tool-summary .tool-updated { margin: var(--space-s) 0 0; }
+.tool-stale { margin: 0 0 var(--space-s); }
+/* A date in a table cell stays on one line: a narrow column broke "12 April 2010" over three. */
+td time, th time { white-space: nowrap; }
 /* A label and its value. The rule comparison has three columns: rule, amount, and how far it is
    from the triple lock. */
 .tool-summary dl { display: grid; grid-template-columns: auto auto; gap: 0 var(--space-m); margin: 0; }

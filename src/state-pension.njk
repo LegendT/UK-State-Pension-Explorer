@@ -36,7 +36,7 @@ permalink: /state-pension/
 <p>There are two systems.</p>
 
 <ul>
-  <li>The <strong>new State Pension</strong> is for men born on or after 6 April 1951 and women born on or after 6 April 1953. These are people who reached State Pension age on or after 6 April 2016.</li>
+  <li>The <strong>new State Pension</strong> is for men born on or after <time datetime="1951-04-06">6 April 1951</time> and women born on or after <time datetime="1953-04-06">6 April 1953</time>. These are people who reached State Pension age on or after <time datetime="2016-04-06">6 April 2016</time>.</li>
   <li>The <strong>basic State Pension</strong> is for people born before those dates.</li>
 </ul>
 <p>{{ m.c("which-system") }}</p>
@@ -58,7 +58,7 @@ permalink: /state-pension/
 <ul>
   <li>A person usually needs {{ m.f("nsp-min-qualifying-years") }} qualifying years to get any new State Pension.</li>
   <li>A person whose National Insurance record began after April 2016 needs {{ m.f("nsp-full-rate-years") }} qualifying years for the full rate.</li>
-  <li>Each qualifying year added after 5 April 2016 adds about {{ m.f("nsp-per-qualifying-year") }} a week, up to the full rate.</li>
+  <li>Each qualifying year added after <time datetime="2016-04-05">5 April 2016</time> adds about {{ m.f("nsp-per-qualifying-year") }} a week, up to the full rate.</li>
 </ul>
 {{ m.sourceNote("nsp-full-rate-years" | figure) }}
 
@@ -142,7 +142,7 @@ permalink: /state-pension/
 
 {% call m.note("Announced, not yet law", 3) %}
 <p>{{ ("simple-assessment-2027" | claim).statement }} {{ m.c("simple-assessment-2027") }}</p>
-<p>{{ ("pm-speech-income-tax" | claim).statement }} {{ m.c("pm-speech-income-tax") }} The speech is as printed by a newspaper. We found no official transcript.</p>
+<p>{{ ("pm-speech-income-tax" | claim).statement }} {{ m.c("pm-speech-income-tax") }} The speech is as published by the Labour Party. GOV.UK carries no transcript.</p>
 {% endcall %}
 
 <p>The State Pension is usually paid every 4 weeks, in arrears. {{ m.c("paid-four-weekly") }} {{ m.c("paid-in-arrears") }}</p>
@@ -165,7 +165,7 @@ permalink: /state-pension/
 <p><a href="https://www.gov.uk/pension-credit">Check whether you can get Pension Credit on GOV.UK</a>.</p>
 
 <h3>Help with housing and Council Tax</h3>
-<p>{{ ("housing-benefit" | claim).statement }} {{ m.c("housing-benefit") }} {{ ("council-tax-reduction" | claim).statement }} {{ m.c("council-tax-reduction") }}</p>
+<p>{{ ("housing-benefit" | claim).statement }} {{ m.c("housing-benefit") }} {{ ("council-tax-reduction" | claim).statement }} {{ m.c("council-tax-reduction") }} {{ ("council-tax-reduction-pensioners" | claim).statement }} {{ m.c("council-tax-reduction-pensioners") }}</p>
 
 <h3>Help with the costs of disability</h3>
 <p>Attendance Allowance is for people over State Pension age who need help or supervision because of a disability or health condition. It is {{ m.f("attendance-allowance-lower") }} or {{ m.f("attendance-allowance-higher") }} a week and is not means-tested. It covers England and Wales. {{ m.c("aa-scotland") }} {{ ("aa-northern-ireland" | claim).statement }} {{ m.c("aa-northern-ireland") }}</p>
@@ -182,7 +182,7 @@ permalink: /state-pension/
 <p>This is the main difference from a defined contribution workplace or personal pension. In those, contributions are invested in a pot that belongs to the saver. A defined benefit workplace pension is different again: it promises an income under the scheme's rules, usually linked to pay and years of service. In the State Pension there is no pot. A person's contributions build an entitlement under the rules, and the money paid in by today's workers and employers pays today's pensions.</p>
 
 <ul class="cards cards--three">
-  <li>{{ m.stat("nif-contributions-2024-25" | figure, "Money paid into the Fund in the year.") }}</li>
+  <li>{{ m.stat("nif-contributions-2024-25" | figure, "National Insurance contributions paid into the Fund in the year.") }}</li>
   <li>{{ m.stat("nif-state-pension-2024-25" | figure, "State Pension paid out of the Fund in the year.") }}</li>
   <li>{{ m.stat("nif-balance-2025" | figure, "What the Fund held at the end of the year.") }}</li>
 </ul>

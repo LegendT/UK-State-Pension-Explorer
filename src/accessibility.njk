@@ -9,7 +9,7 @@ permalink: /accessibility/
 
 {% if a11y.status != "complete" %}
 {% call m.note("Status: assessment not complete", 2) %}
-<p>This is a preview. An AI assistant has run automated checks and some scripted checks. No person has tested the site with a screen reader. Automated checks alone cannot show that a site meets the guidelines. We will not describe the site as meeting WCAG 2.2 AA until every check below is done and every failure is fixed.</p>
+<p>{% if not site.production %}This is a preview. {% endif %}An AI assistant has run automated checks and some scripted checks. The tests that need a person, and are not yet done, are listed under <a href="#not-tested">What has not been tested</a>. Automated checks alone cannot show that a site meets the guidelines. We will not describe the site as meeting WCAG 2.2 AA until every check below is done and every failure is fixed.</p>
 {% endcall %}
 {% endif %}
 

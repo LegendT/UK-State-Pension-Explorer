@@ -107,7 +107,7 @@ const COUNT = { 3: "three", 4: "four" };
 // The chart's title states which rules end highest and lowest in this result. Worked out each time,
 // because a typed title would be false for another scenario.
 function message(result, measure, years) {
-  const ends = RULES.map((rule) => ({ rule, v: Math.round(value(result.rules[rule].years.at(-1), measure) * (measure === "earnings" ? 10 : 100)) }));
+  const ends = RULES.map((rule) => ({ rule, v: Math.round(value(result.rules[rule].years[result.rules[rule].years.length - 1], measure) * (measure === "earnings" ? 10 : 100)) }));
   const top = Math.max(...ends.map((e) => e.v));
   const bottom = Math.min(...ends.map((e) => e.v));
   if (top === bottom) return `All five rules end at the same amount after ${years}`;

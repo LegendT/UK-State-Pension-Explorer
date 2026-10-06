@@ -4,7 +4,9 @@ import { budget, weekly, PERIODS, PERIOD_LABELS } from "./budget.js";
 import { money } from "./format.js";
 
 function pair(yearlyPence) {
-  return `<td class="num">${money(Math.round(weekly(yearlyPence)))}</td><td class="num">${money(yearlyPence)}</td>`;
+  // Rounded on the size, so a shortfall and a surplus of the same size print the same weekly amount.
+  const perWeek = Math.sign(yearlyPence) * Math.round(Math.abs(weekly(yearlyPence)));
+  return `<td class="num">${money(perWeek)}</td><td class="num">${money(yearlyPence)}</td>`;
 }
 
 // The headline and the summary give amounts for the period the reader enters, so they match the form.
@@ -17,7 +19,7 @@ function balance(result, period) {
   const yearly = period === "year" ? "" : ` (${money(Math.abs(result.balancePence))} a year)`;
   let headline;
   if (result.balancePence < 0) headline = `Shortfall of ${amount} ${EACH[period]}${yearly}`;
-  else if (result.balancePence === 0) headline = "Income and spending are equal";
+  else if (result.balancePence === 0) headline = result.taxKnown ? "Nothing left over and no shortfall" : "Income and spending are equal";
   else headline = `${amount} left over ${EACH[period]}${yearly}`;
   return { balanceName, headline };
 }

@@ -28,7 +28,9 @@ function ticks(min, max) {
   const power = 10 ** Math.floor(Math.log10(rough));
   const step = [1, 2, 5, 10].map((m) => m * power).find((s) => span / s <= 6);
   const out = [];
-  for (let v = Math.ceil(min / step) * step; v <= max + step / 1000; v += step) out.push(Number(v.toFixed(6)));
+  // Counted in whole steps: adding a step that is tiny beside the value would never move it,
+  // and the loop would not end.
+  for (let k = Math.ceil(min / step); k * step <= max + step / 1000; k += 1) out.push(Number((k * step).toFixed(6)));
   return out;
 }
 
@@ -64,7 +66,10 @@ export function lineChart({ id, title, description, labels, series: input, yLabe
   const all = series.flatMap((s) => s.values).filter((v) => v !== null);
   const low = Math.min(...all);
   const high = Math.max(...all);
-  const margin = (high - low || 1) * 0.08;
+  // Values that differ only by floating-point noise count as equal. A real but tiny spread still
+  // gets an axis wide enough for labels that differ.
+  const spread = high - low > Math.abs(high) * 1e-9 ? high - low : 0;
+  const margin = spread ? Math.max(spread * 0.08, 0.005) : 0.08;
   const yTicks = ticks(low - margin, high + margin);
   const yMin = Math.min(yTicks[0], low - margin);
   const yMax = Math.max(yTicks[yTicks.length - 1], high + margin);
@@ -105,7 +110,9 @@ export function lineChart({ id, title, description, labels, series: input, yLabe
   // Each line is named at its end. Names closer than a line of text are moved apart.
   const ends = series
     .map((s) => {
-      const i = s.values.findLastIndex((v) => v !== null);
+      // Not findLastIndex: Safari before 15.4 does not have it.
+      let i = s.values.length - 1;
+      while (i > 0 && s.values[i] === null) i -= 1;
       return { index: s.style, text: s.short, x: x(i) + 8, y: y(s.values[i]) + 4 };
     })
     .sort((a, b) => a.y - b.y);

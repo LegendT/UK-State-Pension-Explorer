@@ -125,3 +125,12 @@ for name, path in paths7.items():
     print("--", name, rows, "cash total", f"{sum(D(r[0]) for r in rows) * 52:.2f}")
 rows = run_2030("241.30", [("2.0","3.7")]*30)
 print("-- steady (p2.0,e3.7 x30): year 30", rows[-1], "cash total", f"{sum(D(r[0]) for r in rows) * 52:.2f}")
+
+print("== 8. the cash floor after rounding, from a starting amount that is not a multiple of 5p")
+# At 0% the unrounded amount is 241.32 and the nearest 5p is 241.30, below the start. With the
+# floor on, the start is kept. Tested in test/uprating.test.js.
+for rule in ["double", "earnings", "prices"]:
+    _, r = step("241.32", rate(rule, "-1.0", "-1.0"))
+    print(rule, "floor on: rounded", r.quantize(D("0.01")), "kept", max(r, D("241.32")).quantize(D("0.01")))
+_, r = step("241.32", rate("prices", "-1.0", "-1.0", False))
+print("prices, floor off:", r.quantize(D("0.01")))

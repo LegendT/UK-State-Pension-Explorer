@@ -2,6 +2,7 @@
 // docs/reference-calculations.md. They were not produced by the code under test.
 import { test } from "node:test";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import {
   applyIncrease,
   compareRules,
@@ -119,6 +120,10 @@ test("inputs are parsed exactly and bad text is refused", () => {
   assert.equal(parsePence("241.30"), 24130);
   assert.equal(parsePence("241.3"), 24130);
   assert.equal(parsePence("£1,000"), 100000);
+  assert.equal(parsePence("1,234,567.89"), 123456789);
+  assert.equal(parsePence("241,30"), null);
+  assert.equal(parsePence("1,0000"), null);
+  assert.equal(parsePence("12,34.50"), null);
   assert.equal(parsePence("12.345"), null);
   assert.equal(parsePence("-5"), null);
 });
@@ -152,7 +157,9 @@ test("the rule announced for April 2030: the percentage shown, ties with the min
   assert.deepEqual([pricesAndFloor.pence, pricesAndFloor.determining], [24735, ["prices", "floor"]]);
   const allThree = compareRules(24130, path([[25, 25]])).rules["rule-2030"].years[1];
   assert.deepEqual([allThree.pence, allThree.determining], [24735, ["prices", "floor", "catch-up"]]);
-  const steady = compareRules(24130, path(Array(30).fill([20, 37]))).rules;
+  const scenario = JSON.parse(readFileSync(new URL("../src/_data/scenarios.json", import.meta.url), "utf8")).scenarios.find((s) => s.id === "steady");
+  assert.deepEqual(scenario.path, Array(30).fill({ prices: 20, earnings: 37 }));
+  const steady = compareRules(24130, scenario.path).rules;
   const thirty = steady["rule-2030"];
   assert.equal(thirty.years[30].pence, 71765);
   assert.equal(thirty.cashTotalPence, 69425720);

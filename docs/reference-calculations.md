@@ -15,6 +15,7 @@ To reproduce: `python3 scripts/reference.py`. To compare with the calculators: `
 | Zero increase, and a negative increase | Section 1 |
 | Ties between two and three measures | Section 2 |
 | Both measures negative, cash floor on and off | Sections 2 and 3 |
+| The cash floor after rounding, from a starting amount that is not a multiple of 5p: £241.32 at minus 1% | Section 8 |
 | A scenario where three rules give the same result | Section 3, steady |
 | A scenario where only the 2.5% minimum separates the rules | Section 3, low |
 | Volatile prices | Section 3 |
@@ -116,4 +117,9 @@ all published rates reproduced
 -- tie: p2.5 e1.0 (prices and the minimum) [('247.35', 'prices+floor', '2.5%')] cash total 12862.20
 -- tie: p2.5 e2.5 (all three) [('247.35', 'prices+floor+catch-up', '2.5%')] cash total 12862.20
 -- steady (p2.0,e3.7 x30): year 30 ('717.65', 'catch-up', '3.7%') cash total 694257.20
+== 8. the cash floor after rounding, from a starting amount that is not a multiple of 5p
+double floor on: rounded 241.30 kept 241.32
+earnings floor on: rounded 241.30 kept 241.32
+prices floor on: rounded 241.30 kept 241.32
+prices, floor off: 238.90
 ```

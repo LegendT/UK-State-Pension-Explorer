@@ -180,7 +180,7 @@
     "table_reference": "Table A23: High level expenditure by household composition.",
     "checked_date": "2026-09-29",
     "classification": "observed-statistic",
-    "qualifications": "United Kingdom. Means across all households in each group. Housing leaves out mortgage interest and Council Tax, which are in 'Other expenditure items'. Health and education are not published for these groups, so the categories do not add up to the totals. Two-adult households are not always couples.",
+    "qualifications": "United Kingdom. Means across all households in each group. Housing leaves out mortgage interest and Council Tax, which are in 'Other expenditure items'. Health and education are not published for these groups, except that no household of two adults mainly dependent on state pensions reported any spending on education. So the categories do not add up to the totals. Two-adult households are not always couples.",
     "columns": [
       "Category",
       "One person, mainly dependent on state pensions",
@@ -204,7 +204,7 @@
         "£79.50"
       ],
       [
-        "Alcoholic drinks and tobacco",
+        "Alcoholic drinks, tobacco and narcotics",
         "£6.10",
         "£9.60",
         "£7.70",
@@ -262,7 +262,7 @@
       [
         "Education",
         "Not published",
-        "Not published",
+        "None reported",
         "Not published",
         "Not published"
       ],

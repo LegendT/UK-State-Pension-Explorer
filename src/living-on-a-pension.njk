@@ -41,8 +41,8 @@ permalink: /living-on-a-pension/
 <p>The Minimum Income Standard is produced by Loughborough University for the Joseph Rowntree Foundation. Groups of members of the public agree what a household needs for a minimum socially acceptable standard of living. {{ m.c("mis-not-poverty-line") }}</p>
 
 <ul class="cards">
-  <li>{{ m.stat("mis-single-ex-rent" | figure, "A single pensioner, not counting rent.", 4) }}</li>
-  <li>{{ m.stat("mis-couple-ex-rent" | figure, "A pensioner couple, not counting rent.", 4) }}</li>
+  <li>{{ m.stat("mis-single-ex-rent" | figure, "A week, for a single pensioner, not counting rent.", 4) }}</li>
+  <li>{{ m.stat("mis-couple-ex-rent" | figure, "A week, for a pensioner couple, not counting rent.", 4) }}</li>
 </ul>
 
 <p>Rent is shown separately because it differs so much by area. The budgets use an indicative private rent of {{ m.f("mis-single-rent") }} a week for a single pensioner and {{ m.f("mis-couple-rent") }} for a couple.</p>
@@ -71,7 +71,7 @@ permalink: /living-on-a-pension/
 {% endcall %}
 {{ m.sourceNote("mis-cover-single-private" | figure) }}
 
-<p>Two cautions. The cases assume every benefit is claimed, and many are not. {{ m.c("mis-all-benefits-assumed") }} And the budget leaves out the extra costs of disability and care. {{ m.c("mis-excludes-disability") }}</p>
+<p>Two cautions. The cases assume every benefit is claimed, and many are not. {{ m.c("mis-all-benefits-assumed") }} And the budget leaves out the extra costs of disability. {{ m.c("mis-excludes-disability") }}</p>
 
 <h3>The Retirement Living Standards</h3>
 
@@ -101,7 +101,7 @@ permalink: /living-on-a-pension/
 <p>Read this table with four points in mind.</p>
 <ul>
   <li>These are averages over every household in the group, including those that spent nothing on an item.</li>
-  <li>The groups are small. {{ m.c("fs-small-samples") }} The group of two adults mainly dependent on state pensions had {{ tables["observed-spending"].rows[0][2] }} households in the sample, so its figures are weak.</li>
+  <li>The survey's samples are small. {{ m.c("fs-small-samples") }} The groups here are smaller still. The group of two adults mainly dependent on state pensions had {{ tables["observed-spending"].rows[0][2] }} households in the sample, so its figures are weak.</li>
   <li>Households that depend mainly on state pensions spend less than other retired households. The table cannot show whether that is because they need less or because they have less.</li>
   <li>The categories are not the same as those in the research budgets, so the two cannot be compared line by line. Council Tax, for example, is inside "Other expenditure items" here.</li>
 </ul>
@@ -117,7 +117,7 @@ permalink: /living-on-a-pension/
 {{ m.sourceNote("benefit-share-single" | figure) }}
 
 {% call m.note("Do not set these incomes beside the research budgets without care", 3) %}
-<p>The income figures are after Council Tax. The research budgets count Council Tax as a cost. Comparing them directly counts Council Tax twice. The periods also differ. Incomes are for 2024/25 and the 2026 budget is priced at April 2026.</p>
+<p>The income figures are after Council Tax, and after housing costs, which include water charges. The research budgets count Council Tax and water as costs. Comparing them directly counts both twice. The periods also differ. Incomes are for 2024/25 and the 2026 budget is priced at April 2026.</p>
 {% endcall %}
 
 <p>For how incomes and wealth are spread among pensioners, see <a href="/reform-options/costs/#who">Reform options: who receives what</a>.</p>
@@ -128,9 +128,9 @@ permalink: /living-on-a-pension/
   <dt>Housing</dt>
   <dd>The largest difference between households. An owner with no mortgage pays no rent but pays for repairs and buildings insurance. A renter's costs depend on the area and on whether the landlord is a council, a housing association or private. Taking the rent out of a renter's budget does not make an owner's budget.</dd>
   <dt>Sharing costs</dt>
-  <dd>Two people do not need twice what one person needs. Heating, Council Tax and rent are shared. When a partner dies, income falls by more than costs do.</dd>
+  <dd>Two people do not need twice what one person needs. Heating, Council Tax and rent are shared. When a partner dies, income often falls by more than costs do.</dd>
   <dt>Where the household lives</dt>
-  <dd>The research budgets are for urban areas outside London. London costs more. Rural households often need a car where the budgets assume buses.</dd>
+  <dd>The research budgets are for urban areas outside London. London costs more. Rural households often need a car where the minimum budgets assume buses.</dd>
   <dt>Energy</dt>
   <dd>A person who is at home all day, or who is ill, needs more heating. An older or poorly insulated home costs more to heat.</dd>
   <dt>Disability and care</dt>
@@ -157,7 +157,7 @@ permalink: /living-on-a-pension/
 {% endcall %}
 {{ m.sourceNote("hci-retired" | figure) }}
 
-<p>To compare the pension with prices, the two must cover the same period. Over the five tax years from 2021/22 to 2026/27 the full new State Pension rose from {{ (history.years | where("tax_year", "2021/22") | first).new_pence | money }} to {{ (history.years | where("tax_year", "2026/27") | first).new_pence | money }} a week. That period is close to the five years in the table but not the same, and the pension rises once a year while prices rise through the year. One inflation reading does not test whether the pension is adequate. <a href="/history/">Rates and prices over time</a>.</p>
+<p>To compare the pension with prices, the two must cover the same period. Over five years, from April 2021 to April 2026, the full new State Pension rose from {{ (history.years | where("tax_year", "2021/22") | first).new_pence | money }} to {{ (history.years | where("tax_year", "2026/27") | first).new_pence | money }} a week. That period is close to the five years in the table but not the same, and the pension rises once a year while prices rise through the year. One inflation reading does not test whether the pension is adequate. <a href="/history/">Rates and prices over time</a>.</p>
 
 <h2 id="budget">The budget explorer</h2>
 

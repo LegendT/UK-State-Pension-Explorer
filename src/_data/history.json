@@ -252,6 +252,7 @@
       "measure": "prices",
       "prices_tenths": 31,
       "earnings_tenths": 83,
+      "earnings_not_used": true,
       "earnings_current_tenths": 84,
       "cpi_index": 112.4,
       "reference_year": 2021,

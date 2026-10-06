@@ -8,7 +8,7 @@ import { money, percent } from "./format.js";
 
 export const HISTORY_MEASURES = {
   cash: "Cash: pounds a week in the money of each year",
-  real: "Buying power: pounds a week in the prices of the latest year",
+  real: "Buying power: pounds a week in the prices of the last year shown",
   earnings: "Compared with earnings: an index, first year shown = 100",
 };
 

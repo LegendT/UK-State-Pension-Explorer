@@ -13,8 +13,8 @@
       "canonical_path": "/",
       "index": true,
       "published": null,
-      "modified": "2026-09-30",
-      "modified_note": "Added the announcement of 29 September 2026, rewrote the news note, and added a table of State Pension age by date of birth.",
+      "modified": "2026-10-05",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md.",
       "figure_cards": true
     },
     {
@@ -28,8 +28,8 @@
       "canonical_path": "/state-pension/",
       "index": true,
       "published": null,
-      "modified": "2026-09-29",
-      "modified_note": "First written.",
+      "modified": "2026-10-05",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md.",
       "figure_cards": true
     },
     {
@@ -43,8 +43,8 @@
       "canonical_path": "/triple-lock/",
       "index": true,
       "published": null,
-      "modified": "2026-10-02",
-      "modified_note": "The tool moved to a page of its own on 2 October 2026; a short pointer stays."
+      "modified": "2026-10-05",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md."
     },
     {
       "path": "/living-on-a-pension/",
@@ -57,8 +57,8 @@
       "canonical_path": "/living-on-a-pension/",
       "index": true,
       "published": null,
-      "modified": "2026-10-02",
-      "modified_note": "The tool moved to a page of its own on 2 October 2026; a short pointer stays.",
+      "modified": "2026-10-05",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md.",
       "figure_cards": true
     },
     {
@@ -72,8 +72,8 @@
       "canonical_path": "/reform-options/",
       "index": true,
       "published": null,
-      "modified": "2026-10-01",
-      "modified_note": "Split into four pages on 30 September 2026. On 1 October 2026 the rule comparison moved to its own page.",
+      "modified": "2026-10-05",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md.",
       "figure_cards": true
     },
     {
@@ -87,8 +87,8 @@
       "canonical_path": "/reform-options/compare/",
       "index": true,
       "published": null,
-      "modified": "2026-10-01",
-      "modified_note": "Moved from the reform options page on 1 October 2026, so the result can be seen while the figures change."
+      "modified": "2026-10-05",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md."
     },
     {
       "path": "/reform-options/costs/",
@@ -101,8 +101,8 @@
       "canonical_path": "/reform-options/costs/",
       "index": true,
       "published": null,
-      "modified": "2026-09-30",
-      "modified_note": "Moved from the reform options page, which was split into four pages on 30 September 2026.",
+      "modified": "2026-10-05",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md.",
       "figure_cards": true
     },
     {
@@ -116,8 +116,8 @@
       "canonical_path": "/reform-options/social-care/",
       "index": true,
       "published": null,
-      "modified": "2026-09-30",
-      "modified_note": "Moved from the reform options page, which was split into four pages on 30 September 2026.",
+      "modified": "2026-10-05",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md.",
       "figure_cards": true
     },
     {
@@ -131,8 +131,8 @@
       "canonical_path": "/reform-options/entitlement/",
       "index": true,
       "published": null,
-      "modified": "2026-09-30",
-      "modified_note": "Moved from the reform options page, which was split into four pages on 30 September 2026."
+      "modified": "2026-10-05",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md."
     },
     {
       "path": "/history/",
@@ -145,8 +145,8 @@
       "canonical_path": "/history/",
       "index": true,
       "published": null,
-      "modified": "2026-10-02",
-      "modified_note": "The tool moved to a page of its own on 2 October 2026; a short pointer stays."
+      "modified": "2026-10-05",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md."
     },
     {
       "path": "/tools/",
@@ -159,8 +159,8 @@
       "canonical_path": "/tools/",
       "index": true,
       "published": null,
-      "modified": "2026-10-02",
-      "modified_note": "Given its own page on 2 October 2026, so the result can be seen while the form changes."
+      "modified": "2026-10-05",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md."
     },
     {
       "path": "/tools/triple-lock/",
@@ -173,8 +173,8 @@
       "canonical_path": "/tools/triple-lock/",
       "index": true,
       "published": null,
-      "modified": "2026-10-02",
-      "modified_note": "Given its own page on 2 October 2026, so the result can be seen while the form changes."
+      "modified": "2026-10-05",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md."
     },
     {
       "path": "/tools/budget/",
@@ -187,8 +187,8 @@
       "canonical_path": "/tools/budget/",
       "index": true,
       "published": null,
-      "modified": "2026-10-02",
-      "modified_note": "Given its own page on 2 October 2026, so the result can be seen while the form changes."
+      "modified": "2026-10-05",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md."
     },
     {
       "path": "/tools/history/",
@@ -201,8 +201,8 @@
       "canonical_path": "/tools/history/",
       "index": true,
       "published": null,
-      "modified": "2026-10-02",
-      "modified_note": "Given its own page on 2 October 2026, so the result can be seen while the form changes."
+      "modified": "2026-10-05",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md."
     },
     {
       "path": "/sources-and-method/",
@@ -215,8 +215,8 @@
       "canonical_path": "/sources-and-method/",
       "index": true,
       "published": null,
-      "modified": "2026-09-30",
-      "modified_note": "Added the rule announced for April 2030 to the method of the rule comparison."
+      "modified": "2026-10-05",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md."
     },
     {
       "path": "/accessibility/",
@@ -229,8 +229,8 @@
       "canonical_path": "/accessibility/",
       "index": true,
       "published": null,
-      "modified": "2026-09-29",
-      "modified_note": "First written."
+      "modified": "2026-10-05",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md."
     },
     {
       "path": "/privacy/",

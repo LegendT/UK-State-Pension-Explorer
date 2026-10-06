@@ -5,7 +5,7 @@ import { PERIOD_LABELS, fromWeekly } from "../lib/budget.js";
 import { renderBudget, renderBudgetSummary } from "../lib/budget-view.js";
 import { money } from "../lib/format.js";
 import { parsePence } from "../lib/uprating.js";
-import { announce, live, pinSummary, readAmount, readJson, setError, updatedNote } from "./common.js";
+import { markStale, STALE_MESSAGE, announce, live, pinSummary, readAmount, readJson, setError, updatedNote } from "./common.js";
 
 const data = readJson("budget-data");
 const form = document.getElementById("budget-form");
@@ -19,6 +19,7 @@ const glance = document.getElementById("budget-glance");
 const EMPTY = result.innerHTML;
 const GLANCE_EMPTY = glance.innerHTML;
 let lastResult = "";
+let stale = false;
 
 let presetLabel = "";
 
@@ -68,8 +69,10 @@ function loadPreset() {
     `<div><dt>Housing</dt> <dd>${chosen.housing}</dd></div>` +
     `<div><dt>Left out</dt> <dd>${chosen.exclusions}</dd></div>` +
     `<div><dt>Source</dt> <dd>${chosen.source}. ${chosen.table_reference}</dd></div></dl>`;
+  // Read before update sets it: the breakdown has "changed" only when one was already showing.
+  const shown = lastResult;
   update("quiet");
-  announce(status, `Example budget loaded into the spending fields: ${chosen.label}.${note}${lastResult ? " The breakdown below has changed." : ""}`);
+  announce(status, `Example budget loaded into the spending fields: ${chosen.label}.${note}${shown && lastResult !== shown ? " The breakdown below has changed." : ""}`);
 }
 
 function fillPension() {
@@ -77,8 +80,9 @@ function fillPension() {
   const note = period.value === "week" ? "" : ` Entered as ${money(pence)} for ${PERIOD_LABELS[period.value]}, to the nearest penny.`;
   input("state-pension").value = (pence / 100).toFixed(2);
   setError(input("state-pension"), "");
+  const shown = lastResult;
   update("quiet");
-  announce(status, `State Pension set to the full new rate, ${data.full_new_rate} pounds a week.${note}${lastResult ? " The breakdown below has changed." : ""}`);
+  announce(status, `State Pension set to the full new rate, ${data.full_new_rate} pounds a week.${note}${shown && lastResult !== shown ? " The breakdown below has changed." : ""}`);
 }
 
 function rows(list) {
@@ -87,7 +91,7 @@ function rows(list) {
   for (const item of list) {
     const field = input(item.id);
     if (field.closest("[hidden]")) continue;
-    const pence = readAmount(field, `an amount for ${item.label.toLowerCase()}`, { min: 0, max: 100000000, optional: true });
+    const pence = readAmount(field, `an amount for ${item.label}`, { min: 0, max: 100000000, optional: true });
     if (pence === null) ok = false;
     out.push({ id: item.id, label: item.label, pence: pence || 0 });
   }
@@ -99,6 +103,9 @@ function rows(list) {
 function update(mode) {
   const fields = [...form.querySelectorAll('input[type="text"]')].filter((field) => !field.closest("[hidden]"));
   if (fields.every((field) => field.value.trim() === "")) {
+    // An emptied field may still carry the error of what was typed in it.
+    for (const field of fields) setError(field, "");
+    stale = false;
     lastResult = "";
     result.innerHTML = EMPTY;
     glance.innerHTML = GLANCE_EMPTY;
@@ -115,6 +122,13 @@ function update(mode) {
     setError(tax, "");
   }
   if (!income || !spending || !taxOk) {
+    if (mode === "live" && lastResult) {
+      stale = true;
+      markStale(result, glance);
+      announce(status, STALE_MESSAGE);
+      return;
+    }
+    stale = false;
     lastResult = "";
     result.innerHTML = `<h3>No result</h3><p>Correct the amounts marked with an error.</p>`;
     glance.innerHTML = `<p>No result. Correct the amounts marked with an error.</p>`;
@@ -124,7 +138,9 @@ function update(mode) {
   const figures = { period: period.value, income, spending, taxPence, presetLabel };
   const html = renderBudget(figures);
   // Choosing an example or a household fires a change without changing any amount. Say nothing then.
-  if (html === lastResult) return;
+  // While the result is marked out of date, the same figures typed again must still redraw it.
+  if (html === lastResult && !stale) return;
+  stale = false;
   lastResult = html;
   result.innerHTML = html;
   glance.innerHTML = renderBudgetSummary(figures) + updatedNote("The full breakdown below has changed too.");
@@ -136,7 +152,7 @@ form.addEventListener("submit", (event) => {
   event.preventDefault();
   update();
 });
-live(form, update);
+live(form, () => update("live"));
 pinSummary(glance.parentElement);
 
 function clearAll() {

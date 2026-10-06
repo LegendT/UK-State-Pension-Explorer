@@ -38,10 +38,11 @@ export function parseTenths(text) {
 }
 
 // "241.30" -> 24130. Returns null when the text is not pounds with at most two decimal places.
+// A comma is accepted between thousands only, so "241,30" is refused, not read as £24,130.
 export function parsePence(text) {
-  const match = /^\s*£?\s*(\d{1,7})(?:\.(\d{1,2}))?\s*$/.exec(String(text).replace(/,/g, ""));
+  const match = /^\s*£?\s*(\d{1,7}|\d{1,3}(?:,\d{3}){1,2})(?:\.(\d{1,2}))?\s*$/.exec(String(text));
   if (!match) return null;
-  return Number(match[1]) * 100 + Number((match[2] || "").padEnd(2, "0"));
+  return Number(match[1].replace(/,/g, "")) * 100 + Number((match[2] || "").padEnd(2, "0"));
 }
 
 export function upratingFor(rule, pricesTenths, earningsTenths, cashFloor = true) {
