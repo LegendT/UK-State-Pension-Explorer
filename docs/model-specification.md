@@ -42,7 +42,7 @@ Measures are compared as entered, to one decimal place. When two or three measur
 
 The triple lock can never produce a negative increase, because 2.5% is always available.
 
-The rule announced for April 2030 cannot either, for the same reason. The other three rules can produce a negative figure. The model has one declared option, **"The rate never falls in cash terms"**, which is on by default. With the option on, a negative result becomes 0% and the result says the cash floor decided the increase. With the option off, the rate falls.
+The rule announced for April 2030 cannot either, for the same reason. The other three rules can produce a negative figure. The model has one declared option, **"The rate never falls in cash terms"**, which is on by default. With the option on, a negative result becomes 0% and the result says the cash floor decided the increase. The floor is applied again after rounding to 5p, so a starting amount that is not a multiple of 5p, such as £241.32, is kept as it is and not rounded down to £241.30. With the option off, the rate falls.
 
 The cash floor is an assumption of these hypothetical rules. It is not a statement of enacted law, and the site must say so beside the option.
 

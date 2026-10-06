@@ -859,6 +859,56 @@
     "licence": "Open Government Licence v3.0",
     "note": "Accredited official statistics."
   },
+  "dwp-uprating-analysis-2026": {
+    "publisher": "Department for Work and Pensions",
+    "title": "State Pension uprating",
+    "url": "https://www.gov.uk/government/publications/state-pension-uprating-analysis-2026/state-pension-uprating",
+    "published_date": "2026-09-29",
+    "updated_date": null,
+    "checked_date": "2026-10-05",
+    "licence": "Open Government Licence v3.0",
+    "note": "An ad hoc analysis published on the day of the announcement. It gives the method and the baseline of the government's savings estimates, in cash and in 2025 to 2026 prices, for Great Britain. It does not give the paths of earnings and prices it assumed, or the measure of earnings."
+  },
+  "ageuk-response-2026-09-29": {
+    "publisher": "Age UK",
+    "title": "Age UK comment in response to Andy Burnham's speech in relation to social care and the triple lock",
+    "url": "https://www.ageuk.org.uk/latest-press/age-uk-comment-in-response-to-andy-burnhams-speech-in-relation-to-social-care-and-the-triple-lock/",
+    "published_date": "2026-09-29",
+    "updated_date": null,
+    "checked_date": "2026-10-05",
+    "licence": "Copyright of the publisher. Short quotation only.",
+    "note": "The charity's own statement."
+  },
+  "libdem-release-2026-09-29": {
+    "publisher": "Liberal Democrats",
+    "title": "Davey: Burnham is risking a repeat of the Winter Fuel Payment fiasco",
+    "url": "https://www.libdems.org.uk/press/release/davey-burnham-is-risking-a-repeat-of-the-winter-fuel-payment-fiasco",
+    "published_date": "2026-09-29",
+    "updated_date": null,
+    "checked_date": "2026-10-05",
+    "licence": "Copyright of the publisher. Short quotation only.",
+    "note": "The party's own press release."
+  },
+  "pa-badenoch-2026-09-30": {
+    "publisher": "PA News, published by Yahoo News UK",
+    "title": "Badenoch: Triple lock is 'current' Tory policy and in 'draft manifesto'",
+    "url": "https://uk.news.yahoo.com/badenoch-triple-lock-current-tory-180913158.html",
+    "published_date": "2026-09-30",
+    "updated_date": null,
+    "checked_date": "2026-10-05",
+    "licence": "Copyright of the publisher. Short quotation only.",
+    "note": "A news report. It is evidence of what was reported."
+  },
+  "ctr-prescribed-requirements-2012": {
+    "publisher": "legislation.gov.uk",
+    "title": "The Council Tax Reduction Schemes (Prescribed Requirements) (England) Regulations 2012, regulation 11",
+    "url": "https://www.legislation.gov.uk/uksi/2012/2885/regulation/11",
+    "published_date": null,
+    "updated_date": null,
+    "checked_date": "2026-10-05",
+    "licence": "Open Government Licence v3.0",
+    "note": "The law for England. Scotland and Wales have their own schemes."
+  },
   "pm-care-2026-09-29": {
     "publisher": "Prime Minister's Office, 10 Downing Street",
     "title": "Prime Minister Andy Burnham sets out plans for a new National Care Service",
@@ -890,14 +940,14 @@
     "note": "A response by Jonathan Cribb. The site refuses automated reading, so it was read in a browser."
   },
   "speech-2026-09-29": {
-    "publisher": "The New World",
-    "title": "\"We will hope again\": Andy Burnham's full speech to the 2026 Labour Party Conference",
-    "url": "https://www.thenewworld.co.uk/we-will-hope-again-andy-burnhams-full-speech-to-the-2026-labour-party-conference/",
+    "publisher": "The Labour Party",
+    "title": "Andy Burnham's speech to Labour Party Conference 2026",
+    "url": "https://labour.org.uk/updates/stories/andy-burnhams-speech-to-labour-party-conference-2026/",
     "published_date": "2026-09-29",
     "updated_date": null,
-    "checked_date": "2026-10-01",
+    "checked_date": "2026-10-05",
     "licence": "Copyright of the publisher. Short quotation only.",
-    "note": "The speech as printed by a newspaper. It is not an official transcript. We found none."
+    "note": "The speech as published by the Prime Minister's party. GOV.UK carries no transcript of it."
   },
   "rf-response-2026-09-29": {
     "publisher": "Resolution Foundation",
@@ -987,6 +1037,6 @@
     "updated_date": null,
     "checked_date": "2026-09-30",
     "licence": "Copyright of the publisher. Short quotation only.",
-    "note": "A trade news report that quotes several organisations. We did not find these statements on the organisations' own sites."
+    "note": "A trade news report that quotes several organisations. Age UK's statement is on its own site, which this site cites instead. The sites of the Health Foundation and the King's Fund refuse automated reading, so their statements were not checked there."
   }
 }

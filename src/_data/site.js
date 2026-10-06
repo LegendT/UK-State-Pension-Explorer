@@ -3,6 +3,10 @@
 // production build stops when one is missing. The analytics token is typed in below, because it
 // is public. See docs/launch-dependencies.md.
 
+import { readFileSync } from "node:fs";
+
+const a11y = JSON.parse(readFileSync(new URL("./a11y.json", import.meta.url), "utf8"));
+
 const env = process.env.SITE_ENV || "development";
 if (!["development", "preview", "production"].includes(env)) {
   throw new Error(`SITE_ENV must be development, preview or production, not "${env}"`);
@@ -49,7 +53,7 @@ const config = {
   accessibilityAssessmentDate: process.env.A11Y_ASSESSMENT_DATE || "",
   aiCrawlerPolicy: process.env.AI_CRAWLER_POLICY || "",
   // Cloudflare Web Analytics, production only: decision 74. Not a secret: it is printed in every page.
-  // ponytail: typed here, as on UK Public Finances, not a Netlify variable nobody has to remember.
+  // ponytail: typed here, as on UK Public Finances, so nobody has to remember a Netlify variable.
   analyticsToken: production ? "325728f9446f4b2881adb0f5fb398f12" : "",
   nav: [
     { href: "/", label: "Overview" },
@@ -83,16 +87,27 @@ const config = {
   ],
 };
 
+// A real calendar date, so 2026-02-30 is refused. Today is the owner's date, in the UK, not the build server's.
+const isDate = (text) => /^\d{4}-\d{2}-\d{2}$/.test(text) && !Number.isNaN(Date.parse(`${text}T00:00:00Z`)) && new Date(`${text}T00:00:00Z`).toISOString().slice(0, 10) === text;
+const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/London" }).format(new Date());
+
 if (production) {
   const missing = [];
-  if (!/^https:\/\/[^/]+$/.test(url)) missing.push("SITE_URL (https, no path)");
-  if (/localhost|example|placeholder/i.test(url)) missing.push("SITE_URL (a real domain)");
+  if (!/^https:\/\/[a-z0-9.-]+$/.test(url)) missing.push("SITE_URL (https, a host name only, no path)");
+  // Decision 67. A mistyped domain would pass every other check and become the canonical of every page.
+  else if (url !== "https://ukstatepensionexplorer.org") missing.push(`SITE_URL (it is ${url}, but the registered domain is https://ukstatepensionexplorer.org: change this line if the domain changes)`);
   if (!process.env.SITE_TITLE) missing.push("SITE_TITLE (the working title is not used without a decision)");
   if (!["Person", "Organization"].includes(process.env.OWNER_TYPE)) missing.push("OWNER_TYPE (Person or Organization, the schema.org spelling)");
-  if (!config.correctionUrl) missing.push("CORRECTION_URL");
+  if (!/^(https:\/\/|mailto:)\S+$/.test(config.correctionUrl)) missing.push("CORRECTION_URL (an https or mailto address)");
   if (!config.ownerName) missing.push("OWNER_NAME");
   if (!config.reviewerName || !config.reviewDate) missing.push("REVIEWER_NAME and REVIEW_DATE");
+  else if (!isDate(config.reviewDate) || config.reviewDate > today) missing.push(`REVIEW_DATE (a real date as 2026-10-05, not after today, ${today} in the UK)`);
   if (!config.accessibilityAssessmentDate) missing.push("A11Y_ASSESSMENT_DATE");
+  // The statement prints assessed_on from a11y.json, not this variable. They must agree, or the
+  // build could pass on a date while the statement still shows the tests of an earlier day.
+  else if (config.accessibilityAssessmentDate !== a11y.assessed_on) {
+    missing.push(`A11Y_ASSESSMENT_DATE (it is ${config.accessibilityAssessmentDate}, but src/_data/a11y.json has assessed_on ${a11y.assessed_on}: update the statement, then use its date)`);
+  }
   if (!["allow", "refuse-training"].includes(config.aiCrawlerPolicy)) {
     missing.push("AI_CRAWLER_POLICY (allow or refuse-training)");
   }

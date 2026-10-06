@@ -136,6 +136,24 @@ export function pinSummary(summary) {
   window.addEventListener("resize", fit);
 }
 
+// A half-typed figure, such as "-", is not a reason to take away the result the reader is looking
+// at. On a redraw that follows typing, the last result stays, marked as out of date, and the field
+// shows its error. The next valid redraw replaces the region, which removes the mark.
+export function markStale(...regions) {
+  for (const region of regions) {
+    region.querySelector(".tool-updated")?.remove();
+    if (region.querySelector(".tool-stale")) continue;
+    const note = document.createElement("p");
+    note.className = "tool-stale";
+    const label = document.createElement("span");
+    label.className = "status";
+    label.textContent = "Out of date";
+    note.append(label, " A figure has an error. This is the last result, from before the change.");
+    region.prepend(note);
+  }
+}
+export const STALE_MESSAGE = "There is a problem with the figures entered. The result shown is out of date.";
+
 // The summary stays in view, but the full result is below the form and easy to miss. After a
 // change, the summary says the result below changed too. Text only: the pinned summary holds
 // nothing that takes focus. Not shown on arrival, when nothing has changed.

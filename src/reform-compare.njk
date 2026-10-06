@@ -13,7 +13,7 @@ permalink: /reform-options/compare/
 <section class="tool" aria-labelledby="compare">
   <h2 id="compare">Try the rules</h2>
 
-  <p>This tool applies five rules to the same starting amount and the same yearly figures for prices and earnings. It shows where the rules differ and where they do not. One of the five is the rule announced for April 2030. The government has not published how it works, so the tool makes three assumptions about it, and one more to keep the tool simple. <a href="#rule-2030-assumptions">The assumptions</a>.</p>
+  <p>This tool applies five rules to the same starting amount and the same yearly figures for prices and earnings. It shows where the rules differ and where they do not. One of the five is the rule announced for April 2030. The government has described it in outline only, so the tool makes three assumptions about it, and one more to keep the tool simple. <a href="#rule-2030-assumptions">The assumptions</a>.</p>
 
   {% call m.note("What this tool does and does not show", 3) %}
   <ul>
@@ -100,7 +100,7 @@ permalink: /reform-options/compare/
 
   {#- How many people a rule reaches. Shown as context only: the tool does not multiply by it. -#}
   {%- set forecast = tables["sp-spending-series"].rows | last %}
-  <p>The amounts in this tool are for one person on the full rate. In {{ ("sp-recipients" | figure).period_label }}, {{ m.f("sp-recipients") }} people were receiving the State Pension. {{ m.ref(("sp-recipients" | figure).source) }} For {{ forecast[0] }}, the Department for Work and Pensions forecasts {{ forecast[4] }} million people on average in Great Britain. {{ m.ref(tables["sp-spending-series"].source_id | sourceRecord) }} The average new State Pension in payment in {{ ("nsp-mean-weekly" | figure).period_label }} was {{ m.f("nsp-mean-weekly") }} a week, below the full rate then in force. {{ m.ref(("nsp-mean-weekly" | figure).source) }} The rules raise a pension by a percentage, so a smaller pension changes by less. A national saving also depends on Income Tax and Pension Credit, so this tool cannot work it out. <a href="/reform-options/costs/#cost-and-saving">What a change would save</a>.</p>
+  <p>The amounts in this tool are for one person on the full rate. In {{ ("sp-recipients" | figure).period_label }}, {{ m.f("sp-recipients") }} people were receiving the State Pension. {{ m.ref(("sp-recipients" | figure).source) }} For {{ forecast[0] }}, the Department for Work and Pensions forecasts {{ forecast[4] }} million people on average, in Great Britain and overseas. {{ m.ref(tables["sp-spending-series"].source_id | sourceRecord) }} The average new State Pension in payment in {{ ("nsp-mean-weekly" | figure).period_label }} was {{ m.f("nsp-mean-weekly") }} a week, below the full rate then in force. {{ m.ref(("nsp-mean-weekly" | figure).source) }} The rules raise a pension by a percentage, so a smaller pension changes by less. A national saving also depends on Income Tax and Pension Credit, so this tool cannot work it out. <a href="/reform-options/costs/#cost-and-saving">What a change would save</a>.</p>
 
   <p class="visually-hidden" role="status" id="compare-status"></p>
 

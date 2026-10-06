@@ -3,7 +3,7 @@
 import { mechanism, MEASURE_LABELS } from "../lib/uprating.js";
 import { SERIES_LABELS } from "../lib/history.js";
 import { money, percent, list } from "../lib/format.js";
-import { announce, escapeHtml, live, pinSummary, readAmount, readJson, readPercent, setError, updatedNote } from "./common.js";
+import { markStale, STALE_MESSAGE, announce, escapeHtml, live, pinSummary, readAmount, readJson, readPercent, setError, updatedNote } from "./common.js";
 
 const data = readJson("mechanism-data");
 const form = document.getElementById("mechanism-form");
@@ -40,6 +40,8 @@ function load(quiet) {
   const from = previousRate(record, series.value);
   if (from === null) {
     loaded = null;
+    // Nothing to keep if a figure is then half typed.
+    hasResult = false;
     result.innerHTML = `<div class="unavailable" role="note"><h3>Not available: an increase for that choice</h3><p>The new State Pension began in 2016/17. Its first full rate was set, not increased from an earlier rate. Choose a later year, or choose the basic State Pension.</p></div>`;
     glance.innerHTML = `<p>No increase to show for that choice.</p>`;
     mode.textContent = "Past decision";
@@ -55,6 +57,7 @@ function load(quiet) {
 }
 
 function showPast(quiet) {
+  hasResult = true;
   const { record, from } = loaded;
   const to = record[`${loaded.series}_pence`];
   mode.textContent = `Past decision: ${record.tax_year}, as published`;
@@ -63,7 +66,7 @@ function showPast(quiet) {
     `<p class="headline">${percent(record.applied_tenths)} increase, decided by ${escapeHtml(MEASURE_NAMES[record.measure])}</p>` +
     `<dl>` +
     row("Prices, year to the September before", percent(record.prices_tenths)) +
-    row("Earnings, May to July before, as used in the decision", percent(record.earnings_tenths)) +
+    row("Earnings, May to July before, as published at the time", percent(record.earnings_tenths) + (record.earnings_not_used ? " (not used)" : "")) +
     row("Minimum", "2.5%") +
     row("Weekly rate before", money(from)) +
     row("Weekly rate after, as published", money(to)) +
@@ -80,20 +83,31 @@ function showPast(quiet) {
   if (!quiet) announce(status, `Showing the decision for ${record.tax_year}: ${percent(record.applied_tenths)}. The full result below has changed.`);
 }
 
-function showOwn() {
+// typing: the redraw follows a keystroke, so an invalid figure may be half typed.
+let hasResult = true;
+function showOwn(typing) {
   const p = readPercent(prices, "the rise in prices");
   const e = readPercent(earnings, "the rise in earnings");
   const s = readAmount(start, "the starting weekly amount");
   if (p === null || e === null || s === null) {
+    // The label is left alone while the last result stays: it still names what is shown.
+    if (typing && hasResult) {
+      markStale(result, glance);
+      announce(status, STALE_MESSAGE);
+      return;
+    }
+    hasResult = false;
+    mode.textContent = "Hypothetical: your own figures";
     announce(status, "There is a problem with the figures entered. No result is shown.");
     result.innerHTML = `<h3>No result</h3><p>Correct the figures marked with an error.</p>`;
     glance.innerHTML = `<p>No result. Correct the figures marked with an error.</p>`;
     return;
   }
+  hasResult = true;
+  mode.textContent = "Hypothetical: your own figures";
   const out = mechanism(s, p, e);
   const names = out.determining.map((name) => MEASURE_LABELS[name]);
   const decided = out.determining.length > 1 ? `a tie between ${list(names)}` : names[0];
-  mode.textContent = "Hypothetical: your own figures";
   result.innerHTML =
     `<h3>Hypothetical result</h3>` +
     `<p class="headline">${percent(out.tenths)} increase, decided by ${escapeHtml(decided)}</p>` +
@@ -102,7 +116,8 @@ function showOwn() {
     row("Earnings", percent(e)) +
     row("Minimum", "2.5%") +
     row("Weekly amount before", money(s)) +
-    row("Weekly amount after, before rounding", `£${(out.unroundedPence / 100).toFixed(4)}`) +
+    // Worked in whole numbers and shown to all five places, so it cannot show a half that then rounds down.
+    row("Weekly amount after, before rounding", `£${((s * (1000 + out.tenths)) / 100000).toFixed(5).replace(/(\.\d\d\d*?)0+$/, "$1")}`) +
     row("Weekly amount after, rounded to the nearest 5p", money(out.pence)) +
     row("Weekly increase", money(out.increasePence)) +
     row("52 weeks at the new amount", money(out.annualPence)) +
@@ -120,7 +135,7 @@ document.getElementById("mechanism-load").addEventListener("click", () => load()
 
 // The result follows the figures: the published decision until one is changed, then a hypothetical
 // result, until a decision is loaded again. There is no submit button; the handler stays for a scripted submit.
-function update() {
+function update(typing) {
   const same =
     loaded &&
     prices.value === (loaded.record.prices_tenths / 10).toFixed(1) &&
@@ -130,7 +145,7 @@ function update() {
     showPast();
   } else {
     loaded = null;
-    showOwn();
+    showOwn(typing);
   }
 }
 
@@ -141,7 +156,7 @@ form.addEventListener("submit", (event) => {
 // Only the figures redraw the result. Choosing a year or a pension waits for "Load this decision",
 // because loading replaces the figures.
 const figures = document.getElementById("mechanism-figures");
-live(figures, update);
+live(figures, () => update(true));
 
 // The decision the page was built with is in the fields, so it is the one loaded at the start.
 form.reset();

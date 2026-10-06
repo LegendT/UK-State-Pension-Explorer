@@ -151,7 +151,7 @@
   },
   "paid-in-arrears": {
     "kind": "rule",
-    "statement": "The State Pension is paid in arrears, which means each payment covers the weeks just gone.",
+    "statement": "The new State Pension is paid in arrears, which means each payment covers the weeks just gone.",
     "source_id": "claims-payments-regs",
     "passage": "State pension is to be paid in arrears.",
     "interpretation": false,
@@ -233,10 +233,20 @@
     "kind": "rule",
     "statement": "Council Tax Reduction is run by local councils and the rules vary by area.",
     "source_id": "govuk-council-tax-reduction",
-    "passage": "You could be eligible if you're on a low income or claim benefits. Your bill could be reduced by up to 100%.",
+    "passage": "each council runs its own scheme",
     "interpretation": false,
     "note": null,
     "checked_date": "2026-09-29",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "council-tax-reduction-pensioners": {
+    "kind": "rule",
+    "statement": "In England, regulations prescribe classes of pensioners that each council's scheme has to include, so for pensioners the main rules are set nationally.",
+    "source_id": "ctr-prescribed-requirements-2012",
+    "passage": "the classes of pensioners described in paragraph 1 of Schedule 1 are classes of person prescribed",
+    "interpretation": true,
+    "note": "Regulation 11. The second half of the sentence is our reading of what that means for a pensioner.",
+    "checked_date": "2026-10-05",
     "review_status": "checked-with-ai-assistance"
   },
   "ni-stops-at-spa": {
@@ -391,7 +401,7 @@
   },
   "earnings-link-restored": {
     "kind": "enacted",
-    "statement": "The earnings link was restored from the tax year 2010-11.",
+    "statement": "The law that restored the earnings link named 2010-11 as the first tax year in which rates are reviewed against earnings, so the first increase under it was in April 2011.",
     "source_id": "si-2010-2650",
     "passage": "The designated tax year ... is the tax year 2010-11",
     "interpretation": false,
@@ -461,7 +471,7 @@
   },
   "mis-basket-change": {
     "kind": "finding",
-    "statement": "The researchers say changes to the basket mattered more than inflation for the 2026 budgets.",
+    "statement": "The researchers say changes to the basket generally mattered more than inflation for the 2026 budgets.",
     "source_id": "jrf-mis-2026",
     "passage": "in 2026 changes in the basket of goods and services ... have generally had a greater impact on what has happened to budgets overall than inflation.",
     "interpretation": false,
@@ -571,7 +581,7 @@
   },
   "ifs-explicit-goal": {
     "kind": "recommendation",
-    "statement": "It argues that a government wanting a more generous pension should say so as a goal.",
+    "statement": "The Institute for Fiscal Studies argues that a government wanting a more generous pension should say so as a goal.",
     "source_id": "ifs-pensions-review-final",
     "passage": "if the government wants a more generous state pension relative to average earnings then it would be better to set that as an explicit goal than to use the triple lock",
     "interpretation": true,
@@ -670,8 +680,8 @@
     "review_status": "checked-with-ai-assistance"
   },
   "ppi-future-workers": {
-    "kind": "finding",
-    "statement": "The Pensions Policy Institute reports that the triple lock improves the pension for today's workers more than for today's pensioners.",
+    "kind": "commentary",
+    "statement": "The Pensions Policy Institute notes the argument that the triple lock improves the pension even more for today's workers than for today's pensioners.",
     "source_id": "ppi-triple-lock-2024",
     "passage": "the triple lock actually improves the State Pension even more for the current workforce than for current pensioners",
     "interpretation": false,
@@ -831,7 +841,7 @@
   },
   "if-nic-proposal": {
     "kind": "proposal",
-    "statement": "The Intergenerational Foundation proposes National Insurance on the earnings of people over State Pension age.",
+    "statement": "In a paper of 2018, the Intergenerational Foundation proposed National Insurance on the earnings of people over State Pension age.",
     "source_id": "if-nic-anomaly",
     "passage": "At least £1.5 billion extra National Insurance revenue could be raised annually",
     "interpretation": true,
@@ -1025,7 +1035,7 @@
     "source_id": "pm-care-2026-09-29",
     "passage": "From April 2030, the adjusted Triple Lock will mean the State Pension continues to rise by 2.5% or inflation - whichever is higher – and by even more if that is required to maintain its value relative to earnings.",
     "interpretation": false,
-    "note": "An announcement. The rule is not in law, and the government has not published how the earnings part would be worked out.",
+    "note": "An announcement. The rule is not in law. The government has described it in outline, and has not published the measure of earnings or the exact test.",
     "checked_date": "2026-09-30",
     "review_status": "checked-with-ai-assistance"
   },
@@ -1135,8 +1145,8 @@
     "source_id": "speech-2026-09-29",
     "passage": "The state pension will continue to rise every year at least by prices or 2.5%.",
     "interpretation": false,
-    "note": "From the speech as printed by a newspaper. Not an official transcript.",
-    "checked_date": "2026-09-30",
+    "note": "From the speech as published by the Labour Party. GOV.UK carries no transcript.",
+    "checked_date": "2026-10-05",
     "review_status": "checked-with-ai-assistance"
   },
   "pm-speech-income-tax": {
@@ -1145,7 +1155,7 @@
     "source_id": "speech-2026-09-29",
     "passage": "I can also confirm today our commitment to ensure that the low-income pensioners won't be dragged into paying income tax in this Parliament.",
     "interpretation": false,
-    "note": "From the speech as printed by a newspaper. Not an official transcript. The GOV.UK news story of 29 September 2026 does not mention Income Tax.",
+    "note": "From the speech as published by the Labour Party. GOV.UK carries no transcript. The GOV.UK news story of 29 September 2026 does not mention Income Tax.",
     "checked_date": "2026-10-01",
     "review_status": "checked-with-ai-assistance"
   },
@@ -1155,7 +1165,7 @@
     "source_id": "ifs-new-tl-comment-2026",
     "passage": "the amount needed to ensure the state pension keeps up with average earnings growth since the introduction of the new policy",
     "interpretation": false,
-    "note": "The Institute's description. The government has not published the mechanism.",
+    "note": "The Institute's description. The government has described the rule in outline only.",
     "checked_date": "2026-09-30",
     "review_status": "checked-with-ai-assistance"
   },
@@ -1221,7 +1231,7 @@
   },
   "ifs-real-rise-slower": {
     "kind": "commentary",
-    "statement": "The Institute's deputy director says pensions would still rise faster than prices over time, but more slowly than under the triple lock.",
+    "statement": "The deputy director of the Institute for Fiscal Studies says pensions would still rise faster than prices over time, but more slowly than under the triple lock.",
     "source_id": "ifs-new-tl-response-2026",
     "passage": "state pensions will still rise in real terms over time but more slowly than under the current system",
     "interpretation": false,
@@ -1271,7 +1281,7 @@
   },
   "conservative-response": {
     "kind": "reported",
-    "statement": "The Conservative leader said the change would not save enough to pay for a care service for two decades. In the reports we read she did not say whether her party would keep the triple lock after 2030.",
+    "statement": "The Conservative leader said the change would not save enough to pay for a care service for two decades.",
     "source_id": "lbc-2026-09-29",
     "passage": "it won't generate enough savings to fund a nationalised care system for another two decades",
     "interpretation": false,
@@ -1279,14 +1289,24 @@
     "checked_date": "2026-09-30",
     "review_status": "checked-with-ai-assistance"
   },
+  "conservative-response-next-day": {
+    "kind": "reported",
+    "statement": "The next day she was reported as saying that the triple lock is her party's policy and in its draft manifesto, when asked whether she could guarantee it would be in the next one.",
+    "source_id": "pa-badenoch-2026-09-30",
+    "passage": "Our current policies are in our draft manifesto. The triple lock is our policy and in our draft manifesto.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-05",
+    "review_status": "checked-with-ai-assistance"
+  },
   "libdem-response": {
     "kind": "reported",
     "statement": "The Liberal Democrat leader said care reform cannot wait until after another election and cannot be paid for by the poorest pensioners.",
-    "source_id": "lbc-2026-09-29",
-    "passage": "cannot wait until after another election, and it can't be funded from the pockets of our poorest pensioners",
+    "source_id": "libdem-release-2026-09-29",
+    "passage": "cannot wait until after another election and it can't be funded from the pockets of our poorest pensioners",
     "interpretation": false,
-    "note": "LBC quotes a post on a social media site. We did not open the post.",
-    "checked_date": "2026-09-30",
+    "note": null,
+    "checked_date": "2026-10-05",
     "review_status": "checked-with-ai-assistance"
   },
   "reform-response": {
@@ -1362,11 +1382,11 @@
   "ageuk-response": {
     "kind": "reported",
     "statement": "Age UK said it would wait for the detail before judging the pension change.",
-    "source_id": "hm-responses-2026-09-29",
+    "source_id": "ageuk-response-2026-09-29",
     "passage": "we postpone judgment on the overall impact of their proposed reform until we can scrutinise the detail",
     "interpretation": false,
     "note": null,
-    "checked_date": "2026-09-30",
+    "checked_date": "2026-10-05",
     "review_status": "checked-with-ai-assistance"
   },
   "hf-response": {
@@ -1389,14 +1409,34 @@
     "checked_date": "2026-09-30",
     "review_status": "checked-with-ai-assistance"
   },
+  "dwp-2030-baseline": {
+    "kind": "finding",
+    "statement": "The Department for Work and Pensions published an analysis of the change on the day of the announcement. It measures the savings against keeping the triple lock.",
+    "source_id": "dwp-uprating-analysis-2026",
+    "passage": "Savings estimates are produced by comparing long-run projected State Pension expenditure under the adjusted Triple Lock uprating mechanism with expenditure under the current Triple Lock.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-05",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "dwp-2030-caution": {
+    "kind": "finding",
+    "statement": "The department says its savings figures should be relied on for the long term, and not used to work out the saving in a single year.",
+    "source_id": "dwp-uprating-analysis-2026",
+    "passage": "These savings should not be used to then derive further point estimates for savings in an individual year and should instead be relied on for long-term estimates.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-05",
+    "review_status": "checked-with-ai-assistance"
+  },
   "no-rule-2030-detail": {
     "kind": "not-found",
-    "statement": "We found no Bill, no technical note and no costing method for the change to the triple lock.",
+    "statement": "We found no Bill for the change to the triple lock. The government has not published the measure of earnings the rule would use, or the paths of earnings and prices behind its savings estimates.",
     "source_id": null,
     "passage": null,
     "interpretation": false,
-    "note": "Searched on 30 September 2026: GOV.UK, the announcement itself, and news reports of it. Parliament was not sitting. The announcement does not say which measure of earnings would be used, or from what starting point.",
-    "checked_date": "2026-09-30",
+    "note": "Searched on 5 October 2026: GOV.UK, the announcement, the Department for Work and Pensions' analysis of 29 September 2026, and the UK Parliament's list of Bills. A search on 30 September 2026 missed that analysis.",
+    "checked_date": "2026-10-05",
     "review_status": "checked-with-ai-assistance"
   },
   "no-rule-2030-distribution": {

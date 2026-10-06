@@ -68,9 +68,17 @@ for (const [url, html] of written) {
   // The foot says where check dates are only on pages with figure cards, so the register must say which those are.
   const cards = /<summary[^>]*>More about this figure/.test(html);
   if (cards !== Boolean(entry.figure_cards)) fail(`${url} ${cards ? "has figure cards but" : "has no figure cards but"} figure_cards is ${Boolean(entry.figure_cards)} in the page register`);
-  const noindex = /<meta name="robots" content="noindex">/.test(html);
+  // Any spelling of a robots tag that carries noindex counts, so "noindex, nofollow" is not read as indexable.
+  const noindex = /<meta name="robots"[^>]*noindex/i.test(html);
   if (site.production && entry.index && noindex) fail(`${url} is noindex in a production build`);
   if ((!site.production || !entry.index) && !noindex) fail(`${url} should be noindex`);
+  // What separates a published page from a preview, checked in both directions.
+  const banner = html.includes('class="preview-banner"');
+  const beacon = html.includes("cloudflareinsights");
+  if (site.production && banner) fail(`${url} carries the preview banner in a production build`);
+  if (!site.production && !banner) fail(`${url} is a preview with no preview banner`);
+  if (site.production && !html.includes(`"token": "${site.analyticsToken}"`)) fail(`${url} has no analytics script in a production build`);
+  if (!site.production && beacon) fail(`${url} loads the analytics script outside production`);
   for (const block of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
     try {
       const data = JSON.parse(block[1]);

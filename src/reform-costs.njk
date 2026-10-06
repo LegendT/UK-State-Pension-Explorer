@@ -37,7 +37,7 @@ permalink: /reform-options/costs/
 <p>The Office for Budget Responsibility projects a rise of {{ m.f("sp-rise-gdp-total") }} between 2030-31 and 2075-76. It attributes {{ m.f("tl-share-of-rise") }} of that to the triple lock. Most of the rest comes from an older population.</p>
 {{ m.sourceNote("tl-share-of-rise" | figure) }}
 
-<p>The projection reaches {{ m.f("sp-share-gdp-2075-76") }} in 2075-76. It assumes the triple lock adds {{ m.f("tl-premium-obr") }} percentage points a year to earnings growth on average. {{ ("obr-tl-assumed" | claim).statement }} {{ m.c("obr-tl-assumed") }}</p>
+<p>The projection reaches {{ m.f("sp-share-gdp-2075-76") }} in 2075-76. It assumes the triple lock raises the pension by {{ m.f("tl-premium-obr") }} percentage points a year more than earnings growth, on average. {{ ("obr-tl-assumed" | claim).statement }} {{ m.c("obr-tl-assumed") }}</p>
 {{ m.sourceNote("sp-share-gdp-2075-76" | figure) }}
 
 <p>Four things drive the bill, and only one of them is the yearly increase.</p>
@@ -54,7 +54,7 @@ permalink: /reform-options/costs/
 
 <p>Future numbers of workers depend partly on migration. {{ m.sisterLink("migration" | link) }} explains how migration is measured. It does not estimate the effect on pension costs, and neither does this site.</p>
 
-<p>Pensioners also pay tax. {{ m.f("pensioner-taxpayers") }} people above State Pension age paid Income Tax in 2023 to 2024. {{ m.c("ni-stops-at-spa") }}</p>
+<p>Pensioners also pay tax. {{ m.f("pensioner-taxpayers") }} people above State Pension age paid Income Tax in 2023 to 2024. {{ m.ref(("pensioner-taxpayers" | figure).source) }} {{ ("ni-stops-at-spa" | claim).statement }} {{ m.c("ni-stops-at-spa") }}</p>
 {{ m.sourceNote("pensioner-taxpayers" | figure) }}
 
 <p>For the difference between what the government spends or borrows in a year and the debt it has built up, see {{ m.sisterLink("debt-vs-deficit" | link) }}.</p>
@@ -112,7 +112,7 @@ permalink: /reform-options/costs/
   </tbody>
 </table>
 {% endcall %}
-<div class="source"><p>Estimates and projections, not forecasts of what will happen. None describes a cut to pensions already in payment. The sources do not say so in those words. This is our reading of what each one models. Checked against the sources on {{ ("saving-earnings-2075" | figure).checked_date | timeTag | safe }}, except the two rows for the rule announced for April 2030, checked on {{ ("saving-rule-2030-2050" | figure).checked_date | timeTag | safe }}. The government does not say what its two figures are measured against. We take it to be keeping the triple lock.</p></div>
+<div class="source"><p>Estimates and projections, not forecasts of what will happen. None describes a cut to pensions already in payment. The sources do not say so in those words. This is our reading of what each one models. Checked against the sources on {{ ("saving-earnings-2075" | figure).checked_date | timeTag | safe }}, except the two rows for the rule announced for April 2030, checked on {{ ("saving-rule-2030-2050" | figure).checked_date | timeTag | safe }}. The government's two figures are measured against keeping the triple lock, and cover Great Britain.</p></div>
 
 <p>The pattern is consistent across sources. In the next few years the saving is small compared with the bill. Over decades it becomes large. The Institute for Fiscal Studies puts the cost of keeping the triple lock in 2050 at between {{ m.f("ifs-tl-cost-2050-low") }} and {{ m.f("ifs-tl-cost-2050-high") }} a year, a wide range because the result depends on how volatile prices and earnings turn out to be.</p>
 {{ m.sourceNote("ifs-tl-cost-2050-high" | figure) }}
@@ -122,14 +122,16 @@ permalink: /reform-options/costs/
 
 <h4 id="saving-2030">The rule announced for April 2030</h4>
 
-<p>The government estimates a saving of {{ m.f("saving-rule-2030-late-2030s") }} a year by the end of the 2030s, and {{ m.f("saving-rule-2030-2050") }} a year by 2050.</p>
+<p>The government estimates a saving of {{ m.f("saving-rule-2030-late-2030s") }} in {{ ("saving-rule-2030-late-2030s" | figure).period_label }}, and {{ m.f("saving-rule-2030-2050") }} in {{ ("saving-rule-2030-2050" | figure).period_label }}. Those amounts are in cash, the money of each year. In the prices of 2025 to 2026 its estimates are {{ m.f("saving-rule-2030-2040-real") }} and {{ m.f("saving-rule-2030-2050-real") }}.</p>
 {{ m.sourceNote("saving-rule-2030-2050" | figure) }}
 
 <p>{{ ("ifs-savings-small-early" | claim).statement }} {{ m.c("ifs-savings-small-early") }} To show the scale, the Institute looks back. If the announced rule had applied since 2011, spending in 2026-27 would be {{ m.f("rule-2030-counterfactual-ifs-2026") }} lower. That is a look back, not a forecast.</p>
 {{ m.sourceNote("rule-2030-counterfactual-ifs-2026" | figure) }}
 
-{% call m.note("Why the government's figures cannot yet be checked", 5) %}
-<p>The government's figure for 2050 is higher than the top of the Institute for Fiscal Studies' range, above, for what the triple lock itself would cost in 2050. That range is in the prices of 2025. The government does not give the prices its figures are in, so the two may not be on the same basis. {{ ("no-rule-2030-detail" | claim).statement }} {{ m.c("no-rule-2030-detail") }}</p>
+{% call m.note("How to read the government's figures", 5) %}
+<p>{{ ("dwp-2030-baseline" | claim).statement }} {{ m.c("dwp-2030-baseline") }} {{ ("dwp-2030-caution" | claim).statement }} {{ m.c("dwp-2030-caution") }}</p>
+<p>In the prices of 2025 to 2026, the government's estimate for {{ ("saving-rule-2030-2050-real" | figure).period_label }} is {{ m.f("saving-rule-2030-2050-real") }}. That is inside the Institute for Fiscal Studies' range, above, for what the triple lock itself would cost in 2050. The Institute gives its range in what it calls today's terms, as at 2025, so the two are close in kind but not on the same basis.</p>
+<p>{{ ("no-rule-2030-detail" | claim).statement }} {{ m.c("no-rule-2030-detail") }} So the estimates can be read, but not reproduced.</p>
 {% endcall %}
 
 {% call m.unavailable("costings for a double lock of prices or earnings, and for means-testing", 4) %}

@@ -15,24 +15,38 @@ The owner decided each item on 2 October 2026, from options the assistant put: d
 | 7 | AI crawler policy. The sister sites differ: UK Public Finances allows named AI crawlers, UK Migration Explorer refuses training crawlers. | `AI_CRAWLER_POLICY` = `allow` or `refuse-training`. The list for `refuse-training` is in `src/_data/crawlers.json` and was copied from UK Migration Explorer without checking each operator's documentation. | Publication | `allow`: decision 72 |
 | 8 | Accessibility assessment by a person, with VoiceOver and Safari and with NVDA on Windows. | `A11Y_ASSESSMENT_DATE`, and update `src/_data/a11y.json` and `docs/accessibility-assessment.md`. | Publication, because the production build stops without the date. Any claim of conformance | A round by the owner before launch, with what the owner's own equipment allows. NVDA and sessions with users after launch. The statement stays "incomplete": decision 73 |
 | 9 | Analytics. | Cloudflare Web Analytics, as on the sister sites. The owner added the site in Cloudflare on 2 October 2026, and its token is in `src/_data/site.js`. The privacy page and the Content Security Policy are ready for it. Cloudflare's FAQ says it does not log query strings, where the rule comparison and the history explorer put their settings. Check the beacon's request on the live site. The privacy page says, on Cloudflare's word, that the part of an address after a question mark is not recorded. | Nothing now | Built in production builds, with the owner's token: decision 74 |
-| 10 | Review owner and review date for each source. | Every figure in the registers carries a `next_review` trigger: the 51 that had none were filled on 2 October 2026. | Scope section 8 | The owner reviews every source. Dated triggers become ToneBan tickets: decision 75. The owner named a new ToneBan project for them on 5 October 2026: see step 5 below |
+| 10 | Review owner and review date for each source. | Every figure in the registers carries a `next_review` trigger: the 51 that had none were filled on 2 October 2026. | Scope section 8 | The owner reviews every source. Dated triggers become ToneBan tickets: decision 75. The owner named a new ToneBan project for them on 5 October 2026: see step 6 below |
 
 ## Launch steps
 
-The owner aims to launch before 20 October 2026: decision 82. The releases of 20 to 22 October 2026 in `docs/maintenance.md` are then the first update of the published site.
+The owner wants to launch on 5 October 2026 if possible, and before 20 October 2026 if not: decision 82. The releases of 20 to 22 October 2026 in `docs/maintenance.md` are then the first update of the published site.
 
-The build work of decisions 68 and 74 was merged in pull request 18 on 2 October 2026. The build sends a preview's `noindex` from `_headers`. A production build is refused outside Netlify's production context. A preview keeps its own address as its canonical even when `SITE_URL` is set. The Cloudflare script is added in production builds. Netlify's own checks passed on the deploy previews of pull requests 18 and 19. Nobody has fetched a page past the sign-in since the deploy preview of pull request 1 on 29 September 2026, so the headers as served now are not confirmed.
+The build work of decisions 68 and 74 was merged in pull request 18 on 2 October 2026. A production build was made in a scratch directory on 5 October 2026 and read by hand: see "Last checks" in `docs/HANDOVER.md`. Nobody has fetched a page past the sign-in since the deploy preview of pull request 1 on 29 September 2026, so the headers as served now are not confirmed.
 
 This is the one ordered list. Each step is the owner's unless it says otherwise.
 
-1. Look at the deployed preview past the sign-in: the sign-in itself, and `X-Robots-Tag: noindex` on a page and on the CSV. Try the budget explorer there too: see "Waiting on the owner" in `docs/HANDOVER.md`.
-2. Review every page: item 6, decision 71. The date of the review becomes `REVIEW_DATE`.
-3. Do the accessibility round, with what the owner's own equipment allows: item 8, decision 73. The assistant then records what was found in `src/_data/a11y.json` and `docs/accessibility-assessment.md`, and the date becomes `A11Y_ASSESSMENT_DATE`. The statement stays "incomplete".
-4. Decide what the repository may show, then make it public: item 4, decision 69. `CORRECTION_URL` is a new issue on the repository, so the public gets a 404 from it while the repository is private. The build cannot check this. The history was searched by pattern on 2 October 2026 and nothing secret was found. The repository has no licence file. A public repository would show the author email on every commit, three lines with a home path in `research/00-sibling-inspection.md` and `NEXT-SESSION.md`, `_archive/` with the two scope documents, and the handover and decision log as they are.
-5. Merge the ToneBan tickets for the review dates: item 10, decision 75. The owner chose a new ToneBan project, State Pension Explorer, on 5 October 2026. The project and nine tickets are on the branch `data/pension-review-triggers` of the ToneBan repository, commit `fccf84d`, not pushed. They reach the board when the owner merges that branch. The build does not check this step. The first dates are 20, 21 and 22 October 2026.
-6. In Netlify, set the launch variables of items 1, 2 and 4 to 8 for all contexts, or for production at least. Outside production, `SITE_URL` is ignored.
-7. Attach `ukstatepensionexplorer.org` to the Netlify project: decision 67.
-8. The launch itself, at one time. In Netlify, scope `BASIC_AUTH` to deploy previews and branch deploys only. Then, on the owner's word, the assistant sets `SITE_ENV` under `[context.production.environment]` in `netlify.toml` to `production`, and the change is merged. Not before: until that merge the production context is still a preview, and a preview build stops without `BASIC_AUTH`. A production build stops while `BASIC_AUTH` is set.
+1. Merge the branch `pre-launch-review`. It holds the corrections of the pre-launch review, and the site should not launch without them. One of them: the site said no costing method had been published for the rule announced for April 2030, and one had.
+2. Look at the deployed preview past the sign-in: the sign-in itself, and `X-Robots-Tag: noindex` on a page and on the CSV. Try the budget explorer there too: see "Waiting on the owner" in `docs/HANDOVER.md`. The assistant can do the checking in the owner's browser once the owner has signed in.
+3. Review every page: item 6, decision 71. The date of the review becomes `REVIEW_DATE`. The build refuses a date in the future.
+4. Do the accessibility round, with what the owner's own equipment allows: item 8, decision 73. The assistant then records what was found in `src/_data/a11y.json` and `docs/accessibility-assessment.md`. `A11Y_ASSESSMENT_DATE` must be the same date as `assessed_on` in `a11y.json`, or the build stops. On 5 October 2026 `assessed_on` is 2026-10-05, the date of the last automated run. The statement stays "incomplete".
+5. Decide what the repository may show, then make it public: item 4, decision 69. `CORRECTION_URL` is a new issue on the repository, so the public gets a 404 from it while the repository is private. The build cannot check this. The history was searched by pattern on 2 October 2026 and nothing secret was found. The repository has no licence file. A public repository would show the author email on every commit, three lines with a home path in `research/00-sibling-inspection.md` and `NEXT-SESSION.md`, `_archive/` with the two scope documents, and the handover and decision log as they are.
+6. Merge the ToneBan tickets for the review dates: item 10, decision 75. The owner chose a new ToneBan project, State Pension Explorer, on 5 October 2026. The project and nine tickets are on the branch `data/pension-review-triggers` of the ToneBan repository, commit `fccf84d`, not pushed. They reach the board when the owner merges that branch. The build does not check this step. The first dates are 20, 21 and 22 October 2026.
+7. In Netlify, set these variables for all contexts, or for production at least. Outside production, `SITE_URL` is ignored.
+
+   | Variable | Value |
+   | --- | --- |
+   | `SITE_TITLE` | `UK State Pension Explorer` |
+   | `SITE_URL` | `https://ukstatepensionexplorer.org`. The build stops on any other address |
+   | `CORRECTION_URL` | `https://github.com/LegendT/UK-State-Pension-Explorer/issues/new` |
+   | `OWNER_NAME` | `Anthony George` |
+   | `OWNER_TYPE` | `Person` |
+   | `REVIEWER_NAME` | `Anthony George` |
+   | `REVIEW_DATE` | The date of step 3, as `2026-10-05` |
+   | `A11Y_ASSESSMENT_DATE` | The date in `a11y.json`, as `2026-10-05` |
+   | `AI_CRAWLER_POLICY` | `allow` |
+
+8. Attach `ukstatepensionexplorer.org` to the Netlify project: decision 67.
+9. The launch itself, at one time. In Netlify, scope `BASIC_AUTH` to deploy previews and branch deploys only. Then, on the owner's word, the assistant sets `SITE_ENV` under `[context.production.environment]` in `netlify.toml` to `production`, and the change is merged. Not before: until that merge the production context is still a preview, and a preview build stops without `BASIC_AUTH`. A production build stops while `BASIC_AUTH` is set.
 
 ## After publication, reported separately
 

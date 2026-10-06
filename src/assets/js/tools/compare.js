@@ -1,7 +1,7 @@
 // Tool 2: compare the replacement rules. Presentation only.
 
 import { renderComparison, renderSummary } from "../lib/compare-view.js";
-import { announce, choose, focusFirstError, live, pinSummary, updatedNote, readAmount, readJson, readPercent, readSettings, setError, writeSettings } from "./common.js";
+import { announce, choose, escapeHtml, focusFirstError, live, markStale, pinSummary, STALE_MESSAGE, updatedNote, readAmount, readJson, readPercent, readSettings, setError, writeSettings } from "./common.js";
 
 const data = readJson("compare-data");
 const form = document.getElementById("compare-form");
@@ -50,7 +50,7 @@ function drawRows(count, source) {
             const name = `the rise in ${key} for ${label}`;
             return (
               `<td><label class="visually-hidden" for="${id}">Rise in ${key}, ${label}, per cent</label>` +
-              `<input type="text" inputmode="decimal" id="${id}" data-key="${key}" data-name="${name}" value="${typed[i] ? typed[i][key].replace(/"/g, "") : (year[key] / 10).toFixed(1)}" autocomplete="off">` +
+              `<input type="text" inputmode="decimal" id="${id}" data-key="${key}" data-name="${name}" value="${typed[i] ? escapeHtml(typed[i][key]) : (year[key] / 10).toFixed(1)}" autocomplete="off">` +
               `<span class="error" id="${id}-error" role="alert"></span></td>`
             );
           })
@@ -84,18 +84,27 @@ function showReason() {
 
 // mode: "load" shows the result without announcing it or moving focus. "live" announces it but
 // leaves focus where the reader is typing. Otherwise an error also takes focus to the first field.
+// The page is built with a result, so one is showing from the start.
+let hasResult = true;
 function update(message, mode) {
   const count = readYears();
   const startPence = readAmount(start, "the starting weekly amount");
   const path = count === null ? null : currentPath();
   if (count === null || startPence === null || path === null) {
-    if (path === null) document.getElementById("compare-edit").open = true;
+    if (count !== null && path === null) document.getElementById("compare-edit").open = true;
     if (!mode) focusFirstError(form);
+    if (mode === "live" && hasResult) {
+      markStale(result, summary);
+      announce(status, STALE_MESSAGE);
+      return;
+    }
+    hasResult = false;
     result.innerHTML = `<div class="unavailable" role="note"><h3>Not available: a result</h3><p>Correct the figures marked with an error.</p></div>`;
     summary.innerHTML = `<p>No result. Correct the figures marked with an error.</p>`;
     if (mode !== "load") announce(status, "There is a problem with the figures entered. No result is shown.");
     return;
   }
+  hasResult = true;
   const options = { startPence, path, cashFloor: floor.checked, firstYear: Number(first.value), measure: measure.value };
   result.innerHTML = renderComparison({
     ...options,

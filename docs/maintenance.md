@@ -24,6 +24,7 @@ Each figure has a `next_review` trigger; the 51 that had none were filled on 2 O
 | 20 October 2026 | ONS revised earnings, May to July 2026 | `earnings-first-estimate-2026`, `history.json` `next_year` |
 | 21 October 2026 | ONS prices, year to September 2026 | `history.json` `next_year` |
 | 22 October 2026 | DWP take-up estimates, financial year ending 2025 | `pension-credit-take-up`, `pension-credit-unclaimed`, `pension-credit-non-recipients` |
+| 28 October 2026 | Office for Budget Responsibility forecast, published with the Budget. The date is from the Office's forecast timetable, read on 5 October 2026 at obr.uk | The forecasts in table `sp-spending-series`, and any costing of the rule announced for April 2030: `saving-rule-2030-*` |
 | 27 November 2026 | ONS Household Costs Indices | `hci-*` |
 | Spring 2027 | Pensions Commission final report | Claims `pc-*` |
 | Summer 2027 | Care commission report for England | The pensions and social care page, `/reform-options/social-care/` |
@@ -39,7 +40,7 @@ Rechecking a source that has not changed updates `checked_date` only. It does no
 
 `src/_data/news.json` holds the date of the note "In the news" on the overview, whose text is in `src/index.njk`. When policy status changes, rewrite the note and change `as_of`. If nobody is maintaining it, leave the date in place. Never relabel an old note as current.
 
-The note of 30 September 2026 was written after the announcement of 29 September 2026. It rests on one government news story. Rewrite the note, the option card for the announced rule and the pensions and social care page when any of these is published:
+The note was written on 30 September 2026, after the announcement of 29 September 2026, and corrected on 5 October 2026. The first search missed an analysis the Department for Work and Pensions published with the announcement. Search GOV.UK publications as well as news, and the UK Parliament's list of Bills. Rewrite the note, the option card for the announced rule and the pensions and social care page when any of these is published:
 
 - a Bill or draft clauses for the change to the triple lock;
 - a technical note from the Department for Work and Pensions or the Treasury, above all one that gives the earnings measure, the starting point or the method behind the savings;

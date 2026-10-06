@@ -59,7 +59,9 @@ test("grouped spending rows add up to the total", () => {
     spending: [{ id: "a", pence: 1 }, { id: "b", pence: 2 }, { id: "c", pence: 3 }],
     taxPence: null,
   });
-  assert.equal(result.spendingRows.reduce((sum, row) => sum + row.yearlyPence, 0), result.spendingPence);
+  // 1p, 2p and 3p a week for 52 weeks, worked by hand: the total, and the rows that make it up.
+  assert.equal(result.spendingPence, 312);
+  assert.equal(result.spendingRows.reduce((sum, row) => sum + row.yearlyPence, 0), 312);
 });
 
 test("a helper's weekly amount in the chosen period", () => {
