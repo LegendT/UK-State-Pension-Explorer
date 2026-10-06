@@ -130,7 +130,7 @@
       "geography": "United Kingdom, urban areas outside London",
       "housing": "One-bedroom flat rented privately at the lower quartile of rents in the East Midlands. The rent is an indication only.",
       "exclusions": "No extra costs of disability or care. No car. Assumes relatively good health. No tax: the figures are spending, so the income needed is higher if tax is due.",
-      "note": null,
+      "note": "Food includes some money for eating out and takeaways, as the source says.",
       "checked_date": "2026-09-29",
       "pence": {
         "food": 6119,
@@ -164,7 +164,7 @@
       "geography": "United Kingdom, urban areas outside London",
       "housing": "Two-bedroom flat rented privately at the lower quartile of rents in the East Midlands. The rent is an indication only.",
       "exclusions": "No extra costs of disability or care. No car. Assumes relatively good health. No tax: the figures are spending, so the income needed is higher if tax is due.",
-      "note": null,
+      "note": "Food includes some money for eating out and takeaways, as the source says.",
       "checked_date": "2026-09-29",
       "pence": {
         "food": 13253,
@@ -198,7 +198,7 @@
       "geography": "United Kingdom, urban areas outside London",
       "housing": "Social rent, East Midlands average. The rent is an indication only and takes no account of Housing Benefit.",
       "exclusions": "No social care, no dependants, no pets. No tax: the figures are spending after tax, so the income needed is higher if tax is due.",
-      "note": "This budget is the Minimum Income Standard pensioner budget for 2025. It is a year older than the 2026 budgets and uses an earlier basket. The source counts a year as 365 days. This tool counts 52 weeks, so its yearly total is about 0.3% lower than the yearly figure the source publishes.",
+      "note": "This budget is the Minimum Income Standard pensioner budget for 2025. It is a year older than the 2026 budgets and uses an earlier basket. The source counts a year as 365 days. This tool counts 52 weeks, so its yearly total is about 0.3% lower than the yearly figure the source publishes. Food includes meals out and takeaways: the source counts food bought outside the home in its food line.",
       "checked_date": "2026-09-29",
       "pence": {
         "food": 6217,
@@ -232,7 +232,7 @@
       "geography": "United Kingdom, urban areas outside London",
       "housing": "Social rent, East Midlands average. The rent is an indication only and takes no account of Housing Benefit.",
       "exclusions": "No social care, no dependants, no pets. No tax: the figures are spending after tax, so the income needed is higher if tax is due.",
-      "note": "This budget is the Minimum Income Standard pensioner budget for 2025. It is a year older than the 2026 budgets and uses an earlier basket. The source counts a year as 365 days. This tool counts 52 weeks, so its yearly total is about 0.3% lower than the yearly figure the source publishes.",
+      "note": "This budget is the Minimum Income Standard pensioner budget for 2025. It is a year older than the 2026 budgets and uses an earlier basket. The source counts a year as 365 days. This tool counts 52 weeks, so its yearly total is about 0.3% lower than the yearly figure the source publishes. Food includes meals out and takeaways: the source counts food bought outside the home in its food line.",
       "checked_date": "2026-09-29",
       "pence": {
         "food": 12746,
@@ -266,7 +266,7 @@
       "geography": "United Kingdom, urban areas outside London",
       "housing": "The research assumes a home owned with no mortgage and no rent. Repairs and maintenance are in 'Other housing costs'.",
       "exclusions": "No social care, no dependants, no pets. No tax: the figures are spending after tax, so the income needed is higher if tax is due.",
-      "note": "A moderate standard is above a minimum. It includes a car. The source counts a year as 365 days. This tool counts 52 weeks, so its yearly total is about 0.3% lower than the yearly figure the source publishes.",
+      "note": "A moderate standard is above a minimum. It includes a car. The source counts a year as 365 days. This tool counts 52 weeks, so its yearly total is about 0.3% lower than the yearly figure the source publishes. Food includes meals out and takeaways: the source counts food bought outside the home in its food line.",
       "checked_date": "2026-09-29",
       "pence": {
         "food": 13532,
@@ -300,7 +300,7 @@
       "geography": "United Kingdom, urban areas outside London",
       "housing": "The research assumes a home owned with no mortgage and no rent. Repairs and maintenance are in 'Other housing costs'.",
       "exclusions": "No social care, no dependants, no pets. No tax: the figures are spending after tax, so the income needed is higher if tax is due.",
-      "note": "A moderate standard is above a minimum. It includes a car. The source counts a year as 365 days. This tool counts 52 weeks, so its yearly total is about 0.3% lower than the yearly figure the source publishes.",
+      "note": "A moderate standard is above a minimum. It includes a car. The source counts a year as 365 days. This tool counts 52 weeks, so its yearly total is about 0.3% lower than the yearly figure the source publishes. Food includes meals out and takeaways: the source counts food bought outside the home in its food line.",
       "checked_date": "2026-09-29",
       "pence": {
         "food": 22011,
