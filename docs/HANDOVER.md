@@ -2,7 +2,7 @@
 
 Written 29 September 2026. Cut to the current state on 5 October 2026: decision 83.
 
-The site is a **preview for review**. It is not published. The repository is https://github.com/LegendT/UK-State-Pension-Explorer. All work is merged into `main`. `gh pr list --state merged --limit 1` shows the latest merged pull request. This file does not name it, because a number here is out of date after every merge. The pre-launch review of 5 October 2026 and its corrections (pull request 23) are recorded in `docs/pre-launch-review.md`. Launch steps 1 and 2 are done.
+The site is a **preview for review**. It is not published. The repository is https://github.com/LegendT/UK-State-Pension-Explorer. Work merged into `main` is up to the latest merged pull request, which `gh pr list --state merged --limit 1` shows; this file does not name it, because a number here is out of date after every merge. Work since then is on the local branch `launch-review`, not yet pushed: `git log main..launch-review` lists it. The pre-launch review of 5 October 2026 and its corrections (pull request 23) are recorded in `docs/pre-launch-review.md`. Launch steps 1 and 2 are done. Step 3, the owner's review of every page, was done on 8 October 2026. The work it led to, with the launch audit and the readability review of that day, is "Work before step 4" in `docs/launch-dependencies.md`.
 
 **This file holds state only.** Do not add a dated section. The record of a change, with its checks, goes in the description of its pull request, and a decision goes in `docs/decision-log.md`. The record up to pull request 21 is this file as it stood before the cut: `git show 75d0574:docs/HANDOVER.md`.
 
@@ -28,18 +28,20 @@ npm run serve        # http://127.0.0.1:8137
 
 ## Last checks
 
-Run on 5 October 2026, Chrome 154, macOS, on the branch `pre-launch-review`, after its corrections.
+Run on 8 October 2026, Chrome 154, macOS, on the branch `launch-review` after W1 to W6.
 
 | Check | Command | Result |
 | --- | --- | --- |
-| Calculator tests | `npm test` | 31 of 31 pass |
-| Build checks | `npm run build` | No problems. 19 pages, 126 figures, 158 claims, 104 sources |
-| Quoted passages | `python3 scripts/check-passages.py` | 210 checked. 189 found by the script, 21 found in a browser by hand on an earlier day, 0 not found, 0 unreadable |
-| Figures with no quoted passage | `python3 scripts/check-values.py` | 53 of 65 found in the source text. The other 12 are in spreadsheets, which three reviewers opened and matched on the same day |
-| Automated accessibility | `npm run a11y` | 0 violations in 130 audits of 19 pages, 1,983 incomplete. Every incomplete contrast result measured, 3,867, none below threshold |
+| Calculator tests | `npm test` | 32 of 32 pass |
+| Build checks | `npm run build` | No problems. 19 pages, 128 figures, 166 claims, 106 sources |
+| Quoted passages | `python3 scripts/check-passages.py` | 220 checked. 199 found by the script, 21 found in a browser by hand, 0 not found, 0 unreadable. Of the 21, 7 were read again on 8 October 2026; 14 keep their first dates (W4) |
+| Figures with no quoted passage | `python3 scripts/check-values.py` | 53 of 65 found in the source text. The other 12 are in spreadsheets; each record names its file and cell (W4) |
+| Automated accessibility | `npm run a11y` | 0 violations in 130 audits of 19 pages, 2,026 incomplete. Every incomplete contrast result measured, 3,910, none below threshold |
 | Scripted accessibility measurements | `npm run a11y:manual` | 0 problems |
-| Production build | `npm run build` with production settings, so the build check ran in production mode, and a second copy in a scratch directory read by hand | 18 addresses in the sitemap, the 404 page `noindex`, canonicals on the registered domain, no preview banner, the analytics script on all 19 pages, an empty `_headers`, no local address |
-| Figures and claims against their sources | Five reviewers with a fresh context, each fetching the sources | See `docs/pre-launch-review.md` |
+| Dependencies | `npm audit` | 9 packages, 5 high and 4 moderate, none loaded when the site is built: `README.md`, "Set up" |
+| Production build | `npm run build` with production settings, read by hand | Last run on 5 October 2026, before W1 to W6: not rerun since |
+| Readability | `statistics-ux` skill, expert review | `docs/ux-review-2026-10-08.md` |
+| Figures and claims against their sources | Five reviewers with a fresh context, 5 October 2026 | See `docs/pre-launch-review.md` |
 
 The deployed preview was checked past the sign-in on 6 October 2026, in the owner's Chrome after the owner signed in, on the build of `25b1e74`: the overview, the State Pension page, the history page, and the budget explorer, rule comparison and history explorer running (the owner's budget sequence, the half-typed figure, the input that once froze the chart, the CSV fetched from a page). `/_headers` and `/sitemap.xml` answer 404, `robots.txt` is the preview's, a missing page gets the site's 404 page, and the console showed no error or policy violation. Not read: the headers as served, because the browser extension refuses a script that reads them; Netlify reports 3 header rules deployed. Seen twice: a direct request for the CSV address answered 503 while signed in, though the same file fetched from a page answered 200. Not pressed: the download link, which needs the owner's say-so. Check both on the live site after launch.
 
@@ -93,11 +95,9 @@ As at 5 October 2026.
 
 | Item | What is needed |
 | --- | --- |
-| Launch | The steps, in order, are in `docs/launch-dependencies.md`, "Launch steps". Steps 1 and 2 were done on 6 October 2026. The next is step 3, the owner's review of every page |
-| Budget explorer: the freeze the owner saw | Reported with decision 81 on 2 October 2026: "At a glance" stopped updating. Not reproduced. Needed from the owner: the browser, whether it was the deployed preview or a local build, and the steps. Rule out an old script first: reload the page without the cache and try again. A reviewer ran the owner's steps and 268 scripted steps at four screen sizes on 5 October 2026, and the summary matched the full result every time. The nearest things found: on a short screen the summary is not pinned and leaves the screen once a tax figure is added; and a press on a button that lies under the pinned summary does not reach the button. A different freeze was found and fixed the same day: the rule comparison stopped responding when every rule gave almost the same amount |
+| Launch | The steps, in order, are in `docs/launch-dependencies.md`, "Launch steps". Steps 1 to 3 are done. Before step 4 comes "Work before step 4" in the same file. The assistant does each row on the owner's word |
 | "Back to contents" links | Settled on 8 October 2026: decision 88. Was: confirm keeping several on a page. Asked on 1 October 2026 and not yet answered. The assistant's reading: SC 2.4.4 is met, because each link goes to the same place. The cost is repetition in a screen reader's list of links, below 1024 px only |
-| New since 30 September 2026, not yet on the site | Found on 5 October 2026 and listed with their addresses in `docs/pre-launch-review.md`: the Institute for Fiscal Studies' analysis of 30 September 2026, which puts the saving in 2039 to 2040 between £4 billion and £20 billion; the department's projection of pensioner poverty; the Scottish Government's letter of 1 October 2026; the Scottish National Party's statement of 2 October 2026; the pensions minister's article of 2 October 2026; a workforce plan promised for the end of the year; and two changes to the care commission's terms of reference on 1 October 2026. Each needs a source record and claims. The owner decided on 6 October 2026 that they go in after launch, in the first update: decision 87 |
-| The Health Foundation and the King's Fund | Their statements are quoted from a trade report, because their sites refuse automated reading. A reviewer read both in a browser. If the owner opens the two addresses in `docs/pre-launch-review.md` and confirms the words, the claims can cite the organisations' own sites |
+| New since 30 September 2026, not yet on the site | Found on 5 October 2026 and listed with their addresses in `docs/pre-launch-review.md`: the Institute for Fiscal Studies' analysis of 30 September 2026, which puts the saving in 2039 to 2040 between £4 billion and £20 billion; the department's projection of pensioner poverty; the Scottish Government's letter of 1 October 2026; the Scottish National Party's statement of 2 October 2026; the pensions minister's article of 2 October 2026; a workforce plan promised for the end of the year; and two changes to the care commission's terms of reference on 1 October 2026. Each needs a source record and claims. The owner decided on 6 October 2026 that they go in after launch, in the first update: decision 87. Decision 89 brought two in before launch, done on 8 October 2026 (W1, W2): the department's analysis, with its poverty projection, and the two changes to the terms of reference |
 | Rendered pages, left from the pre-launch review | None is an error. On a short screen a tool's summary is not pinned, so it is out of view while typing; a one-line pinned strip would keep it. The pinned summary stays over the page from top to foot, not only beside the tool. On a phone the charts open at their left end with no cue that they scroll. The table of every rate scrolls sideways at both widths and loses its year column. In the rule comparison's table of yearly figures, an error wraps over ten lines on a phone. The history explorer does not use the "Out of date" note for an impossible range. Financial years are written three ways: 2026/27, 2026-27 and 2026 to 2027 |
 | Code, left from the pre-launch review | A figure typed as ".5" is refused, with a message that does not say why. A tool whose script fails to load shows its form and nothing else. No test reaches the range limits of the fields, or the history table for a range that starts after the first year. Six filters and two exports are unused. None gives a wrong number |
 | Rule comparison: phone keyboard | The pinned summary and an on-screen keyboard share a small screen. The alternative shrinks the summary to one line while a field has focus. Not tested on a real phone |
@@ -119,7 +119,7 @@ As at 5 October 2026.
 | Item | Status |
 | --- | --- |
 | Reciprocal links on UK Public Finances Explorer and UK Migration Explorer | Not started. Needs a live domain. No other repository was changed |
-| Deployed checks | Done for the deploy preview of pull request 1. See "Last checks". Not done for pull requests 2 to 21, for the main site address beyond the sign-in, or for a production domain |
+| Deployed checks | The main site address was checked past the sign-in on 6 October 2026, on the build of `25b1e74`: see "Last checks". Not done for the work on `launch-review`, or for a production domain |
 | Search console | Not started. Needs account and domain access |
 
 ## Found in passing

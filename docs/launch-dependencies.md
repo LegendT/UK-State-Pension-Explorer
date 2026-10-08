@@ -25,7 +25,7 @@ The build work of decisions 68 and 74 was merged in pull request 18 on 2 October
 
 This is the one ordered list. Each step is the owner's unless it says otherwise.
 
-1. Merge the branch `pre-launch-review`. It holds the corrections of the pre-launch review, and the site should not launch without them. One of them: the site said no costing method had been published for the rule announced for April 2030, and one had.
+1. Done on 6 October 2026, as pull request 23. Merge the branch `pre-launch-review`. It holds the corrections of the pre-launch review, and the site should not launch without them. One of them: the site said no costing method had been published for the rule announced for April 2030, and one had.
 2. Look at the deployed preview past the sign-in. Done on 6 October 2026 in the owner's browser: see "Last checks" in `docs/HANDOVER.md`. Not read: the `X-Robots-Tag: noindex` header as served, which the browser extension would not let a script read. Netlify reports the 3 header rules deployed, and the same rule was seen served on 29 September 2026.
 3. Review every page: item 6, decision 71. The date of the review becomes `REVIEW_DATE`. The build refuses a date in the future. How the review is done: decision 87. The notes and the launch audit of 8 October 2026 are merged into one list: "Work before step 4" below. The owner gives notes page by page. The assistant records them here. It does not act on them until all 19 pages are done.
 
@@ -100,7 +100,7 @@ This is the work from the owner's page review (notes 1 to 13 in step 3) and from
 | W29 | Write the current heading ids into the templates, and give tables and charts ids. After W27, which rewords headings. | R16 | Assistant | Open |
 | W12 | Add tests for W3 and W11, and for history ranges that start after the first year. | A14 in part | Assistant | Open |
 | W13 | Say in the accessibility statement and in the corrections section that a GitHub issue is the only route, and that it needs a GitHub account, as a known limit. | A07 in part | Assistant | Decided: number 91 |
-| W14 | Bring `docs/HANDOVER.md` up to date: "Tracked separately" still says the main address was not checked past the sign-in, which step 2 did on 6 October 2026. Mark step 1 done, with its date. Close "The Health Foundation and the King's Fund" and the budget explorer freeze in "Waiting on the owner". Set the site map's "last changed" date, which predates its change of 2 October 2026. Make the review-date item there point to row W16, so the state is kept in one place. | A13 | Assistant | Open |
+| W14 | Bring `docs/HANDOVER.md` up to date: "Tracked separately" still says the main address was not checked past the sign-in, which step 2 did on 6 October 2026. Mark step 1 done, with its date. Close "The Health Foundation and the King's Fund" and the budget explorer freeze in "Waiting on the owner". Set the site map's "last changed" date, which predates its change of 2 October 2026. Make the review-date item there point to row W16, so the state is kept in one place. | A13 | Assistant | Done, 8 October 2026, with the handoff check. The handover had no review-date item to point at W16 |
 | W15 | Update sources and method last, when the work above is done: note 13. | Note 13 | Assistant | Open |
 | W16 | **Owner decides** before step 7: `REVIEW_DATE` is 8 October 2026, or the date the owner checks the changed pages. | Step 3 | Owner | Open |
 
