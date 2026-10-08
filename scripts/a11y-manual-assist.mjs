@@ -8,7 +8,7 @@
 import { createServer } from "node:http";
 import { readFileSync, writeFileSync, mkdirSync, existsSync, statSync } from "node:fs";
 import { extname, join } from "node:path";
-import puppeteer from "puppeteer";
+import puppeteer from "puppeteer-core";
 
 const CHROME = process.env.CHROME_PATH || "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 const TYPES = { ".html": "text/html", ".css": "text/css", ".js": "text/javascript", ".svg": "image/svg+xml", ".png": "image/png", ".csv": "text/csv" };

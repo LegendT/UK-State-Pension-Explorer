@@ -7,7 +7,7 @@ import { createServer } from "node:http";
 import { readFileSync, writeFileSync, mkdirSync, existsSync, statSync } from "node:fs";
 import { createRequire } from "node:module";
 import { extname, join } from "node:path";
-import puppeteer from "puppeteer";
+import puppeteer from "puppeteer-core";
 
 const require = createRequire(import.meta.url);
 const axeSource = readFileSync(require.resolve("axe-core/axe.min.js"), "utf8");

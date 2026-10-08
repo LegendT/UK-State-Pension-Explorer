@@ -227,7 +227,7 @@ td time, th time { white-space: nowrap; }
 /* A citation that is a value on its own is not inline in a sentence, so padding gives it the 24px target of SC 2.5.8. */
 .facts .cite { padding-block: 4px; }
 .source dt { font-weight: 600; color: var(--ink); }
-.source dd { margin: 0 0 var(--space-s); }
+.source dd { margin: 0 0 var(--space-s); overflow-wrap: anywhere; }
 
 .stat { padding: var(--space-m); border: 1px solid var(--rule); border-radius: var(--radius); background: var(--panel); height: 100%; }
 .stat :is(h3, h4, h5) { margin-top: 0; font-size: 1rem; }

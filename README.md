@@ -6,13 +6,15 @@ A plain-English explainer of the UK State Pension, the triple lock, what a pensi
 
 ## Set up
 
-Needs Node 22 or later. The project pins Node 24 in `.node-version`.
+Needs Node 22.12 or later, the oldest version `puppeteer-core` supports. The project pins Node 24 in `.node-version`.
 
 ```
-PUPPETEER_SKIP_DOWNLOAD=1 npm install
+npm ci
 ```
 
-The accessibility scripts use the Chrome already on the computer. Set `CHROME_PATH` if it is not in the usual place on a Mac. The source checks need Python 3, `curl` and `pdftotext`.
+The accessibility scripts use the Chrome already on the computer, through `puppeteer-core`, which downloads no browser of its own. Set `CHROME_PATH` if Chrome is not in the usual place on a Mac. The source checks need Python 3, `curl` and `pdftotext`.
+
+`npm audit` reports 9 packages: `braces` and `sprintf-js`, which Eleventy brings in, and the 7 packages between them and Eleventy (`chokidar`, `nunjucks`, `@11ty/eleventy-dev-server`, `argparse`, `js-yaml`, `gray-matter` and Eleventy itself). No fixed version of `braces` or `sprintf-js` exists. Neither is loaded when the site is built, and neither reaches the published site, which is static files. `braces` comes in through `chokidar`, which Eleventy imports only to watch files during `npm run dev`. `sprintf-js` comes in through `argparse`, which `js-yaml` loads only for its command-line tool, not when Eleventy reads front matter. Checked on 8 October 2026. Do not run `npm audit fix --force`: it would downgrade Eleventy to 0.6.0.
 
 ## Commands
 

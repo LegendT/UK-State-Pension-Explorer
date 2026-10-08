@@ -11,7 +11,7 @@ The site is a **preview for review**. It is not published. The repository is htt
 ## How to look at it
 
 ```
-PUPPETEER_SKIP_DOWNLOAD=1 npm install
+npm ci
 npm run build
 npm run serve        # http://127.0.0.1:8137
 ```
