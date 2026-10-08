@@ -7,9 +7,8 @@ Read, in this order, before doing anything:
 4. docs/ux-review-2026-10-08.md, the findings F1 to F16 behind rows W17 to W29
 5. README.md
 
-Do not read _archive/. Read research/ only when checking a figure. docs/ux-review.md,
-docs/pre-launch-review.md and docs/ux-review-2026-10-08.md are frozen records: never edit
-them. docs/HANDOVER.md holds current state only (decision 83): do not add a dated section.
+Do not read _archive/. Read research/ only to check a figure. docs/ux-review.md,
+docs/pre-launch-review.md and docs/ux-review-2026-10-08.md are frozen: never edit them.
 
 State on 8 October 2026, from docs/HANDOVER.md: the site is a preview for review, not
 published. Launch steps 1 and 2 are done. Step 3, the owner's review of every page, was
@@ -18,16 +17,15 @@ review of that day, is "Work before step 4" in docs/launch-dependencies.md. Work
 last merged pull request is on the local branch launch-review, not yet pushed: run
 git status and git log main..launch-review first.
 
-Next action: none for the assistant until Anthony says to build. The first open row is
-W17. The rows run in the order of the table, not their numbers. The statistics-ux skill's
-build mode needs his separate go-ahead: see W6's status.
-Nothing else is authorised.
+Next action: none until Anthony says to build. The first open row is W7, and the rows run
+in the table's order. Nothing else is authorised.
 
 Waiting on Anthony: W16 (the review date), launch steps 4 to 9, and whether to run the tree test
 and usability test the review recommends.
 
 Parked, do not raise: R9 of the readability review and decision 87's new material, both
-after launch. The items under "Known defects and limits" and "Declined" in the handover.
+after launch, and the after-launch items at the foot of "Work before step 4". The items
+under "Known defects and limits" and "Declined" in the handover.
 
 Rules that have been broken before and must not be again: read ~/.claude/CLAUDE.md in
 full first. In this project: do not import .env into Netlify, do not push (Anthony types
@@ -35,6 +33,7 @@ full first. In this project: do not import .env into Netlify, do not push (Antho
 critique skill, write the repository path out in full in the reader's command and keep the
 skill's "pass two ran on ... cost $" line word for word, or the push gate's stamp is
 refused. After a data change shown on a page, run npm run a11y too: README.md, "Commands".
-NEXT-SESSION.md is written by /handoff-check only.
+NEXT-SESSION.md is written by /handoff-check only. The chrome-devtools browser tool cannot
+launch while another process holds its profile; screenshot through puppeteer-core instead.
 
 Run /handoff-check before leaving this context.
