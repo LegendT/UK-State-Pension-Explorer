@@ -24,7 +24,7 @@ The accessibility scripts use the Chrome already on the computer, through `puppe
 | `npm run build` | Builds to `_site`, then runs `scripts/check-build.mjs`. |
 | `npm test` | Tests the calculators against separately worked values. |
 | `npm run serve` | Serves `_site` at http://127.0.0.1:8137 |
-| `npm run a11y` | axe-core on every page and state. Writes `reports/a11y.json`. |
+| `npm run a11y` | axe-core on every page and state. Writes `reports/a11y.json`. Run it after any change to markup, styles or scripts, and after a data change that a page shows: long file names in a figure's source made a page scroll sideways on a phone on 8 October 2026, and the build did not catch it. |
 | `npm run a11y:manual` | Reflow, text spacing, target size, keyboard, headings, no JavaScript, and the "On this page" marking. Run it after changing `contents.js`, the contents macro or the `.contents` styles. |
 | `python3 scripts/check-passages.py` | Looks for every quoted passage in its live source. |
 | `python3 scripts/check-values.py` | Looks for unquoted figure values in their source text. |

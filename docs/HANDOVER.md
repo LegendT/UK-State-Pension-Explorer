@@ -6,7 +6,7 @@ The site is a **preview for review**. It is not published. The repository is htt
 
 **This file holds state only.** Do not add a dated section. The record of a change, with its checks, goes in the description of its pull request, and a decision goes in `docs/decision-log.md`. The record up to pull request 21 is this file as it stood before the cut: `git show 75d0574:docs/HANDOVER.md`.
 
-**Next action:** the launch steps in `docs/launch-dependencies.md`. Each step is the owner's, except the edits the list gives to the assistant.
+**Next action:** "Work before step 4" in `docs/launch-dependencies.md`, in the table's order, row W17 first, each on the owner's word. Then launch step 4.
 
 ## How to look at it
 
@@ -48,7 +48,7 @@ The deployed preview was checked past the sign-in on 6 October 2026, in the owne
 ## Known defects and limits
 
 1. **The announced rule is not in law and its detail is thin.** No Bill is on the UK Parliament's list of Bills: searched on 5 October 2026. The government has described the rule in outline, in the announcement and in an analysis the Department for Work and Pensions published on 29 September 2026. The site missed that analysis until 5 October 2026. The government has not published the measure of earnings, or the paths of earnings and prices behind its savings. The mechanism in the rule comparison is the Institute for Fiscal Studies' description, with four labelled assumptions: decision 38. The maintenance guide lists what should trigger a rewrite.
-2. **Some responses to the announcement rest on news reports.** The statements of Reform UK, the Liberal Democrats and Age UK come from their own sites, and the speech from the Labour Party's. The statements of the Health Foundation and the King's Fund are as quoted in a trade report, because their own sites refuse automated reading. The Conservative, Scottish National Party, Green and Plaid Cymru positions are as reported.
+2. **Some responses to the announcement rest on news reports.** The statements of Reform UK, the Liberal Democrats and Age UK come from their own sites, and the speech from the Labour Party's. The statements of the Health Foundation and the King's Fund are as quoted in a trade report, because their own sites refuse automated reading. The owner confirmed both on the organisations' own sites on 8 October 2026, and W10 cites them there. The Conservative, Scottish National Party, Green and Plaid Cymru positions are as reported.
 3. **Example budgets are not like for like.** Private renters at the 2026 minimum, social renters at the 2025 minimum, owners at the 2025 moderate standard.
 4. **Not found, and shown as gaps:** the share of people on the full rate, the number whose pension is not increased abroad, costings for a double lock and for means-testing, incomes of pensioner carers.
 5. **Typed wording that will age:** the worked example on the triple lock page names months and years in words. The first year in the rule comparison starts at 2027/28. Both are in the maintenance guide.
@@ -67,12 +67,12 @@ The deployed preview was checked past the sign-in on 6 October 2026, in the owne
 - The download and copy buttons of the history explorer were not pressed in a test.
 - The sister sites' tools were read from served HTML. They were not run.
 - House of Commons Library briefings and Hansard could not be opened.
-- Nothing on the main site address beyond the sign-in, and nothing on a production domain. The deploy preview of pull request 1 was checked, and the deploy previews of pull requests 2 to 21 were not: see "Last checks". Fetched share previews on a social platform were not checked.
+- Nothing on a production domain. The main site address was checked past the sign-in on 6 October 2026: see "Last checks". Deploy previews after pull request 1 were not checked. Fetched share previews on a social platform were not checked.
 - Search console verification, sitemap submission, indexing.
 
 ## Launch
 
-See `docs/launch-dependencies.md`. Every item was decided on 2 October 2026, and "Launch steps" there is the one ordered list. The owner wants to launch on 5 October 2026 if possible, and before 20 October 2026 if not: decision 82.
+See `docs/launch-dependencies.md`. Every item was decided on 2 October 2026, and "Launch steps" there is the one ordered list. The owner wants to launch before 20 October 2026: decision 82.
 
 ## Declined: do not raise again
 
@@ -91,15 +91,14 @@ The items under "Known defects and limits" are known. Do not raise them again un
 
 ## Waiting on the owner
 
-As at 5 October 2026.
+As at 8 October 2026.
 
 | Item | What is needed |
 | --- | --- |
 | Launch | The steps, in order, are in `docs/launch-dependencies.md`, "Launch steps". Steps 1 to 3 are done. Before step 4 comes "Work before step 4" in the same file. The assistant does each row on the owner's word |
-| "Back to contents" links | Settled on 8 October 2026: decision 88. Was: confirm keeping several on a page. Asked on 1 October 2026 and not yet answered. The assistant's reading: SC 2.4.4 is met, because each link goes to the same place. The cost is repetition in a screen reader's list of links, below 1024 px only |
-| New since 30 September 2026, not yet on the site | Found on 5 October 2026 and listed with their addresses in `docs/pre-launch-review.md`: the Institute for Fiscal Studies' analysis of 30 September 2026, which puts the saving in 2039 to 2040 between £4 billion and £20 billion; the department's projection of pensioner poverty; the Scottish Government's letter of 1 October 2026; the Scottish National Party's statement of 2 October 2026; the pensions minister's article of 2 October 2026; a workforce plan promised for the end of the year; and two changes to the care commission's terms of reference on 1 October 2026. Each needs a source record and claims. The owner decided on 6 October 2026 that they go in after launch, in the first update: decision 87. Decision 89 brought two in before launch, done on 8 October 2026 (W1, W2): the department's analysis, with its poverty projection, and the two changes to the terms of reference |
-| Rendered pages, left from the pre-launch review | None is an error. On a short screen a tool's summary is not pinned, so it is out of view while typing; a one-line pinned strip would keep it. The pinned summary stays over the page from top to foot, not only beside the tool. On a phone the charts open at their left end with no cue that they scroll. The table of every rate scrolls sideways at both widths and loses its year column. In the rule comparison's table of yearly figures, an error wraps over ten lines on a phone. The history explorer does not use the "Out of date" note for an impossible range. Financial years are written three ways: 2026/27, 2026-27 and 2026 to 2027 |
-| Code, left from the pre-launch review | A figure typed as ".5" is refused, with a message that does not say why. A tool whose script fails to load shows its form and nothing else. No test reaches the range limits of the fields, or the history table for a range that starts after the first year. Six filters and two exports are unused. None gives a wrong number |
+| Parked until the first update (decision 87): new since 30 September 2026, not yet on the site | Found on 5 October 2026 and listed with their addresses in `docs/pre-launch-review.md`: the Institute for Fiscal Studies' analysis of 30 September 2026, which puts the saving in 2039 to 2040 between £4 billion and £20 billion; the department's projection of pensioner poverty; the Scottish Government's letter of 1 October 2026; the Scottish National Party's statement of 2 October 2026; the pensions minister's article of 2 October 2026; a workforce plan promised for the end of the year; and two changes to the care commission's terms of reference on 1 October 2026. Each needs a source record and claims. The owner decided on 6 October 2026 that they go in after launch, in the first update: decision 87. Decision 89 brought two in before launch, done on 8 October 2026 (W1, W2): the department's analysis, with its poverty projection, and the two changes to the terms of reference |
+| Rendered pages, left from the pre-launch review | None is an error. On a short screen a tool's summary is not pinned, so it is out of view while typing; a one-line pinned strip would keep it. The pinned summary stays over the page from top to foot, not only beside the tool. The charts and wide tables on a phone are W20. In the rule comparison's table of yearly figures, an error wraps over ten lines on a phone. The history explorer does not use the "Out of date" note for an impossible range. Financial years are written three ways: 2026/27, 2026-27 and 2026 to 2027 |
+| Code, left from the pre-launch review | A figure typed as ".5" is refused, with a message that does not say why. A tool whose script fails to load shows its form and nothing else. No test reaches the range limits of the fields and the history table for a range that starts after the first year is W12. Six filters and two exports are unused. None gives a wrong number |
 | Rule comparison: phone keyboard | The pinned summary and an on-screen keyboard share a small screen. The alternative shrinks the summary to one line while a field has focus. Not tested on a real phone |
 | Rule comparison: the gap shown | The summary gives the gap in the last year. The total over the period, in the full result's totals table, could be shown as well |
 | Rule comparison: "less" is not a cut | The full result says a lower amount is a smaller rise, not a cut. The pinned summary does not, for want of room |
@@ -111,7 +110,7 @@ As at 5 October 2026.
 | Sweep, markup, K6 | The budget headline is a label and value in one paragraph (`budget-view.js` line 45) |
 | Sweep, markup, K7 | `next_review` is free text, so its dates cannot be `time`. Needs a date field in `figures.json` |
 | Sweep, styles, C2 | Chart text renders at about 9 px on a 320 px screen (13 units in a 720-unit view box). Not an AA failure. Shared with the charts drawn at build time |
-| Sweep, styles, C3 | Four links that stand alone in a paragraph are about 21 px tall. They pass AA by the spacing exception of SC 2.5.8: each centre is at least 14.5 px from any other target, more than the 12 px radius, and `npm run a11y:manual` counts none under 24. They are short of the 44 px house standard. A class on those paragraphs and the "Back to contents" padding would fix them |
+| Sweep, styles, C3 | Four links that stand alone in a paragraph are about 21 px tall. They pass AA by the spacing exception of SC 2.5.8: each centre is at least 14.5 px from any other target, more than the 12 px radius, and `npm run a11y:manual` counts none under 24. They are short of the 44 px house standard. A class on those paragraphs would fix them |
 | Sweep, critique, R1 | The CSS comment above the pinned summary does not say that `pinSummary` in `common.js` sets `--summary-size`, or that 16rem is the fallback. One clause |
 
 ## Tracked separately

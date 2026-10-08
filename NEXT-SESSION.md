@@ -20,10 +20,11 @@ git status and git log main..launch-review first.
 
 Next action: none for the assistant until Anthony says to build. The first open row is
 W17. The rows run in the order of the table, not their numbers. The statistics-ux skill's
-build mode needs his separate go-ahead (decision 92 accepted the dispositions only).
+build mode needs his separate go-ahead: see W6's status.
 Nothing else is authorised.
 
-Waiting on Anthony: W16 (the review date), launch steps 4 to 9, and whether to run the tests the review recommends.
+Waiting on Anthony: W16 (the review date), launch steps 4 to 9, and whether to run the tree test
+and usability test the review recommends.
 
 Parked, do not raise: R9 of the readability review and decision 87's new material, both
 after launch. The items under "Known defects and limits" and "Declined" in the handover.
@@ -33,7 +34,7 @@ full first. In this project: do not import .env into Netlify, do not push (Antho
 /push, with the slash), and do not call the site WCAG 2.2 AA conformant. When running the
 critique skill, write the repository path out in full in the reader's command and keep the
 skill's "pass two ran on ... cost $" line word for word, or the push gate's stamp is
-refused. After a data change shown on a page, run npm run a11y as well as the build.
+refused. After a data change shown on a page, run npm run a11y too: README.md, "Commands".
 NEXT-SESSION.md is written by /handoff-check only.
 
 Run /handoff-check before leaving this context.
