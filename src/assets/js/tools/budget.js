@@ -107,6 +107,9 @@ function convertAmounts() {
     count += 1;
   }
   if (!count) {
+    // Nothing converted, so a note from an earlier conversion would name the wrong period.
+    periodNote.textContent = "";
+    periodNote.hidden = true;
     update("live");
     return;
   }

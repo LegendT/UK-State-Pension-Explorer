@@ -2,7 +2,7 @@
 
 Written 29 September 2026. Cut to the current state on 5 October 2026: decision 83.
 
-The site is a **preview for review**. It is not published. The repository is https://github.com/LegendT/UK-State-Pension-Explorer. Work merged into `main` is up to the latest merged pull request, which `gh pr list --state merged --limit 1` shows; this file does not name it, because a number here is out of date after every merge. Work since then is on the local branch `launch-review`, not yet pushed: `git log main..launch-review` lists it. The pre-launch review of 5 October 2026 and its corrections (pull request 23) are recorded in `docs/pre-launch-review.md`. Launch steps 1 and 2 are done. Step 3, the owner's review of every page, was done on 8 October 2026. The work it led to, with the launch audit and the readability review of that day, is "Work before step 4" in `docs/launch-dependencies.md`.
+The site is a **preview for review**. It is not published. The repository is https://github.com/LegendT/UK-State-Pension-Explorer. Work merged into `main` is up to the latest merged pull request, which `gh pr list --state merged --limit 1` shows; this file does not name it, because a number here is out of date after every merge. Work since then is on the branch `launch-review`, whose pull request `gh pr list` shows: `git log main..launch-review` lists it. The pre-launch review of 5 October 2026 and its corrections (pull request 23) are recorded in `docs/pre-launch-review.md`. Launch steps 1 and 2 are done. Step 3, the owner's review of every page, was done on 8 October 2026. The work it led to, with the launch audit and the readability review of that day, is "Work before step 4" in `docs/launch-dependencies.md`.
 
 **This file holds state only.** Do not add a dated section. The record of a change, with its checks, goes in the description of its pull request, and a decision goes in `docs/decision-log.md`. The record up to pull request 21 is this file as it stood before the cut: `git show 75d0574:docs/HANDOVER.md`.
 
@@ -28,15 +28,15 @@ npm run serve        # http://127.0.0.1:8137
 
 ## Last checks
 
-Run on 8 October 2026, Chrome 154, macOS, on the branch `launch-review` after W17. The calculator tests and the two source checks were run after W1 to W6 and nothing they test has changed since.
+Run on 8 October 2026, Chrome 154, macOS, on the branch `launch-review` after W17 and the critique of the whole branch that day.
 
 | Check | Command | Result |
 | --- | --- | --- |
 | Calculator tests | `npm test` | 32 of 32 pass |
 | Build checks | `npm run build` | No problems. 19 pages, 128 figures, 166 claims, 106 sources |
 | Quoted passages | `python3 scripts/check-passages.py` | 220 checked. 199 found by the script, 21 found in a browser by hand, 0 not found, 0 unreadable. Of the 21, 7 were read again on 8 October 2026; 14 keep their first dates (W4) |
-| Figures with no quoted passage | `python3 scripts/check-values.py` | 53 of 65 found in the source text. The other 12 are in spreadsheets; each record names its file and cell (W4) |
-| Automated accessibility | `npm run a11y` | 0 violations in 130 audits of 19 pages, 2,026 distinct incomplete results. Every incomplete contrast result measured, 3,910 occurrences across the audits, none below threshold |
+| Figures with no quoted passage | `python3 scripts/check-values.py` | 53 of 65 found in the source text. The other 12 are in 11 spreadsheets and one PDF; each record names its file and cell, or its page (W4) |
+| Automated accessibility | `npm run a11y` | 0 violations in 130 audits of 19 pages, 2,027 distinct incomplete results. Every incomplete contrast result measured, 3,911 occurrences across the audits, none below threshold |
 | Scripted accessibility measurements | `npm run a11y:manual` | 0 problems |
 | Dependencies | `npm audit` | 9 packages, 5 high and 4 moderate, none loaded when the site is built: `README.md`, "Set up" |
 | Production build | `npm run build` with production settings, read by hand | Last run on 5 October 2026, before W1 to W6: not rerun since |
@@ -79,7 +79,7 @@ See `docs/launch-dependencies.md`. Every item was decided on 2 October 2026, and
 | Item | Where the reason is |
 | --- | --- |
 | A link to the migration fiscal-claim page | Decision 30 |
-| Citing a source once for each paragraph, from point R3 of the UX review | Decision 47 |
+| Citing a source once for each paragraph, from point R3 of `docs/ux-review.md` | Decision 47 |
 | A7: the cash floor after rounding, in the history explorer too | Beside the code in `src/assets/js/lib/uprating.js` |
 | The reports of `html-validate`: `prefer-native-element`, `wcag/h32`, `doctype-style` and `long-title` | `README.md`, "Markup conventions". `wcag/h32` is the four tool forms with no submit button: decisions 62 and 78 |
 | W4 and W5 of the front-end sweep of 2 October 2026: the "All tools" link as a named `nav`, and the budget total row in a `tfoot` | Declined by the owner on 2 October 2026 |
@@ -96,9 +96,9 @@ As at 8 October 2026.
 | Item | What is needed |
 | --- | --- |
 | Launch | The steps, in order, are in `docs/launch-dependencies.md`, "Launch steps". Steps 1 to 3 are done. Before step 4 comes "Work before step 4" in the same file. The assistant does each row on the owner's word |
-| Parked until the first update (decision 87): new since 30 September 2026, not yet on the site | Found on 5 October 2026 and listed with their addresses in `docs/pre-launch-review.md`: the Institute for Fiscal Studies' analysis of 30 September 2026, which puts the saving in 2039 to 2040 between £4 billion and £20 billion; the department's projection of pensioner poverty; the Scottish Government's letter of 1 October 2026; the Scottish National Party's statement of 2 October 2026; the pensions minister's article of 2 October 2026; a workforce plan promised for the end of the year; and two changes to the care commission's terms of reference on 1 October 2026. Each needs a source record and claims. The owner decided on 6 October 2026 that they go in after launch, in the first update: decision 87. Decision 89 brought two in before launch, done on 8 October 2026 (W1, W2): the department's analysis, with its poverty projection, and the two changes to the terms of reference |
+| Parked until the first update (decision 87): new since 30 September 2026, not yet on the site | Found on 5 October 2026 and listed with their addresses in `docs/pre-launch-review.md`: the Institute for Fiscal Studies' analysis of 30 September 2026, which puts the saving in 2039 to 2040 between £4 billion and £20 billion; the Scottish Government's letter of 1 October 2026; the Scottish National Party's statement of 2 October 2026; the pensions minister's article of 2 October 2026; and a workforce plan promised for the end of the year. Each needs a source record and claims. The owner decided on 6 October 2026 that they go in after launch, in the first update: decision 87. Decision 89 brought two others in before launch, done on 8 October 2026 (W1, W2): the department's analysis, with its poverty projection, and the two changes to the terms of reference |
 | Rendered pages, left from the pre-launch review | None is an error. On a short screen a tool's summary is not pinned, so it is out of view while typing; a one-line pinned strip would keep it. The pinned summary stays over the page from top to foot, not only beside the tool. The charts and wide tables on a phone are W20. In the rule comparison's table of yearly figures, an error wraps over ten lines on a phone. The history explorer does not use the "Out of date" note for an impossible range. Financial years are written three ways: 2026/27, 2026-27 and 2026 to 2027 |
-| Code, left from the pre-launch review | A figure typed as ".5" is refused, with a message that does not say why. A tool whose script fails to load shows its form and nothing else. No test reaches the range limits of the fields and the history table for a range that starts after the first year is W12. Six filters and two exports are unused. None gives a wrong number |
+| Code, left from the pre-launch review | A figure typed as ".5" is refused, with a message that does not say why. A tool whose script fails to load shows its form and nothing else. No test reaches the range limits of the fields. A test of the history table for a range that starts after the first year is W12. Six filters and two exports are unused. None gives a wrong number |
 | Rule comparison: phone keyboard | The pinned summary and an on-screen keyboard share a small screen. The alternative shrinks the summary to one line while a field has focus. Not tested on a real phone |
 | Rule comparison: the gap shown | The summary gives the gap in the last year. The total over the period, in the full result's totals table, could be shown as well |
 | Rule comparison: "less" is not a cut | The full result says a lower amount is a smaller rise, not a cut. The pinned summary does not, for want of room |
@@ -109,7 +109,7 @@ As at 8 October 2026.
 | Sweep, markup, K5 | Terms defined in running text are `strong` (`index.njk` lines 73 and 75, `state-pension.njk` line 39). `dfn` is the element; needs a reset for its italic |
 | Sweep, markup, K6 | The budget headline is a label and value in one paragraph (`budget-view.js` line 45) |
 | Sweep, markup, K7 | `next_review` is free text, so its dates cannot be `time`. Needs a date field in `figures.json` |
-| Sweep, styles, C2 | Chart text renders at about 9 px on a 320 px screen (13 units in a 720-unit view box). Not an AA failure. Shared with the charts drawn at build time |
+| Sweep, styles, C2 | Now row W20 of "Work before step 4". The readability review's F2 measured the text at 8 to 8.7 px |
 | Sweep, styles, C3 | Four links that stand alone in a paragraph are about 21 px tall. They pass AA by the spacing exception of SC 2.5.8: each centre is at least 14.5 px from any other target, more than the 12 px radius, and `npm run a11y:manual` counts none under 24. They are short of the 44 px house standard. A class on those paragraphs would fix them |
 | Sweep, critique, R1 | The CSS comment above the pinned summary does not say that `pinSummary` in `common.js` sets `--summary-size`, or that 16rem is the fallback. One clause |
 

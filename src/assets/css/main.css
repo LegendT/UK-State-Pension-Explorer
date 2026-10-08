@@ -64,8 +64,8 @@ body {
 }
 
 /* Each level is set apart by its size and by the space above it. A page section's heading (main > h2)
-   has a rule above it as well. An h4 is body size, never smaller: R6 of the readability review of
-   8 October 2026. */
+   has a rule above it as well. In running text an h4 is body size, never smaller; notes and cards set
+   their own heading sizes below. R6 of the readability review of 8 October 2026. */
 h1, h2, h3, h4, h5 { line-height: 1.2; text-wrap: balance; margin: var(--space-xl) 0 var(--space-s); }
 h1 { font-size: 1.875rem; margin-top: var(--space-l); }
 h2 { font-size: 1.6rem; }

@@ -19,7 +19,7 @@ The owner decided each item on 2 October 2026, from options the assistant put: d
 
 ## Launch steps
 
-The owner wants to launch on 5 October 2026 if possible, and before 20 October 2026 if not: decision 82. The releases of 20 to 22 October 2026 in `docs/maintenance.md` are then the first update of the published site.
+The owner wanted to launch on 5 October 2026 if possible, and wants to launch before 20 October 2026: decision 82. The releases of 20 to 22 October 2026 in `docs/maintenance.md` are then the first update of the published site.
 
 The build work of decisions 68 and 74 was merged in pull request 18 on 2 October 2026. A production build was made in a scratch directory on 5 October 2026 and read by hand: see "Last checks" in `docs/HANDOVER.md`. The preview was looked at past the sign-in on 6 October 2026, step 2 below; the headers as served were not read.
 
@@ -61,8 +61,8 @@ This is the one ordered list. Each step is the owner's unless it says otherwise.
    | `OWNER_NAME` | `Anthony George` |
    | `OWNER_TYPE` | `Person` |
    | `REVIEWER_NAME` | `Anthony George` |
-   | `REVIEW_DATE` | The date of step 3, as `2026-10-05` |
-   | `A11Y_ASSESSMENT_DATE` | The date in `a11y.json`, as `2026-10-05` |
+   | `REVIEW_DATE` | The date the owner gives in row W16, in the form `2026-10-08` |
+   | `A11Y_ASSESSMENT_DATE` | The date of step 4, equal to `assessed_on` in `a11y.json`, in the form `2026-10-05` |
    | `AI_CRAWLER_POLICY` | `allow` |
 
 8. Attach `ukstatepensionexplorer.org` to the Netlify project: decision 67.
@@ -70,14 +70,14 @@ This is the one ordered list. Each step is the owner's unless it says otherwise.
 
 ## Work before step 4
 
-This is the work from the owner's page review (notes 1 to 13 in step 3) and from a separate launch audit, merged into one list. The audit is the version of 8 October 2026, copied unchanged to `research/launch-audit.html`. Its findings are A01 to A15. The rows are in working order, which is not the order of their numbers: W17 to W29 were added on 8 October 2026 from the readability review, decision 92. Rows marked **Owner decides** wait for the owner's answer before anyone acts. The owner answered W1, W2, W3 and W13 on 8 October 2026: decisions 89 to 91. Finding A04, the accessibility round by a person, is step 4 itself. It comes after this list because these changes alter what it tests, and its date becomes `A11Y_ASSESSMENT_DATE`.
+This is the work from the owner's page review (notes 1 to 13 in step 3) and from a separate launch audit, merged into one list. The audit is the version of 8 October 2026, copied unchanged to `research/launch-audit.html`. Its findings are A01 to A15. The rows are in working order, which is not the order of their numbers: W17 to W29 were added on 8 October 2026 from the readability review, decision 92. Every open row waits for the owner's word. Rows marked **Owner decides** need his answer as well, before anyone acts. The owner answered W1, W2, W3 and W13 on 8 October 2026: decisions 89 to 91. Finding A04, the accessibility round by a person, is step 4 itself. It comes after this list because these changes alter what it tests, and its date becomes `A11Y_ASSESSMENT_DATE`.
 
 | No. | Work | From | Who | Status |
 | --- | --- | --- | --- | --- |
 | W1 | Bring the Department for Work and Pensions' uprating analysis onto the reform pages before launch, against decision 87. The analysis was updated on 6 October 2026, after the check of 5 October. The social care page says some evidence is absent that the analysis now gives: which pensions the rule covers, and a poverty projection. The assistant recommends this one source before launch, and the rest of the new material after launch, as decision 87 says. | A01, A10 | Assistant | Done, 8 October 2026 |
 | W2 | Show the conflicting dates for the care service, against decision 87, which put the changes of 1 October 2026 to the terms of reference after launch. The announcement says summer 2027. The commission's terms of reference of 1 October 2026 keep a first phase in 2026 and a second by 2028. Give each date with its document, and say that they differ. The assistant recommends this before launch, because the page states one date as if it were settled. | A02 | Assistant | Done, 8 October 2026 |
 | W3 | The budget explorer reads amounts as the new period when the period changes. A full pension of £241.30 a week, changed to a month, gives £2,895.60 a year in place of £12,547.60. The owner declined a change on 2 October 2026 (R7, beside `convertedNote` in `budget.js`). The audit reproduced the effect and rates it a launch risk. Decided: convert every filled amount to the new period, to the nearest penny, with a note that says so. | A03 | Assistant | Done, 8 October 2026 |
-| W4 | Three reviewers matched by hand, on 5 October 2026, the 12 figures that the value script cannot find, because they are in spreadsheets. Record for each one the file, sheet, row, column, units, period and place, in its figure record. For the 21 passages confirmed earlier in a browser, recheck them or keep their older dates. | A05 | Assistant | Done, 8 October 2026. The 14 passages from the Institute for Fiscal Studies and Reform UK keep their first dates: both sites asked a person to prove they were not a robot |
+| W4 | Three reviewers matched by hand, on 5 October 2026, the 12 figures that the value script cannot find, because they are in spreadsheets. Record for each one the file, sheet, row, column, units, period and place, in its figure record. For the 21 passages confirmed earlier in a browser, recheck them or keep their older dates. | A05 | Assistant | Done, 8 October 2026. Eleven of the 12 are in spreadsheets and one is in a PDF, whose record names the page. The 14 passages from the Institute for Fiscal Studies and Reform UK keep their first dates: both sites asked a person to prove they were not a robot |
 | W5 | Deal with the 19 packages that `npm audit` reports: 15 high, 4 moderate, all in build and test tools. Upgrade where supported, or record why each one that remains cannot reach the published site. Do not accept npm's suggested downgrade of Eleventy. | A06 | Assistant | Done, 8 October 2026. 9 remain, all from `braces` and `sprintf-js`, which have no fixed version: the reason is in `README.md`, "Set up" |
 | W6 | The readability review, page by page, with the `statistics-ux` skill. It takes in note 9, and the charts and tables on a phone. The wording rows that follow it may change the same pages, so they wait for it. | Note 9, A11 | Assistant, then the owner approves | Done, 8 October 2026: `docs/ux-review-2026-10-08.md`, findings F1 to F16 and recommendations R1 to R16. The owner accepted them as suggested: decision 92 |
 | W17 | Separate the heading levels by size and space: `h2` about 1.6 to 1.75 rem with about 3.5 to 4 rem above and a top rule; `h3` about 1.3 rem with about 2 rem above; `h4` at least body size. Before or with W7, whose back-to-top link removes the one cue before each `h2` on a phone. Look at it with W18 in the browser first. | R6 | Assistant | Done, 8 October 2026. `h2` 1.6 rem, 1.75 rem from 40 em, 3.5 rem above its text where it heads a page section, with the rule at 2.5 rem; `h3` 1.3 rem, 1.375 rem from 40 em, 2 rem above; `h4` body size, 1.5 rem above. Looked at before and after at 390 and 1280 px on the costs, State Pension, overview, reform options and history explorer pages, with the source blocks of W18 still open |
@@ -99,18 +99,18 @@ This is the work from the owner's page review (notes 1 to 13 in step 3) and from
 | W28 | Shorten the drop-down options cut at 320 and 390 px, or let the menus take the form's full width at 320 px. | R15 | Assistant | Open |
 | W29 | Write the current heading ids into the templates, and give tables and charts ids. After W27, which rewords headings. | R16 | Assistant | Open |
 | W12 | Add tests for W3 and W11, and for history ranges that start after the first year. | A14 in part | Assistant | Open |
-| W13 | Say in the accessibility statement and in the corrections section that a GitHub issue is the only route, and that it needs a GitHub account, as a known limit. | A07 in part | Assistant | Decided: number 91 |
+| W13 | Say in the accessibility statement and in the corrections section that a GitHub issue is the only route, and that it needs a GitHub account, as a known limit. | A07 in part | Assistant | Open. Decision 91 settles the wording |
 | W14 | Bring `docs/HANDOVER.md` up to date: "Tracked separately" still says the main address was not checked past the sign-in, which step 2 did on 6 October 2026. Mark step 1 done, with its date. Close "The Health Foundation and the King's Fund" and the budget explorer freeze in "Waiting on the owner". Set the site map's "last changed" date, which predates its change of 2 October 2026. Make the review-date item there point to row W16, so the state is kept in one place. | A13 | Assistant | Done, 8 October 2026, with the handoff check. The handover had no review-date item to point at W16 |
 | W15 | Update sources and method last, when the work above is done: note 13. | Note 13 | Assistant | Open |
 | W16 | **Owner decides** before step 7: `REVIEW_DATE` is 8 October 2026, or the date the owner checks the changed pages. | Step 3 | Owner | Open |
 
-The rest of A07 is steps 7 to 9 and the checks under "After publication", which already cover status codes, headers, `robots.txt`, the sitemap, canonical addresses and the analytics request. Add to the first of those checks that no page sends `noindex`. These findings come after launch, because the audit rates each one P2, and none of them gives a reader a wrong figure: the custom amount written to the address of the rule comparison (A08), the fallback when a tool's script fails (A09, already under "Waiting on the owner"), wider interaction tests (A14), tax and abroad caveats (A15), and loading speed on a phone. The side note in step 3 also comes after launch. R9 of the readability review, short titles for undated citations, also comes after launch, in the first update: decision 92. The review's smaller points are in the review itself, not here.
+The rest of A07 is steps 7 to 9 and the checks under "After publication", which already cover status codes, headers, `robots.txt`, the sitemap, canonical addresses and the analytics request. These findings come after launch, because the audit rates each one P2, and none of them gives a reader a wrong figure: the custom amount written to the address of the rule comparison (A08), the fallback when a tool's script fails (A09, already under "Waiting on the owner"), wider interaction tests (A14), tax and abroad caveats (A15), and loading speed on a phone. The side note in step 3 also comes after launch. R9 of the readability review, short titles for undated citations, also comes after launch, in the first update: decision 92. The review's smaller points are in the review itself, not here.
 
 ## After publication, reported separately
 
 | Task | Needs |
 | --- | --- |
-| Check HTTP status, redirects, response headers, robots file, sitemap and canonicals on the live domain. | The live site |
+| Check HTTP status, redirects, response headers, robots file, sitemap and canonicals on the live domain, and that no page sends `noindex`. | The live site |
 | Look at the fetched share preview of the overview, one explainer and one page with a calculator. | The live site |
 | Verify the domain in a search console, submit the sitemap, read the processing report. | Account and domain access |
 | Reciprocal links on both sister sites. See `src/_data/links.json`, `reciprocal`. | The live domain, and changes to two other repositories |

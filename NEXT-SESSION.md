@@ -14,7 +14,7 @@ State on 8 October 2026, from docs/HANDOVER.md: the site is a preview for review
 published. Launch steps 1 and 2 are done. Step 3, the owner's review of every page, was
 done on 8 October 2026. The work it led to, with the launch audit and the readability
 review of that day, is "Work before step 4" in docs/launch-dependencies.md. Work since the
-last merged pull request is on the local branch launch-review, not yet pushed: run
+last merged pull request is on the branch launch-review, with a pull request open: run
 git status and git log main..launch-review first.
 
 Next action: none until Anthony says to build. The first open row is W7, and the rows run
