@@ -14,8 +14,8 @@ current state only (decision 83): do not add a dated section to it.
 State on 6 October 2026: see the opening paragraphs of docs/HANDOVER.md. The site is a
 preview for review, not published. All work is merged into `main`, up to pull request 24.
 The pre-launch review of 5 October 2026 is merged (pull request 23). Launch steps 1 and 2
-in docs/launch-dependencies.md are done. Three doc edits from the handoff check of
-6 October 2026 may be uncommitted on `main`: run git status first.
+in docs/launch-dependencies.md are done. Pull request 25 holds the handoff check's doc
+fixes of 6 October 2026: check with gh pr list whether it is merged. Run git status first.
 
 Next action: none for the assistant. Launch step 3, the review of every page, is Anthony's.
 Wait for Anthony to say what to do. Nothing else is authorised.
