@@ -40,9 +40,10 @@ Rechecking a source that has not changed updates `checked_date` only. It does no
 
 `src/_data/news.json` holds the date of the note "In the news" on the overview, whose text is in `src/index.njk`. When policy status changes, rewrite the note and change `as_of`. If nobody is maintaining it, leave the date in place. Never relabel an old note as current.
 
-The note was written on 30 September 2026, after the announcement of 29 September 2026, and corrected on 5 October 2026. The first search missed an analysis the Department for Work and Pensions published with the announcement. Search GOV.UK publications as well as news, and the UK Parliament's list of Bills. Rewrite the note, the option card for the announced rule and the pensions and social care page when any of these is published:
+The note was written on 30 September 2026, after the announcement of 29 September 2026, corrected on 5 October 2026, and checked again on 8 October 2026, when the Department for Work and Pensions' factsheet and the two changes to the care commission's terms were added. The first search missed an analysis the Department for Work and Pensions published with the announcement. Search GOV.UK publications as well as news, and the UK Parliament's list of Bills. Rewrite the note, the option card for the announced rule and the pensions and social care page when any of these is published:
 
 - a Bill or draft clauses for the change to the triple lock;
+- an updated version of the care commission's terms of reference, which GOV.UK said on 1 October 2026 would follow;
 - a technical note from the Department for Work and Pensions or the Treasury, above all one that gives the earnings measure, the starting point or the method behind the savings;
 - the next forecast from the Office for Budget Responsibility;
 - the report of the Casey commission, due in summer 2027;

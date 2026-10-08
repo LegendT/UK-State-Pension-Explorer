@@ -921,12 +921,32 @@
   },
   "casey-first-terms": {
     "kind": "enacted",
-    "statement": "The commission's terms first set two phases, reporting in 2026 and by 2028.",
+    "statement": "The commission's published terms set two phases, the first reporting in 2026 and the second by 2028.",
     "source_id": "casey-tor",
     "passage": "The purpose of the first phase of the commission is to set out the plan for how to implement a national care service, a government manifesto commitment. This should report in 2026.",
     "interpretation": false,
     "note": null,
-    "checked_date": "2026-09-29",
+    "checked_date": "2026-10-08",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "casey-tor-summer-2027": {
+    "kind": "finding",
+    "statement": "On 1 October 2026 the government changed the terms to show a report in summer 2027.",
+    "source_id": "casey-tor-history",
+    "passage": "Updated the terms of reference for the Independent Commission on Adult Social Care to reflect the commission's revised timetable, including its new reporting date of summer 2027.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-08",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "casey-tor-reinstated": {
+    "kind": "finding",
+    "statement": "On the same day, 1 October 2026, the government put the original terms back and said an updated version would follow.",
+    "source_id": "casey-tor-history",
+    "passage": "Reinstated the original version of the terms of reference, with an updated version to follow in due course.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-08",
     "review_status": "checked-with-ai-assistance"
   },
   "casey-affordable": {
@@ -1495,8 +1515,8 @@
     "source_id": null,
     "passage": null,
     "interpretation": false,
-    "note": "Searched on 5 October 2026: GOV.UK, the announcement, the Department for Work and Pensions' analysis of 29 September 2026, and the UK Parliament's list of Bills. A search on 30 September 2026 missed that analysis.",
-    "checked_date": "2026-10-05",
+    "note": "Searched on 5 October 2026: GOV.UK, the announcement, the Department for Work and Pensions' analysis of 29 September 2026, and the UK Parliament's list of Bills. A search on 30 September 2026 missed that analysis. Searched again on 8 October 2026: GOV.UK publications and news since 5 October 2026 for \"triple lock\", \"national care service\", \"state pension uprating\" and \"adult social care commission\", which found only the department's factsheet of 6 October 2026; and the UK Parliament's list of Bills for \"triple lock\", \"state pension\", \"pension\" and \"uprating\".",
+    "checked_date": "2026-10-08",
     "review_status": "checked-with-ai-assistance"
   },
   "no-rule-2030-distribution": {
