@@ -1,7 +1,7 @@
 // Expected values come from scripts/reference.py, recorded in docs/reference-calculations.md.
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { budget, fromWeekly, weekly } from "../src/assets/js/lib/budget.js";
+import { budget, convert, fromWeekly, weekly } from "../src/assets/js/lib/budget.js";
 
 test("weekly entry with tax entered", () => {
   const result = budget({
@@ -91,4 +91,17 @@ test("the summary and the headline give amounts for the period the reader enters
   assert.match(text("four-weeks", 96520, 0), /£965\.20 left over every 4 weeks \(£12,547\.60 a year\)/);
   // A year needs no yearly figure in brackets.
   assert.match(text("year", 1254760, 0), /£12,547\.60 left over a year Income/);
+});
+
+test("a change of period converts an amount, to the nearest penny", () => {
+  // Worked by hand, not from scripts/reference.py: one multiplication and one division, rounded.
+  // The case of finding A03: the full new rate entered for a week, then the period changed.
+  assert.equal(convert(24130, "week", "month"), 104563);
+  // A month held to the penny loses 4p over a year: £12,547.56, not £12,547.60.
+  assert.equal(convert(104563, "month", "year"), 1254756);
+  assert.equal(convert(24130, "week", "four-weeks"), 96520);
+  assert.equal(convert(96520, "four-weeks", "week"), 24130);
+  assert.equal(convert(1254760, "year", "week"), 24130);
+  assert.equal(convert(104563, "month", "week"), 24130);
+  assert.equal(convert(10001, "month", "four-weeks"), 9232);
 });

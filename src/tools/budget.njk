@@ -41,13 +41,14 @@ permalink: /tools/budget/
       <legend>Period</legend>
       <div class="field">
         <label for="budget-period">The amounts I enter are for</label>
-        <span class="hint" id="budget-period-hint">One period for every amount, income and spending.</span>
+        <span class="hint" id="budget-period-hint">One period for every amount, income and spending. If you change it, amounts already entered are converted to the new period, to the nearest penny.</span>
         <select id="budget-period" name="budget-period" aria-describedby="budget-period-hint">
           <option value="week">A week</option>
           <option value="four-weeks">4 weeks</option>
           <option value="month">A calendar month</option>
           <option value="year">A year</option>
         </select>
+        <span class="hint" id="budget-period-note" hidden></span>
       </div>
     </fieldset>
 

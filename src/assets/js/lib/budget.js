@@ -11,10 +11,13 @@ export const PERIOD_LABELS = {
   year: "a year",
 };
 
-// A weekly amount for the chosen period, to the nearest penny. The helpers publish weekly amounts.
-export function fromWeekly(weeklyPence, period) {
-  return Math.round((weeklyPence * PERIODS.week) / PERIODS[period]);
+// An amount for one period as the same amount for another, to the nearest penny.
+export function convert(pence, from, to) {
+  return Math.round((pence * PERIODS[from]) / PERIODS[to]);
 }
+
+// A weekly amount for the chosen period. The helpers publish weekly amounts.
+export const fromWeekly = (weeklyPence, period) => convert(weeklyPence, "week", period);
 
 // income and spending are [{ id, pence }]. taxPence is null when the reader has not entered tax.
 export function budget({ period, income, spending, taxPence }) {
