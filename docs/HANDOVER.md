@@ -6,7 +6,7 @@ The site is a **preview for review**. It is not published. The repository is htt
 
 **This file holds state only.** Do not add a dated section. The record of a change, with its checks, goes in the description of its pull request, and a decision goes in `docs/decision-log.md`. The record up to pull request 21 is this file as it stood before the cut: `git show 75d0574:docs/HANDOVER.md`.
 
-**Next action:** "Work before step 4" in `docs/launch-dependencies.md`, in the table's order, row W17 first, each on the owner's word. Then launch step 4.
+**Next action:** "Work before step 4" in `docs/launch-dependencies.md`, in the table's order, row W7 first, each on the owner's word. Then launch step 4.
 
 ## How to look at it
 
@@ -28,7 +28,7 @@ npm run serve        # http://127.0.0.1:8137
 
 ## Last checks
 
-Run on 8 October 2026, Chrome 154, macOS, on the branch `launch-review` after W1 to W6.
+Run on 8 October 2026, Chrome 154, macOS, on the branch `launch-review` after W17. The calculator tests and the two source checks were run after W1 to W6 and nothing they test has changed since.
 
 | Check | Command | Result |
 | --- | --- | --- |
@@ -36,7 +36,7 @@ Run on 8 October 2026, Chrome 154, macOS, on the branch `launch-review` after W1
 | Build checks | `npm run build` | No problems. 19 pages, 128 figures, 166 claims, 106 sources |
 | Quoted passages | `python3 scripts/check-passages.py` | 220 checked. 199 found by the script, 21 found in a browser by hand, 0 not found, 0 unreadable. Of the 21, 7 were read again on 8 October 2026; 14 keep their first dates (W4) |
 | Figures with no quoted passage | `python3 scripts/check-values.py` | 53 of 65 found in the source text. The other 12 are in spreadsheets; each record names its file and cell (W4) |
-| Automated accessibility | `npm run a11y` | 0 violations in 130 audits of 19 pages, 2,026 incomplete. Every incomplete contrast result measured, 3,910, none below threshold |
+| Automated accessibility | `npm run a11y` | 0 violations in 130 audits of 19 pages, 2,026 distinct incomplete results. Every incomplete contrast result measured, 3,910 occurrences across the audits, none below threshold |
 | Scripted accessibility measurements | `npm run a11y:manual` | 0 problems |
 | Dependencies | `npm audit` | 9 packages, 5 high and 4 moderate, none loaded when the site is built: `README.md`, "Set up" |
 | Production build | `npm run build` with production settings, read by hand | Last run on 5 October 2026, before W1 to W6: not rerun since |
