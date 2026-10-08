@@ -864,10 +864,20 @@
     "title": "State Pension uprating",
     "url": "https://www.gov.uk/government/publications/state-pension-uprating-analysis-2026/state-pension-uprating",
     "published_date": "2026-09-29",
-    "updated_date": null,
-    "checked_date": "2026-10-05",
+    "updated_date": "2026-10-06",
+    "checked_date": "2026-10-08",
     "licence": "Open Government Licence v3.0",
-    "note": "An ad hoc analysis published on the day of the announcement. It gives the method and the baseline of the government's savings estimates, in cash and in 2025 to 2026 prices, for Great Britain. It does not give the paths of earnings and prices it assumed, or the measure of earnings."
+    "note": "An ad hoc analysis published on the day of the announcement. It gives the method and the baseline of the government's savings estimates, in cash and in 2025 to 2026 prices, for Great Britain, and a projection of pensioner poverty under the new rule. It does not give the paths of earnings and prices it assumed, or the measure of earnings. GOV.UK shows it as updated on 6 October 2026, when the department added a factsheet. Rechecked on 8 October 2026: the text of the analysis had not changed."
+  },
+  "dwp-triple-lock-factsheet-2026": {
+    "publisher": "Department for Work and Pensions",
+    "title": "Triple Lock reform factsheet",
+    "url": "https://www.gov.uk/government/publications/state-pension-uprating-analysis-2026/triple-lock-reform-factsheet",
+    "published_date": "2026-10-06",
+    "updated_date": null,
+    "checked_date": "2026-10-08",
+    "licence": "Open Government Licence v3.0",
+    "note": "A factsheet added to the department's analysis on 6 October 2026. It describes the rule. It is not law."
   },
   "ageuk-response-2026-09-29": {
     "publisher": "Age UK",

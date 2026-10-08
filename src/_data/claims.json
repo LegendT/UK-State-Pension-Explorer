@@ -1421,12 +1421,72 @@
   },
   "dwp-2030-caution": {
     "kind": "finding",
-    "statement": "The department says its savings figures should be relied on for the long term, and not used to work out the saving in a single year.",
+    "statement": "The department says its figures for 2039 to 2040 and 2049 to 2050 are long-term estimates, and should not be used to work out the saving in any other single year.",
     "source_id": "dwp-uprating-analysis-2026",
     "passage": "These savings should not be used to then derive further point estimates for savings in an individual year and should instead be relied on for long-term estimates.",
     "interpretation": false,
     "note": null,
-    "checked_date": "2026-10-05",
+    "checked_date": "2026-10-08",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "dwp-2030-coverage": {
+    "kind": "finding",
+    "statement": "The department says the rule would apply to the basic State Pension and to the full rate of the new State Pension.",
+    "source_id": "dwp-triple-lock-factsheet-2026",
+    "passage": "From April 2030, the bSP and the full rate of the nSP will rise each year by the highest of:",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-08",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "dwp-triple-lock-coverage-now": {
+    "kind": "finding",
+    "statement": "The department says the triple lock covers the same two rates now.",
+    "source_id": "dwp-triple-lock-factsheet-2026",
+    "passage": "The Triple Lock means the basic State Pension (bSP) and the full rate of the new State Pension (nSP) increase by the highest of:",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-08",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "dwp-2030-other-parts": {
+    "kind": "finding",
+    "statement": "The department's analysis assumes that the parts of a pre-2016 pension that the triple lock does not cover keep rising with prices.",
+    "source_id": "dwp-uprating-analysis-2026",
+    "passage": "Components of the pre-2016 State Pension that are not covered by the Triple Lock are assumed to continue to be uprated by CPI.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-08",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "dwp-2030-poverty": {
+    "kind": "finding",
+    "statement": "The department projects that, under the new rule, the share of pensioners in Great Britain in relative low income after housing costs would fall.",
+    "source_id": "dwp-uprating-analysis-2026",
+    "passage": "relative pensioner poverty after housing costs under the adjusted Triple Lock is projected to fall from around 14% in 2024 to 2025 to around 8% in 2049 to 2050.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-08",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "dwp-2030-poverty-conditional": {
+    "kind": "finding",
+    "statement": "It says this is a projection that depends on its assumptions, not a prediction.",
+    "source_id": "dwp-uprating-analysis-2026",
+    "passage": "Results are projections conditional on the assumptions used, rather than predictions of future poverty rates.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-08",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "dwp-2030-poverty-not-effect": {
+    "kind": "finding",
+    "statement": "The projection is measured against 2024 to 2025, not against keeping the triple lock, so it does not show what the change itself does to poverty.",
+    "source_id": "dwp-uprating-analysis-2026",
+    "passage": "Chart 1: Projected changes in pensioner relative poverty after housing costs compared to 2024 to 2025",
+    "interpretation": true,
+    "note": "Our reading of the chart's title and the method, which compares incomes with a poverty line, not with the triple lock.",
+    "checked_date": "2026-10-08",
     "review_status": "checked-with-ai-assistance"
   },
   "no-rule-2030-detail": {
@@ -1475,8 +1535,8 @@
     "source_id": null,
     "passage": null,
     "interpretation": false,
-    "note": "Searched on 30 September 2026: the GOV.UK news story, the speech as printed, and the two Institute for Fiscal Studies pieces.",
-    "checked_date": "2026-09-30",
+    "note": "Searched on 30 September 2026: the GOV.UK news story, the speech as printed, and the two Institute for Fiscal Studies pieces. Searched again on 8 October 2026: the department's analysis and its factsheet of 6 October 2026.",
+    "checked_date": "2026-10-08",
     "review_status": "checked-with-ai-assistance"
   },
   "ifs-rule-2030-illustration": {
