@@ -9,22 +9,22 @@
 <a class="cite" href="{{ s.url }}">{{ s.publisher }}{% if full %}, {{ s.title }}{% else %}<span class="visually-hidden">, {{ s.title }}</span>{% endif %}</a>{% if s.published_date %} ({{ s.published_date | monthOrDayTag | safe }}){% endif %}
 {%- endmacro -%}
 
-{#- One muted line under a figure's paragraph, or in its card: the kind, the period, the source with
-    its date, then the key caveat, each a sentence, so no label runs into a value (decision 56 as
-    amended by 92, in the style of decision 77). "More about this figure" holds the rest. Where a
-    line above a group of figures has said some parts once (sharedNote), pass that group: those parts
-    are left out, and a figure whose every part the group said gets no line of its own. -#}
+{#- One muted line under a figure's paragraph, or in its card: the kind, the period, the range where
+    the record has one (decision 95), the source with its date, then the key caveat, each a sentence,
+    so no label runs into a value (decision 56 as amended by 92, in the style of decision 77). "More
+    about this figure" holds the rest. Where a line above a group of figures has said some parts once
+    (sharedNote), pass that group: those parts are left out, and a figure whose every part the group
+    said gets no line of its own unless it has a range. -#}
 {%- macro sourceNote(f, group) -%}
 {%- set caveat = f.qualifications | splitCaveat -%}
 {%- set g = group or {} -%}
-{%- if not (g.kind and g.period and g.source and (g.caveat or not caveat[0])) %}
-<p class="source-line">{% if not g.kind %}{{ classLabel(f.classification) }}{% if f.provisional %}, can be revised{% endif %}. {% endif %}{% if not g.period %}{{ f.period_label }}. {% endif %}{% if not g.source %}Source: {{ cite(f.source) }}. {% endif %}{% if caveat[0] and not g.caveat %}{{ caveat[0] }}{% endif %}</p>
+{%- if f.range or not (g.kind and g.period and g.source and (g.caveat or not caveat[0])) %}
+<p class="source-line">{% if not g.kind %}{{ classLabel(f.classification) }}{% if f.provisional %}, can be revised{% endif %}. {% endif %}{% if not g.period %}{{ f.period_label }}. {% endif %}{% if f.range %}Range: {{ f.range }}. {% endif %}{% if not g.source %}Source: {{ cite(f.source) }}. {% endif %}{% if caveat[0] and not g.caveat %}{{ caveat[0] }}{% endif %}</p>
 {%- endif %}
 <details class="source">
     <summary>More about this figure<span class="visually-hidden">: {{ f.label }}</span></summary>
     <dl>
       <dt>Place</dt> <dd>{{ f.geography }}</dd>
-      {%- if f.range %}<dt>Range</dt> <dd>{{ f.range }}</dd>{% endif %}
       {%- if g.caveat and caveat[0] %}<dt>Limits</dt> <dd>{{ caveat[0] }}{% if caveat[1] %} {{ caveat[1] }}{% endif %}</dd>{% elif caveat[1] %}<dt>Other limits</dt> <dd>{{ caveat[1] }}</dd>{% endif %}
       <dt>Source</dt> <dd>{{ cite(f.source, true) }}. Checked against the source on {{ f.checked_date | timeTag | safe }}.</dd>
       <dt>What it measures</dt> <dd>{{ f.definition }}</dd>
