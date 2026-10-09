@@ -119,9 +119,10 @@ function message(result, measure, years) {
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
-// options: { startPence, path, cashFloor, firstYear, measure, scenarioLabel }
+// options: { startPence, path, cashFloor, firstYear, measure, scenarioLabel, chartWidth }.
+// chartWidth: the width to draw the chart at; the build leaves it out.
 export function renderComparison(options) {
-  const { startPence, path, cashFloor, firstYear, measure, scenarioLabel } = options;
+  const { startPence, path, cashFloor, firstYear, measure, scenarioLabel, chartWidth } = options;
   const result = compareRules(startPence, path, cashFloor);
   const labels = yearLabels(firstYear, path.length);
   const ruleNames = RULES.map((rule) => RULE_LABELS[rule]);
@@ -131,6 +132,7 @@ export function renderComparison(options) {
 
   const chart = lineChart({
     id: "compare-chart",
+    width: chartWidth,
     title: message(result, measure, years),
     noun: "rules",
     description: `The five rules over ${path.length} years. Rules with the same result in every year share one line. The table after the chart gives every value.`,

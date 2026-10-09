@@ -2,7 +2,7 @@
 
 import { historyCsv, renderHistory, renderHistorySummary } from "../lib/history-view.js";
 import { observed } from "../lib/history.js";
-import { announce, choose, live, pinSummary, readJson, readSettings, updatedNote, writeSettings } from "./common.js";
+import { announce, chartWidth, choose, fitChart, live, pinSummary, readJson, readSettings, updatedNote, writeSettings } from "./common.js";
 
 const data = readJson("history-data");
 const form = document.getElementById("history-form");
@@ -42,7 +42,7 @@ function update(quiet) {
   error.textContent = "";
   from.setAttribute("aria-invalid", "false");
   current = { years: data.years, series: series.value, from: from.value, to: to.value, measure: measure.value, rule: rule.value };
-  result.innerHTML = renderHistory(current);
+  result.innerHTML = renderHistory({ ...current, chartWidth: chartWidth(result) });
   glance.innerHTML = renderHistorySummary(current) + (quiet === "load" ? "" : updatedNote("The chart and table below have changed too."));
   writeSettings({ series: current.series, from: current.from, to: current.to, measure: current.measure, ...(current.rule ? { rule: current.rule } : {}) }, "explorer");
   if (quiet !== "load") announce(status, "Result updated. The chart and table below have changed.");
@@ -83,6 +83,7 @@ glance.innerHTML = renderHistorySummary(current);
 // A new pension refills the year lists first, then the result follows.
 live(form, () => update("live"));
 pinSummary(glance.parentElement);
+fitChart(result, () => renderHistory({ ...current, chartWidth: chartWidth(result) }));
 
 // A link with settings in its address shows that result. Nothing is announced on arrival.
 const settings = readSettings();

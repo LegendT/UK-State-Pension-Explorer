@@ -111,6 +111,14 @@ main > .tool, main > figure, main > .cards, main > .scroll-x, main > .rate-block
 .lede { font-size: 1.15rem; color: var(--ink-soft); }
 /* Positioned so that text hidden for screen readers inside a table stays inside the scrolling region. */
 .scroll-x { overflow-x: auto; position: relative; }
+/* A scroll cue, shown by scroll-cue.js on a region whose table or chart is wider than it (W20). It stays at the
+   left edge as the region scrolls. Screen readers skip it: the region is named and scrolls by keyboard. */
+.scroll-x.can-scroll::before {
+  content: "Scroll sideways for more \2192";
+  content: "Scroll sideways for more \2192" / "";
+  display: block; position: sticky; left: 0; width: max-content;
+  margin-bottom: var(--space-s); font-size: 0.9rem; color: var(--ink-soft);
+}
 
 /* Blocks */
 
@@ -346,6 +354,8 @@ caption { text-align: left; font-weight: 700; padding-bottom: var(--space-s); ma
 th, td { padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--rule); text-align: left; vertical-align: top; }
 thead th { border-bottom: 2px solid var(--rule-strong); }
 td.num, th.num { text-align: right; white-space: nowrap; }
+/* An amount given in words, such as "around £2 billion, built up over five years", may wrap. */
+td.phrase, th.phrase { white-space: normal; }
 tr.calculated td, tr.calculated th { font-style: italic; }
 .scroll-x:focus-visible { outline-offset: -3px; }
 
@@ -353,6 +363,8 @@ tr.calculated td, tr.calculated th { font-style: italic; }
 .chart { margin: var(--space-l) 0; }
 .chart figcaption :is(h3, h4) { margin-top: 0; }
 .chart-svg { display: block; width: 100%; min-width: 30rem; height: auto; color: var(--ink); }
+/* Drawn at the width it has, so it does not scroll. */
+.chart-svg--narrow { min-width: 0; }
 .chart-grid { stroke: var(--rule); stroke-width: 1; }
 .chart-axis { stroke: var(--rule-strong); stroke-width: 1.5; }
 .chart-tick, .chart-label { fill: var(--ink-soft); font-size: 13px; font-family: inherit; }

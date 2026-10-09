@@ -76,8 +76,9 @@ export function renderHistorySummary(options) {
   );
 }
 
+// chartWidth: the width to draw the chart at; the build leaves it out.
 export function renderHistory(options) {
-  const { series, from, to, measure, rule } = options;
+  const { series, from, to, measure, rule, chartWidth } = options;
   const rows = historyRows(options);
   const name = SERIES_LABELS[series];
   const ruleName = rule ? RULE_LABELS[rule] : "";
@@ -105,6 +106,7 @@ export function renderHistory(options) {
 
   const chart = lineChart({
     marks,
+    width: chartWidth,
     id: "history-chart",
     title: message,
     description:

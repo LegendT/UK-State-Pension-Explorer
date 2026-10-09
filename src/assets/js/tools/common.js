@@ -1,5 +1,6 @@
 // Shared presentation helpers for the tools. Arithmetic lives in ../lib.
 
+import { CHART_WIDTH } from "../lib/chart.js";
 import { parsePence, parseTenths, MIN_TENTHS, MAX_TENTHS, MIN_PENCE, MAX_PENCE } from "../lib/uprating.js";
 
 export function readJson(id) {
@@ -159,4 +160,27 @@ export const STALE_MESSAGE = "There is a problem with the figures entered. The r
 // nothing that takes focus. Not shown on arrival, when nothing has changed.
 export function updatedNote(sentence) {
   return `<p class="tool-updated"><span class="status">Updated</span> ${sentence}</p>`;
+}
+
+// A tool's chart is drawn at the width of its result, up to the width the build draws at, so its
+// text keeps the size the stylesheet sets on a phone (W20). The build's width while the result is hidden.
+export function chartWidth(result) {
+  const style = getComputedStyle(result);
+  const width = Math.floor(result.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight));
+  return width > 0 ? Math.min(width, CHART_WIDTH) : CHART_WIDTH;
+}
+
+// Draws the chart again when the result's width changes, starting with the one the build drew.
+// html() returns the result on screen at chartWidth(result), or nothing when there is no result.
+// Only the chart is replaced, so focus elsewhere in the result stays where it is.
+export function fitChart(result, html) {
+  new ResizeObserver(() => {
+    const old = result.querySelector("figure.chart");
+    if (!old || old.querySelector("svg").viewBox.baseVal.width === chartWidth(result)) return;
+    const fresh = document.createRange().createContextualFragment(html() || "").querySelector("figure.chart");
+    if (!fresh) return;
+    const focused = old.contains(document.activeElement);
+    old.replaceWith(fresh);
+    if (focused) fresh.querySelector(".scroll-x").focus();
+  }).observe(result);
 }

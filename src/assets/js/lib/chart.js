@@ -2,10 +2,11 @@
 // browser when a reader changes a tool, so both draw the same picture. No DOM.
 // Series are told apart by dash pattern and marker shape as well as colour.
 
-const W = 720;
-const H = 380;
-// right leaves room for the name written after the end of each line.
-const PAD = { top: 16, right: 120, bottom: 56, left: 64 };
+// The width the build draws at. A tool draws at the width it has, up to this, so the chart's text
+// keeps the size the stylesheet sets: a 720 chart shown at 320 px had 8 px text (W20).
+export const CHART_WIDTH = 720;
+// Narrower than this, the chart is laid out for a phone: names inside the plot, fewer years named.
+const NARROW = 600;
 const DASHES = ["", "8 4", "2 4", "10 4 2 4", "12 3 3 3 3 3"];
 
 const escape = (text) =>
@@ -61,8 +62,28 @@ function mergeIdentical(series, noun) {
 // series: [{ label, short?, values: [number|null] }]. labels: x-axis labels, one per value.
 // noun names what the series are, for the label of a merged line: "Three rules".
 // marks: [{ index, number }] draws a dotted line at a year with a numbered marker; the page lists what each number means.
-export function lineChart({ id, title, description, labels, series: input, yLabel, yPrefix = "", xLabel, marks = [], noun = "lines" }) {
+// width: the width to draw at, in CSS pixels.
+export function lineChart({ id, title, description, labels, series: input, yLabel, yPrefix = "", xLabel, marks = [], noun = "lines", width = CHART_WIDTH }) {
   const series = mergeIdentical(input, noun);
+  const W = Math.round(width);
+  const narrow = W < NARROW;
+  const H = narrow ? 300 : 380;
+  // right leaves room for the name written after the end of each line; a phone has the names inside.
+  const left = 64;
+  const right = narrow ? 16 : 120;
+  const innerW = W - left - right;
+  const x = (i) => left + (labels.length > 1 ? (i / (labels.length - 1)) * innerW : innerW / 2);
+  // A marked year's number sits in a band above the plot, so it never covers a point. A number
+  // closer than a marker's width to the one before it goes up a row.
+  const rowOf = [];
+  const rowEnds = [];
+  marks.forEach((m) => {
+    let row = 0;
+    while (rowEnds[row] !== undefined && x(m.index) - rowEnds[row] < 22) row += 1;
+    rowEnds[row] = x(m.index);
+    rowOf.push(row);
+  });
+  const PAD = { top: marks.length ? 10 + rowEnds.length * 22 : 16, right, bottom: narrow ? 48 : 56, left };
   const all = series.flatMap((s) => s.values).filter((v) => v !== null);
   const low = Math.min(...all);
   const high = Math.max(...all);
@@ -73,11 +94,13 @@ export function lineChart({ id, title, description, labels, series: input, yLabe
   const yTicks = ticks(low - margin, high + margin);
   const yMin = Math.min(yTicks[0], low - margin);
   const yMax = Math.max(yTicks[yTicks.length - 1], high + margin);
-  const innerW = W - PAD.left - PAD.right;
   const innerH = H - PAD.top - PAD.bottom;
-  const x = (i) => PAD.left + (labels.length > 1 ? (i / (labels.length - 1)) * innerW : innerW / 2);
   const y = (v) => PAD.top + innerH - ((v - yMin) / (yMax - yMin)) * innerH;
-  const every = Math.ceil(labels.length / 10);
+  // A phone names the first and last years and as many between as fit, about 72 px apart.
+  const count = narrow ? Math.max(2, Math.min(labels.length, Math.floor(innerW / 72) + 1)) : 0;
+  const named = narrow
+    ? new Set(Array.from({ length: count }, (_, k) => Math.round((k * (labels.length - 1)) / (count - 1))))
+    : new Set(labels.map((_, i) => i).filter((i) => i % Math.ceil(labels.length / 10) === 0));
 
   const grid = yTicks
     .map(
@@ -89,8 +112,8 @@ export function lineChart({ id, title, description, labels, series: input, yLabe
 
   const xAxis = labels
     .map((label, i) =>
-      i % every === 0
-        ? `<text class="chart-tick" x="${x(i).toFixed(1)}" y="${H - PAD.bottom + 20}" text-anchor="middle">${escape(label)}</text>`
+      named.has(i)
+        ? `<text class="chart-tick" x="${x(i).toFixed(1)}" y="${H - PAD.bottom + 20}" text-anchor="${narrow && labels.length > 1 && i === labels.length - 1 ? "end" : "middle"}">${escape(label)}</text>`
         : "",
     )
     .join("");
@@ -107,29 +130,32 @@ export function lineChart({ id, title, description, labels, series: input, yLabe
     })
     .join("");
 
-  // Each line is named at its end. Names closer than a line of text are moved apart.
+  // Each line is named at its end: after it, or on a phone above it, inside the plot. Names
+  // closer than a line of text are moved apart, and on a phone kept above the axis.
   const ends = series
     .map((s) => {
       // Not findLastIndex: Safari before 15.4 does not have it.
       let i = s.values.length - 1;
       while (i > 0 && s.values[i] === null) i -= 1;
-      return { index: s.style, text: s.short, x: x(i) + 8, y: y(s.values[i]) + 4 };
+      return { index: s.style, text: s.short, x: narrow ? x(i) : x(i) + 8, y: y(s.values[i]) + (narrow ? -10 : 4) };
     })
     .sort((a, b) => a.y - b.y);
   ends.forEach((end, i) => {
     if (i > 0 && end.y - ends[i - 1].y < 15) end.y = ends[i - 1].y + 15;
   });
+  const over = narrow ? Math.max(0, ends[ends.length - 1].y - (H - PAD.bottom - 6)) : 0;
   const endLabels = ends
-    .map((end) => `<text class="chart-end chart-series--${end.index + 1}" x="${end.x.toFixed(1)}" y="${end.y.toFixed(1)}" text-anchor="start">${escape(end.text)}</text>`)
+    .map((end) => `<text class="chart-end chart-series--${end.index + 1}" x="${end.x.toFixed(1)}" y="${(end.y - over).toFixed(1)}" text-anchor="${narrow ? "end" : "start"}">${escape(end.text)}</text>`)
     .join("");
 
   const markLines = marks
-    .map((m) => {
+    .map((m, k) => {
       const mx = x(m.index).toFixed(1);
+      const cy = PAD.top - 13 - rowOf[k] * 22;
       return (
-        `<line class="chart-mark" x1="${mx}" x2="${mx}" y1="${PAD.top}" y2="${H - PAD.bottom}"/>` +
-        `<circle class="chart-mark-dot" cx="${mx}" cy="${H - PAD.bottom - 11}" r="9"/>` +
-        `<text class="chart-mark-number" x="${mx}" y="${H - PAD.bottom - 7}" text-anchor="middle">${m.number}</text>`
+        `<line class="chart-mark" x1="${mx}" x2="${mx}" y1="${cy + 9}" y2="${H - PAD.bottom}"/>` +
+        `<circle class="chart-mark-dot" cx="${mx}" cy="${cy}" r="9"/>` +
+        `<text class="chart-mark-number" x="${mx}" y="${cy + 4}" text-anchor="middle">${m.number}</text>`
       );
     })
     .join("");
@@ -142,7 +168,7 @@ export function lineChart({ id, title, description, labels, series: input, yLabe
     .join("");
 
   return (
-    `<svg class="chart-svg" viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="${id}-title" aria-describedby="${id}-desc">` +
+    `<svg class="chart-svg${narrow ? " chart-svg--narrow" : ""}" viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="${id}-title" aria-describedby="${id}-desc">` +
     `<title id="${id}-title">${escape(title)}</title><desc id="${id}-desc">${escape(description)}</desc>` +
     grid +
     `<line class="chart-axis" x1="${PAD.left}" x2="${W - PAD.right}" y1="${H - PAD.bottom}" y2="${H - PAD.bottom}"/>` +

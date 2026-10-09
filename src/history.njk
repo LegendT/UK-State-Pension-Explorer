@@ -30,18 +30,18 @@ permalink: /history/
 <table>
   <caption>Full weekly rates and the increase applied each year, as published</caption>
   <thead>
-    <tr><th scope="col">Tax year</th><th scope="col">Took effect</th><th scope="col" class="num">Basic State Pension</th><th scope="col" class="num">New State Pension</th><th scope="col" class="num">Increase applied</th><th scope="col" class="num">Prices</th><th scope="col" class="num">Earnings, at the time</th><th scope="col">Decided by</th></tr>
+    <tr><th scope="col">Tax year</th><th scope="col" class="num">Basic State Pension</th><th scope="col" class="num">New State Pension</th><th scope="col" class="num">Increase applied</th><th scope="col" class="num">Prices</th><th scope="col" class="num">Earnings, at the time</th><th scope="col">Took effect</th><th scope="col">Decided by</th></tr>
   </thead>
   <tbody>
     {%- for year in history.years %}
     <tr>
       <th scope="row">{{ year.tax_year }}{% if year.exceptional %} <span class="status">Exceptional</span>{% endif %}</th>
-      <td>{{ year.effective_date | timeTag | safe }}</td>
       <td class="num">{{ year.basic_pence | money }}</td>
       <td class="num">{% if year.new_pence %}{{ year.new_pence | money }}{% else %}Did not exist{% endif %}</td>
       <td class="num">{{ year.applied_tenths | percent }}</td>
       <td class="num">{% if year.prices_tenths !== null %}{{ year.prices_tenths | percent }}{% else %}Not a test that year{% endif %}</td>
       <td class="num">{% if year.earnings_tenths !== null %}{{ year.earnings_tenths | percent }}{% if year.earnings_not_used %} (not used){% endif %}{% else %}Not a test that year{% endif %}</td>
+      <td>{{ year.effective_date | timeTag | safe }}</td>
       <td>{{ { "prices": "Prices (CPI)", "earnings": "Earnings", "floor": "The 2.5% minimum", "rpi": "Prices (RPI, this year only)", "pre-triple-lock": "The higher of 2.5% or RPI" }[year.measure] }}</td>
     </tr>
     {%- endfor %}

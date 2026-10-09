@@ -1,7 +1,7 @@
 // Tool 2: compare the replacement rules. Presentation only.
 
 import { renderComparison, renderSummary } from "../lib/compare-view.js";
-import { announce, choose, escapeHtml, focusFirstError, live, markStale, pinSummary, STALE_MESSAGE, updatedNote, readAmount, readJson, readPercent, readSettings, setError, writeSettings } from "./common.js";
+import { announce, chartWidth, choose, fitChart, escapeHtml, focusFirstError, live, markStale, pinSummary, STALE_MESSAGE, updatedNote, readAmount, readJson, readPercent, readSettings, setError, writeSettings } from "./common.js";
 
 const data = readJson("compare-data");
 const form = document.getElementById("compare-form");
@@ -86,6 +86,10 @@ function showReason() {
 // leaves focus where the reader is typing. Otherwise an error also takes focus to the first field.
 // The page is built with a result, so one is showing from the start.
 let hasResult = true;
+// The settings of the result on screen, for drawing its chart again at a new width.
+let shown;
+// Only the first letter, so a name such as the Institute for Fiscal Studies keeps its capitals.
+const scenarioLabel = () => (edited ? "your own figures" : chosen().label.charAt(0).toLowerCase() + chosen().label.slice(1));
 function update(message, mode) {
   const count = readYears();
   const startPence = readAmount(start, "the starting weekly amount");
@@ -106,11 +110,8 @@ function update(message, mode) {
   }
   hasResult = true;
   const options = { startPence, path, cashFloor: floor.checked, firstYear: Number(first.value), measure: measure.value };
-  result.innerHTML = renderComparison({
-    ...options,
-    // Only the first letter, so a name such as the Institute for Fiscal Studies keeps its capitals.
-    scenarioLabel: edited ? "your own figures" : chosen().label.charAt(0).toLowerCase() + chosen().label.slice(1),
-  });
+  shown = { ...options, scenarioLabel: scenarioLabel() };
+  result.innerHTML = renderComparison({ ...shown, chartWidth: chartWidth(result) });
   summary.innerHTML = renderSummary(options) + (mode === "load" ? "" : updatedNote("The chart and tables below have changed too."));
   // Edited yearly figures go in the address too, or a link would show a different result.
   const figures = (key) => path.map((year) => (year[key] / 10).toFixed(1)).join(",");
@@ -166,6 +167,9 @@ live(form, () => update(undefined, "live"));
 
 reset();
 pinSummary(summary.parentElement);
+// The page is built with the starting scenario's result, from the settings the form now holds.
+shown = { startPence: readAmount(start, "the starting weekly amount"), path: currentPath(), cashFloor: floor.checked, firstYear: Number(first.value), measure: measure.value, scenarioLabel: scenarioLabel() };
+fitChart(result, () => hasResult && renderComparison({ ...shown, chartWidth: chartWidth(result) }));
 
 // A link with settings in its address shows that result. Nothing is announced or focused on arrival.
 // Typed values are checked by the same rules as the form before anything is shown.
