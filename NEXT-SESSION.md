@@ -4,7 +4,7 @@ Read, in this order, before doing anything:
 1. docs/HANDOVER.md
 2. docs/launch-dependencies.md, "Launch steps", "Work before step 4" and "After launch, first update"
 3. docs/decision-log.md, from number 83
-4. docs/ux-review-2026-10-08.md, the findings F1 to F16 and "Smaller points" behind rows W17 to W34
+4. docs/ux-review-2026-10-08.md, the findings F1 to F16 and "Smaller points" behind rows W7 and W17 to W31
 5. README.md
 
 Do not read _archive/. Read research/ only to check a figure. docs/ux-review.md,

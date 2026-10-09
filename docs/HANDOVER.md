@@ -98,15 +98,13 @@ As at 9 October 2026.
 | --- | --- |
 | Launch | The steps, in order, are in `docs/launch-dependencies.md`, "Launch steps". Steps 1 to 3 are done. Before step 4 comes "Work before step 4" in the same file. The assistant does each row on the owner's word |
 
-Every other open item is in `docs/launch-dependencies.md`: before launch in "Work before step 4", after it in "After launch, first update". The rendered-page, code and sweep items that this section held from the pre-launch review are rows there since 9 October 2026: decision 93.
+Every other open item is in `docs/launch-dependencies.md`: before launch in "Work before step 4", after it in "After launch, first update". `docs/pre-launch-review.md`, which is frozen, points here for its "Rendered pages" and "Code" items. They are rows of that table.
 
 ## Tracked separately
 
 | Item | Status |
 | --- | --- |
-| Reciprocal links on UK Public Finances Explorer and UK Migration Explorer | Not started. Needs a live domain. No other repository was changed |
 | Deployed checks | The main site address was checked past the sign-in on 6 October 2026, on the build of `25b1e74`: see "Last checks". Not done for the work on `launch-review`, or for a production domain |
-| Search console | Not started. Needs account and domain access |
 
 ## Found in passing
 
