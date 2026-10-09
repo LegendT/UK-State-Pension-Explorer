@@ -86,32 +86,19 @@ See `docs/launch-dependencies.md`. Every item was decided on 2 October 2026, and
 | The analytics script loaded with `type="module"`, not `defer` | `docs/pre-launch-review.md`. Settled by the check of the beacon on the live site |
 | A test for "up to 25p a week" in the model specification | `docs/pre-launch-review.md`. A dated record of a trial, not a published claim |
 | A row for the Retail Prices Index figure of 2011/12 in the triple lock calculator | The year's note gives it |
+| Four smaller points of the readability review of 8 October 2026: public spending covered on both the State Pension and costs pages (item 53), a second current section on the compare page (item 51), a download of the compare tables (item 22), and adding more than one rule at a time in the history explorer (item 64) | Decision 93 |
 
 The items under "Known defects and limits" are known. Do not raise them again unless the owner asks.
 
 ## Waiting on the owner
 
-As at 8 October 2026.
+As at 9 October 2026.
 
 | Item | What is needed |
 | --- | --- |
 | Launch | The steps, in order, are in `docs/launch-dependencies.md`, "Launch steps". Steps 1 to 3 are done. Before step 4 comes "Work before step 4" in the same file. The assistant does each row on the owner's word |
-| Parked until the first update (decision 87): new since 30 September 2026, not yet on the site | Found on 5 October 2026 and listed with their addresses in `docs/pre-launch-review.md`: the Institute for Fiscal Studies' analysis of 30 September 2026, which puts the saving in 2039 to 2040 between £4 billion and £20 billion; the Scottish Government's letter of 1 October 2026; the Scottish National Party's statement of 2 October 2026; the pensions minister's article of 2 October 2026; and a workforce plan promised for the end of the year. Each needs a source record and claims. The owner decided on 6 October 2026 that they go in after launch, in the first update: decision 87. Decision 89 brought two others in before launch, done on 8 October 2026 (W1, W2): the department's analysis, with its poverty projection, and the two changes to the terms of reference |
-| Rendered pages, left from the pre-launch review | None is an error. On a short screen a tool's summary is not pinned, so it is out of view while typing; a one-line pinned strip would keep it. The pinned summary stays over the page from top to foot, not only beside the tool. The charts and wide tables on a phone are W20. In the rule comparison's table of yearly figures, an error wraps over ten lines on a phone. The history explorer does not use the "Out of date" note for an impossible range. Financial years are written three ways: 2026/27, 2026-27 and 2026 to 2027 |
-| Code, left from the pre-launch review | A figure typed as ".5" is refused, with a message that does not say why. A tool whose script fails to load shows its form and nothing else. No test reaches the range limits of the fields. A test of the history table for a range that starts after the first year is W12. Six filters and two exports are unused. None gives a wrong number |
-| Rule comparison: phone keyboard | The pinned summary and an on-screen keyboard share a small screen. The alternative shrinks the summary to one line while a field has focus. Not tested on a real phone |
-| Rule comparison: the gap shown | The summary gives the gap in the last year. The total over the period, in the full result's totals table, could be shown as well |
-| Rule comparison: "less" is not a cut | The full result says a lower amount is a smaller rise, not a cut. The pinned summary does not, for want of room |
-| Sweep, markup, W1 link | The source of a loaded example budget is plain text. Passing the source's address through the `budgetData` filter in `eleventy.config.js` would make it a link with a check date, like every other source. Changes a transform |
-| Sweep, markup, K2 | Table source notes (`macros.njk` line 142, 11 places) and the budget "Left out" notes (6) are "Label:" paragraphs, not the `dl` the figure notes use. Pages get longer, as with decision 56 |
-| Sweep, markup, K3 | "Showing:" on the triple lock tool (`triple-lock.njk` line 121) is a label and value in one paragraph; could be a one-pair `dl` |
-| Sweep, markup, K4 | The calculated column in the history table uses `em` (`history-view.js` line 114). A `span` with a class says it without stress emphasis |
-| Sweep, markup, K5 | Terms defined in running text are `strong` (`index.njk` lines 73 and 75, `state-pension.njk` line 39). `dfn` is the element; needs a reset for its italic |
-| Sweep, markup, K6 | The budget headline is a label and value in one paragraph (`budget-view.js` line 45) |
-| Sweep, markup, K7 | `next_review` is free text, so its dates cannot be `time`. Needs a date field in `figures.json` |
-| Sweep, styles, C2 | Now row W20 of "Work before step 4". The readability review's F2 measured the text at 8 to 8.7 px |
-| Sweep, styles, C3 | Four links that stand alone in a paragraph are about 21 px tall. They pass AA by the spacing exception of SC 2.5.8: each centre is at least 14.5 px from any other target, more than the 12 px radius, and `npm run a11y:manual` counts none under 24. They are short of the 44 px house standard. A class on those paragraphs would fix them |
-| Sweep, critique, R1 | The CSS comment above the pinned summary does not say that `pinSummary` in `common.js` sets `--summary-size`, or that 16rem is the fallback. One clause |
+
+Every other open item is in `docs/launch-dependencies.md`: before launch in "Work before step 4", after it in "After launch, first update". The rendered-page, code and sweep items that this section held from the pre-launch review are rows there since 9 October 2026: decision 93.
 
 ## Tracked separately
 
