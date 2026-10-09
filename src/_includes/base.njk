@@ -90,9 +90,27 @@
 </header>
 <main id="main" class="wrap" tabindex="-1">
 {{ content | safe }}
+{%- set pager = page.url | pager %}
+{%- if pager.previous or pager.next %}
+<nav class="pager" aria-label="Next and previous pages">
+  <ul>
+    {%- if pager.previous %}
+    <li class="previous"><a href="{{ pager.previous }}" rel="prev"><span>Previous</span> {{ pager.previous | pageName }}</a></li>
+    {%- endif %}
+    {%- if pager.next %}
+    <li class="next"><a href="{{ pager.next }}" rel="next"><span>Next</span> {{ pager.next | pageName }}</a></li>
+    {%- endif %}
+  </ul>
+</nav>
+{%- endif %}
 {%- if entry.modified %}
 <p class="page-dates">Content of this page last changed on {{ entry.modified | timeTag | safe }}.{% if entry.figure_cards %} Each figure shows the date it was checked against its source under "More about this figure".{% endif %}</p>
 {%- endif %}
+{#- One link back up, in place of a link at the end of every section: decision 88. It goes to the
+    start of the page, where the contents list is in view on every page but the overview: decision 94.
+    back-to-top.js fixes it in the lower right of a long page; without the script it stays here. -#}
+<p class="back-to-top"><a href="#main">Back to top<span aria-hidden="true"> &uarr;</span></a></p>
+<script type="module" src="/assets/js/back-to-top.js"></script>
 </main>
 <footer class="site-footer">
   <div class="wrap">
@@ -106,10 +124,9 @@
     </nav>
     <nav aria-label="Footer">
       <ul class="footer-links">
-        <li><a href="/sources-and-method/">Sources, method and corrections</a></li>
-        <li><a href="/accessibility/">Accessibility statement</a></li>
-        <li><a href="/privacy/">Privacy</a></li>
-        <li><a href="/site-map/">Site map</a></li>
+        {%- for item in [["/sources-and-method/", "Sources, method and corrections"], ["/accessibility/", "Accessibility statement"], ["/privacy/", "Privacy"], ["/site-map/", "Site map"]] %}
+        <li><a href="{{ item[0] }}"{% if page.url == item[0] %} aria-current="page"{% endif %}>{{ item[1] }}</a></li>
+        {%- endfor %}
       </ul>
     </nav>
     <p>{{ site.name }} is an educational project. It is not a government service and does not give financial advice.{% if entry.figure_cards %} Rates and rules change, so each figure shows its source, and the date it was checked under "More about this figure".{% endif %}</p>

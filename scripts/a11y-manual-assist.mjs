@@ -2,7 +2,8 @@
 // Reflow at 320 CSS px (1.4.10), text spacing (1.4.12), target size (2.5.8), heading order,
 // keyboard focus order and visible focus (2.1.1, 2.4.3, 2.4.7, 2.4.11), and no-JavaScript reading.
 // Also checks that the "On this page" list marks the section being read. Run it after changing
-// src/assets/js/contents.js, the contents macro or the .contents styles.
+// src/assets/js/contents.js, the contents macro or the .contents styles. The same goes for the
+// "Back to top" link of back-to-top.js (decision 88).
 // Usage: npm run build && node scripts/a11y-manual-assist.mjs
 
 import { createServer } from "node:http";
@@ -26,6 +27,7 @@ const report = { run: new Date().toISOString(), browser: await browser.version()
 const problems = [];
 let contentsChecked = 0;
 let followedChecked = 0;
+let underChecked = 0;
 
 for (const path of pages) {
   const out = {};
@@ -140,15 +142,26 @@ for (const path of pages) {
   await fourth.goto(base + path, { waitUntil: "networkidle0" });
   if (await fourth.$("main > .contents:not(.section-nav)")) {
     contentsChecked += 1;
-    const links = "main > .contents:not(.section-nav) a";
+    // In-page links only: on a reform page the list also names the section's other pages.
+    const links = 'main > .contents:not(.section-nav) a[href^="#"]';
     const frames = () => fourth.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
     const current = () => fourth.evaluate((sel) => [...document.querySelectorAll(sel)].findIndex((a) => a.getAttribute("aria-current") === "location"), links);
     const count = await fourth.$$eval(links, (a) => a.length);
     const mid = Math.floor(count / 2);
+    // A list taller than the window scrolls inside its column, and contents.js moves it to keep the
+    // marked link in view on every window scroll. Settle the list before clicking, or the click lands
+    // on whichever link has just moved under the pointer.
+    const follow = async (i) => {
+      const link = (await fourth.$$(links))[i];
+      await link.evaluate((el) => el.scrollIntoView({ block: "center" }));
+      await frames();
+      await link.click();
+      await frames();
+    };
     const steps = [];
     await fourth.evaluate(() => scrollTo(0, document.body.scrollHeight)); await frames();
     steps.push(["bottom marks the last link", (await current()) === count - 1]);
-    await (await fourth.$$(links))[0].click(); await frames();
+    await follow(0);
     steps.push(["following the first link marks it", (await current()) === 0]);
     // Scroll to the second section, and at least a window past the first heading so the followed
     // link's hold lets go: a first section can be longer than any fixed step, or shorter than a window.
@@ -158,14 +171,14 @@ for (const path of pages) {
       scrollTo(0, Math.max(top(second), top(first) + innerHeight));
     }, links); await frames();
     steps.push(["scrolling on moves the mark from the first link", ![0, -1].includes(await current())]);
-    await (await fourth.$$(links))[mid].click(); await frames();
+    await follow(mid);
     steps.push(["following a middle link marks it", (await current()) === mid]);
     await fourth.evaluate(() => scrollBy(0, -400)); await frames();
     steps.push(["scrolling back up moves the mark off it", ![mid, -1].includes(await current())]);
     // In a tall window a last heading can stay below the marking line even at the bottom of the page,
     // so only the followed-link hold marks it. Pages where that happens are counted.
     await fourth.setViewport({ width: 1400, height: 2000 });
-    await (await fourth.$$(links))[count - 1].click(); await frames();
+    await follow(count - 1);
     const belowLine = await fourth.evaluate((sel) => {
       const last = [...document.querySelectorAll(sel)].at(-1);
       return document.getElementById(last.hash.slice(1)).getBoundingClientRect().top > innerHeight / 4;
@@ -183,6 +196,72 @@ for (const path of pages) {
   }
   await fourth.close();
 
+  // "Back to top": one fixed link on a page over four screens. Shown on scrolling up, hidden near the
+  // top, hidden at desktop width where the contents list stays in view, never under a focused element.
+  const fifth = await browser.newPage();
+  await fifth.setViewport({ width: 390, height: 844 });
+  await fifth.goto(base + path, { waitUntil: "networkidle0" });
+  const topFrames = () => fifth.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
+  const topShown = () => fifth.evaluate(() => {
+    const el = document.querySelector(".back-to-top");
+    const s = getComputedStyle(el), box = el.getBoundingClientRect();
+    return s.display !== "none" && s.position === "fixed" && box.bottom <= innerHeight && box.right <= innerWidth && box.left > innerWidth / 2;
+  });
+  const isLong = () => fifth.evaluate(() => document.documentElement.scrollHeight > 4 * innerHeight);
+  const toBottomThenUp = async (by) => {
+    await fifth.evaluate(() => scrollTo(0, document.body.scrollHeight)); await topFrames();
+    await fifth.evaluate((n) => scrollBy(0, -n), by); await topFrames();
+  };
+  const topSteps = [];
+  if (await isLong()) {
+    await fifth.evaluate(() => scrollTo(0, document.body.scrollHeight)); await topFrames();
+    topSteps.push(["scrolling down does not show it", !(await topShown())]);
+    await fifth.evaluate(() => scrollBy(0, -200)); await topFrames();
+    topSteps.push(["scrolling up shows it in the lower right", await topShown()]);
+    // Put a control under the link: scroll up so that one lands in the link's box, then focus it.
+    const under = await fifth.evaluate(() => {
+      const b = document.querySelector(".back-to-top").getBoundingClientRect();
+      const controls = [...document.querySelectorAll("main a[href], main button, main input, main select, main summary")].filter((el) => !el.closest(".back-to-top") && el.offsetParent !== null);
+      for (const el of controls) {
+        const a = el.getBoundingClientRect();
+        if (a.right <= b.left || a.left >= b.right) continue;
+        const want = scrollY + a.top - b.top - (b.height - a.height) / 2;
+        if (want >= scrollY || want < innerHeight) continue; // an upward scroll, and not near the top
+        scrollTo(0, want);
+        el.focus();
+        return true;
+      }
+      return false;
+    });
+    if (under) { underChecked += 1; await topFrames(); topSteps.push(["a focused element under it hides it", !(await topShown())]); }
+    await fifth.evaluate(() => document.activeElement.blur());
+    // Above a pinned tool summary, never on it.
+    const onSummary = await fifth.evaluate(() => {
+      const summary = document.querySelector(".tool-summary:not(.unpinned)");
+      if (!summary || getComputedStyle(summary).position !== "fixed") return false;
+      const a = summary.getBoundingClientRect(), b = document.querySelector(".back-to-top").getBoundingClientRect();
+      return a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top;
+    });
+    topSteps.push(["it does not overlap a pinned summary", !onSummary]);
+    // 320 by 256 CSS px, a 1280 px window at 400% zoom: the link fits inside the window.
+    await fifth.setViewport({ width: 320, height: 256 });
+    await toBottomThenUp(100);
+    if (await isLong()) topSteps.push(["at 400% zoom it fits inside the window", await topShown()]);
+    await fifth.evaluate(() => scrollTo(0, 0)); await topFrames();
+    topSteps.push(["at the top it is hidden", !(await topShown())]);
+    await fifth.setViewport({ width: 1280, height: 800 });
+    await toBottomThenUp(200);
+    const column = Boolean(await fifth.$("main > .contents:not(.section-nav)"));
+    if (column) topSteps.push(["at desktop width a page with a contents column hides it", !(await topShown())]);
+    else if (await isLong()) topSteps.push(["at desktop width a long page with no contents column shows it", await topShown()]);
+  } else {
+    await toBottomThenUp(100);
+    topSteps.push(["a page of four screens or fewer never shows it", !(await topShown())]);
+  }
+  out.backToTop = topSteps.filter(([, ok]) => !ok).map(([name]) => name);
+  if (out.backToTop.length) problems.push(`${path} Back to top: ${out.backToTop.join("; ")}`);
+  await fifth.close();
+
   report.pages[path] = out;
   console.log(`${path}  reflow ${out.reflow.pageOverflowPx}px  spacing clipped ${out.textSpacing.clipped.length}  targets ${out.targets.total} (under 24: ${out.targets.under24.length}, 24 to 43: ${out.targets.under44.length}, inline exempt: ${out.targets.inlineExempt})  headings ${out.headings.count} skips ${out.headings.skips.length}  tab stops ${out.keyboard.reached}/${expected}  no-JS words ${out.noScript.words}`);
 }
@@ -190,6 +269,7 @@ for (const path of pages) {
 await browser.close();
 // Every page with the list lost it, or the selector no longer matches: either way nothing was checked.
 if (!contentsChecked) problems.push("On this page: no page with the list was found, so the marking was not checked");
+if (!underChecked) problems.push("Back to top: no control sat under the link on any page, so the hiding under a focused element was not checked");
 if (contentsChecked && !followedChecked) problems.push("On this page: no last heading stayed below the marking line, so the hold on a followed link was not checked");
 server.close();
 mkdirSync("reports", { recursive: true });

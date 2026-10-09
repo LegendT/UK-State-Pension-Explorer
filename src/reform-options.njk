@@ -5,15 +5,24 @@ permalink: /reform-options/
 {%- import "macros.njk" as m with context -%}
 <h1>Reform options: how the yearly increase could change</h1>
 
-<p class="lede">Two separate decisions are often discussed together. One is how the State Pension should rise each year. The other is who should be entitled to it. This page sets out the options for the yearly increase. The next page has a calculator to compare them. The other pages in this section cover what the State Pension costs and who is affected, pensions and social care, and entitlement.</p>
+<p class="lede">Two separate decisions are often discussed together. One is how the State Pension should rise each year. The other is who should be entitled to it. This page sets out the options for the yearly increase.</p>
 
-{{ m.reformSection() }}
-
+{#- The "Compare the rules" section is not listed: the page entry for the calculator, two lines below
+    it in the list, is where the section sends the reader. From 40em the four options after the first
+    sit two to a row, so the scroll mark lands on the second of a pair; following a link marks the one
+    followed. -#}
 {{ m.contents([
   ["two-decisions", "Two different decisions"],
-  ["increases", "Options for the yearly increase"],
-  ["compare", "Compare the rules"]
-]) }}
+  ["increases", "Options for the yearly increase", [
+    ["opt-2030", "The rule announced for April 2030"],
+    ["opt-triple", "Keep the triple lock"],
+    ["opt-double", "Double lock: prices or earnings"],
+    ["opt-earnings", "Earnings link"],
+    ["opt-prices", "Prices link"],
+    ["how-2030-works", "How the announced rule works"],
+    ["smoothed", "A smoothed earnings link"]
+  ]]
+], true) }}
 
 {% call m.note("How to read these pages", 2) %}
 <p>These pages ask the same questions of every option, including keeping the present rule. Where the evidence is strong, they say so. Where a claim is a recommendation or a value judgement, they say whose it is. They recommend no option.</p>

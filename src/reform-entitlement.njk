@@ -7,13 +7,17 @@ permalink: /reform-options/entitlement/
 
 <p class="lede">Who should receive the State Pension, and how much. The options for changing entitlement, the main arguments for and against the triple lock, and what evidence can and cannot settle.</p>
 
-{{ m.reformSection() }}
-
 {{ m.contents([
-  ["entitlement", "Options for entitlement"],
+  ["entitlement", "Options for entitlement", [
+    ["ent-income", "Means-test by income"],
+    ["ent-assets", "Means-test by assets as well as income"],
+    ["ent-tax", "Keep the pension and redistribute through tax"],
+    ["ent-targeted", "Keep broad entitlement and strengthen targeted support"],
+    ["ent-why-not", "Why the present system is not means-tested"]
+  ]],
   ["arguments", "The main arguments, side by side"],
   ["evidence-and-judgement", "What evidence can settle, and what it cannot"]
-]) }}
+], true) }}
 
 {% call m.note("How to read this page", 2) %}
 <p>This page asks the same questions of every option, including keeping the present rule. Where a claim is a recommendation or a value judgement, it says whose it is. It recommends no option.</p>
@@ -62,7 +66,7 @@ permalink: /reform-options/entitlement/
   </article>
 </div>
 
-<h3>Why the present system is not means-tested</h3>
+<h3 id="ent-why-not">Why the present system is not means-tested</h3>
 <p>{{ ("ifs-guarantee-3" | claim).statement }} {{ m.c("ifs-guarantee-3") }}</p>
 <p>{{ ("wp-beveridge" | claim).statement }} {{ m.c("wp-beveridge") }} {{ ("wp-above-means-test" | claim).statement }} {{ m.c("wp-above-means-test") }} The aim was that a person who saves can expect to keep the benefit of saving.</p>
 

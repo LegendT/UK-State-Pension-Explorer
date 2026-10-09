@@ -7,17 +7,28 @@ permalink: /reform-options/social-care/
 
 <p class="lede">On {{ ("pm-care-2026-09-29" | sourceRecord).published_date | timeTag | safe }} the Prime Minister announced two things together. One is a new rule for the yearly increase in the State Pension, from April 2030. {{ ("ifs-real-rise-slower" | claim).statement }} {{ m.c("ifs-real-rise-slower") }} The other is a National Care Service with free personal care for older people, using the savings. This page sets out what was announced, what is in law, what has only been reported, and which questions the plan leaves open.</p>
 
-{{ m.reformSection() }}
-
 {{ m.contents([
-  ["care-status", "What is announced, what is in law and what is reported"],
+  ["care-status", "What is announced, what is in law and what is reported", [
+    ["status-announced", "Announced, not yet law"],
+    ["status-law", "In law or in a government document"],
+    ["status-earlier", "Earlier commitments"],
+    ["status-reported", "Reported, not confirmed"],
+    ["status-bodies", "Research bodies, charities and a union"],
+    ["status-poll", "A poll"],
+    ["status-parties-after", "Other parties, after the announcement"],
+    ["status-parties-before", "Other parties, before the announcement"]
+  ]],
   ["care-two-things", "A pension and a care service are different things"],
   ["care-scope", "Who each policy covers"],
   ["care-now", "Social care now, nation by nation"],
-  ["care-scale", "The sums involved"],
+  ["care-scale", "The sums involved", [
+    ["scale-spending", "Spending on adult social care in England"],
+    ["scale-reform-cost", "Estimated extra cost of care reform in England"],
+    ["scale-saving", "Estimated saving from the pension change"]
+  ]],
   ["care-questions", "Ten questions, and what the announcement answers"],
   ["care-not-assume", "What should not be assumed"]
-]) }}
+], true) }}
 
 {% call m.note("The position on " ~ (news.as_of | timeTag), 2) %}
 <p>This page was last checked on {{ news.as_of | timeTag | safe }}. The plan is an announcement. It is not law. {{ ("no-rule-2030-detail" | claim).statement }} {{ m.c("no-rule-2030-detail") }} Treat this page as a dated record. It does not yet cover every statement published since {{ ("ifs-new-tl-comment-2026" | sourceRecord).published_date | timeTag | safe }}.</p>
@@ -25,7 +36,7 @@ permalink: /reform-options/social-care/
 
 <h2 id="care-status">What is announced, what is in law and what is reported</h2>
 
-<h3>Announced by the government, not yet law</h3>
+<h3 id="status-announced">Announced by the government, not yet law</h3>
 <ul>
   <li>{{ ("tl-kept-to-2030" | claim).statement }} {{ ("rule-2030" | claim).statement }} <a href="/reform-options/#opt-2030">How the rule works</a>.</li>
   <li>{{ ("rule-2030-legislate" | claim).statement }}</li>
@@ -37,15 +48,15 @@ permalink: /reform-options/social-care/
 </ul>
 <p>All seven come from one announcement. {{ m.c("ncs-next-parliament") }} In his speech the Prime Minister put it this way: <q>{{ ("pm-speech-2030" | claim).passage }}</q> {{ m.c("pm-speech-2030") }} {{ ("pm-speech-2030" | claim).note }}</p>
 
-<h3>In law or in a government document</h3>
+<h3 id="status-law">In law or in a government document</h3>
 <ul>
   <li>{{ ("tl-policy-not-law" | claim).statement }} {{ m.c("tl-policy-not-law") }}</li>
   <li>{{ ("care-cap-cancelled" | claim).statement }} {{ m.c("care-cap-cancelled") }}</li>
-  <li>{{ ("casey-first-terms" | claim).statement }} {{ m.c("casey-first-terms") }} {{ ("casey-tor-summer-2027" | claim).statement }} {{ ("casey-tor-reinstated" | claim).statement }} {{ m.c("casey-tor-reinstated") }} So the published terms give a different date from the one the Prime Minister's Office gave, summer 2027: see <a href="#earlier-commitments">Earlier commitments</a>.</li>
+  <li>{{ ("casey-first-terms" | claim).statement }} {{ m.c("casey-first-terms") }} {{ ("casey-tor-summer-2027" | claim).statement }} {{ ("casey-tor-reinstated" | claim).statement }} {{ m.c("casey-tor-reinstated") }} So the published terms give a different date from the one the Prime Minister's Office gave, summer 2027: see <a href="#status-earlier">Earlier commitments</a>.</li>
   <li>{{ ("casey-affordable" | claim).statement }} {{ m.c("casey-affordable") }}</li>
 </ul>
 
-<h3>Earlier commitments</h3>
+<h3 id="status-earlier">Earlier commitments</h3>
 <ul>
   <li>{{ ("labour-manifesto-tl" | claim).statement }} {{ m.c("labour-manifesto-tl") }} {{ ("tl-this-parliament" | claim).statement }} {{ m.c("tl-this-parliament") }}</li>
   <li>{{ ("casey-summer-2027" | claim).statement }} {{ ("care-funded-principle" | claim).statement }} {{ m.c("casey-summer-2027") }}</li>
@@ -53,14 +64,14 @@ permalink: /reform-options/social-care/
   <li>{{ ("pc-final-2027" | claim).statement }} {{ ("pc-terms" | claim).statement }} {{ m.c("pc-terms") }}</li>
 </ul>
 
-<h3>Reported, not confirmed in a government document</h3>
+<h3 id="status-reported">Reported, not confirmed in a government document</h3>
 <ul>
   <li>{{ ("ncs-england-reported" | claim).statement }} {{ m.c("ncs-england-reported") }}</li>
   <li>{{ ("wales-funding-reported" | claim).statement }} {{ m.c("wales-funding-reported") }}</li>
   <li>{{ ("minister-more-funding" | claim).statement }} {{ m.c("minister-more-funding") }}</li>
 </ul>
 
-<h3>What research bodies, charities and a union said</h3>
+<h3 id="status-bodies">What research bodies, charities and a union said</h3>
 <ul>
   <li>{{ ("ifs-ratchet-removed" | claim).statement }} {{ ("ifs-savings-small-early" | claim).statement }} {{ m.c("ifs-savings-small-early") }}</li>
   <li>{{ ("ifs-not-universal-care" | claim).statement }} {{ ("ifs-not-universal-care" | claim).note }} {{ ("ifs-floor-arbitrary" | claim).statement }} {{ m.c("ifs-not-universal-care") }}</li>
@@ -70,11 +81,11 @@ permalink: /reform-options/social-care/
 </ul>
 <p>The statement from Age UK is from its own site. The statements from the Health Foundation and the King's Fund are as quoted in a trade news report. Their own sites refuse automated reading, so we could not check the statements there. The statement from Unite is as reported by PA News.</p>
 
-<h3>What a poll found</h3>
+<h3 id="status-poll">What a poll found</h3>
 <p>{{ ("yougov-rule-2030" | claim).statement }} {{ m.c("yougov-rule-2030") }} {{ ("yougov-question" | claim).statement }}</p>
 <p>The figures are rounded, so they do not add to exactly 100. A poll measures opinion on the day it was taken. It does not show what the policy would do.</p>
 
-<h3>What the other parties said after the announcement</h3>
+<h3 id="status-parties-after">What the other parties said after the announcement</h3>
 <ul>
   <li>{{ ("conservative-response" | claim).statement }} {{ m.c("conservative-response") }} {{ ("conservative-response-next-day" | claim).statement }} {{ m.c("conservative-response-next-day") }}</li>
   <li>{{ ("libdem-response" | claim).statement }} {{ m.c("libdem-response") }}</li>
@@ -85,7 +96,7 @@ permalink: /reform-options/social-care/
 </ul>
 <p>The statements from Reform UK and the Liberal Democrats come from the parties' own pages. The others come from news reports of {{ ("pa-2026-09-29" | sourceRecord).published_date | timeTag | safe }} and {{ ("pa-badenoch-2026-09-30" | sourceRecord).published_date | timeTag | safe }}.</p>
 
-<h3>What the other parties said before the announcement</h3>
+<h3 id="status-parties-before">What the other parties said before the announcement</h3>
 <ul>
   <li>{{ ("conservative-position" | claim).statement }} {{ m.c("conservative-position") }}</li>
   <li>{{ ("libdem-position" | claim).statement }} {{ m.c("libdem-position") }}</li>
@@ -139,7 +150,7 @@ permalink: /reform-options/social-care/
 
 <p>These figures are from different sources, for different years and on different price bases. They are set out to show scale. They must not be added or subtracted as if they were one account.</p>
 
-<h3>Spending on adult social care in England</h3>
+<h3 id="scale-spending">Spending on adult social care in England</h3>
 <ul class="cards">
   <li>{{ m.stat("care-eng-spend-gross" | figure, "What councils spent, before counting what people paid towards their own care.", 4) }}</li>
   <li>{{ m.stat("care-eng-long-term" | figure, "People receiving council-arranged long-term care on one day.", 4) }}</li>
@@ -148,7 +159,7 @@ permalink: /reform-options/social-care/
 <p>Age UK estimates that {{ m.f("care-unmet-need") }} people aged 65 and over in England have some unmet need for care.</p>
 {{ m.sourceNote("care-unmet-need" | figure) }}
 
-<h3>Estimated extra cost of care reform in England</h3>
+<h3 id="scale-reform-cost">Estimated extra cost of care reform in England</h3>
 {% call m.scrollTable() %}
 <table>
   <caption>Estimated extra yearly cost of three models of care reform in England, 2023/24 prices</caption>
@@ -164,7 +175,7 @@ permalink: /reform-options/social-care/
 {{ m.sourceNote("care-cost-universal" | figure) }}
 <p>{{ m.c("hf-broad-estimate") }} These are estimates of general models, made in 2024. None is the cost of the government's plan. {{ ("no-ncs-cost" | claim).statement }} {{ m.c("no-ncs-cost") }} The plan is nearest to the second model, free personal care, but the government has not said which ages or which level of need it covers.</p>
 
-<h3>Estimated saving from the pension change</h3>
+<h3 id="scale-saving">Estimated saving from the pension change</h3>
 <p>The government estimates a saving of {{ m.f("saving-rule-2030-late-2030s") }} in {{ ("saving-rule-2030-late-2030s" | figure).period_label }} and {{ m.f("saving-rule-2030-2050") }} in {{ ("saving-rule-2030-2050" | figure).period_label }}, in cash. {{ ("ifs-savings-small-early" | claim).statement }} The estimates and their bases are in <a href="/reform-options/costs/#saving-2030">The rule announced for April 2030</a>.</p>
 {{ m.sourceNote("saving-rule-2030-late-2030s" | figure) }}
 
@@ -185,7 +196,7 @@ permalink: /reform-options/social-care/
   <li><strong>What are the costs and savings, and against what baseline?</strong> <span class="status">Answered in part.</span> The Department for Work and Pensions gives savings for two years, measured against keeping the triple lock, in cash and in 2025 to 2026 prices. It does not give the paths of earnings and prices behind them. {{ ("no-ncs-cost" | claim).statement }}</li>
   <li><strong>Would the saving actually be used for care?</strong> <span class="status">Answered in part.</span> The government says it will be. {{ ("ncs-savings-used" | claim).note }}</li>
   <li><strong>What pays for the early years?</strong> <span class="status">Answered in part.</span> The service is to be phased in as the saving grows, and not paid for by borrowing. {{ ("minister-more-funding" | claim).statement }}</li>
-  <li><strong>Can the service be delivered?</strong> <span class="status">Answered in part.</span> The announcement says the service will grow as staff and providers are built up. It gives no plan for that. The Prime Minister's Office said the commission would report in summer 2027. The commission's published terms still say 2026 for the first phase and by 2028 for the second. See <a href="#in-law-or-in-a-government-document">In law or in a government document</a>.</li>
+  <li><strong>Can the service be delivered?</strong> <span class="status">Answered in part.</span> The announcement says the service will grow as staff and providers are built up. It gives no plan for that. The Prime Minister's Office said the commission would report in summer 2027. The commission's published terms still say 2026 for the first phase and by 2028 for the second. See <a href="#status-law">In law or in a government document</a>.</li>
   <li><strong>What happens in Scotland, Wales and Northern Ireland?</strong> <span class="status">Not answered.</span> {{ ("no-ncs-nations" | claim).statement }}</li>
   <li><strong>What happens to people on the lowest incomes?</strong> <span class="status">Not answered.</span> {{ ("no-rule-2030-pension-credit" | claim).statement }} {{ ("dwp-2030-poverty" | claim).statement }} It puts the share at {{ m.f("dwp-2030-poverty-2025") }} in 2024 to 2025 and {{ m.f("dwp-2030-poverty-2050") }} in 2049 to 2050. {{ m.c("dwp-2030-poverty") }} {{ ("dwp-2030-poverty-conditional" | claim).statement }} Our reading: {{ ("dwp-2030-poverty-not-effect" | claim).statement }} {{ m.c("dwp-2030-poverty-not-effect") }} In a speech the Prime Minister separately said pensioners on low incomes would not pay Income Tax in this Parliament. {{ m.c("pm-speech-income-tax") }} The speech is as published by the Labour Party. GOV.UK carries no transcript. That is about tax, not the rule. See <a href="/state-pension/#tax-and-payment">tax and the State Pension</a>.</li>
 </ol>

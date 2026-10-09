@@ -158,14 +158,11 @@ export default function (eleventyConfig) {
     });
   });
 
-  // Every h3 gets an id taken from its words, so a reader can link to it. On a page with a contents
-  // list, each section after the first starts with a link back to the list, and so does the end of main.
-  const BACK = '<p class="to-contents"><a href="#contents-heading">Back to contents</a></p>\n';
-  const NOT_SECTIONS = new Set(["contents-heading", "section-heading"]);
+  // Every h3 without an id gets one taken from its words, so a reader can link to it.
   eleventyConfig.addTransform("anchors", function (content) {
     if (!(this.page.outputPath || "").endsWith(".html")) return content;
     const used = new Set([...content.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]));
-    const html = content.replace(/<h3>([\s\S]*?)<\/h3>/g, (whole, inner) => {
+    return content.replace(/<h3>([\s\S]*?)<\/h3>/g, (whole, inner) => {
       const base = inner.replace(/<[^>]+>/g, "").replace(/&[a-z0-9#]+;/gi, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").slice(0, 60).replace(/^-|-$/g, "");
       if (!base) return whole;
       let id = base;
@@ -173,14 +170,23 @@ export default function (eleventyConfig) {
       used.add(id);
       return `<h3 id="${id}">${inner}</h3>`;
     });
-    if (!html.includes('id="contents-heading"')) return html;
-    const start = html.indexOf("<main");
-    const end = html.indexOf("</main>");
-    const sections = [...html.slice(start, end).matchAll(/(<section\b[^>]*>\s*)?<h2 id="([^"]+)"/g)].filter((m) => !NOT_SECTIONS.has(m[2]));
-    const at = sections.slice(1).map((m) => start + m.index);
-    let out = html.slice(0, end) + BACK + html.slice(end);
-    for (const i of at.reverse()) out = out.slice(0, i) + BACK + out.slice(i);
-    return out;
+  });
+
+  // A page's one name: its label in the reform section list, else in the main navigation, else its
+  // register title. The Next and Previous links and the site map use it (W7).
+  eleventyConfig.addFilter("pageName", function (path) {
+    const { site, pages } = this.ctx;
+    const hit = site.reformPages.find((p) => p.href === path) || site.nav.find((p) => p.href === path);
+    return hit ? hit.label : pages.find((p) => p.path === path).title;
+  });
+  // The pages before and after this one: the reform section's reading order, or a "next" in the page
+  // register. Null where there is none.
+  eleventyConfig.addFilter("pager", function (path) {
+    const order = this.ctx.site.reformPages.map((p) => p.href);
+    const i = order.indexOf(path);
+    if (i >= 0) return { previous: order[i - 1] || null, next: order[i + 1] || null };
+    const entry = this.ctx.pages.find((p) => p.path === path);
+    return { previous: null, next: (entry && entry.next) || null };
   });
 
   return {

@@ -1,5 +1,5 @@
 {
-  "note": "One entry for each page. 'published' stays empty until the site is published. 'modified' changes only when the content changes in substance, never on a rebuild or a source recheck. 'figure_cards' is true where the page has figure cards with \"More about this figure\", so the page foot says where the check dates are; the build fails if it does not match the page.",
+  "note": "One entry for each page. 'published' stays empty until the site is published. 'modified' changes only when the content changes in substance, never on a rebuild or a source recheck. 'next' is the address of the page a \"Next\" link at the foot leads to, where a page has one outside the reform options section. 'figure_cards' is true where the page has figure cards with \"More about this figure\", so the page foot says where the check dates are; the build fails if it does not match the page.",
   "pages": [
     {
       "path": "/",
@@ -26,6 +26,7 @@
       "shareImage": "share-default",
       "template": "state-pension",
       "canonical_path": "/state-pension/",
+      "next": "/triple-lock/",
       "index": true,
       "published": null,
       "modified": "2026-10-05",
@@ -72,8 +73,8 @@
       "canonical_path": "/reform-options/",
       "index": true,
       "published": null,
-      "modified": "2026-10-08",
-      "modified_note": "Changed on 8 October 2026: the department's factsheet on which rates the announced rule covers (W1).",
+      "modified": "2026-10-09",
+      "modified_note": "Changed on 8 October 2026: the department's factsheet on which rates the announced rule covers (W1). Changed on 9 October 2026: the opening no longer lists the section's pages, which the list below it names (W7).",
       "figure_cards": true
     },
     {
@@ -257,8 +258,8 @@
       "canonical_path": "/site-map/",
       "index": true,
       "published": null,
-      "modified": "2026-10-02",
-      "modified_note": "First written. Changed on 2 October 2026, when every tool was given a page of its own."
+      "modified": "2026-10-09",
+      "modified_note": "First written. Changed on 2 October 2026, when every tool was given a page of its own, and on 9 October 2026, when it took the navigation's order and names (W7)."
     },
     {
       "path": "/404.html",

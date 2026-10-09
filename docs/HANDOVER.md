@@ -6,7 +6,7 @@ The site is a **preview for review**. It is not published. The repository is htt
 
 **This file holds state only.** Do not add a dated section. The record of a change, with its checks, goes in the description of its pull request, and a decision goes in `docs/decision-log.md`. The record up to pull request 21 is this file as it stood before the cut: `git show 75d0574:docs/HANDOVER.md`.
 
-**Next action:** "Work before step 4" in `docs/launch-dependencies.md`, in the table's order, row W7 first, each on the owner's word. Then launch step 4.
+**Next action:** "Work before step 4" in `docs/launch-dependencies.md`, in the table's order, row W18 first, each on the owner's word. Then launch step 4.
 
 ## How to look at it
 
@@ -20,6 +20,7 @@ npm run serve        # http://127.0.0.1:8137
 
 - Nineteen pages: eleven main pages, the Tools page and three tool pages (decision 78), and four utility pages. Four calculators. Reform options is five pages: the options, the rule comparison (decision 62), costs, pensions and social care, and entitlement.
 - On the overview, a section on State Pension age by date of birth, added on 30 September 2026.
+- Navigation: a contents list on every long explainer, kept in view in a column of its own at 64em and wider, with the `h3` entries of a section over four phone screens nested; the calculator pages have none. On the reform pages the list also names the section's five pages, with this page's sections nested under its name. One "Back to top" link on a long page (decision 88, amended by 92). Next and Previous links at the foot of each reform page, and a Next link on the State Pension page. The site map follows the navigation (W7, 9 October 2026).
 - Registers of figures, claims and sources, a page register and a link register.
 - Model specification, written before the code. Reference calculations by a separate method.
 - Build checks for metadata, canonicals, indexing, sitemap, internal links, registers and sister links.
@@ -28,7 +29,7 @@ npm run serve        # http://127.0.0.1:8137
 
 ## Last checks
 
-Run on 8 October 2026, Chrome 154, macOS, on the branch `launch-review` after W17 and the critique of the whole branch that day.
+Run on 9 October 2026, Chrome 154, macOS, on the branch `launch-review` after W7. The two source checks were last run on 8 October 2026: W7 changed no register of figures, claims or sources.
 
 | Check | Command | Result |
 | --- | --- | --- |
@@ -36,8 +37,8 @@ Run on 8 October 2026, Chrome 154, macOS, on the branch `launch-review` after W1
 | Build checks | `npm run build` | No problems. 19 pages, 128 figures, 166 claims, 106 sources |
 | Quoted passages | `python3 scripts/check-passages.py` | 220 checked. 199 found by the script, 21 found in a browser by hand, 0 not found, 0 unreadable. Of the 21, 7 were read again on 8 October 2026; 14 keep their first dates (W4) |
 | Figures with no quoted passage | `python3 scripts/check-values.py` | 53 of 65 found in the source text. The other 12 are in 11 spreadsheets and one PDF; each record names its file and cell, or its page (W4) |
-| Automated accessibility | `npm run a11y` | 0 violations in 130 audits of 19 pages, 2,027 distinct incomplete results. Every incomplete contrast result measured, 3,911 occurrences across the audits, none below threshold |
-| Scripted accessibility measurements | `npm run a11y:manual` | 0 problems |
+| Automated accessibility | `npm run a11y` | 0 violations in 130 audits of 19 pages, 2,026 distinct incomplete results. Every incomplete contrast result measured, 3,909 occurrences across the audits, none below threshold |
+| Scripted accessibility measurements | `npm run a11y:manual` | 0 problems, including the "Back to top" steps added by W7 |
 | Dependencies | `npm audit` | 9 packages, 5 high and 4 moderate, none loaded when the site is built: `README.md`, "Set up" |
 | Production build | `npm run build` with production settings, read by hand | Last run on 5 October 2026, before W1 to W6: not rerun since |
 | Readability | `statistics-ux` skill, expert review | `docs/ux-review-2026-10-08.md` |

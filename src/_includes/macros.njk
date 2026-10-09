@@ -65,28 +65,45 @@
 </div>
 {%- endmacro -%}
 
-{%- macro contents(items) -%}
-<nav class="contents" aria-labelledby="contents-heading">
-  <h2 id="contents-heading">On this page</h2>
-  <ul>
-    {%- for item in items %}
-    <li><a href="#{{ item[0] }}">{{ item[1] }}</a></li>
+{#- The contents list. Each item is [id, label] or [id, label, [[id, label], ...]] for a section long
+    enough to list its h3 headings: over about four phone screens (W7). On a reform page, pass true as
+    well: the list then names the section's pages in order, with this page's sections nested under it,
+    so the two lists a reader saw one after the other are one (note 4 of the page review). A reform
+    page with no sections of its own, the calculator, keeps the list in the page's flow. -#}
+{%- macro contents(items, section) -%}
+<nav class="contents{% if section and not items.length %} section-nav{% endif %}" aria-labelledby="contents-heading">
+  <h2 id="contents-heading">{% if section %}Reform options{% else %}On this page{% endif %}</h2>
+  {%- if section %}
+  <ol>
+    {%- for item in site.reformPages %}
+    <li><a href="{{ item.href }}"{% if page.url == item.href %} aria-current="page"{% endif %}>{{ item.label }}</a>
+      {%- if page.url == item.href and items.length %}
+      {{ sectionList(items) }}
+      {%- endif %}
+    </li>
     {%- endfor %}
-  </ul>
+  </ol>
+  {%- else %}
+  {{ sectionList(items) }}
+  {%- endif %}
 </nav>
 <script type="module" src="/assets/js/contents.js"></script>
 {%- endmacro -%}
 
-{#- The pages of the reform options section, with the current one marked. -#}
-{%- macro reformSection() -%}
-<nav class="contents section-nav" aria-labelledby="section-heading">
-  <h2 id="section-heading">Reform options: pages in this section</h2>
-  <ol>
-    {%- for item in site.reformPages %}
-    <li><a href="{{ item.href }}"{% if page.url == item.href %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
-    {%- endfor %}
-  </ol>
-</nav>
+{%- macro sectionList(items) -%}
+<ul>
+  {%- for item in items %}
+  <li><a href="#{{ item[0] }}">{{ item[1] }}</a>
+    {%- if item[2] %}
+    <ul>
+      {%- for sub in item[2] %}
+      <li><a href="#{{ sub[0] }}">{{ sub[1] }}</a></li>
+      {%- endfor %}
+    </ul>
+    {%- endif %}
+  </li>
+  {%- endfor %}
+</ul>
 {%- endmacro -%}
 
 {#- A link to a sister site. The label names the destination site. -#}

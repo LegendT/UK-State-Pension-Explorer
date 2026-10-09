@@ -147,7 +147,7 @@ main > .tool, main > figure, main > .cards, main > .scroll-x, main > .rate-block
 .nav-menu li { margin: 0; }
 .nav-menu a { display: block; padding: 0.6rem 0; min-height: 2.75rem; }
 /* "page" marks the page itself, "true" the section it belongs to. */
-.nav-menu a[aria-current], .section-nav a[aria-current="page"] { color: var(--ink); font-weight: 700; text-decoration: none; }
+.nav-menu a[aria-current], .contents a[aria-current="page"], .footer-links a[aria-current] { color: var(--ink); font-weight: 700; text-decoration: none; }
 
 .site-footer { margin-top: var(--space-xl); border-top: 1px solid var(--rule); background: var(--panel); font-size: 0.95rem; }
 .site-footer .wrap { padding-top: var(--space-l); padding-bottom: var(--space-l); }
@@ -206,6 +206,8 @@ td time, th time { white-space: nowrap; }
   .js .tool-summary:not(.unpinned) { position: fixed; inset: auto 0 0 0; z-index: 20; border-width: 2px 0 0; border-radius: 0; }
   .js body:has(.tool-summary:not(.unpinned)) { padding-bottom: var(--summary-size, 16rem); }
   .js:has(.tool-summary:not(.unpinned)) { scroll-padding-bottom: var(--summary-size, 16rem); }
+  /* The link sits above a pinned summary, never on it. */
+  .js body:has(.tool-summary:not(.unpinned)) .back-to-top.is-fixed { bottom: calc(var(--summary-size, 16rem) + var(--space-m)); }
 }
 @media (min-width: 64rem) {
   .tool-layout { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); }
@@ -214,6 +216,7 @@ td time, th time { white-space: nowrap; }
   .tool-summary p { font-size: 0.9rem; margin-bottom: var(--space-s); }
   .js body:has(.tool-summary:not(.unpinned)) { padding-bottom: 0; }
   .js:has(.tool-summary:not(.unpinned)) { scroll-padding-bottom: 0; }
+  .js body:has(.tool-summary:not(.unpinned)) .back-to-top.is-fixed { bottom: var(--space-m); }
 }
 
 /* Figures with their source */
@@ -271,8 +274,9 @@ td time, th time { white-space: nowrap; }
 .contents { padding: var(--space-m); background: var(--panel); border-radius: var(--radius); }
 .contents h2 { margin-top: 0; font-size: 1.05rem; }
 .contents ul, .contents ol { margin: 0; padding-left: 1.2rem; }
-/* A block link keeps the list marker on its first line when it wraps. */
-.contents a { display: block; padding: 0.55rem 0; }
+/* A block link keeps the list marker on its first line when it wraps. The padding takes each link
+   to 44 px tall, the house standard for a target. */
+.contents a { display: block; padding: 0.65rem 0; }
 .contents li + li { margin-top: 0; }
 /* The current section gets a bar in the gutter, not bold: bold re-wraps long links and moves the list.
    The bar is a border because forced colours keep borders and remove backgrounds. The offset clears
@@ -280,8 +284,31 @@ td time, th time { white-space: nowrap; }
 .contents a[aria-current="location"] { position: relative; color: var(--ink); text-decoration: none; }
 .contents a[aria-current="location"]::before { content: ""; position: absolute; left: -1.85rem; top: 0.45rem; bottom: 0.45rem; border-left: 3px solid var(--accent); }
 .section-nav { margin-bottom: var(--space-m); }
-.to-contents { margin: var(--space-l) 0 0; font-size: 0.95rem; }
-.to-contents a { display: inline-block; padding: 0.55rem 0; }
+/* Nested lists: the subsections of a long section, and this page's sections under its name in the
+   reform options list. Nested links are a little smaller and still over 24 px tall. */
+.contents li li a { font-size: 0.95rem; padding: 0.7rem 0; }
+
+/* Next and Previous at the foot of a page in a sequence (W7). */
+.pager { margin-top: var(--space-xl); border-top: 1px solid var(--rule); padding-top: var(--space-s); }
+.pager ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 var(--space-m); }
+.pager li { margin: 0; flex: 1 1 12rem; }
+.pager .next { text-align: right; margin-left: auto; }
+.pager a { display: inline-block; padding: 0.55rem 0; font-weight: 600; }
+.pager a span { display: block; font-weight: 400; font-size: 0.9rem; color: var(--ink-soft); }
+/* A space after a hex escape ends the escape, so the gap is a no-break space. */
+.pager .previous a span::before { content: "\2190\00a0"; content: "\2190\00a0" / ""; }
+.pager .next a span::after { content: " \2192"; content: " \2192" / ""; }
+
+/* One "Back to top" link in place of a link at the end of every section: decision 88. It is static
+   at the end of the page until back-to-top.js runs. Then it is fixed in the lower right, shown only
+   once the reader scrolls up on a page over four screens, and hidden while a focused element would
+   sit under it. The link is 2.75 rem tall, the 44 px house standard. */
+.back-to-top { margin: var(--space-l) 0 0; font-size: 0.95rem; }
+.back-to-top a { display: inline-block; padding: 0.55rem 0; }
+.back-to-top.is-fixed { display: none; position: fixed; right: var(--space-m); bottom: var(--space-m); z-index: 21; margin: 0; }
+.back-to-top.is-fixed.is-shown:not(.is-under) { display: block; }
+.back-to-top.is-fixed a { padding: 0.7rem var(--space-m); min-height: 2.75rem; background: var(--paper); border: 1px solid var(--rule-strong); border-radius: var(--radius); box-shadow: 0 2px 8px rgb(0 0 0 / 0.15); font-weight: 600; text-decoration: none; }
+.back-to-top.is-fixed a:hover { text-decoration: underline; }
 
 /* On a wide screen a long page keeps its contents list in view, in a column of its own. Everything
    else stays in the first column, so the list never covers content or a focused control. Headings
@@ -289,11 +316,12 @@ td time, th time { white-space: nowrap; }
 @media (min-width: 64em) {
   main:has(> .contents:not(.section-nav)) { display: grid; grid-template-columns: minmax(0, 1fr) 15rem; column-gap: var(--space-xl); align-content: start; }
   main:has(> .contents:not(.section-nav)) > * { grid-column: 1; }
-  main:has(> .contents:not(.section-nav)) > :is(h2, .to-contents) { margin-top: calc(var(--space-xl) - var(--space-m)); }
+  main:has(> .contents:not(.section-nav)) > h2 { margin-top: calc(var(--space-xl) - var(--space-m)); }
   main:has(> .contents:not(.section-nav)) > h3 { margin-top: var(--space-m); }
   main:has(> .contents:not(.section-nav)) > h4 { margin-top: var(--space-s); }
   main > .contents:not(.section-nav) { grid-column: 2; grid-row: 1 / span 200; align-self: start; position: sticky; top: var(--space-m); max-height: calc(100vh - 2 * var(--space-m)); overflow-y: auto; margin-top: var(--space-l); }
-  main:has(> .contents:not(.section-nav)) .to-contents { display: none; }
+  /* The list stays in view here, so the fixed link is not needed (decision 88). */
+  body:has(main > .contents:not(.section-nav)) .back-to-top.is-fixed { display: none; }
 }
 
 details.more { border: 1px solid var(--rule); border-radius: var(--radius); margin-bottom: var(--space-m); }
@@ -304,6 +332,8 @@ details.more > :not(summary) { margin-left: var(--space-m); margin-right: var(--
 .link-list { list-style: none; padding: 0; }
 .tool-list dt a { display: inline-block; padding-block: 0.55rem; }
 .link-list a, th > a:only-child { display: inline-block; padding: 0.55rem 0; }
+/* The site map's nested lists keep their markers: a block link holds the marker on its first line. */
+.site-map li li a { display: block; }
 .link-list li + li { margin-top: 0; }
 
 /* Tables */
@@ -452,7 +482,7 @@ button.secondary { color: var(--accent); background: var(--paper); }
 }
 
 @media print {
-  .site-header nav, .skip-link, .buttons, .site-footer nav[aria-label="Footer"] { display: none; }
+  .site-header nav, .skip-link, .buttons, .site-footer nav[aria-label="Footer"], .back-to-top, .pager { display: none; }
   details::details-content { content-visibility: visible; display: block; }
   .tool-summary { position: static; }
   a { color: inherit; }

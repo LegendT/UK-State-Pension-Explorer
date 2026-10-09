@@ -7,13 +7,22 @@ permalink: /reform-options/costs/
 
 <p class="lede">What the State Pension costs now and is projected to cost, what the triple lock has cost and what a change would save, and how income, poverty and wealth differ among pensioners.</p>
 
-{{ m.reformSection() }}
-
 {{ m.contents([
-  ["public-finances", "What the State Pension costs"],
-  ["cost-and-saving", "What the triple lock has cost, and what a change would save"],
-  ["who", "Who receives what: incomes, wealth and poverty"]
-]) }}
+  ["public-finances", "What the State Pension costs", [
+    ["projection", "The long-term projection"]
+  ]],
+  ["cost-and-saving", "What the triple lock has cost, and what a change would save", [
+    ["cost-so-far", "The cost so far"],
+    ["saving", "The saving from a change"]
+  ]],
+  ["who", "Who receives what: incomes, wealth and poverty", [
+    ["who-income", "Income"],
+    ["who-poverty", "Poverty and deprivation"],
+    ["who-wealth", "Housing and wealth"],
+    ["who-men-women", "Differences between men and women"],
+    ["who-disability", "Disability and caring"]
+  ]]
+], true) }}
 
 <h2 id="public-finances">What the State Pension costs</h2>
 
@@ -30,7 +39,7 @@ permalink: /reform-options/costs/
 <p>Official sources give slightly different figures for the same year. The DWP tables give {{ m.f("sp-spend-2024-25") }}. The account of the National Insurance Fund gives {{ m.f("nif-state-pension-2024-25") }}, on a cash basis. They differ in accounting basis and coverage. This site uses the DWP tables for spending and says so each time.</p>
 {% endcall %}
 
-<h3>The long-term projection: the triple lock and an older population drive the rise</h3>
+<h3 id="projection">The long-term projection: the triple lock and an older population drive the rise</h3>
 
 {{ m.dataTable("sp-longrun") }}
 
@@ -68,7 +77,7 @@ permalink: /reform-options/costs/
   <li><strong>The saving from a change.</strong> How much lower future spending would be. It depends on the new rule, the start date and the year measured.</li>
 </ol>
 
-<h3>The cost so far: a difference, not a bill</h3>
+<h3 id="cost-so-far">The cost so far: a difference, not a bill</h3>
 
 {% call m.scrollTable() %}
 <table>
@@ -87,7 +96,7 @@ permalink: /reform-options/costs/
 <p>The Office for Budget Responsibility also says the cost by 2029-30 is around three times what was first assumed. It gives {{ m.f("tl-cost-vs-earnings-2029-30") }} against {{ m.f("tl-cost-initial-assumption") }}. That compares two differences from earnings uprating. It does not mean State Pension spending is three times what was expected.</p>
 {{ m.sourceNote("tl-cost-initial-assumption" | figure) }}
 
-<h3>The saving from a change: small at first, large over decades</h3>
+<h3 id="saving">The saving from a change: small at first, large over decades</h3>
 
 {% call m.note("Past cost is not future saving", 4) %}
 <p>The increases of past years are part of today's rates. Changing the rule does not reverse them. A change only affects increases from the date it starts, so the saving begins small and grows.</p>
@@ -144,7 +153,7 @@ permalink: /reform-options/costs/
 
 <p>An average pensioner does not exist. The evidence below is about the spread.</p>
 
-<h3>Income: the State Pension matters most to those with the lowest incomes</h3>
+<h3 id="who-income">Income: the State Pension matters most to those with the lowest incomes</h3>
 
 {{ m.dataTable("income-fifths") }}
 
@@ -153,7 +162,7 @@ permalink: /reform-options/costs/
 
 <p>On this page, "low income" and "high income" mean a position in these distributions, unless a source's own definition is given.</p>
 
-<h3>Poverty and deprivation: fewer pensioners are in low income once housing costs are counted</h3>
+<h3 id="who-poverty">Poverty and deprivation: fewer pensioners are in low income once housing costs are counted</h3>
 
 <ul class="cards cards--three">
   <li>{{ m.stat("low-income-ahc" | figure, "After rent, mortgage interest and similar costs are taken off.", 4) }}</li>
@@ -163,7 +172,7 @@ permalink: /reform-options/costs/
 
 <p>Fewer pensioners are in low income after housing costs than before, because most own their home outright. {{ m.c("hbai-owners") }} For a pensioner who rents, housing costs work the other way.</p>
 
-<h3>Housing and wealth: wealth is spread more unevenly than income</h3>
+<h3 id="who-wealth">Housing and wealth: wealth is spread more unevenly than income</h3>
 
 <p>Of households headed by someone aged 65 or over, {{ m.f("tenure-own-outright") }} own outright, {{ m.f("tenure-mortgage") }} are buying with a mortgage, {{ m.f("tenure-social-rent") }} rent from a social landlord and {{ m.f("tenure-private-rent") }} rent privately.</p>
 {{ m.sourceNote("tenure-own-outright" | figure) }}
@@ -177,12 +186,12 @@ permalink: /reform-options/costs/
 <p>A person can have a valuable home and a low income. A home cannot pay a bill unless it is sold or borrowed against. A person can have a high income and high costs, for example for care. People with high income and people with high wealth are not the same group, and neither measure shows what a person needs.</p>
 {% endcall %}
 
-<h3>Differences between men and women</h3>
+<h3 id="who-men-women">Differences between men and women</h3>
 
 <p>Among people aged 65 to 74, the median private pension wealth of men is {{ m.f("pension-wealth-men-65-74") }} and of women is {{ m.f("pension-wealth-women-65-74") }}, counting people with none. Women on the older State Pension system also receive less on average than men. <a href="/state-pension/#what-people-receive">What people actually receive</a>. A person with little private pension depends more on the State Pension, and so is more exposed to a change in it.</p>
 {{ m.sourceNote("pension-wealth-women-65-74" | figure) }}
 
-<h3>Disability and caring</h3>
+<h3 id="who-disability">Disability and caring</h3>
 
 <p>{{ m.f("disabled-share-spa") }} of adults of State Pension age report a disability. {{ ("disability-income-artefact" | claim).statement }} {{ m.c("disability-income-artefact") }}</p>
 {{ m.sourceNote("disabled-share-spa" | figure) }}

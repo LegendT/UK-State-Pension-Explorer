@@ -6,9 +6,9 @@ permalink: /reform-options/compare/
 {%- set scenario = scenarios.scenarios | where("id", scenarios.default) | first -%}
 <h1>Compare the rules for the yearly increase</h1>
 
-<p class="lede">Five rules for the yearly increase, applied to the same starting amount and the same figures for prices and earnings. Change any figure and the result changes with it. The rules are explained on <a href="/reform-options/">the yearly increase: options</a>.</p>
+<p class="lede">Five rules for the yearly increase, applied to the same starting amount and the same figures for prices and earnings. Change any figure and the result changes with it. The rules are explained on the <a href="/reform-options/">reform options page</a>.</p>
 
-{{ m.reformSection() }}
+{{ m.contents([], true) }}
 
 <section class="tool" aria-labelledby="compare">
   <h2 id="compare">Try the rules</h2>
