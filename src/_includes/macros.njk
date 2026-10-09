@@ -9,22 +9,23 @@
 <a class="cite" href="{{ s.url }}">{{ s.publisher }}{% if full %}, {{ s.title }}{% else %}<span class="visually-hidden">, {{ s.title }}</span>{% endif %}</a>{% if s.published_date %} ({{ s.published_date | monthOrDayTag | safe }}){% endif %}
 {%- endmacro -%}
 
-{#- The source note for one figure. The kind, period, place, the caveat that changes what the figure means, and the source stay visible. The rest opens on demand. -#}
-{%- macro sourceNote(f) -%}
+{#- One muted line under a figure's paragraph, or in its card: the kind, the period, the source with
+    its date, then the key caveat, each a sentence, so no label runs into a value (decision 56 as
+    amended by 92, in the style of decision 77). "More about this figure" holds the rest. Where a
+    line above a group of figures has said some parts once (sharedNote), pass that group: those parts
+    are left out, and a figure whose every part the group said gets no line of its own. -#}
+{%- macro sourceNote(f, group) -%}
 {%- set caveat = f.qualifications | splitCaveat -%}
-<div class="source">
-  <p class="statuses"><span class="status">{{ classLabel(f.classification) }}</span>{% if f.provisional %} <span class="status">Can be revised</span>{% endif %}</p>
-  <dl class="facts">
-    <div><dt>Period</dt> <dd>{{ f.period_label }}</dd></div>
-    <div><dt>Place</dt> <dd>{{ f.geography }}</dd></div>
-    {%- if f.range %}<div><dt>Range</dt> <dd>{{ f.range }}</dd></div>{% endif %}
-    <div><dt>Source</dt> <dd>{{ cite(f.source) }}</dd></div>
-  </dl>
-  {%- if caveat[0] %}<p>{{ caveat[0] }}</p>{% endif %}
-  <details>
+{%- set g = group or {} -%}
+{%- if not (g.kind and g.period and g.source and (g.caveat or not caveat[0])) %}
+<p class="source-line">{% if not g.kind %}{{ classLabel(f.classification) }}{% if f.provisional %}, can be revised{% endif %}. {% endif %}{% if not g.period %}{{ f.period_label }}. {% endif %}{% if not g.source %}Source: {{ cite(f.source) }}. {% endif %}{% if caveat[0] and not g.caveat %}{{ caveat[0] }}{% endif %}</p>
+{%- endif %}
+<details class="source">
     <summary>More about this figure<span class="visually-hidden">: {{ f.label }}</span></summary>
     <dl>
-      {%- if caveat[1] %}<dt>Other limits</dt> <dd>{{ caveat[1] }}</dd>{% endif %}
+      <dt>Place</dt> <dd>{{ f.geography }}</dd>
+      {%- if f.range %}<dt>Range</dt> <dd>{{ f.range }}</dd>{% endif %}
+      {%- if g.caveat and caveat[0] %}<dt>Limits</dt> <dd>{{ caveat[0] }}{% if caveat[1] %} {{ caveat[1] }}{% endif %}</dd>{% elif caveat[1] %}<dt>Other limits</dt> <dd>{{ caveat[1] }}</dd>{% endif %}
       <dt>Source</dt> <dd>{{ cite(f.source, true) }}. Checked against the source on {{ f.checked_date | timeTag | safe }}.</dd>
       <dt>What it measures</dt> <dd>{{ f.definition }}</dd>
       <dt>Who it covers</dt> <dd>{{ f.population }}</dd>
@@ -36,17 +37,22 @@
       {%- if f.source.note %}<dt>About the source</dt> <dd>{{ f.source.note }}</dd>{% endif %}
       {%- if f.next_review %}<dt>When we will check again</dt> <dd>{{ f.next_review }}</dd>{% endif %}
     </dl>
-  </details>
-</div>
+</details>
+{%- endmacro -%}
+
+{#- One line above a group of figures, saying once what every figure in it shares: the "shared"
+    filter works that out from their records (R14 of the readability review). -#}
+{%- macro sharedNote(g) -%}
+<p class="source-line shared">The figures below: {% if g.kind %}{{ classLabel(g.kind.classification) }}{% if g.kind.provisional %}, can be revised{% endif %}. {% endif %}{% if g.period %}{{ g.period }}. {% endif %}{% if g.source %}Source: {{ cite(g.source) }}. {% endif %}{% if g.caveat %}{{ g.caveat }}{% endif %}</p>
 {%- endmacro -%}
 
 {#- A figure shown as a card: label, value, plain meaning, source. -#}
-{%- macro stat(f, what, level) -%}
+{%- macro stat(f, what, level, group) -%}
 <article class="stat">
   <h{{ level or 3 }}>{{ f.label }}</h{{ level or 3 }}>
   <p class="value">{{ f.shown }}</p>
   {%- if what %}<p class="what">{{ what }}</p>{% endif %}
-  {{ sourceNote(f) }}
+  {{ sourceNote(f, group) }}
 </article>
 {%- endmacro -%}
 

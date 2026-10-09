@@ -219,22 +219,25 @@ td time, th time { white-space: nowrap; }
   .js body:has(.tool-summary:not(.unpinned)) .back-to-top.is-fixed { bottom: var(--space-m); }
 }
 
-/* Figures with their source */
-.source {
-  font-size: 0.9rem; color: var(--ink-soft);
-  border-left: 3px solid var(--rule); padding-left: var(--space-s);
-}
-.source details { margin-top: 0.25rem; }
+/* Figures with their source (W18). One muted line close under the paragraph, 8 px below it against
+   the paragraph's 16 px margin, then "More about this figure" and at least 24 px before whatever
+   follows. A line above a group of figures stays in the normal flow. In a card the line follows the
+   value or its gloss, and the card's own padding gives the gap after. */
+.source-line { font-size: 0.85em; color: var(--ink-soft); margin: var(--space-s) 0 0; }
+:is(p, dl, ul, ol) + .source-line { margin-top: -0.5rem; }
+.source-line.shared { margin: 0 0 var(--space-s); }
+.source-line a { padding-block: 0.4em; }
+.source-line time { white-space: nowrap; }
+details.source { font-size: 0.9rem; margin: 0 0 var(--space-l); }
 .source summary { min-height: 2.75rem; padding: 0.6rem 0; cursor: pointer; color: var(--accent); font-weight: 600; }
-.source dl { margin: var(--space-s) 0 0; }
-/* One line for each of period, place, range and source, the value running on after its label. */
-.source > .statuses { margin-bottom: 0.25rem; }
-.source .facts { margin: 0 0 var(--space-s); }
-.facts dt, .source .facts dd { display: inline; margin: 0; }
-/* A citation that is a value on its own is not inline in a sentence, so padding gives it the 24px target of SC 2.5.8. */
-.facts .cite { padding-block: 4px; }
-.source dt { font-weight: 600; color: var(--ink); }
-.source dd { margin: 0 0 var(--space-s); overflow-wrap: anywhere; }
+details.source dl { margin: var(--space-s) 0 0; color: var(--ink-soft); }
+details.source dt { font-weight: 600; color: var(--ink); }
+details.source dd { margin: 0 0 var(--space-s); overflow-wrap: anywhere; }
+.stat .what { margin-bottom: var(--space-s); }
+.stat .source-line { margin-top: var(--space-s); }
+.stat details.source { margin-bottom: 0; }
+/* A typed note under a table keeps its rule. */
+div.source { font-size: 0.9rem; color: var(--ink-soft); border-left: 3px solid var(--rule); padding-left: var(--space-s); }
 
 .stat { padding: var(--space-m); border: 1px solid var(--rule); border-radius: var(--radius); background: var(--panel); height: 100%; }
 .stat :is(h3, h4, h5) { margin-top: 0; font-size: 1rem; }

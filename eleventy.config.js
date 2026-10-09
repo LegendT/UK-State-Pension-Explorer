@@ -74,9 +74,30 @@ export default function (eleventyConfig) {
   });
   // The first sentence of a figure's qualifications is the caveat that changes what the figure
   // means, and is shown open. The rest is shown under "More about this figure".
-  eleventyConfig.addFilter("splitCaveat", (text) => {
+  const splitCaveat = (text) => {
     const match = String(text || "").match(/^(.+?\.)\s+(?=[A-Z£0-9"'])([\s\S]+)$/);
     return match ? [match[1], match[2]] : [text || "", ""];
+  };
+  eleventyConfig.addFilter("splitCaveat", splitCaveat);
+  // What a group of figures has in common, for one line above the group (W18, from R14 of the
+  // readability review): the kind, the period, the source and the key caveat, each only where every
+  // figure in the group has it. Each figure's own note then leaves those parts out.
+  eleventyConfig.addFilter("shared", function (ids) {
+    if (ids.length < 2) throw new Error(`A shared line needs two or more figures: ${ids.join(", ")}`);
+    const records = ids.map((id) => {
+      if (!this.ctx.figures[id]) throw new Error(`No figure "${id}" in src/_data/figures.json (${this.page.inputPath})`);
+      return this.ctx.figures[id];
+    });
+    const same = (key) => records.every((r) => r[key] === records[0][key]);
+    const caveat = splitCaveat(records[0].qualifications)[0];
+    const g = {
+      kind: same("classification") && same("provisional") ? records[0] : null,
+      period: same("period_label") ? records[0].period_label : null,
+      source: same("source_id") ? this.ctx.sources[records[0].source_id] : null,
+      caveat: caveat && records.every((r) => splitCaveat(r.qualifications)[0] === caveat) ? caveat : null,
+    };
+    if (!g.kind && !g.period && !g.source && !g.caveat) throw new Error(`Figures ${ids.join(", ")} share nothing to say once`);
+    return g;
   });
   eleventyConfig.addFilter("upperFirst", (text) => text.charAt(0).toUpperCase() + text.slice(1));
   eleventyConfig.addFilter("figPence", function (id) {

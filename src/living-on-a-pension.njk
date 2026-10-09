@@ -43,9 +43,11 @@ permalink: /living-on-a-pension/
 
 <p>The Minimum Income Standard is produced by Loughborough University for the Joseph Rowntree Foundation. Groups of members of the public agree what a household needs for a minimum socially acceptable standard of living. {{ m.c("mis-not-poverty-line") }}</p>
 
+{%- set g = ["mis-single-ex-rent", "mis-couple-ex-rent"] | shared %}
+{{ m.sharedNote(g) }}
 <ul class="cards">
-  <li>{{ m.stat("mis-single-ex-rent" | figure, "A week, for a single pensioner, not counting rent.", 4) }}</li>
-  <li>{{ m.stat("mis-couple-ex-rent" | figure, "A week, for a pensioner couple, not counting rent.", 4) }}</li>
+  <li>{{ m.stat("mis-single-ex-rent" | figure, "A week, for a single pensioner, not counting rent.", 4, g) }}</li>
+  <li>{{ m.stat("mis-couple-ex-rent" | figure, "A week, for a pensioner couple, not counting rent.", 4, g) }}</li>
 </ul>
 
 <p>Rent is shown separately because it differs so much by area. The budgets use an indicative private rent of {{ m.f("mis-single-rent") }} a week for a single pensioner and {{ m.f("mis-couple-rent") }} for a couple.</p>
@@ -111,9 +113,11 @@ permalink: /living-on-a-pension/
 
 <h2 id="income">What income pensioners have</h2>
 
+{%- set g = ["income-median-ahc-single", "income-median-ahc-couple"] | shared %}
+{{ m.sharedNote(g) }}
 <ul class="cards">
-  <li>{{ m.stat("income-median-ahc-single" | figure, "Half of single pensioners have less than this, and half have more.") }}</li>
-  <li>{{ m.stat("income-median-ahc-couple" | figure, "For the couple together, not each person.") }}</li>
+  <li>{{ m.stat("income-median-ahc-single" | figure, "Half of single pensioners have less than this, and half have more.", null, g) }}</li>
+  <li>{{ m.stat("income-median-ahc-couple" | figure, "For the couple together, not each person.", null, g) }}</li>
 </ul>
 
 <p>Benefits, including the State Pension, make up {{ m.f("benefit-share-single") }} of the gross income of single pensioners and {{ m.f("benefit-share-couple") }} of the gross income of couples. The rest comes from workplace and personal pensions, earnings and savings.</p>

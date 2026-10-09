@@ -41,9 +41,11 @@ permalink: /state-pension/
 </ul>
 <p>{{ m.c("which-system") }}</p>
 
+{%- set g = ["nsp-full-weekly", "bsp-full-weekly"] | shared %}
+{{ m.sharedNote(g) }}
 <ul class="cards">
-  <li>{{ m.stat("nsp-full-weekly" | figure, "The full rate for a person on the new system with the record the rules require.") }}</li>
-  <li>{{ m.stat("bsp-full-weekly" | figure, "The full rate of the basic part only, for a person on the older system.") }}</li>
+  <li>{{ m.stat("nsp-full-weekly" | figure, "The full rate for a person on the new system with the record the rules require.", null, g) }}</li>
+  <li>{{ m.stat("bsp-full-weekly" | figure, "The full rate of the basic part only, for a person on the older system.", null, g) }}</li>
 </ul>
 
 {% call m.note("Why the two rates cannot be compared directly", 3) %}
@@ -181,10 +183,12 @@ permalink: /state-pension/
 
 <p>This is the main difference from a defined contribution workplace or personal pension. In those, contributions are invested in a pot that belongs to the saver. A defined benefit workplace pension is different again: it promises an income under the scheme's rules, usually linked to pay and years of service. In the State Pension there is no pot. A person's contributions build an entitlement under the rules, and the money paid in by today's workers and employers pays today's pensions.</p>
 
+{%- set g = ["nif-contributions-2024-25", "nif-state-pension-2024-25", "nif-balance-2025"] | shared %}
+{{ m.sharedNote(g) }}
 <ul class="cards cards--three">
-  <li>{{ m.stat("nif-contributions-2024-25" | figure, "National Insurance contributions paid into the Fund in the year.") }}</li>
-  <li>{{ m.stat("nif-state-pension-2024-25" | figure, "State Pension paid out of the Fund in the year.") }}</li>
-  <li>{{ m.stat("nif-balance-2025" | figure, "What the Fund held at the end of the year.") }}</li>
+  <li>{{ m.stat("nif-contributions-2024-25" | figure, "National Insurance contributions paid into the Fund in the year.", null, g) }}</li>
+  <li>{{ m.stat("nif-state-pension-2024-25" | figure, "State Pension paid out of the Fund in the year.", null, g) }}</li>
+  <li>{{ m.stat("nif-balance-2025" | figure, "What the Fund held at the end of the year.", null, g) }}</li>
 </ul>
 
 <p>For national spending on the State Pension and how it is expected to change, see <a href="/reform-options/costs/#public-finances">Reform options: costs and savings</a>.</p>

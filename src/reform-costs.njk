@@ -63,7 +63,7 @@ permalink: /reform-options/costs/
 
 <p>Future numbers of workers depend partly on migration. {{ m.sisterLink("migration" | link) }} explains how migration is measured. It does not estimate the effect on pension costs, and neither does this site.</p>
 
-<p>Pensioners also pay tax. {{ m.f("pensioner-taxpayers") }} people above State Pension age paid Income Tax in 2023 to 2024. {{ m.ref(("pensioner-taxpayers" | figure).source) }} {{ ("ni-stops-at-spa" | claim).statement }} {{ m.c("ni-stops-at-spa") }}</p>
+<p>Pensioners also pay tax. {{ m.f("pensioner-taxpayers") }} people above State Pension age paid Income Tax in 2023 to 2024. {{ ("ni-stops-at-spa" | claim).statement }} {{ m.c("ni-stops-at-spa") }}</p>
 {{ m.sourceNote("pensioner-taxpayers" | figure) }}
 
 <p>For the difference between what the government spends or borrows in a year and the debt it has built up, see {{ m.sisterLink("debt-vs-deficit" | link) }}.</p>
@@ -131,15 +131,15 @@ permalink: /reform-options/costs/
 
 <h4 id="saving-2030">The rule announced for April 2030</h4>
 
-<p>The government estimates a saving of {{ m.f("saving-rule-2030-late-2030s") }} in {{ ("saving-rule-2030-late-2030s" | figure).period_label }}, and {{ m.f("saving-rule-2030-2050") }} in {{ ("saving-rule-2030-2050" | figure).period_label }}. Those amounts are in cash, the money of each year. In the prices of 2025 to 2026 its estimates are {{ m.f("saving-rule-2030-2040-real") }} and {{ m.f("saving-rule-2030-2050-real") }}.</p>
-{{ m.sourceNote("saving-rule-2030-2050" | figure) }}
+<p>The table gives the government's estimates in cash, the money of each year. In the prices of 2025 to 2026 they are {{ m.f("saving-rule-2030-2040-real") }} for {{ ("saving-rule-2030-2040-real" | figure).period_label }} and {{ m.f("saving-rule-2030-2050-real") }} for {{ ("saving-rule-2030-2050-real" | figure).period_label }}.</p>
+{{ m.sourceNote("saving-rule-2030-2050-real" | figure) }}
 
 <p>{{ ("ifs-savings-small-early" | claim).statement }} {{ m.c("ifs-savings-small-early") }} To show the scale, the Institute looks back. If the announced rule had applied since 2011, spending in 2026-27 would be {{ m.f("rule-2030-counterfactual-ifs-2026") }} lower. That is a look back, not a forecast.</p>
 {{ m.sourceNote("rule-2030-counterfactual-ifs-2026" | figure) }}
 
 {% call m.note("How to read the government's figures", 5) %}
 <p>{{ ("dwp-2030-baseline" | claim).statement }} {{ m.c("dwp-2030-baseline") }} {{ ("dwp-2030-caution" | claim).statement }} {{ m.c("dwp-2030-caution") }}</p>
-<p>In the prices of 2025 to 2026, the government's estimate for {{ ("saving-rule-2030-2050-real" | figure).period_label }} is {{ m.f("saving-rule-2030-2050-real") }}. That is inside the Institute for Fiscal Studies' range, above, for what the triple lock itself would cost in 2050. The Institute gives its range in what it calls today's terms, as at 2025, so the two are close in kind but not on the same basis.</p>
+<p>The estimate for {{ ("saving-rule-2030-2050-real" | figure).period_label }} in the prices of 2025 to 2026 is inside the Institute for Fiscal Studies' range, above, for what the triple lock itself would cost in 2050. The Institute gives its range in what it calls today's terms, as at 2025, so the two are close in kind but not on the same basis.</p>
 <p>{{ ("no-rule-2030-detail" | claim).statement }} {{ m.c("no-rule-2030-detail") }} So the estimates can be read, but not reproduced.</p>
 {% endcall %}
 
@@ -164,10 +164,12 @@ permalink: /reform-options/costs/
 
 <h3 id="who-poverty">Poverty and deprivation: fewer pensioners are in low income once housing costs are counted</h3>
 
+{%- set g = ["low-income-ahc", "low-income-bhc", "material-deprivation"] | shared %}
+{{ m.sharedNote(g) }}
 <ul class="cards cards--three">
-  <li>{{ m.stat("low-income-ahc" | figure, "After rent, mortgage interest and similar costs are taken off.", 4) }}</li>
-  <li>{{ m.stat("low-income-bhc" | figure, "Before housing costs are taken off.", 4) }}</li>
-  <li>{{ m.stat("material-deprivation" | figure, "A measure of going without, not of income.", 4) }}</li>
+  <li>{{ m.stat("low-income-ahc" | figure, "After rent, mortgage interest and similar costs are taken off.", 4, g) }}</li>
+  <li>{{ m.stat("low-income-bhc" | figure, "Before housing costs are taken off.", 4, g) }}</li>
+  <li>{{ m.stat("material-deprivation" | figure, "A measure of going without, not of income.", 4, g) }}</li>
 </ul>
 
 <p>Fewer pensioners are in low income after housing costs than before, because most own their home outright. {{ m.c("hbai-owners") }} For a pensioner who rents, housing costs work the other way.</p>

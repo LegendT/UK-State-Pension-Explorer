@@ -29,7 +29,7 @@ npm run serve        # http://127.0.0.1:8137
 
 ## Last checks
 
-Run on 9 October 2026, Chrome 154, macOS, on the branch `launch-review` after W7. The two source checks were last run on 8 October 2026: W7 changed no register of figures, claims or sources.
+Run on 9 October 2026, Chrome 154, macOS, on the branch `launch-review` after W18. The two source checks were last run on 8 October 2026: W7 changed no register of figures, claims or sources.
 
 | Check | Command | Result |
 | --- | --- | --- |
