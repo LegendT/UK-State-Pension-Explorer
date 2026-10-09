@@ -167,7 +167,8 @@
     "updated_date": null,
     "checked_date": "2026-09-29",
     "licence": "Open Government Licence v3.0",
-    "note": "Official statistics, not accredited. The next release, for the financial year ending 2025, is due on 22 October 2026."
+    "status": "official",
+    "note": "The next release, for the financial year ending 2025, is due on 22 October 2026."
   },
   "govuk-housing-benefit": {
     "publisher": "Department for Work and Pensions",
@@ -267,7 +268,8 @@
     "updated_date": null,
     "checked_date": "2026-09-29",
     "licence": "Open Government Licence v3.0",
-    "note": "Accredited official statistics. The release covers DWP benefits in Great Britain. It does not say whether recipients living abroad are included in State Pension figures. The next release is due on 21 September 2027."
+    "status": "accredited",
+    "note": "The release covers DWP benefits in Great Britain. It does not say whether recipients living abroad are included in State Pension figures. The next release is due on 21 September 2027."
   },
   "obr-frs-2026": {
     "publisher": "Office for Budget Responsibility",
@@ -337,6 +339,7 @@
     "updated_date": null,
     "checked_date": "2026-09-29",
     "licence": "Open Government Licence v3.0",
+    "status": "accredited",
     "note": null
   },
   "jrf-mis-2026": {
@@ -377,7 +380,8 @@
     "updated_date": null,
     "checked_date": "2026-09-29",
     "licence": "Open Government Licence v3.0",
-    "note": "Accredited official statistics. About 5,000 households took part. The response rate in Great Britain was 26%."
+    "status": "accredited",
+    "note": "About 5,000 households took part. The response rate in Great Britain was 26%."
   },
   "ons-hci-2026-q2": {
     "publisher": "Office for National Statistics",
@@ -387,7 +391,8 @@
     "updated_date": null,
     "checked_date": "2026-09-29",
     "licence": "Open Government Licence v3.0",
-    "note": "Official statistics in development. Estimates can be revised. The next release is due on 27 November 2026."
+    "status": "in-development",
+    "note": "Estimates can be revised. The next release is due on 27 November 2026."
   },
   "dwp-pensioners-incomes-fye2025": {
     "publisher": "Department for Work and Pensions",
@@ -397,7 +402,8 @@
     "updated_date": null,
     "checked_date": "2026-09-29",
     "licence": "Open Government Licence v3.0",
-    "note": "Accredited official statistics. Survey of private households. People in care homes are not covered. The response rate was 31%."
+    "status": "accredited",
+    "note": "Survey of private households. People in care homes are not covered. The response rate was 31%."
   },
   "dwp-hbai-fye2025": {
     "publisher": "Department for Work and Pensions",
@@ -407,7 +413,8 @@
     "updated_date": null,
     "checked_date": "2026-09-29",
     "licence": "Open Government Licence v3.0",
-    "note": "Accredited official statistics. Survey estimates with sampling uncertainty."
+    "status": "accredited",
+    "note": "Survey estimates with sampling uncertainty."
   },
   "ons-was-round8": {
     "publisher": "Office for National Statistics",
@@ -417,7 +424,8 @@
     "updated_date": null,
     "checked_date": "2026-09-29",
     "licence": "Open Government Licence v3.0",
-    "note": "Accreditation of the Wealth and Assets Survey is suspended from this round while the Office for National Statistics works on its quality. Data were collected by telephone during the pandemic."
+    "status": "suspended",
+    "note": "The survey is under review from this round while the Office for National Statistics works on its quality."
   },
   "dwp-frs-fye2025": {
     "publisher": "Department for Work and Pensions",
@@ -427,6 +435,7 @@
     "updated_date": null,
     "checked_date": "2026-09-29",
     "licence": "Open Government Licence v3.0",
+    "status": "accredited",
     "note": null
   },
   "ssaa-1992-s150a": {
@@ -807,6 +816,7 @@
     "updated_date": null,
     "checked_date": "2026-09-29",
     "licence": "Open Government Licence v3.0",
+    "status": "official",
     "note": null
   },
   "dhsc-asc-activity-2024-25": {
@@ -815,9 +825,9 @@
     "url": "https://www.gov.uk/government/statistics/adult-social-care-activity-report-england-2024-to-2025/adult-social-care-activity-report-2024-to-2025-commentary",
     "published_date": "2025-10-23",
     "updated_date": null,
-    "checked_date": "2026-09-29",
+    "checked_date": "2026-10-09",
     "licence": "Open Government Licence v3.0",
-    "note": "Official statistics in development."
+    "status": "official"
   },
   "health-foundation-2024": {
     "publisher": "The Health Foundation",
@@ -867,7 +877,7 @@
     "updated_date": null,
     "checked_date": "2026-09-29",
     "licence": "Open Government Licence v3.0",
-    "note": "Accredited official statistics."
+    "status": "accredited"
   },
   "dwp-uprating-analysis-2026": {
     "publisher": "Department for Work and Pensions",

@@ -163,6 +163,7 @@ for (const [id, record] of Object.entries(claims)) {
 for (const [id, record] of Object.entries(sources)) {
   for (const field of ["publisher", "title", "url", "checked_date", "licence"]) if (!record[field]) fail(`source ${id} has no ${field}`);
   if (!/^https:\/\//.test(record.url)) fail(`source ${id} address is not https`);
+  if (record.status !== undefined && !["accredited", "official", "in-development", "suspended"].includes(record.status)) fail(`source ${id} has a status that is not accredited, official, in-development or suspended: ${record.status}`);
 }
 const templates = walk("src").filter((path) => /\.(njk|json|js)$/.test(path) && !/figures\.json|claims\.json|sources\.json/.test(path)).map((path) => readFileSync(path, "utf8")).join("\n");
 const registersText = JSON.stringify(figures) + JSON.stringify(claims) + readFileSync("src/_data/tables.json", "utf8") + readFileSync("src/_data/budgets.json", "utf8") + readFileSync("src/_data/scenarios.json", "utf8");

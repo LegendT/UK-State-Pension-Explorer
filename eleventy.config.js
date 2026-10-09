@@ -79,6 +79,19 @@ export default function (eleventyConfig) {
     return match ? [match[1], match[2]] : [text || "", ""];
   };
   eleventyConfig.addFilter("splitCaveat", splitCaveat);
+  // The caveat a source line opens with must say what changes the figure's meaning (W19, from F3 of
+  // the readability review). The kind is printed beside it, so a first sentence that only restates
+  // the kind or the status, such as "A survey estimate.", "A 50-year projection, not a forecast." or
+  // "Official statistics in development.", stops the
+  // build, as does an empty one. Tested where the line is drawn, so a figure reaching a source line
+  // through a variable or a loop is tested too.
+  const BARE_KIND = /^(an? |the )?([\w-]+ ){0,2}(estimate|benchmark|projection|forecast|count|statistic|calculation|figure|rate|rule)s?( only)?(, not an? \w+)?\.$|^indicative only\.$|^(accredited )?official statistics( in development|, not accredited)?(, which can be revised)?\.$|^accreditation (is )?suspended\.$/i;
+  eleventyConfig.addFilter("openCaveat", function (f) {
+    const caveat = splitCaveat(f.qualifications);
+    if (!caveat[0]) throw new Error(`Figure "${f.id}" is shown with a source line but has no caveat to open with (${this.page.inputPath})`);
+    if (BARE_KIND.test(caveat[0])) throw new Error(`Figure "${f.id}" opens with a kind, not a caveat: "${caveat[0]}" (${this.page.inputPath})`);
+    return caveat;
+  });
   // What a group of figures has in common, for one line above the group (W18, from R14 of the
   // readability review): the kind, the period, the source and the key caveat, each only where every
   // figure in the group has it. Each figure's own note then leaves those parts out.
@@ -90,8 +103,9 @@ export default function (eleventyConfig) {
     });
     const same = (key) => records.every((r) => r[key] === records[0][key]);
     const caveat = splitCaveat(records[0].qualifications)[0];
+    const statuses = records.map((r) => this.ctx.sources[r.source_id].status);
     const g = {
-      kind: same("classification") && same("provisional") ? records[0] : null,
+      kind: same("classification") && same("provisional") && statuses.every((s) => s === statuses[0]) ? { ...records[0], status: statuses[0] } : null,
       period: same("period_label") ? records[0].period_label : null,
       source: same("source_id") ? this.ctx.sources[records[0].source_id] : null,
       caveat: caveat && records.every((r) => splitCaveat(r.qualifications)[0] === caveat) ? caveat : null,

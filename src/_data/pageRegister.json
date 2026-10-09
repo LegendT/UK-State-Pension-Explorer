@@ -29,8 +29,8 @@
       "next": "/triple-lock/",
       "index": true,
       "published": null,
-      "modified": "2026-10-05",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md.",
+      "modified": "2026-10-09",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 9 October 2026: the caveats shown open on its figures, with the official status of their sources (W19).",
       "figure_cards": true
     },
     {
@@ -58,8 +58,8 @@
       "canonical_path": "/living-on-a-pension/",
       "index": true,
       "published": null,
-      "modified": "2026-10-05",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md.",
+      "modified": "2026-10-09",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 9 October 2026: the caveats shown open on its figures, with the official status of their sources, and the publisher's reported Council Tax data error beside the median incomes (W19).",
       "figure_cards": true
     },
     {
@@ -102,8 +102,8 @@
       "canonical_path": "/reform-options/costs/",
       "index": true,
       "published": null,
-      "modified": "2026-10-08",
-      "modified_note": "Changed on 8 October 2026: the savings figures name the department's model and baseline (W1).",
+      "modified": "2026-10-09",
+      "modified_note": "Changed on 8 October 2026: the savings figures name the department's model and baseline (W1). Changed on 9 October 2026: the April 2030 paragraph gives only the real-terms figures the table lacks (W18), and the caveats shown open on its figures, with the official status of their sources (W19).",
       "figure_cards": true
     },
     {
@@ -117,8 +117,8 @@
       "canonical_path": "/reform-options/social-care/",
       "index": true,
       "published": null,
-      "modified": "2026-10-08",
-      "modified_note": "Changed on 8 October 2026: the department's analysis on coverage and pensioner poverty (W1), and the care commission's conflicting report dates (W2).",
+      "modified": "2026-10-09",
+      "modified_note": "Changed on 8 October 2026: the department's analysis on coverage and pensioner poverty (W1), and the care commission's conflicting report dates (W2). Changed on 9 October 2026: the caveats shown open on its figures, with the official status of their sources (W19).",
       "figure_cards": true
     },
     {
@@ -216,8 +216,8 @@
       "canonical_path": "/sources-and-method/",
       "index": true,
       "published": null,
-      "modified": "2026-10-08",
-      "modified_note": "Changed on 8 October 2026: the figure register names the file, sheet and cell of each figure read from a spreadsheet (W4)."
+      "modified": "2026-10-09",
+      "modified_note": "Changed on 8 October 2026: the figure register names the file, sheet and cell of each figure read from a spreadsheet (W4). Changed on 9 October 2026: the register of figures shows each figure's first caveat and the official status of its source (W19)."
     },
     {
       "path": "/accessibility/",

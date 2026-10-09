@@ -4,7 +4,7 @@ Read, in this order, before doing anything:
 1. docs/HANDOVER.md
 2. docs/launch-dependencies.md, "Launch steps", "Work before step 4" and "After launch, first update"
 3. docs/decision-log.md, from number 83
-4. docs/ux-review-2026-10-08.md, the findings F1 to F16 and "Smaller points" behind rows W7 and W17 to W31
+4. docs/ux-review-2026-10-08.md, the findings F1 to F16 and "Smaller points" behind rows W19 to W31
 5. README.md
 
 Do not read _archive/. Read research/ only to check a figure. docs/ux-review.md,
@@ -18,10 +18,10 @@ for after launch is "After launch, first update" in the same file. Work since th
 merged pull request is on the branch launch-review, with a pull request open: run
 git status and git log main..launch-review first.
 
-Next action: none until Anthony says to build. The first open row is W7, and the rows run
+Next action: none until Anthony says to build. The first open row is W19, and the rows run
 in the table's order. Nothing else is authorised.
 
-Waiting on Anthony: W31 (how custom amounts reach the address); W16 (the review date);
+Waiting on Anthony: W31 (how custom amounts reach the address); the open question in W27; W16 (the review date);
 launch steps 4 to 9; whether to run the tree test and usability test.
 
 Parked, do not raise: "After launch, first update", and the handover's "Known defects and limits" and "Declined".

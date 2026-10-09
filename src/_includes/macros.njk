@@ -4,28 +4,42 @@
 {{ { "published-rate": "Published rate", "published-rule": "Published rule", "observed-statistic": "Observed statistic", "estimate": "Estimate", "forecast": "Forecast", "projection": "Projection", "derived-calculation": "Calculated by this site", "research-benchmark": "Research benchmark", "hypothetical": "Hypothetical" }[key] }}
 {%- endmacro -%}
 
+{#- The kind of figure as one sentence, with "can be revised" where the record says so, then the official
+    status of its source as a second sentence where the source record has one (W19, from R3 of the
+    readability review): accredited official statistics, official statistics that are not accredited,
+    official statistics in development, or a suspended accreditation. -#}
+{%- macro statusLabel(status) -%}
+{{ { "accredited": "Accredited official statistics", "official": "Official statistics, not accredited", "in-development": "Official statistics in development", "suspended": "Its accreditation is suspended" }[status] }}
+{%- endmacro -%}
+
+{#- A figure this site calculated, or a research benchmark, carries no status: the status belongs to
+    the statistics a source publishes, not to a sum made from them. -#}
+{%- macro kindLine(classification, provisional, status) -%}
+{{ classLabel(classification) }}{% if provisional %}, can be revised{% endif %}.{% if status and classification != "derived-calculation" and classification != "research-benchmark" %} {{ statusLabel(status) }}.{% endif %}
+{%- endmacro -%}
+
 {#- A citation after a sentence. The short form shows the publisher and keeps the title for screen readers, so the link still names its destination. The full form is for "More about this figure". -#}
 {%- macro cite(s, full) -%}
 <a class="cite" href="{{ s.url }}">{{ s.publisher }}{% if full %}, {{ s.title }}{% else %}<span class="visually-hidden">, {{ s.title }}</span>{% endif %}</a>{% if s.published_date %} ({{ s.published_date | monthOrDayTag | safe }}){% endif %}
 {%- endmacro -%}
 
-{#- One muted line under a figure's paragraph, or in its card: the kind, the period, the range where
+{#- One muted line under a figure's paragraph, or in its card: the kind and its source's status, the period, the range where
     the record has one (decision 95), the source with its date, then the key caveat, each a sentence,
     so no label runs into a value (decision 56 as amended by 92, in the style of decision 77). "More
     about this figure" holds the rest. Where a line above a group of figures has said some parts once
     (sharedNote), pass that group: those parts are left out, and a figure whose every part the group
     said gets no line of its own unless it has a range. -#}
 {%- macro sourceNote(f, group) -%}
-{%- set caveat = f.qualifications | splitCaveat -%}
+{%- set caveat = f | openCaveat -%}
 {%- set g = group or {} -%}
-{%- if f.range or not (g.kind and g.period and g.source and (g.caveat or not caveat[0])) %}
-<p class="source-line">{% if not g.kind %}{{ classLabel(f.classification) }}{% if f.provisional %}, can be revised{% endif %}. {% endif %}{% if not g.period %}{{ f.period_label }}. {% endif %}{% if f.range %}Range: {{ f.range }}. {% endif %}{% if not g.source %}Source: {{ cite(f.source) }}. {% endif %}{% if caveat[0] and not g.caveat %}{{ caveat[0] }}{% endif %}</p>
+{%- if f.range or not (g.kind and g.period and g.source and g.caveat) %}
+<p class="source-line">{% if not g.kind %}{{ kindLine(f.classification, f.provisional, f.source.status) }} {% endif %}{% if not g.period %}{{ f.period_label }}. {% endif %}{% if f.range %}Range: {{ f.range }}. {% endif %}{% if not g.source %}Source: {{ cite(f.source) }}. {% endif %}{% if not g.caveat %}{{ caveat[0] }}{% endif %}</p>
 {%- endif %}
 <details class="source">
     <summary>More about this figure<span class="visually-hidden">: {{ f.label }}</span></summary>
     <dl>
       <dt>Place</dt> <dd>{{ f.geography }}</dd>
-      {%- if g.caveat and caveat[0] %}<dt>Limits</dt> <dd>{{ caveat[0] }}{% if caveat[1] %} {{ caveat[1] }}{% endif %}</dd>{% elif caveat[1] %}<dt>Other limits</dt> <dd>{{ caveat[1] }}</dd>{% endif %}
+      {%- if g.caveat %}<dt>Limits</dt> <dd>{{ caveat[0] }}{% if caveat[1] %} {{ caveat[1] }}{% endif %}</dd>{% elif caveat[1] %}<dt>Other limits</dt> <dd>{{ caveat[1] }}</dd>{% endif %}
       <dt>Source</dt> <dd>{{ cite(f.source, true) }}. Checked against the source on {{ f.checked_date | timeTag | safe }}.</dd>
       <dt>What it measures</dt> <dd>{{ f.definition }}</dd>
       <dt>Who it covers</dt> <dd>{{ f.population }}</dd>
@@ -43,7 +57,7 @@
 {#- One line above a group of figures, saying once what every figure in it shares: the "shared"
     filter works that out from their records (R14 of the readability review). -#}
 {%- macro sharedNote(g) -%}
-<p class="source-line shared">The figures below: {% if g.kind %}{{ classLabel(g.kind.classification) }}{% if g.kind.provisional %}, can be revised{% endif %}. {% endif %}{% if g.period %}{{ g.period }}. {% endif %}{% if g.source %}Source: {{ cite(g.source) }}. {% endif %}{% if g.caveat %}{{ g.caveat }}{% endif %}</p>
+<p class="source-line shared">The figures below: {% if g.kind %}{{ kindLine(g.kind.classification, g.kind.provisional, g.kind.status) }} {% endif %}{% if g.period %}{{ g.period }}. {% endif %}{% if g.source %}Source: {{ cite(g.source) }}. {% endif %}{% if g.caveat %}{{ g.caveat }}{% endif %}</p>
 {%- endmacro -%}
 
 {#- A figure shown as a card: label, value, plain meaning, source. -#}
