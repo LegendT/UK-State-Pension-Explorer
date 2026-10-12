@@ -154,8 +154,10 @@
 {% if r.source %}{{ ref(r.source) }}{% else %}<span class="ref">A record of a search: <a href="/sources-and-method/#claim-{{ id }}">what was searched, and when</a>.</span>{% endif %}
 {%- endmacro -%}
 
-{#- A figure in running text, with its period. -#}
-{%- macro f(id) -%}{{ id | fig }}{%- endmacro -%}
+{#- A figure in running text, with its period. The comment after it names the figure's source for the
+    proseCitations transform, which checks the citation that follows and then removes the comment. A figure said again after its source,
+    as in "above", uses the fig filter instead, which the check does not see. -#}
+{%- macro f(id) -%}{{ id | fig }}<!--fig:{{ id }} {{ (id | figure).source.url }}-->{%- endmacro -%}
 
 {#- One text input with its label, hint and error line. inputmode keeps a number keypad on phones. -#}
 {%- macro field(id, label, value, hint, prefix, suffix, mode) -%}

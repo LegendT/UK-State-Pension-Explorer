@@ -183,6 +183,27 @@ export default function (eleventyConfig) {
     });
   });
 
+  // A figure in running text (m.f) must be followed by its own source's citation before any other
+  // and before the next heading, so it never sits under another body's citation (W24, from F4 of the
+  // readability review). m.f leaves a comment naming the figure and its source's address; this
+  // checks it and removes it, so the published page carries no trace.
+  // ponytail: looks only at the first citation after the figure, so a figure cited by its own source
+  // two paragraphs later passes. Bound the search to the figure's block if that is ever abused.
+  const FIG_MARK = /<!--fig:(\S+) (\S*)-->/g;
+  eleventyConfig.addTransform("proseCitations", function (content) {
+    if (!(this.page.outputPath || "").endsWith(".html")) return content;
+    const problems = [];
+    for (const mark of content.matchAll(FIG_MARK)) {
+      const after = content.slice(mark.index + mark[0].length);
+      const stop = after.search(/<h[1-6]\b/);
+      const cite = (stop < 0 ? after : after.slice(0, stop)).match(/<a class="cite" href="([^"]+)"/);
+      if (!cite) problems.push(`"${mark[1]}" has no citation before the next heading`);
+      else if (cite[1] !== mark[2]) problems.push(`"${mark[1]}" is followed first by a citation of ${cite[1]}, not its own source ${mark[2]}`);
+    }
+    if (problems.length) throw new Error(`A figure in running text sits under another source's citation, or none (${this.page.inputPath}):\n  ${problems.join("\n  ")}`);
+    return content.replace(FIG_MARK, "");
+  });
+
   // A scrolling table region with no name is named by its table's caption, so the two cannot differ.
   eleventyConfig.addTransform("tableRegions", function (content) {
     if (!(this.page.outputPath || "").endsWith(".html")) return content;

@@ -35,8 +35,8 @@ permalink: /reform-options/costs/
 {{ m.dataTable("sp-spending-series") }}
 
 {% call m.note("State Pension spending is not all spending on older people", 3) %}
-<p>DWP spent {{ m.f("pensioner-benefits-2024-25") }} in 2024/25 on all benefits for pensioners, of which the State Pension was {{ m.f("sp-spend-2024-25") }}. Neither figure includes the NHS or social care.</p>
-<p>Official sources give slightly different figures for the same year. The DWP tables give {{ m.f("sp-spend-2024-25") }}. The account of the National Insurance Fund gives {{ m.f("nif-state-pension-2024-25") }}, on a cash basis. They differ in accounting basis and coverage. This site uses the DWP tables for spending and says so each time.</p>
+<p>DWP spent {{ m.f("pensioner-benefits-2024-25") }} in 2024/25 on all benefits for pensioners, of which the State Pension was {{ m.f("sp-spend-2024-25") }}. {{ m.ref(("sp-spend-2024-25" | figure).source) }} Neither figure includes the NHS or social care.</p>
+<p>Official sources give slightly different figures for the same year. The DWP tables give {{ "sp-spend-2024-25" | fig }}, as above. The account of the National Insurance Fund gives {{ m.f("nif-state-pension-2024-25") }}, on a cash basis. {{ m.ref(("nif-state-pension-2024-25" | figure).source) }} They differ in accounting basis and coverage. This site uses the DWP tables for spending and says so each time.</p>
 {% endcall %}
 
 <h3 id="projection">The long-term projection: the triple lock and an older population drive the rise</h3>
@@ -63,7 +63,7 @@ permalink: /reform-options/costs/
 
 <p>Future numbers of workers depend partly on migration. {{ m.sisterLink("migration" | link) }} explains how migration is measured. It does not estimate the effect on pension costs, and neither does this site.</p>
 
-<p>Pensioners also pay tax. {{ m.f("pensioner-taxpayers") }} people above State Pension age paid Income Tax in 2023 to 2024. {{ ("ni-stops-at-spa" | claim).statement }} {{ m.c("ni-stops-at-spa") }}</p>
+<p>Pensioners also pay tax. {{ ("ni-stops-at-spa" | claim).statement }} {{ m.c("ni-stops-at-spa") }} But {{ m.f("pensioner-taxpayers") }} people above State Pension age paid Income Tax in 2023 to 2024.</p>
 {{ m.sourceNote("pensioner-taxpayers" | figure) }}
 
 <p>For the difference between what the government spends or borrows in a year and the debt it has built up, see {{ m.sisterLink("debt-vs-deficit" | link) }}.</p>
@@ -72,7 +72,7 @@ permalink: /reform-options/costs/
 
 <p>Three different amounts are often confused.</p>
 <ol>
-  <li><strong>The whole bill.</strong> {{ m.f("sp-spend-2026-27") }} in 2026/27, above.</li>
+  <li><strong>The whole bill.</strong> {{ "sp-spend-2026-27" | fig }} in 2026/27, above.</li>
   <li><strong>The cost of the triple lock so far.</strong> How much higher spending is than it would have been under a different rule. It depends on which rule is used for comparison.</li>
   <li><strong>The saving from a change.</strong> How much lower future spending would be. It depends on the new rule, the start date and the year measured.</li>
 </ol>
@@ -195,8 +195,10 @@ permalink: /reform-options/costs/
 
 <h3 id="who-disability">Disability and caring</h3>
 
-<p>{{ m.f("disabled-share-spa") }} of adults of State Pension age report a disability. {{ ("disability-income-artefact" | claim).statement }} {{ m.c("disability-income-artefact") }}</p>
+<p>{{ m.f("disabled-share-spa") }} of adults of State Pension age report a disability.</p>
 {{ m.sourceNote("disabled-share-spa" | figure) }}
+
+<p>{{ ("disability-income-artefact" | claim).statement }} {{ m.c("disability-income-artefact") }}</p>
 
 {#- Level 3 on purpose. This covers the whole section on who receives what, not the subsection above it. -#}
 {% call m.unavailable("some breakdowns", 3) %}

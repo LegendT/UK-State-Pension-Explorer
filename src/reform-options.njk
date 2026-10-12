@@ -139,7 +139,7 @@ permalink: /reform-options/
       <li><strong>Pensioner poverty has not gone away.</strong> In the {{ ("low-income-ahc" | figure).period_label | lower }}, an estimated {{ m.f("low-income-ahc") }} of pensioners were in relative low income after housing costs, within a range of {{ ("low-income-ahc" | figure).range }}. {{ m.ref(("low-income-ahc" | figure).source) }} {{ ("ageuk-women" | claim).statement }} {{ m.c("ageuk-women") }}</li>
       <li><strong>It helps today's workers most.</strong> {{ ("ppi-future-workers" | claim).statement }} {{ m.c("ppi-future-workers") }}</li>
       <li><strong>More pensioners, not the lock, cause most of the rise in State Pension spending.</strong> {{ ("ppi-demographics" | claim).statement }} {{ m.c("ppi-demographics") }} The Office for Budget Responsibility projects State Pension spending to rise by {{ m.f("sp-rise-gdp-total") }} between 2030-31 and 2075-76, and attributes {{ m.f("tl-share-of-rise") }} of it to the triple lock. {{ m.ref(("tl-share-of-rise" | figure).source) }}</li>
-      <li><strong>The level is about 30% of typical pay.</strong> In {{ ("nsp-share-median-earnings" | figure).period_label }} the full new State Pension was {{ m.f("nsp-share-median-earnings") }} of median full-time earnings. {{ m.c("pc-30-percent") }}</li>
+      <li><strong>The level is about 30% of typical pay.</strong> In {{ ("nsp-share-median-earnings" | figure).period_label }} the full new State Pension was {{ m.f("nsp-share-median-earnings") }} of median full-time earnings. {{ m.ref(("nsp-share-median-earnings" | figure).source) }} {{ ("pc-30-percent" | claim).statement }} {{ m.c("pc-30-percent") }}</li>
       <li><strong>It supports private saving.</strong> {{ ("pc-firm-foundation" | claim).statement }} {{ m.c("pc-firm-foundation") }}</li>
     </ul>
   </article>
@@ -151,7 +151,7 @@ permalink: /reform-options/
       <li><strong>It rewards volatility, not need.</strong> {{ ("rf-volatility" | claim).statement }} {{ m.c("rf-volatility") }}</li>
       <li><strong>It has no stated target.</strong> {{ ("ifs-explicit-goal" | claim).statement }} {{ m.c("ifs-explicit-goal") }}</li>
       <li><strong>Fairness between generations.</strong> {{ ("rf-living-standards" | claim).statement }} {{ ("rf-income-level" | claim).statement }} {{ ("rf-income-same-level" | claim).statement }} {{ m.c("rf-living-standards") }}</li>
-      <li><strong>It is not aimed at poverty.</strong> {{ ("rf-poverty-since-2011" | claim).statement }} {{ m.c("rf-poverty-since-2011") }} On the same measure, after housing costs, the latest official level is the {{ m.f("low-income-ahc") }} given in the arguments for keeping it. The triple lock applies the same percentage to the full rates, whatever the income of the person who receives them.</li>
+      <li><strong>It is not aimed at poverty.</strong> {{ ("rf-poverty-since-2011" | claim).statement }} {{ m.c("rf-poverty-since-2011") }} On the same measure, after housing costs, the latest official level is the {{ "low-income-ahc" | fig }} given in the arguments for keeping it. The triple lock applies the same percentage to the full rates, whatever the income of the person who receives them.</li>
     </ul>
   </article>
 </div>

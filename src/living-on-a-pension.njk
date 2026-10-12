@@ -50,8 +50,10 @@ permalink: /living-on-a-pension/
   <li>{{ m.stat("mis-couple-ex-rent" | figure, "A week, for a pensioner couple, not counting rent.", 4, g) }}</li>
 </ul>
 
-<p>Rent is shown separately because it differs so much by area. The budgets use an indicative private rent of {{ m.f("mis-single-rent") }} a week for a single pensioner and {{ m.f("mis-couple-rent") }} for a couple.</p>
+<p>Rent is shown separately because it differs so much by area. The budgets use an indicative private rent of {{ m.f("mis-single-rent") }} a week for a single pensioner.</p>
 {{ m.sourceNote("mis-single-rent" | figure) }}
+
+<p>For a couple, the report on the 2026 budgets gives {{ m.f("mis-couple-rent") }} a week. {{ m.ref(("mis-couple-rent" | figure).source) }}</p>
 
 {% call m.note("The 2026 budgets cannot be compared directly with earlier years", 4) %}
 <p>{{ ("mis-tenure-change" | claim).statement }} {{ m.c("mis-tenure-change") }} {{ ("mis-basket-change" | claim).statement }} {{ m.c("mis-basket-change") }} A change in the benchmark from one year to the next is not only a change in prices.</p>

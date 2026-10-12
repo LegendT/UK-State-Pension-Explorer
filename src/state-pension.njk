@@ -49,7 +49,7 @@ permalink: /state-pension/
 </ul>
 
 {% call m.note("Why the two rates cannot be compared directly", 3) %}
-<p>The basic State Pension is one part of what people on the older system receive. Many of them also get Additional State Pension, which was based on their earnings. The new State Pension replaced both parts with a single amount. So the gap between {{ m.f("bsp-full-weekly") }} and {{ m.f("nsp-full-weekly") }} does not show that people on the older system receive less in total. The averages in <a href="#what-people-receive">What people actually receive</a> show this.</p>
+<p>The basic State Pension is one part of what people on the older system receive. Many of them also get Additional State Pension, which was based on their earnings. The new State Pension replaced both parts with a single amount. So the gap between {{ "bsp-full-weekly" | fig }} and {{ "nsp-full-weekly" | fig }} does not show that people on the older system receive less in total. The averages in <a href="#what-people-receive">What people actually receive</a> show this.</p>
 {% endcall %}
 
 <h2 id="qualifying">National Insurance and qualifying years</h2>
@@ -58,9 +58,9 @@ permalink: /state-pension/
 
 <h3>The new State Pension</h3>
 <ul>
-  <li>A person usually needs {{ m.f("nsp-min-qualifying-years") }} qualifying years to get any new State Pension.</li>
+  <li>A person usually needs {{ m.f("nsp-min-qualifying-years") }} qualifying years to get any new State Pension. {{ m.ref(("nsp-min-qualifying-years" | figure).source) }}</li>
+  <li>Each qualifying year added after <time datetime="2016-04-05">5 April 2016</time> adds about {{ m.f("nsp-per-qualifying-year") }} a week, up to the full rate. {{ m.ref(("nsp-per-qualifying-year" | figure).source) }}</li>
   <li>A person whose National Insurance record began after April 2016 needs {{ m.f("nsp-full-rate-years") }} qualifying years for the full rate.</li>
-  <li>Each qualifying year added after <time datetime="2016-04-05">5 April 2016</time> adds about {{ m.f("nsp-per-qualifying-year") }} a week, up to the full rate.</li>
 </ul>
 {{ m.sourceNote("nsp-full-rate-years" | figure) }}
 
@@ -139,7 +139,7 @@ permalink: /state-pension/
 
 <p>The State Pension is taxable, but it is paid without tax taken off. {{ m.c("taxable-paid-gross") }} Tax that is due is usually collected through the tax code on a private pension or on earnings. If it cannot be collected that way, HM Revenue and Customs sends a bill. {{ m.c("simple-assessment") }}</p>
 
-<p>The standard Personal Allowance is {{ m.f("personal-allowance") }} a year. The full new State Pension over 52 weeks is {{ m.f("nsp-full-52-weeks") }}, which is just below it. A person with a protected payment, extra pension from deferring, or any other income can have tax to pay.</p>
+<p>The full new State Pension over 52 weeks is {{ m.f("nsp-full-52-weeks") }}. {{ m.ref(("nsp-full-52-weeks" | figure).source) }} The standard Personal Allowance is {{ m.f("personal-allowance") }} a year, so the full pension is just below it. A person with a protected payment, extra pension from deferring, or any other income can have tax to pay.</p>
 {{ m.sourceNote("personal-allowance" | figure) }}
 
 {% call m.note("Announced, not yet law", 3) %}
@@ -170,8 +170,10 @@ permalink: /state-pension/
 <p>{{ ("housing-benefit" | claim).statement }} {{ m.c("housing-benefit") }} {{ ("council-tax-reduction" | claim).statement }} {{ m.c("council-tax-reduction") }} {{ ("council-tax-reduction-pensioners" | claim).statement }} {{ m.c("council-tax-reduction-pensioners") }}</p>
 
 <h3>Help with the costs of disability</h3>
-<p>Attendance Allowance is for people over State Pension age who need help or supervision because of a disability or health condition. It is {{ m.f("attendance-allowance-lower") }} or {{ m.f("attendance-allowance-higher") }} a week and is not means-tested. It covers England and Wales. {{ m.c("aa-scotland") }} {{ ("aa-northern-ireland" | claim).statement }} {{ m.c("aa-northern-ireland") }}</p>
+<p>Attendance Allowance is for people over State Pension age who need help or supervision because of a disability or health condition. It is {{ m.f("attendance-allowance-lower") }} or {{ m.f("attendance-allowance-higher") }} a week and is not means-tested.</p>
 {{ m.sourceNote("attendance-allowance-lower" | figure) }}
+
+<p>Attendance Allowance covers England and Wales. {{ m.c("aa-scotland") }} {{ ("aa-northern-ireland" | claim).statement }} {{ m.c("aa-northern-ireland") }}</p>
 
 <h3>Winter Fuel Payment</h3>
 <p>The Winter Fuel Payment is paid to people over State Pension age in England, Wales and Northern Ireland. {{ ("wfp-automatic" | claim).statement }} {{ m.c("wfp-automatic") }} For people with a total income over {{ m.f("winter-fuel-income-limit") }}, HM Revenue and Customs takes the payment back through the tax system.</p>

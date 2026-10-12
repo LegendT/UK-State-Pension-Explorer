@@ -49,7 +49,7 @@ permalink: /reform-options/entitlement/
     <h3 id="ent-tax">Keep the pension and redistribute through tax</h3>
     <dl>
       <dt>The idea</dt> <dd>Pay the State Pension to everyone entitled and recover more from people with higher incomes through the tax system.</dd>
-      <dt>How it works now</dt> <dd>The State Pension is already taxable. The Winter Fuel Payment is now recovered through tax from people with income over {{ m.f("winter-fuel-income-limit") }}.</dd>
+      <dt>How it works now</dt> <dd>The State Pension is already taxable. The Winter Fuel Payment is now recovered through tax from people with income over {{ m.f("winter-fuel-income-limit") }}. {{ m.ref(("winter-fuel-income-limit" | figure).source) }}</dd>
       <dt>A proposal</dt> <dd>{{ ("if-nic-proposal" | claim).statement }} {{ m.c("if-nic-proposal") }}</dd>
       <dt>Known difficulties</dt> <dd>Tax looks at income, not wealth. A change in tax for pensioners also reaches pensioners with modest private pensions.</dd>
     </dl>
@@ -58,7 +58,7 @@ permalink: /reform-options/entitlement/
     <h3 id="ent-targeted">Keep broad entitlement and strengthen targeted support</h3>
     <dl>
       <dt>The idea</dt> <dd>Leave the State Pension as it is and put more into Pension Credit, housing support or disability benefits.</dd>
-      <dt>Who is affected</dt> <dd>People on low incomes who claim. People who are entitled and do not claim get nothing. About {{ m.f("pension-credit-non-recipients") }} families did not claim Pension Credit.</dd>
+      <dt>Who is affected</dt> <dd>People on low incomes who claim. People who are entitled and do not claim get nothing. In the {{ ("pension-credit-non-recipients" | figure).period_label | lower }}, about {{ m.f("pension-credit-non-recipients") }} entitled families did not claim Pension Credit. {{ m.ref(("pension-credit-non-recipients" | figure).source) }}</dd>
       <dt>A view</dt> <dd>{{ ("pc-safety-net" | claim).statement }} {{ m.c("pc-safety-net") }}</dd>
       <dt>Known difficulties</dt> <dd>Take-up, and the effect on the reward for saving. {{ m.c("wp-savings-credit") }}</dd>
     </dl>

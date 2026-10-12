@@ -13,8 +13,8 @@
       "canonical_path": "/",
       "index": true,
       "published": null,
-      "modified": "2026-10-05",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md.",
+      "modified": "2026-10-12",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 12 October 2026: the mean new State Pension cites its own source (W24).",
       "figure_cards": true
     },
     {
@@ -29,8 +29,8 @@
       "next": "/triple-lock/",
       "index": true,
       "published": null,
-      "modified": "2026-10-09",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 9 October 2026: the caveats shown open on its figures, with the official status of their sources (W19).",
+      "modified": "2026-10-12",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 9 October 2026: the caveats shown open on its figures, with the official status of their sources (W19). Changed on 12 October 2026: each figure in the text is followed by its own source's citation first, and the Attendance Allowance rates sit apart from the claims on where it is paid (W24).",
       "figure_cards": true
     },
     {
@@ -58,8 +58,8 @@
       "canonical_path": "/living-on-a-pension/",
       "index": true,
       "published": null,
-      "modified": "2026-10-09",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 9 October 2026: the caveats shown open on its figures, with the official status of their sources, and the publisher's reported Council Tax data error beside the median incomes (W19).",
+      "modified": "2026-10-12",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 9 October 2026: the caveats shown open on its figures, with the official status of their sources, and the publisher's reported Council Tax data error beside the median incomes (W19). Changed on 12 October 2026: the couple's indicative rent cites its own source (W24).",
       "figure_cards": true
     },
     {
@@ -74,7 +74,7 @@
       "index": true,
       "published": null,
       "modified": "2026-10-12",
-      "modified_note": "Changed on 8 October 2026: the department's factsheet on which rates the announced rule covers (W1). Changed on 9 October 2026: the opening no longer lists the section's pages, which the list below it names (W7). Changed on 12 October 2026: the arguments for and against the triple lock moved here from the entitlement page (W22), with the points of what evidence can settle about the yearly increase (decision 98); the arguments' wording on growth in pensioner incomes, on what drives the rise in spending and on the range of future cost (W8). The option to keep the triple lock names the exception of 2022/23, and the arguments give the poverty figures their period, range and source (W23).",
+      "modified_note": "Changed on 8 October 2026: the department's factsheet on which rates the announced rule covers (W1). Changed on 9 October 2026: the opening no longer lists the section's pages, which the list below it names (W7). Changed on 12 October 2026: the arguments for and against the triple lock moved here from the entitlement page (W22), with the points of what evidence can settle about the yearly increase (decision 98); the arguments' wording on growth in pensioner incomes, on what drives the rise in spending and on the range of future cost (W8). The option to keep the triple lock names the exception of 2022/23, and the arguments give the poverty figures their period, range and source (W23). The level of the pension against earnings cites its own source (W24).",
       "figure_cards": true
     },
     {
@@ -103,7 +103,7 @@
       "index": true,
       "published": null,
       "modified": "2026-10-12",
-      "modified_note": "Changed on 8 October 2026: the savings figures name the department's model and baseline (W1). Changed on 9 October 2026: the April 2030 paragraph gives only the real-terms figures the table lacks (W18), and the caveats shown open on its figures, with the official status of their sources (W19). Changed on 12 October 2026: the wealth quarters are named as a survey estimate (W23).",
+      "modified_note": "Changed on 8 October 2026: the savings figures name the department's model and baseline (W1). Changed on 9 October 2026: the April 2030 paragraph gives only the real-terms figures the table lacks (W18), and the caveats shown open on its figures, with the official status of their sources (W19). Changed on 12 October 2026: the wealth quarters are named as a survey estimate (W23). Spending in 2024/25, pensioners' Income Tax and the share reporting a disability are each followed by their own source's citation first (W24).",
       "figure_cards": true
     },
     {
@@ -133,7 +133,7 @@
       "index": true,
       "published": null,
       "modified": "2026-10-12",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 12 October 2026: the arguments for and against the triple lock moved to the page on the yearly increase (W22), and the points of what evidence can settle about the yearly increase followed them (decision 98). Pension Credit take-up gives its period, range and source (W23)."
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 12 October 2026: the arguments for and against the triple lock moved to the page on the yearly increase (W22), and the points of what evidence can settle about the yearly increase followed them (decision 98). Pension Credit take-up gives its period, range and source (W23). The Winter Fuel Payment limit and the families not claiming Pension Credit cite their own sources, with the period (W24)."
     },
     {
       "path": "/history/",
