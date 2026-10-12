@@ -48,7 +48,7 @@ permalink: /reform-options/compare/
         {{ m.field("compare-start", "Starting weekly amount", ("nsp-full-weekly" | figPence) | plainPounds, "A full rate, in pounds. The full new State Pension for 2026/27 is filled in.", "£", "") }}
         <div class="field">
           <label for="compare-first">First year under the rule</label>
-          <span class="hint" id="compare-first-hint">This changes the year labels only. The starting amount is the rate for the year before.</span>
+          <span class="hint" id="compare-first-hint">Every rule, the rule announced for April 2030 among them, is applied in full from this year. The government's rule would start in 2030/31. Choosing a year changes the year labels only. The starting amount is the rate for the year before.</span>
           <select id="compare-first" name="compare-first" aria-describedby="compare-first-hint">
             {%- for y in range(2027, 2037) %}
             <option value="{{ y }}">{{ y }}/{{ (y + 1) % 100 }}</option>

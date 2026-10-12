@@ -65,3 +65,20 @@ test("constant prices and the earnings index", () => {
   const index = earningsIndex(observed(years, "new").slice(0, 3));
   assert.ok(Math.abs(index[2] - 104.6528) < 1e-9);
 });
+
+test("At a glance names the years where Parliament set the rule aside and the calculation did not", async () => {
+  const { renderHistorySummary } = await import("../src/assets/js/lib/history-view.js");
+  const glance = (series, from, to, rule) => renderHistorySummary({ years, series, from, to, measure: "cash", rule });
+  const earnings = "For 2022/23 the calculation uses earnings growth of 8.3%, which Parliament set aside that year. The published rate rose by 3.1%.";
+  const rpi = "For 2011/12 the calculation uses the Consumer Prices Index, 3.1%. That year only, the published rate used the Retail Prices Index: 4.6%.";
+  for (const rule of ["triple-lock", "double-lock", "earnings"]) assert.ok(glance("new", "2016/17", "2026/27", rule).includes(earnings), rule);
+  assert.ok(!glance("new", "2016/17", "2026/27", "prices").includes("<p>For "), "prices link used 3.1% as Parliament did");
+  assert.ok(!glance("new", "2022/23", "2026/27", "triple-lock").includes("<p>For "), "a start year is not calculated");
+  assert.ok(!glance("new", "2016/17", "2026/27", "").includes("<p>For "), "no rule, no line");
+  for (const rule of ["triple-lock", "double-lock", "prices"]) assert.ok(glance("basic", "2010/11", "2012/13", rule).includes(rpi), rule);
+  assert.ok(!glance("basic", "2010/11", "2026/27", "earnings").includes(rpi), "the earnings link differs by its own rule");
+  assert.ok(!glance("basic", "2020/21", "2021/22", "double-lock").includes("<p>For "), "2021/22 kept the triple lock");
+  const unflagged = years.map((year) => year.tax_year === "2022/23" ? { ...year, earnings_not_used: false } : year);
+  assert.ok(renderHistorySummary({ years: unflagged, series: "new", from: "2016/17", to: "2026/27", measure: "cash", rule: "triple-lock" })
+    .includes("For 2022/23 the calculation gives 8.3%. The published rate rose by 3.1%."), "a departure with no known reason still gets a line");
+});

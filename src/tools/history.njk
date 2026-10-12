@@ -51,11 +51,11 @@ permalink: /tools/history/
         </div>
         <div class="field">
           <label for="history-rule">Add a calculation under another rule</label>
-          <span class="hint" id="history-rule-hint">It starts from the published rate in the first year you chose.</span>
+          <span class="hint" id="history-rule-hint">Applied every year from the published rate of the first year you chose. It leaves out the exceptions Parliament made, such as setting aside the earnings part in 2022/23.</span>
           <select id="history-rule" name="history-rule" aria-describedby="history-rule-hint">
             <option value="">None: published rates only</option>
-            <option value="triple-lock">Triple lock, applied mechanically</option>
-            <option value="double-lock">Double lock (prices or earnings)</option>
+            <option value="triple-lock">Triple lock, no exceptions</option>
+            <option value="double-lock">Double lock, no exceptions</option>
             <option value="earnings">Earnings link</option>
             <option value="prices">Prices link</option>
           </select>
@@ -86,7 +86,7 @@ permalink: /tools/history/
     <dt>Cash</dt> <dd>The published rate.</dd>
     <dt>Buying power</dt> <dd>The published rate × the price index for the last year shown ÷ the price index for that year. The index is the Consumer Prices Index level for the September before each rate took effect.</dd>
     <dt>Compared with earnings</dt> <dd>The rise in the rate since the first year shown, divided by the rise in earnings over the same years. The rise in earnings is built from the figures used in each decision. It is an index, not a share of any pay figure in pounds.</dd>
-    <dt>A calculation under another rule</dt> <dd>The rule is applied year by year from the published rate of the first year, with rounding to the nearest 5p and no fall in pounds. It does not apply the special rules of exceptional years.</dd>
+    <dt>A calculation under another rule</dt> <dd>The rule is applied year by year from the published rate of the first year, using the prices and earnings figures recorded for each year's decision, with rounding to the nearest 5p and no fall in pounds. It does not apply the special rules of exceptional years.</dd>
   </dl>
   <div class="source">
     <p>Source for the price index: <a href="{{ history.sources.prices_index_url }}">{{ history.sources.prices_index }}</a> Checked against the source on {{ history.checked_date | timeTag | safe }}.</p>

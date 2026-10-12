@@ -4,7 +4,7 @@ Read, in this order, before doing anything:
 1. docs/HANDOVER.md
 2. docs/launch-dependencies.md, "Launch steps", "Work before step 4" and "After launch, first update"
 3. docs/decision-log.md, from number 83
-4. docs/ux-review-2026-10-08.md, the findings F1 to F16 and "Smaller points" behind rows W20 to W31
+4. docs/ux-review-2026-10-08.md, the findings F1 to F16 and "Smaller points" behind rows W11 to W33
 5. README.md
 
 Do not read _archive/. Read research/ only to check a figure. docs/ux-review.md,
@@ -19,12 +19,12 @@ merged pull request is on the branch launch-review, with a pull request open: ru
 git status, git log main..launch-review and git log origin/launch-review..launch-review
 first.
 
-Next action: none until Anthony says to build. The first open row is W20, and the rows run
+Next action: none until Anthony says to build. The first open row is W11, and the rows run
 in the table's order. Nothing else is authorised.
 
-Waiting on Anthony: W31 (how custom amounts reach the address); the open question in W27;
-the three open questions at the end of the W19 row; W16 (the review date); launch steps
-4 to 9; whether to run the tree test and usability test.
+Waiting on Anthony: his look at the costs tables' right-aligned, wrapped amounts (the W20
+row, R8); W16 (he checks the changed pages once every other row is done); launch steps
+4 to 9. His answers of 9 October 2026 to W16, W19, W22, W27 and W31 are decision 96.
 
 Parked, do not raise: "After launch, first update", and the handover's "Known defects and limits" and "Declined".
 
@@ -34,8 +34,9 @@ full first. In this project: do not import .env into Netlify, do not push (Antho
 critique skill, write the repository path out in full, with no variable, in every file
 path of the reader's command, and keep the skill's "pass two ran on ... cost $" line word
 for word, or the push gate's stamp is refused. After a data change shown on a page, run
-npm run a11y too: README.md, "Commands". NEXT-SESSION.md is written by /handoff-check
-only. The chrome-devtools browser tool cannot launch while another process holds its
-profile; screenshot through puppeteer-core instead.
+npm run a11y too: README.md, "Commands". npm run a11y fails on any gradient, rgba,
+opacity or filter in main.css (scripts/a11y.mjs). NEXT-SESSION.md is written by
+/handoff-check only. The chrome-devtools browser tool cannot launch while another process
+holds its profile; screenshot through puppeteer-core instead.
 
 Run /handoff-check before leaving this context.

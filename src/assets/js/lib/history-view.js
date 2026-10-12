@@ -1,7 +1,7 @@
 // Tool 4 results as an HTML string, and the same rows as CSV. No DOM.
 // Published rates and decisions are read from the record. Only the comparison is calculated.
 
-import { RULE_LABELS } from "./uprating.js";
+import { RULE_LABELS, upratingFor } from "./uprating.js";
 import { earningsIndex, inLatestPrices, observed, reconstruct, SERIES_LABELS } from "./history.js";
 import { lineChart } from "./chart.js";
 import { money, percent } from "./format.js";
@@ -61,6 +61,26 @@ function show(value, measure) {
   return measure === "earnings" ? value.toFixed(1) : money(Math.round(value * 100));
 }
 
+// One sentence for each year in the range where Parliament departed from the triple lock's own
+// rule and the calculation follows the rule, so the two differ: notes 11 and 12 of the page review.
+function departures({ years, series, from, to, rule }) {
+  if (!rule) return [];
+  const rows = observed(years, series);
+  const first = rows.findIndex((year) => year.tax_year === from);
+  const last = rows.findIndex((year) => year.tax_year === to);
+  return rows.slice(first + 1, last + 1)
+    .filter((year) => {
+      const calculated = upratingFor(rule, year.prices_tenths, year.earnings_tenths).tenths;
+      const byTheRule = upratingFor("triple-lock", year.prices_tenths, year.earnings_tenths).tenths;
+      return year.exceptional && calculated === byTheRule && calculated !== year.applied_tenths;
+    })
+    .map((year) => {
+      if (year.earnings_not_used) return `For ${year.tax_year} the calculation uses earnings growth of ${percent(year.earnings_tenths)}, which Parliament set aside that year. The published rate rose by ${percent(year.applied_tenths)}.`;
+      if (year.measure === "rpi") return `For ${year.tax_year} the calculation uses the Consumer Prices Index, ${percent(year.prices_tenths)}. That year only, the published rate used the Retail Prices Index: ${percent(year.applied_tenths)}.`;
+      return `For ${year.tax_year} the calculation gives ${percent(upratingFor(rule, year.prices_tenths, year.earnings_tenths).tenths)}. The published rate rose by ${percent(year.applied_tenths)}.`;
+    });
+}
+
 // The summary kept in view beside the form, or pinned to the foot of a narrow screen.
 export function renderHistorySummary(options) {
   const { series, from, to, measure, rule } = options;
@@ -72,7 +92,8 @@ export function renderHistorySummary(options) {
     `<dl><div><dt>${from}, published</dt> <dd>${show(first.published, measure)}</dd></div>` +
     `<div><dt>${to}, published</dt> <dd>${show(last.published, measure)}</dd></div>` +
     (rule ? `<div><dt>${to}, calculated under the ${RULE_LABELS[rule].toLowerCase()}</dt> <dd>${show(last.calculated, measure)}</dd></div>` : "") +
-    `</dl>`
+    `</dl>` +
+    departures(options).map((sentence) => `<p>${sentence}</p>`).join("")
   );
 }
 
@@ -137,9 +158,8 @@ export function renderHistory(options) {
   const last = rows[rows.length - 1];
   const comparison = rule
     ? `<div class="note" role="note"><h4>About the calculated column</h4>` +
-      `<p><span class="status">Calculated by this site</span> The ${ruleName.toLowerCase()} applied mechanically from a starting rate of ` +
-      `<strong>${money(Math.round(rows[0].publishedCash * 100))} in ${from}</strong>, using the prices and earnings figures recorded for each year's decision, ` +
-      `with rounding to the nearest 5p and no fall in pounds.</p>` +
+      `<p><span class="status">Calculated by this site</span> The ${ruleName.toLowerCase()}, applied every year from a starting rate of ` +
+      `<strong>${money(Math.round(rows[0].publishedCash * 100))} in ${from}</strong>.</p>` +
       `<p>In ${to} the published rate was ${money(Math.round(last.publishedCash * 100))} and the calculated amount is ${money(Math.round(last.calculatedCash * 100))}. ` +
       `A different starting year gives a different result.</p>` +
       `<p>This is a calculation. It is not what anyone was paid, and it is not an estimate of what any person would have received under a different system. ` +
