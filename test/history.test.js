@@ -82,3 +82,19 @@ test("At a glance names the years where Parliament set the rule aside and the ca
   assert.ok(renderHistorySummary({ years: unflagged, series: "new", from: "2016/17", to: "2026/27", measure: "cash", rule: "triple-lock" })
     .includes("For 2022/23 the calculation gives 8.3%. The published rate rose by 3.1%."), "a departure with no known reason still gets a line");
 });
+
+test("with a rule added, the chart's title says how far the calculation ends from the published rate", async () => {
+  const { renderHistory } = await import("../src/assets/js/lib/history-view.js");
+  const title = (from, to, rule, measure = "cash") => renderHistory({ years, series: "new", from, to, measure, rule }).match(/<h4>([^<]*)<\/h4>/)[1];
+  assert.equal(title("2016/17", "2026/27", "triple-lock"), "Calculated under the triple lock with no exceptions, the rate ends £12.20 a week above the published rate in 2026/27");
+  assert.equal(title("2023/24", "2026/27", "triple-lock"), "Calculated under the triple lock with no exceptions, the rate ends at the published rate in 2026/27");
+  assert.match(title("2016/17", "2026/27", "prices"), /^Calculated under the prices link, the rate ends £[\d.]+ a week below the published rate in 2026\/27$/);
+  assert.match(title("2016/17", "2026/27", ""), /^The full new State Pension rose in pounds in every year/);
+  // A published rate 10p above the calculation, on £241.30.
+  const nudged = years.map((year) => (year.tax_year === "2026/27" ? { ...year, new_pence: year.new_pence + 10 } : year));
+  const near = renderHistory({ years: nudged, series: "new", from: "2023/24", to: "2026/27", measure: "cash", rule: "triple-lock" });
+  assert.match(near, /<h4>Calculated under the triple lock with no exceptions, the rate ends less than 0.1% from the published rate in 2026\/27<\/h4>/);
+  // Merged, the two lines read as one name in the legend.
+  const merged = renderHistory({ years, series: "new", from: "2023/24", to: "2026/27", measure: "cash", rule: "triple-lock" });
+  assert.match(merged, /Published rate and calculated under the triple lock from 2023\/24: the same in every year/);
+});

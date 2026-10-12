@@ -2,7 +2,7 @@
 // browser after a reader changes an input, so both show the same thing. No DOM.
 
 import { compareRules, RULES, RULE_LABELS, MEASURE_LABELS } from "./uprating.js";
-import { lineChart } from "./chart.js";
+import { lineChart, near } from "./chart.js";
 import { money, percent, list } from "./format.js";
 
 export const MEASURES = {
@@ -102,20 +102,25 @@ function signed(pence) {
 
 const SHORT = { "triple-lock": "Triple lock", "double-lock": "Double lock", earnings: "Earnings link", prices: "Prices link", "rule-2030": "April 2030 rule" };
 const IN_A_SENTENCE = { "triple-lock": "the triple lock", "double-lock": "the double lock", earnings: "the earnings link", prices: "the prices link", "rule-2030": "the rule announced for April 2030" };
-const COUNT = { 3: "three", 4: "four" };
+// Three or more rules are named in a list with one article, so the title stays short enough to read.
+const IN_A_LIST = { "triple-lock": "triple lock", "double-lock": "double lock", earnings: "earnings link", prices: "prices link", "rule-2030": "April 2030 rule" };
 
 // The chart's title states which rules end highest and lowest in this result. Worked out each time,
-// because a typed title would be false for another scenario.
+// because a typed title would be false for another scenario. Rules less than 0.1% apart count as
+// level, as the chart's lines do (W21), and the title says so where they are not equal.
 function message(result, measure, years) {
   const ends = RULES.map((rule) => ({ rule, v: Math.round(value(result.rules[rule].years[result.rules[rule].years.length - 1], measure) * (measure === "earnings" ? 10 : 100)) }));
   const top = Math.max(...ends.map((e) => e.v));
   const bottom = Math.min(...ends.map((e) => e.v));
   if (top === bottom) return `All five rules end at the same amount after ${years}`;
-  const who = (rules) => (rules.length >= 3 ? `${COUNT[rules.length]} rules` : rules.map((rule) => IN_A_SENTENCE[rule]).join(" and "));
+  if (near(top, bottom)) return `All five rules end less than 0.1% apart after ${years}`;
+  const who = (rules) => (rules.length >= 3 ? `the ${list(rules.map((rule) => IN_A_LIST[rule]))}` : rules.map((rule) => IN_A_SENTENCE[rule]).join(" and "));
   const verb = (rules) => (rules.length === 1 ? "ends" : "end");
-  const high = ends.filter((e) => e.v === top).map((e) => e.rule);
-  const low = ends.filter((e) => e.v === bottom).map((e) => e.rule);
-  const text = `${who(high)} ${verb(high)} highest after ${years}, and ${who(low)} ${verb(low)} lowest`;
+  const apart = (group) => (group.length > 1 && group.some((e) => e.v !== group[0].v) ? ", less than 0.1% apart," : "");
+  const high = ends.filter((e) => near(e.v, top));
+  const low = ends.filter((e) => near(e.v, bottom) && !high.includes(e));
+  const names = (group) => group.map((e) => e.rule);
+  const text = `${who(names(high))} ${verb(high)} highest${apart(high)} after ${years}, and ${who(names(low))} ${verb(low)} lowest${apart(low).replace(/,$/, "")}`;
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
@@ -134,8 +139,7 @@ export function renderComparison(options) {
     id: "compare-chart",
     width: chartWidth,
     title: message(result, measure, years),
-    noun: "rules",
-    description: `The five rules over ${path.length} years. Rules with the same result in every year share one line. The table after the chart gives every value.`,
+    description: `The five rules over ${path.length} years. Rules with the same result, or less than 0.1% apart, in every year share one line. The table after the chart gives every value.`,
     labels: labels.map((label, i) => (i === 0 ? "Start" : label)),
     series: RULES.map((rule) => ({
       label: RULE_LABELS[rule],

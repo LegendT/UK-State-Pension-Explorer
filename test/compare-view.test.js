@@ -1,6 +1,7 @@
-// The rule comparison's summary: the gap from the triple lock in each measure.
+// The rule comparison's summary: the gap from the triple lock in each measure. The chart's title (W21).
 import { test } from "node:test";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { gap, renderComparison } from "../src/assets/js/lib/compare-view.js";
 
 const text = (html) => html.replace(/<[^>]+>/g, "");
@@ -31,4 +32,16 @@ test("the chart is drawn when every rule gives almost the same value", () => {
       assert.equal(new Set(labels).size, labels.length, `${startPence} ${measure}: axis labels repeat: ${labels.join(" | ")}`);
     }
   }
+});
+
+test("the chart's title counts rules less than 0.1% apart as level, and says so", () => {
+  // Steady growth over 30 years: the April 2030 rule ends 10p above the three rules that follow earnings.
+  const steady = JSON.parse(readFileSync(new URL("../src/_data/scenarios.json", import.meta.url))).scenarios.find((s) => s.id === "steady");
+  const title = (path) => renderComparison({ startPence: 24130, path, cashFloor: true, firstYear: 2027, measure: "cash", scenarioLabel: "x" }).match(/<h4>([^<]*)<\/h4>/)[1];
+  assert.equal(title(steady.path.slice(0, 30)), "The triple lock, double lock, earnings link and April 2030 rule end highest, less than 0.1% apart, after 30 years, and the prices link ends lowest");
+  assert.equal(title(steady.path.slice(0, 10)), "The triple lock, double lock, earnings link and April 2030 rule end highest after 10 years, and the prices link ends lowest");
+  assert.equal(title(Array(30).fill({ prices: 37, earnings: 37 })), "All five rules end less than 0.1% apart after 30 years");
+  assert.equal(title(Array(30).fill({ prices: 33, earnings: 33 })), "All five rules end at the same amount after 30 years");
+  // The two links end 25p apart on about £253.
+  assert.equal(title([{ prices: 40, earnings: 10 }, { prices: 10, earnings: 41 }]), "The triple lock and the double lock end highest after 2 years, and the earnings link and the prices link end lowest, less than 0.1% apart");
 });

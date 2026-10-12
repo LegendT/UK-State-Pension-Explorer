@@ -8,6 +8,14 @@ export const CHART_WIDTH = 720;
 // Narrower than this, the chart is laid out for a phone: names inside the plot, fewer years named.
 const NARROW = 600;
 const DASHES = ["", "8 4", "2 4", "10 4 2 4", "12 3 3 3 3 3"];
+// Values closer than this share of the larger read as the same in titles and lines (W21): rounding to
+// 5p alone moves rules this far apart, 10p in 30 years of steady growth, which no chart can show.
+export const NEAR = 0.001;
+export const near = (a, b) => a === b || (a !== null && b !== null && Math.abs(a - b) <= NEAR * Math.max(Math.abs(a), Math.abs(b)));
+// A short range is drawn on a value axis at least this share of its highest value tall, so a rise
+// of £8.45 does not fill the plot (W21).
+const MIN_SPAN = 0.1;
+const LINE = 15;
 
 const escape = (text) =>
   String(text).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
@@ -35,36 +43,34 @@ function ticks(min, max) {
   return out;
 }
 
-const COUNT = { 2: "Two", 3: "Three", 4: "Four", 5: "Five" };
-
-// Series whose values are the same in every year are drawn as one line, so no line hides another.
-// A merged line keeps the style of its first series, so a series looks the same in every result.
-function mergeIdentical(series, noun) {
+// Series that are the same, or nearly the same, in every year are drawn as one line, so no line
+// hides another, and the line is named by every series in it. A merged line keeps the style of
+// its first series, so a series looks the same in every result.
+function mergeClose(series) {
   const groups = [];
   series.forEach((s, style) => {
-    const same = groups.find((g) => g.values.length === s.values.length && g.values.every((v, i) => v === s.values[i]));
+    const same = groups.find((g) => g.values.length === s.values.length && g.values.every((v, i) => near(v, s.values[i])));
     if (same) same.members.push(s);
     else groups.push({ values: s.values, members: [s], style });
   });
   return groups.map((g) => {
     const names = g.members.map((m, i) => (i === 0 ? m.label : m.label.charAt(0).toLowerCase() + m.label.slice(1)));
     const joined = names.length === 1 ? names[0] : `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}`;
-    const short = g.members[0].short || g.members[0].label;
+    const exact = g.members.every((m) => m.values.every((v, i) => v === g.values[i]));
     return {
       values: g.values,
       style: g.style,
-      label: names.length === 1 ? joined : `${joined}: the same in every year`,
-      short: names.length === 1 ? short : `${COUNT[names.length]} ${noun}`,
+      label: names.length === 1 ? joined : `${joined}: ${exact ? "the same" : "less than 0.1% apart"} in every year`,
+      short: g.members.map((m) => m.short || m.label),
     };
   });
 }
 
 // series: [{ label, short?, values: [number|null] }]. labels: x-axis labels, one per value.
-// noun names what the series are, for the label of a merged line: "Three rules".
 // marks: [{ index, number }] draws a dotted line at a year with a numbered marker; the page lists what each number means.
 // width: the width to draw at, in CSS pixels.
-export function lineChart({ id, title, description, labels, series: input, yLabel, yPrefix = "", xLabel, marks = [], noun = "lines", width = CHART_WIDTH }) {
-  const series = mergeIdentical(input, noun);
+export function lineChart({ id, title, description, labels, series: input, yLabel, yPrefix = "", xLabel, marks = [], width = CHART_WIDTH }) {
+  const series = mergeClose(input);
   const W = Math.round(width);
   const narrow = W < NARROW;
   const H = narrow ? 300 : 380;
@@ -85,12 +91,17 @@ export function lineChart({ id, title, description, labels, series: input, yLabe
   });
   const PAD = { top: marks.length ? 10 + rowEnds.length * 22 : 16, right, bottom: narrow ? 48 : 56, left };
   const all = series.flatMap((s) => s.values).filter((v) => v !== null);
-  const low = Math.min(...all);
-  const high = Math.max(...all);
-  // Values that differ only by floating-point noise count as equal. A real but tiny spread still
-  // gets an axis wide enough for labels that differ.
-  const spread = high - low > Math.abs(high) * 1e-9 ? high - low : 0;
-  const margin = spread ? Math.max(spread * 0.08, 0.005) : 0.08;
+  let low = Math.min(...all);
+  let high = Math.max(...all);
+  const minSpan = Math.abs(high) * MIN_SPAN;
+  if (high - low < minSpan) {
+    const middle = (high + low) / 2;
+    low = middle - minSpan / 2;
+    high = low + minSpan;
+  }
+  // After the minimum span, only values that are all zero leave no spread.
+  const spread = high - low;
+  const margin = spread ? spread * 0.08 : 0.08;
   const yTicks = ticks(low - margin, high + margin);
   const yMin = Math.min(yTicks[0], low - margin);
   const yMax = Math.max(yTicks[yTicks.length - 1], high + margin);
@@ -137,15 +148,28 @@ export function lineChart({ id, title, description, labels, series: input, yLabe
       // Not findLastIndex: Safari before 15.4 does not have it.
       let i = s.values.length - 1;
       while (i > 0 && s.values[i] === null) i -= 1;
-      return { index: s.style, text: s.short, x: narrow ? x(i) : x(i) + 8, y: y(s.values[i]) + (narrow ? -10 : 4) };
+      // y is the first name's baseline. After a line the names are centred on its end. On a phone one
+      // name sits above the end, and the names of a merged line are centred beside it, to its left,
+      // where a stack above would run down over the line.
+      const extra = (s.short.length - 1) * LINE;
+      const stacked = narrow && extra > 0;
+      const top = y(s.values[i]) + (narrow && !stacked ? -10 : 4 - extra / 2);
+      return { index: s.style, text: s.short, x: narrow ? x(i) - (stacked ? 10 : 0) : x(i) + 8, y: Math.max(12, top) };
     })
     .sort((a, b) => a.y - b.y);
   ends.forEach((end, i) => {
-    if (i > 0 && end.y - ends[i - 1].y < 15) end.y = ends[i - 1].y + 15;
+    const below = i > 0 ? ends[i - 1].y + ends[i - 1].text.length * LINE : 0;
+    if (i > 0 && end.y < below) end.y = below;
   });
-  const over = narrow ? Math.max(0, ends[ends.length - 1].y - (H - PAD.bottom - 6)) : 0;
+  const lastEnd = ends[ends.length - 1];
+  const over = narrow ? Math.max(0, lastEnd.y + (lastEnd.text.length - 1) * LINE - (H - PAD.bottom - 6)) : 0;
   const endLabels = ends
-    .map((end) => `<text class="chart-end chart-series--${end.index + 1}" x="${end.x.toFixed(1)}" y="${(end.y - over).toFixed(1)}" text-anchor="${narrow ? "end" : "start"}">${escape(end.text)}</text>`)
+    .map(
+      (end) =>
+        `<text class="chart-end chart-series--${end.index + 1}" x="${end.x.toFixed(1)}" y="${(end.y - over).toFixed(1)}" text-anchor="${narrow ? "end" : "start"}">` +
+        end.text.map((text, k) => `<tspan x="${end.x.toFixed(1)}" dy="${k ? LINE : 0}">${escape(text)}</tspan>`).join("") +
+        `</text>`,
+    )
     .join("");
 
   const markLines = marks
@@ -160,6 +184,13 @@ export function lineChart({ id, title, description, labels, series: input, yLabe
     })
     .join("");
 
+  // A value axis that does not start at zero is marked on the axis and said in words (W21).
+  const fromZero = yMin <= 0;
+  const zeroBreak = fromZero
+    ? ""
+    : `<path class="chart-break" d="M${PAD.left - 10} ${H - PAD.bottom + 5}l6 -10M${PAD.left - 4} ${H - PAD.bottom + 5}l6 -10"/>`;
+  const zeroNote = fromZero ? "" : `<p class="chart-note">The scale starts above zero.</p>`;
+
   const legend = series
     .map(
       ({ style, label }) =>
@@ -169,15 +200,16 @@ export function lineChart({ id, title, description, labels, series: input, yLabe
 
   return (
     `<svg class="chart-svg${narrow ? " chart-svg--narrow" : ""}" viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="${id}-title" aria-describedby="${id}-desc">` +
-    `<title id="${id}-title">${escape(title)}</title><desc id="${id}-desc">${escape(description)}</desc>` +
+    `<title id="${id}-title">${escape(title)}</title><desc id="${id}-desc">${escape(description)}${fromZero ? "" : " The scale starts above zero."}</desc>` +
     grid +
     `<line class="chart-axis" x1="${PAD.left}" x2="${W - PAD.right}" y1="${H - PAD.bottom}" y2="${H - PAD.bottom}"/>` +
+    zeroBreak +
     xAxis +
     markLines +
     `<text class="chart-label" x="${PAD.left + innerW / 2}" y="${H - 8}" text-anchor="middle">${escape(xLabel)}</text>` +
     `<text class="chart-label" transform="rotate(-90)" x="${-(PAD.top + innerH / 2)}" y="16" text-anchor="middle">${escape(yLabel)}</text>` +
     lines +
     endLabels +
-    `</svg><ul class="chart-legend">${legend}</ul>`
+    `</svg><ul class="chart-legend">${legend}</ul>${zeroNote}`
   );
 }

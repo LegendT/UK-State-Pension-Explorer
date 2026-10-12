@@ -384,6 +384,9 @@ tr.calculated td, tr.calculated th { font-style: italic; }
 .chart-legend { list-style: none; padding: 0; margin: var(--space-s) 0; display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; font-size: 0.95rem; }
 .chart-legend li { margin: 0; }
 .chart-key { vertical-align: middle; }
+/* A value axis that does not start at zero: a break on the axis, and the same in words (W21). */
+.chart-break { fill: none; stroke: var(--ink-soft); stroke-width: 1.5; }
+.chart-note { font-size: 0.95rem; color: var(--ink-soft); margin: 0 0 var(--space-s); }
 
 /* Tools */
 .tool {

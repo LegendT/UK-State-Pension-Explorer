@@ -1,4 +1,5 @@
-// The line chart drawn for a phone (W20): its width, the years it names and the marked years.
+// The line chart drawn for a phone (W20): its width, the years it names and the marked years. Its
+// tolerance, minimum span and zero mark (W21).
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { lineChart } from "../src/assets/js/lib/chart.js";
@@ -55,4 +56,32 @@ test("marked years sit above the plot, and side by side on a phone they take two
   assert.ok(third[1] < second[1], "the next year's number goes up a row");
   // At 720 the same years are far enough apart for one row.
   assert.equal(new Set(dots(lineChart(options)).map(([, cy]) => cy)).size, 1);
+});
+
+// W21: lines less than 0.1% apart read as one and are named, short ranges get a minimum span, and an
+// axis that does not start at zero says so.
+test("lines less than 0.1% apart in every year are drawn as one line that names each of them", () => {
+  const series = [
+    { label: "Triple lock", short: "Triple lock", values: [241.3, 300, 717.55] },
+    { label: "Rule announced for April 2030", short: "April 2030 rule", values: [241.3, 300, 717.65] },
+    { label: "Prices link", short: "Prices link", values: [241.3, 260, 436.9] },
+  ];
+  const svg = lineChart({ ...options, labels: ["a", "b", "c"], marks: [], series });
+  assert.equal((svg.match(/<g class="chart-series /g) || []).length, 2);
+  assert.match(svg, /<tspan[^>]*>Triple lock<\/tspan><tspan[^>]*>April 2030 rule<\/tspan>/);
+  assert.match(svg, /Triple lock and rule announced for April 2030: less than 0.1% apart in every year/);
+  // 20p apart on £300 is more than 0.1%, so two lines.
+  const apart = lineChart({ ...options, labels: ["a", "b"], marks: [], series: [{ label: "A", values: [300, 300] }, { label: "B", values: [300, 300.4] }] });
+  assert.equal((apart.match(/<g class="chart-series /g) || []).length, 2);
+});
+
+test("a short range is drawn on an axis at least a tenth of its highest value tall, and says it is not from zero", () => {
+  const svg = lineChart({ ...options, labels: ["2025/26", "2026/27"], marks: [], series: [{ label: "Rate", values: [230.25, 241.3] }] });
+  const values = [...svg.matchAll(/class="chart-tick" x="[\d.]+" y="[\d.]+" text-anchor="end">([\d,.]+)</g)].map((m) => Number(m[1].replace(",", "")));
+  assert.ok(Math.max(...values) - Math.min(...values) >= 20, values.join(","));
+  assert.match(svg, /class="chart-break"/);
+  assert.match(svg, /<p class="chart-note">The scale starts above zero.<\/p>/);
+  assert.match(svg, /<desc[^>]*>[^<]*The scale starts above zero.<\/desc>/);
+  const fromZero = lineChart({ ...options, labels: ["a", "b"], marks: [], series: [{ label: "Rate", values: [0, 50] }] });
+  assert.doesNotMatch(fromZero, /chart-break|chart-note/);
 });

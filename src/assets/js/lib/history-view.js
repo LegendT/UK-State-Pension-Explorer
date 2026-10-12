@@ -3,7 +3,7 @@
 
 import { RULE_LABELS, upratingFor } from "./uprating.js";
 import { earningsIndex, inLatestPrices, observed, reconstruct, SERIES_LABELS } from "./history.js";
-import { lineChart } from "./chart.js";
+import { lineChart, near } from "./chart.js";
 import { money, percent } from "./format.js";
 
 export const HISTORY_MEASURES = {
@@ -97,14 +97,29 @@ export function renderHistorySummary(options) {
   );
 }
 
+// As the menu names them: only the two locks had exceptions to leave out.
+const RULE_IN_A_TITLE = { "triple-lock": "triple lock with no exceptions", "double-lock": "double lock with no exceptions", earnings: "earnings link", prices: "prices link" };
+
+function ruleMessage(rule, calculated, published, measure, to) {
+  const subject = `Calculated under the ${RULE_IN_A_TITLE[rule]}, the rate`;
+  const where = { cash: "", real: " in buying power", earnings: " compared with earnings" }[measure];
+  // Worked from the rounded values the table prints, so the title never contradicts them.
+  const scale = measure === "earnings" ? 10 : 100;
+  const d = Math.round(calculated * scale) - Math.round(published * scale);
+  if (d === 0) return `${subject} ends at the published rate${where} in ${to}`;
+  if (near(calculated, published)) return `${subject} ends less than 0.1% from the published rate${where} in ${to}`;
+  const size = measure === "earnings" ? `${(Math.abs(d) / 10).toFixed(1)} points` : `${money(Math.abs(d))} a week`;
+  return `${subject} ends ${size} ${calculated > published ? "above" : "below"} the published rate${where} in ${to}`;
+}
+
 // chartWidth: the width to draw the chart at; the build leaves it out.
 export function renderHistory(options) {
   const { series, from, to, measure, rule, chartWidth } = options;
   const rows = historyRows(options);
   const name = SERIES_LABELS[series];
   const ruleName = rule ? RULE_LABELS[rule] : "";
-  const seriesList = [{ label: `${name}: published rate`, short: "Published rate", values: rows.map((row) => row.published) }];
-  if (rule) seriesList.push({ label: `Calculated: ${ruleName} applied from ${from}`, short: "Calculated", values: rows.map((row) => row.calculated) });
+  const seriesList = [{ label: "Published rate", short: "Published rate", values: rows.map((row) => row.published) }];
+  if (rule) seriesList.push({ label: `Calculated under the ${ruleName.toLowerCase()} from ${from}`, short: "Calculated", values: rows.map((row) => row.calculated) });
 
   // Years with a short annotation are marked on the chart and listed under it by number. Labels at
   // the marks overlapped, because 2021/22 and 2022/23 are next to each other.
@@ -114,12 +129,16 @@ export function renderHistory(options) {
     ? `<ol class="chart-marks-key" aria-label="Years marked on the chart">${marked.map(({ row }) => `<li>${row.tax_year}: ${row.annotation}.</li>`).join("")}</ol>`
     : "";
 
-  // The title states what the chart shows: whether the published rate rose in every year.
+  // The title states what the chart shows: with a rule added, how far the calculation ends from the
+  // published rate (W21); without one, whether the published rate rose in every year.
   const falls = rows.slice(1).filter((row, i) => row.published < rows[i].published).length;
   const rises = rows.slice(1).filter((row, i) => row.published > rows[i].published).length;
   const measureWords = { cash: "in pounds", real: "in buying power", earnings: "compared with earnings" }[measure];
   const subject = `The ${name.charAt(0).toLowerCase()}${name.slice(1)}`;
-  const message = falls
+  const last = rows[rows.length - 1];
+  const message = rule
+    ? ruleMessage(rule, last.calculated, last.published, measure, to)
+    : falls
     ? `${subject} fell ${measureWords} in ${falls} of the ${rows.length - 1} years to ${to}`
     : rises === rows.length - 1
       ? `${subject} rose ${measureWords} in every year from ${from} to ${to}`
@@ -155,7 +174,6 @@ export function renderHistory(options) {
     )
     .join("");
 
-  const last = rows[rows.length - 1];
   const comparison = rule
     ? `<div class="note" role="note"><h4>About the calculated column</h4>` +
       `<p><span class="status">Calculated by this site</span> The ${ruleName.toLowerCase()}, applied every year from a starting rate of ` +
