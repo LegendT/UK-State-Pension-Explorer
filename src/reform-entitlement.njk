@@ -32,7 +32,7 @@ permalink: /reform-options/entitlement/
     <dl>
       <dt>The idea</dt> <dd>Reduce or withdraw the State Pension for people with income above a level.</dd>
       <dt>Who is affected</dt> <dd>It depends entirely on the level and on how fast the pension is withdrawn. No proposal we found sets them.</dd>
-      <dt>Known difficulties</dt> <dd>Not everyone who is entitled claims a means-tested benefit. Take-up of Pension Credit is {{ m.f("pension-credit-take-up") }}. A withdrawal rate reduces the reward for saving. {{ m.c("ifs-no-means-test-reason") }}</dd>
+      <dt>Known difficulties</dt> <dd>Not everyone who is entitled claims a means-tested benefit. In the {{ ("pension-credit-take-up" | figure).period_label | lower }}, take-up of Pension Credit was an estimated {{ m.f("pension-credit-take-up") }}, within a range of {{ ("pension-credit-take-up" | figure).range }}. {{ m.ref(("pension-credit-take-up" | figure).source) }} A withdrawal rate reduces the reward for saving. {{ m.c("ifs-no-means-test-reason") }}</dd>
       <dt>Public finances</dt> <dd>{{ ("no-costed-means-test" | claim).statement }}</dd>
     </dl>
   </article>

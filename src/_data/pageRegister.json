@@ -44,8 +44,8 @@
       "canonical_path": "/triple-lock/",
       "index": true,
       "published": null,
-      "modified": "2026-10-05",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md."
+      "modified": "2026-10-12",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 12 October 2026: the sentence on what the rule protects against names the exception of 2022/23 (W23)."
     },
     {
       "path": "/living-on-a-pension/",
@@ -74,7 +74,7 @@
       "index": true,
       "published": null,
       "modified": "2026-10-12",
-      "modified_note": "Changed on 8 October 2026: the department's factsheet on which rates the announced rule covers (W1). Changed on 9 October 2026: the opening no longer lists the section's pages, which the list below it names (W7). Changed on 12 October 2026: the arguments for and against the triple lock moved here from the entitlement page (W22), with the points of what evidence can settle about the yearly increase (decision 98); the arguments' wording on growth in pensioner incomes, on what drives the rise in spending and on the range of future cost (W8).",
+      "modified_note": "Changed on 8 October 2026: the department's factsheet on which rates the announced rule covers (W1). Changed on 9 October 2026: the opening no longer lists the section's pages, which the list below it names (W7). Changed on 12 October 2026: the arguments for and against the triple lock moved here from the entitlement page (W22), with the points of what evidence can settle about the yearly increase (decision 98); the arguments' wording on growth in pensioner incomes, on what drives the rise in spending and on the range of future cost (W8). The option to keep the triple lock names the exception of 2022/23, and the arguments give the poverty figures their period, range and source (W23).",
       "figure_cards": true
     },
     {
@@ -88,8 +88,8 @@
       "canonical_path": "/reform-options/compare/",
       "index": true,
       "published": null,
-      "modified": "2026-10-05",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md."
+      "modified": "2026-10-12",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 12 October 2026: totals in starting-year prices are shown to the pound (W23)."
     },
     {
       "path": "/reform-options/costs/",
@@ -102,8 +102,8 @@
       "canonical_path": "/reform-options/costs/",
       "index": true,
       "published": null,
-      "modified": "2026-10-09",
-      "modified_note": "Changed on 8 October 2026: the savings figures name the department's model and baseline (W1). Changed on 9 October 2026: the April 2030 paragraph gives only the real-terms figures the table lacks (W18), and the caveats shown open on its figures, with the official status of their sources (W19).",
+      "modified": "2026-10-12",
+      "modified_note": "Changed on 8 October 2026: the savings figures name the department's model and baseline (W1). Changed on 9 October 2026: the April 2030 paragraph gives only the real-terms figures the table lacks (W18), and the caveats shown open on its figures, with the official status of their sources (W19). Changed on 12 October 2026: the wealth quarters are named as a survey estimate (W23).",
       "figure_cards": true
     },
     {
@@ -133,7 +133,7 @@
       "index": true,
       "published": null,
       "modified": "2026-10-12",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 12 October 2026: the arguments for and against the triple lock moved to the page on the yearly increase (W22), and the points of what evidence can settle about the yearly increase followed them (decision 98)."
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 12 October 2026: the arguments for and against the triple lock moved to the page on the yearly increase (W22), and the points of what evidence can settle about the yearly increase followed them (decision 98). Pension Credit take-up gives its period, range and source (W23)."
     },
     {
       "path": "/history/",

@@ -100,6 +100,17 @@ function signed(pence) {
   return `${pence < 0 ? "−" : "+"}${money(Math.abs(Math.round(pence)))}`;
 }
 
+// A total in starting-year prices is shown to the pound: a weekly amount is naturally in pounds and
+// pence, but a total over years to the penny claims more than a price index can give (smaller point
+// 15 of the readability review).
+const wholePounds = new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP", maximumFractionDigits: 0 });
+
+function pounds(pence, sign) {
+  const whole = Math.round(pence / 100);
+  if (whole === 0) return "£0";
+  return `${sign ? (whole < 0 ? "−" : "+") : ""}${wholePounds.format(Math.abs(whole))}`;
+}
+
 const SHORT = { "triple-lock": "Triple lock", "double-lock": "Double lock", earnings: "Earnings link", prices: "Prices link", "rule-2030": "April 2030 rule" };
 const IN_A_SENTENCE = { "triple-lock": "the triple lock", "double-lock": "the double lock", earnings: "the earnings link", prices: "the prices link", "rule-2030": "the rule announced for April 2030" };
 // Three or more rules are named in a list with one article, so the title stays short enough to read.
@@ -190,8 +201,8 @@ export function renderComparison(options) {
       RULE_LABELS[rule],
       money(result.rules[rule].cashTotalPence),
       rule === "triple-lock" ? "Not applicable" : signed(result.rules[rule].cashTotalDifferencePence),
-      money(Math.round(result.rules[rule].realTotalPence)),
-      rule === "triple-lock" ? "Not applicable" : signed(result.rules[rule].realTotalDifferencePence),
+      pounds(result.rules[rule].realTotalPence),
+      rule === "triple-lock" ? "Not applicable" : pounds(result.rules[rule].realTotalDifferencePence, true),
     ]),
     "compare-totals-caption",
   );
@@ -207,7 +218,7 @@ export function renderComparison(options) {
     difference +
     `<h4>Totals over the period</h4>` +
     `<p>These totals cover the ${years} chosen. They are not a lifetime figure, and they do not describe any person's payments. ` +
-    `The cash total adds amounts from different years as they stand. The other total first puts every year into starting-year prices. ` +
+    `The cash total adds amounts from different years as they stand. The other total first puts every year into starting-year prices, and is rounded to the pound. ` +
     `The two totals are on different bases and must not be added or compared with each other.</p>` +
     totals +
     `<h4>How each year's increase was decided</h4>` +

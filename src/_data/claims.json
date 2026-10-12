@@ -681,12 +681,12 @@
   },
   "rf-poverty-since-2011": {
     "kind": "finding",
-    "statement": "It also reports that pensioner poverty has risen since 2011-12.",
+    "statement": "The Resolution Foundation reports that pensioner poverty has risen by 2.3 percentage points since 2011-12, even with the triple lock in place.",
     "source_id": "rf-ratchet-2026",
     "passage": "since 2011-12, pensioner poverty has risen by 2.3 percentage points even with the triple lock in place",
     "interpretation": false,
     "note": null,
-    "checked_date": "2026-09-29",
+    "checked_date": "2026-10-12",
     "review_status": "checked-with-ai-assistance"
   },
   "tbi-proposal": {

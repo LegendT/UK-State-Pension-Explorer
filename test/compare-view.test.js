@@ -45,3 +45,12 @@ test("the chart's title counts rules less than 0.1% apart as level, and says so"
   // The two links end 25p apart on about £253.
   assert.equal(title([{ prices: 40, earnings: 10 }, { prices: 10, earnings: 41 }]), "The triple lock and the double lock end highest after 2 years, and the earnings link and the prices link end lowest, less than 0.1% apart");
 });
+
+test("totals in starting-year prices are shown to the pound, with their sign (W23)", () => {
+  const html = renderComparison({ startPence: 24130, path: [{ prices: 40, earnings: 10 }, { prices: 40, earnings: 10 }], cashFloor: true, firstYear: 2027, measure: "cash", scenarioLabel: "your own figures" });
+  const row = html.match(/<th scope="row">Earnings link<\/th>((?:<td[^>]*>[^<]*<\/td>){4})<\/tr><tr><th scope="row">Prices link/)[1];
+  const cells = [...row.matchAll(/>([^<]*)</g)].map((m) => m[1]).filter(Boolean);
+  assert.match(cells[0], /^£[\d,]+\.\d\d$/, "the cash total keeps its pence");
+  assert.match(cells[2], /^£[\d,]+$/, "the starting-year total is to the pound");
+  assert.match(cells[3], /^−£[\d,]+$/, "the difference is to the pound, with its sign");
+});

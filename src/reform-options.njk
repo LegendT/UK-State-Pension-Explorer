@@ -67,8 +67,8 @@ permalink: /reform-options/
     <h3 id="opt-triple">Keep the triple lock</h3>
     <dl>
       <dt>The rule</dt> <dd>The highest of prices, earnings and 2.5%.</dd>
-      <dt>Effect on the pension</dt> <dd>It rises at least as fast as prices and as earnings, every year. Over time it tends to rise faster than both, when the measure that wins changes from year to year. The level in future is uncertain. The Institute for Fiscal Studies gives <q>{{ ("ifs-range-2050" | claim).passage }}</q>. {{ m.c("ifs-range-2050") }}</dd>
-      <dt>Who is affected</dt> <dd>Current pensioners, and future ones more so, because increases build up over time. {{ m.c("ppi-future-workers") }} People who live longer gain more. {{ m.c("ifs-longevity") }}</dd>
+      <dt>Effect on the pension</dt> <dd>It rises at least as fast as prices and as earnings, every year the rule applies. It did not apply in full in 2022/23, when Parliament set the earnings part aside for a year. {{ m.c("tl-2022-act") }} Over time it tends to rise faster than both, when the measure that wins changes from year to year. The level in future is uncertain. The Institute for Fiscal Studies gives <q>{{ ("ifs-range-2050" | claim).passage }}</q>. {{ m.c("ifs-range-2050") }}</dd>
+      <dt>Who is affected</dt> <dd>Current pensioners, and future ones more so, because increases build up over time: <a href="#args-keep">an argument for keeping it</a>. People who live longer gain more. {{ m.c("ifs-longevity") }}</dd>
       <dt>Public finances</dt> <dd>The highest cost of the rules in the calculator, apart from small differences caused by rounding, and the least predictable.</dd>
       <dt>A judgement, not a finding</dt> <dd>Whether the pension should rise as a share of earnings, and how far.</dd>
     </dl>
@@ -129,14 +129,14 @@ permalink: /reform-options/
 
 <h2 id="arguments">The arguments for and against the triple lock</h2>
 
-<p>These are the arguments for keeping the triple lock and for changing it. The government announced on {{ ("pm-care-2026-09-29" | sourceRecord).published_date | timeTag | safe }} that it will change it from April 2030. The arguments still matter, because the government has yet to legislate for the change, and it does not start until then.</p>
+<p>These are the arguments for keeping the triple lock and for changing it.</p>
 
 <div class="option-grid">
   <article class="option">
     <h3 id="args-keep">For keeping the triple lock</h3>
     <ul>
       <li><strong>Most pensioners depend on it.</strong> {{ ("ppi-reliance" | claim).statement }} {{ m.c("ppi-reliance") }} {{ ("ageuk-largest-income" | claim).statement }} {{ m.c("ageuk-largest-income") }}</li>
-      <li><strong>Pensioner poverty has not gone away.</strong> {{ m.f("low-income-ahc") }} of pensioners are in relative low income after housing costs. {{ ("ageuk-women" | claim).statement }} {{ m.c("ageuk-women") }}</li>
+      <li><strong>Pensioner poverty has not gone away.</strong> In the {{ ("low-income-ahc" | figure).period_label | lower }}, an estimated {{ m.f("low-income-ahc") }} of pensioners were in relative low income after housing costs, within a range of {{ ("low-income-ahc" | figure).range }}. {{ m.ref(("low-income-ahc" | figure).source) }} {{ ("ageuk-women" | claim).statement }} {{ m.c("ageuk-women") }}</li>
       <li><strong>It helps today's workers most.</strong> {{ ("ppi-future-workers" | claim).statement }} {{ m.c("ppi-future-workers") }}</li>
       <li><strong>More pensioners, not the lock, cause most of the rise in State Pension spending.</strong> {{ ("ppi-demographics" | claim).statement }} {{ m.c("ppi-demographics") }} The Office for Budget Responsibility projects State Pension spending to rise by {{ m.f("sp-rise-gdp-total") }} between 2030-31 and 2075-76, and attributes {{ m.f("tl-share-of-rise") }} of it to the triple lock. {{ m.ref(("tl-share-of-rise" | figure).source) }}</li>
       <li><strong>The level is about 30% of typical pay.</strong> In {{ ("nsp-share-median-earnings" | figure).period_label }} the full new State Pension was {{ m.f("nsp-share-median-earnings") }} of median full-time earnings. {{ m.c("pc-30-percent") }}</li>
@@ -151,7 +151,7 @@ permalink: /reform-options/
       <li><strong>It rewards volatility, not need.</strong> {{ ("rf-volatility" | claim).statement }} {{ m.c("rf-volatility") }}</li>
       <li><strong>It has no stated target.</strong> {{ ("ifs-explicit-goal" | claim).statement }} {{ m.c("ifs-explicit-goal") }}</li>
       <li><strong>Fairness between generations.</strong> {{ ("rf-living-standards" | claim).statement }} {{ ("rf-income-level" | claim).statement }} {{ ("rf-income-same-level" | claim).statement }} {{ m.c("rf-living-standards") }}</li>
-      <li><strong>It is not aimed at poverty.</strong> {{ ("rf-poverty-since-2011" | claim).statement }} {{ m.c("rf-poverty-since-2011") }} It applies the same percentage to the full rates, whatever the income of the person who receives them.</li>
+      <li><strong>It is not aimed at poverty.</strong> {{ ("rf-poverty-since-2011" | claim).statement }} {{ m.c("rf-poverty-since-2011") }} On the same measure, after housing costs, the latest official level is the {{ m.f("low-income-ahc") }} given in the arguments for keeping it. The triple lock applies the same percentage to the full rates, whatever the income of the person who receives them.</li>
     </ul>
   </article>
 </div>
