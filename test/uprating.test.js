@@ -121,6 +121,9 @@ test("inputs are parsed exactly and bad text is refused", () => {
   assert.equal(parsePence("241.3"), 24130);
   assert.equal(parsePence("£1,000"), 100000);
   assert.equal(parsePence("1,234,567.89"), 123456789);
+  // Too large for a tool, but read, so the range check can name the limit (W30).
+  assert.equal(parsePence("10000000"), 1000000000);
+  assert.equal(parsePence("1,000,000,000"), 100000000000);
   assert.equal(parsePence("241,30"), null);
   assert.equal(parsePence("1,0000"), null);
   assert.equal(parsePence("12,34.50"), null);
