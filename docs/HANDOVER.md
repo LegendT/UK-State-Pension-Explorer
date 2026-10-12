@@ -6,7 +6,7 @@ The site is a **preview for review**. It is not published. The repository is htt
 
 **This file holds state only.** Do not add a dated section. The record of a change, with its checks, goes in the description of its pull request, and a decision goes in `docs/decision-log.md`. The record up to pull request 21 is this file as it stood before the cut: `git show 75d0574:docs/HANDOVER.md`.
 
-**Next action:** "Work before step 4" in `docs/launch-dependencies.md`, in the table's order, row W11 first, each on the owner's word. Then launch step 4.
+**Next action:** "Work before step 4" in `docs/launch-dependencies.md`, in the table's order, the first row whose status is Open first, each on the owner's word. Then launch step 4.
 
 ## How to look at it
 
@@ -29,16 +29,16 @@ npm run serve        # http://127.0.0.1:8137
 
 ## Last checks
 
-Run on 9 October 2026, Chrome 154, macOS, on the branch `launch-review` after W20. The two source checks were last run on 8 October 2026: W18 and W19 changed no value or quoted passage; W19 changed the caveats of 21 figure records, added a status to 12 source records and trimmed 8 source notes. The new caveat wording restates each record's own definition and population fields, except the range the source "expects to hold 80% of the time", which was read in the Institute for Fiscal Studies' report on 9 October 2026, and "the age set in law for 2034", which the research record quotes from the Office for National Statistics.
+Run on 12 October 2026, Chrome 154, macOS, on the branch `launch-review` after W21. The two source checks were last run on 8 October 2026: W18 to W21 changed no value or quoted passage; W19 changed the caveats of 21 figure records, added a status to 12 source records and trimmed 8 source notes. The new caveat wording restates each record's own definition and population fields, except the range the source "expects to hold 80% of the time", which was read in the Institute for Fiscal Studies' report on 9 October 2026, and "the age set in law for 2034", which the research record quotes from the Office for National Statistics.
 
 | Check | Command | Result |
 | --- | --- | --- |
-| Calculator and chart tests | `npm test` | 36 of 36 pass. Of the 4 chart tests added by W20, the one for the marker rows fails on a planted defect in them |
+| Calculator and chart tests | `npm test` | 41 of 41 pass. Each test added by W11 and W21 fails on a planted defect in the logic it covers |
 | Build checks | `npm run build` | No problems. 19 pages, 128 figures, 166 claims, 106 sources |
 | Quoted passages | `python3 scripts/check-passages.py` | 220 checked. 199 found by the script, 21 found in a browser by hand, 0 not found, 0 unreadable. Of the 21, 7 were read again on 8 October 2026; 14 keep their first dates (W4) |
 | Figures with no quoted passage | `python3 scripts/check-values.py` | 53 of 65 found in the source text. The other 12 are in 11 spreadsheets and one PDF; each record names its file and cell, or its page (W4) |
-| Automated accessibility | `npm run a11y` | 0 violations in 130 audits of 19 pages, 2,213 distinct incomplete results. Every incomplete contrast result measured, 4,158 occurrences across the audits, none below threshold. axe does not measure the scroll cue of W20, which is generated text: worked by hand, 6.6:1 or more in both colour schemes |
-| Scripted accessibility measurements | `npm run a11y:manual` | 0 problems, including the "Back to top" steps added by W7. 0 problems again after W20 |
+| Automated accessibility | `npm run a11y` | 0 violations in 130 audits of 19 pages, 2,217 distinct incomplete results. Every incomplete contrast result measured, 4,172 occurrences across the audits, none below threshold. axe does not measure the scroll cue of W20, which is generated text: worked by hand, 6.6:1 or more in both colour schemes |
+| Scripted accessibility measurements | `npm run a11y:manual` | 0 problems in 3 of 5 runs after W21. In the other 2 the costs page's keyboard check reached 107 stops of 106 and found a link covered or off screen; it failed the same way before W21. Row W35 |
 | Dependencies | `npm audit` | 9 packages, 5 high and 4 moderate, none loaded when the site is built: `README.md`, "Set up" |
 | Production build | `npm run build` with production settings, read by hand | Last run on 5 October 2026, before W1 to W6: not rerun since |
 | Readability | `statistics-ux` skill, expert review | `docs/ux-review-2026-10-08.md` |
