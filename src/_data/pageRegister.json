@@ -216,8 +216,8 @@
       "canonical_path": "/sources-and-method/",
       "index": true,
       "published": null,
-      "modified": "2026-10-09",
-      "modified_note": "Changed on 8 October 2026: the figure register names the file, sheet and cell of each figure read from a spreadsheet (W4). Changed on 9 October 2026: the register of figures shows each figure's first caveat and the official status of its source (W19)."
+      "modified": "2026-10-12",
+      "modified_note": "Changed on 8 October 2026: the figure register names the file, sheet and cell of each figure read from a spreadsheet (W4). Changed on 9 October 2026: the register of figures shows each figure's first caveat and the official status of its source (W19). Changed on 12 October 2026: the corrections section says a GitHub issue is the only route and needs an account, a known limit (W13)."
     },
     {
       "path": "/accessibility/",
@@ -230,8 +230,8 @@
       "canonical_path": "/accessibility/",
       "index": true,
       "published": null,
-      "modified": "2026-10-05",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md."
+      "modified": "2026-10-12",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 12 October 2026: the report section says a GitHub issue is the only route and needs an account, a known limit (W13)."
     },
     {
       "path": "/privacy/",

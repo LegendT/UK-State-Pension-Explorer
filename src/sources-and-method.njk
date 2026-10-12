@@ -146,6 +146,9 @@ permalink: /sources-and-method/
 <h3>Report an error</h3>
 {% if site.correctionUrl %}
 <p>If you think a figure or a statement is wrong, <a href="{{ site.correctionUrl }}">tell us which one and what you think it should be</a>.</p>
+{%- if site.correctionUrl.startsWith("https://github.com/") %}
+<p>The link opens a new issue on GitHub, the website that holds this site's source files. It is the only way to report an error: there is no email address. You need a GitHub account to send a report. It is free, but it is still a barrier, and it is a known limit of this site.</p>
+{%- endif %}
 {% else %}
 {% call m.unavailable("a way to report an error", 4) %}
 <p>The route for reporting an error has not been set up. This is one of the decisions to make before the site is published. The site will not be published without it.</p>

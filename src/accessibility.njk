@@ -68,6 +68,9 @@ permalink: /accessibility/
 <h2 id="report">Report a problem</h2>
 {% if site.correctionUrl %}
 <p>If you cannot use part of this site, <a href="{{ site.correctionUrl }}">tell us what you were trying to do and what happened</a>.</p>
+{%- if site.correctionUrl.startsWith("https://github.com/") %}
+<p>The link opens a new issue on GitHub, the website that holds this site's source files. It is the only way to report a problem: there is no email address. You need a GitHub account to send a report. It is free, but it is still a barrier, and it is a known limit of this site.</p>
+{%- endif %}
 {% else %}
 {% call m.unavailable("a way to report a problem", 3) %}
 <p>The route for reporting a problem has not been set up. This is one of the decisions to make before the site is published. The site will not be published without it.</p>
