@@ -27,17 +27,19 @@ permalink: /tools/history/
       <div class="fields">
         <div class="field">
           <label for="history-series">Pension</label>
-          <select id="history-series" name="history-series">
+          <span class="hint" id="history-series-hint">The new State Pension starts in 2016/17.</span>
+          <select id="history-series" name="history-series" aria-describedby="history-series-hint">
             <option value="basic">Full basic State Pension</option>
-            <option value="new">Full new State Pension (from 2016/17)</option>
+            <option value="new">Full new State Pension</option>
           </select>
         </div>
         <div class="field">
           <label for="history-measure">Show amounts as</label>
-          <select id="history-measure" name="history-measure">
-            <option value="cash">Cash: the money of each year</option>
-            <option value="real">Buying power: the prices of the last year shown</option>
-            <option value="earnings">Compared with earnings: an index</option>
+          <span class="hint" id="history-measure-hint">Cash is the money of each year. Buying power is in the prices of the last year shown. Compared with earnings is an index, first year shown&nbsp;=&nbsp;100.</span>
+          <select id="history-measure" name="history-measure" aria-describedby="history-measure-hint">
+            <option value="cash">Cash</option>
+            <option value="real">Buying power</option>
+            <option value="earnings">Compared with earnings</option>
           </select>
         </div>
         <div class="field">
@@ -53,7 +55,7 @@ permalink: /tools/history/
           <label for="history-rule">Add a calculation under another rule</label>
           <span class="hint" id="history-rule-hint">Applied every year from the published rate of the first year you chose. It leaves out the exceptions Parliament made, such as setting aside the earnings part in 2022/23.</span>
           <select id="history-rule" name="history-rule" aria-describedby="history-rule-hint">
-            <option value="">None: published rates only</option>
+            <option value="">None</option>
             <option value="triple-lock">Triple lock, no exceptions</option>
             <option value="double-lock">Double lock, no exceptions</option>
             <option value="earnings">Earnings link</option>

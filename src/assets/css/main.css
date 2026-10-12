@@ -389,8 +389,10 @@ tr.calculated td, tr.calculated th { font-style: italic; }
 .chart-note { font-size: 0.95rem; color: var(--ink-soft); margin: 0 0 var(--space-s); }
 
 /* Tools */
+/* The tool box and its fieldsets are padded less on a phone, so a menu has room for its longest
+   choice at 320 px (W28). */
 .tool {
-  margin: var(--space-l) 0; padding: var(--space-m);
+  margin: var(--space-l) 0; padding: var(--space-s);
   border: 2px solid var(--rule-strong); border-radius: var(--radius);
 }
 .tool > h2, .tool > h3 { margin-top: 0; }
@@ -401,7 +403,7 @@ tr.calculated td, tr.calculated th { font-style: italic; }
 .error { display: block; color: var(--error); font-weight: 600; font-size: 0.95rem; }
 .error::before { content: "Error: "; }
 .error:empty { display: none; }
-fieldset { border: 1px solid var(--rule); border-radius: var(--radius); padding: var(--space-m); margin: 0 0 var(--space-m); min-width: 0; }
+fieldset { border: 1px solid var(--rule); border-radius: var(--radius); padding: var(--space-s); margin: 0 0 var(--space-m); min-width: 0; }
 legend { font-weight: 700; padding: 0 var(--space-s); }
 /* Form rhythm, by proximity: a label and its hint read as one unit and the control sits a clear
    step below them; each part of a fieldset is one larger step from the next; fields are further
@@ -479,6 +481,7 @@ button.secondary { color: var(--accent); background: var(--paper); }
   .result dl { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
   .result dd { margin-bottom: 0; }
   .tool { padding: var(--space-l); }
+  fieldset { padding: var(--space-m); }
 }
 
 @media (min-width: 60em) {

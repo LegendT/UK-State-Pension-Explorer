@@ -40,7 +40,7 @@ permalink: /reform-options/compare/
           <label for="compare-scenario">Scenario</label>
           <select id="compare-scenario" name="compare-scenario">
             {%- for item in scenarios.scenarios %}
-            <option value="{{ item.id }}"{% if item.id == scenarios.default %} selected{% endif %}>{{ item.label }}</option>
+            <option value="{{ item.id }}"{% if item.id == scenarios.default %} selected{% endif %}>{{ item.menu_label or item.label }}</option>
             {%- endfor %}
           </select>
         </div>
@@ -57,10 +57,11 @@ permalink: /reform-options/compare/
         </div>
         <div class="field">
           <label for="compare-measure">Show amounts as</label>
-          <select id="compare-measure" name="compare-measure">
-            <option value="cash">Cash: the money of each year</option>
-            <option value="real">Buying power: the prices of the starting year</option>
-            <option value="earnings">Compared with earnings: an index</option>
+          <span class="hint" id="compare-measure-hint">Cash is the money of each year. Buying power is in the prices of the starting year. Compared with earnings is an index, starting year&nbsp;=&nbsp;100.</span>
+          <select id="compare-measure" name="compare-measure" aria-describedby="compare-measure-hint">
+            <option value="cash">Cash</option>
+            <option value="real">Buying power</option>
+            <option value="earnings">Compared with earnings</option>
           </select>
         </div>
       </div>

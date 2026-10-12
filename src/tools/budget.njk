@@ -58,9 +58,14 @@ permalink: /tools/budget/
       <div class="field">
         <label for="budget-preset">Example budget</label>
         <select id="budget-preset" name="budget-preset">
-          <option value="">None: I will enter my own spending</option>
-          {%- for preset in budgets.presets %}
-          <option value="{{ preset.id }}" data-household="{{ preset.household }}">{{ preset.label }} ({{ preset.price_date }} prices)</option>
+          <option value="">None</option>
+          {#- A group per research standard, so each option can be short enough for a phone (W28). The household chosen above hides the other household's option. -#}
+          {%- for tenure, presets in budgets.presets | groupby("tenure") %}
+          <optgroup label="{{ presets[0].label.split(': ')[1] }} ({{ presets[0].price_date }} prices)">
+            {%- for preset in presets %}
+            <option value="{{ preset.id }}" data-household="{{ preset.household }}">{{ tenure }}</option>
+            {%- endfor %}
+          </optgroup>
           {%- endfor %}
         </select>
       </div>
