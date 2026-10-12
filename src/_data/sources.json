@@ -1059,14 +1059,24 @@
     "licence": "Copyright of the publisher. Short quotation only.",
     "note": "A news report of a television interview. It is evidence of what was reported."
   },
-  "hm-responses-2026-09-29": {
-    "publisher": "Healthcare Management",
-    "title": "Burnham Pledges Landmark National Care Service at Labour Conference",
-    "url": "https://www.healthcare-management.uk/breaking-news-burnham-promises-build-national-care-service",
+  "hf-response-2026-09-29": {
+    "publisher": "The Health Foundation",
+    "title": "The Health Foundation responds to Prime Minister Andy Burnham's Labour Party Conference speech",
+    "url": "https://www.health.org.uk/media-office/press-releases/the-health-foundation-responds-to-prime-minister-andy-burnhams-labour-party-conference-speech",
     "published_date": "2026-09-29",
     "updated_date": null,
-    "checked_date": "2026-09-30",
+    "checked_date": "2026-10-12",
     "licence": "Copyright of the publisher. Short quotation only.",
-    "note": "A trade news report that quotes several organisations. Age UK's statement is on its own site, which this site cites instead. The sites of the Health Foundation and the King's Fund refuse automated reading, so their statements were not checked there."
+    "note": "The foundation's own statement, by Dr Jennifer Dixon, its chief executive. The site refuses automated reading, so it was read in a browser."
+  },
+  "kf-response-2026-09-29": {
+    "publisher": "The King's Fund",
+    "title": "The King's Fund responds to the Prime Minister's Labour Party Conference speech and comments on social care reform",
+    "url": "https://www.kingsfund.org.uk/insight-and-analysis/press-releases/pm-lpc-speech-scr",
+    "published_date": "2026-09-29",
+    "updated_date": null,
+    "checked_date": "2026-10-12",
+    "licence": "Copyright of the publisher. Short quotation only.",
+    "note": "The fund's own statement, by Sarah Woolnough, its chief executive. The site refuses automated reading, so it was read in a browser."
   }
 }

@@ -76,7 +76,7 @@ Searched and not found on the parties' own sites: conservatives.com, libdems.org
 
 ## D. Charities, unions and others
 
-All SECONDARY-ONLY. Age UK, the Health Foundation and the King's Fund are as quoted by Healthcare Management, 29 September 2026. Their own sites were searched and the statements were not found there. Unite is as quoted by PA News.
+All SECONDARY-ONLY. Age UK, the Health Foundation and the King's Fund are as quoted by Healthcare Management, 29 September 2026. Their own sites were searched and the statements were not found there. Unite is as quoted by PA News. The site now cites all three from their own press releases of 29 September 2026: Age UK since 5 October 2026, and the Health Foundation and the King's Fund since 12 October 2026 (W10), read in Chrome.
 
 - Age UK: "we postpone judgment on the overall impact of their proposed reform until we can scrutinise the detail"
 - The Health Foundation: "additional public investment will be needed to deliver a fairer and more universal system"

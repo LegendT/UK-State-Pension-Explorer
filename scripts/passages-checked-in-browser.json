@@ -106,6 +106,16 @@
       "id": "rule-2030-needs-law",
       "date": "2026-09-30",
       "browser": "Chrome 154"
+    },
+    {
+      "id": "hf-response",
+      "date": "2026-10-12",
+      "browser": "Chrome 154"
+    },
+    {
+      "id": "kf-response",
+      "date": "2026-10-12",
+      "browser": "Chrome 154"
     }
   ]
 }

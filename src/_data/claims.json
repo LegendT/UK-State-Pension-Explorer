@@ -1432,21 +1432,21 @@
   "hf-response": {
     "kind": "reported",
     "statement": "The Health Foundation said more public money would be needed, and that what the service will include is not yet clear.",
-    "source_id": "hm-responses-2026-09-29",
-    "passage": "additional public investment will be needed to deliver a fairer and more universal system",
+    "source_id": "hf-response-2026-09-29",
+    "passage": "While it’s not yet clear what will be included in the state’s offer under a new national care service, additional public investment will be needed to deliver a fairer and more universal system.",
     "interpretation": false,
     "note": null,
-    "checked_date": "2026-09-30",
+    "checked_date": "2026-10-12",
     "review_status": "checked-with-ai-assistance"
   },
   "kf-response": {
     "kind": "reported",
     "statement": "The King's Fund said many questions remain about how the reforms would work and what they would cost.",
-    "source_id": "hm-responses-2026-09-29",
+    "source_id": "kf-response-2026-09-29",
     "passage": "Many genuine questions remain about how these reforms will work in practice and how much it will cost.",
     "interpretation": false,
     "note": null,
-    "checked_date": "2026-09-30",
+    "checked_date": "2026-10-12",
     "review_status": "checked-with-ai-assistance"
   },
   "dwp-2030-baseline": {
