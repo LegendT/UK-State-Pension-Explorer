@@ -66,15 +66,15 @@
       "path": "/reform-options/",
       "group": "main",
       "title": "Reform options: how the yearly increase could change",
-      "purpose": "Compare ways to change the yearly increase, including the rule announced for April 2030. First of five pages on reform options.",
-      "description": "Options for the yearly State Pension increase, including the rule announced for April 2030: what each rule does, who is affected and what it costs.",
+      "purpose": "Compare ways to change the yearly increase, including the rule announced for April 2030, and the arguments for and against the triple lock. First of five pages on reform options.",
+      "description": "Options for the yearly State Pension increase, including the rule announced for April 2030, and the arguments for and against the triple lock.",
       "shareImage": "share-illustrative",
       "template": "reform-options",
       "canonical_path": "/reform-options/",
       "index": true,
       "published": null,
-      "modified": "2026-10-09",
-      "modified_note": "Changed on 8 October 2026: the department's factsheet on which rates the announced rule covers (W1). Changed on 9 October 2026: the opening no longer lists the section's pages, which the list below it names (W7).",
+      "modified": "2026-10-12",
+      "modified_note": "Changed on 8 October 2026: the department's factsheet on which rates the announced rule covers (W1). Changed on 9 October 2026: the opening no longer lists the section's pages, which the list below it names (W7). Changed on 12 October 2026: the arguments for and against the triple lock moved here from the entitlement page (W22).",
       "figure_cards": true
     },
     {
@@ -124,16 +124,16 @@
     {
       "path": "/reform-options/entitlement/",
       "group": "main",
-      "title": "Means-testing and entitlement: the options and the arguments",
-      "purpose": "Options for changing who receives the State Pension, the main arguments for and against the triple lock, and what evidence can settle. Fifth of five pages on reform options.",
-      "description": "Means-testing by income or assets, other ways to target support, the arguments for and against the triple lock, and what evidence can and cannot settle.",
+      "title": "Means-testing and entitlement: the options",
+      "purpose": "Options for changing who receives the State Pension, and what evidence can settle. Fifth of five pages on reform options.",
+      "description": "Means-testing by income or assets, other ways to target support, and what evidence can and cannot settle.",
       "shareImage": "share-illustrative",
       "template": "reform-entitlement",
       "canonical_path": "/reform-options/entitlement/",
       "index": true,
       "published": null,
-      "modified": "2026-10-05",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md."
+      "modified": "2026-10-12",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 12 October 2026: the arguments for and against the triple lock moved to the page on the yearly increase (W22)."
     },
     {
       "path": "/history/",

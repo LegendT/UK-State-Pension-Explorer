@@ -5,7 +5,7 @@ permalink: /reform-options/
 {%- import "macros.njk" as m with context -%}
 <h1>Reform options: how the yearly increase could change</h1>
 
-<p class="lede">Two separate decisions are often discussed together. One is how the State Pension should rise each year. The other is who should be entitled to it. This page sets out the options for the yearly increase.</p>
+<p class="lede">Two separate decisions are often discussed together. One is how the State Pension should rise each year. The other is who should be entitled to it. This page sets out the options for the yearly increase, and the arguments for and against the triple lock.</p>
 
 {#- The "Compare the rules" section is not listed: the page entry for the calculator, two lines below
     it in the list, is where the section sends the reader. From 40em the four options after the first
@@ -21,7 +21,8 @@ permalink: /reform-options/
     ["opt-prices", "Prices link"],
     ["how-2030-works", "How the announced rule works"],
     ["smoothed", "A smoothed earnings link"]
-  ]]
+  ]],
+  ["arguments", "The arguments for and against the triple lock"]
 ], true) }}
 
 {% call m.note("How to read these pages", 2) %}
@@ -124,6 +125,37 @@ permalink: /reform-options/
 {% endcall %}
 
 <p>A freeze, with no increase at all, is not among the options. We found no current proposal for one.</p>
+
+<h2 id="arguments">The arguments for and against the triple lock</h2>
+
+<p>These are the arguments for keeping the triple lock and for changing it. The government announced on {{ ("pm-care-2026-09-29" | sourceRecord).published_date | timeTag | safe }} that it will change it from April 2030. The arguments still matter, because the government has yet to legislate for the change, and it does not start until then.</p>
+
+<div class="option-grid">
+  <article class="option">
+    <h3 id="args-keep">For keeping the triple lock</h3>
+    <ul>
+      <li><strong>Most pensioners depend on it.</strong> {{ ("ppi-reliance" | claim).statement }} {{ m.c("ppi-reliance") }} {{ ("ageuk-largest-income" | claim).statement }} {{ m.c("ageuk-largest-income") }}</li>
+      <li><strong>Pensioner poverty has not gone away.</strong> {{ m.f("low-income-ahc") }} of pensioners are in relative low income after housing costs. {{ ("ageuk-women" | claim).statement }} {{ m.c("ageuk-women") }}</li>
+      <li><strong>It helps today's workers most.</strong> {{ ("ppi-future-workers" | claim).statement }} {{ m.c("ppi-future-workers") }}</li>
+      <li><strong>An older population costs more than the lock.</strong> {{ ("ppi-demographics" | claim).statement }} {{ m.c("ppi-demographics") }}</li>
+      <li><strong>The level is about 30% of typical pay.</strong> In {{ ("nsp-share-median-earnings" | figure).period_label }} the full new State Pension was {{ m.f("nsp-share-median-earnings") }} of median full-time earnings. {{ m.c("pc-30-percent") }}</li>
+      <li><strong>It supports private saving.</strong> {{ ("pc-firm-foundation" | claim).statement }} {{ m.c("pc-firm-foundation") }}</li>
+    </ul>
+  </article>
+  <article class="option">
+    <h3 id="args-change">For changing it</h3>
+    <ul>
+      <li><strong>It has cost more than expected.</strong> {{ m.f("tl-cost-vs-earnings-2029-30") }} a year by 2029-30 compared with earnings uprating, against {{ m.f("tl-cost-initial-assumption") }} on the first assumption. {{ m.ref(("tl-cost-vs-earnings-2029-30" | figure).source) }}</li>
+      <li><strong>Its future cost can only be estimated, with wide uncertainty.</strong> Between {{ m.f("ifs-tl-cost-2050-low") }} and {{ m.f("ifs-tl-cost-2050-high") }} a year in 2050. {{ m.ref(("ifs-tl-cost-2050-high" | figure).source) }}</li>
+      <li><strong>It rewards volatility, not need.</strong> {{ ("rf-volatility" | claim).statement }} {{ m.c("rf-volatility") }}</li>
+      <li><strong>It has no stated target.</strong> {{ ("ifs-explicit-goal" | claim).statement }} {{ m.c("ifs-explicit-goal") }}</li>
+      <li><strong>Fairness between generations.</strong> {{ ("rf-living-standards" | claim).statement }} {{ m.c("rf-living-standards") }}</li>
+      <li><strong>It is not aimed at poverty.</strong> {{ ("rf-poverty-since-2011" | claim).statement }} {{ m.c("rf-poverty-since-2011") }} It applies the same percentage to the full rates, whatever the income of the person who receives them.</li>
+    </ul>
+  </article>
+</div>
+
+<p>Some of these points pull against each other on the facts. The Pensions Policy Institute and the Office for Budget Responsibility weigh the triple lock against demographics differently, using different dates and baselines. The Pensions Policy Institute is cited above. The Office for Budget Responsibility is cited on the page on <a href="/reform-options/costs/#public-finances">what the State Pension costs</a>. We have not tried to make them agree.</p>
 
 <h2 id="compare">Compare the rules</h2>
 

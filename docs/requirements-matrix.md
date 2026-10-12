@@ -8,7 +8,7 @@ Status values: **Built**, **Built with a gap** (the gap is named), **Not built**
 
 | Requirement | Where | Check | Status |
 | --- | --- | --- | --- |
-| Neutral explainer, strongest arguments on each side | `/reform-options/entitlement/#arguments`, same five questions for each option | Read through by the author only | Built with a gap: no second reader |
+| Neutral explainer, strongest arguments on each side | `/reform-options/#arguments`, same five questions for each option | Read through by the author only | Built with a gap: no second reader |
 | Owner's concern is a question, not a conclusion | No default favours a rule. Default scenario is the one where three rules coincide, and the reason is stated | Tool 2 tested in a browser | Built |
 | Editorial page deferred | None | | Not built, as the scope says |
 
