@@ -87,6 +87,7 @@ See `docs/launch-dependencies.md`. Every item was decided on 2 October 2026, and
 | The analytics script loaded with `type="module"`, not `defer` | `docs/pre-launch-review.md`. Settled by the check of the beacon on the live site |
 | A test for "up to 25p a week" in the model specification | `docs/pre-launch-review.md`. A dated record of a trial, not a published claim |
 | A row for the Retail Prices Index figure of 2011/12 in the triple lock calculator | The year's note gives it |
+| Note 7 of the owner's page review: the argument that a fixed rule takes the increase out of each government's hands | Row W8 of `docs/launch-dependencies.md`. No source found on 12 October 2026; dropped by the owner the same day |
 | Four smaller points of the readability review of 8 October 2026: public spending covered on both the State Pension and costs pages (item 53), a second current section on the compare page (item 51), a download of the compare tables (item 22), and adding more than one rule at a time in the history explorer (item 64) | Decision 93 |
 
 The items under "Known defects and limits" are known. Do not raise them again unless the owner asks.

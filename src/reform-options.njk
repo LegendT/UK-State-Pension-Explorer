@@ -5,7 +5,7 @@ permalink: /reform-options/
 {%- import "macros.njk" as m with context -%}
 <h1>Reform options: how the yearly increase could change</h1>
 
-<p class="lede">Two separate decisions are often discussed together. One is how the State Pension should rise each year. The other is who should be entitled to it. This page sets out the options for the yearly increase, and the arguments for and against the triple lock.</p>
+<p class="lede">Two separate decisions are often discussed together. One is how the State Pension should rise each year. The other is who should be entitled to it. This page sets out the options for the yearly increase, the arguments for and against the triple lock, and what evidence can and cannot settle about them.</p>
 
 {#- The "Compare the rules" section is not listed: the page entry for the calculator, two lines below
     it in the list, is where the section sends the reader. From 40em the four options after the first
@@ -22,7 +22,8 @@ permalink: /reform-options/
     ["how-2030-works", "How the announced rule works"],
     ["smoothed", "A smoothed earnings link"]
   ]],
-  ["arguments", "The arguments for and against the triple lock"]
+  ["arguments", "The arguments for and against the triple lock"],
+  ["evidence-and-judgement", "What evidence can settle, and what it cannot"]
 ], true) }}
 
 {% call m.note("How to read these pages", 2) %}
@@ -137,7 +138,7 @@ permalink: /reform-options/
       <li><strong>Most pensioners depend on it.</strong> {{ ("ppi-reliance" | claim).statement }} {{ m.c("ppi-reliance") }} {{ ("ageuk-largest-income" | claim).statement }} {{ m.c("ageuk-largest-income") }}</li>
       <li><strong>Pensioner poverty has not gone away.</strong> {{ m.f("low-income-ahc") }} of pensioners are in relative low income after housing costs. {{ ("ageuk-women" | claim).statement }} {{ m.c("ageuk-women") }}</li>
       <li><strong>It helps today's workers most.</strong> {{ ("ppi-future-workers" | claim).statement }} {{ m.c("ppi-future-workers") }}</li>
-      <li><strong>An older population costs more than the lock.</strong> {{ ("ppi-demographics" | claim).statement }} {{ m.c("ppi-demographics") }}</li>
+      <li><strong>More pensioners, not the lock, cause most of the rise in State Pension spending.</strong> {{ ("ppi-demographics" | claim).statement }} {{ m.c("ppi-demographics") }} The Office for Budget Responsibility projects State Pension spending to rise by {{ m.f("sp-rise-gdp-total") }} between 2030-31 and 2075-76, and attributes {{ m.f("tl-share-of-rise") }} of it to the triple lock. {{ m.ref(("tl-share-of-rise" | figure).source) }}</li>
       <li><strong>The level is about 30% of typical pay.</strong> In {{ ("nsp-share-median-earnings" | figure).period_label }} the full new State Pension was {{ m.f("nsp-share-median-earnings") }} of median full-time earnings. {{ m.c("pc-30-percent") }}</li>
       <li><strong>It supports private saving.</strong> {{ ("pc-firm-foundation" | claim).statement }} {{ m.c("pc-firm-foundation") }}</li>
     </ul>
@@ -146,16 +147,37 @@ permalink: /reform-options/
     <h3 id="args-change">For changing it</h3>
     <ul>
       <li><strong>It has cost more than expected.</strong> {{ m.f("tl-cost-vs-earnings-2029-30") }} a year by 2029-30 compared with earnings uprating, against {{ m.f("tl-cost-initial-assumption") }} on the first assumption. {{ m.ref(("tl-cost-vs-earnings-2029-30" | figure).source) }}</li>
-      <li><strong>Its future cost can only be estimated, with wide uncertainty.</strong> Between {{ m.f("ifs-tl-cost-2050-low") }} and {{ m.f("ifs-tl-cost-2050-high") }} a year in 2050. {{ m.ref(("ifs-tl-cost-2050-high" | figure).source) }}</li>
+      <li><strong>Its future cost can only be estimated, with wide uncertainty.</strong> Between {{ m.f("ifs-tl-cost-2050-low") }} and {{ m.f("ifs-tl-cost-2050-high") }} a year in 2050. {{ m.ref(("ifs-tl-cost-2050-high" | figure).source) }} Both ends are the extra cost of the triple lock over raising the pension with earnings alone, not the whole bill. How each rule compares is in <a href="#increases">the options above</a> and in <a href="/reform-options/compare/">the rule comparison</a>.</li>
       <li><strong>It rewards volatility, not need.</strong> {{ ("rf-volatility" | claim).statement }} {{ m.c("rf-volatility") }}</li>
       <li><strong>It has no stated target.</strong> {{ ("ifs-explicit-goal" | claim).statement }} {{ m.c("ifs-explicit-goal") }}</li>
-      <li><strong>Fairness between generations.</strong> {{ ("rf-living-standards" | claim).statement }} {{ m.c("rf-living-standards") }}</li>
+      <li><strong>Fairness between generations.</strong> {{ ("rf-living-standards" | claim).statement }} {{ ("rf-income-level" | claim).statement }} {{ ("rf-income-same-level" | claim).statement }} {{ m.c("rf-living-standards") }}</li>
       <li><strong>It is not aimed at poverty.</strong> {{ ("rf-poverty-since-2011" | claim).statement }} {{ m.c("rf-poverty-since-2011") }} It applies the same percentage to the full rates, whatever the income of the person who receives them.</li>
     </ul>
   </article>
 </div>
 
-<p>Some of these points pull against each other on the facts. The Pensions Policy Institute and the Office for Budget Responsibility weigh the triple lock against demographics differently, using different dates and baselines. The Pensions Policy Institute is cited above. The Office for Budget Responsibility is cited on the page on <a href="/reform-options/costs/#public-finances">what the State Pension costs</a>. We have not tried to make them agree.</p>
+<p>The Pensions Policy Institute and the Office for Budget Responsibility agree that more pensioners add more to State Pension spending than the triple lock does. They use different dates and baselines, so their figures cannot be compared directly. The Office for Budget Responsibility's projection is set out on the page on <a href="/reform-options/costs/#public-finances">what the State Pension costs</a>.</p>
+
+<h2 id="evidence-and-judgement">What evidence can settle, and what it cannot</h2>
+
+<h3>Evidence can establish</h3>
+<ul>
+  <li>What each rule does to the rate under given conditions.</li>
+  <li>Roughly what the bill is, and that estimates of cost and saving depend on the comparison chosen.</li>
+  <li>That savings from a change start small and grow.</li>
+</ul>
+
+<h3>Evidence cannot establish</h3>
+<ul>
+  <li>What prices and earnings will do, and so what any rule will cost.</li>
+</ul>
+
+<h3>Judgements about fairness</h3>
+<ul>
+  <li>What the State Pension should be worth compared with pay.</li>
+  <li>How to weigh today's pensioners against today's workers, who are tomorrow's pensioners.</li>
+  <li>How much certainty people are owed when they plan for retirement.</li>
+</ul>
 
 <h2 id="compare">Compare the rules</h2>
 

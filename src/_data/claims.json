@@ -649,6 +649,26 @@
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance"
   },
+  "rf-income-level": {
+    "kind": "finding",
+    "statement": "It also says the typical pensioner had a lower income than the typical non-pensioner when the first Pensions Commission was in place, which has not been the case since 2011-12.",
+    "source_id": "rf-ratchet-2026",
+    "passage": "When the first Pensions Commission was in place, the typical pensioner had a lower income than the typical non-pensioner, but that has not been the case since 2011-12",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-12",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "rf-income-same-level": {
+    "kind": "finding",
+    "statement": "It says a typical pensioner household now has the same level of income as the typical working-age household.",
+    "source_id": "rf-ratchet-2026",
+    "passage": "a typical pensioner household now has the same level of income as the typical working-age household",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-12",
+    "review_status": "checked-with-ai-assistance"
+  },
   "rf-living-standards": {
     "kind": "finding",
     "statement": "The Resolution Foundation reports faster growth in living standards for pensioners than for others over two decades.",
@@ -691,11 +711,11 @@
   },
   "ppi-demographics": {
     "kind": "finding",
-    "statement": "The Pensions Policy Institute says the cost of an older population outweighs the cost of the triple lock.",
+    "statement": "The Pensions Policy Institute says projections show that more people receiving the State Pension will add much more to its cost than the triple lock will.",
     "source_id": "ppi-triple-lock-2024",
-    "passage": "the increase in State Pension costs related to demographic changes significantly outweigh the increase in costs resulting from the triple lock",
+    "passage": "it also reflects demographic changes leading to more people being in receipt of State Pension. Projections suggest that the increase in State Pension costs related to demographic changes significantly outweigh the increase in costs resulting from the triple lock",
     "interpretation": false,
-    "note": "The Office for Budget Responsibility attributes 1.2% of GDP of a 3.6% rise to the triple lock. The two statements use different dates and baselines.",
+    "note": "The Office for Budget Responsibility's split of the projected rise, shown beside this claim on the yearly increase page from its own figure records, uses different dates and baselines.",
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance"
   },

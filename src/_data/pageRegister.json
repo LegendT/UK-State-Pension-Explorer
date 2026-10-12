@@ -74,7 +74,7 @@
       "index": true,
       "published": null,
       "modified": "2026-10-12",
-      "modified_note": "Changed on 8 October 2026: the department's factsheet on which rates the announced rule covers (W1). Changed on 9 October 2026: the opening no longer lists the section's pages, which the list below it names (W7). Changed on 12 October 2026: the arguments for and against the triple lock moved here from the entitlement page (W22).",
+      "modified_note": "Changed on 8 October 2026: the department's factsheet on which rates the announced rule covers (W1). Changed on 9 October 2026: the opening no longer lists the section's pages, which the list below it names (W7). Changed on 12 October 2026: the arguments for and against the triple lock moved here from the entitlement page (W22), with the points of what evidence can settle about the yearly increase (decision 98); the arguments' wording on growth in pensioner incomes, on what drives the rise in spending and on the range of future cost (W8).",
       "figure_cards": true
     },
     {
@@ -133,7 +133,7 @@
       "index": true,
       "published": null,
       "modified": "2026-10-12",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 12 October 2026: the arguments for and against the triple lock moved to the page on the yearly increase (W22)."
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 12 October 2026: the arguments for and against the triple lock moved to the page on the yearly increase (W22), and the points of what evidence can settle about the yearly increase followed them (decision 98)."
     },
     {
       "path": "/history/",
