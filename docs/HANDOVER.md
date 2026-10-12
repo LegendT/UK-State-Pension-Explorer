@@ -29,16 +29,16 @@ npm run serve        # http://127.0.0.1:8137
 
 ## Last checks
 
-Run on 12 October 2026, Chrome 154, macOS, on the branch `launch-review` after W23. The quoted passages were checked again on 12 October 2026, after W8 added two claims and widened one passage, and after W23 reworded one claim; the values check was last run on 8 October 2026, and no row done since then changed a figure's value; W19 changed the caveats of 21 figure records, added a status to 12 source records and trimmed 8 source notes. The new caveat wording restates each record's own definition and population fields, except the range the source "expects to hold 80% of the time", which was read in the Institute for Fiscal Studies' report on 9 October 2026, and "the age set in law for 2034", which the research record quotes from the Office for National Statistics.
+Run on 12 October 2026, Chrome 154, macOS, on the branch `launch-review` after W10, W24, W28, W30 and W13. The quoted passages were checked again on 12 October 2026, after W8 added two claims and widened one passage, after W23 reworded one claim, and after W10 moved two claims to new sources; the values check was last run on 8 October 2026, and no row done since then changed a figure's value; W19 changed the caveats of 21 figure records, added a status to 12 source records and trimmed 8 source notes. The new caveat wording restates each record's own definition and population fields, except the range the source "expects to hold 80% of the time", which was read in the Institute for Fiscal Studies' report on 9 October 2026, and "the age set in law for 2034", which the research record quotes from the Office for National Statistics.
 
 | Check | Command | Result |
 | --- | --- | --- |
-| Calculator and chart tests | `npm test` | 42 of 42 pass. Each test added by W11, W21 and W23 fails on a planted defect in the logic it covers. W22 and W8 added none: they change wording and where it sits |
-| Build checks | `npm run build` | No problems. 19 pages, 128 figures, 168 claims, 106 sources |
-| Quoted passages | `python3 scripts/check-passages.py` | 222 checked. 201 found by the script, 21 found in a browser by hand, 0 not found, 0 unreadable. Of the 21, 7 were read again on 8 October 2026; 14 keep their first dates (W4) |
+| Calculator and chart tests | `npm test` | 42 of 42 pass. Each test added by W11, W21, W23 and W30 fails on a planted defect in the logic it covers. W22 and W8 added none: they change wording and where it sits |
+| Build checks | `npm run build` | No problems. 19 pages, 128 figures, 168 claims, 107 sources. The check W24 added stops the build on a planted defect: a figure followed first by another source's citation |
+| Quoted passages | `python3 scripts/check-passages.py` | 222 checked. 199 found by the script, 23 found in a browser by hand, 0 not found, 0 unreadable. Of the 23, 7 were read again on 8 October 2026 and 2 first read on 12 October 2026 (W10); 14 keep their first dates (W4) |
 | Figures with no quoted passage | `python3 scripts/check-values.py` | 53 of 65 found in the source text. The other 12 are in 11 spreadsheets and one PDF; each record names its file and cell, or its page (W4) |
-| Automated accessibility | `npm run a11y` | 0 violations in 130 audits of 19 pages, 2,223 distinct incomplete results. Every incomplete contrast result measured, 4,178 occurrences across the audits, none below threshold. axe does not measure the scroll cue of W20, which is generated text: worked by hand, 6.6:1 or more in both colour schemes |
-| Scripted accessibility measurements | `npm run a11y:manual` | 0 problems after W8 and after W23. After W21 it failed in 2 of 5 runs: the costs page's keyboard check reached 107 stops of 106 and found a link covered or off screen, as it did before W21. After W8 one run counted 107 of 106 on the costs page without failing. Row W35 |
+| Automated accessibility | `npm run a11y` | 0 violations in 130 audits of 19 pages, 2,225 distinct incomplete results. Every incomplete contrast result measured, 4,187 occurrences across the audits, none below threshold. axe does not measure the scroll cue of W20, which is generated text: worked by hand, 6.6:1 or more in both colour schemes |
+| Scripted accessibility measurements | `npm run a11y:manual` | 0 problems after W8, after W23 and after W13. Both accessibility checks were also run on a build with `CORRECTION_URL` set, which shows W13's paragraph: 0 violations, 0 problems. After W21 it failed in 2 of 5 runs: the costs page's keyboard check reached 107 stops of 106 and found a link covered or off screen, as it did before W21. After W8 one run counted 107 of 106 on the costs page without failing. Row W35 |
 | Dependencies | `npm audit` | 9 packages, 5 high and 4 moderate, none loaded when the site is built: `README.md`, "Set up" |
 | Production build | `npm run build` with production settings, read by hand | Last run on 5 October 2026, before W1 to W6: not rerun since |
 | Readability | `statistics-ux` skill, expert review | `docs/ux-review-2026-10-08.md` |
@@ -89,12 +89,13 @@ See `docs/launch-dependencies.md`. Every item was decided on 2 October 2026, and
 | A row for the Retail Prices Index figure of 2011/12 in the triple lock calculator | The year's note gives it |
 | Note 7 of the owner's page review: the argument that a fixed rule takes the increase out of each government's hands | Row W8 of `docs/launch-dependencies.md`. No source found on 12 October 2026; dropped by the owner the same day |
 | Four smaller points of the readability review of 8 October 2026: public spending covered on both the State Pension and costs pages (item 53), a second current section on the compare page (item 51), a download of the compare tables (item 22), and adding more than one rule at a time in the history explorer (item 64) | Decision 93 |
+| The two figures cited with `m.cite` of their source, not `m.ref`, in "Effect on the pension" under the 2030 rule in `src/reform-options.njk` | The owner's answer of 12 October 2026, from the critique of W10 to W13. It predates that day, and the build check of W24 passes it |
 
 The items under "Known defects and limits" are known. Do not raise them again unless the owner asks.
 
 ## Waiting on the owner
 
-As at 9 October 2026.
+As at 12 October 2026.
 
 | Item | What is needed |
 | --- | --- |

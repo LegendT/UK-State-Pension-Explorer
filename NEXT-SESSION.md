@@ -17,12 +17,12 @@ docs/launch-dependencies.md; work for after launch is "After launch, first updat
 Work since the last merged pull request is on the branch launch-review, with a pull request open:
 run git status, git log main..launch-review and git log origin/launch-review..launch-review first.
 
-Next action: none until Anthony says to build. The first open row is W10, rows in table order. Nothing else is authorised.
+Next action: none until Anthony says to build. The first open row is W9, rows in table order. Nothing else is authorised.
 
 Waiting on Anthony: his look at the costs tables' right-aligned, wrapped amounts (the W20
 row, R8); W16 (he checks the changed pages once every other row is done); launch steps
-4 to 9. Everything up to W23 is pushed; docs changed after the last critique, so /push
-needs a fresh critique or /push uncritiqued.
+4 to 9. Everything up to W23 is pushed. W10, W24, W28, W30 and W13 are committed and not pushed;
+docs changed after the critique of 12 October 2026 stamped the tree, so /push needs a fresh critique or /push uncritiqued.
 
 Parked, do not raise: "After launch, first update", and the handover's "Known defects and limits" and "Declined".
 
