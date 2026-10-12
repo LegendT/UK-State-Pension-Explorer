@@ -1,6 +1,6 @@
 # Accessibility assessment: WCAG 2.2 Level A and AA
 
-Assessed 29 September 2026; the automated and scripted tests were last run on 5 October 2026. Status: **incomplete**. The site must not be described as meeting WCAG 2.2 AA.
+Assessed 29 September 2026; the automated and scripted tests below are as run on 5 October 2026. Later runs are in `docs/HANDOVER.md`, "Last checks". Status: **incomplete**. The site must not be described as meeting WCAG 2.2 AA.
 
 Automated and scripted checks are a floor. They do not show conformance. A person has not yet tested the site with a screen reader, with a keyboard, on a phone or in a second browser.
 
@@ -35,7 +35,7 @@ Both scripts print their counts. The counts are not copied here, because they ch
 - `npm run a11y`: 0 violations. 0 audits with sideways page scroll. 0 audits with script errors. Every contrast result that axe marked incomplete was measured, 3,867 of them: 0 below threshold, 0 that could not be measured.
 - `node scripts/a11y-manual-assist.mjs`: 0 problems on 19 pages.
 
-The last run was on 5 October 2026, after the corrections of the pre-launch review: 130 audits of 19 pages. The states scanned with an error use a scripted submit, so the "Out of date" note of decision 85 was not scanned. The front-end sweep of 1 October 2026 also ran axe at 320, 768 and 1280 px.
+The run recorded here was on 5 October 2026, after the corrections of the pre-launch review: 130 audits of 19 pages. The states scanned with an error use a scripted submit, so the "Out of date" note of decision 85 was not scanned. The front-end sweep of 1 October 2026 also ran axe at 320, 768 and 1280 px.
 
 ### What those runs did not establish
 
