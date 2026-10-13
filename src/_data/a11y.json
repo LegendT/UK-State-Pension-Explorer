@@ -49,11 +49,11 @@
   ],
   "not_done": [
     {
-      "check": "VoiceOver with Safari",
+      "check": "VoiceOver, the screen reader built into Apple devices, with Safari",
       "reason": "Not yet tested by a person. This needs someone to listen to each page and each calculator."
     },
     {
-      "check": "NVDA with a Windows browser",
+      "check": "NVDA, a free screen reader for Windows, with a browser",
       "reason": "Not yet tested. No Windows computer was available."
     },
     {

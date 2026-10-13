@@ -28,7 +28,7 @@ permalink: /state-pension/
 
 <p>The State Pension gives a basic income in later life. It sits beside workplace and personal pensions, which people build up through their own and their employer's contributions. The Pensions Commission describes it as the base that other retirement saving is built on. {{ m.c("pc-firm-foundation") }}</p>
 
-<p>Most pensioners have more than one source of income. {{ m.f("share-with-state-pension") }} of pensioner units receive the State Pension, and {{ m.f("share-with-private-pension") }} receive a private pension. {{ m.f("share-state-only") }} have only the State Pension and other state benefits.</p>
+<p>Most pensioners have more than one source of income. Official statistics count pensioner units: a single pensioner, or a couple where at least one partner is over State Pension age. {{ m.f("share-with-state-pension") }} of pensioner units receive the State Pension, and {{ m.f("share-with-private-pension") }} receive a private pension. {{ m.f("share-state-only") }} have only the State Pension and other state benefits.</p>
 {{ m.sourceNote("share-state-only" | figure) }}
 
 <h2 id="which-system">What your date of birth decides</h2>
@@ -104,7 +104,7 @@ permalink: /state-pension/
 
 <h2 id="what-people-receive">What people actually receive</h2>
 
-<p>These are averages of the State Pension in payment in March 2026. They include any protected payment or Additional State Pension. They are at the rates in force before the increase of April 2026, so they are not comparable with the 2026/27 full rates above.</p>
+<p>These are averages of the State Pension in payment in March 2026. They include any protected payment, an amount above the full new rate for a person whose starting amount in 2016 was higher, or Additional State Pension. They are at the rates in force before the increase of April 2026, so they are not comparable with the 2026/27 full rates above.</p>
 
 {% call m.scrollTable() %}
 <table>
@@ -139,7 +139,7 @@ permalink: /state-pension/
 
 <h2 id="components">Parts of the pension that rise by a different rule</h2>
 
-<p>The triple lock applies to the full rate of the new State Pension and to the basic State Pension. Other parts rise with prices.</p>
+<p>The <a href="/triple-lock/">triple lock</a> applies to the full rate of the new State Pension and to the basic State Pension. Other parts rise with prices.</p>
 
 {% call m.scrollTable() %}
 <table>
@@ -171,7 +171,7 @@ permalink: /state-pension/
 <p>{{ ("pm-speech-income-tax" | claim).statement }} {{ m.c("pm-speech-income-tax") }} The speech is as published by the Labour Party. GOV.UK carries no transcript.</p>
 {% endcall %}
 
-<p>The State Pension is usually paid every 4 weeks, in arrears. {{ m.c("paid-four-weekly") }} {{ m.c("paid-in-arrears") }}</p>
+<p>The State Pension is usually paid every 4 weeks, in arrears: each payment covers the weeks just gone. {{ m.c("paid-four-weekly") }} {{ m.c("paid-in-arrears") }}</p>
 
 {% call m.note("A 4-week payment is not a month's money", 3) %}
 <p>There are 13 four-week periods in 52 weeks. A payment of 4 weeks at the full new rate is {{ (("nsp-full-weekly" | figPence) * 4) | money }}. Spread over 12 calendar months, 52 weeks at that rate is {{ ((("nsp-full-weekly" | figPence) * 52) / 12) | round | money }} a month. Budgeting by the month with 4-week payments means one payment in the year falls in a month that already had one.</p>

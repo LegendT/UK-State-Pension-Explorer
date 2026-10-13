@@ -16,8 +16,8 @@ const DECIDED = {
   prices: "Prices (CPI)",
   earnings: "Earnings",
   floor: "The 2.5% minimum",
-  rpi: "Prices (RPI, this year only)",
-  "pre-triple-lock": "Before the triple lock: the higher of 2.5% or RPI",
+  rpi: "Prices (Retail Prices Index, this year only)",
+  "pre-triple-lock": "Before the triple lock: the higher of 2.5% or the Retail Prices Index (RPI)",
 };
 
 // options: { years, series, from, to, measure, rule } where rule is "" or a rule id.

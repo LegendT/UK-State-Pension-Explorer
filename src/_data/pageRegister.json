@@ -30,7 +30,7 @@
       "index": true,
       "published": null,
       "modified": "2026-10-13",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 9 October 2026: the caveats shown open on its figures, with the official status of their sources (W19). Changed on 12 October 2026: each figure in the text is followed by its own source's citation first, and the Attendance Allowance rates sit apart from the claims on where it is paid (W24). Changed on 13 October 2026: one table, \"What your date of birth decides\", gives the pension, State Pension age and qualifying years, and the record-start date is stated once (W9).",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 9 October 2026: the caveats shown open on its figures, with the official status of their sources (W19). Changed on 12 October 2026: each figure in the text is followed by its own source's citation first, and the Attendance Allowance rates sit apart from the claims on where it is paid (W24). Changed on 13 October 2026: one table, \"What your date of birth decides\", gives the pension, State Pension age and qualifying years, and the record-start date is stated once (W9). Changed on 13 October 2026: pensioner units, payment in arrears and a protected payment defined where first used, and the triple lock linked at its first mention (W25).",
       "figure_cards": true
     },
     {
@@ -102,8 +102,8 @@
       "canonical_path": "/reform-options/costs/",
       "index": true,
       "published": null,
-      "modified": "2026-10-12",
-      "modified_note": "Changed on 8 October 2026: the savings figures name the department's model and baseline (W1). Changed on 9 October 2026: the April 2030 paragraph gives only the real-terms figures the table lacks (W18), and the caveats shown open on its figures, with the official status of their sources (W19). Changed on 12 October 2026: the wealth quarters are named as a survey estimate (W23). Spending in 2024/25, pensioners' Income Tax and the share reporting a disability are each followed by their own source's citation first (W24).",
+      "modified": "2026-10-13",
+      "modified_note": "Changed on 8 October 2026: the savings figures name the department's model and baseline (W1). Changed on 9 October 2026: the April 2030 paragraph gives only the real-terms figures the table lacks (W18), and the caveats shown open on its figures, with the official status of their sources (W19). Changed on 12 October 2026: the wealth quarters are named as a survey estimate (W23). Spending in 2024/25, pensioners' Income Tax and the share reporting a disability are each followed by their own source's citation first (W24). Changed on 13 October 2026: outturn, the GDP deflator, a median and income after housing costs defined where first used (W25).",
       "figure_cards": true
     },
     {
@@ -132,8 +132,8 @@
       "canonical_path": "/reform-options/entitlement/",
       "index": true,
       "published": null,
-      "modified": "2026-10-12",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 12 October 2026: the arguments for and against the triple lock moved to the page on the yearly increase (W22), and the points of what evidence can settle about the yearly increase followed them (decision 98). Pension Credit take-up gives its period, range and source (W23). The Winter Fuel Payment limit and the families not claiming Pension Credit cite their own sources, with the period (W24)."
+      "modified": "2026-10-13",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 12 October 2026: the arguments for and against the triple lock moved to the page on the yearly increase (W22), and the points of what evidence can settle about the yearly increase followed them (decision 98). Pension Credit take-up gives its period, range and source (W23). The Winter Fuel Payment limit and the families not claiming Pension Credit cite their own sources, with the period (W24). Changed on 13 October 2026: a withdrawal rate defined where first used (W25)."
     },
     {
       "path": "/history/",
@@ -146,8 +146,8 @@
       "canonical_path": "/history/",
       "index": true,
       "published": null,
-      "modified": "2026-10-05",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md."
+      "modified": "2026-10-13",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 13 October 2026: the Consumer Prices Index and the Retail Prices Index named in full before the rates table (W25)."
     },
     {
       "path": "/tools/",
@@ -202,8 +202,8 @@
       "canonical_path": "/tools/history/",
       "index": true,
       "published": null,
-      "modified": "2026-10-05",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md."
+      "modified": "2026-10-13",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 13 October 2026: the Retail Prices Index named in full in the table (W25)."
     },
     {
       "path": "/sources-and-method/",
@@ -230,8 +230,8 @@
       "canonical_path": "/accessibility/",
       "index": true,
       "published": null,
-      "modified": "2026-10-12",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 12 October 2026: the report section says a GitHub issue is the only route and needs an account, a known limit (W13)."
+      "modified": "2026-10-13",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 12 October 2026: the report section says a GitHub issue is the only route and needs an account, a known limit (W13). Changed on 13 October 2026: VoiceOver and NVDA said to be screen readers (W25)."
     },
     {
       "path": "/privacy/",
