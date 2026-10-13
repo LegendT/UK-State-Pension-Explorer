@@ -102,6 +102,11 @@ permalink: /state-pension/
 <h3>National Insurance credits</h3>
 <p>People who are not paying National Insurance can get credits in some situations, for example when they are unemployed, ill, or caring for a child or an adult. Some credits are automatic. Others have to be claimed. {{ m.c("ni-credits") }}</p>
 
+<h3>Filling gaps in a record</h3>
+<p>A person with gaps in their record may be able to pay voluntary National Insurance contributions to fill them. Paying does not always increase the pension, for example if the person was contracted out. GOV.UK says to check first: a person below State Pension age in the <a href="https://www.gov.uk/check-state-pension">State Pension forecast</a>, which says whether paying would add anything, and a person who has reached it with the Pension Service. {{ m.c("voluntary-not-always") }} The <a href="https://www.gov.uk/check-national-insurance-record">National Insurance record</a> shows the gaps, and the <a href="https://www.gov.uk/voluntary-national-insurance-contributions">guidance on voluntary contributions</a> says who can pay, what it costs and how to pay.</p>
+
+<p>The rules for time spent abroad changed from <time datetime="2026-04-06">6 April 2026</time>. For the tax year 2026 to 2027 onwards, Class 2 contributions, the lower weekly rate, cannot be paid for time abroad, and Class 3 contributions for time abroad after <time datetime="2026-04-05">5 April 2026</time> need 10 years of living in the UK in a row, or 10 years of paid contributions, not counting credits. The old rules asked for 3 years, and still apply to applications made before 6 April 2026. {{ m.c("voluntary-abroad-2026") }}</p>
+
 <h2 id="what-people-receive">What people actually receive</h2>
 
 <p>These are averages of the State Pension in payment in March 2026. They include any Additional State Pension, and any protected payment: an amount above the full new rate for a person whose starting amount in 2016 was higher. They are at the rates in force before the increase of April 2026, so they are not comparable with the 2026/27 full rates above.</p>
@@ -165,6 +170,8 @@ permalink: /state-pension/
 
 <p>The full new State Pension over 52 weeks is {{ m.f("nsp-full-52-weeks") }}. {{ m.ref(("nsp-full-52-weeks" | figure).source) }} The standard Personal Allowance is {{ m.f("personal-allowance") }} a year, so the full pension is just below it. A person with a protected payment, extra pension from deferring, or any other income can have tax to pay.</p>
 {{ m.sourceNote("personal-allowance" | figure) }}
+
+<p>The allowance is frozen at that level until <time datetime="2031-04-05">5 April 2031</time>, the end of the tax year 2030 to 2031. {{ m.c("allowance-frozen-2031") }}</p>
 
 {% call m.note("Announced, not yet law", 3) %}
 <p>{{ ("simple-assessment-2027" | claim).statement }} {{ m.c("simple-assessment-2027") }}</p>

@@ -1678,5 +1678,35 @@
     "note": null,
     "checked_date": "2026-09-30",
     "review_status": "checked-with-ai-assistance"
+  },
+  "allowance-frozen-2031": {
+    "kind": "enacted",
+    "statement": "The standard Personal Allowance stays at its 2026 to 2027 level for every tax year up to 2030 to 2031.",
+    "source_id": "finance-act-2026-s10",
+    "passage": "In subsection (2) (which specifies the personal allowance in section 35(1) of ITA 2007 as £12,570 for tax years up to 2027-28), for “and 2027-28” substitute “, 2027-28, 2028-29, 2029-30 and 2030-31”",
+    "interpretation": false,
+    "note": "Section 5 of the Finance Act 2021 had fixed the allowance up to the tax year 2027 to 2028. Section 10 of the Finance Act 2026 adds the three tax years to 2030 to 2031. The tax year 2030 to 2031 ends on 5 April 2031.",
+    "checked_date": "2026-10-13",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "voluntary-not-always": {
+    "kind": "rule",
+    "statement": "Voluntary contributions do not always increase the State Pension, for example if the person was contracted out. A person below State Pension age is told to check the State Pension forecast, and a person who has reached it to contact the Pension Service.",
+    "source_id": "govuk-voluntary-ni",
+    "passage": "Voluntary contributions do not always increase your State Pension, for example if you were contracted out ... If you’re below State Pension age, check your State Pension forecast to find out if you’ll benefit from paying voluntary contributions ... If you’ve reached State Pension age, contact the Pension Service to find out if you’ll benefit from voluntary contributions",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-13",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "voluntary-abroad-2026": {
+    "kind": "rule",
+    "statement": "From the tax year 2026 to 2027, Class 2 contributions, the lower weekly rate, cannot be paid for time abroad. Class 3 contributions for time abroad after 5 April 2026 need 10 years of living in the UK in a row, or 10 years of paid contributions, not counting credits. The previous rules asked for 3 years, and still apply to applications made before 6 April 2026.",
+    "source_id": "govuk-voluntary-ni-abroad",
+    "passage": "If you’re paying for the 2026 to 2027 tax year onwards ... You cannot pay voluntary Class 2 National Insurance contributions for time abroad. You can apply to pay Class 3 contributions for time spent abroad after 5 April 2026 if you have either: ... previously lived in the UK for 10 years in a row ... paid 10 years of qualifying National Insurance contributions in total ... paid for other periods abroad National Insurance credits ... If you applied before 6 April 2026 ... using the previous rules (that ended on 5 April 2026). These required 3 years of continuous UK residency or National Insurance contributions rather than 10 years ... £3.65 a week for Class 2 ... £18.40 a week for Class 3",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-13",
+    "review_status": "checked-with-ai-assistance"
   }
 }

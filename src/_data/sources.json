@@ -1078,5 +1078,35 @@
     "checked_date": "2026-10-12",
     "licence": "Copyright of the publisher. Short quotation only.",
     "note": "The fund's own statement, by Sarah Woolnough, its chief executive. The site refuses automated reading, so it was read in a browser."
+  },
+  "finance-act-2026-s10": {
+    "publisher": "UK Public General Acts",
+    "title": "Finance Act 2026, section 10",
+    "url": "https://www.legislation.gov.uk/ukpga/2026/11/section/10",
+    "published_date": null,
+    "updated_date": null,
+    "checked_date": "2026-10-13",
+    "licence": "Open Government Licence v3.0",
+    "note": "Revised text as shown on legislation.gov.uk on the date checked."
+  },
+  "govuk-voluntary-ni": {
+    "publisher": "HM Revenue and Customs",
+    "title": "Voluntary National Insurance",
+    "url": "https://www.gov.uk/voluntary-national-insurance-contributions",
+    "published_date": null,
+    "updated_date": "2026-09-30",
+    "checked_date": "2026-10-13",
+    "licence": "Open Government Licence v3.0",
+    "note": "GOV.UK guides show no publication date. The date given is the last technical update recorded by GOV.UK."
+  },
+  "govuk-voluntary-ni-abroad": {
+    "publisher": "HM Revenue and Customs",
+    "title": "Voluntary National Insurance: If you live or work abroad (or have previously)",
+    "url": "https://www.gov.uk/voluntary-national-insurance-contributions/if-you-live-or-work-abroad",
+    "published_date": null,
+    "updated_date": "2026-09-30",
+    "checked_date": "2026-10-13",
+    "licence": "Open Government Licence v3.0",
+    "note": "GOV.UK guides show no publication date. The date given is the last technical update recorded by GOV.UK. The weekly rates quoted are in the guide's part on rates."
   }
 }
