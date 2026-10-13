@@ -5,7 +5,7 @@ permalink: /reform-options/
 {%- import "macros.njk" as m with context -%}
 <h1>Reform options: how the yearly increase could change</h1>
 
-<p class="lede">Two separate decisions are often discussed together. One is how the State Pension should rise each year. The other is who should be entitled to it. This page sets out the options for the yearly increase, the arguments for and against the triple lock, and what evidence can and cannot settle about them.</p>
+<p class="lede">This page compares five rules for the yearly increase, including the one announced for April 2030: how far they differ depends on how prices and earnings move, and where they differ the gap grows over time. Two separate decisions are often discussed together. One is how the State Pension should rise each year. The other is who should be entitled to it. This page sets out the options for the yearly increase, the arguments for and against the triple lock, and what evidence can and cannot settle about them.</p>
 
 {#- The "Compare the rules" section is not listed: the page entry for the calculator, two lines below
     it in the list, is where the section sends the reader. From 40em the four options after the first
@@ -31,7 +31,8 @@ permalink: /reform-options/
 {% endcall %}
 
 {% call m.note("A change was announced on " ~ (("pm-care-2026-09-29" | sourceRecord).published_date | timeTag), 2) %}
-<p>{{ ("tl-kept-to-2030" | claim).statement }} {{ ("rule-2030" | claim).statement }} {{ ("ncs-savings-used" | claim).statement }} {{ m.c("rule-2030") }}</p>
+<p>{{ ("tl-kept-to-2030" | claim).statement }} {{ ("rule-2030" | claim).statement }} {{ m.c("rule-2030") }}</p>
+<p>{{ ("ncs-savings-used" | claim).statement }} {{ m.c("ncs-savings-used") }}</p>
 <p>This is an announcement. It is not law. {{ ("rule-2030-legislate" | claim).statement }} The options on this page are still the ones to compare, and <a href="#opt-2030">the announced rule</a> is now one of them. <a href="/reform-options/social-care/">Pensions and social care</a> sets out the plan and what it leaves open.</p>
 {% endcall %}
 
@@ -48,6 +49,8 @@ permalink: /reform-options/
 
 
 <h2 id="increases">Options for the yearly increase</h2>
+
+<p>Under some conditions several of the five rules give the same result; where they differ, the gap grows year on year, because each increase is applied to the last.</p>
 
 <p>The page describes each option the same way, including the rule the government announced on {{ ("pm-care-2026-09-29" | sourceRecord).published_date | timeTag | safe }}. The law sets a minimum of earnings for any option. A rule that pays less than earnings growth would need a change in the law. {{ m.c("legal-earnings-floor") }}</p>
 
@@ -107,7 +110,8 @@ permalink: /reform-options/
 
 <h3 id="how-2030-works">How the announced rule works: an example</h3>
 
-<p>{{ ("ifs-rule-2030-illustration" | claim).statement }} {{ m.c("ifs-rule-2030-illustration") }} {{ ("ifs-rule-2030-illustration" | claim).note }}</p>
+<p>{{ ("ifs-rule-2030-illustration" | claim).statement }} {{ m.c("ifs-rule-2030-illustration") }}</p>
+<p>{{ ("ifs-rule-2030-illustration" | claim).note }}</p>
 
 <p>The same example is a scenario in the <a href="/reform-options/compare/">rule comparison</a>. With the tool's assumptions, the pension follows earnings again from year 10. The Institute's text says year 9. Its chart is stylised and it does not publish the yearly amounts behind it, so we cannot say where the difference comes from.</p>
 

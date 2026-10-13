@@ -11,7 +11,7 @@ Rates for the next tax year are usually announced in the autumn and confirmed in
 5. Do not publish a rate as current before its effective date. Until then it is an announced rate and must be labelled as one.
 6. Run `npm test`. The history test fails if a new rate does not follow from the last one, the increase and 5p rounding. If it fails, check the data before anything else.
 7. Run `python3 scripts/check-passages.py`, `npm run build` and `npm run a11y`: the update changes data that pages show.
-8. Read every page that names a tax year in its text. The worked example on the triple lock page names months and years in words.
+8. Read every page that names a tax year in its text. The worked example on the triple lock page names months and years in words. The headings and opening sentences that state what a section's figures show (W27, 13 October 2026) rest on those figures and are typed: on the State Pension page, what people receive; on living on a pension, the research budgets, spending, income and prices sections; on costs, all three sections; on social care, the sums involved. Reread each against its section after the figures change.
 9. Set `modified` in `src/_data/pageRegister.json` for each page whose content changed. Once the site is published, add a line to `policy_changes` in `src/_data/corrections.json`. Before publication there is nothing to correct: decision 40.
 10. Titles, descriptions and share images carry no amounts, so they do not change. The build fails if an amount in pounds appears in a title or description.
 

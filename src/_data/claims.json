@@ -1581,7 +1581,7 @@
   },
   "ifs-rule-2030-illustration": {
     "kind": "finding",
-    "statement": "The Institute for Fiscal Studies gives an example over ten years. Prices rise by 2% every year. Earnings rise by 4% a year, except for three years at 1%. In those three years the pension rises by 2.5%. When earnings growth recovers, the pension goes on rising by 2.5% until earnings have caught up. Then it follows earnings again.",
+    "statement": "The Institute for Fiscal Studies gives an example over ten years, in which prices rise by 2% every year and earnings by 4% a year except for three years at 1%. In those three years the pension rises by 2.5%. When earnings growth recovers, the pension goes on rising by 2.5% until earnings have caught up. Then it follows earnings again.",
     "source_id": "ifs-new-tl-comment-2026",
     "passage": "By year 9, the growth in the state pension has matched the growth in average earnings since year 1, and so the state pension returns to rising in line with average earnings growth.",
     "interpretation": false,

@@ -10,6 +10,7 @@ permalink: /
 
 <header class="rate-block">
   <h1 id="rate-heading">How much is the State Pension?</h1>
+  <p>This site explains the State Pension, the yearly increase known as the triple lock, what a pension can cover, and the evidence for and against changing the rules.</p>
   <p class="rate">{{ nsp.shown }} a week</p>
   <p class="rate-label">Full new State Pension, {{ nsp.period_label }}, before tax.</p>
   <p>{{ nspYear.shown }} over 52 weeks, calculated as {{ nspYear.formula }}. This is an equivalent. It is not the exact amount a person receives in a tax year.</p>
@@ -21,8 +22,6 @@ permalink: /
   </ul>
   <p class="source">Rates took effect on {{ nsp.effective_from | timeTag | safe }}. Sources: {{ m.cite(nsp.source, true) }}, and {{ m.cite(bsp.source, true) }}. Both were checked against the source on {{ nsp.checked_date | timeTag | safe }}. The rates cover Great Britain. Northern Ireland sets the same rates through its own order, which we did not read.</p>
 </header>
-
-<p class="lede">This site explains the State Pension, the yearly increase known as the triple lock, what a pension can cover, and the evidence for and against changing the rules. It is written for people who have heard these things in the news and want them explained.</p>
 
 {{ m.contents([
   ["where-you-stand", "Find where you stand"],
@@ -80,9 +79,7 @@ permalink: /
 
 <p>The <strong>State Pension</strong> is a regular payment from the government to people who have reached State Pension age and have paid, or been credited with, enough National Insurance. There are two systems. Which one applies depends on when a person was born.</p>
 
-<p>The <strong>triple lock</strong> is the rule for the yearly increase. Each April the full rates rise by the highest of three figures: the rise in prices, the rise in average earnings, or 2.5%. {{ m.c("tl-definition") }}</p>
-
-<p>On {{ ("pm-care-2026-09-29" | sourceRecord).published_date | timeTag | safe }} the government announced that it will change the rule from April 2030. It says it will legislate for the change, and that the triple lock stays until then. {{ m.c("rule-2030") }} {{ m.more("/reform-options/#opt-2030", "What the announced rule does") }}</p>
+<p>The <strong>triple lock</strong> is the rule for the yearly increase. Each April the full rates rise by the highest of three figures: the rise in prices, the rise in average earnings, or 2.5%. {{ m.c("tl-definition") }} On {{ ("pm-care-2026-09-29" | sourceRecord).published_date | timeTag | safe }} the government announced that it will change the rule from April 2030. It says it will legislate for the change, and that the triple lock stays until then. {{ m.c("rule-2030") }} {{ m.more("/reform-options/#opt-2030", "What the announced rule does") }}</p>
 
 <p><strong>Entitlement and increases are different questions.</strong> Entitlement decides who gets a State Pension and how much of the full rate. The yearly increase decides how the rates change over time. A proposal to change one does not change the other.</p>
 
@@ -129,4 +126,4 @@ permalink: /
 
 <h2 id="about">About this site</h2>
 
-<p>This is an educational project. It is not a government service and it does not give financial advice. It aims to be neutral. It sets out the strongest supported arguments on each side and says where a conclusion depends on a judgement about fairness. <a href="/sources-and-method/">How the site is sourced and checked</a>.</p>
+<p>This site is written for people who have heard the State Pension and the triple lock discussed in the news and want them explained. It is an educational project. It is not a government service and it does not give financial advice. It aims to be neutral. It sets out the strongest supported arguments on each side and says where a conclusion depends on a judgement about fairness. <a href="/sources-and-method/">How the site is sourced and checked</a>.</p>
