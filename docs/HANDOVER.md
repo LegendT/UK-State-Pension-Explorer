@@ -69,7 +69,7 @@ The deployed preview was checked past the sign-in on 6 October 2026, in the owne
 - Any test with a screen reader. VoiceOver with Safari and NVDA on Windows are both outstanding.
 - Keyboard use, browser zoom and touch by a person. Firefox and Safari.
 - Review of content by a second person.
-- The download and copy buttons of the history explorer were not pressed in a test.
+- The download and copy buttons of the history explorer are pressed by `npm run test:tools` (W12), which checks the announcement and the copied table; the downloaded file itself has not been opened by a person.
 - The sister sites' tools were read from served HTML. They were not run.
 - House of Commons Library briefings and Hansard could not be opened.
 - Nothing on a production domain. The main site address was checked past the sign-in on 6 October 2026: see "Last checks". Deploy previews after pull request 1 were not checked. Fetched share previews on a social platform were not checked.

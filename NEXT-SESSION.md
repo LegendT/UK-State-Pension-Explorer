@@ -21,7 +21,7 @@ except W16, which is his. Nothing else is authorised.
 
 Waiting on Anthony: W16; his look at the costs tables' right-aligned, wrapped amounts (W20, R8);
 W27's wording, for him to read; the W32 point marked "Owner decides"; launch steps 4 to 9.
-Twelve commits since the last push are on launch-review, unpushed: the critique stamp covers the
+Thirteen commits since the last push are on launch-review, unpushed: the critique stamp covers the
 W15 commit, and the docs commits after it need /push uncritiqued or a fresh critique. git status
 shows anything since.
 

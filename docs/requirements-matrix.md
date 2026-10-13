@@ -57,7 +57,7 @@ Status values: **Built**, **Built with a gap** (the gap is named), **Not built**
 | Tool 4: series separate, new series from 2016/17 | `lib/history.js` | Test | Built |
 | Tool 4: decisions stored apart from reconstructions | `history.json` against `reconstruct` | Test | Built |
 | Tool 4: start year and amount visible | Note above the table | Browser | Built |
-| Tool 4: table and download or copy | Buttons, and a static CSV | Browser: form. Download and copy buttons not pressed in a test | Built with a gap |
+| Tool 4: table and download or copy | Buttons, and a static CSV | Browser: form. `npm run test:tools` presses the download and copy buttons and checks the copied table (W12, 13 October 2026) | Built |
 | Arithmetic separate from presentation | `lib/` has no DOM | | Built |
 | Out of scope items not built | No entitlement engine, tax or benefit calculator, national model or care simulator | | As the scope says |
 
