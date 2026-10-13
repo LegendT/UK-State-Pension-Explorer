@@ -97,6 +97,11 @@ for (const path of pages) {
   const seen = [];
   for (let i = 0; i < expected + 5; i += 1) {
     await second.keyboard.press("Tab");
+    // Measured two animation frames after the move, once the page's own focus and scroll handlers
+    // have run: the "Back to top" link shows when a focus move scrolls the page up, and hides again
+    // on the next frame when the focused element lies under it. Measured at once, the link was now
+    // and then caught shown but not yet hidden, and the link under it read as covered (W35).
+    await second.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
     const info = await second.evaluate(() => {
       const el = document.activeElement;
       if (!el || el === document.body) return null;
