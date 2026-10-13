@@ -13,3 +13,5 @@ _headers
 frontend-sweep/
 # Personal Claude Code permissions for this machine.
 .claude/settings.local.json
+# Python bytecode from the source checks.
+__pycache__/
