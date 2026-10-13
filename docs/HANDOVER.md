@@ -25,20 +25,23 @@ npm run serve        # http://127.0.0.1:8137
 - Model specification, written before the code. Reference calculations by a separate method.
 - Build checks for metadata, canonicals, indexing, sitemap, internal links, registers and sister links.
 - Environment controls: development and preview are `noindex` with no sitemap. Production stops without its launch decisions.
+- The rule comparison and the triple lock calculator write nothing to the page address on their own: a button copies a link to the result shown (W31, decision 96). A tool's form appears only once its module has run (W32). Every heading, table and chart has an id typed in a template or a script (W29).
+- The sources and method page gathers the known limits and likely misreadings, and says what changed after the owner's review of 8 October 2026 (W15).
 - Documents: requirements matrix, decision log, launch dependencies, maintenance guide, accessibility assessment.
 
 ## Last checks
 
-Run on 13 October 2026, Chrome 155, macOS, on the branch `launch-review` after W9 and W25. Neither changed a claim's statement or passage, or a figure, so the quoted passages were not checked again for them. The quoted passages were checked again on 12 October 2026, after W8 added two claims and widened one passage, after W23 reworded one claim, and after W10 moved two claims to new sources; the values check was last run on 8 October 2026, and no row done since then changed a figure's value; W19 changed the caveats of 21 figure records, added a status to 12 source records and trimmed 8 source notes. The new caveat wording restates each record's own definition and population fields, except the range the source "expects to hold 80% of the time", which was read in the Institute for Fiscal Studies' report on 9 October 2026, and "the age set in law for 2034", which the research record quotes from the Office for National Statistics.
+Run on 13 October 2026, Chrome 155, macOS, on the branch `launch-review` after W33, W26, W27, W29, W31, W32, W35, W12, W34 and W15. W33 added three claims and two sources, and the quoted passages were checked that day: 225 found. No row since then changed a claim's passage or a figure's value; W27 reworded one claim's statement without changing its passage. The values check was last run on 8 October 2026.
 
 | Check | Command | Result |
 | --- | --- | --- |
-| Calculator and chart tests | `npm test` | 42 of 42 pass. Each test added by W11, W21, W23 and W30 fails on a planted defect in the logic it covers. W22 and W8 added none: they change wording and where it sits |
-| Build checks | `npm run build` | No problems. 19 pages, 128 figures, 168 claims, 107 sources. The check W24 added stops the build on a planted defect: a figure followed first by another source's citation |
-| Quoted passages | `python3 scripts/check-passages.py` | 222 checked. 199 found by the script, 23 found in a browser by hand, 0 not found, 0 unreadable. Of the 23, 7 were read again on 8 October 2026 and 2 first read on 12 October 2026 (W10); 14 keep their first dates (W4) |
+| Tool behaviour in a browser | `npm run test:tools` | 51 checks, 0 problems, on the built site: fields kept through a change, a blank or zero tax field, recovery from a wrong entry, example and scenario changes, malformed and restored addresses, history subranges and the table export, the copied link, and the focus and announcements that go with each (W12) |
+| Calculator and chart tests | `npm test` | 46 of 46 pass. Each test added by W11, W21, W23 and W30 fails on a planted defect in the logic it covers; W26, W31 and W12 added tests for the tools' source lines, the link a result copies and the table export |
+| Build checks | `npm run build` | No problems. 19 pages, 128 figures, 171 claims, 110 sources. The check W24 added stops the build on a planted defect; the checks W29 added stop it on a heading or caption without an id, an id used twice, or a script drawing a heading without one, shown with a planted bare heading |
+| Quoted passages | `python3 scripts/check-passages.py` | 225 checked on 13 October 2026, after W33. 202 found by the script, 23 found in a browser by hand, 0 not found, 0 unreadable. Of the 23, 7 were read again on 8 October 2026 and 2 first read on 12 October 2026 (W10); 14 keep their first dates (W4) |
 | Figures with no quoted passage | `python3 scripts/check-values.py` | 53 of 65 found in the source text. The other 12 are in 11 spreadsheets and one PDF; each record names its file and cell, or its page (W4) |
-| Automated accessibility | `npm run a11y` | 0 violations in 130 audits of 19 pages, 2,227 distinct incomplete results. Every incomplete contrast result measured, 4,187 occurrences across the audits, none below threshold. axe does not measure the scroll cue of W20, which is generated text: worked by hand, 6.6:1 or more in both colour schemes |
-| Scripted accessibility measurements | `npm run a11y:manual` | 0 problems after W8, after W23, after W13 and after W9, and after W25 at its first run. After W9 it first failed twice on the costs page's keyboard check, 109 stops of 108, which W9 does not touch, then passed three times. Both accessibility checks were also run on a build with `CORRECTION_URL` set, which shows W13's paragraph: 0 violations, 0 problems. After W21 it failed in 2 of 5 runs: the costs page's keyboard check reached 107 stops of 106 and found a link covered or off screen, as it did before W21. After W8 one run counted 107 of 106 on the costs page without failing. Row W35 |
+| Automated accessibility | `npm run a11y` | 0 violations in 130 audits of 19 pages, 2,257 distinct incomplete results. Every incomplete contrast result measured, 4,204 occurrences across the audits, none below threshold. axe does not measure the scroll cue of W20, which is generated text: worked by hand, 6.6:1 or more in both colour schemes |
+| Scripted accessibility measurements | `npm run a11y:manual` | 0 problems after W15, and in every run since W35 on 13 October 2026: four full runs and 20 settled keyboard passes of the costs page. The intermittent failure on the costs page was the check, not the page (row W35): it now measures each stop two animation frames after the Tab, and compares the stops reached with those expected by key. On the costs page it reaches 109 stops of 108 expected, the extra being the "Back to top" link, which a focus move shows. Since W32 each tool page is also checked with its module running and with its module blocked |
 | Loading on a phone | `node scripts/measure-loading.mjs` | Run on 13 October 2026 on the built site, served by the script itself without compression or cache headers, as a slow phone: the values Chrome's DevTools applies for "Slow 4G" (562.5 ms latency), CPU slowed four times. Cold loads in a fresh browser context, DOMContentLoaded then largest paint: overview 1,486 ms and 1,504 ms, 64 kB over 7 requests; costs 1,607 and 1,496 ms, 116 kB; sources and method 2,861 and 1,596 ms, 312 kB; rule comparison 2,967 and 1,480 ms, 140 kB over 12 requests; history explorer 2,907 and 1,488 ms, 113 kB. Warm loads 2% to 5% quicker, nothing answered from cache: the local server sends no cache headers. Each of the four tools redraws 405 to 419 ms after the last keystroke or choice, of which 400 ms is its own pause. The source register opens in under a millisecond and scrolls 20,000 px at 600 px a frame in 32 frames, 17 of them over 16.7 ms, the longest 28 ms. Sizes decoded, gzip, brotli, from the script: overview 26.5, 6.7, 5.4 kB; stylesheet 28.2, 8.0, 6.8 kB; the comparison's main script 9.8, 3.4, 2.8 kB; register page 276.3, 51.7, 36.8 kB; costs page 80.9, 14.9, 12.0 kB. The deployed preview, with its compression and cache headers, was not measured: row W34 |
 | Dependencies | `npm audit` | 9 packages, 5 high and 4 moderate, none loaded when the site is built: `README.md`, "Set up" |
 | Production build | `npm run build` with production settings, read by hand | Last run on 5 October 2026, before W1 to W6: not rerun since |
@@ -71,6 +74,7 @@ The deployed preview was checked past the sign-in on 6 October 2026, in the owne
 - House of Commons Library briefings and Hansard could not be opened.
 - Nothing on a production domain. The main site address was checked past the sign-in on 6 October 2026: see "Last checks". Deploy previews after pull request 1 were not checked. Fetched share previews on a social platform were not checked.
 - Search console verification, sitemap submission, indexing.
+- Loading on a phone on the deployed preview, with its compression and cache headers: measured on the built site served locally only (row W34).
 
 ## Launch
 
@@ -96,10 +100,12 @@ The items under "Known defects and limits" are known. Do not raise them again un
 
 ## Waiting on the owner
 
-As at 12 October 2026.
+As at 13 October 2026.
 
 | Item | What is needed |
 | --- | --- |
+| W34, the deployed half | Run `scripts/measure-loading.mjs` against the preview with its sign-in, and paste the output into "Last checks": row W34 of `docs/launch-dependencies.md`. W15 stays open until then |
+| W16 | Check the changed pages again: every other row of "Work before step 4" is done or waits on the row above |
 | Launch | The steps, in order, are in `docs/launch-dependencies.md`, "Launch steps". Steps 1 to 3 are done. Before step 4 comes "Work before step 4" in the same file. The assistant does each row on the owner's word |
 
 Every other open item is in `docs/launch-dependencies.md`: before launch in "Work before step 4", after it in "After launch, first update". `docs/pre-launch-review.md`, which is frozen, points here for its "Rendered pages" and "Code" items. They are rows of that table.
