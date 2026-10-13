@@ -5,7 +5,7 @@ import { PERIOD_LABELS, convert, fromWeekly } from "../lib/budget.js";
 import { renderBudget, renderBudgetSummary } from "../lib/budget-view.js";
 import { money } from "../lib/format.js";
 import { parsePence } from "../lib/uprating.js";
-import { announce, live, markStale, pinSummary, readAmount, readJson, ready, setError, STALE_MESSAGE, updatedNote } from "./common.js";
+import { announce, focusFirstError, live, markStale, pinSummary, readAmount, readJson, ready, setError, STALE_MESSAGE, updatedNote } from "./common.js";
 
 const data = readJson("budget-data");
 const form = document.getElementById("budget-form");
@@ -180,6 +180,8 @@ function update(mode) {
     lastResult = "";
     result.innerHTML = `<h3 id="budget-result-heading">No result</h3><p>Correct the amounts marked with an error.</p>`;
     glance.innerHTML = `<p>No result. Correct the amounts marked with an error.</p>`;
+    // A submit, not a keystroke: take the reader to the first field in error, as the comparison does.
+    if (!mode) focusFirstError(form);
     if (!silent) announce(status, "There is a problem with the amounts entered. No result is shown.");
     return;
   }

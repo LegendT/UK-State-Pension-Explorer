@@ -109,3 +109,14 @@ test("a source line is printed under the chart and the table, naming the price i
   assert.ok(real.includes("; buying power uses <a href=\"https://example.org/cpi\">ONS CPI</a>. The calculated figures are this site's calculation from those. Checked"));
   assert.ok(!renderHistory({ years, series: "new", from: "2020/21", to: "2026/27", measure: "cash", rule: "" }).includes("source-line"), "no line is printed when none is given");
 });
+
+test("the table export covers the years shown, with the calculated columns when a rule is added (W12)", async () => {
+  const { historyCsv } = await import("../src/assets/js/lib/history-view.js");
+  const plain = historyCsv({ years, series: "new", from: "2020/21", to: "2024/25", measure: "cash", rule: "" }).trim().split("\n");
+  assert.equal(plain.length, 6);
+  assert.equal(plain[0], "tax_year,effective_date,series,measure,published_rate,published_rate_cash_gbp,increase_applied_percent,decided_by,exceptional_year,notes");
+  assert.ok(plain[1].startsWith("2020/21,") && plain[5].startsWith("2024/25,"));
+  const withRule = historyCsv({ years, series: "new", from: "2020/21", to: "2024/25", measure: "cash", rule: "earnings" }).trim().split("\n");
+  assert.deepEqual(withRule[0].split(","), [...plain[0].split(",").slice(0, 6), "calculated_earnings_from_2020/21", "calculated_cash_gbp", ...plain[0].split(",").slice(6)]);
+  assert.equal(withRule.length, plain.length);
+});

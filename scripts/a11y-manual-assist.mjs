@@ -91,9 +91,15 @@ for (const path of pages) {
   // Keyboard: press Tab through the page. Record order, whether focus is visible, and whether
   // the focused element is on screen and not covered.
   await second.evaluate(() => document.querySelectorAll("details").forEach((d) => (d.open = false)));
-  const expected = await second.evaluate(() => [...document.querySelectorAll("a[href], button, input, select, summary, [tabindex='0']")].filter((el) => el.checkVisibility({ contentVisibilityAuto: true, visibilityProperty: true }) && !el.closest("details:not([open]) > :not(summary)"))
-    // A group of radio buttons is one tab stop.
-    .filter((el, i, all) => el.type !== "radio" || all.findIndex((other) => other.type === "radio" && other.name === el.name) === i).length);
+  // The keys of every element expected in the tab order, so a stop lost is found even when another, such
+  // as the "Back to top" link a focus move can show, takes its place in the count (W35).
+  const expectedKeys = await second.evaluate(() =>
+    [...document.querySelectorAll("a[href], button, input, select, summary, [tabindex='0']")]
+      .filter((el) => el.checkVisibility({ contentVisibilityAuto: true, visibilityProperty: true }) && !el.closest("details:not([open]) > :not(summary)"))
+      .filter((el, i, all) => el.type !== "radio" || all.findIndex((other) => other.type === "radio" && other.name === el.name) === i)
+      .map((el) => `${el.tagName.toLowerCase()}#${el.id}|${(el.textContent || "").trim().slice(0, 25)}`),
+  );
+  const expected = expectedKeys.length;
   const seen = [];
   for (let i = 0; i < expected + 5; i += 1) {
     await second.keyboard.press("Tab");
@@ -123,14 +129,18 @@ for (const path of pages) {
     if (seen.length && info.key === seen[0].key) break;
     seen.push(info);
   }
+  const counts = (keys) => keys.reduce((map, k) => map.set(k, (map.get(k) || 0) + 1), new Map());
+  const reachedCounts = counts(seen.map((f) => f.key));
+  const missing = [...counts(expectedKeys)].filter(([k, n]) => (reachedCounts.get(k) || 0) < n).map(([k]) => k);
   out.keyboard = {
     expected,
     reached: seen.length,
+    missing,
     noVisibleFocus: seen.filter((f) => !f.visible).map((f) => f.key),
     coveredOrOffScreen: seen.filter((f) => f.covered || !f.onScreen).map((f) => f.key),
     backwards: seen.filter((f, i) => i > 1 && f.y < seen[i - 1].y - 60).map((f) => f.key),
   };
-  if (out.keyboard.reached < expected || out.keyboard.noVisibleFocus.length || out.keyboard.coveredOrOffScreen.length || out.keyboard.backwards.length) problems.push(`${path} keyboard: ${JSON.stringify(out.keyboard)}`);
+  if (out.keyboard.missing.length || out.keyboard.noVisibleFocus.length || out.keyboard.coveredOrOffScreen.length || out.keyboard.backwards.length) problems.push(`${path} keyboard: ${JSON.stringify(out.keyboard)}`);
   await second.close();
 
   // No JavaScript: the explanation must still be readable, and tool forms must not show.

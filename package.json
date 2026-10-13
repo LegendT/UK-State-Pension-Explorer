@@ -10,7 +10,8 @@
     "test": "node --test",
     "serve": "http-server _site -p 8137 -c-1 --silent",
     "a11y": "node scripts/a11y.mjs",
-    "a11y:manual": "node scripts/a11y-manual-assist.mjs"
+    "a11y:manual": "node scripts/a11y-manual-assist.mjs",
+    "test:tools": "node scripts/check-tools.mjs"
   },
   "engines": {
     "node": ">=22.12"

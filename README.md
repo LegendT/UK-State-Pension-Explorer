@@ -26,6 +26,7 @@ The accessibility scripts use the Chrome already on the computer, through `puppe
 | `npm run serve` | Serves `_site` at http://127.0.0.1:8137 |
 | `npm run a11y` | axe-core on every page and state. Writes `reports/a11y.json`. Run it after any change to markup, styles or scripts, and after a data change that a page shows: long file names in a figure's source made a page scroll sideways on a phone on 8 October 2026, and the build did not catch it. |
 | `npm run a11y:manual` | Reflow, text spacing, target size, keyboard, headings, no JavaScript, a tool's module blocked with every other script running (W32), the "On this page" marking and the "Back to top" link. Run it after changing `contents.js`, `back-to-top.js`, `js-class.js`, a tool module, `ready()` in `tools/common.js`, the contents macro, or the `.contents`, `.back-to-top` or `.js-only` styles. |
+| `npm run test:tools` | Drives the four tools in a headless Chrome the way a reader does, after `npm run build`: fields kept through a change, a blank or zero tax field, recovery from a wrong entry, household and example changes, malformed and restored addresses, history subranges and the table export, the copied link, and the focus and announcements that go with each (W12). Run it after changing a tool's script or template. |
 | `python3 scripts/check-passages.py` | Looks for every quoted passage in its live source. |
 | `python3 scripts/check-values.py` | Looks for unquoted figure values in their source text. |
 | `python3 scripts/reference.py` | Prints the reference calculations. |

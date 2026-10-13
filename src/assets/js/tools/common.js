@@ -118,7 +118,9 @@ export function choose(select, value) {
 export function live(form, redraw) {
   let pending;
   let last = null;
-  const values = () => [...form.querySelectorAll("input, select")].map((field) => (field.type === "checkbox" || field.type === "radio" ? field.checked : field.value)).join("|");
+  // One string, so that two reads with the same values compare equal: as arrays they never did, and the
+  // change event a field fires on losing focus redrew and announced a result already shown (W12).
+  const values = () => JSON.stringify([...form.querySelectorAll("input, select")].map((field) => (field.type === "checkbox" || field.type === "radio" ? field.checked : field.value)));
   const later = () => {
     clearTimeout(pending);
     pending = setTimeout(() => {
@@ -128,14 +130,25 @@ export function live(form, redraw) {
       redraw();
     }, 400);
   };
-  // A button (load, fill, reset, clear) or a form reset changes fields without this function, so
-  // the last values no longer match what is drawn. Forget them, and the next change always redraws.
+  // A button (load, fill, reset, clear) changes fields without this function, so the last values no
+  // longer match what is drawn: forget them, and the next change always redraws. Only when the click
+  // changed a field, read before the button's own handler runs and again after: forgetting after a
+  // button that changes nothing (copy a link, copy the table) made the change event of a field just
+  // typed in redraw and announce the result again, over the button's own announcement (W12).
   const forget = () => {
     last = null;
   };
-  document.addEventListener("click", (event) => {
-    if (event.target.closest("button")) forget();
-  });
+  document.addEventListener(
+    "click",
+    (event) => {
+      if (!event.target.closest("button")) return;
+      const before = values();
+      setTimeout(() => {
+        if (values() !== before) forget();
+      }, 0);
+    },
+    true,
+  );
   form.closest("form")?.addEventListener("reset", forget);
   form.addEventListener("input", later);
   form.addEventListener("change", later);
