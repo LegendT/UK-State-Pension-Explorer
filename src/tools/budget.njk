@@ -12,7 +12,7 @@ permalink: /tools/budget/
 
   <p>Enter a household's income and spending to see what is left, or what is short. You can start from an example budget and change it.</p>
 
-  {% call m.note("Before you start", 3) %}
+  {% call m.note("Before you start", 3, "before-you-start") %}
   <ul>
     <li><strong>Your figures stay on your device.</strong> Nothing you enter is sent, stored or put in the page address. If you come back to this page, your amounts and the result are cleared. <a href="/privacy/">Privacy</a>.</li>
     <li><strong>This is a budget, not a decision about benefits.</strong> The tool does not work out tax or any benefit.</li>
@@ -23,7 +23,7 @@ permalink: /tools/budget/
 
 
   <div class="no-js-only">
-    {% call m.note("The budget form needs JavaScript", 3) %}
+    {% call m.note("The budget form needs JavaScript", 3, "the-budget-form-needs-javascript") %}
     <p>The form is not available, because JavaScript is off or did not load. The example budgets are set out in full under <a href="#example-budgets">The example budgets</a>.</p>
     {% endcall %}
   </div>
@@ -118,7 +118,7 @@ permalink: /tools/budget/
   <p class="visually-hidden" role="status" id="budget-status"></p>
 
   <div class="result js-only" id="budget-result">
-    <h3>No result yet</h3>
+    <h3 id="budget-result-heading">No result yet</h3>
     <p>Enter an amount and the result follows the form.</p>
   </div>
 
@@ -131,7 +131,7 @@ permalink: /tools/budget/
     <summary>{{ preset.label }}</summary>
     <div class="scroll-x" tabindex="0" role="region">
     <table>
-      <caption>{{ preset.label }}: weekly budget, {{ preset.price_date }} prices</caption>
+      <caption id="table-budget-{{ preset.id }}">{{ preset.label }}: weekly budget, {{ preset.price_date }} prices</caption>
       <thead><tr><th scope="col">Category</th><th scope="col" class="num">A week</th></tr></thead>
       <tbody>
         {%- for category in budgets.categories %}{% if preset.pence[category.id] %}
@@ -155,7 +155,7 @@ permalink: /tools/budget/
   <p>We have no example for an owner at a minimum standard, for a household in London, or for a household with disability or care costs. The research we found does not publish them in a form we could check. We have not adapted a renter's budget by taking out the rent, because an owner has repair and insurance costs a renter does not. We have not updated any budget for inflation. Each example is as its source published it, at the price date shown.</p>
   {% endcall %}
 
-  <h3>How the tool calculates</h3>
+  <h3 id="how-the-tool-calculates">How the tool calculates</h3>
   <ul>
     <li>Every amount is turned into a yearly amount: a week × 52, 4 weeks × 13, a month × 12.</li>
     <li>Balance = income before tax − the tax you entered − spending.</li>

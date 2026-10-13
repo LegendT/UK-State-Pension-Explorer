@@ -205,27 +205,26 @@ export default function (eleventyConfig) {
   });
 
   // A scrolling table region with no name is named by its table's caption, so the two cannot differ.
+  // The caption's id is typed in the template (W29): a caption without one stops the build.
   eleventyConfig.addTransform("tableRegions", function (content) {
     if (!(this.page.outputPath || "").endsWith(".html")) return content;
-    let n = 0;
-    return content.replace(/<div class="scroll-x" tabindex="0" role="region">(\s*<table[^>]*>\s*)<caption>/g, (whole, table) => {
-      const id = `table-caption-${++n}`;
+    if (/<caption\b(?![^>]*\sid=)/.test(content)) throw new Error(`A table caption has no id (${this.page.inputPath})`);
+    return content.replace(/<div class="scroll-x" tabindex="0" role="region">(\s*<table[^>]*>\s*)<caption id="([^"]+)">/g, (whole, table, id) => {
       return `<div class="scroll-x" tabindex="0" role="region" aria-labelledby="${id}">${table}<caption id="${id}">`;
     });
   });
 
-  // Every h3 without an id gets one taken from its words, so a reader can link to it.
+  // Every h2 and h3 carries an id typed in the template, so an address does not change when a heading
+  // is reworded (W29, from R16 of the readability review). Until 13 October 2026 an h3 without one was
+  // given an id made from its words at build time. A page with two elements of one id also stops.
   eleventyConfig.addTransform("anchors", function (content) {
     if (!(this.page.outputPath || "").endsWith(".html")) return content;
-    const used = new Set([...content.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]));
-    return content.replace(/<h3>([\s\S]*?)<\/h3>/g, (whole, inner) => {
-      const base = inner.replace(/<[^>]+>/g, "").replace(/&[a-z0-9#]+;/gi, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").slice(0, 60).replace(/^-|-$/g, "");
-      if (!base) return whole;
-      let id = base;
-      for (let n = 2; used.has(id); n++) id = `${base}-${n}`;
-      used.add(id);
-      return `<h3 id="${id}">${inner}</h3>`;
-    });
+    const bare = [...content.matchAll(/<h[23]\b[^>]*>[^<]*/g)].find((m) => !/\sid="/.test(m[0]));
+    if (bare) throw new Error(`A heading has no id: ${bare[0]} (${this.page.inputPath})`);
+    const ids = [...content.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]);
+    const twice = ids.filter((id, i) => ids.indexOf(id) !== i);
+    if (twice.length) throw new Error(`An id is used twice: ${[...new Set(twice)].join(", ")} (${this.page.inputPath})`);
+    return content;
   });
 
   // A page's one name: its label in the reform section list, else in the main navigation, else its

@@ -8,7 +8,7 @@ permalink: /accessibility/
 <p class="lede">This site aims to meet the Web Content Accessibility Guidelines (WCAG) 2.2 at Level AA on every page and in every calculator. {% if a11y.status != "complete" %}The assessment is not complete, so we do not yet claim that it does.{% endif %}</p>
 
 {% if a11y.status != "complete" %}
-{% call m.note("Status: assessment not complete", 2) %}
+{% call m.note("Status: assessment not complete", 2, "status-assessment-not-complete") %}
 <p>{% if not site.production %}This is a preview. {% endif %}An AI assistant has run automated checks and some scripted checks. The tests that need a person, and are not yet done, are listed under <a href="#not-tested">What has not been tested</a>. Automated checks alone cannot show that a site meets the guidelines. We will not describe the site as meeting WCAG 2.2 AA until every check below is done and every failure is fixed.</p>
 {% endcall %}
 {% endif %}
@@ -72,7 +72,7 @@ permalink: /accessibility/
 <p>The link opens a new issue on GitHub, the website that holds this site's source files. It is the only way to report a problem: there is no email address. You need a GitHub account to send a report. It is free, but it is still a barrier, and it is a known limit of this site.</p>
 {%- endif %}
 {% else %}
-{% call m.unavailable("a way to report a problem", 3) %}
+{% call m.unavailable("a way to report a problem", 3, "not-available-a-way-to-report-a-problem") %}
 <p>The route for reporting a problem has not been set up. This is one of the decisions to make before the site is published. The site will not be published without it.</p>
 {% endcall %}
 {% endif %}

@@ -25,12 +25,12 @@ permalink: /sources-and-method/
 <h2 id="review-status">What has and has not been checked</h2>
 
 {% if not site.production %}
-{% call m.note("This is a preview", 3) %}
+{% call m.note("This is a preview", 3, "this-is-a-preview") %}
 <p>The site has not been published. The checks below are the only ones made so far.</p>
 {% endcall %}
 {% endif %}
 
-<h3>Checked</h3>
+<h3 id="checked">Checked</h3>
 <ul>
   <li>Each figure and quotation was taken from the source named beside it, on the date shown. The reading was done with an AI assistant, which opened the source and copied the figure or passage.</li>
   <li>The two headline rates were checked a second time, directly against GOV.UK.</li>
@@ -38,7 +38,7 @@ permalink: /sources-and-method/
   <li>Every increase in the published rates from 2011/12, and in the new State Pension from 2017/18, was tested against the rate before it, the increase applied, and rounding to the nearest 5p.</li>
 </ul>
 
-<h3>Not checked</h3>
+<h3 id="not-checked">Not checked</h3>
 <ul>
   <li>{% if site.reviewerName %}The content was reviewed by {{ site.reviewerName }} on {{ site.reviewDate | timeTag | safe }}.{% else %}<strong>No person has yet reviewed the content.</strong> A check by the same assistant that wrote a page is not an independent review.{% endif %}</li>
   <li>Some sources refused automated reading, including the House of Commons Library and Hansard. Nothing on this site is quoted from them.</li>
@@ -82,7 +82,7 @@ permalink: /sources-and-method/
 
 <h2 id="models">How the calculators work, and their limits</h2>
 
-<h3>What all four have in common</h3>
+<h3 id="what-all-four-have-in-common">What all four have in common</h3>
 <ul>
   <li>They work in your browser. The rule comparison and the history explorer put their settings in the page address, so a copied link shows the same result. Nothing else you enter is sent or stored. <a href="/privacy/#tools">Privacy</a>.</li>
   <li>Money is held in whole pence and percentages in tenths of a per cent, so no rounding happens except where the method says.</li>
@@ -91,10 +91,10 @@ permalink: /sources-and-method/
   <li>None works out tax, Pension Credit or any other benefit.</li>
 </ul>
 
-<h3>The five rules</h3>
+<h3 id="the-five-rules">The five rules</h3>
 {% call m.scrollTable() %}
 <table>
-  <caption>The increase each rule applies</caption>
+  <caption id="table-rule-increases">The increase each rule applies</caption>
   <thead><tr><th scope="col">Rule</th><th scope="col">Increase applied</th></tr></thead>
   <tbody>
     <tr><th scope="row">Triple lock</th><td>The highest of prices, earnings and 2.5%</td></tr>
@@ -114,7 +114,7 @@ permalink: /sources-and-method/
   <dt>Timing</dt> <dd>The rule comparison does not model the delay between the figures and the April increase. The history explorer uses the figures recorded for each decision.</dd>
 </dl>
 
-<h3>What the calculators leave out</h3>
+<h3 id="what-the-calculators-leave-out">What the calculators leave out</h3>
 <ul>
   <li>A freeze, and a smoothed earnings link. <a href="/reform-options/#smoothed">Why the smoothed link is not in the calculator</a>.</li>
   <li>Any estimate of national cost or saving.</li>
@@ -122,7 +122,7 @@ permalink: /sources-and-method/
   <li>Probabilities. The scenarios are illustrations.</li>
 </ul>
 
-<h3>How the calculators were tested</h3>
+<h3 id="how-the-calculators-were-tested">How the calculators were tested</h3>
 <p>The expected results were worked out in a separate program that uses decimal arithmetic, and by hand, before being compared with the calculators. The tests cover ties, zero, negative figures, an exact half in rounding, each of the five rules, the cash floor on and off, each way of entering a budget, and the exceptional years in the history. A separate method of arithmetic is a check on the code. It is not a review by another person.</p>
 
 <h2 id="ai">Use of AI</h2>
@@ -136,14 +136,14 @@ permalink: /sources-and-method/
 {% if site.ownerName %}
 <p>This site is published by {{ site.ownerName }}. It is an independent educational project. It is not part of the government and is not an official statistics producer.</p>
 {% else %}
-{% call m.unavailable("the name of the publisher", 3) %}
+{% call m.unavailable("the name of the publisher", 3, "not-available-the-name-of-the-publisher") %}
 <p>The owner of this site has not yet been named here. This is one of the decisions to make before the site is published. The site is an independent educational project. It is not part of the government and is not an official statistics producer.</p>
 {% endcall %}
 {% endif %}
 
 <h2 id="corrections">Corrections</h2>
 
-<h3>Report an error</h3>
+<h3 id="report-an-error">Report an error</h3>
 {% if site.correctionUrl %}
 <p>If you think a figure or a statement is wrong, <a href="{{ site.correctionUrl }}">tell us which one and what you think it should be</a>.</p>
 {%- if site.correctionUrl.startsWith("https://github.com/") %}
@@ -155,7 +155,7 @@ permalink: /sources-and-method/
 {% endcall %}
 {% endif %}
 
-<h3>How corrections are handled</h3>
+<h3 id="how-corrections-are-handled">How corrections are handled</h3>
 <ol>
   <li>We make a correction first if it changes what a reader would conclude.</li>
   <li>We correct the figure or statement in the central register, so every page that uses it changes together.</li>
@@ -163,7 +163,7 @@ permalink: /sources-and-method/
   <li>If a claim can no longer be supported and cannot be corrected at once, we remove it or mark it as withdrawn.</li>
 </ol>
 
-<h3>Log</h3>
+<h3 id="log">Log</h3>
 <p>The log keeps three kinds of change apart.</p>
 <dl>
   <dt>Errors made by this site</dt>
@@ -188,7 +188,7 @@ permalink: /sources-and-method/
   <summary>Show the register of figures</summary>
   {% call m.scrollTable() %}
   <table>
-    <caption>Register of figures</caption>
+    <caption id="table-register-figures">Register of figures</caption>
     <thead><tr><th scope="col">Figure</th><th scope="col" class="num">Value</th><th scope="col">Period</th><th scope="col">Kind</th><th scope="col">First caveat</th><th scope="col">Where</th><th scope="col">Source</th><th scope="col">Checked</th></tr></thead>
     <tbody>
       {%- for id, record in figures %}
@@ -206,7 +206,7 @@ permalink: /sources-and-method/
   <summary>Show the register of claims</summary>
   {% call m.scrollTable() %}
   <table>
-    <caption>Register of claims</caption>
+    <caption id="table-register-claims">Register of claims</caption>
     <thead><tr><th scope="col">Statement</th><th scope="col">Kind</th><th scope="col">What the source says</th><th scope="col">Source</th><th scope="col">Notes</th></tr></thead>
     <tbody>
       {%- for id, record in claims %}
@@ -224,7 +224,7 @@ permalink: /sources-and-method/
   <summary>Show the register of sources</summary>
   {% call m.scrollTable() %}
   <table>
-    <caption>Register of sources</caption>
+    <caption id="table-register-sources">Register of sources</caption>
     <thead><tr><th scope="col">Source</th><th scope="col">Publisher</th><th scope="col">Published</th><th scope="col">Checked</th><th scope="col">Status</th><th scope="col">Notes</th></tr></thead>
     <tbody>
       {%- for id, s in sources %}

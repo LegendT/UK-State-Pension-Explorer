@@ -178,7 +178,7 @@ function update(mode) {
     }
     stale = false;
     lastResult = "";
-    result.innerHTML = `<h3>No result</h3><p>Correct the amounts marked with an error.</p>`;
+    result.innerHTML = `<h3 id="budget-result-heading">No result</h3><p>Correct the amounts marked with an error.</p>`;
     glance.innerHTML = `<p>No result. Correct the amounts marked with an error.</p>`;
     if (!silent) announce(status, "There is a problem with the amounts entered. No result is shown.");
     return;

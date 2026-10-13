@@ -106,7 +106,7 @@ function update(message, mode) {
       return;
     }
     hasResult = false;
-    result.innerHTML = `<div class="unavailable" role="note"><h3>Not available: a result</h3><p>Correct the figures marked with an error.</p></div>`;
+    result.innerHTML = `<div class="unavailable" role="note"><h3 id="compare-result-heading">Not available: a result</h3><p>Correct the figures marked with an error.</p></div>`;
     summary.innerHTML = `<p>No result. Correct the figures marked with an error.</p>`;
     if (mode !== "load") announce(status, "There is a problem with the figures entered. No result is shown.");
     return;

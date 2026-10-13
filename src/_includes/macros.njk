@@ -63,24 +63,25 @@
 {#- A figure shown as a card: label, value, plain meaning, source. -#}
 {%- macro stat(f, what, level, group) -%}
 <article class="stat">
-  <h{{ level or 3 }}>{{ f.label }}</h{{ level or 3 }}>
+  <h{{ level or 3 }} id="card-{{ f.id }}">{{ f.label }}</h{{ level or 3 }}>
   <p class="value">{{ f.shown }}</p>
   {%- if what %}<p class="what">{{ what }}</p>{% endif %}
   {{ sourceNote(f, group) }}
 </article>
 {%- endmacro -%}
 
-{%- macro note(heading, level) -%}
+{#- id: typed in the template, so the address of a note does not change with its words (W29). -#}
+{%- macro note(heading, level, id) -%}
 <div class="note" role="note">
   {#- Headings come from the templates, never from a reader. One carries a time element. -#}
-  <h{{ level or 3 }}>{{ heading | safe }}</h{{ level or 3 }}>
+  <h{{ level or 3 }}{% if id %} id="{{ id }}"{% endif %}>{{ heading | safe }}</h{{ level or 3 }}>
   {{ caller() }}
 </div>
 {%- endmacro -%}
 
-{%- macro unavailable(heading, level) -%}
+{%- macro unavailable(heading, level, id) -%}
 <div class="unavailable" role="note">
-  <h{{ level or 3 }}>Not available: {{ heading }}</h{{ level or 3 }}>
+  <h{{ level or 3 }}{% if id %} id="{{ id }}"{% endif %}>Not available: {{ heading }}</h{{ level or 3 }}>
   {{ caller() }}
 </div>
 {%- endmacro -%}
@@ -173,9 +174,9 @@
 {%- macro dataTable(id, numeric) -%}
 {%- set t = tables[id] -%}
 {%- set s = (t.source_id | sourceRecord) if t.source_id else null -%}
-<div class="scroll-x" tabindex="0" role="region">
+<div class="scroll-x" tabindex="0" role="region" aria-labelledby="table-{{ id }}">
 <table>
-  <caption>{{ t.caption }}</caption>
+  <caption id="table-{{ id }}">{{ t.caption }}</caption>
   <thead><tr>{% for col in t.columns %}<th scope="col"{% if t.align[loop.index0] == "r" %} class="num"{% endif %}>{{ col }}</th>{% endfor %}</tr></thead>
   <tbody>
     {%- for row in t.rows %}

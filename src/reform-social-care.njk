@@ -30,7 +30,7 @@ permalink: /reform-options/social-care/
   ["care-not-assume", "What should not be assumed"]
 ], true) }}
 
-{% call m.note("The position on " ~ (news.as_of | timeTag), 2) %}
+{% call m.note("The position on " ~ (news.as_of | timeTag), 2, "position-now") %}
 <p>This page was last checked on {{ news.as_of | timeTag | safe }}. The plan is an announcement. It is not law.</p>
 <p>{{ ("no-rule-2030-detail" | claim).statement }} {{ m.c("no-rule-2030-detail") }} Treat this page as a dated record. It does not yet cover every statement published since {{ ("ifs-new-tl-comment-2026" | sourceRecord).published_date | timeTag | safe }}.</p>
 {% endcall %}
@@ -127,7 +127,7 @@ permalink: /reform-options/social-care/
 
 <p>The commission on adult social care is for England.</p>
 
-{% call m.note("Why this matters: the two policies cannot yet be treated as covering the same people", 3) %}
+{% call m.note("Why this matters: the two policies cannot yet be treated as covering the same people", 3, "why-this-matters-the-two-policies-cannot-yet-be-treated-as-c") %}
 <p>In our reading, the pension change would affect pensioners in all four nations, because the State Pension is paid across the UK. Northern Ireland sets its rates through its own orders, which we did not read.</p>
 <p>{{ ("no-ncs-nations" | claim).statement }} {{ m.c("no-ncs-nations") }} Scotland already provides free personal care. <a href="#care-now">Social care now, nation by nation</a>. Until the government says how each nation is treated, the two policies cannot be treated as covering the same people.</p>
 {% endcall %}
@@ -136,23 +136,23 @@ permalink: /reform-options/social-care/
 
 <p>Each nation runs its own system. England means-tests care with no lifetime limit on what a person pays, Scotland provides free personal care to people assessed as needing it, Wales caps the charge for care at home, and Northern Ireland means-tests care home fees.</p>
 
-<h3>England</h3>
+<h3 id="england">England</h3>
 <p>Care is means-tested. A person with capital above {{ m.f("care-eng-upper-limit") }} pays the full cost. Below {{ m.f("care-eng-lower-limit") }}, capital is ignored. There is no limit on what a person can pay over a lifetime.</p>
 {{ m.sourceNote("care-eng-upper-limit" | figure) }}
 
-<h3>Scotland</h3>
+<h3 id="scotland">Scotland</h3>
 <p>Personal and nursing care are free for people assessed as needing them. For a person in a care home who pays their own fees, the payments are {{ m.f("care-scot-personal") }} a week for personal care and {{ m.f("care-scot-nursing") }} for nursing care. They do not cover accommodation.</p>
 {{ m.sourceNote("care-scot-personal" | figure) }}
 
-<h3>Wales</h3>
+<h3 id="wales">Wales</h3>
 <p>The most a person can be charged for care at home is {{ m.f("care-wales-max-charge") }} a week. For residential care the capital limit is {{ m.f("care-wales-residential-limit") }}. For care at home a different figure applies, {{ m.f("care-wales-home-limit") }}.</p>
 {{ m.sourceNote("care-wales-residential-limit" | figure) }}
 
-<h3>Northern Ireland</h3>
+<h3 id="northern-ireland">Northern Ireland</h3>
 <p>Care home fees are means-tested, with an upper capital limit of {{ m.f("care-ni-upper-limit") }}.</p>
 {{ m.sourceNote("care-ni-upper-limit" | figure) }}
 
-<h3>Cash benefits for care needs</h3>
+<h3 id="cash-benefits-for-care-needs">Cash benefits for care needs</h3>
 <p>Attendance Allowance is a cash benefit from the UK government, paid in England and Wales. It is not a care service and is not means-tested. {{ m.c("aa-scotland") }}</p>
 
 <h2 id="care-scale">The sums involved</h2>
@@ -173,7 +173,7 @@ permalink: /reform-options/social-care/
 <h3 id="scale-reform-cost">Estimated extra cost of care reform in England</h3>
 {% call m.scrollTable() %}
 <table>
-  <caption>Estimated extra yearly cost of three models of care reform in England, 2023/24 prices</caption>
+  <caption id="table-care-reform-cost">Estimated extra yearly cost of three models of care reform in England, 2023/24 prices</caption>
   <thead><tr><th scope="col">Model</th><th scope="col" class="num">Extra cost a year</th><th scope="col">Year</th></tr></thead>
   <tbody>
     {%- for id, model in [["care-cost-cap","A cap on lifetime care costs, set at " ~ ("care-cap-level" | fig)],["care-cost-free-personal","Free personal care for people aged 65 and over"],["care-cost-universal","Universal care, free when used"]] %}
@@ -190,7 +190,7 @@ permalink: /reform-options/social-care/
 <p>The government estimates a saving of {{ m.f("saving-rule-2030-late-2030s") }} in {{ ("saving-rule-2030-late-2030s" | figure).period_label }} and {{ m.f("saving-rule-2030-2050") }} in {{ ("saving-rule-2030-2050" | figure).period_label }}, in cash. {{ ("ifs-savings-small-early" | claim).statement }} The estimates and their bases are in <a href="/reform-options/costs/#saving-2030">The rule announced for April 2030</a>.</p>
 {{ m.sourceNote("saving-rule-2030-late-2030s" | figure) }}
 
-{% call m.note("What the scale shows, and what it does not", 3) %}
+{% call m.note("What the scale shows, and what it does not", 3, "what-the-scale-shows-and-what-it-does-not") %}
 <p>The saving starts in April 2030 and builds up slowly. The care service is due to start in the next Parliament, in phases. So the early years of the service are the years when the saving is smallest. The government says the service will grow as the saving grows, and will not be paid for by borrowing. It has not said what the service costs in each year, or what pays for it if the saving falls short.</p>
 <p>The government's figure for 2039 to 2040 and the Health Foundation's figures are for different years. The Health Foundation's are in the prices of 2023/24 and cover England. The government's is in cash, or in the prices of 2025 to 2026, and covers Great Britain. So the two cannot be compared closely.</p>
 {% endcall %}

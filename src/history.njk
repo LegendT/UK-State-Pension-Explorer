@@ -34,7 +34,7 @@ permalink: /history/
 
 {% call m.scrollTable() %}
 <table>
-  <caption>Full weekly rates and the increase applied each year, as published</caption>
+  <caption id="table-rates-decisions">Full weekly rates and the increase applied each year, as published</caption>
   <thead>
     <tr><th scope="col">Tax year</th><th scope="col" class="num">Basic State Pension</th><th scope="col" class="num">New State Pension</th><th scope="col" class="num">Increase applied</th><th scope="col" class="num">Prices</th><th scope="col" class="num">Earnings, at the time</th><th scope="col">Took effect</th><th scope="col">Decided by</th></tr>
   </thead>
@@ -81,7 +81,7 @@ In {{ changed }} of the {{ counted }} years from 2011/12, the figure published n
 
 {% call m.scrollTable() %}
 <table>
-  <caption>Earnings growth: the figure at the time of each decision, and the figure published now</caption>
+  <caption id="table-earnings-revisions">Earnings growth: the figure at the time of each decision, and the figure published now</caption>
   <thead><tr><th scope="col">For tax year</th><th scope="col" class="num">At the time of the decision</th><th scope="col" class="num">Published now</th></tr></thead>
   <tbody>
     {%- for year in history.years %}{% if year.earnings_tenths !== null %}

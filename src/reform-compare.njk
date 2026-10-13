@@ -23,7 +23,7 @@ permalink: /reform-options/compare/
 
   <p>This tool applies five rules to the same starting amount and the same yearly figures for prices and earnings. It shows where the rules differ and where they do not. One of the five is the rule announced for April 2030. The government has described it in outline only, so the tool makes three assumptions about it, and one more to keep the tool simple. <a href="#rule-2030-assumptions">The assumptions</a>.</p>
 
-  {% call m.note("What this tool does and does not show", 3) %}
+  {% call m.note("What this tool does and does not show", 3, "what-this-tool-does-and-does-not-show") %}
   <ul>
     <li>It models <strong>one full rate</strong>, weekly and <strong>before tax</strong>. It is not your entitlement: for that, <a href="https://www.gov.uk/check-state-pension">check your State Pension forecast</a> on GOV.UK.</li>
     <li>The yearly figures are <strong>illustrations</strong>. They are not forecasts and have no probability.</li>
@@ -34,7 +34,7 @@ permalink: /reform-options/compare/
   {% endcall %}
 
   <div class="no-js-only">
-    {% call m.note("The calculator needs JavaScript", 3) %}
+    {% call m.note("The calculator needs JavaScript", 3, "the-calculator-needs-javascript") %}
     <p>The form is not available, because JavaScript is off or did not load. The result below shows the first scenario.</p>
     {% endcall %}
   </div>
@@ -86,7 +86,7 @@ permalink: /reform-options/compare/
       <p>Per cent, from -10 to 25, with one decimal place. All five rules use the same figures.</p>
       <div class="scroll-x" tabindex="0" role="region">
         <table>
-          <caption>Rise in prices and earnings used for each year</caption>
+          <caption id="compare-edit-caption">Rise in prices and earnings used for each year</caption>
           <thead><tr><th scope="col">Tax year</th><th scope="col">Rise in prices (%)</th><th scope="col">Rise in earnings (%)</th></tr></thead>
           <tbody id="compare-rows"></tbody>
         </table>
@@ -117,7 +117,7 @@ permalink: /reform-options/compare/
     {{ { startPence: ("nsp-full-weekly" | figPence), path: scenario.path.slice(0, scenarios.default_years), cashFloor: true, firstYear: 2027, measure: "cash", scenarioLabel: (scenario.label.charAt(0) | lower) ~ scenario.label.slice(1), sourceLine: compareSources.start ~ " " ~ scenarioSource(scenario) } | renderComparison | safe }}
   </div>
 
-  <h3>The scenarios</h3>
+  <h3 id="the-scenarios">The scenarios</h3>
   <dl>
     {%- for item in scenarios.scenarios %}
     <dt>{{ item.label }}</dt>
@@ -126,7 +126,7 @@ permalink: /reform-options/compare/
   </dl>
   <p>The scenarios were chosen to show different behaviour, including scenarios where several rules give the same answer. A result changes with the starting amount, the number of years and the figures. No single scenario shows what will happen.</p>
 
-  <h3>How the tool calculates</h3>
+  <h3 id="how-the-tool-calculates">How the tool calculates</h3>
   <dl>
     <dt>Timing</dt> <dd>The starting amount is the rate in the year before the first year. Each year has one figure for prices and one for earnings, and they set that year's increase.</dd>
     <dt>A simplification</dt> <dd>In practice an April increase uses figures from the year before. The tool does not model that delay. It treats each year's figure as the change in prices, or earnings, between one year and the next.</dd>

@@ -212,12 +212,12 @@ export function renderComparison(options) {
   );
 
   return (
-    `<h3>Result: ${scenarioLabel}, starting from ${money(startPence)} a week</h3>` +
+    `<h3 id="compare-result-heading">Result: ${scenarioLabel}, starting from ${money(startPence)} a week</h3>` +
     `<p><span class="status">Hypothetical</span> An illustration using the figures shown. It is not a forecast and has no probability. ` +
     `The cash floor is ${cashFloor ? "on, so no rule can lower the amount in pounds" : "off, so a rule can lower the amount in pounds"}.</p>` +
     `<p>The rule announced for April 2030 is our reading of it, on four assumptions. It is not what the government's rule will pay. <a href="#rule-2030-assumptions">The assumptions</a>.</p>` +
     summary(result, labels) +
-    `<figure class="chart"><figcaption><h4>${message(result, measure, years)}</h4><p>Illustration, not a forecast. ${info.label}: ${info.unit}</p></figcaption><div class="scroll-x" tabindex="0" role="region" aria-label="Chart: ${info.label}">${chart}</div></figure>` +
+    `<figure class="chart" id="compare-chart"><figcaption><h4>${message(result, measure, years)}</h4><p>Illustration, not a forecast. ${info.label}: ${info.unit}</p></figcaption><div class="scroll-x" tabindex="0" role="region" aria-label="Chart: ${info.label}">${chart}</div></figure>` +
     source +
     values +
     difference +

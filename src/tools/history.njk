@@ -17,7 +17,7 @@ permalink: /tools/history/
   <p>Choose a pension, a range of years and how to show the amounts. You can add a calculation of what another rule would have produced from the first year you choose.</p>
 
   <div class="no-js-only">
-    {% call m.note("The explorer needs JavaScript", 3) %}
+    {% call m.note("The explorer needs JavaScript", 3, "the-explorer-needs-javascript") %}
     <p>The form is not available, because JavaScript is off or did not load. The chart and table below show the basic State Pension in cash. The full record is in the table and the download on <a href="/history/#decisions">the history page</a>.</p>
     {% endcall %}
   </div>
@@ -85,7 +85,7 @@ permalink: /tools/history/
     {{ { years: history.years, series: "basic", from: first.tax_year, to: latest.tax_year, measure: "cash", rule: "", sources: historySources } | renderHistory | safe }}
   </div>
 
-  <h3>How the measures are worked out</h3>
+  <h3 id="how-the-measures-are-worked-out">How the measures are worked out</h3>
   <dl>
     <dt>Cash</dt> <dd>The published rate.</dd>
     <dt>Buying power</dt> <dd>The published rate × the price index for the last year shown ÷ the price index for that year. The index is the Consumer Prices Index level for the September before each rate took effect.</dd>

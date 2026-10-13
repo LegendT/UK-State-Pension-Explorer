@@ -26,11 +26,11 @@ permalink: /reform-options/
   ["evidence-and-judgement", "What evidence can settle, and what it cannot"]
 ], true) }}
 
-{% call m.note("How to read these pages", 2) %}
+{% call m.note("How to read these pages", 2, "how-to-read-these-pages") %}
 <p>These pages ask the same questions of every option, including keeping the present rule. Where the evidence is strong, they say so. Where a claim is a recommendation or a value judgement, they say whose it is. They recommend no option.</p>
 {% endcall %}
 
-{% call m.note("A change was announced on " ~ (("pm-care-2026-09-29" | sourceRecord).published_date | timeTag), 2) %}
+{% call m.note("A change was announced on " ~ (("pm-care-2026-09-29" | sourceRecord).published_date | timeTag), 2, "change-announced") %}
 <p>{{ ("tl-kept-to-2030" | claim).statement }} {{ ("rule-2030" | claim).statement }} {{ m.c("rule-2030") }}</p>
 <p>{{ ("ncs-savings-used" | claim).statement }} {{ m.c("ncs-savings-used") }}</p>
 <p>This is an announcement. It is not law. {{ ("rule-2030-legislate" | claim).statement }} The options on this page are still the ones to compare, and <a href="#opt-2030">the announced rule</a> is now one of them. <a href="/reform-options/social-care/">Pensions and social care</a> sets out the plan and what it leaves open.</p>
@@ -164,19 +164,19 @@ permalink: /reform-options/
 
 <h2 id="evidence-and-judgement">What evidence can settle, and what it cannot</h2>
 
-<h3>Evidence can establish</h3>
+<h3 id="evidence-can-establish">Evidence can establish</h3>
 <ul>
   <li>What each rule does to the rate under given conditions.</li>
   <li>Roughly what the bill is, and that estimates of cost and saving depend on the comparison chosen.</li>
   <li>That savings from a change start small and grow.</li>
 </ul>
 
-<h3>Evidence cannot establish</h3>
+<h3 id="evidence-cannot-establish">Evidence cannot establish</h3>
 <ul>
   <li>What prices and earnings will do, and so what any rule will cost.</li>
 </ul>
 
-<h3>Judgements about fairness</h3>
+<h3 id="judgements-about-fairness">Judgements about fairness</h3>
 <ul>
   <li>What the State Pension should be worth compared with pay.</li>
   <li>How to weigh today's pensioners against today's workers, who are tomorrow's pensioners.</li>

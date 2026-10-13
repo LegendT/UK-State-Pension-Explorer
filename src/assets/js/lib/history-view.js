@@ -199,9 +199,9 @@ export function renderHistory(options) {
     : "";
 
   return (
-    `<h3>${name}, ${from} to ${to}</h3>` +
+    `<h3 id="history-result-heading">${name}, ${from} to ${to}</h3>` +
     `<p>Full rate, before tax.</p>` +
-    `<figure class="chart"><figcaption><h4>${message}</h4><p>${HISTORY_MEASURES[measure]}</p></figcaption><div class="scroll-x" tabindex="0" role="region" aria-label="Chart: ${name}, ${from} to ${to}">${chart}</div>${markList}</figure>` +
+    `<figure class="chart" id="history-chart"><figcaption><h4>${message}</h4><p>${HISTORY_MEASURES[measure]}</p></figcaption><div class="scroll-x" tabindex="0" role="region" aria-label="Chart: ${name}, ${from} to ${to}">${chart}</div>${markList}</figure>` +
     sourceLine(sources, measure, rule) +
     comparison +
     `<div class="scroll-x" tabindex="0" role="region" aria-labelledby="history-table-caption"><table>` +

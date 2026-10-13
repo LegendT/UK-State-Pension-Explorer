@@ -42,7 +42,7 @@ function load(quiet) {
     loaded = null;
     // Nothing to keep if a figure is then half typed.
     hasResult = false;
-    result.innerHTML = `<div class="unavailable" role="note"><h3>Not available: an increase for that choice</h3><p>The new State Pension began in 2016/17. Its first full rate was set, not increased from an earlier rate. Choose a later year, or choose the basic State Pension.</p></div>`;
+    result.innerHTML = `<div class="unavailable" role="note"><h3 id="mechanism-result-heading">Not available: an increase for that choice</h3><p>The new State Pension began in 2016/17. Its first full rate was set, not increased from an earlier rate. Choose a later year, or choose the basic State Pension.</p></div>`;
     glance.innerHTML = `<p>No increase to show for that choice.</p>`;
     mode.textContent = "Past decision";
     announce(status, "No increase to show for that choice.");
@@ -62,7 +62,7 @@ function showPast(quiet) {
   const to = record[`${loaded.series}_pence`];
   mode.textContent = `Past decision: ${record.tax_year}, as published`;
   result.innerHTML =
-    `<h3>${escapeHtml(SERIES_LABELS[loaded.series])}, ${escapeHtml(record.tax_year)}: what was decided</h3>` +
+    `<h3 id="mechanism-result-heading">${escapeHtml(SERIES_LABELS[loaded.series])}, ${escapeHtml(record.tax_year)}: what was decided</h3>` +
     `<p class="headline">${percent(record.applied_tenths)} increase, decided by ${escapeHtml(MEASURE_NAMES[record.measure])}</p>` +
     `<dl>` +
     row("Prices, year to the September before", percent(record.prices_tenths)) +
@@ -104,7 +104,7 @@ function showOwn(typing) {
     hasResult = false;
     mode.textContent = "Hypothetical: your own figures";
     announce(status, "There is a problem with the figures entered. No result is shown.");
-    result.innerHTML = `<h3>No result</h3><p>Correct the figures marked with an error.</p>`;
+    result.innerHTML = `<h3 id="mechanism-result-heading">No result</h3><p>Correct the figures marked with an error.</p>`;
     glance.innerHTML = `<p>No result. Correct the figures marked with an error.</p>`;
     return;
   }
@@ -114,7 +114,7 @@ function showOwn(typing) {
   const names = out.determining.map((name) => MEASURE_LABELS[name]);
   const decided = out.determining.length > 1 ? `a tie between ${list(names)}` : names[0];
   result.innerHTML =
-    `<h3>Hypothetical result</h3>` +
+    `<h3 id="mechanism-result-heading">Hypothetical result</h3>` +
     `<p class="headline">${percent(out.tenths)} increase, decided by ${escapeHtml(decided)}</p>` +
     `<dl>` +
     row("Prices", percent(p)) +

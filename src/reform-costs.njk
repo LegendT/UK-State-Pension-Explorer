@@ -36,7 +36,7 @@ permalink: /reform-options/costs/
 
 {{ m.dataTable("sp-spending-series") }}
 
-{% call m.note("State Pension spending is not all spending on older people", 3) %}
+{% call m.note("State Pension spending is not all spending on older people", 3, "state-pension-spending-is-not-all-spending-on-older-people") %}
 <p>DWP spent {{ m.f("pensioner-benefits-2024-25") }} in 2024/25 on all benefits for pensioners, of which the State Pension was {{ m.f("sp-spend-2024-25") }}. {{ m.ref(("sp-spend-2024-25" | figure).source) }} Neither figure includes the NHS or social care.</p>
 <p>Official sources give slightly different figures for the same year. The DWP tables give {{ "sp-spend-2024-25" | fig }}, as above. The account of the National Insurance Fund gives {{ m.f("nif-state-pension-2024-25") }}, on a cash basis. {{ m.ref(("nif-state-pension-2024-25" | figure).source) }} They differ in accounting basis and coverage. This site uses the DWP tables for spending and says so each time.</p>
 {% endcall %}
@@ -83,7 +83,7 @@ permalink: /reform-options/costs/
 
 {% call m.scrollTable() %}
 <table>
-  <caption>Estimates of extra yearly spending because of the triple lock</caption>
+  <caption id="table-cost-estimates">Estimates of extra yearly spending because of the triple lock</caption>
   <thead><tr><th scope="col" class="num">Estimate</th><th scope="col">Compared with</th><th scope="col">Year measured</th><th scope="col">Before or after tax and benefit effects</th><th scope="col">Who made it</th></tr></thead>
   <tbody>
     {%- for id, against in [["tl-cost-ifs-2023","Prices or earnings since 2011"],["tl-cost-ifs-2026","Average earnings since 2011"],["tl-cost-rf-gross-2026","A smoothed earnings link since 2012, as the report describes it"],["tl-cost-rf-net-2026","A smoothed earnings link since 2012, as the report describes it"],["tl-cost-vs-earnings-2029-30","Earnings since 2012"],["tl-cost-vs-cpi-2029-30","Prices since 2012"]] %}
@@ -106,7 +106,7 @@ permalink: /reform-options/costs/
 
 {% call m.scrollTable() %}
 <table>
-  <caption>Estimates of the saving from changing the yearly increase, compared with keeping the triple lock</caption>
+  <caption id="table-saving-estimates">Estimates of the saving from changing the yearly increase, compared with keeping the triple lock</caption>
   <thead><tr><th scope="col">Change</th><th scope="col" class="num">Estimated saving</th><th scope="col">When</th><th scope="col">Basis</th><th scope="col">Who made it</th></tr></thead>
   <tbody>
     {%- for id, change, suffix in [
@@ -203,6 +203,6 @@ permalink: /reform-options/costs/
 <p>{{ ("disability-income-artefact" | claim).statement }} {{ m.c("disability-income-artefact") }}</p>
 
 {#- Level 3 on purpose. This covers the whole section on who receives what, not the subsection above it. -#}
-{% call m.unavailable("some breakdowns", 3) %}
+{% call m.unavailable("some breakdowns", 3, "not-available-some-breakdowns") %}
 <p>We did not find published figures for the incomes of pensioners who are carers, for wealth by type among people aged 65 and over, or for the number of people who would gain or lose under each reform. We have not filled these gaps with examples. Example households can show how a rule works. They cannot show how many people are affected.</p>
 {% endcall %}
