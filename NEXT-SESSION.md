@@ -10,19 +10,20 @@ Read, in this order, before doing anything:
 Do not read _archive/. Read research/ only to check a figure. docs/ux-review.md,
 docs/pre-launch-review.md and docs/ux-review-2026-10-08.md are frozen: never edit them.
 
-State on 12 October 2026, from docs/HANDOVER.md: the site is a preview for review, not
+State on 13 October 2026, from docs/HANDOVER.md: the site is a preview for review, not
 published. Launch steps 1 and 2 are done. Step 3, the owner's review of every page, was
 done on 8 October 2026. The work it led to is "Work before step 4" in
 docs/launch-dependencies.md; work for after launch is "After launch, first update" there.
 Work since the last merged pull request is on the branch launch-review, with a pull request open:
 run git status, git log main..launch-review and git log origin/launch-review..launch-review first.
 
-Next action: none until Anthony says to build. The first open row is W9, rows in table order. Nothing else is authorised.
+Next action: none until Anthony says to build. The first open row is W33, rows in table order. Nothing else is authorised.
 
-Waiting on Anthony: his look at the costs tables' right-aligned, wrapped amounts (the W20
-row, R8); W16 (he checks the changed pages once every other row is done); launch steps
-4 to 9. Everything up to W23 is pushed. W10, W24, W28, W30 and W13 are committed and not pushed;
-docs changed after the critique of 12 October 2026 stamped the tree, so /push needs a fresh critique or /push uncritiqued.
+Waiting on Anthony: his look at the costs tables' right-aligned, wrapped amounts (the W20 row, R8);
+the critique's suggestions (a) to (f) in the W25 row; W16 (he checks the changed pages once every
+other row is done); launch steps 4 to 9. Everything up to W9 is pushed to the open pull request. W25
+is committed and not pushed; the handoff check of 13 October 2026 edited docs after the critique
+stamped the tree, so /push needs a fresh critique or /push uncritiqued.
 
 Parked, do not raise: "After launch, first update", and the handover's "Known defects and limits" and "Declined".
 
@@ -32,8 +33,7 @@ full first. In this project: do not import .env into Netlify, do not push (Antho
 repository path in full, no variable, in every file path of the reader's command, and keep
 its "pass two ran on ... cost $" line word for word, or the stamp is refused. After a data
 change shown on a page, run npm run a11y too; it fails on any gradient, rgba, opacity or
-filter in main.css. After a claim is added or its passage changed, run python3 scripts/check-passages.py.
-npm run a11y:manual fails now and then on the costs page (row W35): rerun it before blaming a change.
+filter in main.css. After a claim is added or its passage changed, run python3 scripts/check-passages.py. npm run a11y:manual fails now and then on the costs page (row W35): rerun it before blaming a change.
 NEXT-SESSION.md is written by /handoff-check only.
 
 Run /handoff-check before leaving this context.
