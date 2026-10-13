@@ -20,9 +20,9 @@ run git status, git log main..launch-review and git log origin/launch-review..la
 Next action: none until Anthony says to build. The first open row is W33, rows in table order. Nothing else is authorised.
 
 Waiting on Anthony: his look at the costs tables' right-aligned, wrapped amounts (W20, R8); W16 (he
-checks the changed pages once every other row is done); launch steps 4 to 9. Everything up to W25 is
-pushed. W25's critique suggestions (a) to (f) are applied and committed, not pushed; this handoff
-check edited NEXT-SESSION.md after the stamp, so /push needs a fresh critique or /push uncritiqued.
+checks the changed pages once every other row is done); launch steps 4 to 9. W25 and its critique's
+suggestions (a) to (f) are pushed to the open pull request; git status shows anything since. Any new
+work needs the critique skill's stamp before /push, or /push uncritiqued.
 
 Parked, do not raise: "After launch, first update", and the handover's "Known defects and limits" and "Declined".
 
