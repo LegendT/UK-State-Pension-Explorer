@@ -13,7 +13,7 @@ export const HISTORY_MEASURES = {
 };
 
 const DECIDED = {
-  prices: "Prices (CPI)",
+  prices: "Prices (Consumer Prices Index)",
   earnings: "Earnings",
   floor: "The 2.5% minimum",
   rpi: "Prices (Retail Prices Index, this year only)",

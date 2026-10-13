@@ -103,7 +103,7 @@
       "index": true,
       "published": null,
       "modified": "2026-10-13",
-      "modified_note": "Changed on 8 October 2026: the savings figures name the department's model and baseline (W1). Changed on 9 October 2026: the April 2030 paragraph gives only the real-terms figures the table lacks (W18), and the caveats shown open on its figures, with the official status of their sources (W19). Changed on 12 October 2026: the wealth quarters are named as a survey estimate (W23). Spending in 2024/25, pensioners' Income Tax and the share reporting a disability are each followed by their own source's citation first (W24). Changed on 13 October 2026: outturn, the GDP deflator, a median and income after housing costs defined where first used (W25).",
+      "modified_note": "Changed on 8 October 2026: the savings figures name the department's model and baseline (W1). Changed on 9 October 2026: the April 2030 paragraph gives only the real-terms figures the table lacks (W18), and the caveats shown open on its figures, with the official status of their sources (W19). Changed on 12 October 2026: the wealth quarters are named as a survey estimate (W23). Spending in 2024/25, pensioners' Income Tax and the share reporting a disability are each followed by their own source's citation first (W24). Changed on 13 October 2026: outturn, the GDP deflator, a median and income after housing costs defined where first used, and GDP spelled out (W25).",
       "figure_cards": true
     },
     {
@@ -203,7 +203,7 @@
       "index": true,
       "published": null,
       "modified": "2026-10-13",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 13 October 2026: the Retail Prices Index named in full in the table (W25)."
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 13 October 2026: the Retail Prices Index and the Consumer Prices Index named in full in the table (W25)."
     },
     {
       "path": "/sources-and-method/",
@@ -216,8 +216,8 @@
       "canonical_path": "/sources-and-method/",
       "index": true,
       "published": null,
-      "modified": "2026-10-12",
-      "modified_note": "Changed on 8 October 2026: the figure register names the file, sheet and cell of each figure read from a spreadsheet (W4). Changed on 9 October 2026: the register of figures shows each figure's first caveat and the official status of its source (W19). Changed on 12 October 2026: the corrections section says a GitHub issue is the only route and needs an account, a known limit (W13)."
+      "modified": "2026-10-13",
+      "modified_note": "Changed on 8 October 2026: the figure register names the file, sheet and cell of each figure read from a spreadsheet (W4). Changed on 9 October 2026: the register of figures shows each figure's first caveat and the official status of its source (W19). Changed on 12 October 2026: the corrections section says a GitHub issue is the only route and needs an account, a known limit (W13). Changed on 13 October 2026: six terms added to the glossary (W25)."
     },
     {
       "path": "/accessibility/",
@@ -231,7 +231,7 @@
       "index": true,
       "published": null,
       "modified": "2026-10-13",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 12 October 2026: the report section says a GitHub issue is the only route and needs an account, a known limit (W13). Changed on 13 October 2026: VoiceOver and NVDA said to be screen readers (W25)."
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 12 October 2026: the report section says a GitHub issue is the only route and needs an account, a known limit (W13). Changed on 13 October 2026: VoiceOver and NVDA said to be screen readers, in the reason for each (W25)."
     },
     {
       "path": "/privacy/",

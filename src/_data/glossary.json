@@ -52,6 +52,18 @@
     "meaning": "The weekly amount for a person with the National Insurance record that the rules require. Many people receive less and some receive more."
   },
   {
+    "term": "GDP deflator",
+    "meaning": "A measure of how prices have changed across the whole economy. It is used to put spending in different years into the same prices."
+  },
+  {
+    "term": "Gross domestic product (GDP)",
+    "meaning": "The value of what the whole UK economy produces in a year. Spending is often given as a share of it."
+  },
+  {
+    "term": "In arrears",
+    "meaning": "Paid after the period it covers. Each State Pension payment covers the weeks just gone."
+  },
+  {
     "term": "Means test",
     "meaning": "A check of income, savings or both, used to decide who receives a benefit and how much."
   },
@@ -68,6 +80,10 @@
     "meaning": "The State Pension for people who reached State Pension age on or after 6 April 2016."
   },
   {
+    "term": "Outturn",
+    "meaning": "The final figure for a year that has ended, as opposed to a forecast."
+  },
+  {
     "term": "Pension Credit",
     "meaning": "A means-tested benefit that tops up the income of people over State Pension age. It has to be claimed."
   },
@@ -82,6 +98,10 @@
   {
     "term": "Qualifying year",
     "meaning": "A tax year in which a person paid, or was credited with, enough National Insurance to count towards the State Pension."
+  },
+  {
+    "term": "Retail Prices Index (RPI)",
+    "meaning": "An older measure of how prices have changed. The State Pension increase used it as the measure of prices in 2010/11 and 2011/12. The Consumer Prices Index has been used since."
   },
   {
     "term": "Smoothed earnings link",
@@ -102,5 +122,9 @@
   {
     "term": "Uprating",
     "meaning": "The yearly increase in the rate of a pension or benefit."
+  },
+  {
+    "term": "Withdrawal rate",
+    "meaning": "How much a means-tested benefit falls for each extra pound of other income."
   }
 ]
