@@ -2,7 +2,7 @@
 
 import { historyCsv, renderHistory, renderHistorySummary } from "../lib/history-view.js";
 import { observed } from "../lib/history.js";
-import { announce, chartWidth, choose, fitChart, live, pinSummary, readJson, readSettings, updatedNote, writeSettings } from "./common.js";
+import { announce, chartWidth, choose, fitChart, live, pinSummary, readJson, readSettings, ready, updatedNote, writeSettings } from "./common.js";
 
 const data = readJson("history-data");
 const form = document.getElementById("history-form");
@@ -96,3 +96,4 @@ if (settings.has("series")) {
   choose(rule, settings.get("rule") || "");
   update("load");
 }
+ready(form);

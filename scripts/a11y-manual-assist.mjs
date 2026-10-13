@@ -1,9 +1,10 @@
 // Measurements that support the manual part of the assessment. They do not replace a person.
 // Reflow at 320 CSS px (1.4.10), text spacing (1.4.12), target size (2.5.8), heading order,
-// keyboard focus order and visible focus (2.1.1, 2.4.3, 2.4.7, 2.4.11), and no-JavaScript reading.
-// Also checks that the "On this page" list marks the section being read. Run it after changing
-// src/assets/js/contents.js, the contents macro or the .contents styles. The same goes for the
-// "Back to top" link of back-to-top.js (decision 88).
+// keyboard focus order and visible focus (2.1.1, 2.4.3, 2.4.7, 2.4.11), no-JavaScript reading, and
+// each tool page with its module running and with its module blocked (W32). Also checks that the
+// "On this page" list marks the section being read. Run it after changing src/assets/js/contents.js,
+// the contents macro or the .contents styles, the "Back to top" link of back-to-top.js (decision 88),
+// js-class.js, ready() in tools/common.js, a tool module or the .js-only styles.
 // Usage: npm run build && node scripts/a11y-manual-assist.mjs
 
 import { createServer } from "node:http";
@@ -139,6 +140,32 @@ for (const path of pages) {
   }));
   if (out.noScript.formsShown || out.noScript.noticesShown !== out.noScript.tools) problems.push(`${path} without JavaScript: ${JSON.stringify(out.noScript)}`);
   await third.close();
+
+  // A tool page in two more states (W32). With every script running, the form shows and the notice is
+  // hidden. With every script running except the tool's own module, the form stays hidden, the notice
+  // shows, and so does its sentence for a module that did not load.
+  if (out.noScript.tools) {
+    const shown = () => ({
+      formsShown: [...document.querySelectorAll("form")].filter((f) => f.offsetParent !== null).length,
+      noticesShown: [...document.querySelectorAll(".no-js-only")].filter((f) => f.offsetParent !== null).length,
+      failedShown: [...document.querySelectorAll(".if-script-failed")].filter((f) => f.offsetParent !== null).length,
+      tools: document.querySelectorAll(".tool").length,
+    });
+    const running = await browser.newPage();
+    await running.goto(base + path, { waitUntil: "networkidle0" });
+    out.moduleRunning = await running.evaluate(shown);
+    const r = out.moduleRunning;
+    if (r.formsShown !== r.tools || r.noticesShown || r.failedShown) problems.push(`${path} with its module running: ${JSON.stringify(r)}`);
+    await running.close();
+    const blocked = await browser.newPage();
+    await blocked.setRequestInterception(true);
+    blocked.on("request", (request) => (request.url().includes("/assets/js/tools/") ? request.abort() : request.continue()));
+    await blocked.goto(base + path, { waitUntil: "networkidle0" });
+    out.moduleBlocked = await blocked.evaluate(shown);
+    const b = out.moduleBlocked;
+    if (b.formsShown || b.noticesShown !== b.tools || b.failedShown !== b.tools) problems.push(`${path} with its module blocked: ${JSON.stringify(b)}`);
+    await blocked.close();
+  }
 
   // "On this page": the link for the section being read is marked while scrolling and after a jump.
   const fourth = await browser.newPage();

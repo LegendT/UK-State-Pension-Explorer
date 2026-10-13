@@ -457,9 +457,14 @@ button.secondary { color: var(--accent); background: var(--paper); }
 .result dd { margin: 0 0 var(--space-s); font-variant-numeric: tabular-nums; }
 .result .headline { font-size: 1.5rem; font-weight: 700; }
 
+/* A tool's form and summary, and a result only a script draws, show once the tool's module has run and
+   marked the tool ready: a module that fails to load leaves the notice in place, and js-class.js adds a
+   sentence to it at load (W32). */
 .js-only { display: none; }
-.js .js-only { display: revert; }
-.js .no-js-only { display: none; }
+.tool.is-ready .js-only { display: revert; }
+.tool.is-ready .no-js-only { display: none; }
+.if-script-failed { display: none; }
+.tool.load-failed .if-script-failed { display: inline; }
 
 .option-grid { display: grid; gap: var(--space-m); }
 .option { padding: var(--space-m); border: 1px solid var(--rule); border-radius: var(--radius); }

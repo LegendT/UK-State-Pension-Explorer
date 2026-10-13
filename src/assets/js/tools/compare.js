@@ -1,7 +1,7 @@
 // Tool 2: compare the replacement rules. Presentation only.
 
 import { renderComparison, renderSummary } from "../lib/compare-view.js";
-import { announce, chartWidth, choose, fitChart, escapeHtml, focusFirstError, live, markStale, pinSummary, STALE_MESSAGE, updatedNote, readAmount, readJson, readPercent, readSettings, setError, copyLink } from "./common.js";
+import { announce, chartWidth, choose, fitChart, escapeHtml, focusFirstError, live, markStale, pinSummary, STALE_MESSAGE, updatedNote, readAmount, readJson, readPercent, readSettings, ready, setError, copyLink } from "./common.js";
 
 const data = readJson("compare-data");
 const form = document.getElementById("compare-form");
@@ -212,3 +212,4 @@ if (settings.has("scenario")) {
   }
   update(undefined, "load");
 }
+ready(form);

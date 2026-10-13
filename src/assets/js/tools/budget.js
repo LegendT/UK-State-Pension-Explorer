@@ -5,7 +5,7 @@ import { PERIOD_LABELS, convert, fromWeekly } from "../lib/budget.js";
 import { renderBudget, renderBudgetSummary } from "../lib/budget-view.js";
 import { money } from "../lib/format.js";
 import { parsePence } from "../lib/uprating.js";
-import { markStale, STALE_MESSAGE, announce, live, pinSummary, readAmount, readJson, setError, updatedNote } from "./common.js";
+import { announce, live, markStale, pinSummary, readAmount, readJson, ready, setError, STALE_MESSAGE, updatedNote } from "./common.js";
 
 const data = readJson("budget-data");
 const form = document.getElementById("budget-form");
@@ -231,3 +231,4 @@ window.addEventListener("pageshow", () => {
   clearAll();
   status.textContent = "";
 });
+ready(form);

@@ -5,6 +5,12 @@ import { settingsLink } from "../lib/format.js";
 import { CHART_WIDTH } from "../lib/chart.js";
 import { parsePence, parseTenths, MIN_TENTHS, MAX_TENTHS, MIN_PENCE, MAX_PENCE } from "../lib/uprating.js";
 
+// The tool's module has run: its form, summary and result show, and the no-script notice goes (W32).
+// Called last, after the first result is drawn.
+export function ready(form) {
+  form.closest(".tool").classList.add("is-ready");
+}
+
 export function readJson(id) {
   return JSON.parse(document.getElementById(id).textContent);
 }

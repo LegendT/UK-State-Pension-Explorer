@@ -3,7 +3,7 @@
 import { mechanism, MEASURE_LABELS } from "../lib/uprating.js";
 import { SERIES_LABELS } from "../lib/history.js";
 import { money, percent, list } from "../lib/format.js";
-import { markStale, STALE_MESSAGE, announce, choose, copyLink, escapeHtml, live, pinSummary, readAmount, readJson, readPercent, readSettings, setError, updatedNote } from "./common.js";
+import { markStale, STALE_MESSAGE, announce, choose, copyLink, escapeHtml, live, pinSummary, readAmount, readJson, readPercent, readSettings, ready, setError, updatedNote } from "./common.js";
 
 const data = readJson("mechanism-data");
 const form = document.getElementById("mechanism-form");
@@ -195,3 +195,4 @@ if (settings.has("year")) {
   for (const [field, key] of [[prices, "prices"], [earnings, "earnings"], [start, "start"]]) if (settings.has(key)) field.value = settings.get(key);
   update(false, true);
 }
+ready(form);
