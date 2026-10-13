@@ -13,8 +13,8 @@
       "canonical_path": "/",
       "index": true,
       "published": null,
-      "modified": "2026-10-12",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 12 October 2026: the mean new State Pension cites its own source (W24).",
+      "modified": "2026-10-13",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 12 October 2026: the mean new State Pension cites its own source (W24). Changed on 13 October 2026: whether a person is a man or a woman decides the system only for births from 6 April 1951 to 5 April 1953 (W9).",
       "figure_cards": true
     },
     {
@@ -29,8 +29,8 @@
       "next": "/triple-lock/",
       "index": true,
       "published": null,
-      "modified": "2026-10-12",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 9 October 2026: the caveats shown open on its figures, with the official status of their sources (W19). Changed on 12 October 2026: each figure in the text is followed by its own source's citation first, and the Attendance Allowance rates sit apart from the claims on where it is paid (W24).",
+      "modified": "2026-10-13",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 9 October 2026: the caveats shown open on its figures, with the official status of their sources (W19). Changed on 12 October 2026: each figure in the text is followed by its own source's citation first, and the Attendance Allowance rates sit apart from the claims on where it is paid (W24). Changed on 13 October 2026: one table, \"What your date of birth decides\", gives the pension, State Pension age and qualifying years, and the record-start date is stated once (W9).",
       "figure_cards": true
     },
     {

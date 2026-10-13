@@ -356,6 +356,8 @@ thead th { border-bottom: 2px solid var(--rule-strong); }
 td.num, th.num { text-align: right; white-space: nowrap; }
 /* An amount given in words, such as "around £2 billion, built up over five years", may wrap. */
 td.phrase, th.phrase { white-space: normal; }
+/* A heading over a group of rows says what the rows share, in running text: only its name is bold. */
+th[scope="rowgroup"] { font-weight: 400; padding-top: var(--space-m); }
 tr.calculated td, tr.calculated th { font-style: italic; }
 .scroll-x:focus-visible { outline-offset: -3px; }
 

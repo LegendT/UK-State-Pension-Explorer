@@ -13,7 +13,7 @@ permalink: /state-pension/
 
 {{ m.contents([
   ["purpose", "What the State Pension is for"],
-  ["which-system", "Which pension applies"],
+  ["which-system", "What your date of birth decides"],
   ["qualifying", "National Insurance and qualifying years"],
   ["what-people-receive", "What people actually receive"],
   ["age-and-claiming", "State Pension age, claiming and deferring"],
@@ -31,15 +31,40 @@ permalink: /state-pension/
 <p>Most pensioners have more than one source of income. {{ m.f("share-with-state-pension") }} of pensioner units receive the State Pension, and {{ m.f("share-with-private-pension") }} receive a private pension. {{ m.f("share-state-only") }} have only the State Pension and other state benefits.</p>
 {{ m.sourceNote("share-state-only" | figure) }}
 
-<h2 id="which-system">Which pension applies</h2>
+<h2 id="which-system">What your date of birth decides</h2>
 
-<p>There are two systems.</p>
+<p>There are two systems. Date of birth decides which one a person is on and their State Pension age. For people born between <time datetime="1951-04-06">6 April 1951</time> and <time datetime="1953-04-05">5 April 1953</time>, which system also depends on whether they are a man or a woman.</p>
 
-<ul>
-  <li>The <strong>new State Pension</strong> is for men born on or after <time datetime="1951-04-06">6 April 1951</time> and women born on or after <time datetime="1953-04-06">6 April 1953</time>. These are people who reached State Pension age on or after <time datetime="2016-04-06">6 April 2016</time>.</li>
-  <li>The <strong>basic State Pension</strong> is for people born before those dates.</li>
-</ul>
-<p>{{ m.c("which-system") }}</p>
+{% call m.scrollTable() %}
+<table>
+  <caption>Pension, State Pension age and qualifying years by date of birth, under current law</caption>
+  <thead><tr><th scope="col">Born</th><th scope="col">State Pension age</th></tr></thead>
+  <tbody>
+    <tr><th colspan="2" scope="rowgroup"><strong>Basic State Pension.</strong> Full rate: usually 30 qualifying years. Men born before 1945, 44. Women born before 1950, 39.</th></tr>
+    <tr><th scope="row">Men before <time datetime="1951-04-06">6 April 1951</time>, women before <time datetime="1953-04-06">6 April 1953</time></th><td>Already reached</td></tr>
+  </tbody>
+  <tbody>
+    <tr><th colspan="2" scope="rowgroup"><strong>New State Pension.</strong> Full rate: {{ "nsp-full-rate-years" | fig }} qualifying years, depending on when the National Insurance record began: see <a href="#qualifying">qualifying years</a>. Any pension: usually {{ "nsp-min-qualifying-years" | fig }}.</th></tr>
+    <tr><th scope="row">Men from <time datetime="1951-04-06">6 April 1951</time>, women from <time datetime="1953-04-06">6 April 1953</time>, to <time datetime="1960-04-05">5 April 1960</time></th><td>Already reached</td></tr>
+    <tr><th scope="row"><time datetime="1960-04-06">6 April 1960</time> to <time datetime="1961-03-05">5 March 1961</time></th><td>66 and 1 to 11 months, by month of birth</td></tr>
+    <tr><th scope="row"><time datetime="1961-03-06">6 March 1961</time> to <time datetime="1977-04-05">5 April 1977</time></th><td>67</td></tr>
+    <tr><th scope="row"><time datetime="1977-04-06">6 April 1977</time> to <time datetime="1978-04-05">5 April 1978</time></th><td>Between 67 and 68, on a date from <time datetime="2044-05">May 2044</time> to <time datetime="2046-03">March 2046</time> set by month of birth. A review could change this</td></tr>
+    <tr><th scope="row"><time datetime="1978-04-06">6 April 1978</time> or later</th><td>68. A review could change this</td></tr>
+  </tbody>
+</table>
+{% endcall %}
+<div class="source">
+  <p>Each row rests on a page of the Department for Work and Pensions on GOV.UK, cited under "What the table rests on". "Already reached" is our reading of the timetable.</p>
+  <details>
+    <summary>What the table rests on</summary>
+    <ul>
+      {%- for id in ["which-system", "spa-born-before-1960", "spa-born-1960-61", "spa-born-1961-77", "spa-born-1977-78", "spa-born-from-1978", "spa-68-review", "bsp-30-years"] %}
+      <li>{{ (id | claim).statement }} {{ m.c(id) }}</li>
+      {%- endfor %}
+      <li>A person usually needs {{ "nsp-min-qualifying-years" | fig }} qualifying years for any new State Pension, and {{ "nsp-full-rate-years" | fig }} for the full rate if their record began after April 2016. {{ m.ref(("nsp-min-qualifying-years" | figure).source) }} {{ m.ref(("nsp-full-rate-years" | figure).source) }}</li>
+    </ul>
+  </details>
+</div>
 
 {%- set g = ["nsp-full-weekly", "bsp-full-weekly"] | shared %}
 {{ m.sharedNote(g) }}
@@ -57,21 +82,21 @@ permalink: /state-pension/
 <p>Entitlement is built up through qualifying years. A qualifying year is a tax year in which a person paid, or was credited with, enough National Insurance.</p>
 
 <h3>The new State Pension</h3>
+<p>One date apart from date of birth decides how the years count: when the person's National Insurance record began.</p>
 <ul>
-  <li>A person usually needs {{ m.f("nsp-min-qualifying-years") }} qualifying years to get any new State Pension. {{ m.ref(("nsp-min-qualifying-years" | figure).source) }}</li>
-  <li>Each qualifying year added after <time datetime="2016-04-05">5 April 2016</time> adds about {{ m.f("nsp-per-qualifying-year") }} a week, up to the full rate. {{ m.ref(("nsp-per-qualifying-year" | figure).source) }}</li>
-  <li>A person whose National Insurance record began after April 2016 needs {{ m.f("nsp-full-rate-years") }} qualifying years for the full rate.</li>
+  <li>A record that began after April 2016 needs {{ m.f("nsp-full-rate-years") }} qualifying years for the full rate. {{ m.ref(("nsp-full-rate-years" | figure).source) }}</li>
+  <li>A record that began earlier was given a starting amount: see the note below.</li>
+  <li>Either way, each qualifying year added after <time datetime="2016-04-05">5 April 2016</time> adds about {{ m.f("nsp-per-qualifying-year") }} a week, up to the full rate. {{ m.ref(("nsp-per-qualifying-year" | figure).source) }}</li>
 </ul>
-{{ m.sourceNote("nsp-full-rate-years" | figure) }}
 
 {% call m.note("35 years does not guarantee the full rate for everyone", 4) %}
-<p>Most people who are retiring now began work before 2016. For them, the government worked out a starting amount from their record up to April 2016. {{ m.c("starting-amount") }}</p>
+<p>Most people retiring now have a record that began before April 2016. For them, the government worked out a starting amount from their record up to April 2016. {{ m.c("starting-amount") }}</p>
 <p>The starting amount was reduced for any years the person was contracted out. Being contracted out meant paying lower National Insurance and building up a workplace or personal pension in place of the Additional State Pension. {{ m.c("contracted-out") }}</p>
 <p>So a person with 35 or more years can be below the full rate, and a person with fewer than 35 can reach it.</p>
 {% endcall %}
 
 <h3>The basic State Pension</h3>
-<p>The number of years needed for the full basic State Pension depends on date of birth and sex. {{ ("bsp-30-years" | claim).statement }} {{ m.c("bsp-30-years") }}</p>
+<p>The years needed for the full basic State Pension depend on date of birth and sex. They are in <a href="#which-system">the table of dates of birth</a>.</p>
 
 <h3>National Insurance credits</h3>
 <p>People who are not paying National Insurance can get credits in some situations, for example when they are unemployed, ill, or caring for a child or an adult. Some credits are automatic. Others have to be claimed. {{ m.c("ni-credits") }}</p>
@@ -104,9 +129,7 @@ permalink: /state-pension/
 
 <h2 id="age-and-claiming">State Pension age, claiming and deferring</h2>
 
-<p>State Pension age is rising from 66 to 67 between 2026 and 2028. The change is happening now. {{ m.c("spa-67") }}</p>
-
-<p>The law provides for a further rise to 68 between 2044 and 2046. {{ m.c("spa-68") }} A third review of State Pension age began in July 2025. {{ m.c("spa-review") }}</p>
+<p>State Pension age for each date of birth is in <a href="#which-system">the table of dates of birth</a>. The rise from 66 to 67 is happening now. {{ m.c("spa-67") }} A third review of State Pension age began in July 2025. {{ m.c("spa-review") }}</p>
 
 <p>The State Pension has to be claimed. {{ m.c("claim-not-automatic") }} A pension that is not claimed is deferred. {{ m.c("deferral-default") }}</p>
 
