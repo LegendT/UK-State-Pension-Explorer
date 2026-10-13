@@ -3,6 +3,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { gap, renderComparison } from "../src/assets/js/lib/compare-view.js";
+import { settingsLink } from "../src/assets/js/lib/format.js";
 
 const text = (html) => html.replace(/<[^>]+>/g, "");
 
@@ -61,4 +62,9 @@ test("the chart says it is an illustration, and a source line given is printed u
   assert.match(html, /<figcaption><h4>[^<]*<\/h4><p>Illustration, not a forecast\. Cash: /);
   assert.equal(html.match(/<p class="source-line">The starting amount is from <a href="https:\/\/example.org">a source<\/a>\.<\/p>/g).length, 2);
   assert.ok(!renderComparison(options).includes("source-line"), "no line is printed when none is given");
+});
+
+test("a link to a result carries the settings as its query and the tool as its fragment, replacing any it had (W31)", () => {
+  const link = settingsLink("https://example.org/reform-options/compare/?scenario=low#old", { scenario: "steady", years: "10", start: "241.30", floor: "on", prices: "2.0,2.0" }, "compare");
+  assert.equal(link, "https://example.org/reform-options/compare/?scenario=steady&years=10&start=241.30&floor=on&prices=2.0%2C2.0#compare");
 });

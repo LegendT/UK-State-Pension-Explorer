@@ -1,7 +1,7 @@
 // Tool 2: compare the replacement rules. Presentation only.
 
 import { renderComparison, renderSummary } from "../lib/compare-view.js";
-import { announce, chartWidth, choose, fitChart, escapeHtml, focusFirstError, live, markStale, pinSummary, STALE_MESSAGE, updatedNote, readAmount, readJson, readPercent, readSettings, setError, writeSettings } from "./common.js";
+import { announce, chartWidth, choose, fitChart, escapeHtml, focusFirstError, live, markStale, pinSummary, STALE_MESSAGE, updatedNote, readAmount, readJson, readPercent, readSettings, setError, copyLink } from "./common.js";
 
 const data = readJson("compare-data");
 const form = document.getElementById("compare-form");
@@ -88,6 +88,15 @@ function showReason() {
 let hasResult = true;
 // The settings of the result on screen, for drawing its chart again at a new width.
 let shown;
+// The settings of the result on screen, as a link carries them. Kept when a result is drawn, so the
+// copy button links to what is shown, not to a figure half typed since. Edited yearly figures are in
+// it too, or a link would show a different result. Nothing is written to the address on its own
+// (decision 96).
+let linkSettings;
+function linkSettingsFor(count, path) {
+  const figures = (key) => path.map((year) => (year[key] / 10).toFixed(1)).join(",");
+  return { scenario: scenario.value, years: String(count), start: start.value.trim(), first: first.value, measure: measure.value, floor: floor.checked ? "on" : "off", ...(edited ? { prices: figures("prices"), earnings: figures("earnings") } : {}) };
+}
 // Only the first letter, so a name such as the Institute for Fiscal Studies keeps its capitals.
 const scenarioLabel = () => (edited ? "your own figures" : chosen().label.charAt(0).toLowerCase() + chosen().label.slice(1));
 // The line under the chart names the source of each part the reader has not changed.
@@ -116,12 +125,7 @@ function update(message, mode) {
   shown = { ...options, scenarioLabel: scenarioLabel(), sourceLine: sourceLine(startPence) };
   result.innerHTML = renderComparison({ ...shown, chartWidth: chartWidth(result) });
   summary.innerHTML = renderSummary(options) + (mode === "load" ? "" : updatedNote("The chart and tables below have changed too."));
-  // Edited yearly figures go in the address too, or a link would show a different result.
-  const figures = (key) => path.map((year) => (year[key] / 10).toFixed(1)).join(",");
-  writeSettings(
-    { scenario: scenario.value, years: String(count), start: start.value.trim(), first: first.value, measure: measure.value, floor: floor.checked ? "on" : "off", ...(edited ? { prices: figures("prices"), earnings: figures("earnings") } : {}) },
-    "compare",
-  );
+  linkSettings = linkSettingsFor(count, path);
   if (mode !== "load") announce(status, message || "Result updated. The chart and tables below have changed.");
 }
 
@@ -145,6 +149,14 @@ years.addEventListener("change", redraw);
 rows.addEventListener("input", () => {
   edited = true;
   showReason();
+});
+
+document.getElementById("compare-copy-link").addEventListener("click", () => {
+  if (!hasResult) {
+    announce(status, "There is no result to link to. Correct the figures marked with an error.");
+    return;
+  }
+  copyLink(linkSettings, "compare", status, document.getElementById("compare-copy-note"));
 });
 
 document.getElementById("compare-reset").addEventListener("click", () => {
@@ -173,6 +185,7 @@ pinSummary(summary.parentElement);
 // The page is built with the starting scenario's result, from the settings the form now holds.
 shown = { startPence: readAmount(start, "the starting weekly amount"), path: currentPath(), cashFloor: floor.checked, firstYear: Number(first.value), measure: measure.value, scenarioLabel: scenarioLabel() };
 shown.sourceLine = sourceLine(shown.startPence);
+linkSettings = linkSettingsFor(Number(years.value), shown.path);
 fitChart(result, () => hasResult && renderComparison({ ...shown, chartWidth: chartWidth(result) }));
 
 // A link with settings in its address shows that result. Nothing is announced or focused on arrival.

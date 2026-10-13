@@ -89,7 +89,7 @@
       "index": true,
       "published": null,
       "modified": "2026-10-13",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 12 October 2026: totals in starting-year prices are shown to the pound (W23). Changed on 13 October 2026: the chart says it is an illustration, a source line sits under the chart and the tables, and \"not your entitlement\" links to the GOV.UK forecast (W26)."
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 12 October 2026: totals in starting-year prices are shown to the pound (W23). Changed on 13 October 2026: the chart says it is an illustration, a source line sits under the chart and the tables, and \"not your entitlement\" links to the GOV.UK forecast (W26). Changed on 13 October 2026: nothing goes in the page address on its own, and \"Copy a link to this result\" copies a link holding the settings shown (W31, decision 96)."
     },
     {
       "path": "/reform-options/costs/",
@@ -175,7 +175,7 @@
       "index": true,
       "published": null,
       "modified": "2026-10-13",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 13 October 2026: a source line under the published decision and the hypothetical result, and \"not your entitlement\" links to the GOV.UK forecast (W26)."
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 13 October 2026: a source line under the published decision and the hypothetical result, and \"not your entitlement\" links to the GOV.UK forecast (W26). Changed on 13 October 2026: \"Copy a link to this result\" copies a link holding the year, pension and figures shown, and such a link opens that result (W31, decision 96)."
     },
     {
       "path": "/tools/budget/",
@@ -244,8 +244,8 @@
       "canonical_path": "/privacy/",
       "index": true,
       "published": null,
-      "modified": "2026-10-02",
-      "modified_note": "Says what Cloudflare Web Analytics records, shown once the analytics token is set in production."
+      "modified": "2026-10-13",
+      "modified_note": "Says what Cloudflare Web Analytics records, shown once the analytics token is set in production. Changed on 13 October 2026: the rule comparison and the triple lock calculator write nothing to the page address on their own; each has a button that copies a link (W31, decision 96)."
     },
     {
       "path": "/site-map/",

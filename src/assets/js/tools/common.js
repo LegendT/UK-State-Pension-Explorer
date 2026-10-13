@@ -1,5 +1,7 @@
 // Shared presentation helpers for the tools. Arithmetic lives in ../lib.
 
+import { settingsLink } from "../lib/format.js";
+
 import { CHART_WIDTH } from "../lib/chart.js";
 import { parsePence, parseTenths, MIN_TENTHS, MAX_TENTHS, MIN_PENCE, MAX_PENCE } from "../lib/uprating.js";
 
@@ -71,11 +73,27 @@ export function focusFirstError(form) {
 
 // A result's settings go in the page address, so that a copied link shows the same result.
 // Never used by the budget explorer, whose figures stay on the device.
+// The history explorer alone writes its settings as a result shows (decision 96 took the other two
+// tools off this: they copy a link instead).
 export function writeSettings(settings, hash) {
-  const url = new URL(window.location.href);
-  url.search = new URLSearchParams(settings).toString();
-  url.hash = hash;
-  window.history.replaceState(null, "", url);
+  window.history.replaceState(null, "", settingsLink(window.location.href, settings, hash));
+}
+
+// Copies a link to the result shown. The address is not written on its own (decision 96): only when
+// the clipboard refuses is the link put in the address bar, and the reader is told to copy it there.
+// The outcome is announced through the status region and shown in the note beside the button.
+export async function copyLink(settings, hash, status, note) {
+  const link = settingsLink(window.location.href, settings, hash);
+  let message;
+  try {
+    await navigator.clipboard.writeText(link);
+    message = "A link to this result has been copied.";
+  } catch {
+    window.history.replaceState(null, "", link);
+    message = "The link could not be copied. The page address now holds this result: copy it from the address bar.";
+  }
+  announce(status, message);
+  note.textContent = message;
 }
 
 export function readSettings() {
