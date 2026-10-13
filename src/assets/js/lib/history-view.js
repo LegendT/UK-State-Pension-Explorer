@@ -112,9 +112,23 @@ function ruleMessage(rule, calculated, published, measure, to) {
   return `${subject} ends ${size} ${calculated > published ? "above" : "below"} the published rate${where} in ${to}`;
 }
 
+// One muted line naming where the published figures come from, under the chart and under the table
+// (R11 of the readability review). The rates and decisions have a source for each year, so the line
+// links to the history page's table, which lists them by year. sources: { rates, decisions,
+// listed_url, prices, prices_url, checked }, where checked is a time element as HTML; left out, no
+// line is printed.
+function sourceLine(sources, measure, rule) {
+  if (!sources) return "";
+  return (
+    `<p class="source-line">Sources: the published rates and each year's decision, from ${sources.rates} and ${sources.decisions}, <a href="${sources.listed_url}">listed by year on the history page</a>` +
+    (measure === "real" ? `; buying power uses <a href="${sources.prices_url}">${sources.prices}</a>` : "") +
+    `. ${rule ? "The calculated figures are this site's calculation from those. " : ""}Checked against the sources on ${sources.checked}.</p>`
+  );
+}
+
 // chartWidth: the width to draw the chart at; the build leaves it out.
 export function renderHistory(options) {
-  const { series, from, to, measure, rule, chartWidth } = options;
+  const { series, from, to, measure, rule, chartWidth, sources } = options;
   const rows = historyRows(options);
   const name = SERIES_LABELS[series];
   const ruleName = rule ? RULE_LABELS[rule] : "";
@@ -188,10 +202,12 @@ export function renderHistory(options) {
     `<h3>${name}, ${from} to ${to}</h3>` +
     `<p>Full rate, before tax.</p>` +
     `<figure class="chart"><figcaption><h4>${message}</h4><p>${HISTORY_MEASURES[measure]}</p></figcaption><div class="scroll-x" tabindex="0" role="region" aria-label="Chart: ${name}, ${from} to ${to}">${chart}</div>${markList}</figure>` +
+    sourceLine(sources, measure, rule) +
     comparison +
     `<div class="scroll-x" tabindex="0" role="region" aria-labelledby="history-table-caption"><table>` +
     `<caption id="history-table-caption">${name}, ${from} to ${to}. ${HISTORY_MEASURES[measure]}</caption>` +
-    `<thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>`
+    `<thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>` +
+    sourceLine(sources, measure, rule)
   );
 }
 

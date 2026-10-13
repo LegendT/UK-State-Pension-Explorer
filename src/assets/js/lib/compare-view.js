@@ -135,10 +135,14 @@ function message(result, measure, years) {
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
-// options: { startPence, path, cashFloor, firstYear, measure, scenarioLabel, chartWidth }.
+// options: { startPence, path, cashFloor, firstYear, measure, scenarioLabel, chartWidth, sourceLine }.
 // chartWidth: the width to draw the chart at; the build leaves it out.
+// sourceLine: a "Sources:" sentence as HTML, with its citations, naming where the starting amount
+// and the yearly figures come from. Printed under the chart and under the tables (R11 of the
+// readability review).
 export function renderComparison(options) {
-  const { startPence, path, cashFloor, firstYear, measure, scenarioLabel, chartWidth } = options;
+  const { startPence, path, cashFloor, firstYear, measure, scenarioLabel, chartWidth, sourceLine } = options;
+  const source = sourceLine ? `<p class="source-line">${sourceLine}</p>` : "";
   const result = compareRules(startPence, path, cashFloor);
   const labels = yearLabels(firstYear, path.length);
   const ruleNames = RULES.map((rule) => RULE_LABELS[rule]);
@@ -213,7 +217,8 @@ export function renderComparison(options) {
     `The cash floor is ${cashFloor ? "on, so no rule can lower the amount in pounds" : "off, so a rule can lower the amount in pounds"}.</p>` +
     `<p>The rule announced for April 2030 is our reading of it, on four assumptions. It is not what the government's rule will pay. <a href="#rule-2030-assumptions">The assumptions</a>.</p>` +
     summary(result, labels) +
-    `<figure class="chart"><figcaption><h4>${message(result, measure, years)}</h4><p>${info.label}: ${info.unit}</p></figcaption><div class="scroll-x" tabindex="0" role="region" aria-label="Chart: ${info.label}">${chart}</div></figure>` +
+    `<figure class="chart"><figcaption><h4>${message(result, measure, years)}</h4><p>Illustration, not a forecast. ${info.label}: ${info.unit}</p></figcaption><div class="scroll-x" tabindex="0" role="region" aria-label="Chart: ${info.label}">${chart}</div></figure>` +
+    source +
     values +
     difference +
     `<h4>Totals over the period</h4>` +
@@ -222,7 +227,8 @@ export function renderComparison(options) {
     `The two totals are on different bases and must not be added or compared with each other.</p>` +
     totals +
     `<h4>How each year's increase was decided</h4>` +
-    inputs
+    inputs +
+    source
   );
 }
 

@@ -236,6 +236,8 @@ td time, th time { white-space: nowrap; }
 .source-line.shared { margin: 0 0 var(--space-s); }
 .source-line a { padding-block: 0.4em; }
 .source-line time { white-space: nowrap; }
+/* Under a tool chart or table, the line is followed by another table or heading: room below it, so it does not run into the next table's scroll cue (W26). */
+.result .source-line { margin-bottom: var(--space-m); }
 details.source { font-size: 0.9rem; margin: 0 0 var(--space-l); }
 .source summary { min-height: 2.75rem; padding: 0.6rem 0; cursor: pointer; color: var(--accent); font-weight: 600; }
 details.source dl { margin: var(--space-s) 0 0; color: var(--ink-soft); }

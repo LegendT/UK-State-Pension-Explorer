@@ -41,7 +41,7 @@ function update(quiet) {
   }
   error.textContent = "";
   from.setAttribute("aria-invalid", "false");
-  current = { years: data.years, series: series.value, from: from.value, to: to.value, measure: measure.value, rule: rule.value };
+  current = { years: data.years, series: series.value, from: from.value, to: to.value, measure: measure.value, rule: rule.value, sources: data.sources };
   result.innerHTML = renderHistory({ ...current, chartWidth: chartWidth(result) });
   glance.innerHTML = renderHistorySummary(current) + (quiet === "load" ? "" : updatedNote("The chart and table below have changed too."));
   writeSettings({ series: current.series, from: current.from, to: current.to, measure: current.measure, ...(current.rule ? { rule: current.rule } : {}) }, "explorer");
@@ -78,7 +78,7 @@ document.getElementById("history-copy").addEventListener("click", async () => {
 // A browser can restore earlier choices on reload. Start from the state of the table the build wrote.
 form.reset();
 fillYears();
-current = { years: data.years, series: series.value, from: from.value, to: to.value, measure: measure.value, rule: rule.value };
+current = { years: data.years, series: series.value, from: from.value, to: to.value, measure: measure.value, rule: rule.value, sources: data.sources };
 glance.innerHTML = renderHistorySummary(current);
 // A new pension refills the year lists first, then the result follows.
 live(form, () => update("live"));

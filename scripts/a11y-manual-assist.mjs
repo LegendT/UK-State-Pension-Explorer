@@ -102,8 +102,12 @@ for (const path of pages) {
       const s = getComputedStyle(el);
       const box = el.getClientRects()[0] || el.getBoundingClientRect();
       const visible = (s.outlineStyle !== "none" && parseFloat(s.outlineWidth) >= 2) || s.boxShadow !== "none";
-      const x = Math.min(Math.max(box.left + box.width / 2, 0), innerWidth - 1);
-      const y = Math.min(Math.max(box.top + box.height / 2, 0), innerHeight - 1);
+      // The point tested is the centre of the part of the element inside the viewport, not the centre
+      // of the element clamped to the viewport's edge: a table region taller than the screen, focused
+      // from above, is scrolled to the top and its clamped centre fell on the summary pinned to the foot
+      // of a phone, which read as covered when its focus ring was in view (W26, 13 October 2026).
+      const x = Math.min(Math.max((Math.max(box.left, 0) + Math.min(box.left + box.width, innerWidth)) / 2, 0), innerWidth - 1);
+      const y = Math.min(Math.max((Math.max(box.top, 0) + Math.min(box.top + box.height, innerHeight)) / 2, 0), innerHeight - 1);
       const top = document.elementFromPoint(x, y);
       const covered = !(top && (el.contains(top) || top.contains(el)));
       const onScreen = box.bottom > 0 && box.top < innerHeight;

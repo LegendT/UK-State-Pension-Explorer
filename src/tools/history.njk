@@ -5,6 +5,8 @@ permalink: /tools/history/
 {%- import "macros.njk" as m with context -%}
 {%- set first = history.years | first -%}
 {%- set latest = history.years | last -%}
+{#- The source line under the chart and the table, built once here and handed to the view by the build and by the browser. -#}
+{%- set historySources = { rates: "the Department for Work and Pensions' benefit and pension rates", decisions: "the explanatory memorandum to each Up-rating Order", listed_url: "/history/#decisions", prices: "the Office for National Statistics' Consumer Prices Index, series D7BT", prices_url: history.sources.prices_index_url, checked: (history.checked_date | timeTag) } -%}
 <h1>State Pension history explorer</h1>
 
 <p class="lede">The full rates since 2010 as a chart and table: in cash, in buying power or against earnings, with a calculation of what another rule would have produced. The record itself is on <a href="/history/">the history page</a>. <a href="/tools/">All tools</a>.</p>
@@ -80,7 +82,7 @@ permalink: /tools/history/
   <p class="visually-hidden" role="status" id="history-status"></p>
 
   <div class="result" id="history-result">
-    {{ { years: history.years, series: "basic", from: first.tax_year, to: latest.tax_year, measure: "cash", rule: "" } | renderHistory | safe }}
+    {{ { years: history.years, series: "basic", from: first.tax_year, to: latest.tax_year, measure: "cash", rule: "", sources: historySources } | renderHistory | safe }}
   </div>
 
   <h3>How the measures are worked out</h3>
@@ -95,6 +97,6 @@ permalink: /tools/history/
   </div>
   <p><a href="/sources-and-method/#models">Full method, reference examples and limits</a>. For future years, which are hypothetical, use the <a href="/reform-options/compare/">rule comparison</a>.</p>
 
-  <script type="application/json" id="history-data">{{ { years: history.years } | json | safe }}</script>
+  <script type="application/json" id="history-data">{{ { years: history.years, sources: historySources } | json | safe }}</script>
   <script type="module" src="/assets/js/tools/history.js"></script>
 </section>

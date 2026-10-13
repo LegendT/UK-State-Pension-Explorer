@@ -74,7 +74,12 @@ function showPast(quiet) {
     row("52 weeks at the new rate", money(to * 52)) +
     `</dl>` +
     (record.note ? `<div class="note" role="note"><h4>An exceptional year</h4><p>${escapeHtml(record.note)}</p></div>` : "") +
-    `<p>These are the published decision and the published rates. This tool did not calculate them.</p>`;
+    `<p>These are the published decision and the published rates. This tool did not calculate them.</p>` +
+    // In some years the rates and the decision are in one memorandum: one link, not two to one document.
+    `<p class="source-line">${record.rate_source_url === record.decision_source_url
+      ? `Source: <a href="${record.decision_source_url}">the explanatory memorandum to the Up-rating Order for ${escapeHtml(record.tax_year)}</a>`
+      : `Sources: <a href="${record.rate_source_url}">the published rates for ${escapeHtml(record.tax_year)}</a> and <a href="${record.decision_source_url}">the explanatory memorandum to the Up-rating Order</a>`
+    }, as recorded on <a href="/history/#decisions">the history page</a>. Checked against the sources on ${data.checked}.</p>`;
   glance.innerHTML =
     `<p>${escapeHtml(SERIES_LABELS[loaded.series])}, ${escapeHtml(record.tax_year)}, as published.</p>` +
     `<p class="headline">${percent(record.applied_tenths)} increase, decided by ${escapeHtml(MEASURE_NAMES[record.measure])}</p>` +
@@ -122,7 +127,8 @@ function showOwn(typing) {
     row("Weekly increase", money(out.increasePence)) +
     row("52 weeks at the new amount", money(out.annualPence)) +
     `</dl>` +
-    `<p>This is an example using figures you entered. It is not a forecast and it is not your entitlement. It is before tax.</p>`;
+    `<p>This is an example using figures you entered. It is not a forecast and it is not your entitlement: for that, <a href="https://www.gov.uk/check-state-pension">check your State Pension forecast</a> on GOV.UK. It is before tax.</p>` +
+    `<p class="source-line">Source: the figures you entered, calculated by this site, following the steps below.</p>`;
   glance.innerHTML =
     `<p><span class="status">Hypothetical</span> Your own figures, before tax.</p>` +
     `<p class="headline">${percent(out.tenths)} increase, decided by ${escapeHtml(decided)}</p>` +

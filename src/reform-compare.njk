@@ -4,6 +4,14 @@ permalink: /reform-options/compare/
 ---
 {%- import "macros.njk" as m with context -%}
 {%- set scenario = scenarios.scenarios | where("id", scenarios.default) | first -%}
+{#- The source line under the chart and tables (R11). The build prints the default scenario's; the browser
+    takes each scenario's sentence from the template elements near the foot of the page, and swaps in the
+    "own" sentences for the parts the reader has changed. -#}
+{%- set nsp = "nsp-full-weekly" | figure -%}
+{%- set compareSources = { start: "Sources: the starting amount is the full new State Pension for " ~ nsp.period_label ~ ", from the " ~ m.cite(nsp.source) ~ ".", own_start: "Sources: the starting amount is one you entered.", own_figures: "The yearly figures are ones you entered." } -%}
+{%- macro scenarioSource(item) -%}
+{%- if item.source_id -%}The yearly figures are the {{ item.label.charAt(0) | lower }}{{ item.label.slice(1) }} scenario's, from the {{ m.cite(item.source_id | sourceRecord) }}.{%- else -%}The yearly figures are the {{ item.label.charAt(0) | lower }}{{ item.label.slice(1) }} scenario's, chosen for this illustration. They are not from a forecast.{%- endif -%}
+{%- endmacro -%}
 <h1>Compare the rules for the yearly increase</h1>
 
 <p class="lede">Five rules for the yearly increase, applied to the same starting amount and the same figures for prices and earnings. Change any figure and the result changes with it. The rules are explained on the <a href="/reform-options/">reform options page</a>.</p>
@@ -17,7 +25,7 @@ permalink: /reform-options/compare/
 
   {% call m.note("What this tool does and does not show", 3) %}
   <ul>
-    <li>It models <strong>one full rate</strong>, weekly and <strong>before tax</strong>. It is not your entitlement.</li>
+    <li>It models <strong>one full rate</strong>, weekly and <strong>before tax</strong>. It is not your entitlement: for that, <a href="https://www.gov.uk/check-state-pension">check your State Pension forecast</a> on GOV.UK.</li>
     <li>The yearly figures are <strong>illustrations</strong>. They are not forecasts and have no probability.</li>
     <li>It leaves out Income Tax, Pension Credit and every other benefit. A difference shown here is not a difference in money to spend.</li>
     <li>You cannot use it to work out national savings.</li>
@@ -106,7 +114,7 @@ permalink: /reform-options/compare/
   <p class="visually-hidden" role="status" id="compare-status"></p>
 
   <div class="result" id="compare-result">
-    {{ { startPence: ("nsp-full-weekly" | figPence), path: scenario.path.slice(0, scenarios.default_years), cashFloor: true, firstYear: 2027, measure: "cash", scenarioLabel: (scenario.label.charAt(0) | lower) ~ scenario.label.slice(1) } | renderComparison | safe }}
+    {{ { startPence: ("nsp-full-weekly" | figPence), path: scenario.path.slice(0, scenarios.default_years), cashFloor: true, firstYear: 2027, measure: "cash", scenarioLabel: (scenario.label.charAt(0) | lower) ~ scenario.label.slice(1), sourceLine: compareSources.start ~ " " ~ scenarioSource(scenario) } | renderComparison | safe }}
   </div>
 
   <h3>The scenarios</h3>
@@ -140,6 +148,9 @@ permalink: /reform-options/compare/
   <p>A different choice on any of the first three would give different results. The tool shows how the rule behaves. It does not show what the government's rule will pay.</p>
   <p><a href="/sources-and-method/#models">Full method, reference examples and limits</a>.</p>
 
-  <script type="application/json" id="compare-data">{{ { scenarios: scenarios.scenarios, default: scenarios.default, default_years: scenarios.default_years, default_start: ("nsp-full-weekly" | figPence) | plainPounds, default_first: 2027 } | json | safe }}</script>
+  {%- for item in scenarios.scenarios %}
+  <template id="compare-source-{{ item.id }}">{{ scenarioSource(item) }}</template>
+  {%- endfor %}
+  <script type="application/json" id="compare-data">{{ { scenarios: scenarios.scenarios, default: scenarios.default, default_years: scenarios.default_years, default_start: ("nsp-full-weekly" | figPence) | plainPounds, default_first: 2027, sources: compareSources } | json | safe }}</script>
   <script type="module" src="/assets/js/tools/compare.js"></script>
 </section>

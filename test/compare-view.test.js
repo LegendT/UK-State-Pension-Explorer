@@ -54,3 +54,11 @@ test("totals in starting-year prices are shown to the pound, with their sign (W2
   assert.match(cells[2], /^£[\d,]+$/, "the starting-year total is to the pound");
   assert.match(cells[3], /^−£[\d,]+$/, "the difference is to the pound, with its sign");
 });
+
+test("the chart says it is an illustration, and a source line given is printed under the chart and the tables (W26)", () => {
+  const options = { startPence: 24130, path: [{ prices: 20, earnings: 37 }], cashFloor: true, firstYear: 2027, measure: "cash", scenarioLabel: "x" };
+  const html = renderComparison({ ...options, sourceLine: "The starting amount is from <a href=\"https://example.org\">a source</a>." });
+  assert.match(html, /<figcaption><h4>[^<]*<\/h4><p>Illustration, not a forecast\. Cash: /);
+  assert.equal(html.match(/<p class="source-line">The starting amount is from <a href="https:\/\/example.org">a source<\/a>\.<\/p>/g).length, 2);
+  assert.ok(!renderComparison(options).includes("source-line"), "no line is printed when none is given");
+});

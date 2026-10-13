@@ -98,3 +98,14 @@ test("with a rule added, the chart's title says how far the calculation ends fro
   const merged = renderHistory({ years, series: "new", from: "2023/24", to: "2026/27", measure: "cash", rule: "triple-lock" });
   assert.match(merged, /Published rate and calculated under the triple lock from 2023\/24: the same in every year/);
 });
+
+test("a source line is printed under the chart and the table, naming the price index only for buying power (W26)", async () => {
+  const { renderHistory } = await import("../src/assets/js/lib/history-view.js");
+  const sources = { rates: "DWP rates", decisions: "the memorandum", listed_url: "/history/#decisions", prices: "ONS CPI", prices_url: "https://example.org/cpi", checked: "<time datetime=\"2026-09-29\">29 September 2026</time>" };
+  const cash = renderHistory({ years, series: "new", from: "2020/21", to: "2026/27", measure: "cash", rule: "", sources });
+  assert.equal(cash.match(/<p class="source-line">Sources: the published rates and each year's decision, from DWP rates and the memorandum, <a href="\/history\/#decisions">listed by year on the history page<\/a>\. Checked against the sources on <time/g).length, 2);
+  assert.ok(!cash.includes("ONS CPI"), "cash does not use the price index");
+  const real = renderHistory({ years, series: "new", from: "2020/21", to: "2026/27", measure: "real", rule: "triple-lock", sources });
+  assert.ok(real.includes("; buying power uses <a href=\"https://example.org/cpi\">ONS CPI</a>. The calculated figures are this site's calculation from those. Checked"));
+  assert.ok(!renderHistory({ years, series: "new", from: "2020/21", to: "2026/27", measure: "cash", rule: "" }).includes("source-line"), "no line is printed when none is given");
+});

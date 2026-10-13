@@ -90,6 +90,9 @@ let hasResult = true;
 let shown;
 // Only the first letter, so a name such as the Institute for Fiscal Studies keeps its capitals.
 const scenarioLabel = () => (edited ? "your own figures" : chosen().label.charAt(0).toLowerCase() + chosen().label.slice(1));
+// The line under the chart names the source of each part the reader has not changed.
+const sourceLine = (startPence) =>
+  `${startPence === Math.round(Number(data.default_start) * 100) ? data.sources.start : data.sources.own_start} ${edited ? data.sources.own_figures : document.getElementById(`compare-source-${scenario.value}`).innerHTML}`;
 function update(message, mode) {
   const count = readYears();
   const startPence = readAmount(start, "the starting weekly amount");
@@ -110,7 +113,7 @@ function update(message, mode) {
   }
   hasResult = true;
   const options = { startPence, path, cashFloor: floor.checked, firstYear: Number(first.value), measure: measure.value };
-  shown = { ...options, scenarioLabel: scenarioLabel() };
+  shown = { ...options, scenarioLabel: scenarioLabel(), sourceLine: sourceLine(startPence) };
   result.innerHTML = renderComparison({ ...shown, chartWidth: chartWidth(result) });
   summary.innerHTML = renderSummary(options) + (mode === "load" ? "" : updatedNote("The chart and tables below have changed too."));
   // Edited yearly figures go in the address too, or a link would show a different result.
@@ -169,6 +172,7 @@ reset();
 pinSummary(summary.parentElement);
 // The page is built with the starting scenario's result, from the settings the form now holds.
 shown = { startPence: readAmount(start, "the starting weekly amount"), path: currentPath(), cashFloor: floor.checked, firstYear: Number(first.value), measure: measure.value, scenarioLabel: scenarioLabel() };
+shown.sourceLine = sourceLine(shown.startPence);
 fitChart(result, () => hasResult && renderComparison({ ...shown, chartWidth: chartWidth(result) }));
 
 // A link with settings in its address shows that result. Nothing is announced or focused on arrival.

@@ -88,8 +88,8 @@
       "canonical_path": "/reform-options/compare/",
       "index": true,
       "published": null,
-      "modified": "2026-10-12",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 12 October 2026: totals in starting-year prices are shown to the pound (W23)."
+      "modified": "2026-10-13",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 12 October 2026: totals in starting-year prices are shown to the pound (W23). Changed on 13 October 2026: the chart says it is an illustration, a source line sits under the chart and the tables, and \"not your entitlement\" links to the GOV.UK forecast (W26)."
     },
     {
       "path": "/reform-options/costs/",
@@ -174,8 +174,8 @@
       "canonical_path": "/tools/triple-lock/",
       "index": true,
       "published": null,
-      "modified": "2026-10-05",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md."
+      "modified": "2026-10-13",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 13 October 2026: a source line under the published decision and the hypothetical result, and \"not your entitlement\" links to the GOV.UK forecast (W26)."
     },
     {
       "path": "/tools/budget/",
@@ -203,7 +203,7 @@
       "index": true,
       "published": null,
       "modified": "2026-10-13",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 13 October 2026: the Retail Prices Index and the Consumer Prices Index named in full in the table (W25)."
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 13 October 2026: the Retail Prices Index and the Consumer Prices Index named in full in the table (W25). Changed on 13 October 2026: a source line under the chart and under the table (W26)."
     },
     {
       "path": "/sources-and-method/",
