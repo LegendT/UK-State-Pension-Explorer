@@ -1,7 +1,8 @@
 // Measurements that support the manual part of the assessment. They do not replace a person.
 // Reflow at 320 CSS px (1.4.10), text spacing (1.4.12), target size (2.5.8), heading order,
 // keyboard focus order and visible focus (2.1.1, 2.4.3, 2.4.7, 2.4.11), no-JavaScript reading, and
-// each tool page with its module running and with its module blocked (W32). Also checks that the
+// each tool page with its module running, with its module blocked (W32) and with its module held back
+// while it loads (decision 99). Also checks that the
 // "On this page" list marks the section being read. Run it after changing src/assets/js/contents.js,
 // the contents macro or the .contents styles, the "Back to top" link of back-to-top.js (decision 88),
 // js-class.js, ready() in tools/common.js, a tool module or the .js-only styles.
@@ -156,7 +157,7 @@ for (const path of pages) {
   if (out.noScript.formsShown || out.noScript.noticesShown !== out.noScript.tools) problems.push(`${path} without JavaScript: ${JSON.stringify(out.noScript)}`);
   await third.close();
 
-  // A tool page in two more states (W32). With every script running, the form shows and the notice is
+  // A tool page in three more states (W32, decision 99). With every script running, the form shows and the notice is
   // hidden. With every script running except the tool's own module, the form stays hidden, the notice
   // shows, and so does its sentence for a module that did not load.
   if (out.noScript.tools) {

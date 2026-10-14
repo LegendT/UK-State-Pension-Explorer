@@ -74,7 +74,7 @@ The deployed preview was checked past the sign-in on 6 October 2026, in the owne
 - House of Commons Library briefings and Hansard could not be opened.
 - Nothing on a production domain. The main site address was checked past the sign-in on 6 October 2026: see "Last checks". Deploy previews after pull request 1 were not checked. Fetched share previews on a social platform were not checked.
 - Search console verification, sitemap submission, indexing.
-- Loading on a phone on the deployed preview, with its compression and cache headers: measured on the built site served locally only (row W34).
+- Loading on a phone on the deployed preview: the throttled phone timings are from the built site served locally. The deployed preview's headers, sizes on the wire and unthrottled fetch times were read on 13 October 2026 (row W34).
 
 ## Launch
 
@@ -104,9 +104,7 @@ As at 14 October 2026.
 
 | Item | What is needed |
 | --- | --- |
-| W16 | Read all 19 pages on the pull request's deploy preview, after the next push, with the assistant's list of what changed on each (decision 99). First, read the W27 wording in the before-and-after list given on 14 October 2026 |
-| Push | Run `/push` once the critique of decision 99's work and the four commits after W15 is done |
-| Launch | The steps, in order, are in `docs/launch-dependencies.md`, "Launch steps". Steps 1 to 3 are done. Before step 4 comes "Work before step 4" in the same file. The assistant does each row on the owner's word |
+| Launch | The steps, in order, are in `docs/launch-dependencies.md`, "Launch steps". Steps 1 to 3 are done. Before step 4 comes "Work before step 4" in the same file, where W16 is the owner's last row; it follows the owner's `/push` of the work of decision 99. The assistant does each row on the owner's word |
 
 Every other open item is in `docs/launch-dependencies.md`: before launch in "Work before step 4", after it in "After launch, first update". `docs/pre-launch-review.md`, which is frozen, points here for its "Rendered pages" and "Code" items. They are rows of that table.
 

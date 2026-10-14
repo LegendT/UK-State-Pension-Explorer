@@ -4,9 +4,9 @@ This repository contains two kinds of material, licensed differently.
 1. CODE AND ORIGINAL WRITING: MIT Licence
 ================================================================================
 
-Applies to: everything in this repository EXCEPT two things, both of which live in
-src/_data/ and are covered by clause 2 below. Those two are the figures themselves,
-and the passages quoted from the publications the figures and claims came from.
+Applies to: everything in this repository EXCEPT two things, covered by clause 2
+below. Those two are the figures themselves, and any words quoted from a source,
+wherever they sit.
 
 So this clause covers the site's own prose in the page templates in src/, the
 build code in eleventy.config.js, src/assets/ and scripts/, the tests in test/,
@@ -44,10 +44,11 @@ SOFTWARE.
 ================================================================================
 
 Applies to: the figures in src/_data/, meaning the values themselves and the
-source records attached to them, and the passages quoted from the source
-publications, held in the `passage` field of src/_data/figures.json and
-src/_data/claims.json. The writing around a figure is ours and is covered by
-clause 1. A quotation is the publisher's own words and is reproduced here under
+source records attached to them, and any words quoted from a source, wherever
+they sit. Most are in the `passage` field of src/_data/figures.json and
+src/_data/claims.json; others are marked as quotations in the page templates
+or quoted in the research notes in research/. The writing around a figure is
+ours and is covered by clause 1. A quotation is the publisher's own words and is reproduced here under
 the terms below, never granted onward under clause 1.
 
 Most figures in this repository are derived from UK public sector information
