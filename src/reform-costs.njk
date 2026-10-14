@@ -84,11 +84,11 @@ permalink: /reform-options/costs/
 {% call m.scrollTable() %}
 <table>
   <caption id="table-cost-estimates">Estimates of extra yearly spending because of the triple lock</caption>
-  <thead><tr><th scope="col" class="num">Estimate</th><th scope="col">Compared with</th><th scope="col">Year measured</th><th scope="col">Before or after tax and benefit effects</th><th scope="col">Who made it</th></tr></thead>
+  <thead><tr><th scope="col">Estimate</th><th scope="col">Compared with</th><th scope="col">Year measured</th><th scope="col">Before or after tax and benefit effects</th><th scope="col">Who made it</th></tr></thead>
   <tbody>
     {%- for id, against in [["tl-cost-ifs-2023","Prices or earnings since 2011"],["tl-cost-ifs-2026","Average earnings since 2011"],["tl-cost-rf-gross-2026","A smoothed earnings link since 2012, as the report describes it"],["tl-cost-rf-net-2026","A smoothed earnings link since 2012, as the report describes it"],["tl-cost-vs-earnings-2029-30","Earnings since 2012"],["tl-cost-vs-cpi-2029-30","Prices since 2012"]] %}
     {%- set fg = id | figure %}
-    <tr><th scope="row" class="num phrase">{{ id | figShown }} a year</th><td>{{ against }}</td><td>{{ fg.period_label }}</td><td>{{ fg.gross_net }}</td><td>{{ m.cite(fg.source) }}</td></tr>
+    <tr><th scope="row">{{ id | figShown }} a year</th><td>{{ against }}</td><td>{{ fg.period_label }}</td><td>{{ fg.gross_net }}</td><td>{{ m.cite(fg.source) }}</td></tr>
     {%- endfor %}
   </tbody>
 </table>
@@ -107,7 +107,7 @@ permalink: /reform-options/costs/
 {% call m.scrollTable() %}
 <table>
   <caption id="table-saving-estimates">Estimates of the saving from changing the yearly increase, compared with keeping the triple lock</caption>
-  <thead><tr><th scope="col">Change</th><th scope="col" class="num">Estimated saving</th><th scope="col">When</th><th scope="col">Basis</th><th scope="col">Who made it</th></tr></thead>
+  <thead><tr><th scope="col">Change</th><th scope="col">Estimated saving</th><th scope="col">When</th><th scope="col">Basis</th><th scope="col">Who made it</th></tr></thead>
   <tbody>
     {%- for id, change, suffix in [
       ["saving-rule-2030-late-2030s","The rule announced for April 2030"," a year"],
@@ -118,7 +118,7 @@ permalink: /reform-options/costs/
       ["saving-earnings-2075","Earnings link after 2030-31"," a year"],
       ["saving-cpi-2075","Prices link after 2030-31"," a year"]] %}
     {%- set fg = id | figure %}
-    <tr><th scope="row">{{ change }}</th><td class="num phrase">{{ id | figShown }}{{ suffix }}</td><td>{{ fg.period_label }}</td><td>{{ fg.gross_net }}{% if fg.price_basis and fg.price_basis != "cash" %}. {{ fg.price_basis | upperFirst }}{% endif %}</td><td>{{ m.cite(fg.source) }}</td></tr>
+    <tr><th scope="row">{{ change }}</th><td>{{ id | figShown }}{{ suffix }}</td><td>{{ fg.period_label }}</td><td>{{ fg.gross_net }}{% if fg.price_basis and fg.price_basis != "cash" %}. {{ fg.price_basis | upperFirst }}{% endif %}</td><td>{{ m.cite(fg.source) }}</td></tr>
     {%- endfor %}
   </tbody>
 </table>

@@ -180,6 +180,19 @@ for (const path of pages) {
     const b = out.moduleBlocked;
     if (b.formsShown || b.noticesShown !== b.tools || b.failedShown !== b.tools) problems.push(`${path} with its module blocked: ${JSON.stringify(b)}`);
     await blocked.close();
+    // While the module is still on its way, neither the form nor the notice shows: the notice would say
+    // JavaScript is off when it is not (the owner's answer of 14 October 2026). The module is held back
+    // two seconds and the page read once the stylesheet applies.
+    const loading = await browser.newPage();
+    await loading.setRequestInterception(true);
+    loading.on("request", (request) => (request.url().includes("/assets/js/tools/") ? setTimeout(() => request.continue(), 2000) : request.continue()));
+    const loaded = loading.goto(base + path, { waitUntil: "networkidle0" });
+    await loading.waitForFunction(() => document.querySelector(".tool") && getComputedStyle(document.querySelector(".js-only")).display === "none");
+    out.moduleLoading = await loading.evaluate(shown);
+    const l = out.moduleLoading;
+    if (l.formsShown || l.noticesShown || l.failedShown) problems.push(`${path} while its module loads: ${JSON.stringify(l)}`);
+    await loaded;
+    await loading.close();
   }
 
   // "On this page": the link for the section being read is marked while scrolling and after a jump.

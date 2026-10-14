@@ -356,8 +356,6 @@ caption { text-align: left; font-weight: 700; padding-bottom: var(--space-s); ma
 th, td { padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--rule); text-align: left; vertical-align: top; }
 thead th { border-bottom: 2px solid var(--rule-strong); }
 td.num, th.num { text-align: right; white-space: nowrap; }
-/* An amount given in words, such as "around £2 billion, built up over five years", may wrap. */
-td.phrase, th.phrase { white-space: normal; }
 /* A heading over a group of rows says what the rows share, in running text: only its name is bold. */
 th[scope="rowgroup"] { font-weight: 400; padding-top: var(--space-m); }
 tr.calculated td, tr.calculated th { font-style: italic; }
@@ -459,10 +457,12 @@ button.secondary { color: var(--accent); background: var(--paper); }
 
 /* A tool's form and summary, and a result only a script draws, show once the tool's module has run and
    marked the tool ready: a module that fails to load leaves the notice in place, and js-class.js adds a
-   sentence to it at load (W32). */
+   sentence to it at load (W32). While scripts run, the notice is hidden until then, so it does not
+   flash its untrue message before a module that will load has run (the owner's answer of 14 October
+   2026). */
 .js-only { display: none; }
 .tool.is-ready .js-only { display: revert; }
-.tool.is-ready .no-js-only { display: none; }
+.js .tool:not(.load-failed) .no-js-only { display: none; }
 .if-script-failed { display: none; }
 .tool.load-failed .if-script-failed { display: inline; }
 
