@@ -81,7 +81,8 @@ A11Y_ASSESSMENT_DATE=2026-10-01 AI_CRAWLER_POLICY=allow npm run build
 | `scripts/` | Build check, accessibility runs, source checks, reference calculations. |
 | `research/` | The research record behind the registers. |
 | `docs/` | Specification, decisions, assessment, maintenance, handover. The handover holds the current state only: decision 83. |
-| `NEXT-SESSION.md` | A prompt for the first message of a new session. Written by the handoff check. Not edited by hand. |
+| `NEXT-SESSION.md` | A prompt for the first message of a new session. Written by the handoff check. Not edited by hand. Kept on the owner's computer, not in the repository: decision 99. |
+| `LICENCE` | MIT for the code and the site's own writing; the figures and quoted passages stay under their sources' terms. |
 
 ## Hosting
 

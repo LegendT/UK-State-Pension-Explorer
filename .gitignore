@@ -15,3 +15,7 @@ frontend-sweep/
 .claude/settings.local.json
 # Python bytecode from the source checks.
 __pycache__/
+# Kept on this computer only: the next session's prompt, written by /handoff-check, and the scope
+# documents of the first build (decision 99).
+NEXT-SESSION.md
+_archive/

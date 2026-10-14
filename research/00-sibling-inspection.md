@@ -6,8 +6,8 @@ created or deleted, and neither build was run. Live pages were fetched with `cur
 
 Short names used below:
 
-- **UKPF** = `/Users/anthonygeorge/Projects/UK Public Finances` (live: https://ukpublicfinances.org/), `main` at `4f1deba`.
-- **MIA** = `/Users/anthonygeorge/Projects/Migration Immigration and Asylum` (live: https://ukmigrationexplorer.org/), `main` at `9203a98`.
+- **UKPF** = the UK Public Finances repository (live: https://ukpublicfinances.org/), `main` at `4f1deba`.
+- **MIA** = the Migration Immigration and Asylum repository (live: https://ukmigrationexplorer.org/), `main` at `9203a98`.
 
 ## What was and was not checked
 
