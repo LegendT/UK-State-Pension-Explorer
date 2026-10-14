@@ -106,11 +106,18 @@ function convertAmounts() {
     field.value = (convert(pence, from, enteredPeriod) / 100).toFixed(2);
     count += 1;
   }
+  // An amount that could not be read stays as typed, and is read as an amount for the new period.
+  const left = unread === 1 ? " One amount could not be read and is now read as an amount for the new period." : unread ? ` ${unread} amounts could not be read and are now read as amounts for the new period.` : "";
   if (!count) {
     // Nothing converted, so a note from an earlier conversion would name the wrong period.
     periodNote.textContent = "";
     periodNote.hidden = true;
-    update("live");
+    if (!unread) {
+      update("live");
+      return;
+    }
+    update("converted");
+    announce(status, `Period changed to ${PERIOD_LABELS[enteredPeriod]}.${left}${stale ? ` ${STALE_MESSAGE}` : ""}`);
     return;
   }
   const done = `Amounts converted from ${PERIOD_LABELS[from]} to ${PERIOD_LABELS[enteredPeriod]}, to the nearest penny.`;
@@ -121,7 +128,6 @@ function convertAmounts() {
   const shown = lastResult;
   // As typing does: with an amount in error, the last result stays, marked out of date (decision 85).
   update("converted");
-  const left = unread === 1 ? " One amount could not be read and was left as typed." : unread ? ` ${unread} amounts could not be read and were left as typed.` : "";
   const after = stale ? ` ${STALE_MESSAGE}` : shown && lastResult !== shown ? " The breakdown below has changed." : "";
   announce(status, `${done}${left}${after}`);
 }

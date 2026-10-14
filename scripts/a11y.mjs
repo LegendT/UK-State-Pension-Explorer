@@ -128,7 +128,10 @@ const group = (key) => {
 const violations = group("violations");
 const incomplete = group("incomplete");
 const css = readFileSync("_site/assets/css/main.css", "utf8");
-const unsafe = /opacity|gradient|background-image|url\(|rgba|hsla|filter:/.test(css);
+// Not matched: the slash alpha syntax, rgb(0 0 0 / 0.15), because the stylesheet uses it for a box shadow,
+// which the contrast method does not read through. A see-through background written that way would pass
+// this guard: write backgrounds as rgba() or opaque colours.
+const unsafe = /opacity|gradient|background-image|url\(|rgba|hsla|filter:|transparent|color-mix/.test(css);
 const measuredAll = runs.flatMap((run) => run.measured.map((m) => ({ ...m, where: `${run.path} ${run.view} ${run.state}` })));
 const unmeasured = measuredAll.filter((m) => m.ratio === null || m.alpha);
 const low = measuredAll.filter((m) => m.ratio !== null && m.ratio < m.needs);

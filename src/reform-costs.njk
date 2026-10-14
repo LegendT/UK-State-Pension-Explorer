@@ -8,14 +8,14 @@ permalink: /reform-options/costs/
 <p class="lede">The State Pension is the largest of the benefits paid to pensioners, its bill is rising, and a change to the yearly increase would save little at first and much over decades. This page gives the cost now and as projected, what the triple lock has cost, what a change would save, and how income, poverty and wealth differ among pensioners.</p>
 
 {{ m.contents([
-  ["public-finances", "The State Pension is most of what is spent on pensioners, and the bill is rising", [
+  ["public-finances", "The State Pension is the largest benefit paid to pensioners, and the bill is rising", [
     ["projection", "The long-term projection"]
   ]],
   ["cost-and-saving", "The triple lock has added to the bill, and a change would save little at first and much later", [
     ["cost-so-far", "The cost so far"],
     ["saving", "The saving from a change"]
   ]],
-  ["who", "Who receives what: the State Pension matters most to those with the lowest incomes", [
+  ["who", "Who receives what: an average pensioner does not exist", [
     ["who-income", "Income"],
     ["who-poverty", "Poverty and deprivation"],
     ["who-wealth", "Housing and wealth"],
@@ -24,7 +24,7 @@ permalink: /reform-options/costs/
   ]]
 ], true) }}
 
-<h2 id="public-finances">The State Pension is most of what is spent on pensioners, and the bill is rising</h2>
+<h2 id="public-finances">The State Pension is the largest benefit paid to pensioners, and the bill is rising</h2>
 
 <p>The State Pension is the largest of the benefits paid to pensioners. Spending on it is forecast to rise each year.</p>
 
@@ -72,7 +72,7 @@ permalink: /reform-options/costs/
 
 <h2 id="cost-and-saving">The triple lock has added to the bill, and a change would save little at first and much later</h2>
 
-<p>Every estimate here puts spending above what another rule would have cost, and every estimate of a change puts the saving small at first and large over decades. Three different amounts are often confused.</p>
+<p>Every estimate here puts spending above what another rule would have cost, and taken together the estimates of a change put the saving small at first and large over decades. Three different amounts are often confused.</p>
 <ol>
   <li><strong>The whole bill.</strong> {{ "sp-spend-2026-27" | fig }} in 2026/27, above.</li>
   <li><strong>The cost of the triple lock so far.</strong> How much higher spending is than it would have been under a different rule. It depends on which rule is used for comparison.</li>
@@ -145,15 +145,15 @@ permalink: /reform-options/costs/
 <p>{{ ("no-rule-2030-detail" | claim).statement }} {{ m.c("no-rule-2030-detail") }} So the estimates can be read, but not reproduced.</p>
 {% endcall %}
 
-{% call m.unavailable("costings for a double lock of prices or earnings, and for means-testing", 4) %}
+{% call m.unavailable("costings for a double lock of prices or earnings, and for means-testing", 4, "not-available-costings-double-lock-means-testing") %}
 <p>{{ ("no-costed-double-lock" | claim).statement }} {{ ("no-costed-means-test" | claim).statement }} We have not made our own estimates. A calculation that multiplied one person's difference by the number of pensioners would be wrong, because people receive different amounts and because tax and benefits change the result.</p>
 {% endcall %}
 
 <p>To see the State Pension beside other spending and taxes, the {{ m.sisterLink("budget-simulator" | link) }} lets you change each one. It is a simplified teaching model, not an official costing of any pension reform, and its State Pension figure is a forecast for an earlier year than the figures on this page. To put a figure in billions into scale, there is the {{ m.sisterLink("big-numbers" | link) }}. An amount per person from that tool is simple division. It is not what anyone pays or receives.</p>
 
-<h2 id="who">Who receives what: the State Pension matters most to those with the lowest incomes</h2>
+<h2 id="who">Who receives what: an average pensioner does not exist</h2>
 
-<p>The State Pension matters most to those with the lowest incomes, most pensioners own their home outright, and wealth is spread more unevenly than income. An average pensioner does not exist. The evidence below is about the spread. A median is the middle value: half have more and half less. Income after housing costs is what is left once rent, mortgage interest and similar costs are paid.</p>
+<p>An average pensioner does not exist. The evidence below is about the spread: income, poverty and deprivation, housing and wealth, the differences between men and women, and disability and caring. A median is the middle value: half have more and half less. Income after housing costs is what is left once rent, mortgage interest and similar costs are paid.</p>
 
 <h3 id="who-income">Income: the State Pension matters most to those with the lowest incomes</h3>
 
@@ -183,7 +183,7 @@ permalink: /reform-options/costs/
 
 {{ m.dataTable("wealth-bands") }}
 
-<p>Wealth is spread more unevenly than income. The Office for National Statistics estimates from a survey that among single households over State Pension age, a quarter have total wealth below {{ m.f("wealth-single-p25") }} and a quarter have more than {{ m.f("wealth-single-p75") }}.</p>
+<p>The Office for National Statistics estimates from a survey that among single households over State Pension age, a quarter have total wealth below {{ m.f("wealth-single-p25") }} and a quarter have more than {{ m.f("wealth-single-p75") }}.</p>
 {{ m.sourceNote("wealth-single-p25" | figure) }}
 
 {% call m.note("Income, wealth and need are three different things", 4) %}

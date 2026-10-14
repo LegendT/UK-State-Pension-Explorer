@@ -4,9 +4,9 @@ This repository contains two kinds of material, licensed differently.
 1. CODE AND ORIGINAL WRITING: MIT Licence
 ================================================================================
 
-Applies to: everything in this repository EXCEPT two things, covered by clause 2
-below. Those two are the figures themselves, and any words quoted from a source,
-wherever they sit.
+Applies to: everything in this repository EXCEPT three things, covered by clause 2
+below. Those three are the figures themselves, the source records attached to
+them, and any words quoted from a source, wherever they sit.
 
 So this clause covers the site's own prose in the page templates in src/, the
 build code in eleventy.config.js, src/assets/ and scripts/, the tests in test/,
@@ -14,10 +14,6 @@ the documents in docs/ and research/, README.md, and the writing carried in the
 data files themselves: a figure's label, definition and qualifications, and a
 claim's statement, interpretation and note, are this project's words, not the
 publishers'.
-
-The scope is written this way round on purpose, after the same licence on a
-sister site: a list of what is covered names what someone remembered, and leaves
-the rest licensed by neither clause.
 
 Copyright (c) 2026 Anthony George
 

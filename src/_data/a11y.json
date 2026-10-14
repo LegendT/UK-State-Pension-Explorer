@@ -24,7 +24,7 @@
     },
     {
       "check": "Target size",
-      "result": "No control is smaller than 24 by 24 CSS pixels, apart from links inside a sentence, which the guidelines exempt. Some controls are between 24 and 43 pixels high, below our own aim of 44.",
+      "result": "No control is smaller than 24 by 24 CSS pixels, apart from links inside a sentence, which the guidelines exempt, and four standalone links about 21 pixels tall, which pass by the spacing exception of the guideline. Some controls are between 24 and 43 pixels high, below our own aim of 44.",
       "environment": "Chrome 154 on macOS (Apple silicon), driven by script.",
       "date": "2026-10-05"
     },
@@ -86,7 +86,7 @@
     },
     {
       "check": "Changes to a form when a choice is made",
-      "reason": "Some choices change other fields at once: the household, the scenario, the number of years, the first year and the pension series. A person has not yet judged whether each change is clear."
+      "reason": "Some choices change other fields at once: the household, the budget period, the scenario, the number of years, the first year and the pension series. A person has not yet judged whether each change is clear."
     }
   ],
   "known_issues": []

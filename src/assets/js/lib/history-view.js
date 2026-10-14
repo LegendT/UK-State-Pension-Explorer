@@ -1,7 +1,7 @@
 // Tool 4 results as an HTML string, and the same rows as CSV. No DOM.
 // Published rates and decisions are read from the record. Only the comparison is calculated.
 
-import { RULE_LABELS, upratingFor } from "./uprating.js";
+import { upratingFor } from "./uprating.js";
 import { earningsIndex, inLatestPrices, observed, reconstruct, SERIES_LABELS } from "./history.js";
 import { lineChart, near } from "./chart.js";
 import { money, percent } from "./format.js";
@@ -91,7 +91,7 @@ export function renderHistorySummary(options) {
     `<p>${SERIES_LABELS[series]}, ${from} to ${to}. ${HISTORY_MEASURES[measure]}.</p>` +
     `<dl><div><dt>${from}, published</dt> <dd>${show(first.published, measure)}</dd></div>` +
     `<div><dt>${to}, published</dt> <dd>${show(last.published, measure)}</dd></div>` +
-    (rule ? `<div><dt>${to}, calculated under the ${RULE_LABELS[rule].toLowerCase()}</dt> <dd>${show(last.calculated, measure)}</dd></div>` : "") +
+    (rule ? `<div><dt>${to}, calculated under the ${RULE_IN_A_TITLE[rule]}</dt> <dd>${show(last.calculated, measure)}</dd></div>` : "") +
     `</dl>` +
     departures(options).map((sentence) => `<p>${sentence}</p>`).join("")
   );
@@ -131,9 +131,10 @@ export function renderHistory(options) {
   const { series, from, to, measure, rule, chartWidth, sources } = options;
   const rows = historyRows(options);
   const name = SERIES_LABELS[series];
-  const ruleName = rule ? RULE_LABELS[rule] : "";
+  // One name for the rule everywhere in a result: the menu's, with what it leaves out (W11).
+  const ruleName = rule ? RULE_IN_A_TITLE[rule] : "";
   const seriesList = [{ label: "Published rate", short: "Published rate", values: rows.map((row) => row.published) }];
-  if (rule) seriesList.push({ label: `Calculated under the ${ruleName.toLowerCase()} from ${from}`, short: "Calculated", values: rows.map((row) => row.calculated) });
+  if (rule) seriesList.push({ label: `Calculated under the ${ruleName} from ${from}`, short: "Calculated", values: rows.map((row) => row.calculated) });
 
   // Years with a short annotation are marked on the chart and listed under it by number. Labels at
   // the marks overlapped, because 2021/22 and 2022/23 are next to each other.
@@ -164,7 +165,7 @@ export function renderHistory(options) {
     id: "history-chart",
     title: message,
     description:
-      `Published weekly rate for each tax year${rule ? `, and a calculation of the ${ruleName.toLowerCase()} applied from ${from}` : ""}. ` +
+      `Published weekly rate for each tax year${rule ? `, and a calculation of the ${ruleName} applied from ${from}` : ""}. ` +
       `The table after the chart gives every value.`,
     labels: rows.map((row) => row.tax_year),
     series: seriesList,
@@ -175,7 +176,7 @@ export function renderHistory(options) {
 
   const head =
     `<th scope="col">Tax year</th><th scope="col" class="num">Published rate</th>` +
-    (rule ? `<th scope="col" class="num">Calculated: ${ruleName}</th>` : "") +
+    (rule ? `<th scope="col" class="num">Calculated: ${ruleName.charAt(0).toUpperCase()}${ruleName.slice(1)}</th>` : "") +
     `<th scope="col" class="num">Increase applied</th><th scope="col">Decided by</th><th scope="col">Notes</th>`;
 
   const body = rows
@@ -190,7 +191,7 @@ export function renderHistory(options) {
 
   const comparison = rule
     ? `<div class="note" role="note"><h4>About the calculated column</h4>` +
-      `<p><span class="status">Calculated by this site</span> The ${ruleName.toLowerCase()}, applied every year from a starting rate of ` +
+      `<p><span class="status">Calculated by this site</span> The ${ruleName}, applied every year from a starting rate of ` +
       `<strong>${money(Math.round(rows[0].publishedCash * 100))} in ${from}</strong>.</p>` +
       `<p>In ${to} the published rate was ${money(Math.round(last.publishedCash * 100))} and the calculated amount is ${money(Math.round(last.calculatedCash * 100))}. ` +
       `A different starting year gives a different result.</p>` +

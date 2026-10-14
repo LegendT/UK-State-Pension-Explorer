@@ -81,12 +81,11 @@ A11Y_ASSESSMENT_DATE=2026-10-01 AI_CRAWLER_POLICY=allow npm run build
 | `scripts/` | Build check, accessibility runs, source checks, reference calculations. |
 | `research/` | The research record behind the registers. |
 | `docs/` | Specification, decisions, assessment, maintenance, handover. The handover holds the current state only: decision 83. |
-| `NEXT-SESSION.md` | A prompt for the first message of a new session. Written by the handoff check. Not edited by hand. Kept on the owner's computer, not in the repository: decision 99. |
 | `LICENCE` | MIT for the code and the site's own writing; the figures and quoted passages stay under their sources' terms. |
 
 ## Hosting
 
-Netlify builds a preview from `main`, using `netlify.toml`, until `SITE_ENV` under `[context.production.environment]` is set to `production` at launch. Deploy previews and branch deploys stay previews after launch: decision 68. A preview asks for a user name and password. They are set in the `BASIC_AUTH` variable in Netlify, as `user:password`, and the build writes them to `_site/_headers`. `BASIC_AUTH=user:password npm run build` shows that the rule is written. It does not show that the sign-in works, because the local server ignores that file. That was checked on the Netlify deploy preview on 29 September 2026. Repository, private: https://github.com/LegendT/UK-State-Pension-Explorer
+Netlify builds a preview from `main`, using `netlify.toml`, until `SITE_ENV` under `[context.production.environment]` is set to `production` at launch. Deploy previews and branch deploys stay previews after launch: decision 68. A preview asks for a user name and password. They are set in the `BASIC_AUTH` variable in Netlify, as `user:password`, and the build writes them to `_site/_headers`. `BASIC_AUTH=user:password npm run build` shows that the rule is written. It does not show that the sign-in works, because the local server ignores that file. That was checked on the Netlify deploy preview on 29 September 2026. Repository: https://github.com/LegendT/UK-State-Pension-Explorer
 
 ## Markup conventions
 

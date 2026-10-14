@@ -40,12 +40,13 @@ permalink: /sources-and-method/
   <li>The calculators were tested against examples worked out separately, by a different method from the calculator code.</li>
   <li>Every increase in the published rates from 2011/12, and in the new State Pension from 2017/18, was tested against the rate before it, the increase applied, and rounding to the nearest 5p.</li>
   <li>The owner read every page on {{ ownerReadDate | safe }} and gave notes page by page, and the AI assistant made a readability review of every page the same day. The changes they led to are under <a href="#what-changed">What changed after the review</a>.</li>
+  {% if site.reviewerName %}<li>The content was reviewed by {{ site.reviewerName }} on {{ site.reviewDate | timeTag | safe }}.</li>{% endif %}
   <li>The four tools are driven in a browser by a script: <a href="#how-the-calculators-were-tested">how the calculators were tested</a>.</li>
 </ul>
 
 <h3 id="not-checked">Not checked</h3>
 <ul>
-  <li>{% if site.reviewerName %}The content was reviewed by {{ site.reviewerName }} on {{ site.reviewDate | timeTag | safe }}.{% else %}<strong>No formal review by a named person has yet happened.</strong> The owner read every page on {{ ownerReadDate | safe }} and gave notes, and a check by the same assistant that wrote a page is not an independent review.{% endif %}</li>
+  {% if not site.reviewerName %}<li><strong>No formal review by a named person has yet happened.</strong> A check by the same assistant that wrote a page is not an independent review.</li>{% endif %}
   <li>Some sources refused automated reading, including the House of Commons Library and Hansard. Nothing on this site is quoted from them.</li>
   <li>Figures reported in the news without a document we could open are left out, or are marked as reported.</li>
   <li>The accessibility assessment is set out in the <a href="/accessibility/">accessibility statement</a>.</li>
@@ -54,16 +55,16 @@ permalink: /sources-and-method/
 <p>We do not use labels such as "verified" or "official" as a general mark of reliability. Each figure says what it is, where it is from and when it was checked.</p>
 
 <h3 id="what-changed">What changed after the review</h3>
-<p>The owner's notes of {{ ownerReadDate | safe }} and the readability review of that day led to these changes, made between 8 and 13 October 2026.</p>
+<p>The owner's notes of {{ ownerReadDate | safe }} and the readability review of that day led to these changes, made between 8 and 14 October 2026.</p>
 <ul>
   <li>The arguments for and against the triple lock moved from the entitlement page to the yearly increase page, and were reworded; each figure in them now gives its period and range.</li>
   <li>Each figure in the text is followed by its own source, and the caveat that changes a figure's meaning is the one shown open on its card.</li>
-  <li>Each page opens with one sentence of its answer, and headings on the triple lock, living and costs pages state what their section finds.</li>
-  <li>Every term is defined where a reader first meets it, and the State Pension page gives what date of birth decides in one table.</li>
+  <li>Five of the explainers open with one sentence of their answer, and headings on the State Pension, triple lock, living and costs pages state what their section finds.</li>
+  <li>Terms are defined where a reader first meets them, and the State Pension page gives what date of birth decides in one table.</li>
   <li>The tool charts fit a phone, say when their scale starts above zero, and name their sources under the chart and the table; the rule comparison says on the chart that it is an illustration.</li>
   <li>The rule comparison and the triple lock calculator put nothing in the page address on their own: a button copies a link to the result shown.</li>
   <li>The Department for Work and Pensions' analysis of the announced rule, and the commission's dates for the care service, were brought onto the reform pages.</li>
-  <li>Every heading, table and chart has a fixed address, and a tool's form appears only once its own script has run.</li>
+  <li>Every main heading, table and chart has a fixed address, and a tool's form appears only once its own script has run.</li>
 </ul>
 
 <h2 id="approach">Editorial approach</h2>
@@ -153,7 +154,7 @@ permalink: /sources-and-method/
   <li><strong>The government's savings figures can be read but not reproduced.</strong> The Department for Work and Pensions gives the baseline, the coverage and the prices, and not what it assumed about earnings and prices. <a href="/reform-options/costs/#saving">The saving from a change</a>.</li>
   <li><strong>Some responses to the announcement of 29 September 2026 rest on news reports.</strong> The main parties' and organisations' statements come from their own sites where we found them; the rest are as reported, and say so. <a href="/reform-options/social-care/#status-reported">Reported, not confirmed in a government document</a>.</li>
   <li><strong>The example budgets are not like for like.</strong> Private renters are at the 2026 minimum standard, social renters at the 2025 minimum, and owners at the 2025 moderate standard. <a href="/tools/budget/#budget">The budget explorer</a>.</li>
-  <li><strong>Some figures were not found, and the pages say so:</strong> <a href="/state-pension/#not-available-the-share-of-people-on-the-full-rate">the share of people on the full rate</a>, <a href="/state-pension/#not-available-pension-not-increased">the number whose pension is not increased abroad</a>, <a href="/reform-options/costs/#not-available-some-breakdowns">costings for a double lock and for means-testing, and the incomes of pensioner carers</a>.</li>
+  <li><strong>Some figures were not found, and the pages say so:</strong> <a href="/state-pension/#not-available-the-share-of-people-on-the-full-rate">the share of people on the full rate</a>, <a href="/state-pension/#not-available-pension-not-increased">the number whose pension is not increased abroad</a>, <a href="/reform-options/costs/#not-available-costings-double-lock-means-testing">costings for a double lock and for means-testing</a>, and <a href="/reform-options/costs/#not-available-some-breakdowns">the incomes of pensioner carers</a>.</li>
   <li><strong>Whether a person has reviewed the content, and how far the accessibility assessment has gone,</strong> are under <a href="#review-status">what has and has not been checked</a>.</li>
 </ul>
 
@@ -173,7 +174,7 @@ permalink: /sources-and-method/
 
 <h2 id="ai">Use of AI</h2>
 
-<p>This site was researched, written and built with an AI assistant, Claude, made by Anthropic, working under the direction of the site's owner. The assistant read the sources, drafted the text, wrote the code and ran the tests. The owner read every page on {{ ownerReadDate | safe }} and gave notes. {% if site.reviewerName %}{{ site.reviewerName }} reviewed the content on {{ site.reviewDate | timeTag | safe }}.{% else %}No formal review by a named person has yet happened.{% endif %}</p>
+<p>This site was researched, written and built with an AI assistant, Claude, made by Anthropic, working under the direction of the site's owner. The assistant read the sources, drafted the text, wrote the code and ran the tests. {% if site.reviewerName %}{{ site.reviewerName }} reviewed the content on {{ site.reviewDate | timeTag | safe }}.{% else %}No formal review by a named person has yet happened.{% endif %}</p>
 
 <p>An AI assistant can misread a source or state something wrongly with confidence. That is why each figure shows its source, and the passage it rests on where one is quoted, so that a reader can check it.</p>
 
@@ -183,7 +184,7 @@ permalink: /sources-and-method/
 <p>This site is published by {{ site.ownerName }}, who read every page on {{ ownerReadDate | safe }} and gave notes page by page. It is an independent educational project. It is not part of the government and is not an official statistics producer.</p>
 {% else %}
 {% call m.unavailable("the name of the publisher", 3, "not-available-the-name-of-the-publisher") %}
-<p>The owner of this site has not yet been named here. This is one of the decisions to make before the site is published. The owner read every page on {{ ownerReadDate | safe }} and gave notes page by page. The site is an independent educational project. It is not part of the government and is not an official statistics producer.</p>
+<p>The owner of this site has not yet been named here. It is set when the site is published. The owner read every page on {{ ownerReadDate | safe }} and gave notes page by page. The site is an independent educational project. It is not part of the government and is not an official statistics producer.</p>
 {% endcall %}
 {% endif %}
 
@@ -197,7 +198,7 @@ permalink: /sources-and-method/
 {%- endif %}
 {% else %}
 {% call m.unavailable("a way to report an error", 4) %}
-<p>The route for reporting an error has not been set up. This is one of the decisions to make before the site is published. The site will not be published without it.</p>
+<p>The route for reporting an error has not been set up. It is set when the site is published. The site will not be published without it.</p>
 {% endcall %}
 {% endif %}
 
@@ -213,7 +214,7 @@ permalink: /sources-and-method/
 <p>The log keeps three kinds of change apart.</p>
 <dl>
   <dt>Errors made by this site</dt>
-  <dd>{% if corrections.errors | length %}<ul>{% for item in corrections.errors %}<li>{{ item.date | timeTag | safe }}: {{ item.text }}</li>{% endfor %}</ul>{% else %}None recorded. The site has not been published.{% endif %}</dd>
+  <dd>{% if corrections.errors | length %}<ul>{% for item in corrections.errors %}<li>{{ item.date | timeTag | safe }}: {{ item.text }}</li>{% endfor %}</ul>{% else %}None recorded.{% if not site.production %} The site has not been published.{% endif %}{% endif %}</dd>
   <dt>Changes in policy or rates</dt>
   <dd>{% if corrections.policy_changes | length %}<ul>{% for item in corrections.policy_changes %}<li>{{ item.date | timeTag | safe }}: {{ item.text }}</li>{% endfor %}</ul>{% else %}None recorded.{% endif %}</dd>
   <dt>Revisions by the producer of a statistic</dt>

@@ -78,6 +78,8 @@ test("lines less than 0.1% apart in every year are drawn as one line that names 
 test("a short range is drawn on an axis at least a tenth of its highest value tall, and says it is not from zero", () => {
   const svg = lineChart({ ...options, labels: ["2025/26", "2026/27"], marks: [], series: [{ label: "Rate", values: [230.25, 241.3] }] });
   const values = [...svg.matchAll(/class="chart-tick" x="[\d.]+" y="[\d.]+" text-anchor="end">([\d,.]+)</g)].map((m) => Number(m[1].replace(",", "")));
+  // The axis spans at least a tenth of 241.3, which is 24.13; the ticks on it are rounded to 5, so the
+  // labelled ticks span at least 20. The bound is on the ticks, the only thing the markup shows.
   assert.ok(Math.max(...values) - Math.min(...values) >= 20, values.join(","));
   assert.match(svg, /class="chart-break"/);
   assert.match(svg, /<p class="chart-note">The scale starts above zero.<\/p>/);

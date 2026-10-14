@@ -89,7 +89,7 @@
       "index": true,
       "published": null,
       "modified": "2026-10-13",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 12 October 2026: totals in starting-year prices are shown to the pound (W23). Changed on 13 October 2026: the chart says it is an illustration, a source line sits under the chart and the tables, and \"not your entitlement\" links to the GOV.UK forecast (W26). Changed on 13 October 2026: nothing goes in the page address on its own, and \"Copy a link to this result\" copies a link holding the settings shown (W31, decision 96)."
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 9 October 2026: the chart is drawn at the width it has on a phone (W20). Changed on 12 October 2026: totals in starting-year prices are shown to the pound (W23); rules less than 0.1% apart read as level in the title and share one line (W21); every menu's choices fit a 320 px screen (W28). Changed on 13 October 2026: the chart says it is an illustration, a source line sits under the chart and the tables, and \"not your entitlement\" links to the GOV.UK forecast (W26). Changed on 13 October 2026: nothing goes in the page address on its own, and \"Copy a link to this result\" copies a link holding the settings shown (W31, decision 96)."
     },
     {
       "path": "/reform-options/costs/",
@@ -160,8 +160,8 @@
       "canonical_path": "/tools/",
       "index": true,
       "published": null,
-      "modified": "2026-10-05",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md."
+      "modified": "2026-10-09",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 9 October 2026: the reform pages are named as the section list names them (W7)."
     },
     {
       "path": "/tools/triple-lock/",
@@ -188,8 +188,8 @@
       "canonical_path": "/tools/budget/",
       "index": true,
       "published": null,
-      "modified": "2026-10-08",
-      "modified_note": "Changed on 8 October 2026: amounts are converted when the period changes (W3, decision 90)."
+      "modified": "2026-10-12",
+      "modified_note": "Changed on 8 October 2026: amounts are converted when the period changes (W3, decision 90). Changed on 12 October 2026: every menu's choices fit a 320 px screen, with the example budgets grouped by standard (W28), and an amount over £1,000,000 is told the limit (W30)."
     },
     {
       "path": "/tools/history/",
@@ -203,7 +203,7 @@
       "index": true,
       "published": null,
       "modified": "2026-10-13",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 13 October 2026: the Retail Prices Index and the Consumer Prices Index named in full in the table (W25). Changed on 13 October 2026: a source line under the chart and under the table (W26)."
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 9 October 2026: the chart is drawn at the width it has on a phone, with a scroll cue on a wide table (W20). Changed on 12 October 2026: the rules read \"no exceptions\" with a hint saying what they leave out, and \"At a glance\" lists the years Parliament departed from the triple lock (W11); lines less than 0.1% apart are drawn as one, and the title says how far the calculation ends from the published rate (W21); every menu's choices fit a 320 px screen (W28). Changed on 13 October 2026: the Retail Prices Index and the Consumer Prices Index named in full in the table (W25). Changed on 13 October 2026: a source line under the chart and under the table (W26)."
     },
     {
       "path": "/sources-and-method/",

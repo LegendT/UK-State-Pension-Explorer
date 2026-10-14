@@ -96,7 +96,7 @@ test("with a rule added, the chart's title says how far the calculation ends fro
   assert.match(near, /<h4>Calculated under the triple lock with no exceptions, the rate ends less than 0.1% from the published rate in 2026\/27<\/h4>/);
   // Merged, the two lines read as one name in the legend.
   const merged = renderHistory({ years, series: "new", from: "2023/24", to: "2026/27", measure: "cash", rule: "triple-lock" });
-  assert.match(merged, /Published rate and calculated under the triple lock from 2023\/24: the same in every year/);
+  assert.match(merged, /Published rate and calculated under the triple lock with no exceptions from 2023\/24: the same in every year/);
 });
 
 test("a source line is printed under the chart and the table, naming the price index only for buying power (W26)", async () => {

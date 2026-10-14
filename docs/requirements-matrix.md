@@ -69,9 +69,9 @@ Status values: **Built**, **Built with a gap** (the gap is named), **Not built**
 | Qualitative claim register | `claims.json` | `check-build.mjs` | Built |
 | Value stored once | `fig` and `figure` filters | Build fails on an unknown id | Built with a gap: `news.json` and `tables.json` repeat a few values in text |
 | Dated language, no badges | Source notes | | Built |
-| Passage checks | `scripts/check-passages.py` | All passages found: by script, or in a browser for three sites that refuse scripts | Built |
-| Values without a passage | `scripts/check-values.py` and direct look-up in the spreadsheets | All found. Two wealth figures: value found, row not confirmed | Built with a gap |
-| Review status shown honestly | `review_status` = `checked-with-ai-assistance`, preview banner | | Owner: no human review |
+| Passage checks | `scripts/check-passages.py` | All passages found: by script, or in a browser for the sites that refuse scripts (23 passages) | Built |
+| Values without a passage | `scripts/check-values.py` and direct look-up in the spreadsheets | All found. The 12 figures without a quoted passage record their file and cell (W4, 8 October 2026) | Built |
+| Review status shown honestly | `review_status` = `checked-with-ai-assistance`, preview banner | | The owner read every page on 8 October 2026 (launch step 3); the formal review date is row W16 of `docs/launch-dependencies.md` |
 | Conflicting sources not resolved silently | Decision log, source notes | | Built |
 
 ## Section 6: design and accessibility

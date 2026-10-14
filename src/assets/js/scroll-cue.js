@@ -5,8 +5,14 @@
 const sizes = new ResizeObserver((entries) => {
   for (const { target } of entries) target.classList.toggle("can-scroll", target.scrollWidth > target.clientWidth + 1);
 });
-const seen = new WeakSet();
+const seen = new Set();
 const watch = () => {
+  // A region a tool's redraw replaced is let go, so a long session does not keep every old result.
+  for (const region of seen) {
+    if (region.isConnected) continue;
+    sizes.unobserve(region);
+    seen.delete(region);
+  }
   for (const region of document.querySelectorAll(".scroll-x")) {
     if (seen.has(region)) continue;
     seen.add(region);

@@ -78,4 +78,4 @@ permalink: /accessibility/
 {% endif %}
 
 <h2 id="dates">Preparation of this statement</h2>
-<p>{% if a11y.assessed_on %}The tests listed were last run on {{ a11y.assessed_on | timeTag | safe }}.{% else %}No assessment date is recorded.{% endif %} The full assessment, criterion by criterion, is kept with the site's source files.</p>
+<p>{% if a11y.assessed_on %}The recorded date of the tests listed is {{ a11y.assessed_on | timeTag | safe }}.{% else %}No assessment date is recorded.{% endif %} The full assessment, criterion by criterion, is kept with the site's source files.</p>

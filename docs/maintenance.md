@@ -46,7 +46,7 @@ The note was written on 30 September 2026, after the announcement of 29 Septembe
 - an updated version of the care commission's terms of reference, which GOV.UK said on 1 October 2026 would follow;
 - a technical note from the Department for Work and Pensions or the Treasury, above all one that gives the earnings measure, the starting point or the method behind the savings;
 - the next forecast from the Office for Budget Responsibility;
-- the report of the Casey commission, due in summer 2027;
+- the report of the Casey commission: summer 2027 according to the Prime Minister's Office, 2026 and by 2028 under its published terms of reference;
 - the final report of the Pensions Commission, due in spring 2027;
 - a statement from a party on its own site, to replace one that rests on a news report;
 - an official transcript of the Prime Minister's speech;
@@ -72,4 +72,4 @@ Open each destination in `src/_data/links.json` when the destination site change
 
 ## After any change to markup, styles or scripts, or to data a page shows
 
-Run `npm run a11y` and `node scripts/a11y-manual-assist.mjs`, and repeat the manual checks in `docs/accessibility-assessment.md` for the parts that changed.
+Run `npm run a11y`, `npm run a11y:manual` and `npm run test:tools`, and repeat the manual checks in `docs/accessibility-assessment.md` for the parts that changed.
