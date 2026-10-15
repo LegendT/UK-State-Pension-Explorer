@@ -216,8 +216,8 @@
       "canonical_path": "/sources-and-method/",
       "index": true,
       "published": null,
-      "modified": "2026-10-13",
-      "modified_note": "Changed on 8 October 2026: the figure register names the file, sheet and cell of each figure read from a spreadsheet (W4). Changed on 9 October 2026: the register of figures shows each figure's first caveat and the official status of its source (W19). Changed on 12 October 2026: the corrections section says a GitHub issue is the only route and needs an account, a known limit (W13). Changed on 13 October 2026: six terms added to the glossary (W25); the owner's review of every page and what changed after it; a section gathering the known limits and likely misreadings; the tools' description follows the copy-a-link change and names the browser checks (W15)."
+      "modified": "2026-10-15",
+      "modified_note": "Changed on 8 October 2026: the figure register names the file, sheet and cell of each figure read from a spreadsheet (W4). Changed on 9 October 2026: the register of figures shows each figure's first caveat and the official status of its source (W19). Changed on 12 October 2026: the corrections section says a GitHub issue is the only route and needs an account, a known limit (W13). Changed on 13 October 2026: six terms added to the glossary (W25); the owner's review of every page and what changed after it; a section gathering the known limits and likely misreadings; the tools' description follows the copy-a-link change and names the browser checks (W15). Changed on 15 October 2026: the sentence beside the report link says it opens the issues list (decision 100); the list of changes made before publication is removed, and the review wording says the owner's second read is not finished, in place of saying no review has happened (W38, decision 102)."
     },
     {
       "path": "/accessibility/",
