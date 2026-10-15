@@ -23,7 +23,7 @@ permalink: /accessibility/
   <li>Zoom to 400% without losing content or scrolling sideways, except inside wide tables and charts, which scroll on their own.</li>
   <li>Read every chart as a table. No information depends on colour alone.</li>
   <li>Use the site in a light or dark colour scheme, following your device's setting.</li>
-  <li>Read every explanation with JavaScript switched off. The calculators need JavaScript. Each shows a worked example or a default result without it.</li>
+  <li>Read every explanation with JavaScript switched off. The calculators need JavaScript. Without it, each says so: three show a default result, and the budget explorer points to its example budgets.</li>
   <li>Enter figures by typing. No calculator needs dragging or a slider.</li>
 </ul>
 
@@ -78,4 +78,4 @@ permalink: /accessibility/
 {% endif %}
 
 <h2 id="dates">Preparation of this statement</h2>
-<p>{% if a11y.assessed_on %}The recorded date of the tests listed is {{ a11y.assessed_on | timeTag | safe }}.{% else %}No assessment date is recorded.{% endif %} The full assessment, criterion by criterion, is kept with the site's source files.</p>
+<p>{% if a11y.assessed_on %}The assessment is recorded as of {{ a11y.assessed_on | timeTag | safe }}. The tests above give the dates they ran.{% else %}No assessment date is recorded.{% endif %} The full assessment, criterion by criterion, is kept with the site's source files.</p>

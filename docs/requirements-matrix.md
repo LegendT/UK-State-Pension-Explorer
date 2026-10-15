@@ -52,7 +52,7 @@ Status values: **Built**, **Built with a gap** (the gap is named), **Not built**
 | Tool 3: unknown tax gives a before-tax balance | `lib/budget-view.js` | Test, browser | Built |
 | Tool 3: one accounting convention | "How to enter amounts", field hints | Read through | Built |
 | Tool 3: presets sourced and dated, exclusions shown | `budgets.json` | Each preset adds to its published total within 2p | Built with a gap: decision log item A |
-| Tool 3: unsupported households stated at entry | "Before you start" | | Built |
+| Tool 3: unsupported households stated at entry | "What the tool does not cover" | | Built |
 | Tool 3: shortfall shown, costs not changed | | Test, browser | Built |
 | Tool 4: series separate, new series from 2016/17 | `lib/history.js` | Test | Built |
 | Tool 4: decisions stored apart from reconstructions | `history.json` against `reconstruct` | Test | Built |
