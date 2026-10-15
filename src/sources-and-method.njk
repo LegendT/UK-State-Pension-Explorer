@@ -39,33 +39,20 @@ permalink: /sources-and-method/
   <li>The two headline rates were checked a second time, directly against GOV.UK.</li>
   <li>The calculators were tested against examples worked out separately, by a different method from the calculator code.</li>
   <li>Every increase in the published rates from 2011/12, and in the new State Pension from 2017/18, was tested against the rate before it, the increase applied, and rounding to the nearest 5p.</li>
-  <li>The owner read every page on {{ ownerReadDate | safe }} and gave notes page by page, and the AI assistant made a readability review of every page the same day. The changes they led to are under <a href="#what-changed">What changed after the review</a>.</li>
+  <li>The owner read every page on {{ ownerReadDate | safe }} and gave notes page by page, and the AI assistant made a readability review of every page the same day.</li>
   {% if site.reviewerName and site.reviewDate %}<li>The content was reviewed by {{ site.reviewerName }} on {{ site.reviewDate | timeTag | safe }}.</li>{% endif %}
   <li>The four tools are driven in a browser by a script: <a href="#how-the-calculators-were-tested">how the calculators were tested</a>.</li>
 </ul>
 
 <h3 id="not-checked">Not checked</h3>
 <ul>
-  {% if not (site.reviewerName and site.reviewDate) %}<li><strong>No formal review by a named person has yet happened.</strong> A check by the same assistant that wrote a page is not an independent review.</li>{% endif %}
+  {% if not (site.reviewerName and site.reviewDate) %}<li><strong>The owner's second read of every page, after the changes made since {{ ownerReadDate | safe }}, is not finished.</strong> When it is finished, its date is given under Checked. A check by the same assistant that wrote a page is not an independent review.</li>{% endif %}
   <li>Some sources refused automated reading, including the House of Commons Library and Hansard. Nothing on this site is quoted from them.</li>
   <li>Figures reported in the news without a document we could open are left out, or are marked as reported.</li>
   <li>The accessibility assessment is set out in the <a href="/accessibility/">accessibility statement</a>.</li>
 </ul>
 
 <p>We do not use labels such as "verified" or "official" as a general mark of reliability. Each figure says what it is, where it is from and when it was checked.</p>
-
-<h3 id="what-changed">What changed after the review</h3>
-<p>The owner's notes of {{ ownerReadDate | safe }} and the readability review of that day led to these changes, made between 8 and 14 October 2026.</p>
-<ul>
-  <li>The arguments for and against the triple lock moved from the entitlement page to the yearly increase page, and were reworded; each figure in them now gives its period and range.</li>
-  <li>Each figure in the text is followed by its own source, and the caveat that changes a figure's meaning is the one shown open on its card.</li>
-  <li>Five of the explainers open with one sentence of their answer, and headings on the State Pension, triple lock, living and costs pages state what their section finds.</li>
-  <li>Terms are defined where a reader first meets them, and the State Pension page gives what date of birth decides in one table.</li>
-  <li>The tool charts fit a phone, say when their scale starts above zero, and name their sources under the chart and the table; the rule comparison says on the chart that it is an illustration.</li>
-  <li>The rule comparison and the triple lock calculator put nothing in the page address on their own: a button copies a link to the result shown.</li>
-  <li>The Department for Work and Pensions' analysis of the announced rule, and the commission's dates for the care service, were brought onto the reform pages.</li>
-  <li>Every main heading, table and chart has a fixed address, and a tool's form appears only once its own script has run.</li>
-</ul>
 
 <h2 id="approach">Editorial approach</h2>
 
@@ -174,7 +161,7 @@ permalink: /sources-and-method/
 
 <h2 id="ai">Use of AI</h2>
 
-<p>This site was researched, written and built with an AI assistant, Claude, made by Anthropic, working under the direction of the site's owner. The assistant read the sources, drafted the text, wrote the code and ran the tests. {% if site.reviewerName and site.reviewDate %}{{ site.reviewerName }} reviewed the content on {{ site.reviewDate | timeTag | safe }}.{% else %}No formal review by a named person has yet happened.{% endif %}</p>
+<p>This site was researched, written and built with an AI assistant, Claude, made by Anthropic, working under the direction of the site's owner. The assistant read the sources, drafted the text, wrote the code and ran the tests. {% if site.reviewerName and site.reviewDate %}{{ site.reviewerName }} reviewed the content on {{ site.reviewDate | timeTag | safe }}.{% else %}The owner read every page on {{ ownerReadDate | safe }}; the second read, after the changes made since, is not finished.{% endif %}</p>
 
 <p>An AI assistant can misread a source or state something wrongly with confidence. That is why each figure shows its source, and the passage it rests on where one is quoted, so that a reader can check it.</p>
 
