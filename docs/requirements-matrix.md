@@ -1,6 +1,6 @@
 # Requirements matrix
 
-Links each part of `uk-state-pension-explorer-scope.md` to where it is built, what evidence it rests on and how it was checked. Written 29 September 2026.
+Links each part of `uk-state-pension-explorer-scope.md`, the owner's scope, no longer tracked and kept on his computer (decision 103), to where it is built, what evidence it rests on and how it was checked. Written 29 September 2026.
 
 Status values: **Built**, **Built with a gap** (the gap is named), **Not built** (the reason is named), **Owner** (needs a decision or a person).
 
