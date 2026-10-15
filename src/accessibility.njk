@@ -33,10 +33,10 @@ permalink: /accessibility/
 {%- set runs = [] %}
 {%- for item in a11y.done %}{% set key = item.environment ~ item.date %}{% if key not in runs %}{% set _ = runs.push(key) %}{% endif %}{% endfor %}
 {%- set oneRun = (runs | length) == 1 %}
-{% if oneRun %}<p>Every test below used {{ a11y.done[0].environment }} They ran on {{ a11y.done[0].date | timeTag | safe }}.</p>{% endif %}
+{% if oneRun %}<p>Every test below used {{ a11y.done[0].environment }} They ran on {{ a11y.done[0].date | dateTag | safe }}.</p>{% endif %}
 <dl>
   {%- for item in a11y.done %}
-  <dt>{{ item.check }}</dt> <dd>{{ item.result }}{% if not oneRun %} {{ item.environment }} Tested on {{ item.date | timeTag | safe }}.{% endif %}</dd>
+  <dt>{{ item.check }}</dt> <dd>{{ item.result }}{% if not oneRun %} {{ item.environment }} Tested on {{ item.date | dateTag | safe }}.{% endif %}</dd>
   {%- endfor %}
 </dl>
 {% else %}
@@ -78,4 +78,4 @@ permalink: /accessibility/
 {% endif %}
 
 <h2 id="dates">Preparation of this statement</h2>
-<p>{% if a11y.assessed_on %}The assessment is recorded as of {{ a11y.assessed_on | timeTag | safe }}. The tests above give the dates they ran.{% else %}No assessment date is recorded.{% endif %} The full assessment, criterion by criterion, is kept with the site's source files.</p>
+<p>{% if a11y.assessed_on %}The assessment is recorded as of {{ a11y.assessed_on | dateTag | safe }}. The tests above give the dates they ran.{% else %}No assessment date is recorded.{% endif %} The full assessment, criterion by criterion, is kept with the site's source files.</p>

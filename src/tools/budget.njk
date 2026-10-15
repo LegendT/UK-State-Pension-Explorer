@@ -147,7 +147,7 @@ permalink: /tools/budget/
       <p>Left out: {{ preset.exclusions }}</p>
       {%- if preset.note %}<p>{{ preset.note }}</p>{% endif %}
       {%- if preset.rounding_difference_pence %}<p>The categories add up to {{ (preset.rounding_difference_pence | abs) }}p {{ "more" if preset.rounding_difference_pence > 0 else "less" }} than the published total, because each line is rounded to the penny.</p>{% endif %}
-      <p>Source: {{ m.cite(s) }}. {{ preset.table_reference }} Checked against the source on {{ preset.checked_date | timeTag | safe }}.</p>
+      <p>Source: {{ m.cite(s) }}. {{ preset.table_reference }} Checked against the source on {{ preset.checked_date | dateTag | safe }}.</p>
     </div>
   </details>
   {%- endfor %}

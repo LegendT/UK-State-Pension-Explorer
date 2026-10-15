@@ -115,7 +115,7 @@ function ruleMessage(rule, calculated, published, measure, to) {
 // One muted line naming where the published figures come from, under the chart and under the table
 // (R11 of the readability review). The rates and decisions have a source for each year, so the line
 // links to the history page's table, which lists them by year. sources: { rates, decisions,
-// listed_url, prices, prices_url, checked }, where checked is a time element as HTML; left out, no
+// listed_url, prices, prices_url, checked }, where checked is a date as HTML; left out, no
 // line is printed.
 function sourceLine(sources, measure, rule) {
   if (!sources) return "";

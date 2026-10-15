@@ -195,12 +195,15 @@ for (const [url, html] of written) {
     if (!by && !/aria-label="[^"]+"/.test(attrs)) fail(`${url}: a scrolling region has no name`);
   }
   if (/<\/dt><dd>/.test(html)) fail(`${url}: a dt runs into its dd with no space`);
+  // VoiceOver with Safari read each time element twice and split the text around it (step 4).
+  if (/<time[\s>]/.test(html)) fail(`${url}: a time element; print dates with dateTag or monthOrDayTag`);
 }
 // A heading a script draws later, in a result or an error state, is not in the built page, so the
 // scripts are read for one without an id (W29). Every h2 and h3 keeps one id in every state.
 for (const path of walk("src/assets/js")) {
   const bare = readFileSync(path, "utf8").match(/<h[23]\b(?![^>]*\sid=)[^>]*>[^<`$]*/);
   if (bare) fail(`${path}: a script draws a heading with no id: ${bare[0]}`);
+  if (/<time[\s>]/.test(readFileSync(path, "utf8"))) fail(`${path}: a script draws a time element`);
 }
 for (const [url, html] of written) {
   for (const [svg] of html.matchAll(/<svg[^>]*role="img"[^>]*>/g)) {

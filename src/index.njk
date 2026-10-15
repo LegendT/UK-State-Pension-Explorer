@@ -20,7 +20,7 @@ permalink: /
     <li><a href="#where-you-stand">Which pension applies to you?</a></li>
     <li><a href="https://www.gov.uk/check-state-pension">Check your own State Pension forecast on GOV.UK</a></li>
   </ul>
-  <p class="source">Rates took effect on {{ nsp.effective_from | timeTag | safe }}. Sources: {{ m.cite(nsp.source, true) }}, and {{ m.cite(bsp.source, true) }}. Both were checked against the source on {{ nsp.checked_date | timeTag | safe }}. The rates cover Great Britain. Northern Ireland sets the same rates through its own order, which we did not read.</p>
+  <p class="source">Rates took effect on {{ nsp.effective_from | dateTag | safe }}. Sources: {{ m.cite(nsp.source, true) }}, and {{ m.cite(bsp.source, true) }}. Both were checked against the source on {{ nsp.checked_date | dateTag | safe }}. The rates cover Great Britain. Northern Ireland sets the same rates through its own order, which we did not read.</p>
 </header>
 
 {{ m.contents([
@@ -35,7 +35,7 @@ permalink: /
 
 <h2 id="where-you-stand">Find where you stand</h2>
 
-<p>Which State Pension a person gets depends on their date of birth, and for people born between <time datetime="1951-04-06">6 April 1951</time> and <time datetime="1953-04-05">5 April 1953</time> on whether they are a man or a woman. When they can claim it depends on their date of birth. Men born before <time datetime="1951-04-06">6 April 1951</time> and women born before <time datetime="1953-04-06">6 April 1953</time> are on the basic State Pension. Everyone born later is on the new State Pension. {{ m.c("which-system") }}</p>
+<p>Which State Pension a person gets depends on their date of birth, and for people born between <span class="date">6 April 1951</span> and <span class="date">5 April 1953</span> on whether they are a man or a woman. When they can claim it depends on their date of birth. Men born before <span class="date">6 April 1951</span> and women born before <span class="date">6 April 1953</span> are on the basic State Pension. Everyone born later is on the new State Pension. {{ m.c("which-system") }}</p>
 
 <p>The table shows State Pension age under the law today. It is not a check of your own entitlement. For that, use GOV.UK's <a href="https://www.gov.uk/state-pension-age">State Pension age calculator</a> and <a href="https://www.gov.uk/check-state-pension">State Pension forecast</a>.</p>
 
@@ -44,17 +44,17 @@ permalink: /
   <caption id="table-spa-by-birth">State Pension age by date of birth, under current law</caption>
   <thead><tr><th scope="col">Born</th><th scope="col">State Pension age</th><th scope="col">Read next</th></tr></thead>
   <tbody>
-    <tr><th scope="row">Men before <time datetime="1951-04-06">6 April 1951</time>, women before <time datetime="1953-04-06">6 April 1953</time></th><td>Already reached. Basic State Pension</td><td><a href="/state-pension/#extra-help">Pension Credit and other help</a></td></tr>
-    <tr><th scope="row">Men from <time datetime="1951-04-06">6 April 1951</time>, women from <time datetime="1953-04-06">6 April 1953</time>, to <time datetime="1960-04-05">5 April 1960</time></th><td>Already reached</td><td><a href="/state-pension/#what-people-receive">What people actually receive</a></td></tr>
-    <tr><th scope="row"><time datetime="1960-04-06">6 April 1960</time> to <time datetime="1961-03-05">5 March 1961</time></th><td>66 and 1 to 11 months, by month of birth</td><td><a href="/state-pension/#age-and-claiming">Claiming and deferring</a></td></tr>
-    <tr><th scope="row"><time datetime="1961-03-06">6 March 1961</time> to <time datetime="1977-04-05">5 April 1977</time></th><td>67</td><td><a href="/state-pension/#qualifying">Qualifying years</a></td></tr>
-    <tr><th scope="row"><time datetime="1977-04-06">6 April 1977</time> to <time datetime="1978-04-05">5 April 1978</time></th><td>Between 67 and 68, on a date from <time datetime="2044-05">May 2044</time> to <time datetime="2046-03">March 2046</time> set by month of birth. A review could change this</td><td><a href="/state-pension/#age-and-claiming">State Pension age and its review</a></td></tr>
-    <tr><th scope="row"><time datetime="1978-04-06">6 April 1978</time> or later</th><td>68. A review could change this</td><td><a href="/state-pension/#age-and-claiming">State Pension age and its review</a></td></tr>
+    <tr><th scope="row">Men before <span class="date">6 April 1951</span>, women before <span class="date">6 April 1953</span></th><td>Already reached. Basic State Pension</td><td><a href="/state-pension/#extra-help">Pension Credit and other help</a></td></tr>
+    <tr><th scope="row">Men from <span class="date">6 April 1951</span>, women from <span class="date">6 April 1953</span>, to <span class="date">5 April 1960</span></th><td>Already reached</td><td><a href="/state-pension/#what-people-receive">What people actually receive</a></td></tr>
+    <tr><th scope="row"><span class="date">6 April 1960</span> to <span class="date">5 March 1961</span></th><td>66 and 1 to 11 months, by month of birth</td><td><a href="/state-pension/#age-and-claiming">Claiming and deferring</a></td></tr>
+    <tr><th scope="row"><span class="date">6 March 1961</span> to <span class="date">5 April 1977</span></th><td>67</td><td><a href="/state-pension/#qualifying">Qualifying years</a></td></tr>
+    <tr><th scope="row"><span class="date">6 April 1977</span> to <span class="date">5 April 1978</span></th><td>Between 67 and 68, on a date from <span class="date">May 2044</span> to <span class="date">March 2046</span> set by month of birth. A review could change this</td><td><a href="/state-pension/#age-and-claiming">State Pension age and its review</a></td></tr>
+    <tr><th scope="row"><span class="date">6 April 1978</span> or later</th><td>68. A review could change this</td><td><a href="/state-pension/#age-and-claiming">State Pension age and its review</a></td></tr>
   </tbody>
 </table>
 {% endcall %}
 <div class="source">
-  <p>Sources: {{ m.cite(("which-system" | claim).source) }}, checked on {{ ("which-system" | claim).checked_date | timeTag | safe }}, and {{ m.cite(("spa-born-1960-61" | claim).source) }}, checked on {{ ("spa-born-1960-61" | claim).checked_date | timeTag | safe }}. "Already reached" is our reading of the timetable.</p>
+  <p>Sources: {{ m.cite(("which-system" | claim).source) }}, checked on {{ ("which-system" | claim).checked_date | dateTag | safe }}, and {{ m.cite(("spa-born-1960-61" | claim).source) }}, checked on {{ ("spa-born-1960-61" | claim).checked_date | dateTag | safe }}. "Already reached" is our reading of the timetable.</p>
   <details>
     <summary>What the table rests on</summary>
     <ul>
@@ -79,7 +79,7 @@ permalink: /
 
 <p>The <strong>State Pension</strong> is a regular payment from the government to people who have reached State Pension age and have paid, or been credited with, enough National Insurance. There are two systems. Which one applies depends on when a person was born.</p>
 
-<p>The <strong>triple lock</strong> is the rule for the yearly increase. Each April the full rates rise by the highest of three figures: the rise in prices, the rise in average earnings, or 2.5%. {{ m.c("tl-definition") }} On {{ ("pm-care-2026-09-29" | sourceRecord).published_date | timeTag | safe }} the government announced that it will change the rule from April 2030. It says it will legislate for the change, and that the triple lock stays until then. {{ m.c("rule-2030") }} {{ m.more("/reform-options/#opt-2030", "What the announced rule does") }}</p>
+<p>The <strong>triple lock</strong> is the rule for the yearly increase. Each April the full rates rise by the highest of three figures: the rise in prices, the rise in average earnings, or 2.5%. {{ m.c("tl-definition") }} On {{ ("pm-care-2026-09-29" | sourceRecord).published_date | dateTag | safe }} the government announced that it will change the rule from April 2030. It says it will legislate for the change, and that the triple lock stays until then. {{ m.c("rule-2030") }} {{ m.more("/reform-options/#opt-2030", "What the announced rule does") }}</p>
 
 <p><strong>Entitlement and increases are different questions.</strong> Entitlement decides who gets a State Pension and how much of the full rate. The yearly increase decides how the rates change over time. A proposal to change one does not change the other.</p>
 
@@ -94,17 +94,17 @@ permalink: /
 
 <h2 id="in-the-news">In the news: what is decided and what is not</h2>
 
-<p>On {{ ("pm-care-2026-09-29" | sourceRecord).published_date | timeTag | safe }} the Prime Minister announced a change to the yearly increase. {{ ("tl-kept-to-2030" | claim).statement }} {{ ("rule-2030" | claim).statement }} {{ m.c("rule-2030") }}</p>
+<p>On {{ ("pm-care-2026-09-29" | sourceRecord).published_date | dateTag | safe }} the Prime Minister announced a change to the yearly increase. {{ ("tl-kept-to-2030" | claim).statement }} {{ ("rule-2030" | claim).statement }} {{ m.c("rule-2030") }}</p>
 
 <p>This is an announcement. It is not law. {{ ("rule-2030-legislate" | claim).statement }} {{ ("ncs-savings-used" | claim).statement }} {{ m.c("ncs-savings-used") }} {{ ("no-rule-2030-detail" | claim).statement }} {{ m.c("no-rule-2030-detail") }}</p>
 
-<p>This is a dated note, correct on {{ news.as_of | timeTag | safe }}. It is not a live news feed.</p>
+<p>This is a dated note, correct on {{ news.as_of | dateTag | safe }}. It is not a live news feed.</p>
 
 <p><a href="/reform-options/social-care/">What is announced, what is in law and what is only reported</a>, with what research bodies and other parties said, is on the pensions and social care page.</p>
 
 <h2 id="next-year">Next year's rate is not yet decided</h2>
 
-<p>The rate for {{ history.next_year.tax_year }} has not been set. It depends on two figures that are not yet final. Earnings growth for May to July 2026 was first estimated at {{ next.shown }}, and a revised figure is due on {{ history.next_year.earnings_revision_due | timeTag | safe }}. The rise in prices for the year to September 2026 is due on {{ history.next_year.prices_due | timeTag | safe }}. Until the government announces its decision, any figure for next year is a forecast.</p>
+<p>The rate for {{ history.next_year.tax_year }} has not been set. It depends on two figures that are not yet final. Earnings growth for May to July 2026 was first estimated at {{ next.shown }}, and a revised figure is due on {{ history.next_year.earnings_revision_due | dateTag | safe }}. The rise in prices for the year to September 2026 is due on {{ history.next_year.prices_due | dateTag | safe }}. Until the government announces its decision, any figure for next year is a forecast.</p>
 {{ m.sourceNote(next) }}
 
 <h2 id="distinctions">Distinctions that matter</h2>
