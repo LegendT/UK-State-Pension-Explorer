@@ -6,7 +6,7 @@ The site is a **preview for review**. It is not published. The repository is htt
 
 **This file holds state only.** Do not add a dated section. The record of a change, with its checks, goes in the description of its pull request, and a decision goes in `docs/decision-log.md`. The record up to pull request 21 is this file as it stood before the cut: `git show 75d0574:docs/HANDOVER.md`.
 
-**Next action:** the owner's. The only open row of "Work before step 4" in `docs/launch-dependencies.md` is W16, the owner's re-read of every page on the main address, behind the sign-in. Then launch step 4. The assistant acts only on the owner's word.
+**Next action:** the owner's. Every row of "Work before step 4" in `docs/launch-dependencies.md` is done: W16, the owner's re-read, on 15 October 2026, which set `REVIEW_DATE`. Next is launch step 4, the owner's accessibility round. The assistant acts only on the owner's word.
 
 ## How to look at it
 
@@ -31,7 +31,7 @@ npm run serve        # http://127.0.0.1:8137
 
 ## Last checks
 
-Run on 13 October 2026, Chrome 155, macOS, on the branch `launch-review` after W33, W26, W27, W29, W31, W32, W35, W12, W34 and W15. The build, the tests, the tool tests and both accessibility runs were run again on 14 October 2026 after the changes of decision 99, once more after the critique of pull request 26 (`81fa284`, 30 files), with the results below. The build, the production build, the tests and both accessibility runs were run on 15 October 2026 after the fixes of decision 100, and the build, the tests and both accessibility runs again after W36 with the same results; the tool tests were not, since no tool's script or template changed. After W37, which changed the tool charts, the build, the tests, the tool tests and both accessibility runs were run again on 15 October 2026, and the build, the tests and both accessibility runs after W38, with the results below. W33 added three claims and three sources, and the quoted passages were checked that day: 225 found. No row since then changed a claim's passage or a figure's value; W27 reworded one claim's statement without changing its passage. The values check was last run on 8 October 2026.
+Run on 13 October 2026, Chrome 155, macOS, on the branch `launch-review` after W33, W26, W27, W29, W31, W32, W35, W12, W34 and W15. The build, the tests, the tool tests and both accessibility runs were run again on 14 October 2026 after the changes of decision 99, once more after the critique of pull request 26 (`81fa284`, 30 files), with the results below. The build, the production build, the tests and both accessibility runs were run on 15 October 2026 after the fixes of decision 100, and the build, the tests and both accessibility runs again after W36 with the same results; the tool tests were not, since no tool's script or template changed. After W37, which changed the tool charts, the build, the tests, the tool tests and both accessibility runs were run again on 15 October 2026, and the build, the tests and both accessibility runs after W38; after W39, which changed the four tools' templates and the accessibility statement, the build, the tests, the tool tests and both accessibility runs; and after the preview banner's change that followed `REVIEW_DATE`, the build, the tests and both accessibility runs, all with the results below. W33 added three claims and three sources, and the quoted passages were checked that day: 225 found. No row since then changed a claim's passage or a figure's value; W27 reworded one claim's statement without changing its passage. The values check was last run on 8 October 2026.
 
 | Check | Command | Result |
 | --- | --- | --- |
@@ -104,7 +104,7 @@ As at 15 October 2026.
 
 | Item | What is needed |
 | --- | --- |
-| Launch | The steps, in order, are in `docs/launch-dependencies.md`, "Launch steps". Steps 1 to 3 are done. Before step 4 comes "Work before step 4" in the same file, where W16 is the owner's last row. Pull requests 26, 27 (decision 100's fixes) and 28 (W36, vertical rhythm) were merged on 15 October 2026, and the owner set `CORRECTION_URL`, `OWNER_NAME` and `REVIEWER_NAME` for all contexts the same day (decision 100). W16 reads the main address, https://ukstatepensionexplorer.netlify.app, which is still behind the sign-in and built from `main`. The assistant does each row on the owner's word |
+| Launch | The steps, in order, are in `docs/launch-dependencies.md`, "Launch steps". Steps 1 to 3 and "Work before step 4" are done, W16 last: see its row. Next is step 4, the owner's accessibility round: VoiceOver with Safari on a Mac and an iPhone, keyboard and zoom in Chrome and Firefox; NVDA after launch (decision 99). Step 5 still waits on one answer: whether the five working documents at the repository root go public. The assistant does each step on the owner's word |
 
 Every other open item is in `docs/launch-dependencies.md`: before launch in "Work before step 4", after it in "After launch, first update". `docs/pre-launch-review.md`, which is frozen, points here for its "Rendered pages" and "Code" items. They are rows of that table.
 
