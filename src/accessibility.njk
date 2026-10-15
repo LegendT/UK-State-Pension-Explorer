@@ -69,7 +69,7 @@ permalink: /accessibility/
 {% if site.correctionUrl %}
 <p>If you cannot use part of this site, <a href="{{ site.correctionUrl }}">tell us what you were trying to do and what happened</a>.</p>
 {%- if site.correctionUrl.startsWith("https://github.com/") %}
-<p>The link opens a new issue on GitHub, the website that holds this site's source files. It is the only way to report a problem: there is no email address. You need a GitHub account to send a report. It is free, but it is still a barrier, and it is a known limit of this site.</p>
+<p>The link opens this site's issues on GitHub, the website that holds its source files. Choose New issue to send a report. It is the only way to report a problem: there is no email address. You need a GitHub account to send a report. It is free, but it is still a barrier, and it is a known limit of this site.</p>
 {%- endif %}
 {% else %}
 {% call m.unavailable("a way to report a problem", 3, "not-available-a-way-to-report-a-problem") %}
