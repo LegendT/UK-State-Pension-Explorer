@@ -40,13 +40,13 @@ permalink: /sources-and-method/
   <li>The calculators were tested against examples worked out separately, by a different method from the calculator code.</li>
   <li>Every increase in the published rates from 2011/12, and in the new State Pension from 2017/18, was tested against the rate before it, the increase applied, and rounding to the nearest 5p.</li>
   <li>The owner read every page on {{ ownerReadDate | safe }} and gave notes page by page, and the AI assistant made a readability review of every page the same day. The changes they led to are under <a href="#what-changed">What changed after the review</a>.</li>
-  {% if site.reviewerName %}<li>The content was reviewed by {{ site.reviewerName }} on {{ site.reviewDate | timeTag | safe }}.</li>{% endif %}
+  {% if site.reviewerName and site.reviewDate %}<li>The content was reviewed by {{ site.reviewerName }} on {{ site.reviewDate | timeTag | safe }}.</li>{% endif %}
   <li>The four tools are driven in a browser by a script: <a href="#how-the-calculators-were-tested">how the calculators were tested</a>.</li>
 </ul>
 
 <h3 id="not-checked">Not checked</h3>
 <ul>
-  {% if not site.reviewerName %}<li><strong>No formal review by a named person has yet happened.</strong> A check by the same assistant that wrote a page is not an independent review.</li>{% endif %}
+  {% if not (site.reviewerName and site.reviewDate) %}<li><strong>No formal review by a named person has yet happened.</strong> A check by the same assistant that wrote a page is not an independent review.</li>{% endif %}
   <li>Some sources refused automated reading, including the House of Commons Library and Hansard. Nothing on this site is quoted from them.</li>
   <li>Figures reported in the news without a document we could open are left out, or are marked as reported.</li>
   <li>The accessibility assessment is set out in the <a href="/accessibility/">accessibility statement</a>.</li>
@@ -174,7 +174,7 @@ permalink: /sources-and-method/
 
 <h2 id="ai">Use of AI</h2>
 
-<p>This site was researched, written and built with an AI assistant, Claude, made by Anthropic, working under the direction of the site's owner. The assistant read the sources, drafted the text, wrote the code and ran the tests. {% if site.reviewerName %}{{ site.reviewerName }} reviewed the content on {{ site.reviewDate | timeTag | safe }}.{% else %}No formal review by a named person has yet happened.{% endif %}</p>
+<p>This site was researched, written and built with an AI assistant, Claude, made by Anthropic, working under the direction of the site's owner. The assistant read the sources, drafted the text, wrote the code and ran the tests. {% if site.reviewerName and site.reviewDate %}{{ site.reviewerName }} reviewed the content on {{ site.reviewDate | timeTag | safe }}.{% else %}No formal review by a named person has yet happened.{% endif %}</p>
 
 <p>An AI assistant can misread a source or state something wrongly with confidence. That is why each figure shows its source, and the passage it rests on where one is quoted, so that a reader can check it.</p>
 
@@ -194,7 +194,7 @@ permalink: /sources-and-method/
 {% if site.correctionUrl %}
 <p>If you think a figure or a statement is wrong, <a href="{{ site.correctionUrl }}">tell us which one and what you think it should be</a>.</p>
 {%- if site.correctionUrl.startsWith("https://github.com/") %}
-<p>The link opens a new issue on GitHub, the website that holds this site's source files. It is the only way to report an error: there is no email address. You need a GitHub account to send a report. It is free, but it is still a barrier, and it is a known limit of this site.</p>
+<p>The link opens this site's issues on GitHub, the website that holds its source files. Choose New issue to send a report. It is the only way to report an error: there is no email address. You need a GitHub account to send a report. It is free, but it is still a barrier, and it is a known limit of this site.</p>
 {%- endif %}
 {% else %}
 {% call m.unavailable("a way to report an error", 4) %}
