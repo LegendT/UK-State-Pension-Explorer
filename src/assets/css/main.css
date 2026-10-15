@@ -77,8 +77,13 @@ q { quotes: '"' '"'; }
 p, ul, ol, dl, table, figure { margin: 0 0 var(--space-m); }
 p, li, dd { text-wrap: pretty; }
 li + li { margin-top: 0.25rem; }
+/* Items in the content are often sentences or paragraphs; at 0.25rem they ran together. */
+main li + li { margin-top: var(--space-s); }
 dt { font-weight: 600; }
 dd { margin: 0 0 var(--space-s); }
+/* A term sits tight to its own text and about a line clear of the item before. Not in a
+   figure's details or a tool's result, which set their own spacing, and a result's is a grid. */
+dl:not(details.source dl, .result dl) > dd + dt { margin-top: var(--space-l); }
 
 a { color: var(--accent); text-underline-offset: 0.15em; }
 a:hover { text-decoration-thickness: 2px; }
@@ -182,6 +187,10 @@ main > .tool, main > figure, main > .cards, main > .scroll-x, main > .rate-block
    apart from the sentence and stays next to the one it supports: decision 77. A link onward from
    a short entry gets a line of its own too, so it does not run into the source. */
 .ref { display: block; font-size: 0.85em; color: var(--ink-soft); margin-block: 0.45rem 0.4rem; }
+/* In a definition a source hugs its claim and leaves a gap before the next. The gap after the
+   last source collapses into the next term's margin, so an item ending in one is spaced the same. */
+dd .ref { margin-block: 0.125rem var(--space-m); }
+dd .ref:has(+ .onward) { margin-block-end: 0; }
 .onward { display: block; margin-block-start: 0.25rem; }
 /* On a line of their own these links are not in a sentence, so they are padded to at least 24px
    tall (SC 2.5.8): lowest measured 24.8px, at 320, 390 and 1280px, on 2 October 2026. */
@@ -344,6 +353,9 @@ details.more > :not(summary) { margin-left: var(--space-m); margin-right: var(--
 /* Links that stand alone in a list or a table cell get room around them (SC 2.5.8). */
 .link-list { list-style: none; padding: 0; }
 .tool-list dt a { display: inline-block; padding-block: 0.55rem; }
+/* Each item is wrapped in a div, so the definition-list spacing does not reach it. With the link's
+   padding this puts each tool about a line clear of the one before, as elsewhere. */
+.tool-list > div + div { margin-top: var(--space-m); }
 .link-list a, th > a:only-child { display: inline-block; padding: 0.55rem 0; }
 /* The site map's nested lists keep their markers: a block link holds the marker on its first line. */
 .site-map li li a { display: block; }
