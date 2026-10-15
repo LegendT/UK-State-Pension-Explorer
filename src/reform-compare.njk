@@ -14,7 +14,7 @@ permalink: /reform-options/compare/
 {%- endmacro -%}
 <h1>Compare the rules for the yearly increase</h1>
 
-<p class="lede">Five rules for the yearly increase, applied to the same starting amount and the same figures for prices and earnings. Change any figure and the result changes with it. The rules are explained on the <a href="/reform-options/">reform options page</a>.</p>
+<p class="lede">Five rules for the yearly increase, applied to the same starting amount and the same figures for prices and earnings. The rules are explained on the <a href="/reform-options/">reform options page</a>.</p>
 
 {{ m.contents([], true) }}
 
@@ -22,6 +22,8 @@ permalink: /reform-options/compare/
   <h2 id="compare">Try the rules</h2>
 
   <p>This tool applies five rules to the same starting amount and the same yearly figures for prices and earnings. It shows where the rules differ and where they do not. One of the five is the rule announced for April 2030. The government has described it in outline only, so the tool makes three assumptions about it, and one more to keep the tool simple. <a href="#rule-2030-assumptions">The assumptions</a>.</p>
+  {#- Here, not in the lede: outside the tool, js-only would never show (W39). -#}
+  <p class="js-only">Change any figure and the result changes with it.</p>
 
   {% call m.note("What this tool does and does not show", 3, "what-this-tool-does-and-does-not-show") %}
   <ul>
@@ -29,7 +31,7 @@ permalink: /reform-options/compare/
     <li>The yearly figures are <strong>illustrations</strong>. They are not forecasts and have no probability.</li>
     <li>It leaves out Income Tax, Pension Credit and every other benefit. A difference shown here is not a difference in money to spend.</li>
     <li>You cannot use it to work out national savings.</li>
-    <li>Nothing goes in the page address on its own. "Copy a link to this result" copies a link that holds the settings shown, including any amount you entered, so that the link shows the same result. The tool sends and stores nothing else. <a href="/privacy/#tools">Privacy</a>.</li>
+    <li class="js-only">Nothing goes in the page address on its own. "Copy a link to this result" copies a link that holds the settings shown, including any amount you entered, so that the link shows the same result. The tool sends and stores nothing else. <a href="/privacy/#tools">Privacy</a>.</li>
   </ul>
   {% endcall %}
 

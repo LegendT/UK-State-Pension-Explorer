@@ -5,16 +5,17 @@ permalink: /tools/budget/
 {%- import "macros.njk" as m with context -%}
 <h1>Budget explorer: what does the pension cover?</h1>
 
-<p class="lede">A budget you fill in yourself, from your own figures or a research budget. Why a pension can be enough for one household and not another is explained on <a href="/living-on-a-pension/">living on a pension</a>. <a href="/tools/">All tools</a>.</p>
+<p class="lede">What a pension leaves after a household's costs, from your own figures or a research budget. Why a pension can be enough for one household and not another is explained on <a href="/living-on-a-pension/">living on a pension</a>. <a href="/tools/">All tools</a>.</p>
 
 <section class="tool" aria-labelledby="budget">
   <h2 id="budget">Fill in a budget</h2>
 
-  <p>Enter a household's income and spending to see what is left, or what is short. You can start from an example budget and change it.</p>
+  {#- This and the first point below are shown only once the form is (W39). -#}
+  <p class="js-only">Enter a household's income and spending to see what is left, or what is short. You can start from an example budget and change it.</p>
 
-  {% call m.note("Before you start", 3, "before-you-start") %}
+  {% call m.note("What the tool does not cover", 3, "before-you-start") %}
   <ul>
-    <li><strong>Your figures stay on your device.</strong> Nothing you enter is sent, stored or put in the page address. If you come back to this page, your amounts and the result are cleared. <a href="/privacy/">Privacy</a>.</li>
+    <li class="js-only"><strong>Your figures stay on your device.</strong> Nothing you enter is sent, stored or put in the page address. If you come back to this page, your amounts and the result are cleared. <a href="/privacy/#tools">Privacy</a>.</li>
     <li><strong>This is a budget, not a decision about benefits.</strong> The tool does not work out tax or any benefit.</li>
     <li><strong>It shows the present.</strong> It does not project future prices or pension increases.</li>
     <li><strong>Households it does not cover.</strong> It is for one person or two people who have both reached State Pension age. It does not suit a couple where one partner is under State Pension age, a household with other adults or children, or a person in a care home. The benefit rules for those cases are different. <a href="https://www.gov.uk/benefits-calculators">Benefits calculators listed on GOV.UK</a> can take them into account.</li>

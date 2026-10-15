@@ -474,6 +474,7 @@ button.secondary { color: var(--accent); background: var(--paper); }
    2026). */
 .js-only { display: none; }
 .tool.is-ready .js-only { display: revert; }
+/* Keyed to .js, not is-ready, so the notice stays hidden while a module loads (decision 99). If js-class.js alone failed and a module ran, the notice would show beside the form: declined in W39, as it needs one same-site file to fail on its own. */
 .js .tool:not(.load-failed) .no-js-only { display: none; }
 .if-script-failed { display: none; }
 .tool.load-failed .if-script-failed { display: inline; }

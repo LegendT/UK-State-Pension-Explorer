@@ -42,9 +42,9 @@
     },
     {
       "check": "Without JavaScript",
-      "result": "Every explanation can be read. Each calculator shows a notice and a worked example or default result.",
-      "environment": "Chrome 154 on macOS (Apple silicon), driven by script.",
-      "date": "2026-10-05"
+      "result": "Every explanation can be read. With JavaScript off, each calculator shows a notice instead of its form, and none of the sentences that tell a reader what to enter or copy. The triple lock calculator, the rule comparison and the history explorer also show a default result; the budget explorer's notice points to its example budgets, set out in full on its page. Each calculator was also loaded with its own script blocked, when the notice adds that the script did not run and how to report it, and with its script held back, when neither the form nor the notice shows until it runs.",
+      "environment": "Chrome 155 on macOS (Apple silicon), driven by script.",
+      "date": "2026-10-15"
     }
   ],
   "not_done": [
