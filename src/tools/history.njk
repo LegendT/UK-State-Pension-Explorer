@@ -6,7 +6,7 @@ permalink: /tools/history/
 {%- set first = history.years | first -%}
 {%- set latest = history.years | last -%}
 {#- The source line under the chart and the table, built once here and handed to the view by the build and by the browser. -#}
-{%- set historySources = { rates: "the Department for Work and Pensions' benefit and pension rates", decisions: "the explanatory memorandum to each Up-rating Order", listed_url: "/history/#decisions", prices: "the Office for National Statistics' Consumer Prices Index, series D7BT", prices_url: history.sources.prices_index_url, checked: (history.checked_date | timeTag) } -%}
+{%- set historySources = { rates: "the Department for Work and Pensions' benefit and pension rates", decisions: "the explanatory memorandum to each Up-rating Order", listed_url: "/history/#decisions", prices: "the Office for National Statistics' Consumer Prices Index, series D7BT", prices_url: history.sources.prices_index_url, checked: (history.checked_date | dateTag) } -%}
 <h1>State Pension history explorer</h1>
 
 <p class="lede">The full rates since 2010 as a chart and table: in cash, in buying power or against earnings, with a calculation of what another rule would have produced. The record itself is on <a href="/history/">the history page</a>. <a href="/tools/">All tools</a>.</p>
@@ -93,7 +93,7 @@ permalink: /tools/history/
     <dt>A calculation under another rule</dt> <dd>The rule is applied year by year from the published rate of the first year, using the prices and earnings figures recorded for each year's decision, with rounding to the nearest 5p and no fall in pounds. It does not apply the special rules of exceptional years.</dd>
   </dl>
   <div class="source">
-    <p>Source for the price index: <a href="{{ history.sources.prices_index_url }}">{{ history.sources.prices_index }}</a> Checked against the source on {{ history.checked_date | timeTag | safe }}.</p>
+    <p>Source for the price index: <a href="{{ history.sources.prices_index_url }}">{{ history.sources.prices_index }}</a> Checked against the source on {{ history.checked_date | dateTag | safe }}.</p>
   </div>
   <p><a href="/sources-and-method/#models">Full method, reference examples and limits</a>. For future years, which are hypothetical, use the <a href="/reform-options/compare/">rule comparison</a>.</p>
 

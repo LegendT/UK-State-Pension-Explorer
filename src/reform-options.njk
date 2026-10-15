@@ -30,7 +30,7 @@ permalink: /reform-options/
 <p>These pages ask the same questions of every option, including keeping the present rule. Where the evidence is strong, they say so. Where a claim is a recommendation or a value judgement, they say whose it is. They recommend no option.</p>
 {% endcall %}
 
-{% call m.note("A change was announced on " ~ (("pm-care-2026-09-29" | sourceRecord).published_date | timeTag), 2, "change-announced") %}
+{% call m.note("A change was announced on " ~ (("pm-care-2026-09-29" | sourceRecord).published_date | dateTag), 2, "change-announced") %}
 <p>{{ ("tl-kept-to-2030" | claim).statement }} {{ ("rule-2030" | claim).statement }} {{ m.c("rule-2030") }}</p>
 <p>{{ ("ncs-savings-used" | claim).statement }} {{ m.c("ncs-savings-used") }}</p>
 <p>This is an announcement. It is not law. {{ ("rule-2030-legislate" | claim).statement }} The options on this page are still the ones to compare, and <a href="#opt-2030">the announced rule</a> is now one of them. <a href="/reform-options/social-care/">Pensions and social care</a> sets out the plan and what it leaves open.</p>
@@ -52,7 +52,7 @@ permalink: /reform-options/
 
 <p>Under some conditions several of the five rules give the same result; where they differ, the gap grows year on year, because each increase is applied to the last.</p>
 
-<p>The page describes each option the same way, including the rule the government announced on {{ ("pm-care-2026-09-29" | sourceRecord).published_date | timeTag | safe }}. The law sets a minimum of earnings for any option. A rule that pays less than earnings growth would need a change in the law. {{ m.c("legal-earnings-floor") }}</p>
+<p>The page describes each option the same way, including the rule the government announced on {{ ("pm-care-2026-09-29" | sourceRecord).published_date | dateTag | safe }}. The law sets a minimum of earnings for any option. A rule that pays less than earnings growth would need a change in the law. {{ m.c("legal-earnings-floor") }}</p>
 
 <article class="option">
   <h3 id="opt-2030">The rule announced for April 2030</h3>

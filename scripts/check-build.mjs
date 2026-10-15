@@ -54,6 +54,8 @@ for (const [url, html] of written) {
   if (!entry) continue;
   if ((html.match(/<h1[\s>]/g) || []).length !== 1) fail(`${url} does not have exactly one h1`);
   if (!/<html lang="en-GB">/.test(html)) fail(`${url} does not declare en-GB`);
+  // VoiceOver with Safari read each time element twice and split the text around it (step 4).
+  if (/<time[\s>]/.test(html)) fail(`${url} has a time element; use dateTag or monthOrDayTag`);
   const canonical = meta(html, /<link rel="canonical" href="([^"]+)"/);
   if (canonical !== `${site.url}${entry.canonical_path}`) fail(`${url} canonical is ${canonical}`);
   if (meta(html, /property="og:url" content="([^"]+)"/) !== canonical) fail(`${url} og:url differs from its canonical`);
