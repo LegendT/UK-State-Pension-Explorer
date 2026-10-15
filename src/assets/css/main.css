@@ -63,11 +63,15 @@ body {
   font: 400 1.0625rem/1.65 system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
+/* Each level is set apart by its size and by the space above it. A page section's heading (main > h2)
+   has a rule above it as well. In running text an h4 is body size, never smaller; notes and cards set
+   their own heading sizes below. R6 of the readability review of 8 October 2026. */
 h1, h2, h3, h4, h5 { line-height: 1.2; text-wrap: balance; margin: var(--space-xl) 0 var(--space-s); }
 h1 { font-size: 1.875rem; margin-top: var(--space-l); }
-h2 { font-size: 1.4rem; }
-h3 { font-size: 1.15rem; }
-h4 { font-size: 1rem; }
+h2 { font-size: 1.6rem; }
+main > h2 { border-top: 1px solid var(--rule); padding-top: var(--space-m); }
+h3 { font-size: 1.3rem; margin-top: 2rem; }
+h4 { font-size: 1em; margin-top: var(--space-l); }
 /* Straight quotation marks, as in the quoted passages elsewhere. */
 q { quotes: '"' '"'; }
 p, ul, ol, dl, table, figure { margin: 0 0 var(--space-m); }
@@ -107,6 +111,14 @@ main > .tool, main > figure, main > .cards, main > .scroll-x, main > .rate-block
 .lede { font-size: 1.15rem; color: var(--ink-soft); }
 /* Positioned so that text hidden for screen readers inside a table stays inside the scrolling region. */
 .scroll-x { overflow-x: auto; position: relative; }
+/* A scroll cue, shown by scroll-cue.js on a region whose table or chart is wider than it (W20). It stays at the
+   left edge as the region scrolls. Screen readers skip it: the region is named and scrolls by keyboard. */
+.scroll-x.can-scroll::before {
+  content: "Scroll sideways for more \2192";
+  content: "Scroll sideways for more \2192" / "";
+  display: block; position: sticky; left: 0; width: max-content;
+  margin-bottom: var(--space-s); font-size: 0.9rem; color: var(--ink-soft);
+}
 
 /* Blocks */
 
@@ -143,7 +155,7 @@ main > .tool, main > figure, main > .cards, main > .scroll-x, main > .rate-block
 .nav-menu li { margin: 0; }
 .nav-menu a { display: block; padding: 0.6rem 0; min-height: 2.75rem; }
 /* "page" marks the page itself, "true" the section it belongs to. */
-.nav-menu a[aria-current], .section-nav a[aria-current="page"] { color: var(--ink); font-weight: 700; text-decoration: none; }
+.nav-menu a[aria-current], .contents a[aria-current="page"], .footer-links a[aria-current] { color: var(--ink); font-weight: 700; text-decoration: none; }
 
 .site-footer { margin-top: var(--space-xl); border-top: 1px solid var(--rule); background: var(--panel); font-size: 0.95rem; }
 .site-footer .wrap { padding-top: var(--space-l); padding-bottom: var(--space-l); }
@@ -202,6 +214,8 @@ td time, th time { white-space: nowrap; }
   .js .tool-summary:not(.unpinned) { position: fixed; inset: auto 0 0 0; z-index: 20; border-width: 2px 0 0; border-radius: 0; }
   .js body:has(.tool-summary:not(.unpinned)) { padding-bottom: var(--summary-size, 16rem); }
   .js:has(.tool-summary:not(.unpinned)) { scroll-padding-bottom: var(--summary-size, 16rem); }
+  /* The link sits above a pinned summary, never on it. */
+  .js body:has(.tool-summary:not(.unpinned)) .back-to-top.is-fixed { bottom: calc(var(--summary-size, 16rem) + var(--space-m)); }
 }
 @media (min-width: 64rem) {
   .tool-layout { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); }
@@ -210,24 +224,30 @@ td time, th time { white-space: nowrap; }
   .tool-summary p { font-size: 0.9rem; margin-bottom: var(--space-s); }
   .js body:has(.tool-summary:not(.unpinned)) { padding-bottom: 0; }
   .js:has(.tool-summary:not(.unpinned)) { scroll-padding-bottom: 0; }
+  .js body:has(.tool-summary:not(.unpinned)) .back-to-top.is-fixed { bottom: var(--space-m); }
 }
 
-/* Figures with their source */
-.source {
-  font-size: 0.9rem; color: var(--ink-soft);
-  border-left: 3px solid var(--rule); padding-left: var(--space-s);
-}
-.source details { margin-top: 0.25rem; }
+/* Figures with their source (W18). One muted line close under the paragraph, 8 px below it against
+   the paragraph's 16 px margin, then "More about this figure" and at least 24 px before whatever
+   follows. A line above a group of figures stays in the normal flow. In a card the line follows the
+   value or its gloss, and the card's own padding gives the gap after. */
+.source-line { font-size: 0.85em; color: var(--ink-soft); margin: var(--space-s) 0 0; }
+:is(p, dl, ul, ol) + .source-line { margin-top: -0.5rem; }
+.source-line.shared { margin: 0 0 var(--space-s); }
+.source-line a { padding-block: 0.4em; }
+.source-line time { white-space: nowrap; }
+/* Under a tool chart or table, the line is followed by another table or heading: room below it, so it does not run into the next table's scroll cue (W26). */
+.result .source-line { margin-bottom: var(--space-m); }
+details.source { font-size: 0.9rem; margin: 0 0 var(--space-l); }
 .source summary { min-height: 2.75rem; padding: 0.6rem 0; cursor: pointer; color: var(--accent); font-weight: 600; }
-.source dl { margin: var(--space-s) 0 0; }
-/* One line for each of period, place, range and source, the value running on after its label. */
-.source > .statuses { margin-bottom: 0.25rem; }
-.source .facts { margin: 0 0 var(--space-s); }
-.facts dt, .source .facts dd { display: inline; margin: 0; }
-/* A citation that is a value on its own is not inline in a sentence, so padding gives it the 24px target of SC 2.5.8. */
-.facts .cite { padding-block: 4px; }
-.source dt { font-weight: 600; color: var(--ink); }
-.source dd { margin: 0 0 var(--space-s); }
+details.source dl { margin: var(--space-s) 0 0; color: var(--ink-soft); }
+details.source dt { font-weight: 600; color: var(--ink); }
+details.source dd { margin: 0 0 var(--space-s); overflow-wrap: anywhere; }
+.stat .what { margin-bottom: var(--space-s); }
+.stat .source-line { margin-top: var(--space-s); }
+.stat details.source { margin-bottom: 0; }
+/* A typed note under a table keeps its rule. */
+div.source { font-size: 0.9rem; color: var(--ink-soft); border-left: 3px solid var(--rule); padding-left: var(--space-s); }
 
 .stat { padding: var(--space-m); border: 1px solid var(--rule); border-radius: var(--radius); background: var(--panel); height: 100%; }
 .stat :is(h3, h4, h5) { margin-top: 0; font-size: 1rem; }
@@ -267,8 +287,9 @@ td time, th time { white-space: nowrap; }
 .contents { padding: var(--space-m); background: var(--panel); border-radius: var(--radius); }
 .contents h2 { margin-top: 0; font-size: 1.05rem; }
 .contents ul, .contents ol { margin: 0; padding-left: 1.2rem; }
-/* A block link keeps the list marker on its first line when it wraps. */
-.contents a { display: block; padding: 0.55rem 0; }
+/* A block link keeps the list marker on its first line when it wraps. The padding takes each link
+   to 44 px tall, the house standard for a target. */
+.contents a { display: block; padding: 0.65rem 0; }
 .contents li + li { margin-top: 0; }
 /* The current section gets a bar in the gutter, not bold: bold re-wraps long links and moves the list.
    The bar is a border because forced colours keep borders and remove backgrounds. The offset clears
@@ -276,8 +297,31 @@ td time, th time { white-space: nowrap; }
 .contents a[aria-current="location"] { position: relative; color: var(--ink); text-decoration: none; }
 .contents a[aria-current="location"]::before { content: ""; position: absolute; left: -1.85rem; top: 0.45rem; bottom: 0.45rem; border-left: 3px solid var(--accent); }
 .section-nav { margin-bottom: var(--space-m); }
-.to-contents { margin: var(--space-l) 0 0; font-size: 0.95rem; }
-.to-contents a { display: inline-block; padding: 0.55rem 0; }
+/* Nested lists: the subsections of a long section, and this page's sections under its name in the
+   reform options list. Nested links are a little smaller and still over 24 px tall. */
+.contents li li a { font-size: 0.95rem; padding: 0.7rem 0; }
+
+/* Next and Previous at the foot of a page in a sequence (W7). */
+.pager { margin-top: var(--space-xl); border-top: 1px solid var(--rule); padding-top: var(--space-s); }
+.pager ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 var(--space-m); }
+.pager li { margin: 0; flex: 1 1 12rem; }
+.pager .next { text-align: right; margin-left: auto; }
+.pager a { display: inline-block; padding: 0.55rem 0; font-weight: 600; }
+.pager a span { display: block; font-weight: 400; font-size: 0.9rem; color: var(--ink-soft); }
+/* A space after a hex escape ends the escape, so the gap is a no-break space. */
+.pager .previous a span::before { content: "\2190\00a0"; content: "\2190\00a0" / ""; }
+.pager .next a span::after { content: " \2192"; content: " \2192" / ""; }
+
+/* One "Back to top" link in place of a link at the end of every section: decision 88. It is static
+   at the end of the page until back-to-top.js runs. Then it is fixed in the lower right, shown only
+   once the reader scrolls up on a page over four screens, and hidden while a focused element would
+   sit under it. The link is 2.75 rem tall, the 44 px house standard. */
+.back-to-top { margin: var(--space-l) 0 0; font-size: 0.95rem; }
+.back-to-top a { display: inline-block; padding: 0.55rem 0; }
+.back-to-top.is-fixed { display: none; position: fixed; right: var(--space-m); bottom: var(--space-m); z-index: 21; margin: 0; }
+.back-to-top.is-fixed.is-shown:not(.is-under) { display: block; }
+.back-to-top.is-fixed a { padding: 0.7rem var(--space-m); min-height: 2.75rem; background: var(--paper); border: 1px solid var(--rule-strong); border-radius: var(--radius); box-shadow: 0 2px 8px rgb(0 0 0 / 0.15); font-weight: 600; text-decoration: none; }
+.back-to-top.is-fixed a:hover { text-decoration: underline; }
 
 /* On a wide screen a long page keeps its contents list in view, in a column of its own. Everything
    else stays in the first column, so the list never covers content or a focused control. Headings
@@ -285,9 +329,12 @@ td time, th time { white-space: nowrap; }
 @media (min-width: 64em) {
   main:has(> .contents:not(.section-nav)) { display: grid; grid-template-columns: minmax(0, 1fr) 15rem; column-gap: var(--space-xl); align-content: start; }
   main:has(> .contents:not(.section-nav)) > * { grid-column: 1; }
-  main:has(> .contents:not(.section-nav)) > :is(h2, h3, h4, .to-contents) { margin-top: calc(var(--space-xl) - var(--space-m)); }
+  main:has(> .contents:not(.section-nav)) > h2 { margin-top: calc(var(--space-xl) - var(--space-m)); }
+  main:has(> .contents:not(.section-nav)) > h3 { margin-top: var(--space-m); }
+  main:has(> .contents:not(.section-nav)) > h4 { margin-top: var(--space-s); }
   main > .contents:not(.section-nav) { grid-column: 2; grid-row: 1 / span 200; align-self: start; position: sticky; top: var(--space-m); max-height: calc(100vh - 2 * var(--space-m)); overflow-y: auto; margin-top: var(--space-l); }
-  main:has(> .contents:not(.section-nav)) .to-contents { display: none; }
+  /* The list stays in view here, so the fixed link is not needed (decision 88). */
+  body:has(main > .contents:not(.section-nav)) .back-to-top.is-fixed { display: none; }
 }
 
 details.more { border: 1px solid var(--rule); border-radius: var(--radius); margin-bottom: var(--space-m); }
@@ -298,6 +345,8 @@ details.more > :not(summary) { margin-left: var(--space-m); margin-right: var(--
 .link-list { list-style: none; padding: 0; }
 .tool-list dt a { display: inline-block; padding-block: 0.55rem; }
 .link-list a, th > a:only-child { display: inline-block; padding: 0.55rem 0; }
+/* The site map's nested lists keep their markers: a block link holds the marker on its first line. */
+.site-map li li a { display: block; }
 .link-list li + li { margin-top: 0; }
 
 /* Tables */
@@ -307,6 +356,8 @@ caption { text-align: left; font-weight: 700; padding-bottom: var(--space-s); ma
 th, td { padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--rule); text-align: left; vertical-align: top; }
 thead th { border-bottom: 2px solid var(--rule-strong); }
 td.num, th.num { text-align: right; white-space: nowrap; }
+/* A heading over a group of rows says what the rows share, in running text: only its name is bold. */
+th[scope="rowgroup"] { font-weight: 400; padding-top: var(--space-m); }
 tr.calculated td, tr.calculated th { font-style: italic; }
 .scroll-x:focus-visible { outline-offset: -3px; }
 
@@ -314,6 +365,8 @@ tr.calculated td, tr.calculated th { font-style: italic; }
 .chart { margin: var(--space-l) 0; }
 .chart figcaption :is(h3, h4) { margin-top: 0; }
 .chart-svg { display: block; width: 100%; min-width: 30rem; height: auto; color: var(--ink); }
+/* Drawn at the width it has, so it does not scroll. */
+.chart-svg--narrow { min-width: 0; }
 .chart-grid { stroke: var(--rule); stroke-width: 1; }
 .chart-axis { stroke: var(--rule-strong); stroke-width: 1.5; }
 .chart-tick, .chart-label { fill: var(--ink-soft); font-size: 13px; font-family: inherit; }
@@ -333,10 +386,15 @@ tr.calculated td, tr.calculated th { font-style: italic; }
 .chart-legend { list-style: none; padding: 0; margin: var(--space-s) 0; display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; font-size: 0.95rem; }
 .chart-legend li { margin: 0; }
 .chart-key { vertical-align: middle; }
+/* A value axis that does not start at zero: a break on the axis, and the same in words (W21). */
+.chart-break { fill: none; stroke: var(--ink-soft); stroke-width: 1.5; }
+.chart-note { font-size: 0.95rem; color: var(--ink-soft); margin: 0 0 var(--space-s); }
 
 /* Tools */
+/* The tool box and its fieldsets are padded less on a phone, so a menu has room for its longest
+   choice at 320 px (W28). */
 .tool {
-  margin: var(--space-l) 0; padding: var(--space-m);
+  margin: var(--space-l) 0; padding: var(--space-s);
   border: 2px solid var(--rule-strong); border-radius: var(--radius);
 }
 .tool > h2, .tool > h3 { margin-top: 0; }
@@ -347,7 +405,7 @@ tr.calculated td, tr.calculated th { font-style: italic; }
 .error { display: block; color: var(--error); font-weight: 600; font-size: 0.95rem; }
 .error::before { content: "Error: "; }
 .error:empty { display: none; }
-fieldset { border: 1px solid var(--rule); border-radius: var(--radius); padding: var(--space-m); margin: 0 0 var(--space-m); min-width: 0; }
+fieldset { border: 1px solid var(--rule); border-radius: var(--radius); padding: var(--space-s); margin: 0 0 var(--space-m); min-width: 0; }
 legend { font-weight: 700; padding: 0 var(--space-s); }
 /* Form rhythm, by proximity: a label and its hint read as one unit and the control sits a clear
    step below them; each part of a fieldset is one larger step from the next; fields are further
@@ -397,9 +455,16 @@ button.secondary { color: var(--accent); background: var(--paper); }
 .result dd { margin: 0 0 var(--space-s); font-variant-numeric: tabular-nums; }
 .result .headline { font-size: 1.5rem; font-weight: 700; }
 
+/* A tool's form and summary, and a result only a script draws, show once the tool's module has run and
+   marked the tool ready: a module that fails to load leaves the notice in place, and js-class.js adds a
+   sentence to it at load (W32). While scripts run, the notice is hidden until then, so it does not
+   flash its untrue message before a module that will load has run (the owner's answer of 14 October
+   2026). */
 .js-only { display: none; }
-.js .js-only { display: revert; }
-.js .no-js-only { display: none; }
+.tool.is-ready .js-only { display: revert; }
+.js .tool:not(.load-failed) .no-js-only { display: none; }
+.if-script-failed { display: none; }
+.tool.load-failed .if-script-failed { display: inline; }
 
 .option-grid { display: grid; gap: var(--space-m); }
 .option { padding: var(--space-m); border: 1px solid var(--rule); border-radius: var(--radius); }
@@ -413,7 +478,8 @@ button.secondary { color: var(--accent); background: var(--paper); }
 @media (min-width: 40em) {
   body { font-size: 1.125rem; }
   h1 { font-size: 2.375rem; }
-  h2 { font-size: 1.5rem; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.375rem; }
   .wrap { padding: 0 1.5rem; }
   .rate-block { padding: var(--space-xl) var(--space-l); }
   .rate-block .rate { font-size: 3.5rem; }
@@ -424,6 +490,7 @@ button.secondary { color: var(--accent); background: var(--paper); }
   .result dl { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
   .result dd { margin-bottom: 0; }
   .tool { padding: var(--space-l); }
+  fieldset { padding: var(--space-m); }
 }
 
 @media (min-width: 60em) {
@@ -445,7 +512,7 @@ button.secondary { color: var(--accent); background: var(--paper); }
 }
 
 @media print {
-  .site-header nav, .skip-link, .buttons, .site-footer nav[aria-label="Footer"] { display: none; }
+  .site-header nav, .skip-link, .buttons, .site-footer nav[aria-label="Footer"], .back-to-top, .pager { display: none; }
   details::details-content { content-visibility: visible; display: block; }
   .tool-summary { position: static; }
   a { color: inherit; }

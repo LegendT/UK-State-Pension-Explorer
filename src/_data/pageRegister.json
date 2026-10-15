@@ -1,5 +1,5 @@
 {
-  "note": "One entry for each page. 'published' stays empty until the site is published. 'modified' changes only when the content changes in substance, never on a rebuild or a source recheck. 'figure_cards' is true where the page has figure cards with \"More about this figure\", so the page foot says where the check dates are; the build fails if it does not match the page.",
+  "note": "One entry for each page. 'published' stays empty until the site is published. 'modified' changes only when the content changes in substance, never on a rebuild or a source recheck. 'next' is the address of the page a \"Next\" link at the foot leads to, where a page has one outside the reform options section. 'figure_cards' is true where the page has figure cards with \"More about this figure\", so the page foot says where the check dates are; the build fails if it does not match the page.",
   "pages": [
     {
       "path": "/",
@@ -13,8 +13,8 @@
       "canonical_path": "/",
       "index": true,
       "published": null,
-      "modified": "2026-10-05",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md.",
+      "modified": "2026-10-13",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 12 October 2026: the mean new State Pension cites its own source (W24). Changed on 13 October 2026: whether a person is a man or a woman decides the system only for births from 6 April 1951 to 5 April 1953 (W9). Changed on 13 October 2026: the sentence saying what the site is opens the rate block, and \"Three things to know first\" holds three (W27).",
       "figure_cards": true
     },
     {
@@ -26,10 +26,11 @@
       "shareImage": "share-default",
       "template": "state-pension",
       "canonical_path": "/state-pension/",
+      "next": "/triple-lock/",
       "index": true,
       "published": null,
-      "modified": "2026-10-05",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md.",
+      "modified": "2026-10-13",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 9 October 2026: the caveats shown open on its figures, with the official status of their sources (W19). Changed on 12 October 2026: each figure in the text is followed by its own source's citation first, and the Attendance Allowance rates sit apart from the claims on where it is paid (W24). Changed on 13 October 2026: one table, \"What your date of birth decides\", gives the pension, State Pension age and qualifying years, and the record-start date is stated once (W9). Changed on 13 October 2026: pensioner units, payment in arrears and a protected payment defined where first used, and the triple lock linked at its first mention (W25). Changed on 13 October 2026: the end date of the Personal Allowance freeze, and a section on filling gaps in a record with GOV.UK's services and the change for time abroad from April 2026 (W33). Changed on 13 October 2026: the lede opens with its answer, and the headings on what people receive and on how it is paid for state their finding (W27).",
       "figure_cards": true
     },
     {
@@ -43,8 +44,8 @@
       "canonical_path": "/triple-lock/",
       "index": true,
       "published": null,
-      "modified": "2026-10-05",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md."
+      "modified": "2026-10-13",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 12 October 2026: the sentence on what the rule protects against names the exception of 2022/23 (W23). Changed on 13 October 2026: four headings state what their section finds (W27)."
     },
     {
       "path": "/living-on-a-pension/",
@@ -57,23 +58,23 @@
       "canonical_path": "/living-on-a-pension/",
       "index": true,
       "published": null,
-      "modified": "2026-10-05",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md.",
+      "modified": "2026-10-13",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 9 October 2026: the caveats shown open on its figures, with the official status of their sources, and the publisher's reported Council Tax data error beside the median incomes (W19). Changed on 12 October 2026: the couple's indicative rent cites its own source (W24). Changed on 13 October 2026: the lede opens with its answer, five headings state what their section finds, and three sections open with their finding (W27).",
       "figure_cards": true
     },
     {
       "path": "/reform-options/",
       "group": "main",
       "title": "Reform options: how the yearly increase could change",
-      "purpose": "Compare ways to change the yearly increase, including the rule announced for April 2030. First of five pages on reform options.",
-      "description": "Options for the yearly State Pension increase, including the rule announced for April 2030: what each rule does, who is affected and what it costs.",
+      "purpose": "Compare ways to change the yearly increase, including the rule announced for April 2030, and the arguments for and against the triple lock. First of five pages on reform options.",
+      "description": "Options for the yearly State Pension increase, including the rule announced for April 2030, and the arguments for and against the triple lock.",
       "shareImage": "share-illustrative",
       "template": "reform-options",
       "canonical_path": "/reform-options/",
       "index": true,
       "published": null,
-      "modified": "2026-10-05",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md.",
+      "modified": "2026-10-13",
+      "modified_note": "Changed on 8 October 2026: the department's factsheet on which rates the announced rule covers (W1). Changed on 9 October 2026: the opening no longer lists the section's pages, which the list below it names (W7). Changed on 12 October 2026: the arguments for and against the triple lock moved here from the entitlement page (W22), with the points of what evidence can settle about the yearly increase (decision 98); the arguments' wording on growth in pensioner incomes, on what drives the rise in spending and on the range of future cost (W8). The option to keep the triple lock names the exception of 2022/23, and the arguments give the poverty figures their period, range and source (W23). The level of the pension against earnings cites its own source (W24). Changed on 13 October 2026: the lede opens with its answer, the options open with their finding, and two long paragraphs are split (W27).",
       "figure_cards": true
     },
     {
@@ -87,8 +88,8 @@
       "canonical_path": "/reform-options/compare/",
       "index": true,
       "published": null,
-      "modified": "2026-10-05",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md."
+      "modified": "2026-10-13",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 9 October 2026: the chart is drawn at the width it has on a phone (W20). Changed on 12 October 2026: totals in starting-year prices are shown to the pound (W23); rules less than 0.1% apart read as level in the title and share one line (W21); every menu's choices fit a 320 px screen (W28). Changed on 13 October 2026: the chart says it is an illustration, a source line sits under the chart and the tables, and \"not your entitlement\" links to the GOV.UK forecast (W26). Changed on 13 October 2026: nothing goes in the page address on its own, and \"Copy a link to this result\" copies a link holding the settings shown (W31, decision 96)."
     },
     {
       "path": "/reform-options/costs/",
@@ -101,8 +102,8 @@
       "canonical_path": "/reform-options/costs/",
       "index": true,
       "published": null,
-      "modified": "2026-10-05",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md.",
+      "modified": "2026-10-13",
+      "modified_note": "Changed on 8 October 2026: the savings figures name the department's model and baseline (W1). Changed on 9 October 2026: the April 2030 paragraph gives only the real-terms figures the table lacks (W18), and the caveats shown open on its figures, with the official status of their sources (W19). Changed on 12 October 2026: the wealth quarters are named as a survey estimate (W23). Spending in 2024/25, pensioners' Income Tax and the share reporting a disability are each followed by their own source's citation first (W24). Changed on 13 October 2026: outturn, the GDP deflator, a median and income after housing costs defined where first used, and GDP spelled out (W25). Changed on 13 October 2026: the lede opens with its answer, three headings state what their section finds, and the costs section opens with its finding (W27).",
       "figure_cards": true
     },
     {
@@ -116,23 +117,23 @@
       "canonical_path": "/reform-options/social-care/",
       "index": true,
       "published": null,
-      "modified": "2026-10-05",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md.",
+      "modified": "2026-10-13",
+      "modified_note": "Changed on 8 October 2026: the department's analysis on coverage and pensioner poverty (W1), and the care commission's conflicting report dates (W2). Changed on 9 October 2026: the caveats shown open on its figures, with the official status of their sources (W19). Changed on 12 October 2026: the Health Foundation and the King's Fund cited from their own statements (W10). Changed on 13 October 2026: three sections open with their finding, and three long paragraphs are split (W27).",
       "figure_cards": true
     },
     {
       "path": "/reform-options/entitlement/",
       "group": "main",
-      "title": "Means-testing and entitlement: the options and the arguments",
-      "purpose": "Options for changing who receives the State Pension, the main arguments for and against the triple lock, and what evidence can settle. Fifth of five pages on reform options.",
-      "description": "Means-testing by income or assets, other ways to target support, the arguments for and against the triple lock, and what evidence can and cannot settle.",
+      "title": "Means-testing and entitlement: the options",
+      "purpose": "Options for changing who receives the State Pension, and what evidence can settle. Fifth of five pages on reform options.",
+      "description": "Means-testing by income or assets, other ways to target support, and what evidence can and cannot settle.",
       "shareImage": "share-illustrative",
       "template": "reform-entitlement",
       "canonical_path": "/reform-options/entitlement/",
       "index": true,
       "published": null,
-      "modified": "2026-10-05",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md."
+      "modified": "2026-10-13",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 12 October 2026: the arguments for and against the triple lock moved to the page on the yearly increase (W22), and the points of what evidence can settle about the yearly increase followed them (decision 98). Pension Credit take-up gives its period, range and source (W23). The Winter Fuel Payment limit and the families not claiming Pension Credit cite their own sources, with the period (W24). Changed on 13 October 2026: a withdrawal rate defined where first used (W25). Changed on 13 October 2026: the lede opens with its answer (W27)."
     },
     {
       "path": "/history/",
@@ -145,8 +146,8 @@
       "canonical_path": "/history/",
       "index": true,
       "published": null,
-      "modified": "2026-10-05",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md."
+      "modified": "2026-10-13",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 13 October 2026: the Consumer Prices Index and the Retail Prices Index named in full before the rates table (W25). Changed on 13 October 2026: the lede opens with its answer and no longer says the page calculates (W27)."
     },
     {
       "path": "/tools/",
@@ -159,8 +160,8 @@
       "canonical_path": "/tools/",
       "index": true,
       "published": null,
-      "modified": "2026-10-05",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md."
+      "modified": "2026-10-09",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 9 October 2026: the reform pages are named as the section list names them (W7)."
     },
     {
       "path": "/tools/triple-lock/",
@@ -173,8 +174,8 @@
       "canonical_path": "/tools/triple-lock/",
       "index": true,
       "published": null,
-      "modified": "2026-10-05",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md."
+      "modified": "2026-10-13",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 13 October 2026: a source line under the published decision and the hypothetical result, and \"not your entitlement\" links to the GOV.UK forecast (W26). Changed on 13 October 2026: \"Copy a link to this result\" copies a link holding the year, pension and figures shown, and such a link opens that result (W31, decision 96)."
     },
     {
       "path": "/tools/budget/",
@@ -187,8 +188,8 @@
       "canonical_path": "/tools/budget/",
       "index": true,
       "published": null,
-      "modified": "2026-10-05",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md."
+      "modified": "2026-10-12",
+      "modified_note": "Changed on 8 October 2026: amounts are converted when the period changes (W3, decision 90). Changed on 12 October 2026: every menu's choices fit a 320 px screen, with the example budgets grouped by standard (W28), and an amount over £1,000,000 is told the limit (W30)."
     },
     {
       "path": "/tools/history/",
@@ -201,8 +202,8 @@
       "canonical_path": "/tools/history/",
       "index": true,
       "published": null,
-      "modified": "2026-10-05",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md."
+      "modified": "2026-10-13",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 9 October 2026: the chart is drawn at the width it has on a phone, with a scroll cue on a wide table (W20). Changed on 12 October 2026: the rules read \"no exceptions\" with a hint saying what they leave out, and \"At a glance\" lists the years Parliament departed from the triple lock (W11); lines less than 0.1% apart are drawn as one, and the title says how far the calculation ends from the published rate (W21); every menu's choices fit a 320 px screen (W28). Changed on 13 October 2026: the Retail Prices Index and the Consumer Prices Index named in full in the table (W25). Changed on 13 October 2026: a source line under the chart and under the table (W26)."
     },
     {
       "path": "/sources-and-method/",
@@ -215,8 +216,8 @@
       "canonical_path": "/sources-and-method/",
       "index": true,
       "published": null,
-      "modified": "2026-10-05",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md."
+      "modified": "2026-10-13",
+      "modified_note": "Changed on 8 October 2026: the figure register names the file, sheet and cell of each figure read from a spreadsheet (W4). Changed on 9 October 2026: the register of figures shows each figure's first caveat and the official status of its source (W19). Changed on 12 October 2026: the corrections section says a GitHub issue is the only route and needs an account, a known limit (W13). Changed on 13 October 2026: six terms added to the glossary (W25); the owner's review of every page and what changed after it; a section gathering the known limits and likely misreadings; the tools' description follows the copy-a-link change and names the browser checks (W15)."
     },
     {
       "path": "/accessibility/",
@@ -229,8 +230,8 @@
       "canonical_path": "/accessibility/",
       "index": true,
       "published": null,
-      "modified": "2026-10-05",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md."
+      "modified": "2026-10-13",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 12 October 2026: the report section says a GitHub issue is the only route and needs an account, a known limit (W13). Changed on 13 October 2026: VoiceOver and NVDA said to be screen readers, in the reason for each (W25)."
     },
     {
       "path": "/privacy/",
@@ -243,8 +244,8 @@
       "canonical_path": "/privacy/",
       "index": true,
       "published": null,
-      "modified": "2026-10-02",
-      "modified_note": "Says what Cloudflare Web Analytics records, shown once the analytics token is set in production."
+      "modified": "2026-10-13",
+      "modified_note": "Says what Cloudflare Web Analytics records, shown once the analytics token is set in production. Changed on 13 October 2026: the rule comparison and the triple lock calculator write nothing to the page address on their own; each has a button that copies a link (W31, decision 96)."
     },
     {
       "path": "/site-map/",
@@ -257,8 +258,8 @@
       "canonical_path": "/site-map/",
       "index": true,
       "published": null,
-      "modified": "2026-09-29",
-      "modified_note": "First written."
+      "modified": "2026-10-09",
+      "modified_note": "First written. Changed on 2 October 2026, when every tool was given a page of its own, and on 9 October 2026, when it took the navigation's order and names (W7)."
     },
     {
       "path": "/404.html",

@@ -1,6 +1,15 @@
 // Shared presentation helpers for the tools. Arithmetic lives in ../lib.
 
+import { settingsLink } from "../lib/format.js";
+
+import { CHART_WIDTH } from "../lib/chart.js";
 import { parsePence, parseTenths, MIN_TENTHS, MAX_TENTHS, MIN_PENCE, MAX_PENCE } from "../lib/uprating.js";
+
+// The tool's module has run: its form, summary and result show, and the no-script notice goes (W32).
+// Called last, after the first result is drawn.
+export function ready(form) {
+  form.closest(".tool").classList.add("is-ready");
+}
 
 export function readJson(id) {
   return JSON.parse(document.getElementById(id).textContent);
@@ -70,11 +79,27 @@ export function focusFirstError(form) {
 
 // A result's settings go in the page address, so that a copied link shows the same result.
 // Never used by the budget explorer, whose figures stay on the device.
+// The history explorer alone writes its settings as a result shows (decision 96 took the other two
+// tools off this: they copy a link instead).
 export function writeSettings(settings, hash) {
-  const url = new URL(window.location.href);
-  url.search = new URLSearchParams(settings).toString();
-  url.hash = hash;
-  window.history.replaceState(null, "", url);
+  window.history.replaceState(null, "", settingsLink(window.location.href, settings, hash));
+}
+
+// Copies a link to the result shown. The address is not written on its own (decision 96): only when
+// the clipboard refuses is the link put in the address bar, and the reader is told to copy it there.
+// The outcome is announced through the status region and shown in the note beside the button.
+export async function copyLink(settings, hash, status, note) {
+  const link = settingsLink(window.location.href, settings, hash);
+  let message;
+  try {
+    await navigator.clipboard.writeText(link);
+    message = "A link to this result has been copied.";
+  } catch {
+    window.history.replaceState(null, "", link);
+    message = "The link could not be copied. The page address now holds this result: copy it from the address bar.";
+  }
+  announce(status, message);
+  note.textContent = message;
 }
 
 export function readSettings() {
@@ -93,7 +118,9 @@ export function choose(select, value) {
 export function live(form, redraw) {
   let pending;
   let last = null;
-  const values = () => [...form.querySelectorAll("input, select")].map((field) => (field.type === "checkbox" || field.type === "radio" ? field.checked : field.value)).join("|");
+  // One string, so that two reads with the same values compare equal: as arrays they never did, and the
+  // change event a field fires on losing focus redrew and announced a result already shown (W12).
+  const values = () => JSON.stringify([...form.querySelectorAll("input, select")].map((field) => (field.type === "checkbox" || field.type === "radio" ? field.checked : field.value)));
   const later = () => {
     clearTimeout(pending);
     pending = setTimeout(() => {
@@ -103,14 +130,25 @@ export function live(form, redraw) {
       redraw();
     }, 400);
   };
-  // A button (load, fill, reset, clear) or a form reset changes fields without this function, so
-  // the last values no longer match what is drawn. Forget them, and the next change always redraws.
+  // A button (load, fill, reset, clear) changes fields without this function, so the last values no
+  // longer match what is drawn: forget them, and the next change always redraws. Only when the click
+  // changed a field, read before the button's own handler runs and again after: forgetting after a
+  // button that changes nothing (copy a link, copy the table) made the change event of a field just
+  // typed in redraw and announce the result again, over the button's own announcement (W12).
   const forget = () => {
     last = null;
   };
-  document.addEventListener("click", (event) => {
-    if (event.target.closest("button")) forget();
-  });
+  document.addEventListener(
+    "click",
+    (event) => {
+      if (!event.target.closest("button")) return;
+      const before = values();
+      setTimeout(() => {
+        if (values() !== before) forget();
+      }, 0);
+    },
+    true,
+  );
   form.closest("form")?.addEventListener("reset", forget);
   form.addEventListener("input", later);
   form.addEventListener("change", later);
@@ -159,4 +197,27 @@ export const STALE_MESSAGE = "There is a problem with the figures entered. The r
 // nothing that takes focus. Not shown on arrival, when nothing has changed.
 export function updatedNote(sentence) {
   return `<p class="tool-updated"><span class="status">Updated</span> ${sentence}</p>`;
+}
+
+// A tool's chart is drawn at the width of its result, up to the width the build draws at, so its
+// text keeps the size the stylesheet sets on a phone (W20). The build's width while the result is hidden.
+export function chartWidth(result) {
+  const style = getComputedStyle(result);
+  const width = Math.floor(result.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight));
+  return width > 0 ? Math.min(width, CHART_WIDTH) : CHART_WIDTH;
+}
+
+// Draws the chart again when the result's width changes, starting with the one the build drew.
+// html() returns the result on screen at chartWidth(result), or nothing when there is no result.
+// Only the chart is replaced, so focus elsewhere in the result stays where it is.
+export function fitChart(result, html) {
+  new ResizeObserver(() => {
+    const old = result.querySelector("figure.chart");
+    if (!old || old.querySelector("svg").viewBox.baseVal.width === chartWidth(result)) return;
+    const fresh = document.createRange().createContextualFragment(html() || "").querySelector("figure.chart");
+    if (!fresh) return;
+    const focused = old.contains(document.activeElement);
+    old.replaceWith(fresh);
+    if (focused) fresh.querySelector(".scroll-x").focus();
+  }).observe(result);
 }

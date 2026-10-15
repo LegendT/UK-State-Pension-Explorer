@@ -7,7 +7,11 @@ permalink: /history/
 {%- set latest = history.years | last -%}
 <h1>State Pension history: rates and increases since 2010</h1>
 
-<p class="lede">This page records the full weekly rates of the State Pension and the increase applied each April, from {{ first.tax_year }} to {{ latest.tax_year }}. It marks the years when the usual rule was not followed. It can also calculate what a different rule would have produced, which is a calculation and not a record of what was paid.</p>
+{#- The years since the triple lock was first applied in which the published increase was not the one the rule gives, the highest of prices, earnings and 2.5%: worked out from the record, not typed. The lede needs at least one. -#}
+{%- set departures = [] -%}
+{%- for year in history.years %}{% if year.measure != "pre-triple-lock" %}{% set rule = 25 %}{% if year.prices_tenths > rule %}{% set rule = year.prices_tenths %}{% endif %}{% if year.earnings_tenths > rule %}{% set rule = year.earnings_tenths %}{% endif %}{% if year.applied_tenths != rule %}{% set _ = departures.push(year.tax_year) %}{% endif %}{% endif %}{% endfor -%}
+{%- if departures.length == 0 %}{{ "the history lede expects at least one year whose increase was not what the triple lock gives" | fail }}{% endif -%}
+<p class="lede">The full rates of the State Pension have risen every April since the triple lock was first applied in April 2011, and in every year except {% if departures.length == 1 %}{{ departures[0] }}{% else %}{{ departures.slice(0, -1) | join(", ") }} and {{ departures | last }}{% endif %} the increase was the one the rule gives: the highest of prices, earnings and 2.5%. This page records every rate and decision from {{ first.tax_year }} to {{ latest.tax_year }} and marks the exceptions. The <a href="/tools/history/">history explorer</a> draws the rates and can calculate what another rule would have produced.</p>
 
 {{ m.contents([
   ["two-series", "Two separate series"],
@@ -22,26 +26,28 @@ permalink: /history/
 
 <p>The basic State Pension and the new State Pension are different things. The new State Pension began on <time datetime="2016-04-06">6 April 2016</time>, so it has no rate before {{ (history.years | where("tax_year", "2016/17") | first).tax_year }}. This page never joins the two into one line, because no person's pension moved from one to the other.</p>
 
-<p>Both are full rates, before tax. They are not what each person received. <a href="/state-pension/#what-people-receive">What people actually receive</a>.</p>
+<p>Both are full rates, before tax. They are not what each person received: see <a href="/state-pension/#what-people-receive">what people actually receive</a>.</p>
 
 <h2 id="decisions">Every rate and decision</h2>
 
+<p>Prices are the rise in the Consumer Prices Index (CPI), the measure of inflation the triple lock uses. The increase was decided with the Retail Prices Index (RPI), an older measure of prices, in 2010/11, before the triple lock, and in 2011/12, its first year. The Prices column shows the CPI from 2011/12.</p>
+
 {% call m.scrollTable() %}
 <table>
-  <caption>Full weekly rates and the increase applied each year, as published</caption>
+  <caption id="table-rates-decisions">Full weekly rates and the increase applied each year, as published</caption>
   <thead>
-    <tr><th scope="col">Tax year</th><th scope="col">Took effect</th><th scope="col" class="num">Basic State Pension</th><th scope="col" class="num">New State Pension</th><th scope="col" class="num">Increase applied</th><th scope="col" class="num">Prices</th><th scope="col" class="num">Earnings, at the time</th><th scope="col">Decided by</th></tr>
+    <tr><th scope="col">Tax year</th><th scope="col" class="num">Basic State Pension</th><th scope="col" class="num">New State Pension</th><th scope="col" class="num">Increase applied</th><th scope="col" class="num">Prices</th><th scope="col" class="num">Earnings, at the time</th><th scope="col">Took effect</th><th scope="col">Decided by</th></tr>
   </thead>
   <tbody>
     {%- for year in history.years %}
     <tr>
       <th scope="row">{{ year.tax_year }}{% if year.exceptional %} <span class="status">Exceptional</span>{% endif %}</th>
-      <td>{{ year.effective_date | timeTag | safe }}</td>
       <td class="num">{{ year.basic_pence | money }}</td>
       <td class="num">{% if year.new_pence %}{{ year.new_pence | money }}{% else %}Did not exist{% endif %}</td>
       <td class="num">{{ year.applied_tenths | percent }}</td>
       <td class="num">{% if year.prices_tenths !== null %}{{ year.prices_tenths | percent }}{% else %}Not a test that year{% endif %}</td>
       <td class="num">{% if year.earnings_tenths !== null %}{{ year.earnings_tenths | percent }}{% if year.earnings_not_used %} (not used){% endif %}{% else %}Not a test that year{% endif %}</td>
+      <td>{{ year.effective_date | timeTag | safe }}</td>
       <td>{{ { "prices": "Prices (CPI)", "earnings": "Earnings", "floor": "The 2.5% minimum", "rpi": "Prices (RPI, this year only)", "pre-triple-lock": "The higher of 2.5% or RPI" }[year.measure] }}</td>
     </tr>
     {%- endfor %}
@@ -49,7 +55,7 @@ permalink: /history/
 </table>
 {% endcall %}
 <div class="source">
-  <p><span class="status">Published rate</span> Great Britain. Prices are the rise in the Consumer Prices Index over the year to the September before. Earnings are for May to July of the year before, as published at the time of the decision. In 2022/23 the earnings figure was not used. In 2016/17 the basic State Pension rose on 11 April and the new State Pension began on 6 April.</p>
+  <p><span class="status">Published rate</span> Great Britain. Prices are for the year to the September before. Earnings are for May to July of the year before, as published at the time of the decision. In 2022/23 the earnings figure was not used. In 2016/17 the basic State Pension rose on 11 April and the new State Pension began on 6 April.</p>
   <p>Sources: <a href="{{ history.sources.rates_url }}">{{ history.sources.rates }}</a> <a href="{{ history.sources.decisions_url }}">{{ history.sources.decisions }}</a> Checked against the sources on {{ history.checked_date | timeTag | safe }}.</p>
 </div>
 
@@ -75,7 +81,7 @@ In {{ changed }} of the {{ counted }} years from 2011/12, the figure published n
 
 {% call m.scrollTable() %}
 <table>
-  <caption>Earnings growth: the figure at the time of each decision, and the figure published now</caption>
+  <caption id="table-earnings-revisions">Earnings growth: the figure at the time of each decision, and the figure published now</caption>
   <thead><tr><th scope="col">For tax year</th><th scope="col" class="num">At the time of the decision</th><th scope="col" class="num">Published now</th></tr></thead>
   <tbody>
     {%- for year in history.years %}{% if year.earnings_tenths !== null %}

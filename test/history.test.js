@@ -65,3 +65,58 @@ test("constant prices and the earnings index", () => {
   const index = earningsIndex(observed(years, "new").slice(0, 3));
   assert.ok(Math.abs(index[2] - 104.6528) < 1e-9);
 });
+
+test("At a glance names the years where Parliament set the rule aside and the calculation did not", async () => {
+  const { renderHistorySummary } = await import("../src/assets/js/lib/history-view.js");
+  const glance = (series, from, to, rule) => renderHistorySummary({ years, series, from, to, measure: "cash", rule });
+  const earnings = "For 2022/23 the calculation uses earnings growth of 8.3%, which Parliament set aside that year. The published rate rose by 3.1%.";
+  const rpi = "For 2011/12 the calculation uses the Consumer Prices Index, 3.1%. That year only, the published rate used the Retail Prices Index: 4.6%.";
+  for (const rule of ["triple-lock", "double-lock", "earnings"]) assert.ok(glance("new", "2016/17", "2026/27", rule).includes(earnings), rule);
+  assert.ok(!glance("new", "2016/17", "2026/27", "prices").includes("<p>For "), "prices link used 3.1% as Parliament did");
+  assert.ok(!glance("new", "2022/23", "2026/27", "triple-lock").includes("<p>For "), "a start year is not calculated");
+  assert.ok(!glance("new", "2016/17", "2026/27", "").includes("<p>For "), "no rule, no line");
+  for (const rule of ["triple-lock", "double-lock", "prices"]) assert.ok(glance("basic", "2010/11", "2012/13", rule).includes(rpi), rule);
+  assert.ok(!glance("basic", "2010/11", "2026/27", "earnings").includes(rpi), "the earnings link differs by its own rule");
+  assert.ok(!glance("basic", "2020/21", "2021/22", "double-lock").includes("<p>For "), "2021/22 kept the triple lock");
+  const unflagged = years.map((year) => year.tax_year === "2022/23" ? { ...year, earnings_not_used: false } : year);
+  assert.ok(renderHistorySummary({ years: unflagged, series: "new", from: "2016/17", to: "2026/27", measure: "cash", rule: "triple-lock" })
+    .includes("For 2022/23 the calculation gives 8.3%. The published rate rose by 3.1%."), "a departure with no known reason still gets a line");
+});
+
+test("with a rule added, the chart's title says how far the calculation ends from the published rate", async () => {
+  const { renderHistory } = await import("../src/assets/js/lib/history-view.js");
+  const title = (from, to, rule, measure = "cash") => renderHistory({ years, series: "new", from, to, measure, rule }).match(/<h4>([^<]*)<\/h4>/)[1];
+  assert.equal(title("2016/17", "2026/27", "triple-lock"), "Calculated under the triple lock with no exceptions, the rate ends £12.20 a week above the published rate in 2026/27");
+  assert.equal(title("2023/24", "2026/27", "triple-lock"), "Calculated under the triple lock with no exceptions, the rate ends at the published rate in 2026/27");
+  assert.match(title("2016/17", "2026/27", "prices"), /^Calculated under the prices link, the rate ends £[\d.]+ a week below the published rate in 2026\/27$/);
+  assert.match(title("2016/17", "2026/27", ""), /^The full new State Pension rose in pounds in every year/);
+  // A published rate 10p above the calculation, on £241.30.
+  const nudged = years.map((year) => (year.tax_year === "2026/27" ? { ...year, new_pence: year.new_pence + 10 } : year));
+  const near = renderHistory({ years: nudged, series: "new", from: "2023/24", to: "2026/27", measure: "cash", rule: "triple-lock" });
+  assert.match(near, /<h4>Calculated under the triple lock with no exceptions, the rate ends less than 0.1% from the published rate in 2026\/27<\/h4>/);
+  // Merged, the two lines read as one name in the legend.
+  const merged = renderHistory({ years, series: "new", from: "2023/24", to: "2026/27", measure: "cash", rule: "triple-lock" });
+  assert.match(merged, /Published rate and calculated under the triple lock with no exceptions from 2023\/24: the same in every year/);
+});
+
+test("a source line is printed under the chart and the table, naming the price index only for buying power (W26)", async () => {
+  const { renderHistory } = await import("../src/assets/js/lib/history-view.js");
+  const sources = { rates: "DWP rates", decisions: "the memorandum", listed_url: "/history/#decisions", prices: "ONS CPI", prices_url: "https://example.org/cpi", checked: "<time datetime=\"2026-09-29\">29 September 2026</time>" };
+  const cash = renderHistory({ years, series: "new", from: "2020/21", to: "2026/27", measure: "cash", rule: "", sources });
+  assert.equal(cash.match(/<p class="source-line">Sources: the published rates and each year's decision, from DWP rates and the memorandum, <a href="\/history\/#decisions">listed by year on the history page<\/a>\. Checked against the sources on <time/g).length, 2);
+  assert.ok(!cash.includes("ONS CPI"), "cash does not use the price index");
+  const real = renderHistory({ years, series: "new", from: "2020/21", to: "2026/27", measure: "real", rule: "triple-lock", sources });
+  assert.ok(real.includes("; buying power uses <a href=\"https://example.org/cpi\">ONS CPI</a>. The calculated figures are this site's calculation from those. Checked"));
+  assert.ok(!renderHistory({ years, series: "new", from: "2020/21", to: "2026/27", measure: "cash", rule: "" }).includes("source-line"), "no line is printed when none is given");
+});
+
+test("the table export covers the years shown, with the calculated columns when a rule is added (W12)", async () => {
+  const { historyCsv } = await import("../src/assets/js/lib/history-view.js");
+  const plain = historyCsv({ years, series: "new", from: "2020/21", to: "2024/25", measure: "cash", rule: "" }).trim().split("\n");
+  assert.equal(plain.length, 6);
+  assert.equal(plain[0], "tax_year,effective_date,series,measure,published_rate,published_rate_cash_gbp,increase_applied_percent,decided_by,exceptional_year,notes");
+  assert.ok(plain[1].startsWith("2020/21,") && plain[5].startsWith("2024/25,"));
+  const withRule = historyCsv({ years, series: "new", from: "2020/21", to: "2024/25", measure: "cash", rule: "earnings" }).trim().split("\n");
+  assert.deepEqual(withRule[0].split(","), [...plain[0].split(",").slice(0, 6), "calculated_earnings_from_2020/21", "calculated_cash_gbp", ...plain[0].split(",").slice(6)]);
+  assert.equal(withRule.length, plain.length);
+});

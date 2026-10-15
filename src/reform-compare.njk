@@ -4,30 +4,38 @@ permalink: /reform-options/compare/
 ---
 {%- import "macros.njk" as m with context -%}
 {%- set scenario = scenarios.scenarios | where("id", scenarios.default) | first -%}
+{#- The source line under the chart and tables (R11). The build prints the default scenario's; the browser
+    takes each scenario's sentence from the template elements near the foot of the page, and swaps in the
+    "own" sentences for the parts the reader has changed. -#}
+{%- set nsp = "nsp-full-weekly" | figure -%}
+{%- set compareSources = { start: "Sources: the starting amount is the full new State Pension for " ~ nsp.period_label ~ ", from the " ~ m.cite(nsp.source) ~ ".", own_start: "Sources: the starting amount is one you entered.", own_figures: "The yearly figures are ones you entered." } -%}
+{%- macro scenarioSource(item) -%}
+{%- if item.source_id -%}The yearly figures are the {{ item.label.charAt(0) | lower }}{{ item.label.slice(1) }} scenario's, from the {{ m.cite(item.source_id | sourceRecord) }}.{%- else -%}The yearly figures are the {{ item.label.charAt(0) | lower }}{{ item.label.slice(1) }} scenario's, chosen for this illustration. They are not from a forecast.{%- endif -%}
+{%- endmacro -%}
 <h1>Compare the rules for the yearly increase</h1>
 
-<p class="lede">Five rules for the yearly increase, applied to the same starting amount and the same figures for prices and earnings. Change any figure and the result changes with it. The rules are explained on <a href="/reform-options/">the yearly increase: options</a>.</p>
+<p class="lede">Five rules for the yearly increase, applied to the same starting amount and the same figures for prices and earnings. Change any figure and the result changes with it. The rules are explained on the <a href="/reform-options/">reform options page</a>.</p>
 
-{{ m.reformSection() }}
+{{ m.contents([], true) }}
 
 <section class="tool" aria-labelledby="compare">
   <h2 id="compare">Try the rules</h2>
 
   <p>This tool applies five rules to the same starting amount and the same yearly figures for prices and earnings. It shows where the rules differ and where they do not. One of the five is the rule announced for April 2030. The government has described it in outline only, so the tool makes three assumptions about it, and one more to keep the tool simple. <a href="#rule-2030-assumptions">The assumptions</a>.</p>
 
-  {% call m.note("What this tool does and does not show", 3) %}
+  {% call m.note("What this tool does and does not show", 3, "what-this-tool-does-and-does-not-show") %}
   <ul>
-    <li>It models <strong>one full rate</strong>, weekly and <strong>before tax</strong>. It is not your entitlement.</li>
+    <li>It models <strong>one full rate</strong>, weekly and <strong>before tax</strong>. It is not your entitlement: for that, <a href="https://www.gov.uk/check-state-pension">check your State Pension forecast</a> on GOV.UK.</li>
     <li>The yearly figures are <strong>illustrations</strong>. They are not forecasts and have no probability.</li>
     <li>It leaves out Income Tax, Pension Credit and every other benefit. A difference shown here is not a difference in money to spend.</li>
     <li>You cannot use it to work out national savings.</li>
-    <li>As you change the figures, the settings go in the page address, so a copied link shows the same result. The tool sends and stores nothing else. <a href="/privacy/#tools">Privacy</a>.</li>
+    <li>Nothing goes in the page address on its own. "Copy a link to this result" copies a link that holds the settings shown, including any amount you entered, so that the link shows the same result. The tool sends and stores nothing else. <a href="/privacy/#tools">Privacy</a>.</li>
   </ul>
   {% endcall %}
 
   <div class="no-js-only">
-    {% call m.note("The calculator needs JavaScript", 3) %}
-    <p>The form is not available, because JavaScript is off or did not load. The result below shows the first scenario.</p>
+    {% call m.note("The calculator needs JavaScript", 3, "the-calculator-needs-javascript") %}
+    <p>The form is not available, because JavaScript is off or did not load. <span class="if-script-failed">The script for this form did not run to the end, though the page's other scripts did. Reload the page; if that does not help, <a href="/sources-and-method/#report-an-error">report it</a>.</span> The result below shows the first scenario.</p>
     {% endcall %}
   </div>
 
@@ -40,15 +48,15 @@ permalink: /reform-options/compare/
           <label for="compare-scenario">Scenario</label>
           <select id="compare-scenario" name="compare-scenario">
             {%- for item in scenarios.scenarios %}
-            <option value="{{ item.id }}"{% if item.id == scenarios.default %} selected{% endif %}>{{ item.label }}</option>
+            <option value="{{ item.id }}"{% if item.id == scenarios.default %} selected{% endif %}>{{ item.menu_label or item.label }}</option>
             {%- endfor %}
           </select>
         </div>
         {{ m.field("compare-years", "Number of years", scenarios.default_years, "From 1 to 30.", "", "", "numeric") }}
-        {{ m.field("compare-start", "Starting weekly amount", ("nsp-full-weekly" | figPence) | plainPounds, "A full rate, in pounds. The full new State Pension for 2026/27 is filled in.", "£", "") }}
+        {{ m.field("compare-start", "Starting weekly amount", ("nsp-full-weekly" | figPence) | plainPounds, "A full rate, in pounds. The full new State Pension for " ~ ("nsp-full-weekly" | figure).period_label ~ " is filled in.", "£", "") }}
         <div class="field">
           <label for="compare-first">First year under the rule</label>
-          <span class="hint" id="compare-first-hint">This changes the year labels only. The starting amount is the rate for the year before.</span>
+          <span class="hint" id="compare-first-hint">Every rule, the rule announced for April 2030 among them, is applied in full from this year. The government's rule would start in 2030/31. Choosing a year changes the year labels only. The starting amount is the rate for the year before.</span>
           <select id="compare-first" name="compare-first" aria-describedby="compare-first-hint">
             {%- for y in range(2027, 2037) %}
             <option value="{{ y }}">{{ y }}/{{ (y + 1) % 100 }}</option>
@@ -57,10 +65,11 @@ permalink: /reform-options/compare/
         </div>
         <div class="field">
           <label for="compare-measure">Show amounts as</label>
-          <select id="compare-measure" name="compare-measure">
-            <option value="cash">Cash: the money of each year</option>
-            <option value="real">Buying power: the prices of the starting year</option>
-            <option value="earnings">Compared with earnings: an index</option>
+          <span class="hint" id="compare-measure-hint">Cash is the money of each year. Buying power is in the prices of the starting year. Compared with earnings is an index, starting year&nbsp;=&nbsp;100.</span>
+          <select id="compare-measure" name="compare-measure" aria-describedby="compare-measure-hint">
+            <option value="cash">Cash</option>
+            <option value="real">Buying power</option>
+            <option value="earnings">Compared with earnings</option>
           </select>
         </div>
       </div>
@@ -77,7 +86,7 @@ permalink: /reform-options/compare/
       <p>Per cent, from -10 to 25, with one decimal place. All five rules use the same figures.</p>
       <div class="scroll-x" tabindex="0" role="region">
         <table>
-          <caption>Rise in prices and earnings used for each year</caption>
+          <caption id="compare-edit-caption">Rise in prices and earnings used for each year</caption>
           <thead><tr><th scope="col">Tax year</th><th scope="col">Rise in prices (%)</th><th scope="col">Rise in earnings (%)</th></tr></thead>
           <tbody id="compare-rows"></tbody>
         </table>
@@ -85,8 +94,11 @@ permalink: /reform-options/compare/
     </details>
 
     <div class="buttons">
+      <button type="button" class="secondary" id="compare-copy-link" aria-describedby="compare-copy-hint">Copy a link to this result</button>
       <button type="button" class="secondary" id="compare-reset">Reset everything</button>
     </div>
+    <p class="hint" id="compare-copy-hint">The link holds the settings shown: the scenario, the number of years, the starting amount, the first year, how amounts are shown, the cash floor, and any yearly figures you changed. Copying a link does not change the page address; only if the link cannot be copied is it put there for you to copy.</p>
+    <p class="hint" id="compare-copy-note" aria-hidden="true"></p>
   </form>
 
   {#- Stays in view while the figures change: beside the form on wide screens, pinned to the foot of a narrow one. -#}
@@ -105,10 +117,10 @@ permalink: /reform-options/compare/
   <p class="visually-hidden" role="status" id="compare-status"></p>
 
   <div class="result" id="compare-result">
-    {{ { startPence: ("nsp-full-weekly" | figPence), path: scenario.path.slice(0, scenarios.default_years), cashFloor: true, firstYear: 2027, measure: "cash", scenarioLabel: (scenario.label.charAt(0) | lower) ~ scenario.label.slice(1) } | renderComparison | safe }}
+    {{ { startPence: ("nsp-full-weekly" | figPence), path: scenario.path.slice(0, scenarios.default_years), cashFloor: true, firstYear: 2027, measure: "cash", scenarioLabel: (scenario.label.charAt(0) | lower) ~ scenario.label.slice(1), sourceLine: compareSources.start ~ " " ~ scenarioSource(scenario) } | renderComparison | safe }}
   </div>
 
-  <h3>The scenarios</h3>
+  <h3 id="the-scenarios">The scenarios</h3>
   <dl>
     {%- for item in scenarios.scenarios %}
     <dt>{{ item.label }}</dt>
@@ -117,7 +129,7 @@ permalink: /reform-options/compare/
   </dl>
   <p>The scenarios were chosen to show different behaviour, including scenarios where several rules give the same answer. A result changes with the starting amount, the number of years and the figures. No single scenario shows what will happen.</p>
 
-  <h3>How the tool calculates</h3>
+  <h3 id="how-the-tool-calculates">How the tool calculates</h3>
   <dl>
     <dt>Timing</dt> <dd>The starting amount is the rate in the year before the first year. Each year has one figure for prices and one for earnings, and they set that year's increase.</dd>
     <dt>A simplification</dt> <dd>In practice an April increase uses figures from the year before. The tool does not model that delay. It treats each year's figure as the change in prices, or earnings, between one year and the next.</dd>
@@ -139,6 +151,9 @@ permalink: /reform-options/compare/
   <p>A different choice on any of the first three would give different results. The tool shows how the rule behaves. It does not show what the government's rule will pay.</p>
   <p><a href="/sources-and-method/#models">Full method, reference examples and limits</a>.</p>
 
-  <script type="application/json" id="compare-data">{{ { scenarios: scenarios.scenarios, default: scenarios.default, default_years: scenarios.default_years, default_start: ("nsp-full-weekly" | figPence) | plainPounds, default_first: 2027 } | json | safe }}</script>
+  {%- for item in scenarios.scenarios %}
+  <template id="compare-source-{{ item.id }}">{{ scenarioSource(item) }}</template>
+  {%- endfor %}
+  <script type="application/json" id="compare-data">{{ { scenarios: scenarios.scenarios, default: scenarios.default, default_years: scenarios.default_years, default_start: ("nsp-full-weekly" | figPence) | plainPounds, default_first: 2027, sources: compareSources } | json | safe }}</script>
   <script type="module" src="/assets/js/tools/compare.js"></script>
 </section>

@@ -163,6 +163,7 @@ for (const [id, record] of Object.entries(claims)) {
 for (const [id, record] of Object.entries(sources)) {
   for (const field of ["publisher", "title", "url", "checked_date", "licence"]) if (!record[field]) fail(`source ${id} has no ${field}`);
   if (!/^https:\/\//.test(record.url)) fail(`source ${id} address is not https`);
+  if (record.status !== undefined && !["accredited", "official", "in-development", "suspended"].includes(record.status)) fail(`source ${id} has a status that is not accredited, official, in-development or suspended: ${record.status}`);
 }
 const templates = walk("src").filter((path) => /\.(njk|json|js)$/.test(path) && !/figures\.json|claims\.json|sources\.json/.test(path)).map((path) => readFileSync(path, "utf8")).join("\n");
 const registersText = JSON.stringify(figures) + JSON.stringify(claims) + readFileSync("src/_data/tables.json", "utf8") + readFileSync("src/_data/budgets.json", "utf8") + readFileSync("src/_data/scenarios.json", "utf8");
@@ -194,6 +195,14 @@ for (const [url, html] of written) {
     if (!by && !/aria-label="[^"]+"/.test(attrs)) fail(`${url}: a scrolling region has no name`);
   }
   if (/<\/dt><dd>/.test(html)) fail(`${url}: a dt runs into its dd with no space`);
+}
+// A heading a script draws later, in a result or an error state, is not in the built page, so the
+// scripts are read for one without an id (W29). Every h2 and h3 keeps one id in every state.
+for (const path of walk("src/assets/js")) {
+  const bare = readFileSync(path, "utf8").match(/<h[23]\b(?![^>]*\sid=)[^>]*>[^<`$]*/);
+  if (bare) fail(`${path}: a script draws a heading with no id: ${bare[0]}`);
+}
+for (const [url, html] of written) {
   for (const [svg] of html.matchAll(/<svg[^>]*role="img"[^>]*>/g)) {
     if (!/aria-labelledby="([^" ]+)-title" aria-describedby="\1-desc"/.test(svg)) fail(`${url}: a chart's name is not its title alone: ${svg}`);
   }

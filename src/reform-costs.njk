@@ -5,32 +5,43 @@ permalink: /reform-options/costs/
 {%- import "macros.njk" as m with context -%}
 <h1>What the State Pension costs, and who receives what</h1>
 
-<p class="lede">What the State Pension costs now and is projected to cost, what the triple lock has cost and what a change would save, and how income, poverty and wealth differ among pensioners.</p>
-
-{{ m.reformSection() }}
+<p class="lede">The State Pension is the largest of the benefits paid to pensioners, its bill is rising, and a change to the yearly increase would save little at first and much over decades. This page gives the cost now and as projected, what the triple lock has cost, what a change would save, and how income, poverty and wealth differ among pensioners.</p>
 
 {{ m.contents([
-  ["public-finances", "What the State Pension costs"],
-  ["cost-and-saving", "What the triple lock has cost, and what a change would save"],
-  ["who", "Who receives what: incomes, wealth and poverty"]
-]) }}
+  ["public-finances", "The State Pension is the largest benefit paid to pensioners, and the bill is rising", [
+    ["projection", "The long-term projection"]
+  ]],
+  ["cost-and-saving", "The triple lock has added to the bill, and a change would save little at first and much later", [
+    ["cost-so-far", "The cost so far"],
+    ["saving", "The saving from a change"]
+  ]],
+  ["who", "Who receives what: an average pensioner does not exist", [
+    ["who-income", "Income"],
+    ["who-poverty", "Poverty and deprivation"],
+    ["who-wealth", "Housing and wealth"],
+    ["who-men-women", "Differences between men and women"],
+    ["who-disability", "Disability and caring"]
+  ]]
+], true) }}
 
-<h2 id="public-finances">What the State Pension costs</h2>
+<h2 id="public-finances">The State Pension is the largest benefit paid to pensioners, and the bill is rising</h2>
+
+<p>The State Pension is the largest of the benefits paid to pensioners. Spending on it is forecast to rise each year.</p>
 
 <ul class="cards cards--three">
-  <li>{{ m.stat("sp-spend-2024-25" | figure, "The latest full year with final figures.") }}</li>
+  <li>{{ m.stat("sp-spend-2024-25" | figure, "The latest outturn: the final figures for a year that has ended.") }}</li>
   <li>{{ m.stat("sp-spend-2026-27" | figure, "The forecast for the current year.") }}</li>
-  <li>{{ m.stat("sp-share-gdp-2025-26" | figure, "The size of the bill compared with the whole economy.") }}</li>
+  <li>{{ m.stat("sp-share-gdp-2025-26" | figure, "The size of the bill compared with gross domestic product (GDP), the value of what the whole economy produces.") }}</li>
 </ul>
 
 {{ m.dataTable("sp-spending-series") }}
 
-{% call m.note("State Pension spending is not all spending on older people", 3) %}
-<p>DWP spent {{ m.f("pensioner-benefits-2024-25") }} in 2024/25 on all benefits for pensioners, of which the State Pension was {{ m.f("sp-spend-2024-25") }}. Neither figure includes the NHS or social care.</p>
-<p>Official sources give slightly different figures for the same year. The DWP tables give {{ m.f("sp-spend-2024-25") }}. The account of the National Insurance Fund gives {{ m.f("nif-state-pension-2024-25") }}, on a cash basis. They differ in accounting basis and coverage. This site uses the DWP tables for spending and says so each time.</p>
+{% call m.note("State Pension spending is not all spending on older people", 3, "state-pension-spending-is-not-all-spending-on-older-people") %}
+<p>DWP spent {{ m.f("pensioner-benefits-2024-25") }} in 2024/25 on all benefits for pensioners, of which the State Pension was {{ m.f("sp-spend-2024-25") }}. {{ m.ref(("sp-spend-2024-25" | figure).source) }} Neither figure includes the NHS or social care.</p>
+<p>Official sources give slightly different figures for the same year. The DWP tables give {{ "sp-spend-2024-25" | fig }}, as above. The account of the National Insurance Fund gives {{ m.f("nif-state-pension-2024-25") }}, on a cash basis. {{ m.ref(("nif-state-pension-2024-25" | figure).source) }} They differ in accounting basis and coverage. This site uses the DWP tables for spending and says so each time.</p>
 {% endcall %}
 
-<h3>The long-term projection: the triple lock and an older population drive the rise</h3>
+<h3 id="projection">The long-term projection: the triple lock and an older population drive the rise</h3>
 
 {{ m.dataTable("sp-longrun") }}
 
@@ -54,25 +65,25 @@ permalink: /reform-options/costs/
 
 <p>Future numbers of workers depend partly on migration. {{ m.sisterLink("migration" | link) }} explains how migration is measured. It does not estimate the effect on pension costs, and neither does this site.</p>
 
-<p>Pensioners also pay tax. {{ m.f("pensioner-taxpayers") }} people above State Pension age paid Income Tax in 2023 to 2024. {{ m.ref(("pensioner-taxpayers" | figure).source) }} {{ ("ni-stops-at-spa" | claim).statement }} {{ m.c("ni-stops-at-spa") }}</p>
+<p>Pensioners also pay tax. {{ ("ni-stops-at-spa" | claim).statement }} {{ m.c("ni-stops-at-spa") }} But {{ m.f("pensioner-taxpayers") }} people above State Pension age paid Income Tax in 2023 to 2024.</p>
 {{ m.sourceNote("pensioner-taxpayers" | figure) }}
 
 <p>For the difference between what the government spends or borrows in a year and the debt it has built up, see {{ m.sisterLink("debt-vs-deficit" | link) }}.</p>
 
-<h2 id="cost-and-saving">What the triple lock has cost, and what a change would save</h2>
+<h2 id="cost-and-saving">The triple lock has added to the bill, and a change would save little at first and much later</h2>
 
-<p>Three different amounts are often confused.</p>
+<p>Every estimate here puts spending above what another rule would have cost, and taken together the estimates of a change put the saving small at first and large over decades. Three different amounts are often confused.</p>
 <ol>
-  <li><strong>The whole bill.</strong> {{ m.f("sp-spend-2026-27") }} in 2026/27, above.</li>
+  <li><strong>The whole bill.</strong> {{ "sp-spend-2026-27" | fig }} in 2026/27, above.</li>
   <li><strong>The cost of the triple lock so far.</strong> How much higher spending is than it would have been under a different rule. It depends on which rule is used for comparison.</li>
   <li><strong>The saving from a change.</strong> How much lower future spending would be. It depends on the new rule, the start date and the year measured.</li>
 </ol>
 
-<h3>The cost so far: a difference, not a bill</h3>
+<h3 id="cost-so-far">The cost so far: a difference, not a bill</h3>
 
 {% call m.scrollTable() %}
 <table>
-  <caption>Estimates of extra yearly spending because of the triple lock</caption>
+  <caption id="table-cost-estimates">Estimates of extra yearly spending because of the triple lock</caption>
   <thead><tr><th scope="col">Estimate</th><th scope="col">Compared with</th><th scope="col">Year measured</th><th scope="col">Before or after tax and benefit effects</th><th scope="col">Who made it</th></tr></thead>
   <tbody>
     {%- for id, against in [["tl-cost-ifs-2023","Prices or earnings since 2011"],["tl-cost-ifs-2026","Average earnings since 2011"],["tl-cost-rf-gross-2026","A smoothed earnings link since 2012, as the report describes it"],["tl-cost-rf-net-2026","A smoothed earnings link since 2012, as the report describes it"],["tl-cost-vs-earnings-2029-30","Earnings since 2012"],["tl-cost-vs-cpi-2029-30","Prices since 2012"]] %}
@@ -87,7 +98,7 @@ permalink: /reform-options/costs/
 <p>The Office for Budget Responsibility also says the cost by 2029-30 is around three times what was first assumed. It gives {{ m.f("tl-cost-vs-earnings-2029-30") }} against {{ m.f("tl-cost-initial-assumption") }}. That compares two differences from earnings uprating. It does not mean State Pension spending is three times what was expected.</p>
 {{ m.sourceNote("tl-cost-initial-assumption" | figure) }}
 
-<h3>The saving from a change: small at first, large over decades</h3>
+<h3 id="saving">The saving from a change: small at first, large over decades</h3>
 
 {% call m.note("Past cost is not future saving", 4) %}
 <p>The increases of past years are part of today's rates. Changing the rule does not reverse them. A change only affects increases from the date it starts, so the saving begins small and grows.</p>
@@ -95,7 +106,7 @@ permalink: /reform-options/costs/
 
 {% call m.scrollTable() %}
 <table>
-  <caption>Estimates of the saving from changing the yearly increase, compared with keeping the triple lock</caption>
+  <caption id="table-saving-estimates">Estimates of the saving from changing the yearly increase, compared with keeping the triple lock</caption>
   <thead><tr><th scope="col">Change</th><th scope="col">Estimated saving</th><th scope="col">When</th><th scope="col">Basis</th><th scope="col">Who made it</th></tr></thead>
   <tbody>
     {%- for id, change, suffix in [
@@ -122,29 +133,29 @@ permalink: /reform-options/costs/
 
 <h4 id="saving-2030">The rule announced for April 2030</h4>
 
-<p>The government estimates a saving of {{ m.f("saving-rule-2030-late-2030s") }} in {{ ("saving-rule-2030-late-2030s" | figure).period_label }}, and {{ m.f("saving-rule-2030-2050") }} in {{ ("saving-rule-2030-2050" | figure).period_label }}. Those amounts are in cash, the money of each year. In the prices of 2025 to 2026 its estimates are {{ m.f("saving-rule-2030-2040-real") }} and {{ m.f("saving-rule-2030-2050-real") }}.</p>
-{{ m.sourceNote("saving-rule-2030-2050" | figure) }}
+<p>The table gives the government's estimates in cash, the money of each year. In the prices of 2025 to 2026 they are {{ m.f("saving-rule-2030-2040-real") }} for {{ ("saving-rule-2030-2040-real" | figure).period_label }} and {{ m.f("saving-rule-2030-2050-real") }} for {{ ("saving-rule-2030-2050-real" | figure).period_label }}.</p>
+{{ m.sourceNote("saving-rule-2030-2050-real" | figure) }}
 
 <p>{{ ("ifs-savings-small-early" | claim).statement }} {{ m.c("ifs-savings-small-early") }} To show the scale, the Institute looks back. If the announced rule had applied since 2011, spending in 2026-27 would be {{ m.f("rule-2030-counterfactual-ifs-2026") }} lower. That is a look back, not a forecast.</p>
 {{ m.sourceNote("rule-2030-counterfactual-ifs-2026" | figure) }}
 
 {% call m.note("How to read the government's figures", 5) %}
 <p>{{ ("dwp-2030-baseline" | claim).statement }} {{ m.c("dwp-2030-baseline") }} {{ ("dwp-2030-caution" | claim).statement }} {{ m.c("dwp-2030-caution") }}</p>
-<p>In the prices of 2025 to 2026, the government's estimate for {{ ("saving-rule-2030-2050-real" | figure).period_label }} is {{ m.f("saving-rule-2030-2050-real") }}. That is inside the Institute for Fiscal Studies' range, above, for what the triple lock itself would cost in 2050. The Institute gives its range in what it calls today's terms, as at 2025, so the two are close in kind but not on the same basis.</p>
+<p>The estimate for {{ ("saving-rule-2030-2050-real" | figure).period_label }} in the prices of 2025 to 2026 is inside the Institute for Fiscal Studies' range, above, for what the triple lock itself would cost in 2050. The Institute gives its range in what it calls today's terms, as at 2025, so the two are close in kind but not on the same basis.</p>
 <p>{{ ("no-rule-2030-detail" | claim).statement }} {{ m.c("no-rule-2030-detail") }} So the estimates can be read, but not reproduced.</p>
 {% endcall %}
 
-{% call m.unavailable("costings for a double lock of prices or earnings, and for means-testing", 4) %}
+{% call m.unavailable("costings for a double lock of prices or earnings, and for means-testing", 4, "not-available-costings-double-lock-means-testing") %}
 <p>{{ ("no-costed-double-lock" | claim).statement }} {{ ("no-costed-means-test" | claim).statement }} We have not made our own estimates. A calculation that multiplied one person's difference by the number of pensioners would be wrong, because people receive different amounts and because tax and benefits change the result.</p>
 {% endcall %}
 
 <p>To see the State Pension beside other spending and taxes, the {{ m.sisterLink("budget-simulator" | link) }} lets you change each one. It is a simplified teaching model, not an official costing of any pension reform, and its State Pension figure is a forecast for an earlier year than the figures on this page. To put a figure in billions into scale, there is the {{ m.sisterLink("big-numbers" | link) }}. An amount per person from that tool is simple division. It is not what anyone pays or receives.</p>
 
-<h2 id="who">Who receives what: incomes, wealth and poverty</h2>
+<h2 id="who">Who receives what: an average pensioner does not exist</h2>
 
-<p>An average pensioner does not exist. The evidence below is about the spread.</p>
+<p>An average pensioner does not exist. The evidence below is about the spread: income, poverty and deprivation, housing and wealth, the differences between men and women, and disability and caring. A median is the middle value: half have more and half less. Income after housing costs is what is left once rent, mortgage interest and similar costs are paid.</p>
 
-<h3>Income: the State Pension matters most to those with the lowest incomes</h3>
+<h3 id="who-income">Income: the State Pension matters most to those with the lowest incomes</h3>
 
 {{ m.dataTable("income-fifths") }}
 
@@ -153,41 +164,45 @@ permalink: /reform-options/costs/
 
 <p>On this page, "low income" and "high income" mean a position in these distributions, unless a source's own definition is given.</p>
 
-<h3>Poverty and deprivation: fewer pensioners are in low income once housing costs are counted</h3>
+<h3 id="who-poverty">Poverty and deprivation: fewer pensioners are in low income once housing costs are counted</h3>
 
+{%- set g = ["low-income-ahc", "low-income-bhc", "material-deprivation"] | shared %}
+{{ m.sharedNote(g) }}
 <ul class="cards cards--three">
-  <li>{{ m.stat("low-income-ahc" | figure, "After rent, mortgage interest and similar costs are taken off.", 4) }}</li>
-  <li>{{ m.stat("low-income-bhc" | figure, "Before housing costs are taken off.", 4) }}</li>
-  <li>{{ m.stat("material-deprivation" | figure, "A measure of going without, not of income.", 4) }}</li>
+  <li>{{ m.stat("low-income-ahc" | figure, "After rent, mortgage interest and similar costs are taken off.", 4, g) }}</li>
+  <li>{{ m.stat("low-income-bhc" | figure, "Before housing costs are taken off.", 4, g) }}</li>
+  <li>{{ m.stat("material-deprivation" | figure, "A measure of going without, not of income.", 4, g) }}</li>
 </ul>
 
 <p>Fewer pensioners are in low income after housing costs than before, because most own their home outright. {{ m.c("hbai-owners") }} For a pensioner who rents, housing costs work the other way.</p>
 
-<h3>Housing and wealth: wealth is spread more unevenly than income</h3>
+<h3 id="who-wealth">Housing and wealth: wealth is spread more unevenly than income</h3>
 
 <p>Of households headed by someone aged 65 or over, {{ m.f("tenure-own-outright") }} own outright, {{ m.f("tenure-mortgage") }} are buying with a mortgage, {{ m.f("tenure-social-rent") }} rent from a social landlord and {{ m.f("tenure-private-rent") }} rent privately.</p>
 {{ m.sourceNote("tenure-own-outright" | figure) }}
 
 {{ m.dataTable("wealth-bands") }}
 
-<p>Wealth is spread more unevenly than income. Among single households over State Pension age, a quarter have total wealth below {{ m.f("wealth-single-p25") }} and a quarter have more than {{ m.f("wealth-single-p75") }}.</p>
+<p>The Office for National Statistics estimates from a survey that among single households over State Pension age, a quarter have total wealth below {{ m.f("wealth-single-p25") }} and a quarter have more than {{ m.f("wealth-single-p75") }}.</p>
 {{ m.sourceNote("wealth-single-p25" | figure) }}
 
 {% call m.note("Income, wealth and need are three different things", 4) %}
 <p>A person can have a valuable home and a low income. A home cannot pay a bill unless it is sold or borrowed against. A person can have a high income and high costs, for example for care. People with high income and people with high wealth are not the same group, and neither measure shows what a person needs.</p>
 {% endcall %}
 
-<h3>Differences between men and women</h3>
+<h3 id="who-men-women">Differences between men and women</h3>
 
 <p>Among people aged 65 to 74, the median private pension wealth of men is {{ m.f("pension-wealth-men-65-74") }} and of women is {{ m.f("pension-wealth-women-65-74") }}, counting people with none. Women on the older State Pension system also receive less on average than men. <a href="/state-pension/#what-people-receive">What people actually receive</a>. A person with little private pension depends more on the State Pension, and so is more exposed to a change in it.</p>
 {{ m.sourceNote("pension-wealth-women-65-74" | figure) }}
 
-<h3>Disability and caring</h3>
+<h3 id="who-disability">Disability and caring</h3>
 
-<p>{{ m.f("disabled-share-spa") }} of adults of State Pension age report a disability. {{ ("disability-income-artefact" | claim).statement }} {{ m.c("disability-income-artefact") }}</p>
+<p>{{ m.f("disabled-share-spa") }} of adults of State Pension age report a disability.</p>
 {{ m.sourceNote("disabled-share-spa" | figure) }}
 
+<p>{{ ("disability-income-artefact" | claim).statement }} {{ m.c("disability-income-artefact") }}</p>
+
 {#- Level 3 on purpose. This covers the whole section on who receives what, not the subsection above it. -#}
-{% call m.unavailable("some breakdowns", 3) %}
+{% call m.unavailable("some breakdowns", 3, "not-available-some-breakdowns") %}
 <p>We did not find published figures for the incomes of pensioners who are carers, for wealth by type among people aged 65 and over, or for the number of people who would gain or lose under each reform. We have not filled these gaps with examples. Example households can show how a rule works. They cannot show how many people are affected.</p>
 {% endcall %}

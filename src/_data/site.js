@@ -65,13 +65,17 @@ const config = {
     { href: "/tools/", label: "Tools" },
     { href: "/sources-and-method/", label: "Sources and method" },
   ],
-  // The pages of the reform options section, in reading order. Shown on each of them.
+  // The pages of the reform options section, in reading order. Each page has one name, used in the
+  // section list on every reform page, in the Next and Previous links and in the site map: the
+  // page's own words from its h1: the words after the "Reform options:" prefix where the h1 has one,
+  // otherwise the h1 without its subtitle after a colon (W7, from R7 of the readability review of
+  // 8 October 2026).
   reformPages: [
-    { href: "/reform-options/", label: "The yearly increase: options" },
-    { href: "/reform-options/compare/", label: "Compare the rules" },
-    { href: "/reform-options/costs/", label: "What it costs, and who receives what" },
+    { href: "/reform-options/", label: "How the yearly increase could change" },
+    { href: "/reform-options/compare/", label: "Compare the rules for the yearly increase" },
+    { href: "/reform-options/costs/", label: "What the State Pension costs, and who receives what" },
     { href: "/reform-options/social-care/", label: "Pensions and social care" },
-    { href: "/reform-options/entitlement/", label: "Means-testing, and the arguments" },
+    { href: "/reform-options/entitlement/", label: "Means-testing and entitlement" },
   ],
   siblings: [
     {

@@ -649,6 +649,26 @@
     "checked_date": "2026-09-29",
     "review_status": "checked-with-ai-assistance"
   },
+  "rf-income-level": {
+    "kind": "finding",
+    "statement": "It also says the typical pensioner had a lower income than the typical non-pensioner when the first Pensions Commission was in place, which has not been the case since 2011-12.",
+    "source_id": "rf-ratchet-2026",
+    "passage": "When the first Pensions Commission was in place, the typical pensioner had a lower income than the typical non-pensioner, but that has not been the case since 2011-12",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-12",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "rf-income-same-level": {
+    "kind": "finding",
+    "statement": "It says a typical pensioner household now has the same level of income as the typical working-age household.",
+    "source_id": "rf-ratchet-2026",
+    "passage": "a typical pensioner household now has the same level of income as the typical working-age household",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-12",
+    "review_status": "checked-with-ai-assistance"
+  },
   "rf-living-standards": {
     "kind": "finding",
     "statement": "The Resolution Foundation reports faster growth in living standards for pensioners than for others over two decades.",
@@ -661,12 +681,12 @@
   },
   "rf-poverty-since-2011": {
     "kind": "finding",
-    "statement": "It also reports that pensioner poverty has risen since 2011-12.",
+    "statement": "The Resolution Foundation reports that pensioner poverty has risen by 2.3 percentage points since 2011-12, even with the triple lock in place.",
     "source_id": "rf-ratchet-2026",
     "passage": "since 2011-12, pensioner poverty has risen by 2.3 percentage points even with the triple lock in place",
     "interpretation": false,
     "note": null,
-    "checked_date": "2026-09-29",
+    "checked_date": "2026-10-12",
     "review_status": "checked-with-ai-assistance"
   },
   "tbi-proposal": {
@@ -691,12 +711,12 @@
   },
   "ppi-demographics": {
     "kind": "finding",
-    "statement": "The Pensions Policy Institute says the cost of an older population outweighs the cost of the triple lock.",
+    "statement": "The Pensions Policy Institute says projections suggest that more people receiving the State Pension will add much more to its cost than the triple lock will.",
     "source_id": "ppi-triple-lock-2024",
-    "passage": "the increase in State Pension costs related to demographic changes significantly outweigh the increase in costs resulting from the triple lock",
+    "passage": "it also reflects demographic changes leading to more people being in receipt of State Pension. Projections suggest that the increase in State Pension costs related to demographic changes significantly outweigh the increase in costs resulting from the triple lock",
     "interpretation": false,
-    "note": "The Office for Budget Responsibility attributes 1.2% of GDP of a 3.6% rise to the triple lock. The two statements use different dates and baselines.",
-    "checked_date": "2026-09-29",
+    "note": "The Office for Budget Responsibility's split of the projected rise, shown beside this claim on the yearly increase page from its own figure records, uses different dates and baselines.",
+    "checked_date": "2026-10-12",
     "review_status": "checked-with-ai-assistance"
   },
   "ppi-reliance": {
@@ -816,7 +836,7 @@
     "passage": "When your assets are more than the limit for your situation, your pension will reduce.",
     "interpretation": false,
     "note": "Context only. Australia's Age Pension is based on residence and paid from general taxation, and sits beside compulsory private saving. It is not a model proposed for the UK by any body we found.",
-    "checked_date": "2026-09-29",
+    "checked_date": "2026-10-08",
     "review_status": "checked-with-ai-assistance"
   },
   "no-costed-means-test": {
@@ -921,12 +941,32 @@
   },
   "casey-first-terms": {
     "kind": "enacted",
-    "statement": "The commission's terms first set two phases, reporting in 2026 and by 2028.",
+    "statement": "The commission's published terms set two phases, the first reporting in 2026 and the second by 2028.",
     "source_id": "casey-tor",
-    "passage": "The purpose of the first phase of the commission is to set out the plan for how to implement a national care service, a government manifesto commitment. This should report in 2026.",
+    "passage": "The commission will be undertaken in 2 phases with the final phase reporting back by 2028 to the Prime Minister. ... The purpose of the first phase of the commission is to set out the plan for how to implement a national care service, a government manifesto commitment. This should report in 2026.",
     "interpretation": false,
     "note": null,
-    "checked_date": "2026-09-29",
+    "checked_date": "2026-10-08",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "casey-tor-summer-2027": {
+    "kind": "finding",
+    "statement": "On 1 October 2026 the government changed the terms to show a report in summer 2027.",
+    "source_id": "casey-tor-history",
+    "passage": "Updated the terms of reference for the Independent Commission on Adult Social Care to reflect the commission's revised timetable, including its new reporting date of summer 2027.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-08",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "casey-tor-reinstated": {
+    "kind": "finding",
+    "statement": "On the same day, 1 October 2026, the government put the original terms back and said an updated version would follow.",
+    "source_id": "casey-tor-history",
+    "passage": "Reinstated the original version of the terms of reference, with an updated version to follow in due course.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-08",
     "review_status": "checked-with-ai-assistance"
   },
   "casey-affordable": {
@@ -996,7 +1036,7 @@
     "passage": "But reform is not unaffordable: if it chooses to, government can afford to provide a better, fairer and more generous social care system in England.",
     "interpretation": true,
     "note": null,
-    "checked_date": "2026-09-29",
+    "checked_date": "2026-10-08",
     "review_status": "checked-with-ai-assistance"
   },
   "hf-broad-estimate": {
@@ -1006,7 +1046,7 @@
     "passage": "This is a broad estimate only.",
     "interpretation": false,
     "note": null,
-    "checked_date": "2026-09-29",
+    "checked_date": "2026-10-08",
     "review_status": "checked-with-ai-assistance"
   },
   "bsp-30-years": {
@@ -1392,21 +1432,21 @@
   "hf-response": {
     "kind": "reported",
     "statement": "The Health Foundation said more public money would be needed, and that what the service will include is not yet clear.",
-    "source_id": "hm-responses-2026-09-29",
-    "passage": "additional public investment will be needed to deliver a fairer and more universal system",
+    "source_id": "hf-response-2026-09-29",
+    "passage": "While it's not yet clear what will be included in the state's offer under a new national care service, additional public investment will be needed to deliver a fairer and more universal system.",
     "interpretation": false,
     "note": null,
-    "checked_date": "2026-09-30",
+    "checked_date": "2026-10-12",
     "review_status": "checked-with-ai-assistance"
   },
   "kf-response": {
     "kind": "reported",
     "statement": "The King's Fund said many questions remain about how the reforms would work and what they would cost.",
-    "source_id": "hm-responses-2026-09-29",
+    "source_id": "kf-response-2026-09-29",
     "passage": "Many genuine questions remain about how these reforms will work in practice and how much it will cost.",
     "interpretation": false,
     "note": null,
-    "checked_date": "2026-09-30",
+    "checked_date": "2026-10-12",
     "review_status": "checked-with-ai-assistance"
   },
   "dwp-2030-baseline": {
@@ -1421,12 +1461,72 @@
   },
   "dwp-2030-caution": {
     "kind": "finding",
-    "statement": "The department says its savings figures should be relied on for the long term, and not used to work out the saving in a single year.",
+    "statement": "The department says its figures for 2039 to 2040 and 2049 to 2050 are long-term estimates, and should not be used to work out the saving in any other single year.",
     "source_id": "dwp-uprating-analysis-2026",
     "passage": "These savings should not be used to then derive further point estimates for savings in an individual year and should instead be relied on for long-term estimates.",
     "interpretation": false,
     "note": null,
-    "checked_date": "2026-10-05",
+    "checked_date": "2026-10-08",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "dwp-2030-coverage": {
+    "kind": "finding",
+    "statement": "The department says the rule would apply to the basic State Pension and to the full rate of the new State Pension.",
+    "source_id": "dwp-triple-lock-factsheet-2026",
+    "passage": "From April 2030, the bSP and the full rate of the nSP will rise each year by the highest of:",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-08",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "dwp-triple-lock-coverage-now": {
+    "kind": "finding",
+    "statement": "The department says the triple lock covers the same two rates now.",
+    "source_id": "dwp-triple-lock-factsheet-2026",
+    "passage": "The Triple Lock means the basic State Pension (bSP) and the full rate of the new State Pension (nSP) increase by the highest of:",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-08",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "dwp-2030-other-parts": {
+    "kind": "finding",
+    "statement": "The department's analysis assumes that the parts of a pre-2016 pension that the triple lock does not cover keep rising with prices.",
+    "source_id": "dwp-uprating-analysis-2026",
+    "passage": "Components of the pre-2016 State Pension that are not covered by the Triple Lock are assumed to continue to be uprated by CPI.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-08",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "dwp-2030-poverty": {
+    "kind": "finding",
+    "statement": "The department projects that, under the new rule, the share of pensioners in Great Britain in relative low income after housing costs would fall.",
+    "source_id": "dwp-uprating-analysis-2026",
+    "passage": "relative pensioner poverty after housing costs under the adjusted Triple Lock is projected to fall from around 14% in 2024 to 2025 to around 8% in 2049 to 2050.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-08",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "dwp-2030-poverty-conditional": {
+    "kind": "finding",
+    "statement": "It says this is a projection that depends on its assumptions, not a prediction.",
+    "source_id": "dwp-uprating-analysis-2026",
+    "passage": "Results are projections conditional on the assumptions used, rather than predictions of future poverty rates.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-08",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "dwp-2030-poverty-not-effect": {
+    "kind": "finding",
+    "statement": "The projection is measured against 2024 to 2025, not against keeping the triple lock, so it does not show what the change itself does to poverty.",
+    "source_id": "dwp-uprating-analysis-2026",
+    "passage": "Chart 1: Projected changes in pensioner relative poverty after housing costs compared to 2024 to 2025",
+    "interpretation": true,
+    "note": "Our reading of the chart's title and the method, which compares incomes with a poverty line, not with the triple lock.",
+    "checked_date": "2026-10-08",
     "review_status": "checked-with-ai-assistance"
   },
   "no-rule-2030-detail": {
@@ -1435,8 +1535,8 @@
     "source_id": null,
     "passage": null,
     "interpretation": false,
-    "note": "Searched on 5 October 2026: GOV.UK, the announcement, the Department for Work and Pensions' analysis of 29 September 2026, and the UK Parliament's list of Bills. A search on 30 September 2026 missed that analysis.",
-    "checked_date": "2026-10-05",
+    "note": "Searched on 5 October 2026: GOV.UK, the announcement, the Department for Work and Pensions' analysis of 29 September 2026, and the UK Parliament's list of Bills. A search on 30 September 2026 missed that analysis. Searched again on 8 October 2026: GOV.UK publications and news since 5 October 2026 for \"triple lock\", \"national care service\", \"state pension uprating\" and \"adult social care commission\", which found only the department's factsheet of 6 October 2026; and the UK Parliament's list of Bills for \"triple lock\", \"state pension\", \"pension\" and \"uprating\".",
+    "checked_date": "2026-10-08",
     "review_status": "checked-with-ai-assistance"
   },
   "no-rule-2030-distribution": {
@@ -1475,13 +1575,13 @@
     "source_id": null,
     "passage": null,
     "interpretation": false,
-    "note": "Searched on 30 September 2026: the GOV.UK news story, the speech as printed, and the two Institute for Fiscal Studies pieces.",
-    "checked_date": "2026-09-30",
+    "note": "Searched on 30 September 2026: the GOV.UK news story, the speech as printed, and the two Institute for Fiscal Studies pieces. Searched again on 8 October 2026: the department's analysis and its factsheet of 6 October 2026.",
+    "checked_date": "2026-10-08",
     "review_status": "checked-with-ai-assistance"
   },
   "ifs-rule-2030-illustration": {
     "kind": "finding",
-    "statement": "The Institute for Fiscal Studies gives an example over ten years. Prices rise by 2% every year. Earnings rise by 4% a year, except for three years at 1%. In those three years the pension rises by 2.5%. When earnings growth recovers, the pension goes on rising by 2.5% until earnings have caught up. Then it follows earnings again.",
+    "statement": "The Institute for Fiscal Studies gives an example over ten years, in which prices rise by 2% every year and earnings by 4% a year except for three years at 1%. In those three years the pension rises by 2.5%. When earnings growth recovers, the pension goes on rising by 2.5% until earnings have caught up. Then it follows earnings again.",
     "source_id": "ifs-new-tl-comment-2026",
     "passage": "By year 9, the growth in the state pension has matched the growth in average earnings since year 1, and so the state pension returns to rising in line with average earnings growth.",
     "interpretation": false,
@@ -1577,6 +1677,36 @@
     "interpretation": false,
     "note": null,
     "checked_date": "2026-09-30",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "allowance-frozen-2031": {
+    "kind": "enacted",
+    "statement": "The standard Personal Allowance stays at its 2026 to 2027 level for every tax year up to 2030 to 2031.",
+    "source_id": "finance-act-2026-s10",
+    "passage": "In subsection (2) (which specifies the personal allowance in section 35(1) of ITA 2007 as £12,570 for tax years up to 2027-28), for \"and 2027-28\" substitute \", 2027-28, 2028-29, 2029-30 and 2030-31\"",
+    "interpretation": false,
+    "note": "Section 5 of the Finance Act 2021 had fixed the allowance up to the tax year 2027 to 2028. Section 10 of the Finance Act 2026 adds the three tax years to 2030 to 2031. The tax year 2030 to 2031 ends on 5 April 2031.",
+    "checked_date": "2026-10-13",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "voluntary-not-always": {
+    "kind": "rule",
+    "statement": "Voluntary contributions do not always increase the State Pension, for example if the person was contracted out. A person below State Pension age is told to check the State Pension forecast, and a person who has reached it to contact the Pension Service.",
+    "source_id": "govuk-voluntary-ni",
+    "passage": "Voluntary contributions do not always increase your State Pension, for example if you were contracted out ... If you're below State Pension age, check your State Pension forecast to find out if you'll benefit from paying voluntary contributions ... If you've reached State Pension age, contact the Pension Service to find out if you'll benefit from voluntary contributions",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-13",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "voluntary-abroad-2026": {
+    "kind": "rule",
+    "statement": "From the tax year 2026 to 2027, Class 2 contributions, the lower weekly rate, cannot be paid for time abroad. Class 3 contributions for time abroad after 5 April 2026 need 10 years of living in the UK in a row, or 10 years of paid contributions. The previous rules asked for 3 years, and still apply to applications made before 6 April 2026.",
+    "source_id": "govuk-voluntary-ni-abroad",
+    "passage": "If you're paying for the 2026 to 2027 tax year onwards ... You cannot pay voluntary Class 2 National Insurance contributions for time abroad. You can apply to pay Class 3 contributions for time spent abroad after 5 April 2026 if you have either: ... previously lived in the UK for 10 years in a row ... paid 10 years of qualifying National Insurance contributions in total ... paid for other periods abroad National Insurance credits ... If you applied before 6 April 2026 ... using the previous rules (that ended on 5 April 2026). These required 3 years of continuous UK residency or National Insurance contributions rather than 10 years ... £3.65 a week for Class 2 ... £18.40 a week for Class 3",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-13",
     "review_status": "checked-with-ai-assistance"
   }
 }

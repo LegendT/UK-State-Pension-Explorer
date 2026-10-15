@@ -2,7 +2,7 @@
 // browser after a reader changes an input, so both show the same thing. No DOM.
 
 import { compareRules, RULES, RULE_LABELS, MEASURE_LABELS } from "./uprating.js";
-import { lineChart } from "./chart.js";
+import { lineChart, near } from "./chart.js";
 import { money, percent, list } from "./format.js";
 
 export const MEASURES = {
@@ -100,28 +100,49 @@ function signed(pence) {
   return `${pence < 0 ? "−" : "+"}${money(Math.abs(Math.round(pence)))}`;
 }
 
+// A total in starting-year prices is shown to the pound: a weekly amount is naturally in pounds and
+// pence, but a total over years to the penny claims more than a price index can give (smaller point
+// 15 of the readability review).
+const wholePounds = new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP", maximumFractionDigits: 0 });
+
+function pounds(pence, sign) {
+  const whole = Math.round(pence / 100);
+  if (whole === 0) return "£0";
+  return `${sign ? (whole < 0 ? "−" : "+") : ""}${wholePounds.format(Math.abs(whole))}`;
+}
+
 const SHORT = { "triple-lock": "Triple lock", "double-lock": "Double lock", earnings: "Earnings link", prices: "Prices link", "rule-2030": "April 2030 rule" };
 const IN_A_SENTENCE = { "triple-lock": "the triple lock", "double-lock": "the double lock", earnings: "the earnings link", prices: "the prices link", "rule-2030": "the rule announced for April 2030" };
-const COUNT = { 3: "three", 4: "four" };
+// Three or more rules are named in a list with one article, so the title stays short enough to read.
+const IN_A_LIST = { "triple-lock": "triple lock", "double-lock": "double lock", earnings: "earnings link", prices: "prices link", "rule-2030": "April 2030 rule" };
 
 // The chart's title states which rules end highest and lowest in this result. Worked out each time,
-// because a typed title would be false for another scenario.
+// because a typed title would be false for another scenario. Rules less than 0.1% apart count as
+// level, as the chart's lines do (W21), and the title says so where they are not equal.
 function message(result, measure, years) {
   const ends = RULES.map((rule) => ({ rule, v: Math.round(value(result.rules[rule].years[result.rules[rule].years.length - 1], measure) * (measure === "earnings" ? 10 : 100)) }));
   const top = Math.max(...ends.map((e) => e.v));
   const bottom = Math.min(...ends.map((e) => e.v));
   if (top === bottom) return `All five rules end at the same amount after ${years}`;
-  const who = (rules) => (rules.length >= 3 ? `${COUNT[rules.length]} rules` : rules.map((rule) => IN_A_SENTENCE[rule]).join(" and "));
+  if (near(top, bottom)) return `All five rules end less than 0.1% apart after ${years}`;
+  const who = (rules) => (rules.length >= 3 ? `the ${list(rules.map((rule) => IN_A_LIST[rule]))}` : rules.map((rule) => IN_A_SENTENCE[rule]).join(" and "));
   const verb = (rules) => (rules.length === 1 ? "ends" : "end");
-  const high = ends.filter((e) => e.v === top).map((e) => e.rule);
-  const low = ends.filter((e) => e.v === bottom).map((e) => e.rule);
-  const text = `${who(high)} ${verb(high)} highest after ${years}, and ${who(low)} ${verb(low)} lowest`;
+  const apart = (group) => (group.length > 1 && group.some((e) => e.v !== group[0].v) ? ", less than 0.1% apart," : "");
+  const high = ends.filter((e) => near(e.v, top));
+  const low = ends.filter((e) => near(e.v, bottom) && !high.includes(e));
+  const names = (group) => group.map((e) => e.rule);
+  const text = `${who(names(high))} ${verb(high)} highest${apart(high)} after ${years}, and ${who(names(low))} ${verb(low)} lowest${apart(low).replace(/,$/, "")}`;
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
-// options: { startPence, path, cashFloor, firstYear, measure, scenarioLabel }
+// options: { startPence, path, cashFloor, firstYear, measure, scenarioLabel, chartWidth, sourceLine }.
+// chartWidth: the width to draw the chart at; the build leaves it out.
+// sourceLine: a "Sources:" sentence as HTML, with its citations, naming where the starting amount
+// and the yearly figures come from. Printed under the chart and under the tables (R11 of the
+// readability review).
 export function renderComparison(options) {
-  const { startPence, path, cashFloor, firstYear, measure, scenarioLabel } = options;
+  const { startPence, path, cashFloor, firstYear, measure, scenarioLabel, chartWidth, sourceLine } = options;
+  const source = sourceLine ? `<p class="source-line">${sourceLine}</p>` : "";
   const result = compareRules(startPence, path, cashFloor);
   const labels = yearLabels(firstYear, path.length);
   const ruleNames = RULES.map((rule) => RULE_LABELS[rule]);
@@ -131,9 +152,9 @@ export function renderComparison(options) {
 
   const chart = lineChart({
     id: "compare-chart",
+    width: chartWidth,
     title: message(result, measure, years),
-    noun: "rules",
-    description: `The five rules over ${path.length} years. Rules with the same result in every year share one line. The table after the chart gives every value.`,
+    description: `The five rules over ${path.length} years. Rules with the same result, or less than 0.1% apart, in every year share one line. The table after the chart gives every value.`,
     labels: labels.map((label, i) => (i === 0 ? "Start" : label)),
     series: RULES.map((rule) => ({
       label: RULE_LABELS[rule],
@@ -184,28 +205,30 @@ export function renderComparison(options) {
       RULE_LABELS[rule],
       money(result.rules[rule].cashTotalPence),
       rule === "triple-lock" ? "Not applicable" : signed(result.rules[rule].cashTotalDifferencePence),
-      money(Math.round(result.rules[rule].realTotalPence)),
-      rule === "triple-lock" ? "Not applicable" : signed(result.rules[rule].realTotalDifferencePence),
+      pounds(result.rules[rule].realTotalPence),
+      rule === "triple-lock" ? "Not applicable" : pounds(result.rules[rule].realTotalDifferencePence, true),
     ]),
     "compare-totals-caption",
   );
 
   return (
-    `<h3>Result: ${scenarioLabel}, starting from ${money(startPence)} a week</h3>` +
+    `<h3 id="compare-result-heading">Result: ${scenarioLabel}, starting from ${money(startPence)} a week</h3>` +
     `<p><span class="status">Hypothetical</span> An illustration using the figures shown. It is not a forecast and has no probability. ` +
     `The cash floor is ${cashFloor ? "on, so no rule can lower the amount in pounds" : "off, so a rule can lower the amount in pounds"}.</p>` +
     `<p>The rule announced for April 2030 is our reading of it, on four assumptions. It is not what the government's rule will pay. <a href="#rule-2030-assumptions">The assumptions</a>.</p>` +
     summary(result, labels) +
-    `<figure class="chart"><figcaption><h4>${message(result, measure, years)}</h4><p>${info.label}: ${info.unit}</p></figcaption><div class="scroll-x" tabindex="0" role="region" aria-label="Chart: ${info.label}">${chart}</div></figure>` +
+    `<figure class="chart" id="compare-chart"><figcaption><h4>${message(result, measure, years)}</h4><p>Illustration, not a forecast. ${info.label}: ${info.unit}</p></figcaption><div class="scroll-x" tabindex="0" role="region" aria-label="Chart: ${info.label}">${chart}</div></figure>` +
+    source +
     values +
     difference +
     `<h4>Totals over the period</h4>` +
     `<p>These totals cover the ${years} chosen. They are not a lifetime figure, and they do not describe any person's payments. ` +
-    `The cash total adds amounts from different years as they stand. The other total first puts every year into starting-year prices. ` +
+    `The cash total adds amounts from different years as they stand. The other total first puts every year into starting-year prices, and is rounded to the pound. ` +
     `The two totals are on different bases and must not be added or compared with each other.</p>` +
     totals +
     `<h4>How each year's increase was decided</h4>` +
-    inputs
+    inputs +
+    source
   );
 }
 

@@ -13,11 +13,11 @@ permalink: /tools/triple-lock/
   <h2 id="tool">Try the triple lock</h2>
 
   <p>This tool shows how the increase is chosen and applied. It works on <strong>one part</strong> of the State Pension: a full rate that follows the triple lock. Do not enter your whole pension payment. Other parts of a payment can rise by a different rule.</p>
-  <p>All amounts are weekly and before tax. The tool does not send or store anything you enter.</p>
+  <p>All amounts are weekly and before tax. They are not your entitlement: for that, <a href="https://www.gov.uk/check-state-pension">check your State Pension forecast</a> on GOV.UK. The tool does not send or store anything you enter, and puts nothing in the page address on its own; a link you copy holds the figures shown. <a href="/privacy/#tools">Privacy</a>.</p>
 
   <div class="no-js-only">
-    {% call m.note("The calculator needs JavaScript", 3) %}
-    <p>The calculator is not available, because JavaScript is off or did not load. The <a href="/triple-lock/#worked-example">worked example on the triple lock page</a> and the table of <a href="/history/#decisions">every decision since 2010</a> show the same method.</p>
+    {% call m.note("The calculator needs JavaScript", 3, "the-calculator-needs-javascript") %}
+    <p>The calculator is not available, because JavaScript is off or did not load. <span class="if-script-failed">The script for this form did not run to the end, though the page's other scripts did. Reload the page; if that does not help, <a href="/sources-and-method/#report-an-error">report it</a>.</span> The <a href="/triple-lock/#worked-example">worked example on the triple lock page</a> and the table of <a href="/history/#decisions">every decision since 2010</a> show the same method.</p>
     {% endcall %}
   </div>
 
@@ -55,6 +55,11 @@ permalink: /tools/triple-lock/
         {{ m.field("mechanism-start", "Weekly amount before the increase", before.new_pence | plainPounds, "A full rate, in pounds. From 1 to 1,000.", "£", "") }}
       </div>
     </fieldset>
+    <div class="buttons">
+      <button type="button" class="secondary" id="mechanism-copy-link" aria-describedby="mechanism-copy-hint">Copy a link to this result</button>
+    </div>
+    <p class="hint" id="mechanism-copy-hint">The link holds the year and pension chosen and the three figures shown, including any you typed. Copying a link does not change the page address; only if the link cannot be copied is it put there for you to copy.</p>
+    <p class="hint" id="mechanism-copy-note" aria-hidden="true"></p>
   </form>
   <div class="tool-summary js-only">
     <h3 id="mechanism-glance-heading">At a glance</h3>
@@ -67,7 +72,7 @@ permalink: /tools/triple-lock/
   <p class="visually-hidden" role="status" id="mechanism-status"></p>
 
   <div class="result" id="mechanism-result">
-    <h3>Full new State Pension, {{ latest.tax_year }}: what was decided</h3>
+    <h3 id="mechanism-result-heading">Full new State Pension, {{ latest.tax_year }}: what was decided</h3>
     <p class="headline">{{ latest.applied_tenths | percent }} increase, decided by earnings</p>
     <dl>
       <dt>Prices, year to the September before</dt> <dd>{{ latest.prices_tenths | percent }}</dd>
@@ -79,9 +84,10 @@ permalink: /tools/triple-lock/
       <dt>52 weeks at the new rate</dt> <dd>{{ (latest.new_pence * 52) | money }}</dd>
     </dl>
     <p>These are the published decision and the published rates. This tool did not calculate them.</p>
+    <p class="source-line">{% if latest.rate_source_url == latest.decision_source_url %}Source: <a href="{{ latest.decision_source_url }}">the explanatory memorandum to the Up-rating Order for {{ latest.tax_year }}</a>{% else %}Sources: <a href="{{ latest.rate_source_url }}">the published rates for {{ latest.tax_year }}</a> and <a href="{{ latest.decision_source_url }}">the explanatory memorandum to the Up-rating Order</a>{% endif %}, as recorded on <a href="/history/#decisions">the history page</a>. Checked against the sources on {{ history.checked_date | timeTag | safe }}.</p>
   </div>
 
-  <h3>How the tool calculates a hypothetical result</h3>
+  <h3 id="how-the-tool-calculates-a-hypothetical-result">How the tool calculates a hypothetical result</h3>
   <ol>
     <li>Increase = the highest of prices, earnings and 2.5%. If two or three are equal highest, the result names each of them.</li>
     <li>New amount = amount before × (1 + increase ÷ 100).</li>
@@ -90,6 +96,6 @@ permalink: /tools/triple-lock/
   </ol>
   <p>The tool does not calculate past decisions. It reads them from the published record, because the figure used at the time can differ from the figure published now, and because some years had special rules. <a href="/sources-and-method/#models">Full method and limits</a>.</p>
 
-  <script type="application/json" id="mechanism-data">{{ { years: history.years } | json | safe }}</script>
+  <script type="application/json" id="mechanism-data">{{ { years: history.years, checked: (history.checked_date | timeTag) } | json | safe }}</script>
   <script type="module" src="/assets/js/tools/mechanism.js"></script>
 </section>

@@ -1,0 +1,384 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>UK State Pension Explorer — launch audit</title><style>body{font:17px/1.6 system-ui,sans-serif;color:#202a32;background:#f5f6f4;margin:0}main{max-width:1080px;margin:auto;padding:32px;background:white}h1{font-size:2rem;line-height:1.2}h2{margin-top:2.5rem;border-top:2px solid #cbd5d7;padding-top:1rem}h3{margin-top:2rem;line-height:1.35}a{color:#07567b;text-decoration:underline;text-underline-offset:3px}a:focus{outline:3px solid #db9a00;outline-offset:3px}table{border-collapse:collapse;width:100%;font-size:.9rem;display:block;overflow:auto}th,td{border:1px solid #ccd3d5;padding:10px;vertical-align:top;text-align:left}th{background:#eaf0f2}code{overflow-wrap:anywhere}p,li{max-width:90ch}@media print{body,main{background:white}main{padding:0}h2,h3{break-after:avoid}tr{break-inside:avoid}a{color:inherit}}@media(max-width:600px){main{padding:18px}body{font-size:16px}h1{font-size:1.7rem}}</style></head><body><main><h1>UK State Pension Explorer: living launch audit</h1>
+<p><strong>Updated:</strong> 8 October 2026, UK time. <strong>Recommendation:</strong> hold launch until the seven P1 items below are closed or, where appropriate, explicitly accepted with evidence. No P0 defect was established. This audit is not a certificate of financial accuracy or WCAG conformance.</p>
+<p><strong>Target:</strong> <a href="https://ukstatepensionexplorer.netlify.app/">authenticated Netlify preview</a>. <strong>Source:</strong> private <a href="https://github.com/LegendT/UK-State-Pension-Explorer">GitHub repository</a>, current main ZIP obtained through the owner's authenticated browser; GitHub showed <code>ccdf841</code> on 6 October. The archive has no Git history. Deployed commit identity was not independently mapped to this archive. No repository code, account settings or deployment was changed.</p>
+<h2>Decision summary</h2>
+<p>The core is strong: static pages, separate arithmetic libraries, entitlement/illustration distinctions, documented rounding, source registers, benefit caveats, honest preview/review labels and production build guards. All <strong>31 current tests passed</strong>, and the build/content checks passed: <strong>19 registered pages, 126 figures, 158 claims and 104 sources</strong>. Many September audit defects are repaired and are not repeated as current findings.</p>
+<p>Launch risk centres on assurance: current policy evidence has changed; a populated budget control can unexpectedly reinterpret money; accessibility remains partly assessed; some high-impact spreadsheet values lack fresh cell-level verification; build dependencies need security triage; and public release configuration has not been exercised on the final domain.</p>
+<p><strong>P0:</strong> critical. <strong>P1:</strong> resolve before launch. <strong>P2:</strong> material improvement, usually after P1 closure. <strong>P3:</strong> enhancement. Unperformed checks are unverified, not passes or failures. All findings below are open. Suggested owners are roles, not named assignments.</p>
+<h2>Evidence and coverage</h2>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Evidence obtained</th>
+<th>Limit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Live access</td>
+<td>Anonymous HTTP 401; authenticated Chrome inspection</td>
+<td>Intentional preview protection; public launch behaviour unverified</td>
+</tr>
+<tr>
+<td>Live content</td>
+<td>Overview, State Pension, triple lock, living costs, all five reform pages, tools index, four calculators, sources/method, accessibility, privacy, site map</td>
+<td>Central register inspected in part; history explanation and 404 not fully reread live in this round</td>
+</tr>
+<tr>
+<td>Current code</td>
+<td>Templates/registers, arithmetic/controllers/views, CSS, build checks, Netlify config, tests, README and maintenance/audit docs</td>
+<td>ZIP cannot establish historic secrets, branch protection, CI permissions or deployment identity</td>
+</tr>
+<tr>
+<td>Tests/build</td>
+<td>Fresh 31/31 tests and successful Eleventy build/content checks</td>
+<td>Does not prove policy interpretation or every DOM interaction</td>
+</tr>
+<tr>
+<td>Passage check</td>
+<td>Fresh run: 210 entries; 189 text matches; 21 accepted historical browser confirmations; 0 missing/unreadable; 74 entries without quotations</td>
+<td>The 21 are cached, not newly browser-verified; text matches are not semantic checks</td>
+</tr>
+<tr>
+<td>Unquoted values</td>
+<td>Fresh scan: 65 figures; 53 found in text; 12 not found/readable by that method</td>
+<td>Spreadsheet/PDF cells still require review; missing HTML match does not mean a wrong value</td>
+</tr>
+<tr>
+<td>Accessibility</td>
+<td>Current records/source, desktop visual/DOM inspection and selected calculator interactions</td>
+<td>Historical automated results not independently rerun; no complete screen-reader/keyboard/zoom/phone round</td>
+</tr>
+<tr>
+<td>Performance</td>
+<td>Static architecture and local built payloads</td>
+<td>No fresh Lighthouse, real network timing, slow-device profiling or field Core Web Vitals</td>
+</tr>
+<tr>
+<td>Security/privacy</td>
+<td>Source settings/data flows, anonymous headers and fresh dependency query</td>
+<td>Authenticated application headers, hosting logs/retention and production analytics unverified</td>
+</tr>
+<tr>
+<td>Downloads</td>
+<td>Export source and existing CSV examples</td>
+<td>This round's browser export attempt timed out; fresh live export success not established</td>
+</tr>
+</tbody>
+</table>
+<p>An attempted mobile viewport override did not alter the measured 1728-pixel browser width; it was reset. No fresh mobile/reflow pass is claimed. The September source snapshot and older audit were leads only; current source/live evidence takes precedence.</p>
+<h2>Findings register</h2>
+<h3>A01 — P1: reconcile reform claims with current DWP evidence</h3>
+<p><strong>Evidence:</strong> <a href="https://ukstatepensionexplorer.netlify.app/reform-options/social-care/">social-care page</a> says the announcement does not specify payment components and marks lowest-income effects unanswered. Current <code>src/reform-social-care.njk</code> retains those questions. <a href="https://www.gov.uk/government/publications/state-pension-uprating-analysis-2026/state-pension-uprating">DWP analysis updated 6 October</a> identifies basic/new pension coverage, CPI treatment of other pre-2016 components and conditional poverty analysis.</p>
+<p><strong>Reproduce:</strong> compare “What rule would replace…” and “What happens to people on the lowest incomes?” with the source's method/impacts sections. An old check date cannot establish the version of a mutable source.</p>
+<p><strong>Impact:</strong> readers can infer evidence is absent when it exists. A sentence restricted to the original announcement can be valid, but the wider synthesis needs later evidence. The costs page already includes DWP method and cash/real estimates: that older omission is fixed.</p>
+<p><strong>Fix/closure:</strong> update reform overview, costs, social-care questions and claim/source records together. Distinguish announcement, model and legislation; discuss the poverty result conditionally, not as a guarantee. Preserve genuine unresolved Pension Credit/funding questions. Record source versions and human review. <strong>Owner:</strong> policy/editorial reviewer.</p>
+<h3>A02 — P1: explicitly show the conflicting care timetable</h3>
+<p><strong>Evidence:</strong> <a href="https://ukstatepensionexplorer.netlify.app/reform-options/social-care/">social-care explainer</a> describes summer 2027 while also presenting earlier phases. <a href="https://www.gov.uk/government/publications/independent-commission-into-adult-social-care-terms-of-reference/independent-commission-into-adult-social-care-terms-of-reference">Terms updated 1 October</a> retain first-phase 2026 and second-phase by 2028 wording; the <a href="https://www.gov.uk/government/news/prime-minister-andy-burnham-sets-out-plans-for-a-new-national-care-service">29 September announcement</a> refers to summer 2027.</p>
+<p><strong>Reproduce:</strong> compare timeline/delivery questions with both official documents.</p>
+<p><strong>Fix/closure:</strong> present each date with its document/version and scope; explicitly flag the conflict rather than inventing a harmonised timetable. Review the amended remit too. Transparent uncertainty is acceptable closure if official clarification is unavailable. <strong>Owner:</strong> editor.</p>
+<h3>A03 — P1: populated budget period changes reinterpret money</h3>
+<p><strong>Evidence:</strong> live reproduced on <a href="https://ukstatepensionexplorer.netlify.app/tools/budget/">budget explorer</a>. <code>src/assets/js/tools/budget.js:44</code> explicitly records this as previously declined behaviour; that decision does not remove the user risk.</p>
+<p><strong>Reproduce:</strong> choose week; click “Fill in the full new State Pension (£241.30 a week)”; change period to calendar month. Once updated, the field still contains £241.30 and annual income changes from <strong>£12,547.60 to £2,895.60</strong>. Equivalent monthly income is approximately £1,045.63. No immediate guard explains what happens to existing values.</p>
+<p><strong>Impact:</strong> a reader expecting a unit conversion can produce a materially misleading budget. Arithmetic follows the selected period; the defect is interaction design.</p>
+<p><strong>Fix/closure:</strong> convert populated amounts with disclosed rounding, or offer a clear choice to convert/reinterpret/clear. Include helper/preset amounts, tax and all four periods in interaction regression checks. Preserve the already-fixed helper that respects an existing monthly period and other income. <strong>Owner:</strong> developer/UX reviewer.</p>
+<h3>A04 — P1: complete minimum human accessibility assurance</h3>
+<p><strong>Evidence:</strong> <a href="https://ukstatepensionexplorer.netlify.app/accessibility/">statement</a>, <code>src/_data/a11y.json</code> and <code>docs/accessibility-assessment.md</code> honestly say incomplete. Recorded automated checks are dated 5 October. Human keyboard, VoiceOver/Safari, NVDA/Windows, actual zoom/touch and non-Chrome rounds are incomplete. New stale-result state was not in the recorded automated scan.</p>
+<p><strong>Reproduce:</strong> read the not-done list; use a calculator with keyboard/screen reader through incomplete input, recovery, household/scenario changes and table navigation.</p>
+<p><strong>Fix/closure:</strong> record human keyboard, 200%/400% zoom, Safari/VoiceOver and real-phone key journeys before launch; scan stale states. Obtain NVDA/Windows evidence before a full AA claim. Disclose remaining gaps and provide an accessible feedback route. An environment date is not testing evidence. <strong>Owner:</strong> accessibility tester/publisher. This is an assurance gap, not a demonstrated criterion failure.</p>
+<h3>A05 — P1: verify unresolved source cells independently</h3>
+<p><strong>Evidence:</strong> fresh value scan did not find 12 unquoted figures in text: Pension Credit non-recipients 820,000; overseas pension recipients 1,102,000; pension expenditure £136.6bn/£154.2bn; pensioner benefits £164.9bn; National Insurance Fund pension expenditure £136.9bn; MIS £273.57 excluding rent/£136.93 rent; wealth quartiles £76,000/£591,300; pension wealth £130,500/£31,000. These are <strong>verification exceptions, not proven errors</strong>. Passage checking accepts 21 cached browser confirmations.</p>
+<p><strong>Reproduce:</strong> inspect <code>reports/values.json</code> and <code>reports/passages.json</code> after the scripts; locate the exact workbook/PDF table through <code>src/_data/sources.json</code>. Numeric appearance alone does not verify denominator, period, units or geography.</p>
+<p><strong>Fix/closure:</strong> record release/file, sheet/table, row/column, units, geography, estimate/forecast/outturn status and derivation for every exception. Recheck cached confirmations against current versions or clearly retain their older evidence date. Reconcile different accounting bases rather than treating superficially different totals as errors. <strong>Owner:</strong> data reviewer.</p>
+<h3>A06 — P1: triage vulnerable build/test dependencies</h3>
+<p><strong>Evidence:</strong> current lock audit reports <strong>19 affected packages: 15 high, 4 moderate, 0 critical</strong>. Direct dependencies are development-only Eleventy 3.1.6, pa11y-ci 4.1.1 and http-server 14.1.1. The tree includes basic-ftp, braces, extract-zip and sprintf-js advisories. Totals include transitively affected packages, not 19 independent vulnerabilities.</p>
+<p><strong>Reproduce:</strong> install the locked tree in isolation; run <code>npm audit --json</code>; inspect reachability through build inputs, browser downloads and local tooling. References: <a href="https://github.com/advisories/GHSA-c475-qrg2-pj4r">basic-ftp</a>, <a href="https://github.com/advisories/GHSA-vfj7-8cjw-p6xm">braces</a>, <a href="https://github.com/advisories/GHSA-jmr9-qjv8-65gv">extract-zip</a>, <a href="https://github.com/advisories/GHSA-hp3w-g68c-fv3c">sprintf-js</a>.</p>
+<p><strong>Fix/closure:</strong> supported upgrades or justified narrow overrides; rerun tests/build and accessibility tooling. Document reachability/acceptance of any remaining advisory. Avoid blind force fixes: npm's suggested Eleventy downgrade is unsuitable. Static pages do not deliver these Node packages to readers, but build/CI exposure matters. No public-site exploit established. <strong>Owner:</strong> developer/build owner.</p>
+<h3>A07 — P1: prove release configuration and correction access</h3>
+<p><strong>Evidence:</strong> preview auth/noindex are intentional. Fresh negative check confirms production config refuses missing domain/title, owner, reviewer/date, accessibility date, correction route and crawler policy. <code>netlify.toml</code> still selects preview in production context; intended domain is <code>https://ukstatepensionexplorer.org</code>. Private-repository issue links cannot be assumed publicly usable.</p>
+<p><strong>Reproduce:</strong> inspect <code>docs/launch-dependencies.md</code>, <code>src/_data/site.js</code> and Netlify config; load production settings without required values and observe rejection.</p>
+<p><strong>Fix/closure:</strong> domain/TLS, accurate actual review metadata, correctly scoped preview credentials, anonymously usable correction/accessibility contact, local production fixture and final public smoke check. Verify 200/404/redirects, canonicals, robots/sitemap, public noindex/auth/banner removal, error-page noindex, headers and analytics. Record deployed commit/rollback. <strong>Owner:</strong> publisher. This audit did not deploy or weaken protection.</p>
+<h3>A08 — P2: clarify automatic sharing of custom monetary values</h3>
+<p><strong>Evidence/repro:</strong> entering synthetic £987.65 in <a href="https://ukstatepensionexplorer.netlify.app/reform-options/compare/">comparison</a> automatically writes <code>start=987.65</code> to the query after a delay. Privacy page discloses host/history implications; the issue is design, not a false claim of undisclosed storage.</p>
+<p><strong>Fix/closure:</strong> explicit “Copy scenario link” action preferred; alternatively omit custom money from automatic queries or consider a fragment. Place a warning beside the control and inspect production analytics requests. <strong>Owner:</strong> developer/privacy reviewer.</p>
+<h3>A09 — P2: retain fallback on partial script failure</h3>
+<p><strong>Evidence:</strong> <code>src/_includes/base.njk:35</code> loads <code>js-class.js</code>; <code>.js .no-js-only</code> hides fallback before individual modules initialise. A subsequent module/import failure can leave a non-working form/default result. Source-confirmed risk, not observed live outage.</p>
+<p><strong>Reproduce:</strong> controlled local preview blocks the tool module but allows the global class script.</p>
+<p><strong>Fix/closure:</strong> enable each tool only after successful initialisation; retain explanatory fallback until then, with a failure notice and regression check. <strong>Owner:</strong> developer.</p>
+<h3>A10 — P2: narrow the DWP caveat</h3>
+<p><strong>Evidence:</strong> claim <code>dwp-2030-caution</code> says not to work out a saving in a single year; <a href="https://www.gov.uk/government/publications/state-pension-uprating-analysis-2026/state-pension-uprating">DWP</a> publishes in-year endpoints and cautions against deriving further individual-year point estimates.</p>
+<p><strong>Fix/closure:</strong> prohibit unsupported interpolation/extrapolation of a precise annual profile, rather than implying the published endpoints cannot be cited. Retain nominal £15bn/£50bn versus 2025/26-price £11bn/£30bn distinctions and expenditure savings versus care funding. <strong>Owner:</strong> editor; fold into A01.</p>
+<h3>A11 — P2: improve narrow-screen charts/tables</h3>
+<p><strong>Evidence:</strong> 720-unit chart view box/small labels and internal wide-content scrolling; existing UX docs acknowledge small type and unclear sideways-scroll affordance. No fresh mobile WCAG failure established.</p>
+<p><strong>Reproduce:</strong> real narrow phone, history/comparison charts and long tables; compare cells while scrolling.</p>
+<p><strong>Fix/closure:</strong> visible scroll cue, prominent table alternative, larger/simpler chart labels, context-preserving headers where reliable; older-reader testing. 44px is a useful house aim, not the AA minimum of 24px with exceptions. <strong>Owner:</strong> UX/developer.</p>
+<h3>A12 — P2: clarify the hypothetical start of the 2030 rule</h3>
+<p><strong>Evidence/repro:</strong> comparison can apply “Rule announced for April 2030” from a selected earlier year, including 2027; caveats explain the abstraction farther down.</p>
+<p><strong>Fix/closure:</strong> beside the first-year control say all rules are compared mechanically from the chosen start, rather than representing the announced transition. Only add a rollout scenario with defined/sourced assumptions. <strong>Owner:</strong> editor/developer.</p>
+<h3>A13 — P2: consolidate conflicting documentation status</h3>
+<p><strong>Evidence:</strong> <code>docs/HANDOVER.md</code> reports 6 October live checks and steps 1/2 done but “Tracked separately” still says main beyond sign-in unchecked. It says up to PR24; GitHub main showed PR25. Launch dependencies retain step 1 without clear completion status.</p>
+<p><strong>Fix/closure:</strong> one dated status/evidence/commit/owner checklist, linked rather than repeated. Distinguish preview from production checks. Prefer locked <code>npm ci</code> guidance and directly declare tooling imported by scripts rather than depending on incidental transitive availability. <strong>Owner:</strong> maintainer.</p>
+<h3>A14 — P2: broaden meaningful interaction regressions</h3>
+<p><strong>Evidence:</strong> 31 pure-calculation tests pass; selected live regressions pass, but A03 shows why they do not establish all financial UI behaviour.</p>
+<p><strong>Fix/closure:</strong> period/helper preservation, tax blank/zero, incomplete/error recovery, household/scenario changes, malformed/restored URLs, history subranges/exports, partial-load failure and focus/announcements. Exact pension-age boundary tests are needed if a personal age calculator is added; current site explains the timetable. <strong>Owner:</strong> developer.</p>
+<h3>A15 — P2: surface actionable eligibility/tax caveats</h3>
+<p><strong>Evidence:</strong> pre-2016/contracting-out and household caveats are useful. Allowance freeze detail extends beyond the shorter tax headline; overseas voluntary NI rules changed from April 2026.</p>
+<p><strong>Fix/closure:</strong> surface the current freeze end date; label official forecast/NI-record/voluntary-contribution guidance near gap-filling discussion. Explain that contributions may not increase a pension and overseas rules differ. References: <a href="https://www.gov.uk/new-state-pension/what-youll-get">new pension</a>, <a href="https://www.gov.uk/voluntary-national-insurance-contributions/if-you-live-or-work-abroad">voluntary NI abroad</a>, <a href="https://www.legislation.gov.uk/ukpga/2026/11/contents">Finance Act 2026</a>. <strong>Owner:</strong> editor.</p>
+<h2>Data, dates and calculation verification</h2>
+<table>
+<thead>
+<tr>
+<th>Claim/model</th>
+<th>Result and reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full new £241.30/basic £184.90 weekly, 2026/27</td>
+<td>Confirmed <a href="https://www.gov.uk/government/publications/benefit-and-pension-rates-2026-to-2027/proposed-benefit-and-pension-rates-2026-to-2027">DWP rates</a> and <a href="https://www.legislation.gov.uk/uksi/2026/148/article/6/made?view=plain">legislation</a>. Full rate is not every recipient's receipt</td>
+</tr>
+<tr>
+<td>£12,547.60 annual equivalent</td>
+<td>£241.30×52 correct as illustration, not exact tax-year cash-payment schedule</td>
+</tr>
+<tr>
+<td>Monthly helper</td>
+<td>£241.30×52÷12 = £1,045.633…; £1,045.63 displayed. Reannualising rounded months loses 4p; disclosed penny rounding acceptable</td>
+</tr>
+<tr>
+<td>Pension Credit £238/£363.25</td>
+<td>Confirmed <a href="https://www.gov.uk/pension-credit/what-youll-get">official amounts</a>; not universal awards or appropriate to every mixed-age couple</td>
+</tr>
+<tr>
+<td>Pension age</td>
+<td><a href="https://www.gov.uk/government/publications/state-pension-age-timetable/state-pension-age-timetable">Official timetable</a> confirms 66→67 in 2026–28, legislated 67→68 in 2044–46 subject to review. Exact birth bands/month ends matter; avoid calendar-month shortcuts</td>
+</tr>
+<tr>
+<td>Eligibility</td>
+<td><a href="https://www.gov.uk/state-pension/how-much-you-get">Basic</a> and <a href="https://www.gov.uk/new-state-pension/what-youll-get">new</a> rules differ. Current 35-year/contracting-out qualification is valuable</td>
+</tr>
+<tr>
+<td>History exceptions</td>
+<td>Live 2022/23 shows 3.1% applied versus unused 8.3% earnings; 2021/22 and first-year exceptional decisions are identified</td>
+</tr>
+<tr>
+<td>Triple lock</td>
+<td>Maximum prices/earnings/2.5%; pence and tenths percentages; nearest 5p, halves up; tests pass. Illustrative mechanism is not proof of future official decisions</td>
+</tr>
+<tr>
+<td>Cash floor</td>
+<td>Comparison preserves arbitrary starting amounts after rounding; earlier rounding-floor defect fixed</td>
+</tr>
+<tr>
+<td>2030 model</td>
+<td>BigInt cumulative earnings target, prices/floor/catch-up comparison. Defined interpretation, not enacted implementation; A12 clarifies start</td>
+</tr>
+<tr>
+<td>Budget</td>
+<td>Week×52; four weeks×13; month×12; income minus separate tax minus spending. Blank tax differs from known zero. No entitlement/tax engine claimed</td>
+</tr>
+<tr>
+<td>History measures</td>
+<td>Buying power uses September-before-uprating CPI, not annual average. Earnings is an index, not a wage share; explained in tool</td>
+</tr>
+<tr>
+<td>Recent earnings</td>
+<td><a href="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/averageweeklyearningsingreatbritain/september2026">ONS September release</a>: 3.9% total versus 3.5% regular pay. Period/series/provisional status matter; not a confirmed 2027 award</td>
+</tr>
+<tr>
+<td>Average receipts</td>
+<td><a href="https://www.gov.uk/government/statistics/annual-dwp-benefits-statistics-compendium-2026/annual-dwp-benefits-statistics-compendium-2026">DWP compendium</a> distinguishes new/pre-2016/all recipients. Additional components explain why means can exceed full basic rates</td>
+</tr>
+<tr>
+<td>Care jurisdiction</td>
+<td>Nations distinguished; England announcement not UK-wide charging. <a href="https://www.gov.wales/charging-social-care">Wales</a> and <a href="https://www.nidirect.gov.uk/articles/paying-your-care-home-fees">Northern Ireland</a> guidance corroborate different thresholds. Scottish payment figures still need release-specific cell confirmation</td>
+</tr>
+<tr>
+<td>Winter support</td>
+<td><a href="https://www.gov.uk/winter-fuel-payment?lang=en">Official guidance</a> has age/residence/individual-income conditions; Scotland differs. Do not carry forward old winter dates</td>
+</tr>
+<tr>
+<td>MIS/RLS examples</td>
+<td>Price date/tenure/geography/exclusions explicit; no silent inflation update. A05 retains fresh spreadsheet verification gaps</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fresh live regressions:</strong> monthly helper preserved a £1,000 monthly private-pension entry and selected period; budget back-navigation cleared inputs/results; invalid triple-lock input retained last result with out-of-date warning; exceptional history wording correct. Speech behaviour remains unverified. Automatic custom-amount URL and period reinterpretation confirmed. History tool showed £97.65→£184.90 cash endpoints, table/chart and method; fresh export success not established.</p>
+<h2>WCAG 2.2 AA assessment boundary</h2>
+<p>Reference: <a href="https://www.w3.org/TR/WCAG22/">W3C WCAG 2.2</a>. A clean automated scan is insufficient. This matrix directs remaining assessment rather than certifying conformance.</p>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Evidence</th>
+<th>Next check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.1.1; 1.3.1–1.3.2</td>
+<td>Chart/table alternatives, labels/headings/table headers</td>
+<td>Screen-reader meaning, dynamic rows, legends and associations</td>
+</tr>
+<tr>
+<td>1.4.1; 1.4.3; 1.4.11</td>
+<td>Chart colour alternatives, recorded contrast checks</td>
+<td>Both schemes; errors, focus, disabled/stale states</td>
+</tr>
+<tr>
+<td>1.4.4; 1.4.10; 1.4.12</td>
+<td>Recorded 320px reflow/spacing checks</td>
+<td>Actual 200%/400% zoom; exceptions; clipping</td>
+</tr>
+<tr>
+<td>2.1.1–2.1.2; 2.4.1; 2.4.3; 2.4.7; 2.4.11</td>
+<td>Skip/focus styles and scripted traversal</td>
+<td>Human journey, no traps, clear focus, pinned-summary obstruction</td>
+</tr>
+<tr>
+<td>2.5.3; 2.5.8</td>
+<td>Labels and recorded sizes</td>
+<td>Name agreement, real touch, spacing exceptions</td>
+</tr>
+<tr>
+<td>3.1.1; 3.2.1–3.2.2</td>
+<td><code>en-GB</code>, native controls</td>
+<td>Unexpected changes, period meanings and assistive-technology focus</td>
+</tr>
+<tr>
+<td>3.3.1–3.3.3; 4.1.2–4.1.3</td>
+<td>Field errors/status, stale-result retention</td>
+<td>Recovery/announcements without silence or repetition</td>
+</tr>
+<tr>
+<td>Other criteria</td>
+<td>Static content reduces some applicability</td>
+<td>Record individually; include authentication and production widgets</td>
+</tr>
+</tbody>
+</table>
+<p>AA focus-obscuring minimum concerns complete obscuring, not every partial overlap. Small labels, absence of a submit button and uninterrupted heading levels do not by themselves establish failure/pass. Disabled/older-reader sessions remain valuable beyond criteria checks.</p>
+<h2>Code, security, privacy and performance</h2>
+<p><strong>Code:</strong> arithmetic/view/controller separation, bounded inputs, exact monetary conventions and model/reference docs are positive. Shared escaping and constrained select/query values reduce injection risk; no exploitable injection established. Browser regressions, failure paths, tooling declarations and provenance assurance remain gaps.</p>
+<p><strong>Security:</strong> source CSP restricts scripts/connections, framing, objects, base and form actions. Netlify defines nosniff, frame denial, referrer policy and disabled camera/microphone/geolocation. Anonymous 401 showed HSTS. Source configuration does not prove final public headers. Analytics identifier is public, not a leaked credential. Preview secrets intentionally enter build header rules; verify artifact/log access and the narrow secret-scan omission. ZIP cannot establish historic secret exposure. A06 is build-chain triage, not a proven runtime exploit.</p>
+<p><strong>Privacy:</strong> budget data is not intentionally put in URLs/storage; back-navigation clearing passed. Comparison/history settings are shareable queries, including custom amounts. Privacy disclosure acknowledges this. Inspect actual production beacon, host retention/access and ownership before final privacy assertions. Do not assume a consent banner requirement purely from the presence of an analytics script; examine actual behaviour and applicable rules.</p>
+<p><strong>Performance:</strong> static pages/self-hosted assets are favourable. Local raw/gzip estimates: CSS 23.3KB/6.6KB; source register 245KB/45KB; costs 83KB/14KB; budget 55KB/9KB; comparison 47KB/10KB. These do not establish host compression or loading speed. Source correctly revalidates non-fingerprinted assets. Measure cold/warm mobile loading, compression/cache headers, tool responsiveness and long-register navigation after blockers; no Core Web Vitals pass claimed.</p>
+<h2>Ordered launch checklist</h2>
+<p>Close each row with <strong>owner, date, evidence and commit</strong>. Configuration strings alone are not sign-off.</p>
+<table>
+<thead>
+<tr>
+<th>Order</th>
+<th>Action</th>
+<th>Closure evidence</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Reconcile DWP/care sources (A01/A02/A10)</td>
+<td>Source versions, consistent text, explicit conflict, human review</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Guard/convert populated budget period changes (A03)</td>
+<td>Four-period/helper/tax regressions; live result no longer misleading</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Verify source-cell/cached exceptions (A05)</td>
+<td>Table/cell, units/definitions, release evidence</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Triage dependencies (A06)</td>
+<td>Supported changes or documented acceptance; repeated tests/build/tool checks</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Human accessibility/cross-browser round (A04)</td>
+<td>Keyboard, zoom, VoiceOver/Safari, phone/stale state; disclosure/feedback</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Final human editorial review</td>
+<td>Every page, provenance and caveats reviewed; genuine reviewer/date</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Production fixture/contact validation (A07)</td>
+<td>Real metadata, working public feedback, correct context and domain</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Release candidate verification</td>
+<td>Tests/build, exports/subranges, docs reconciled, commit/rollback</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Publisher executes authorised release</td>
+<td>TLS/domain, correctly scoped auth, rollback</td>
+<td>Not performed by audit</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Anonymous public smoke check</td>
+<td>Status/redirects, headers, robots/sitemap, canonical/noindex boundaries, analytics/query privacy</td>
+<td>Requires published candidate</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Search/share/contact setup</td>
+<td>Search console, share previews, reciprocal links, feedback monitoring</td>
+<td>Post-launch</td>
+</tr>
+<tr>
+<td>12</td>
+<td>First scheduled content refresh</td>
+<td>Recheck forthcoming releases in maintenance docs; provisional inputs never presented as awards</td>
+<td>Post-launch, date-sensitive</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Post-launch priorities:</strong> sharing privacy A08; partial-load fallback A09; chart/table usability A11; hypothetical start A12; docs A13; interaction regressions A14; eligibility/tax guidance A15; mobile performance and reader sessions. A10 is cheap enough to include in pre-launch editing. Escalate any later task if testing reveals an actual accessibility or financial error.</p>
+<h2>Remaining evidence limits</h2>
+<p>Repository access was obtained: source/tests/lock/docs are no longer generally blocked. Still unverified: full history/secrets, branch/CI protection, Netlify values/access, deployed source identity, host retention and production analytics, final-domain behaviour, field performance, complete assistive-technology compatibility and every statistical cell. Retry live CSV downloads before release; this round's attempt timed out in browser tooling.</p>
+<h2>Maintenance log</h2>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8 Oct 2026</td>
+<td>Access boundary recorded; authenticated live inspection; current private source downloaded</td>
+</tr>
+<tr>
+<td>8 Oct 2026</td>
+<td>Fresh 31 tests/build pass; dependency and passage/value checks; verification exceptions retained</td>
+</tr>
+<tr>
+<td>8 Oct 2026</td>
+<td>Live regressions and populated-period risk reproduced; current government evidence challenged</td>
+</tr>
+<tr>
+<td>8 Oct 2026</td>
+<td>Register/checklist consolidated; no code fixes/deployment performed</td>
+</tr>
+</tbody>
+</table>
+<p>For future updates append finding ID, result, evidence, reviewer/date and deployed commit. Close only when stated evidence exists; reopen when policy/data/code/deployment context changes.</p>
+</main></body></html>

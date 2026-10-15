@@ -3,7 +3,7 @@
 import { mechanism, MEASURE_LABELS } from "../lib/uprating.js";
 import { SERIES_LABELS } from "../lib/history.js";
 import { money, percent, list } from "../lib/format.js";
-import { markStale, STALE_MESSAGE, announce, escapeHtml, live, pinSummary, readAmount, readJson, readPercent, setError, updatedNote } from "./common.js";
+import { markStale, STALE_MESSAGE, announce, choose, copyLink, escapeHtml, focusFirstError, live, pinSummary, readAmount, readJson, readPercent, readSettings, ready, setError, updatedNote } from "./common.js";
 
 const data = readJson("mechanism-data");
 const form = document.getElementById("mechanism-form");
@@ -18,6 +18,9 @@ const mode = document.getElementById("mechanism-mode");
 const glance = document.getElementById("mechanism-glance");
 
 let loaded = null; // the past decision now in the fields, or null for the reader's own figures
+// The settings of the result on screen, as a link carries them: kept when a result is drawn, so the
+// copy button links to what is shown, not to a figure half typed since (decision 96).
+let linkSettings;
 
 const MEASURE_NAMES = {
   prices: "prices (Consumer Prices Index)",
@@ -42,10 +45,10 @@ function load(quiet) {
     loaded = null;
     // Nothing to keep if a figure is then half typed.
     hasResult = false;
-    result.innerHTML = `<div class="unavailable" role="note"><h3>Not available: an increase for that choice</h3><p>The new State Pension began in 2016/17. Its first full rate was set, not increased from an earlier rate. Choose a later year, or choose the basic State Pension.</p></div>`;
+    result.innerHTML = `<div class="unavailable" role="note"><h3 id="mechanism-result-heading">Not available: an increase for that choice</h3><p>The new State Pension began in 2016/17. Its first full rate was set, not increased from an earlier rate. Choose a later year, or choose the basic State Pension.</p></div>`;
     glance.innerHTML = `<p>No increase to show for that choice.</p>`;
     mode.textContent = "Past decision";
-    announce(status, "No increase to show for that choice.");
+    if (!quiet) announce(status, "No increase to show for that choice.");
     return;
   }
   prices.value = (record.prices_tenths / 10).toFixed(1);
@@ -61,8 +64,9 @@ function showPast(quiet) {
   const { record, from } = loaded;
   const to = record[`${loaded.series}_pence`];
   mode.textContent = `Past decision: ${record.tax_year}, as published`;
+  linkSettings = { year: record.tax_year, series: loaded.series, prices: prices.value, earnings: earnings.value, start: start.value };
   result.innerHTML =
-    `<h3>${escapeHtml(SERIES_LABELS[loaded.series])}, ${escapeHtml(record.tax_year)}: what was decided</h3>` +
+    `<h3 id="mechanism-result-heading">${escapeHtml(SERIES_LABELS[loaded.series])}, ${escapeHtml(record.tax_year)}: what was decided</h3>` +
     `<p class="headline">${percent(record.applied_tenths)} increase, decided by ${escapeHtml(MEASURE_NAMES[record.measure])}</p>` +
     `<dl>` +
     row("Prices, year to the September before", percent(record.prices_tenths)) +
@@ -74,7 +78,12 @@ function showPast(quiet) {
     row("52 weeks at the new rate", money(to * 52)) +
     `</dl>` +
     (record.note ? `<div class="note" role="note"><h4>An exceptional year</h4><p>${escapeHtml(record.note)}</p></div>` : "") +
-    `<p>These are the published decision and the published rates. This tool did not calculate them.</p>`;
+    `<p>These are the published decision and the published rates. This tool did not calculate them.</p>` +
+    // In some years the rates and the decision are in one memorandum: one link, not two to one document.
+    `<p class="source-line">${record.rate_source_url === record.decision_source_url
+      ? `Source: <a href="${record.decision_source_url}">the explanatory memorandum to the Up-rating Order for ${escapeHtml(record.tax_year)}</a>`
+      : `Sources: <a href="${record.rate_source_url}">the published rates for ${escapeHtml(record.tax_year)}</a> and <a href="${record.decision_source_url}">the explanatory memorandum to the Up-rating Order</a>`
+    }, as recorded on <a href="/history/#decisions">the history page</a>. Checked against the sources on ${data.checked}.</p>`;
   glance.innerHTML =
     `<p>${escapeHtml(SERIES_LABELS[loaded.series])}, ${escapeHtml(record.tax_year)}, as published.</p>` +
     `<p class="headline">${percent(record.applied_tenths)} increase, decided by ${escapeHtml(MEASURE_NAMES[record.measure])}</p>` +
@@ -83,9 +92,10 @@ function showPast(quiet) {
   if (!quiet) announce(status, `Showing the decision for ${record.tax_year}: ${percent(record.applied_tenths)}. The full result below has changed.`);
 }
 
-// typing: the redraw follows a keystroke, so an invalid figure may be half typed.
+// typing: the redraw follows a keystroke, so an invalid figure may be half typed. quiet: the result
+// comes from a link on arrival, so nothing is announced.
 let hasResult = true;
-function showOwn(typing) {
+function showOwn(typing, quiet) {
   const p = readPercent(prices, "the rise in prices");
   const e = readPercent(earnings, "the rise in earnings");
   const s = readAmount(start, "the starting weekly amount");
@@ -98,18 +108,21 @@ function showOwn(typing) {
     }
     hasResult = false;
     mode.textContent = "Hypothetical: your own figures";
-    announce(status, "There is a problem with the figures entered. No result is shown.");
-    result.innerHTML = `<h3>No result</h3><p>Correct the figures marked with an error.</p>`;
+    // A submit, not a keystroke or a link on arrival: take the reader to the first field in error.
+    if (!typing && !quiet) focusFirstError(form);
+    if (!quiet) announce(status, "There is a problem with the figures entered. No result is shown.");
+    result.innerHTML = `<h3 id="mechanism-result-heading">No result</h3><p>Correct the figures marked with an error.</p>`;
     glance.innerHTML = `<p>No result. Correct the figures marked with an error.</p>`;
     return;
   }
   hasResult = true;
   mode.textContent = "Hypothetical: your own figures";
+  linkSettings = { year: year.value, series: series.value, prices: prices.value.trim(), earnings: earnings.value.trim(), start: start.value.trim() };
   const out = mechanism(s, p, e);
   const names = out.determining.map((name) => MEASURE_LABELS[name]);
   const decided = out.determining.length > 1 ? `a tie between ${list(names)}` : names[0];
   result.innerHTML =
-    `<h3>Hypothetical result</h3>` +
+    `<h3 id="mechanism-result-heading">Hypothetical result</h3>` +
     `<p class="headline">${percent(out.tenths)} increase, decided by ${escapeHtml(decided)}</p>` +
     `<dl>` +
     row("Prices", percent(p)) +
@@ -122,32 +135,43 @@ function showOwn(typing) {
     row("Weekly increase", money(out.increasePence)) +
     row("52 weeks at the new amount", money(out.annualPence)) +
     `</dl>` +
-    `<p>This is an example using figures you entered. It is not a forecast and it is not your entitlement. It is before tax.</p>`;
+    `<p>This is an example using figures you entered. It is not a forecast and it is not your entitlement: for that, <a href="https://www.gov.uk/check-state-pension">check your State Pension forecast</a> on GOV.UK. It is before tax.</p>` +
+    `<p class="source-line">Source: the figures you entered, calculated by this site, following the steps below.</p>`;
   glance.innerHTML =
     `<p><span class="status">Hypothetical</span> Your own figures, before tax.</p>` +
     `<p class="headline">${percent(out.tenths)} increase, decided by ${escapeHtml(decided)}</p>` +
     `<dl><div><dt>Weekly amount after</dt> <dd>${money(out.pence)}</dd></div><div><dt>Weekly increase</dt> <dd>${money(out.increasePence)}</dd></div></dl>` +
-    updatedNote("The full result below has changed too.");
-  announce(status, `Hypothetical result: ${percent(out.tenths)} increase, new weekly amount ${money(out.pence)}. The full result below has changed.`);
+    (quiet ? "" : updatedNote("The full result below has changed too."));
+  if (!quiet) announce(status, `Hypothetical result: ${percent(out.tenths)} increase, new weekly amount ${money(out.pence)}. The full result below has changed.`);
 }
 
 document.getElementById("mechanism-load").addEventListener("click", () => load());
 
 // The result follows the figures: the published decision until one is changed, then a hypothetical
 // result, until a decision is loaded again. There is no submit button; the handler stays for a scripted submit.
-function update(typing) {
+function update(typing, quiet) {
   const same =
     loaded &&
-    prices.value === (loaded.record.prices_tenths / 10).toFixed(1) &&
-    earnings.value === (loaded.record.earnings_tenths / 10).toFixed(1) &&
-    start.value === (loaded.from / 100).toFixed(2);
+    prices.value.trim() === (loaded.record.prices_tenths / 10).toFixed(1) &&
+    earnings.value.trim() === (loaded.record.earnings_tenths / 10).toFixed(1) &&
+    start.value.trim() === (loaded.from / 100).toFixed(2);
   if (same) {
-    showPast();
+    showPast(quiet);
   } else {
     loaded = null;
-    showOwn(typing);
+    showOwn(typing, quiet);
   }
 }
+
+// The link holds the year and pension chosen and the three figures shown, typed or loaded. Nothing
+// is written to the address on its own (decision 96).
+document.getElementById("mechanism-copy-link").addEventListener("click", () => {
+  if (!hasResult) {
+    announce(status, "There is no result to link to. Correct the figures marked with an error, or load a decision.");
+    return;
+  }
+  copyLink(linkSettings, "tool", status, document.getElementById("mechanism-copy-note"));
+});
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -162,3 +186,15 @@ live(figures, () => update(true));
 form.reset();
 load(true);
 pinSummary(glance.parentElement);
+
+// A link with settings in its address shows that result. Nothing is announced on arrival. Typed
+// values are checked by the same rules as the form before anything is shown.
+const settings = readSettings();
+if (settings.has("year")) {
+  choose(year, settings.get("year"));
+  choose(series, settings.get("series"));
+  load(true);
+  for (const [field, key] of [[prices, "prices"], [earnings, "earnings"], [start, "start"]]) if (settings.has(key)) field.value = settings.get(key);
+  update(false, true);
+}
+ready(form);

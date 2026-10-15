@@ -5,22 +5,34 @@ permalink: /reform-options/
 {%- import "macros.njk" as m with context -%}
 <h1>Reform options: how the yearly increase could change</h1>
 
-<p class="lede">Two separate decisions are often discussed together. One is how the State Pension should rise each year. The other is who should be entitled to it. This page sets out the options for the yearly increase. The next page has a calculator to compare them. The other pages in this section cover what the State Pension costs and who is affected, pensions and social care, and entitlement.</p>
+<p class="lede">Five rules for the yearly increase, including the one announced for April 2030, differ by how prices and earnings move, and where they differ the gap grows over time. Two separate decisions are often discussed together: how the State Pension should rise each year, and who should be entitled to it. This page sets out the five options, the arguments for and against the triple lock, and what evidence can and cannot settle about them.</p>
 
-{{ m.reformSection() }}
-
+{#- The "Compare the rules" section is not listed: the page entry for the calculator, two lines below
+    it in the list, is where the section sends the reader. From 40em the four options after the first
+    sit two to a row, so the scroll mark lands on the second of a pair; following a link marks the one
+    followed. -#}
 {{ m.contents([
   ["two-decisions", "Two different decisions"],
-  ["increases", "Options for the yearly increase"],
-  ["compare", "Compare the rules"]
-]) }}
+  ["increases", "Options for the yearly increase", [
+    ["opt-2030", "The rule announced for April 2030"],
+    ["opt-triple", "Keep the triple lock"],
+    ["opt-double", "Double lock: prices or earnings"],
+    ["opt-earnings", "Earnings link"],
+    ["opt-prices", "Prices link"],
+    ["how-2030-works", "How the announced rule works"],
+    ["smoothed", "A smoothed earnings link"]
+  ]],
+  ["arguments", "The arguments for and against the triple lock"],
+  ["evidence-and-judgement", "What evidence can settle, and what it cannot"]
+], true) }}
 
-{% call m.note("How to read these pages", 2) %}
+{% call m.note("How to read these pages", 2, "how-to-read-these-pages") %}
 <p>These pages ask the same questions of every option, including keeping the present rule. Where the evidence is strong, they say so. Where a claim is a recommendation or a value judgement, they say whose it is. They recommend no option.</p>
 {% endcall %}
 
-{% call m.note("A change was announced on " ~ (("pm-care-2026-09-29" | sourceRecord).published_date | timeTag), 2) %}
-<p>{{ ("tl-kept-to-2030" | claim).statement }} {{ ("rule-2030" | claim).statement }} {{ ("ncs-savings-used" | claim).statement }} {{ m.c("rule-2030") }}</p>
+{% call m.note("A change was announced on " ~ (("pm-care-2026-09-29" | sourceRecord).published_date | timeTag), 2, "change-announced") %}
+<p>{{ ("tl-kept-to-2030" | claim).statement }} {{ ("rule-2030" | claim).statement }} {{ m.c("rule-2030") }}</p>
+<p>{{ ("ncs-savings-used" | claim).statement }} {{ m.c("ncs-savings-used") }}</p>
 <p>This is an announcement. It is not law. {{ ("rule-2030-legislate" | claim).statement }} The options on this page are still the ones to compare, and <a href="#opt-2030">the announced rule</a> is now one of them. <a href="/reform-options/social-care/">Pensions and social care</a> sets out the plan and what it leaves open.</p>
 {% endcall %}
 
@@ -38,6 +50,8 @@ permalink: /reform-options/
 
 <h2 id="increases">Options for the yearly increase</h2>
 
+<p>Under some conditions several of the five rules give the same result; where they differ, the gap grows year on year, because each increase is applied to the last.</p>
+
 <p>The page describes each option the same way, including the rule the government announced on {{ ("pm-care-2026-09-29" | sourceRecord).published_date | timeTag | safe }}. The law sets a minimum of earnings for any option. A rule that pays less than earnings growth would need a change in the law. {{ m.c("legal-earnings-floor") }}</p>
 
 <article class="option">
@@ -45,7 +59,7 @@ permalink: /reform-options/
   <dl>
     <dt>The rule</dt> <dd>{{ ("rule-2030" | claim).statement }} {{ m.c("rule-2030") }} {{ ("ifs-rule-2030-mechanism" | claim).statement }} {{ m.c("ifs-rule-2030-mechanism") }} {{ ("rule-2030-name" | claim).statement }} {{ m.c("rule-2030-name") }} {{ ("press-double-lock" | claim).statement }} {{ m.c("press-double-lock") }} It is not the double lock described on this page.</dd>
     <dt>Effect on the pension</dt> <dd>{{ ("rule-2030-no-fall" | claim).statement }} {{ m.c("rule-2030-no-fall") }} {{ ("ifs-rule-2030-catch-up" | claim).statement }} {{ ("ifs-ratchet-removed" | claim).statement }} {{ m.c("ifs-ratchet-removed") }} {{ ("ifs-real-rise-slower" | claim).statement }} {{ m.c("ifs-real-rise-slower") }} Looking back, the Institute says the pension would still have risen {{ m.f("rule-2030-real-rise-ifs") }} faster than prices from 2010 to 2026 under the rule. {{ m.cite(("rule-2030-real-rise-ifs" | figure).source) }}. The Resolution Foundation says that if the rule had applied since 2012 the pension this year would be {{ m.f("rule-2030-vs-tl-rf") }} lower than it is, and {{ m.f("rule-2030-vs-earnings-rf") }} higher than under an earnings link. {{ m.cite(("rule-2030-vs-tl-rf" | figure).source) }}. <a href="#compare">Try it in the rule comparison</a>.</dd>
-    <dt>Who is affected</dt> <dd>Nobody before April 2030. {{ m.c("tl-kept-to-2030") }} After that, the same percentage would apply to every rate the rule covers. The announcement does not say whether it covers the same parts of a payment as the triple lock does now. {{ ("no-rule-2030-distribution" | claim).statement }} {{ ("no-rule-2030-pension-credit" | claim).statement }} {{ m.c("no-rule-2030-distribution") }}</dd>
+    <dt>Who is affected</dt> <dd>Nobody before April 2030. {{ m.c("tl-kept-to-2030") }} After that, the same percentage would apply to every rate the rule covers. {{ ("dwp-2030-coverage" | claim).statement }} {{ m.c("dwp-2030-coverage") }} {{ ("dwp-triple-lock-coverage-now" | claim).statement }} {{ m.c("dwp-triple-lock-coverage-now") }} {{ ("dwp-2030-other-parts" | claim).statement }} {{ m.c("dwp-2030-other-parts") }} {{ ("no-rule-2030-distribution" | claim).statement }} {{ ("no-rule-2030-pension-credit" | claim).statement }} {{ m.c("no-rule-2030-distribution") }}</dd>
     <dt>Public finances</dt> <dd>Small savings at first, growing over decades. <a href="/reform-options/costs/#saving-2030">The estimates, and how to read them</a>.</dd>
     <dt>The law</dt> <dd>{{ ("rule-2030-legislate" | claim).statement }} Our reading: {{ ("rule-2030-needs-law" | claim).statement }} {{ m.c("rule-2030-needs-law") }} {{ ("no-rule-2030-detail" | claim).statement }}</dd>
   </dl>
@@ -56,8 +70,8 @@ permalink: /reform-options/
     <h3 id="opt-triple">Keep the triple lock</h3>
     <dl>
       <dt>The rule</dt> <dd>The highest of prices, earnings and 2.5%.</dd>
-      <dt>Effect on the pension</dt> <dd>It rises at least as fast as prices and as earnings, every year. Over time it tends to rise faster than both, when the measure that wins changes from year to year. The level in future is uncertain. The Institute for Fiscal Studies gives <q>{{ ("ifs-range-2050" | claim).passage }}</q>. {{ m.c("ifs-range-2050") }}</dd>
-      <dt>Who is affected</dt> <dd>Current pensioners, and future ones more so, because increases build up over time. {{ m.c("ppi-future-workers") }} People who live longer gain more. {{ m.c("ifs-longevity") }}</dd>
+      <dt>Effect on the pension</dt> <dd>It rises at least as fast as prices and as earnings, every year the rule applies. It did not apply in full in 2022/23, when Parliament set the earnings part aside for a year. {{ m.c("tl-2022-act") }} Over time it tends to rise faster than both, when the measure that wins changes from year to year. The level in future is uncertain. The Institute for Fiscal Studies gives <q>{{ ("ifs-range-2050" | claim).passage }}</q>. {{ m.c("ifs-range-2050") }}</dd>
+      <dt>Who is affected</dt> <dd>Current pensioners, and future ones more so, because increases build up over time: <a href="#args-keep">an argument for keeping it</a>. People who live longer gain more. {{ m.c("ifs-longevity") }}</dd>
       <dt>Public finances</dt> <dd>The highest cost of the rules in the calculator, apart from small differences caused by rounding, and the least predictable.</dd>
       <dt>A judgement, not a finding</dt> <dd>Whether the pension should rise as a share of earnings, and how far.</dd>
     </dl>
@@ -96,7 +110,8 @@ permalink: /reform-options/
 
 <h3 id="how-2030-works">How the announced rule works: an example</h3>
 
-<p>{{ ("ifs-rule-2030-illustration" | claim).statement }} {{ m.c("ifs-rule-2030-illustration") }} {{ ("ifs-rule-2030-illustration" | claim).note }}</p>
+<p>{{ ("ifs-rule-2030-illustration" | claim).statement }} {{ m.c("ifs-rule-2030-illustration") }}</p>
+<p>{{ ("ifs-rule-2030-illustration" | claim).note }}</p>
 
 <p>The same example is a scenario in the <a href="/reform-options/compare/">rule comparison</a>. With the tool's assumptions, the pension follows earnings again from year 10. The Institute's text says year 9. Its chart is stylised and it does not publish the yearly amounts behind it, so we cannot say where the difference comes from.</p>
 
@@ -115,6 +130,58 @@ permalink: /reform-options/
 {% endcall %}
 
 <p>A freeze, with no increase at all, is not among the options. We found no current proposal for one.</p>
+
+<h2 id="arguments">The arguments for and against the triple lock</h2>
+
+<p>These are the arguments for keeping the triple lock and for changing it.</p>
+
+<div class="option-grid">
+  <article class="option">
+    <h3 id="args-keep">For keeping the triple lock</h3>
+    <ul>
+      <li><strong>Most pensioners depend on it.</strong> {{ ("ppi-reliance" | claim).statement }} {{ m.c("ppi-reliance") }} {{ ("ageuk-largest-income" | claim).statement }} {{ m.c("ageuk-largest-income") }}</li>
+      <li><strong>Pensioner poverty has not gone away.</strong> In the {{ ("low-income-ahc" | figure).period_label | lower }}, an estimated {{ m.f("low-income-ahc") }} of pensioners were in relative low income after housing costs, within a range of {{ ("low-income-ahc" | figure).range }}. {{ m.ref(("low-income-ahc" | figure).source) }} {{ ("ageuk-women" | claim).statement }} {{ m.c("ageuk-women") }}</li>
+      <li><strong>It helps today's workers most.</strong> {{ ("ppi-future-workers" | claim).statement }} {{ m.c("ppi-future-workers") }}</li>
+      <li><strong>More pensioners, not the lock, cause most of the rise in State Pension spending.</strong> {{ ("ppi-demographics" | claim).statement }} {{ m.c("ppi-demographics") }} The Office for Budget Responsibility projects State Pension spending to rise by {{ m.f("sp-rise-gdp-total") }} between 2030-31 and 2075-76, and attributes {{ m.f("tl-share-of-rise") }} of it to the triple lock. {{ m.ref(("tl-share-of-rise" | figure).source) }}</li>
+      <li><strong>The level is about 30% of typical pay.</strong> In {{ ("nsp-share-median-earnings" | figure).period_label }} the full new State Pension was {{ m.f("nsp-share-median-earnings") }} of median full-time earnings. {{ m.ref(("nsp-share-median-earnings" | figure).source) }} {{ ("pc-30-percent" | claim).statement }} {{ m.c("pc-30-percent") }}</li>
+      <li><strong>It supports private saving.</strong> {{ ("pc-firm-foundation" | claim).statement }} {{ m.c("pc-firm-foundation") }}</li>
+    </ul>
+  </article>
+  <article class="option">
+    <h3 id="args-change">For changing it</h3>
+    <ul>
+      <li><strong>It has cost more than expected.</strong> {{ m.f("tl-cost-vs-earnings-2029-30") }} a year by 2029-30 compared with earnings uprating, against {{ m.f("tl-cost-initial-assumption") }} on the first assumption. {{ m.ref(("tl-cost-vs-earnings-2029-30" | figure).source) }}</li>
+      <li><strong>Its future cost can only be estimated, with wide uncertainty.</strong> Between {{ m.f("ifs-tl-cost-2050-low") }} and {{ m.f("ifs-tl-cost-2050-high") }} a year in 2050. {{ m.ref(("ifs-tl-cost-2050-high" | figure).source) }} Both ends are the extra cost of the triple lock over raising the pension with earnings alone, not the whole bill. How each rule compares is in <a href="#increases">the options above</a> and in <a href="/reform-options/compare/">the rule comparison</a>.</li>
+      <li><strong>It rewards volatility, not need.</strong> {{ ("rf-volatility" | claim).statement }} {{ m.c("rf-volatility") }}</li>
+      <li><strong>It has no stated target.</strong> {{ ("ifs-explicit-goal" | claim).statement }} {{ m.c("ifs-explicit-goal") }}</li>
+      <li><strong>Fairness between generations.</strong> {{ ("rf-living-standards" | claim).statement }} {{ ("rf-income-level" | claim).statement }} {{ ("rf-income-same-level" | claim).statement }} {{ m.c("rf-living-standards") }}</li>
+      <li><strong>It is not aimed at poverty.</strong> {{ ("rf-poverty-since-2011" | claim).statement }} {{ m.c("rf-poverty-since-2011") }} On the same measure, after housing costs, the latest official level is the {{ "low-income-ahc" | fig }} given in the arguments for keeping it. The triple lock applies the same percentage to the full rates, whatever the income of the person who receives them.</li>
+    </ul>
+  </article>
+</div>
+
+<p>The Pensions Policy Institute and the Office for Budget Responsibility agree that more pensioners add more to State Pension spending than the triple lock does. They use different dates and baselines, so their figures cannot be compared directly. The Office for Budget Responsibility's projection is set out on the page on <a href="/reform-options/costs/#public-finances">what the State Pension costs</a>.</p>
+
+<h2 id="evidence-and-judgement">What evidence can settle, and what it cannot</h2>
+
+<h3 id="evidence-can-establish">Evidence can establish</h3>
+<ul>
+  <li>What each rule does to the rate under given conditions.</li>
+  <li>Roughly what the bill is, and that estimates of cost and saving depend on the comparison chosen.</li>
+  <li>That savings from a change start small and grow.</li>
+</ul>
+
+<h3 id="evidence-cannot-establish">Evidence cannot establish</h3>
+<ul>
+  <li>What prices and earnings will do, and so what any rule will cost.</li>
+</ul>
+
+<h3 id="judgements-about-fairness">Judgements about fairness</h3>
+<ul>
+  <li>What the State Pension should be worth compared with pay.</li>
+  <li>How to weigh today's pensioners against today's workers, who are tomorrow's pensioners.</li>
+  <li>How much certainty people are owed when they plan for retirement.</li>
+</ul>
 
 <h2 id="compare">Compare the rules</h2>
 

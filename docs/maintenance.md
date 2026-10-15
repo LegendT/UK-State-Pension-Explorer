@@ -10,8 +10,8 @@ Rates for the next tax year are usually announced in the autumn and confirmed in
 4. Add a source record for the new rates publication and Order.
 5. Do not publish a rate as current before its effective date. Until then it is an announced rate and must be labelled as one.
 6. Run `npm test`. The history test fails if a new rate does not follow from the last one, the increase and 5p rounding. If it fails, check the data before anything else.
-7. Run `python3 scripts/check-passages.py` and `npm run build`.
-8. Read every page that names a tax year in its text. The worked example on the triple lock page names months and years in words.
+7. Run `python3 scripts/check-passages.py`, `npm run build` and `npm run a11y`: the update changes data that pages show.
+8. Read every page that names a tax year in its text. The worked example on the triple lock page names months and years in words. The headings and opening sentences that state what a section's figures show (W27, 13 October 2026) rest on those figures and are typed: on the State Pension page, what people receive; on living on a pension, the research budgets, spending, income and prices sections; on costs, all three sections; on social care, the sums involved. Reread each against its section after the figures change.
 9. Set `modified` in `src/_data/pageRegister.json` for each page whose content changed. Once the site is published, add a line to `policy_changes` in `src/_data/corrections.json`. Before publication there is nothing to correct: decision 40.
 10. Titles, descriptions and share images carry no amounts, so they do not change. The build fails if an amount in pounds appears in a title or description.
 
@@ -27,7 +27,7 @@ Each figure has a `next_review` trigger; the 51 that had none were filled on 2 O
 | 28 October 2026 | Office for Budget Responsibility forecast, published with the Budget. The date is from the Office's forecast timetable, read on 5 October 2026 at obr.uk | The forecasts in table `sp-spending-series`, and any costing of the rule announced for April 2030: `saving-rule-2030-*` |
 | 27 November 2026 | ONS Household Costs Indices | `hci-*` |
 | Spring 2027 | Pensions Commission final report | Claims `pc-*` |
-| Summer 2027 | Care commission report for England | The pensions and social care page, `/reform-options/social-care/` |
+| 2026 and by 2028 under the published terms; summer 2027 according to the Prime Minister's Office | Care commission report for England | The pensions and social care page, `/reform-options/social-care/` |
 | March 2027 | DWP Pensioners' Incomes and Households Below Average Income | `income-*`, `low-income-*`, `material-deprivation`, table `income-fifths` |
 | July 2027 | OBR Fiscal risks and sustainability | `sp-share-gdp-*`, `tl-share-of-rise`, `saving-*-2075`, table `sp-longrun` |
 | 21 September 2027 | DWP benefits statistics | `sp-recipients`, `*-mean-weekly*` |
@@ -40,12 +40,13 @@ Rechecking a source that has not changed updates `checked_date` only. It does no
 
 `src/_data/news.json` holds the date of the note "In the news" on the overview, whose text is in `src/index.njk`. When policy status changes, rewrite the note and change `as_of`. If nobody is maintaining it, leave the date in place. Never relabel an old note as current.
 
-The note was written on 30 September 2026, after the announcement of 29 September 2026, and corrected on 5 October 2026. The first search missed an analysis the Department for Work and Pensions published with the announcement. Search GOV.UK publications as well as news, and the UK Parliament's list of Bills. Rewrite the note, the option card for the announced rule and the pensions and social care page when any of these is published:
+The note was written on 30 September 2026, after the announcement of 29 September 2026, corrected on 5 October 2026, and checked again on 8 October 2026, when the Department for Work and Pensions' factsheet and the two changes to the care commission's terms were added. The first search missed an analysis the Department for Work and Pensions published with the announcement. Search GOV.UK publications as well as news, and the UK Parliament's list of Bills. Rewrite the note, the option card for the announced rule and the pensions and social care page when any of these is published:
 
 - a Bill or draft clauses for the change to the triple lock;
+- an updated version of the care commission's terms of reference, which GOV.UK said on 1 October 2026 would follow;
 - a technical note from the Department for Work and Pensions or the Treasury, above all one that gives the earnings measure, the starting point or the method behind the savings;
 - the next forecast from the Office for Budget Responsibility;
-- the report of the Casey commission, due in summer 2027;
+- the report of the Casey commission: summer 2027 according to the Prime Minister's Office, 2026 and by 2028 under its published terms of reference;
 - the final report of the Pensions Commission, due in spring 2027;
 - a statement from a party on its own site, to replace one that rests on a news report;
 - an official transcript of the Prime Minister's speech;
@@ -69,6 +70,6 @@ Read these parts of the reform options pages in full: on `/reform-options/`, the
 
 Open each destination in `src/_data/links.json` when the destination site changes, and at least with each April update. A link that still loads can lead to content that no longer fits. Update `content_checked` and `content_found`.
 
-## After any change to markup, styles or scripts
+## After any change to markup, styles or scripts, or to data a page shows
 
-Run `npm run a11y` and `node scripts/a11y-manual-assist.mjs`, and repeat the manual checks in `docs/accessibility-assessment.md` for the parts that changed.
+Run `npm run a11y`, `npm run a11y:manual` and `npm run test:tools`, and repeat the manual checks in `docs/accessibility-assessment.md` for the parts that changed.

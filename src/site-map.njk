@@ -4,20 +4,28 @@ permalink: /site-map/
 ---
 <h1>Site map</h1>
 
-<h2 id="explanations">Explanations</h2>
-<ul class="link-list">
-  {%- for entry in pages | where("group", "main") %}
-  <li><a href="{{ entry.path }}">{{ entry.title }}</a></li>
-  {%- endfor %}
-</ul>
+<p>The pages of this site, in the order of the main navigation and under the names it uses.</p>
 
-<h2 id="tools">Tools</h2>
-<ul class="link-list">
-  <li><a href="/tools/triple-lock/">Triple lock calculator</a></li>
-  <li><a href="/reform-options/compare/">Compare the rules</a>, also in the reform options section</li>
-  <li><a href="/tools/budget/">Budget explorer: what does the pension cover?</a></li>
-  <li><a href="/tools/history/">State Pension history explorer</a></li>
-</ul>
+<ol class="link-list site-map">
+  {%- for item in site.nav %}
+  <li><a href="{{ item.href }}">{{ item.label }}</a>
+    {%- if item.href == "/reform-options/" %}
+    {#- The section's first page is the link above, so the nest holds the other four. -#}
+    <ul>
+      {%- for entry in site.reformPages %}{% if not loop.first %}
+      <li><a href="{{ entry.href }}">{{ entry.label }}</a></li>
+      {%- endif %}{% endfor %}
+    </ul>
+    {%- elif item.href == "/tools/" %}
+    <ul>
+      {%- for path in ["/tools/triple-lock/", "/reform-options/compare/", "/tools/budget/", "/tools/history/"] %}
+      <li><a href="{{ path }}">{{ path | pageName }}</a></li>
+      {%- endfor %}
+    </ul>
+    {%- endif %}
+  </li>
+  {%- endfor %}
+</ol>
 
 <h2 id="about">About this site</h2>
 <ul class="link-list">

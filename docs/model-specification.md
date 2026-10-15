@@ -179,6 +179,8 @@ The reader chooses one period for all inputs. Amounts are converted to a yearly 
 | Calendar month | × 12 |
 | Year | × 1 |
 
+When the reader changes the period, every amount already entered is converted to the new period: the amount × the periods in a year for the old period ÷ the periods in a year for the new one, to the nearest penny (decision 90). An amount that cannot be read is left as typed.
+
 Weekly results are the yearly amount ÷ 52, rounded to the nearest penny for display only. The headline balance and the summary kept in view give amounts for the period the reader entered: the yearly amount ÷ the periods in a year, with the yearly amount after it unless the period is a year (decision 81).
 
 ### Outputs

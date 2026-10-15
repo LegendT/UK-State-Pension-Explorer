@@ -134,6 +134,7 @@
     {
       "id": "low",
       "label": "Low inflation, low pay growth",
+      "menu_label": "Low inflation and pay",
       "reason": "Prices rise by 2.0% and earnings by 2.2% every year. Both are below 2.5%, so the 2.5% minimum decides the triple lock every year. It shows what the minimum alone is worth. The minimum also decides the rule announced for April 2030, so it gives the same result as the triple lock.",
       "source_id": null,
       "path": [
@@ -518,6 +519,7 @@
     {
       "id": "falling-earnings",
       "label": "A year of falling earnings",
+      "menu_label": "Falling earnings",
       "reason": "Earnings fall by 1.0% in the first year while prices rise by 1.0%. Pay then recovers by 6.0% with prices up 3.0%, and later years are steady at 2.0% and 3.5%. It tests negative growth and the cash floor. With the cash floor on, the rule announced for April 2030 ends lower than the earnings link: its earnings target counts the fall in pay, while the cash floor holds the earnings link still in that year.",
       "source_id": null,
       "path": [
@@ -646,6 +648,7 @@
     {
       "id": "ifs-example",
       "label": "The Institute for Fiscal Studies' example",
+      "menu_label": "Research example",
       "reason": "The first ten years are the example the Institute for Fiscal Studies uses to explain the rule announced for April 2030. Prices rise by 2.0% every year. Earnings rise by 4.0%, except for three years at 1.0%. After the weak years the rule pays 2.5% until the pension is back in line with earnings, and then follows earnings. After year 10 the same 2.0% and 4.0% continue.",
       "source_id": "ifs-new-tl-comment-2026",
       "path": [

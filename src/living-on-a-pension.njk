@@ -5,15 +5,18 @@ permalink: /living-on-a-pension/
 {%- import "macros.njk" as m with context -%}
 <h1>Living on a pension: what the money can cover</h1>
 
-<p class="lede">Whether a pension is enough depends on what is being asked. What people spend, what research says a standard of living costs, and what one household needs are three different things. This page keeps them apart, then gives you a budget to fill in yourself.</p>
+<p class="lede">The State Pension alone covers most, but not all, of what research says a pensioner needs for a minimum standard of living, and what any one household needs depends most on its housing. What people spend, what research says a standard of living costs, and what one household needs are three different things. This page keeps them apart, then gives you a budget to fill in yourself.</p>
 
 {{ m.contents([
   ["three-questions", "Three questions about living costs"],
-  ["research-budgets", "What research says a standard of living costs"],
-  ["observed", "What retired households spend"],
-  ["income", "What income pensioners have"],
-  ["own-needs", "What one household needs"],
-  ["prices", "Prices and pensioner households"],
+  ["research-budgets", "Research puts a minimum standard of living above what the State Pension alone provides", [
+    ["mis-2026", "The Minimum Income Standard, 2026"],
+    ["rls", "The Retirement Living Standards"]
+  ]],
+  ["observed", "Households that depend mainly on state pensions spend less than other retired households"],
+  ["income", "Benefits are more than half of a single pensioner's income, and less than half of a couple's"],
+  ["own-needs", "What one household needs depends most on its housing"],
+  ["prices", "Prices keep rising when inflation falls, and retired households' costs have risen slightly less"],
   ["budget", "The budget explorer"]
 ]) }}
 
@@ -25,7 +28,7 @@ permalink: /living-on-a-pension/
   <li><strong>What does a particular household need?</strong> That depends on housing, health, where the household lives, and who is in it. No national figure answers it.</li>
 </ol>
 
-{% call m.note("Four things these figures are not", 3) %}
+{% call m.note("Four things these figures are not", 3, "four-things-these-figures-are-not") %}
 <ul>
   <li>A research budget is not a legal entitlement. No benefit is set by it.</li>
   <li>Falling below a research budget is not the same as being in poverty as official statistics measure it. The two use different tests.</li>
@@ -34,19 +37,25 @@ permalink: /living-on-a-pension/
 </ul>
 {% endcall %}
 
-<h2 id="research-budgets">What research says a standard of living costs</h2>
+<h2 id="research-budgets">Research puts a minimum standard of living above what the State Pension alone provides</h2>
 
-<h3>The Minimum Income Standard, 2026</h3>
+<p>Two research budgets set a benchmark. The State Pension alone covers most of the minimum one, but not all of it, and less of it for a couple than for a single person.</p>
+
+<h3 id="mis-2026">The Minimum Income Standard, 2026</h3>
 
 <p>The Minimum Income Standard is produced by Loughborough University for the Joseph Rowntree Foundation. Groups of members of the public agree what a household needs for a minimum socially acceptable standard of living. {{ m.c("mis-not-poverty-line") }}</p>
 
+{%- set g = ["mis-single-ex-rent", "mis-couple-ex-rent"] | shared %}
+{{ m.sharedNote(g) }}
 <ul class="cards">
-  <li>{{ m.stat("mis-single-ex-rent" | figure, "A week, for a single pensioner, not counting rent.", 4) }}</li>
-  <li>{{ m.stat("mis-couple-ex-rent" | figure, "A week, for a pensioner couple, not counting rent.", 4) }}</li>
+  <li>{{ m.stat("mis-single-ex-rent" | figure, "A week, for a single pensioner, not counting rent.", 4, g) }}</li>
+  <li>{{ m.stat("mis-couple-ex-rent" | figure, "A week, for a pensioner couple, not counting rent.", 4, g) }}</li>
 </ul>
 
-<p>Rent is shown separately because it differs so much by area. The budgets use an indicative private rent of {{ m.f("mis-single-rent") }} a week for a single pensioner and {{ m.f("mis-couple-rent") }} for a couple.</p>
+<p>Rent is shown separately because it differs so much by area. The budgets use an indicative private rent of {{ m.f("mis-single-rent") }} a week for a single pensioner.</p>
 {{ m.sourceNote("mis-single-rent" | figure) }}
+
+<p>For a couple, the report on the 2026 budgets gives {{ m.f("mis-couple-rent") }} a week. {{ m.ref(("mis-couple-rent" | figure).source) }}</p>
 
 {% call m.note("The 2026 budgets cannot be compared directly with earlier years", 4) %}
 <p>{{ ("mis-tenure-change" | claim).statement }} {{ m.c("mis-tenure-change") }} {{ ("mis-basket-change" | claim).statement }} {{ m.c("mis-basket-change") }} A change in the benchmark from one year to the next is not only a change in prices.</p>
@@ -58,7 +67,7 @@ permalink: /living-on-a-pension/
 
 {% call m.scrollTable() %}
 <table>
-  <caption>Share of the Minimum Income Standard budget covered, April 2026</caption>
+  <caption id="table-mis-coverage">Share of the Minimum Income Standard budget covered, April 2026</caption>
   <thead><tr><th scope="col">Household</th><th scope="col">Housing</th><th scope="col">Income from</th><th scope="col" class="num">Share covered</th></tr></thead>
   <tbody>
     <tr><th scope="row">Single pensioner</th><td>Private rent</td><td>State Pension or Pension Credit</td><td class="num">{{ m.f("mis-cover-single-private") }}</td></tr>
@@ -73,13 +82,13 @@ permalink: /living-on-a-pension/
 
 <p>Two cautions. The cases assume every benefit is claimed, and many are not. {{ m.c("mis-all-benefits-assumed") }} And the budget leaves out the extra costs of disability. {{ m.c("mis-excludes-disability") }}</p>
 
-<h3>The Retirement Living Standards</h3>
+<h3 id="rls">The Retirement Living Standards</h3>
 
 <p>The Retirement Living Standards are produced by the same research centre for Pensions UK. They describe three levels: minimum, moderate and comfortable.</p>
 
 {% call m.scrollTable() %}
 <table>
-  <caption>Retirement Living Standards: yearly spending, UK outside London, April 2025 prices</caption>
+  <caption id="table-rls">Retirement Living Standards: yearly spending, UK outside London, April 2025 prices</caption>
   <thead><tr><th scope="col">Standard</th><th scope="col" class="num">One person</th><th scope="col" class="num">Two people</th></tr></thead>
   <tbody>
     <tr><th scope="row">Minimum</th><td class="num">{{ m.f("rls-min-single") }}</td><td class="num">{{ m.f("rls-min-couple") }}</td></tr>
@@ -94,7 +103,9 @@ permalink: /living-on-a-pension/
 
 <p>The minimum standard and the Minimum Income Standard are not two separate pieces of evidence. The minimum standard is the Minimum Income Standard pensioner budget for 2025. If they agree, that is because they are the same research.</p>
 
-<h2 id="observed">What retired households spend</h2>
+<h2 id="observed">Households that depend mainly on state pensions spend less than other retired households</h2>
+
+<p>Retired households that depend mainly on state pensions spend less than other retired households, and the survey cannot say whether that is because they need less or have less.</p>
 
 {{ m.dataTable("observed-spending") }}
 
@@ -102,27 +113,31 @@ permalink: /living-on-a-pension/
 <ul>
   <li>These are averages over every household in the group, including those that spent nothing on an item.</li>
   <li>The survey's samples are small. {{ m.c("fs-small-samples") }} The groups here are smaller still. The group of two adults mainly dependent on state pensions had {{ tables["observed-spending"].rows[0][2] }} households in the sample, so its figures are weak.</li>
-  <li>Households that depend mainly on state pensions spend less than other retired households. The table cannot show whether that is because they need less or because they have less.</li>
+  <li>The table cannot show whether households that depend mainly on state pensions spend less because they need less or because they have less.</li>
   <li>The categories are not the same as those in the research budgets, so the two cannot be compared line by line. Council Tax, for example, is inside "Other expenditure items" here.</li>
 </ul>
 
-<h2 id="income">What income pensioners have</h2>
+<h2 id="income">Benefits are more than half of a single pensioner's income, and less than half of a couple's</h2>
 
+<p>The State Pension and other benefits are the larger part of a single pensioner's income and the smaller part of a couple's. The rest comes from private pensions, earnings and investments.</p>
+
+{%- set g = ["income-median-ahc-single", "income-median-ahc-couple"] | shared %}
+{{ m.sharedNote(g) }}
 <ul class="cards">
-  <li>{{ m.stat("income-median-ahc-single" | figure, "Half of single pensioners have less than this, and half have more.") }}</li>
-  <li>{{ m.stat("income-median-ahc-couple" | figure, "For the couple together, not each person.") }}</li>
+  <li>{{ m.stat("income-median-ahc-single" | figure, "Half of single pensioners have less than this, and half have more.", null, g) }}</li>
+  <li>{{ m.stat("income-median-ahc-couple" | figure, "For the couple together, not each person.", null, g) }}</li>
 </ul>
 
 <p>Benefits, including the State Pension, make up {{ m.f("benefit-share-single") }} of the gross income of single pensioners and {{ m.f("benefit-share-couple") }} of the gross income of couples. The rest comes from workplace and personal pensions, earnings and savings.</p>
 {{ m.sourceNote("benefit-share-single" | figure) }}
 
-{% call m.note("Do not set these incomes beside the research budgets without care", 3) %}
+{% call m.note("Do not set these incomes beside the research budgets without care", 3, "do-not-set-these-incomes-beside-the-research-budgets-without") %}
 <p>The income figures are after Council Tax, and after housing costs, which include water charges. The research budgets count Council Tax and water as costs. Comparing them directly counts both twice. The periods also differ. Incomes are for 2024/25 and the 2026 budget is priced at April 2026.</p>
 {% endcall %}
 
 <p>For how incomes and wealth are spread among pensioners, see <a href="/reform-options/costs/#who">Reform options: who receives what</a>.</p>
 
-<h2 id="own-needs">What one household needs</h2>
+<h2 id="own-needs">What one household needs depends most on its housing</h2>
 
 <dl>
   <dt>Housing</dt>
@@ -139,7 +154,7 @@ permalink: /living-on-a-pension/
   <dd>A cooker, a boiler repair, new glasses. The research budgets include a weekly share for replacing things. That spreads the cost on paper. It does not mean the household has the cash on the day the cooker breaks.</dd>
 </dl>
 
-<h2 id="prices">Prices and pensioner households</h2>
+<h2 id="prices">Prices keep rising when inflation falls, and retired households' costs have risen slightly less</h2>
 
 <p>The inflation rate is how fast prices are rising now. It is not how much prices have risen in total. When inflation falls from 10% to 3%, prices are still rising, on top of the earlier rise.</p>
 
@@ -147,7 +162,7 @@ permalink: /living-on-a-pension/
 
 {% call m.scrollTable() %}
 <table>
-  <caption>Rise in household costs to June 2026</caption>
+  <caption id="table-household-costs">Rise in household costs to June 2026</caption>
   <thead><tr><th scope="col">Household type</th><th scope="col" class="num">Over 1 year</th><th scope="col" class="num">Over 5 years</th></tr></thead>
   <tbody>
     <tr><th scope="row">Retired households</th><td class="num">{{ m.f("hci-retired") }}</td><td class="num">{{ m.f("hci-retired-5yr") }}</td></tr>

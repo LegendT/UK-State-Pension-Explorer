@@ -167,7 +167,8 @@
     "updated_date": null,
     "checked_date": "2026-09-29",
     "licence": "Open Government Licence v3.0",
-    "note": "Official statistics, not accredited. The next release, for the financial year ending 2025, is due on 22 October 2026."
+    "status": "official",
+    "note": "The next release, for the financial year ending 2025, is due on 22 October 2026."
   },
   "govuk-housing-benefit": {
     "publisher": "Department for Work and Pensions",
@@ -267,7 +268,8 @@
     "updated_date": null,
     "checked_date": "2026-09-29",
     "licence": "Open Government Licence v3.0",
-    "note": "Accredited official statistics. The release covers DWP benefits in Great Britain. It does not say whether recipients living abroad are included in State Pension figures. The next release is due on 21 September 2027."
+    "status": "accredited",
+    "note": "The release covers DWP benefits in Great Britain. It does not say whether recipients living abroad are included in State Pension figures. The next release is due on 21 September 2027."
   },
   "obr-frs-2026": {
     "publisher": "Office for Budget Responsibility",
@@ -337,6 +339,7 @@
     "updated_date": null,
     "checked_date": "2026-09-29",
     "licence": "Open Government Licence v3.0",
+    "status": "accredited",
     "note": null
   },
   "jrf-mis-2026": {
@@ -377,7 +380,8 @@
     "updated_date": null,
     "checked_date": "2026-09-29",
     "licence": "Open Government Licence v3.0",
-    "note": "Accredited official statistics. About 5,000 households took part. The response rate in Great Britain was 26%."
+    "status": "accredited",
+    "note": "About 5,000 households took part. The response rate in Great Britain was 26%."
   },
   "ons-hci-2026-q2": {
     "publisher": "Office for National Statistics",
@@ -387,7 +391,8 @@
     "updated_date": null,
     "checked_date": "2026-09-29",
     "licence": "Open Government Licence v3.0",
-    "note": "Official statistics in development. Estimates can be revised. The next release is due on 27 November 2026."
+    "status": "in-development",
+    "note": "Estimates can be revised. The next release is due on 27 November 2026."
   },
   "dwp-pensioners-incomes-fye2025": {
     "publisher": "Department for Work and Pensions",
@@ -397,7 +402,8 @@
     "updated_date": null,
     "checked_date": "2026-09-29",
     "licence": "Open Government Licence v3.0",
-    "note": "Accredited official statistics. Survey of private households. People in care homes are not covered. The response rate was 31%."
+    "status": "accredited",
+    "note": "Survey of private households. People in care homes are not covered. The response rate was 31%."
   },
   "dwp-hbai-fye2025": {
     "publisher": "Department for Work and Pensions",
@@ -407,7 +413,8 @@
     "updated_date": null,
     "checked_date": "2026-09-29",
     "licence": "Open Government Licence v3.0",
-    "note": "Accredited official statistics. Survey estimates with sampling uncertainty."
+    "status": "accredited",
+    "note": "Survey estimates with sampling uncertainty."
   },
   "ons-was-round8": {
     "publisher": "Office for National Statistics",
@@ -417,7 +424,8 @@
     "updated_date": null,
     "checked_date": "2026-09-29",
     "licence": "Open Government Licence v3.0",
-    "note": "Accreditation of the Wealth and Assets Survey is suspended from this round while the Office for National Statistics works on its quality. Data were collected by telephone during the pandemic."
+    "status": "suspended",
+    "note": "The survey is under review from this round while the Office for National Statistics works on its quality."
   },
   "dwp-frs-fye2025": {
     "publisher": "Department for Work and Pensions",
@@ -427,6 +435,7 @@
     "updated_date": null,
     "checked_date": "2026-09-29",
     "licence": "Open Government Licence v3.0",
+    "status": "accredited",
     "note": null
   },
   "ssaa-1992-s150a": {
@@ -733,11 +742,21 @@
     "publisher": "Department of Health and Social Care",
     "title": "Independent commission into adult social care: terms of reference",
     "url": "https://www.gov.uk/government/publications/independent-commission-into-adult-social-care-terms-of-reference/independent-commission-into-adult-social-care-terms-of-reference",
-    "published_date": "2025-07-11",
-    "updated_date": null,
-    "checked_date": "2026-09-29",
+    "published_date": "2025-05-02",
+    "updated_date": "2026-10-01",
+    "checked_date": "2026-10-08",
     "licence": "Open Government Licence v3.0",
-    "note": "The page still shows the first timetable of two phases, in 2026 and 2028. On 29 July 2026 the Prime Minister's Office said the report would come in summer 2027."
+    "note": "The page shows the first timetable of two phases, reporting in 2026 and by 2028. On 1 October 2026 it was changed to show a report in summer 2027, and the original was put back the same day."
+  },
+  "casey-tor-history": {
+    "publisher": "Department of Health and Social Care",
+    "title": "Independent commission into adult social care: terms of reference, page history",
+    "url": "https://www.gov.uk/government/publications/independent-commission-into-adult-social-care-terms-of-reference",
+    "published_date": "2025-05-02",
+    "updated_date": "2026-10-01",
+    "checked_date": "2026-10-08",
+    "licence": "Open Government Licence v3.0",
+    "note": "The publication page, whose list of updates records the two changes of 1 October 2026."
   },
   "casey-panel-2026": {
     "publisher": "Department of Health and Social Care",
@@ -797,6 +816,7 @@
     "updated_date": null,
     "checked_date": "2026-09-29",
     "licence": "Open Government Licence v3.0",
+    "status": "official",
     "note": null
   },
   "dhsc-asc-activity-2024-25": {
@@ -805,9 +825,9 @@
     "url": "https://www.gov.uk/government/statistics/adult-social-care-activity-report-england-2024-to-2025/adult-social-care-activity-report-2024-to-2025-commentary",
     "published_date": "2025-10-23",
     "updated_date": null,
-    "checked_date": "2026-09-29",
+    "checked_date": "2026-10-09",
     "licence": "Open Government Licence v3.0",
-    "note": "Official statistics in development."
+    "status": "official"
   },
   "health-foundation-2024": {
     "publisher": "The Health Foundation",
@@ -857,17 +877,27 @@
     "updated_date": null,
     "checked_date": "2026-09-29",
     "licence": "Open Government Licence v3.0",
-    "note": "Accredited official statistics."
+    "status": "accredited"
   },
   "dwp-uprating-analysis-2026": {
     "publisher": "Department for Work and Pensions",
     "title": "State Pension uprating",
     "url": "https://www.gov.uk/government/publications/state-pension-uprating-analysis-2026/state-pension-uprating",
     "published_date": "2026-09-29",
-    "updated_date": null,
-    "checked_date": "2026-10-05",
+    "updated_date": "2026-10-06",
+    "checked_date": "2026-10-08",
     "licence": "Open Government Licence v3.0",
-    "note": "An ad hoc analysis published on the day of the announcement. It gives the method and the baseline of the government's savings estimates, in cash and in 2025 to 2026 prices, for Great Britain. It does not give the paths of earnings and prices it assumed, or the measure of earnings."
+    "note": "An ad hoc analysis published on the day of the announcement. It gives the method and the baseline of the government's savings estimates, in cash and in 2025 to 2026 prices, for Great Britain, and a projection of pensioner poverty under the new rule. It does not give the paths of earnings and prices it assumed, or the measure of earnings. GOV.UK shows it as updated on 6 October 2026, when the department added a factsheet. Rechecked on 8 October 2026: the text of the analysis had not changed."
+  },
+  "dwp-triple-lock-factsheet-2026": {
+    "publisher": "Department for Work and Pensions",
+    "title": "Triple Lock reform factsheet",
+    "url": "https://www.gov.uk/government/publications/state-pension-uprating-analysis-2026/triple-lock-reform-factsheet",
+    "published_date": "2026-10-06",
+    "updated_date": null,
+    "checked_date": "2026-10-08",
+    "licence": "Open Government Licence v3.0",
+    "note": "A factsheet added to the department's analysis on 6 October 2026. It describes the rule. It is not law."
   },
   "ageuk-response-2026-09-29": {
     "publisher": "Age UK",
@@ -1029,14 +1059,54 @@
     "licence": "Copyright of the publisher. Short quotation only.",
     "note": "A news report of a television interview. It is evidence of what was reported."
   },
-  "hm-responses-2026-09-29": {
-    "publisher": "Healthcare Management",
-    "title": "Burnham Pledges Landmark National Care Service at Labour Conference",
-    "url": "https://www.healthcare-management.uk/breaking-news-burnham-promises-build-national-care-service",
+  "hf-response-2026-09-29": {
+    "publisher": "The Health Foundation",
+    "title": "The Health Foundation responds to Prime Minister Andy Burnham's Labour Party Conference speech",
+    "url": "https://www.health.org.uk/media-office/press-releases/the-health-foundation-responds-to-prime-minister-andy-burnhams-labour-party-conference-speech",
     "published_date": "2026-09-29",
     "updated_date": null,
-    "checked_date": "2026-09-30",
+    "checked_date": "2026-10-12",
     "licence": "Copyright of the publisher. Short quotation only.",
-    "note": "A trade news report that quotes several organisations. Age UK's statement is on its own site, which this site cites instead. The sites of the Health Foundation and the King's Fund refuse automated reading, so their statements were not checked there."
+    "note": "The foundation's own statement, by Dr Jennifer Dixon, its chief executive. The site refuses automated reading, so it was read in a browser."
+  },
+  "kf-response-2026-09-29": {
+    "publisher": "The King's Fund",
+    "title": "The King's Fund responds to the Prime Minister's Labour Party Conference speech and comments on social care reform",
+    "url": "https://www.kingsfund.org.uk/insight-and-analysis/press-releases/pm-lpc-speech-scr",
+    "published_date": "2026-09-29",
+    "updated_date": null,
+    "checked_date": "2026-10-12",
+    "licence": "Copyright of the publisher. Short quotation only.",
+    "note": "The fund's own statement, by Sarah Woolnough, its chief executive. The site refuses automated reading, so it was read in a browser."
+  },
+  "finance-act-2026-s10": {
+    "publisher": "UK Public General Acts",
+    "title": "Finance Act 2026, section 10",
+    "url": "https://www.legislation.gov.uk/ukpga/2026/11/section/10",
+    "published_date": null,
+    "updated_date": null,
+    "checked_date": "2026-10-13",
+    "licence": "Open Government Licence v3.0",
+    "note": "Revised text as shown on legislation.gov.uk on the date checked."
+  },
+  "govuk-voluntary-ni": {
+    "publisher": "HM Revenue and Customs",
+    "title": "Voluntary National Insurance",
+    "url": "https://www.gov.uk/voluntary-national-insurance-contributions",
+    "published_date": null,
+    "updated_date": "2026-09-30",
+    "checked_date": "2026-10-13",
+    "licence": "Open Government Licence v3.0",
+    "note": "GOV.UK guides show no publication date. The date given is the last technical update recorded by GOV.UK."
+  },
+  "govuk-voluntary-ni-abroad": {
+    "publisher": "HM Revenue and Customs",
+    "title": "Voluntary National Insurance: If you live or work abroad (or have previously)",
+    "url": "https://www.gov.uk/voluntary-national-insurance-contributions/if-you-live-or-work-abroad",
+    "published_date": null,
+    "updated_date": "2026-09-30",
+    "checked_date": "2026-10-13",
+    "licence": "Open Government Licence v3.0",
+    "note": "GOV.UK guides show no publication date. The date given is the last technical update recorded by GOV.UK. The weekly rates quoted are in the guide's part on rates."
   }
 }

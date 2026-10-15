@@ -63,7 +63,7 @@ export function renderBudget(input) {
     .join("");
 
   return (
-    `<h3>Your result</h3>` +
+    `<h3 id="budget-result-heading">Your result</h3>` +
     `<p><span class="status">Your own figures</span> The amounts you entered are for ${PERIOD_LABELS[input.period]}.` +
     (input.presetLabel ? ` Spending started from an example budget: ${input.presetLabel}.` : "") +
     `</p>` +

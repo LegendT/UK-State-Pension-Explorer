@@ -8,7 +8,7 @@ Status values: **Built**, **Built with a gap** (the gap is named), **Not built**
 
 | Requirement | Where | Check | Status |
 | --- | --- | --- | --- |
-| Neutral explainer, strongest arguments on each side | `/reform-options/entitlement/#arguments`, same five questions for each option | Read through by the author only | Built with a gap: no second reader |
+| Neutral explainer, strongest arguments on each side | `/reform-options/#arguments`, same five questions for each option | Read through by the author only | Built with a gap: no second reader |
 | Owner's concern is a question, not a conclusion | No default favours a rule. Default scenario is the one where three rules coincide, and the reason is stated | Tool 2 tested in a browser | Built |
 | Editorial page deferred | None | | Not built, as the scope says |
 
@@ -57,7 +57,7 @@ Status values: **Built**, **Built with a gap** (the gap is named), **Not built**
 | Tool 4: series separate, new series from 2016/17 | `lib/history.js` | Test | Built |
 | Tool 4: decisions stored apart from reconstructions | `history.json` against `reconstruct` | Test | Built |
 | Tool 4: start year and amount visible | Note above the table | Browser | Built |
-| Tool 4: table and download or copy | Buttons, and a static CSV | Browser: form. Download and copy buttons not pressed in a test | Built with a gap |
+| Tool 4: table and download or copy | Buttons, and a static CSV | Browser: form. `npm run test:tools` presses the download and copy buttons and checks the copied table (W12, 13 October 2026) | Built |
 | Arithmetic separate from presentation | `lib/` has no DOM | | Built |
 | Out of scope items not built | No entitlement engine, tax or benefit calculator, national model or care simulator | | As the scope says |
 
@@ -69,9 +69,9 @@ Status values: **Built**, **Built with a gap** (the gap is named), **Not built**
 | Qualitative claim register | `claims.json` | `check-build.mjs` | Built |
 | Value stored once | `fig` and `figure` filters | Build fails on an unknown id | Built with a gap: `news.json` and `tables.json` repeat a few values in text |
 | Dated language, no badges | Source notes | | Built |
-| Passage checks | `scripts/check-passages.py` | All passages found: by script, or in a browser for three sites that refuse scripts | Built |
-| Values without a passage | `scripts/check-values.py` and direct look-up in the spreadsheets | All found. Two wealth figures: value found, row not confirmed | Built with a gap |
-| Review status shown honestly | `review_status` = `checked-with-ai-assistance`, preview banner | | Owner: no human review |
+| Passage checks | `scripts/check-passages.py` | All passages found: by script, or in a browser for the sites that refuse scripts (23 passages) | Built |
+| Values without a passage | `scripts/check-values.py` and direct look-up in the spreadsheets | All found. The 12 figures without a quoted passage record their file and cell (W4, 8 October 2026) | Built |
+| Review status shown honestly | `review_status` = `checked-with-ai-assistance`, preview banner | | The owner read every page on 8 October 2026 (launch step 3); the formal review date is row W16 of `docs/launch-dependencies.md` |
 | Conflicting sources not resolved silently | Decision log, source notes | | Built |
 
 ## Section 6: design and accessibility
@@ -109,5 +109,5 @@ See `docs/accessibility-assessment.md`. Status: **Built with a gap**. Automated 
 | HTML site map | `/site-map/` | | Built |
 | Environment indexing controls | `site.js`, `base.njk`, `robots.njk` | Builds in three environments | Built |
 | AI crawler policy | `launch-dependencies.md` item 7: `allow`, decision 72 | | Set at launch |
-| Deployed checks | Netlify deploy preview of pull request 1 | `curl` and Chrome, recorded in `docs/HANDOVER.md` as it stood at commit `75d0574` | Done for the deploy preview. Not done for the main site address or a production domain |
+| Deployed checks | Netlify deploy preview of pull request 1 | `curl` and Chrome, recorded in `docs/HANDOVER.md` as it stood at commit `75d0574` | Done for the deploy preview, and on 6 October 2026 for the main site address past the sign-in: `docs/HANDOVER.md`, "Last checks". Not done for a production domain |
 | Search console | | | Not done: needs account and domain |

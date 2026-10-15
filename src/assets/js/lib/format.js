@@ -16,6 +16,15 @@ export function plain(value, digits = 1) {
   return digits === 1 ? number.format(value) : value.toLocaleString("en-GB", { maximumFractionDigits: digits });
 }
 
+// The address of a result: the page's address with the settings as its query and the tool's id as
+// its fragment. Built only when the reader asks for a link (W31, decision 96).
+export function settingsLink(href, settings, hash) {
+  const url = new URL(href);
+  url.search = new URLSearchParams(settings).toString();
+  url.hash = hash;
+  return url.toString();
+}
+
 export function list(items) {
   if (items.length < 2) return items.join("");
   return `${items.slice(0, -1).join(", ")} and ${items[items.length - 1]}`;

@@ -5,7 +5,7 @@
     "table_reference": "Sheet: State Pension. Nominal terms block and real terms block, total rows; caseload block, total row.",
     "checked_date": "2026-09-29",
     "classification": "observed-statistic and forecast",
-    "qualifications": "Northern Ireland is not included. 2022/23 to 2024/25 are outturn. Later years are forecasts made in spring 2026. Constant prices use the GDP deflator, not the Consumer Prices Index. Recipients are an average over the year.",
+    "qualifications": "Northern Ireland is not included. 2022/23 to 2024/25 are outturn. Later years are forecasts made in spring 2026. Constant prices use the GDP deflator, a measure of prices across the whole economy, not the Consumer Prices Index. Recipients are an average over the year.",
     "columns": [
       "Financial year",
       "Status",

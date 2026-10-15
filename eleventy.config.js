@@ -74,9 +74,44 @@ export default function (eleventyConfig) {
   });
   // The first sentence of a figure's qualifications is the caveat that changes what the figure
   // means, and is shown open. The rest is shown under "More about this figure".
-  eleventyConfig.addFilter("splitCaveat", (text) => {
+  const splitCaveat = (text) => {
     const match = String(text || "").match(/^(.+?\.)\s+(?=[A-Z£0-9"'])([\s\S]+)$/);
     return match ? [match[1], match[2]] : [text || "", ""];
+  };
+  eleventyConfig.addFilter("splitCaveat", splitCaveat);
+  // The caveat a source line opens with must say what changes the figure's meaning (W19, from F3 of
+  // the readability review). The kind is printed beside it, so a first sentence that only restates
+  // the kind or the status, such as "A survey estimate.", "A 50-year projection, not a forecast." or
+  // "Official statistics in development.", stops the
+  // build, as does an empty one. Tested where the line is drawn, so a figure reaching a source line
+  // through a variable or a loop is tested too.
+  const BARE_KIND = /^(an? |the )?([\w-]+ ){0,2}(estimate|benchmark|projection|forecast|count|statistic|calculation|figure|rate|rule)s?( only)?(, not an? \w+)?\.$|^indicative only\.$|^(accredited )?official statistics( in development|, not accredited)?(, which can be revised)?\.$|^accreditation (is )?suspended\.$/i;
+  eleventyConfig.addFilter("openCaveat", function (f) {
+    const caveat = splitCaveat(f.qualifications);
+    if (!caveat[0]) throw new Error(`Figure "${f.id}" is shown with a source line but has no caveat to open with (${this.page.inputPath})`);
+    if (BARE_KIND.test(caveat[0])) throw new Error(`Figure "${f.id}" opens with a kind, not a caveat: "${caveat[0]}" (${this.page.inputPath})`);
+    return caveat;
+  });
+  // What a group of figures has in common, for one line above the group (W18, from R14 of the
+  // readability review): the kind, the period, the source and the key caveat, each only where every
+  // figure in the group has it. Each figure's own note then leaves those parts out.
+  eleventyConfig.addFilter("shared", function (ids) {
+    if (ids.length < 2) throw new Error(`A shared line needs two or more figures: ${ids.join(", ")}`);
+    const records = ids.map((id) => {
+      if (!this.ctx.figures[id]) throw new Error(`No figure "${id}" in src/_data/figures.json (${this.page.inputPath})`);
+      return this.ctx.figures[id];
+    });
+    const same = (key) => records.every((r) => r[key] === records[0][key]);
+    const caveat = splitCaveat(records[0].qualifications)[0];
+    const statuses = records.map((r) => this.ctx.sources[r.source_id].status);
+    const g = {
+      kind: same("classification") && same("provisional") && statuses.every((s) => s === statuses[0]) ? { ...records[0], status: statuses[0] } : null,
+      period: same("period_label") ? records[0].period_label : null,
+      source: same("source_id") ? this.ctx.sources[records[0].source_id] : null,
+      caveat: caveat && records.every((r) => splitCaveat(r.qualifications)[0] === caveat) ? caveat : null,
+    };
+    if (!g.kind && !g.period && !g.source && !g.caveat) throw new Error(`Figures ${ids.join(", ")} share nothing to say once`);
+    return g;
   });
   eleventyConfig.addFilter("upperFirst", (text) => text.charAt(0).toUpperCase() + text.slice(1));
   eleventyConfig.addFilter("figPence", function (id) {
@@ -148,39 +183,65 @@ export default function (eleventyConfig) {
     });
   });
 
+  // A figure in running text (m.f) must be followed by its own source's citation before any other
+  // and before the next heading, so it never sits under another body's citation (W24, from F4 of the
+  // readability review). m.f leaves a comment naming the figure and its source's address; this
+  // checks it and removes it, so the published page carries no trace.
+  // ponytail: looks only at the first citation after the figure, so a figure cited by its own source
+  // two paragraphs later passes. Bound the search to the figure's block if that is ever abused.
+  const FIG_MARK = /<!--fig:(\S+) (\S*)-->/g;
+  eleventyConfig.addTransform("proseCitations", function (content) {
+    if (!(this.page.outputPath || "").endsWith(".html")) return content;
+    const problems = [];
+    for (const mark of content.matchAll(FIG_MARK)) {
+      const after = content.slice(mark.index + mark[0].length);
+      const stop = after.search(/<h[1-6]\b/);
+      const cite = (stop < 0 ? after : after.slice(0, stop)).match(/<a class="cite" href="([^"]+)"/);
+      if (!cite) problems.push(`"${mark[1]}" has no citation before the next heading`);
+      else if (cite[1] !== mark[2]) problems.push(`"${mark[1]}" is followed first by a citation of ${cite[1]}, not its own source ${mark[2]}`);
+    }
+    if (problems.length) throw new Error(`A figure in running text sits under another source's citation, or none (${this.page.inputPath}):\n  ${problems.join("\n  ")}`);
+    return content.replace(FIG_MARK, "");
+  });
+
   // A scrolling table region with no name is named by its table's caption, so the two cannot differ.
+  // The caption's id is typed in the template (W29): a caption without one stops the build.
   eleventyConfig.addTransform("tableRegions", function (content) {
     if (!(this.page.outputPath || "").endsWith(".html")) return content;
-    let n = 0;
-    return content.replace(/<div class="scroll-x" tabindex="0" role="region">(\s*<table[^>]*>\s*)<caption>/g, (whole, table) => {
-      const id = `table-caption-${++n}`;
+    if (/<caption\b(?![^>]*\sid=)/.test(content)) throw new Error(`A table caption has no id (${this.page.inputPath})`);
+    return content.replace(/<div class="scroll-x" tabindex="0" role="region">(\s*<table[^>]*>\s*)<caption id="([^"]+)">/g, (whole, table, id) => {
       return `<div class="scroll-x" tabindex="0" role="region" aria-labelledby="${id}">${table}<caption id="${id}">`;
     });
   });
 
-  // Every h3 gets an id taken from its words, so a reader can link to it. On a page with a contents
-  // list, each section after the first starts with a link back to the list, and so does the end of main.
-  const BACK = '<p class="to-contents"><a href="#contents-heading">Back to contents</a></p>\n';
-  const NOT_SECTIONS = new Set(["contents-heading", "section-heading"]);
+  // Every h2 and h3 carries an id typed in the template, so an address does not change when a heading
+  // is reworded (W29, from R16 of the readability review). Until 13 October 2026 an h3 without one was
+  // given an id made from its words at build time. A page with two elements of one id also stops.
   eleventyConfig.addTransform("anchors", function (content) {
     if (!(this.page.outputPath || "").endsWith(".html")) return content;
-    const used = new Set([...content.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]));
-    const html = content.replace(/<h3>([\s\S]*?)<\/h3>/g, (whole, inner) => {
-      const base = inner.replace(/<[^>]+>/g, "").replace(/&[a-z0-9#]+;/gi, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").slice(0, 60).replace(/^-|-$/g, "");
-      if (!base) return whole;
-      let id = base;
-      for (let n = 2; used.has(id); n++) id = `${base}-${n}`;
-      used.add(id);
-      return `<h3 id="${id}">${inner}</h3>`;
-    });
-    if (!html.includes('id="contents-heading"')) return html;
-    const start = html.indexOf("<main");
-    const end = html.indexOf("</main>");
-    const sections = [...html.slice(start, end).matchAll(/(<section\b[^>]*>\s*)?<h2 id="([^"]+)"/g)].filter((m) => !NOT_SECTIONS.has(m[2]));
-    const at = sections.slice(1).map((m) => start + m.index);
-    let out = html.slice(0, end) + BACK + html.slice(end);
-    for (const i of at.reverse()) out = out.slice(0, i) + BACK + out.slice(i);
-    return out;
+    const bare = [...content.matchAll(/<h[23]\b[^>]*>[^<]*/g)].find((m) => !/\sid="/.test(m[0]));
+    if (bare) throw new Error(`A heading has no id: ${bare[0]} (${this.page.inputPath})`);
+    const ids = [...content.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]);
+    const twice = ids.filter((id, i) => ids.indexOf(id) !== i);
+    if (twice.length) throw new Error(`An id is used twice: ${[...new Set(twice)].join(", ")} (${this.page.inputPath})`);
+    return content;
+  });
+
+  // A page's one name: its label in the reform section list, else in the main navigation, else its
+  // register title. The Next and Previous links and the site map use it (W7).
+  eleventyConfig.addFilter("pageName", function (path) {
+    const { site, pages } = this.ctx;
+    const hit = site.reformPages.find((p) => p.href === path) || site.nav.find((p) => p.href === path);
+    return hit ? hit.label : pages.find((p) => p.path === path).title;
+  });
+  // The pages before and after this one: the reform section's reading order, or a "next" in the page
+  // register. Null where there is none.
+  eleventyConfig.addFilter("pager", function (path) {
+    const order = this.ctx.site.reformPages.map((p) => p.href);
+    const i = order.indexOf(path);
+    if (i >= 0) return { previous: order[i - 1] || null, next: order[i + 1] || null };
+    const entry = this.ctx.pages.find((p) => p.path === path);
+    return { previous: null, next: (entry && entry.next) || null };
   });
 
   return {
