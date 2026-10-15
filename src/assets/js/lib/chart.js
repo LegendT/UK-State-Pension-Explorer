@@ -107,11 +107,23 @@ export function lineChart({ id, title, description, labels, series: input, yLabe
   const yMax = Math.max(yTicks[yTicks.length - 1], high + margin);
   const innerH = H - PAD.top - PAD.bottom;
   const y = (v) => PAD.top + innerH - ((v - yMin) / (yMax - yMin)) * innerH;
-  // A phone names the first and last years and as many between as fit, about 72 px apart.
-  const count = narrow ? Math.max(2, Math.min(labels.length, Math.floor(innerW / 72) + 1)) : 0;
-  const named = narrow
-    ? new Set(Array.from({ length: count }, (_, k) => Math.round((k * (labels.length - 1)) / (count - 1))))
-    : new Set(labels.map((_, i) => i).filter((i) => i % Math.ceil(labels.length / 10) === 0));
+  // A phone names the first and last years and those between that sit at least 72 px after the one
+  // before. The last is right-aligned to the line's end, so its centre is half its width further left:
+  // 7.5 px a character at 13 px. 72 px keeps names of up to 7 characters, "Start" or "2026/27",
+  // about 20 px clear. Spacing them evenly put two years too close: rounding, and the right-aligned
+  // last year, which the old pick ignored (W37).
+  const last = labels.length - 1;
+  const named = new Set(narrow ? [0, last] : labels.map((_, i) => i).filter((i) => i % Math.ceil(labels.length / 10) === 0));
+  if (narrow) {
+    const lastCentre = x(last) - (String(labels[last]).length * 7.5) / 2;
+    let previous = x(0);
+    for (let i = 1; i < last; i += 1) {
+      if (x(i) - previous >= 72 && lastCentre - x(i) >= 72) {
+        named.add(i);
+        previous = x(i);
+      }
+    }
+  }
 
   const grid = yTicks
     .map(

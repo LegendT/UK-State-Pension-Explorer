@@ -40,6 +40,37 @@ test("at 320 px, a 220 chart names only the first and last years, inside its wid
   assert.match(svg, /class="chart-end chart-series--1" x="204.0" y="[\d.]+" text-anchor="end"/);
 });
 
+test("on a phone no two year names overlap, the last one right-aligned (W37)", () => {
+  const year = (y) => `${y}/${String((y + 1) % 100).padStart(2, "0")}`;
+  // The rule comparison's axis, "Start" then ten years: at 400 px "2043/44" ran into "2045/46".
+  // The history explorer's, 2010/11 to 2026/27.
+  const axes = [
+    ["Start", ...Array.from({ length: 10 }, (_, i) => year(2036 + i))],
+    Array.from({ length: 17 }, (_, i) => year(2010 + i)),
+  ];
+  // Measured in Chrome on 15 October 2026: "2039/40" is 53 px wide at 13 px, about 7.5 a
+  // character. The code uses the same estimate; the drawn chart was looked at at 360 to 430 px.
+  const edges = (m) => {
+    const w = m[4].length * 7.5;
+    const at = Number(m[1]);
+    return m[3] === "end" ? [at - w, at] : [at - w / 2, at + w / 2];
+  };
+  for (const years of axes) {
+    for (let width = 260; width < 600; width += 10) {
+      const svg = lineChart({ ...options, labels: years, series: [{ label: "Rate", values: years.map((_, i) => 240 + i * 10) }], marks: [], width });
+      const named = [...svg.matchAll(/class="chart-tick" x="([\d.]+)" y="([\d.]+)" text-anchor="(\w+)">([^<]+)</g)].filter((m) => years.includes(m[4]));
+      const lastName = named[named.length - 1];
+      assert.equal(named[0][4], years[0], `first name at ${width}`);
+      assert.equal(lastName[4], years[years.length - 1], `last name at ${width}`);
+      assert.equal(lastName[3], "end", `last name right-aligned at ${width}`);
+      for (let k = 1; k < named.length; k += 1) {
+        const gap = edges(named[k])[0] - edges(named[k - 1])[1];
+        assert.ok(gap >= 12, `${named[k - 1][4]} and ${named[k][4]} are ${gap.toFixed(1)} px apart at ${width}`);
+      }
+    }
+  }
+});
+
 test("the build draws at 720 with the names after the lines", () => {
   const svg = lineChart(options);
   assert.match(svg, /viewBox="0 0 720 380"/);
