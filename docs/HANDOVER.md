@@ -6,7 +6,7 @@ The site is a **preview for review**. It is not published. The repository is htt
 
 **This file holds state only.** Do not add a dated section. The record of a change, with its checks, goes in the description of its pull request, and a decision goes in `docs/decision-log.md`. The record up to pull request 21 is this file as it stood before the cut: `git show 75d0574:docs/HANDOVER.md`.
 
-**Next action:** the owner's. The only open row of "Work before step 4" in `docs/launch-dependencies.md` is W16, the owner's re-read of every page on the deploy preview. Then launch step 4. The assistant acts only on the owner's word.
+**Next action:** the owner's. The only open row of "Work before step 4" in `docs/launch-dependencies.md` is W16, the owner's re-read of every page on the main address, behind the sign-in. Then launch step 4. The assistant acts only on the owner's word.
 
 ## How to look at it
 
@@ -104,7 +104,7 @@ As at 15 October 2026.
 
 | Item | What is needed |
 | --- | --- |
-| Launch | The steps, in order, are in `docs/launch-dependencies.md`, "Launch steps". Steps 1 to 3 are done. Before step 4 comes "Work before step 4" in the same file, where W16 is the owner's last row. Pull request 26 was merged on 15 October 2026. The owner set `CORRECTION_URL`, `OWNER_NAME` and `REVIEWER_NAME` for all contexts the same day (decision 100), and W16 reads the deploy preview of the pull request that carries decision 100's fixes. The assistant does each row on the owner's word |
+| Launch | The steps, in order, are in `docs/launch-dependencies.md`, "Launch steps". Steps 1 to 3 are done. Before step 4 comes "Work before step 4" in the same file, where W16 is the owner's last row. Pull requests 26, 27 (decision 100's fixes) and 28 (W36, vertical rhythm) were merged on 15 October 2026, and the owner set `CORRECTION_URL`, `OWNER_NAME` and `REVIEWER_NAME` for all contexts the same day (decision 100). W16 reads the main address, https://ukstatepensionexplorer.netlify.app, which is still behind the sign-in and built from `main`. The assistant does each row on the owner's word |
 
 Every other open item is in `docs/launch-dependencies.md`: before launch in "Work before step 4", after it in "After launch, first update". `docs/pre-launch-review.md`, which is frozen, points here for its "Rendered pages" and "Code" items. They are rows of that table.
 
