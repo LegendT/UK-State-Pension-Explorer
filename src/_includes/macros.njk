@@ -160,12 +160,14 @@
 {%- macro f(id) -%}{{ id | fig }}<!--fig:{{ id }} {{ (id | figure).source.url }}-->{%- endmacro -%}
 
 {#- One text input with its label, hint and error line. inputmode keeps a number keypad on phones. -#}
-{%- macro field(id, label, value, hint, prefix, suffix, mode) -%}
+{#- groupHint: the id of a hint for the field's whole group, read with the first field only. VoiceOver
+    with Safari read a hint joined to a fieldset again at every field in it (step 4). -#}
+{%- macro field(id, label, value, hint, prefix, suffix, mode, groupHint) -%}
 <div class="field">
   <label for="{{ id }}">{{ label }}</label>
   {%- if hint %}<span class="hint" id="{{ id }}-hint">{{ hint }}</span>{% endif %}
   <span class="error" id="{{ id }}-error" role="alert"></span>
-  <span class="affix">{% if prefix %}<span aria-hidden="true">{{ prefix }}</span>{% endif %}<input type="text" inputmode="{{ mode or 'decimal' }}" id="{{ id }}" name="{{ id }}" value="{{ value }}" autocomplete="off"{% if hint %} aria-describedby="{{ id }}-hint"{% endif %}>{% if suffix %}<span aria-hidden="true">{{ suffix }}</span>{% endif %}</span>
+  <span class="affix">{% if prefix %}<span aria-hidden="true">{{ prefix }}</span>{% endif %}<input type="text" inputmode="{{ mode or 'decimal' }}" id="{{ id }}" name="{{ id }}" value="{{ value }}" autocomplete="off"{% if groupHint %} data-group-hint="{{ groupHint }}"{% endif %}{% if hint or groupHint %} aria-describedby="{{ [groupHint, (id ~ '-hint') if hint else ''] | select | join(' ') }}"{% endif %}>{% if suffix %}<span aria-hidden="true">{{ suffix }}</span>{% endif %}</span>
 </div>
 {%- endmacro -%}
 

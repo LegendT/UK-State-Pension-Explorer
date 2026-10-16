@@ -31,9 +31,9 @@ permalink: /tools/budget/
 
   <div class="tool-layout">
   <form id="budget-form" class="js-only" novalidate autocomplete="off">
-    <fieldset aria-describedby="budget-household-hint">
+    <fieldset>
       <legend>Household</legend>
-      <div class="choice"><input type="radio" id="budget-household-single" name="budget-household" value="single" checked><label for="budget-household-single">One person</label></div>
+      <div class="choice"><input type="radio" id="budget-household-single" name="budget-household" value="single" checked aria-describedby="budget-household-hint"><label for="budget-household-single">One person</label></div>
       <div class="choice"><input type="radio" id="budget-household-couple" name="budget-household" value="couple"><label for="budget-household-couple">Two people</label></div>
       <p class="hint" id="budget-household-hint">Choosing two people adds a second State Pension field and changes the example budgets offered.</p>
     </fieldset>
@@ -74,7 +74,7 @@ permalink: /tools/budget/
       <div id="budget-preset-about"></div>
     </fieldset>
 
-    <fieldset aria-describedby="budget-income-hint">
+    <fieldset>
       <legend>Income, before tax</legend>
       <p class="hint" id="budget-income-hint">Enter income <strong>before tax</strong>. Enter a benefit only if you <strong>actually receive</strong> it, and enter it once, here.</p>
       <button type="button" class="secondary" id="budget-fill-pension" aria-describedby="budget-fill-pension-hint">Fill in the full new State Pension ({{ "nsp-full-weekly" | fig }} a week)</button>
@@ -82,24 +82,24 @@ permalink: /tools/budget/
       <div class="fields">
         {%- for row in budgets.income %}
         <div{% if row.couple_only %} data-couple-only hidden{% endif %}>
-        {{ m.field("budget-" ~ row.id, row.label, "", row.hint, "£", "") }}
+        {{ m.field("budget-" ~ row.id, row.label, "", row.hint, "£", "", null, "budget-income-hint" if loop.first else null) }}
         </div>
         {%- endfor %}
       </div>
     </fieldset>
 
-    <fieldset aria-describedby="budget-tax-intro">
+    <fieldset>
       <legend>Income Tax</legend>
       <p class="hint" id="budget-tax-intro">Enter the household's Income Tax here only. If tax has already been taken off an income figure you entered, do not enter that tax again.</p>
-      {{ m.field("budget-tax", "Income Tax for the household", "", "Leave empty if you do not know it, and the result will say it is before tax. Enter 0 if you know no tax is due.", "£", "") }}
+      {{ m.field("budget-tax", "Income Tax for the household", "", "Leave empty if you do not know it, and the result will say it is before tax. Enter 0 if you know no tax is due.", "£", "", null, "budget-tax-intro") }}
     </fieldset>
 
-    <fieldset aria-describedby="budget-spending-hint">
+    <fieldset>
       <legend>Spending</legend>
       <p class="hint" id="budget-spending-hint">Enter each bill at the amount you are <strong>actually charged</strong>. If a discount has already reduced a bill, do not also enter the discount as income.</p>
       <div class="fields">
         {%- for row in budgets.categories %}
-        <div>{{ m.field("budget-" ~ row.id, row.label, "", row.hint, "£", "") }}</div>
+        <div>{{ m.field("budget-" ~ row.id, row.label, "", row.hint, "£", "", null, "budget-spending-hint" if loop.first else null) }}</div>
         {%- endfor %}
       </div>
     </fieldset>

@@ -195,6 +195,9 @@ for (const [url, html] of written) {
     if (!by && !/aria-label="[^"]+"/.test(attrs)) fail(`${url}: a scrolling region has no name`);
   }
   if (/<\/dt><dd>/.test(html)) fail(`${url}: a dt runs into its dd with no space`);
+  // VoiceOver with Safari read a hint joined to a fieldset at every field in it (step 4): a group's
+  // hint goes with its first field, through the field macro's groupHint.
+  if (/<fieldset[^>]*aria-describedby/.test(html)) fail(`${url}: a fieldset has a description; join it to the group's first field`);
   // VoiceOver with Safari read a time element twice, and stopped at the edges of a span (step 4).
   if (/<time[\s>]|class="date"/.test(html)) fail(`${url}: a date in an element; print dates with dateText or monthOrDayText`);
 }
