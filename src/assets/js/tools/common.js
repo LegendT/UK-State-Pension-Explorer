@@ -24,8 +24,8 @@ export function setError(input, message) {
   const error = document.getElementById(`${input.id}-error`);
   const hint = document.getElementById(`${input.id}-hint`);
   // Only what changes is written. Every redraw checks every field, and rewriting unchanged values,
-  // about 40 for one key in the budget explorer, cut VoiceOver off two syllables into the result's
-  // message in Safari (step 4).
+  // about 40 for one key in the budget explorer, cut VoiceOver off at "Result U…" in Safari
+  // (step 4).
   const set = (name, value) => input.getAttribute(name) !== value && input.setAttribute(name, value);
   if (error.textContent !== (message || "")) error.textContent = message || "";
   set("aria-invalid", message ? "true" : "false");

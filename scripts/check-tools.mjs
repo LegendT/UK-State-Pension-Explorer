@@ -80,7 +80,7 @@ const submit = (page, form) => page.$eval(form, (el) => el.requestSubmit());
   check("budget: a result follows the first amount", (await text(page, "#budget-result h3")) === "Your result");
   check("budget: the update is announced", /Result updated/.test(await text(page, "#budget-status")));
   // Step 4: rewriting every field's unchanged state on each redraw cut VoiceOver off in Safari.
-  await page.evaluate((field) => { window.formWrites = 0; new MutationObserver((records) => (window.formWrites += records.length)).observe(document.querySelector("#budget-form"), { attributes: true, childList: true, characterData: true, subtree: true }); }, firstIncome);
+  await page.evaluate(() => { window.formWrites = 0; new MutationObserver((records) => (window.formWrites += records.length)).observe(document.querySelector("#budget-form"), { attributes: true, childList: true, characterData: true, subtree: true }); });
   await type(page, firstIncome, "0");
   check("budget: a keystroke writes nothing to the form", (await page.evaluate(() => window.formWrites)) === 0, await page.evaluate(() => window.formWrites));
   await type(page, firstIncome, "1000");
