@@ -60,7 +60,7 @@ permalink: /tools/budget/
         <label for="budget-preset">Example budget</label>
         <select id="budget-preset" name="budget-preset">
           <option value="">None</option>
-          {#- A group per research standard, so each option can be short enough for a phone (W28). Grouped by tenure, and labelled from the first record, so this holds only while each tenure has one standard: a second standard for a tenure needs its own key. The household chosen above hides the other household's option. -#}
+          {#- A group per research standard, so each option can be short enough for a phone (W28). Grouped by tenure, and labelled from the first record, so this holds only while each tenure has one standard: a second standard for a tenure needs its own key. The household chosen above takes the other household's option out of the menu (step 4). -#}
           {%- for tenure, presets in budgets.presets | groupby("tenure") %}
           <optgroup label="{{ presets[0].label.split(': ')[1] }} ({{ presets[0].price_date }} prices)">
             {%- for preset in presets %}
