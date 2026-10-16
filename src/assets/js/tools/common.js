@@ -79,8 +79,7 @@ export function glanceText(glance) {
     .map((part) => {
       if (part.matches("dl > div")) return `${part.querySelector("dt").textContent}: ${[...part.querySelectorAll("dd")].map((dd) => dd.textContent).join(", ")}`;
       const label = part.querySelector(".status");
-      const text = part.textContent.trim();
-      return label ? `${label.textContent}: ${text.slice(label.textContent.length).trim()}` : text;
+      return label ? `${label.textContent}: ${[...part.childNodes].filter((node) => node !== label).map((node) => node.textContent).join("").trim()}` : part.textContent.trim();
     })
     .map((text) => (/[.!?]$/.test(text) ? text : `${text}.`))
     .join(" ");
