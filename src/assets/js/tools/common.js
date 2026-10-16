@@ -25,7 +25,8 @@ export function setError(input, message) {
   const hint = document.getElementById(`${input.id}-hint`);
   error.textContent = message || "";
   input.setAttribute("aria-invalid", message ? "true" : "false");
-  const ids = [hint && hint.id, message && error.id].filter(Boolean).join(" ");
+  // A group's hint, read with its first field only, stays joined to it (step 4).
+  const ids = [input.dataset.groupHint, hint && hint.id, message && error.id].filter(Boolean).join(" ");
   if (ids) input.setAttribute("aria-describedby", ids);
   else input.removeAttribute("aria-describedby");
   return !message;
