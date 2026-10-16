@@ -209,11 +209,13 @@ for (const [url, html] of written) {
   for (const [svg] of html.matchAll(/<svg[^>]*role="img"[^>]*>/g)) {
     if (!/aria-labelledby="[^" ]+-title"/.test(svg) || /aria-describedby/.test(svg)) fail(`${url}: a chart's name is not its title alone: ${svg}`);
   }
-  // A chart starts with its figcaption, then a paragraph of what it shows, read in order: VoiceOver
-  // with Safari left a description unheard (step 4, decision 104).
-  for (const [, inner] of html.matchAll(/<figure class="chart"[^>]*>([\s\S]*?)<\/figure>/g)) {
+  // A chart starts with its figcaption, and a paragraph of what it shows comes just before it, outside
+  // the figure: VoiceOver with Safari left a description unheard, and passed over a paragraph inside
+  // the figure (step 4, decision 104).
+  for (const [, summary, inner] of html.matchAll(/(<p class="chart-summary">[^<]*<\/p>)?\s*<figure class="chart"[^>]*>([\s\S]*?)<\/figure>/g)) {
     if (!/^\s*<figcaption>/.test(inner)) fail(`${url}: a chart does not start with its figcaption`);
-    else if (!/^\s*<figcaption>[\s\S]*?<\/figcaption>\s*<p class="chart-summary">/.test(inner)) fail(`${url}: a chart has no summary after its figcaption`);
+    if (!summary) fail(`${url}: a chart has no summary just before it`);
+    if (inner.includes("chart-summary")) fail(`${url}: a chart's summary is inside its figure`);
   }
   for (const [, cls, first] of html.matchAll(/<div class="([^"]*)" role="note">\s*<([a-z0-9]+)/g)) {
     if (!/^h[2-6]$/.test(first) && !cls.includes("preview")) fail(`${url}: a ${cls} note does not start with a heading`);

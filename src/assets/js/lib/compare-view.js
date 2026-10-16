@@ -167,7 +167,7 @@ export function renderComparison(options) {
     xLabel: "Tax year",
   });
   const chartText = chartSummary({
-    description: `The five rules over ${path.length} years. Rules with the same result, or less than 0.1% apart, in every year share one line.`,
+    description: `The chart below shows the five rules over ${path.length} years. Rules with the same result, or less than 0.1% apart, in every year share one line.`,
     labels: chartLabels,
     series: chartSeries,
     format: (value) => (measure === "earnings" ? value.toFixed(1) : money(Math.round(value * 100))),
@@ -224,7 +224,7 @@ export function renderComparison(options) {
     `The cash floor is ${cashFloor ? "on, so no rule can lower the amount in pounds" : "off, so a rule can lower the amount in pounds"}.</p>` +
     `<p>The rule announced for April 2030 is our reading of it, on four assumptions. It is not what the government's rule will pay. <a href="#rule-2030-assumptions">The assumptions</a>.</p>` +
     summary(result, labels) +
-    `<figure class="chart" id="compare-chart"><figcaption><h4>${message(result, measure, years)}</h4><p>Illustration, not a forecast. ${info.label}: ${info.unit}</p></figcaption>${chartText}<div class="scroll-x" tabindex="0" role="region" aria-label="Chart: ${info.label}">${chart}</div></figure>` +
+    `${chartText}<figure class="chart" id="compare-chart"><figcaption><h4>${message(result, measure, years)}</h4><p>Illustration, not a forecast. ${info.label}: ${info.unit}</p></figcaption><div class="scroll-x" tabindex="0" role="region" aria-label="Chart: ${info.label}">${chart}</div></figure>` +
     source +
     values +
     difference +
