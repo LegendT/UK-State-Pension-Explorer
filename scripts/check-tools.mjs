@@ -95,11 +95,11 @@ const submit = (page, form) => page.$eval(form, (el) => el.requestSubmit());
   // Step 4: Safari showed a hidden option, so the menu holds only the household's own examples.
   const menu = () => page.$$eval("#budget-preset option[data-household]", (options) => options.map((option) => option.dataset.household));
   const coupleMenu = await menu();
-  check("budget: two people lists only the examples for two people", coupleMenu.length === budgets.presets.filter((preset) => preset.household === "couple").length && coupleMenu.every((h) => h === "couple"), coupleMenu);
+  check("budget: two people lists only the examples for two people", coupleMenu.length === budgets.presets.filter((preset) => preset.household === "couple").length && coupleMenu.every((h) => h === "couple") && (await page.$$("#budget-preset option[hidden]")).length === 0, coupleMenu);
   await page.click("#budget-household-single");
   await settle();
   const singleMenu = await menu();
-  check("budget: one person lists only the examples for one person, and none hidden", singleMenu.length === budgets.presets.filter((preset) => preset.household !== "couple").length && singleMenu.every((h) => h !== "couple") && (await page.$$("#budget-preset option[hidden]")).length === 0, singleMenu);
+  check("budget: one person lists only the examples for one person, and none hidden", singleMenu.length === budgets.presets.filter((preset) => preset.household === "single").length && singleMenu.every((h) => h === "single") && (await page.$$("#budget-preset option[hidden]")).length === 0, singleMenu);
   await page.click("#budget-household-couple");
   await settle();
   await page.select("#budget-preset", "");
