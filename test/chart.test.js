@@ -131,4 +131,7 @@ test("a chart's summary gives each line's first and last value, and a shared sta
   });
   assert.equal(together, `<p class="chart-summary">Three rules. All start at £241.30. In 2027/28: Triple lock and earnings link £260.00; Prices link £250.00. The table after the chart gives every value.</p>`);
   assert.doesNotMatch(lineChart(options), /<desc|aria-describedby/);
+  // Everything drawn sits in one hidden group after the title: VoiceOver with Safari read an axis value
+  // in place of the title (step 4).
+  assert.match(lineChart(options), /role="img"[^>]*><title id="c-title">Title<\/title><g aria-hidden="true">[\s\S]*<\/g><\/svg>/);
 });

@@ -217,9 +217,11 @@ export function lineChart({ id, title, labels, series: input, yLabel, yPrefix = 
     .join("");
 
   return (
-    // Named by its title alone. What it shows is in chartSummary, printed before it.
+    // Named by its title alone. What it shows is in chartSummary, printed before it. Everything drawn
+    // is hidden from screen readers: VoiceOver with Safari read the text inside an image, an axis
+    // value or a line's name, in place of its title (step 4).
     `<svg class="chart-svg${narrow ? " chart-svg--narrow" : ""}" viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="${id}-title">` +
-    `<title id="${id}-title">${escape(title)}</title>` +
+    `<title id="${id}-title">${escape(title)}</title><g aria-hidden="true">` +
     grid +
     `<line class="chart-axis" x1="${PAD.left}" x2="${W - PAD.right}" y1="${H - PAD.bottom}" y2="${H - PAD.bottom}"/>` +
     zeroBreak +
@@ -229,7 +231,7 @@ export function lineChart({ id, title, labels, series: input, yLabel, yPrefix = 
     `<text class="chart-label" transform="rotate(-90)" x="${-(PAD.top + innerH / 2)}" y="16" text-anchor="middle">${escape(yLabel)}</text>` +
     lines +
     endLabels +
-    `</svg><ul class="chart-legend">${legend}</ul>${zeroNote}`
+    `</g></svg><ul class="chart-legend">${legend}</ul>${zeroNote}`
   );
 }
 
