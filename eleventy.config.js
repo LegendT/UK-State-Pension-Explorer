@@ -35,13 +35,15 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addWatchTarget("src/assets/");
 
-  // A date the site does not hold is left out. It is never replaced by today's date. A span, not a time
-  // element: VoiceOver with Safari read each time element twice and split the text around it (step 4).
-  eleventyConfig.addFilter("dateTag", (iso) => (iso ? `<span class="date">${displayDate(iso)}</span>` : ""));
+  // A date the site does not hold is left out. It is never replaced by today's date. Plain text, its spaces
+  // non-breaking so it never splits across lines. No element: VoiceOver with Safari read a time element
+  // twice, and stopped at the edges of a span (step 4).
+  const unbroken = (text) => text.replace(/ /g, "\u00a0");
+  eleventyConfig.addFilter("dateText", (iso) => (iso ? unbroken(displayDate(iso)) : ""));
   eleventyConfig.addFilter("displayDate", displayDate);
   eleventyConfig.addFilter("monthOrDay", monthOrDay);
   // The same, for a source that gives a month only.
-  eleventyConfig.addFilter("monthOrDayTag", (iso) => `<span class="date">${monthOrDay(iso)}</span>`);
+  eleventyConfig.addFilter("monthOrDayText", (iso) => unbroken(monthOrDay(iso)));
   eleventyConfig.addFilter("money", (pence) => money(pence));
   eleventyConfig.addFilter("percent", (tenths) => percent(tenths));
   // Plain values for form fields: "230.25" and "3.8".

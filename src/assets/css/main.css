@@ -195,7 +195,6 @@ dd .ref:has(+ .onward) { margin-block-end: 0; }
 /* On a line of their own these links are not in a sentence, so they are padded to at least 24px
    tall (SC 2.5.8): lowest measured 24.8px, at 320, 390 and 1280px, on 2 October 2026. */
 .ref a, .onward a { padding-block: 0.4em; }
-.ref .date { white-space: nowrap; }
 
 /* The tools: decisions 62, 78 and 79. The summary stays in view while the figures change, as on
    the budget simulator of UK Public Finances. On a narrow screen tall enough to spare the room it
@@ -211,8 +210,6 @@ dd .ref:has(+ .onward) { margin-block-end: 0; }
 .tool-summary .headline { font-size: 0.95rem; font-weight: 700; }
 .tool-summary .tool-updated { margin: var(--space-s) 0 0; }
 .tool-stale { margin: 0 0 var(--space-s); }
-/* A date in a table cell stays on one line: a narrow column broke "12 April 2010" over three. */
-td .date, th .date { white-space: nowrap; }
 /* A label and its value. The rule comparison has three columns: rule, amount, and how far it is
    from the triple lock. */
 .tool-summary dl { display: grid; grid-template-columns: auto auto; gap: 0 var(--space-m); margin: 0; }
@@ -244,7 +241,6 @@ td .date, th .date { white-space: nowrap; }
 :is(p, dl, ul, ol) + .source-line { margin-top: -0.5rem; }
 .source-line.shared { margin: 0 0 var(--space-s); }
 .source-line a { padding-block: 0.4em; }
-.source-line .date { white-space: nowrap; }
 /* Under a tool chart or table, the line is followed by another table or heading: room below it, so it does not run into the next table's scroll cue (W26). */
 .result .source-line { margin-bottom: var(--space-m); }
 details.source { font-size: 0.9rem; margin: 0 0 var(--space-l); }

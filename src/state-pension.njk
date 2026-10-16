@@ -33,7 +33,7 @@ permalink: /state-pension/
 
 <h2 id="which-system">What your date of birth decides</h2>
 
-<p>There are two systems. Date of birth decides which one a person is on and their State Pension age. For people born between <span class="date">6 April 1951</span> and <span class="date">5 April 1953</span>, which system also depends on whether they are a man or a woman.</p>
+<p>There are two systems. Date of birth decides which one a person is on and their State Pension age. For people born between 6&nbsp;April&nbsp;1951 and 5&nbsp;April&nbsp;1953, which system also depends on whether they are a man or a woman.</p>
 
 {#- The years for the basic State Pension are typed from the claim bsp-30-years, listed below the table: its full sentence is too long for a row-group heading. The birth dates and ages match the overview's table, also typed; both follow the law, so change them together. -#}
 {% call m.scrollTable() %}
@@ -42,15 +42,15 @@ permalink: /state-pension/
   <thead><tr><th scope="col">Born</th><th scope="col">State Pension age</th></tr></thead>
   <tbody>
     <tr><th colspan="2" scope="rowgroup"><strong>Basic State Pension.</strong> Full rate: usually 30 qualifying years. Men born before 1945, 44. Women born before 1950, 39.</th></tr>
-    <tr><th scope="row">Men before <span class="date">6 April 1951</span>, women before <span class="date">6 April 1953</span></th><td>Already reached</td></tr>
+    <tr><th scope="row">Men before 6&nbsp;April&nbsp;1951, women before 6&nbsp;April&nbsp;1953</th><td>Already reached</td></tr>
   </tbody>
   <tbody>
     <tr><th colspan="2" scope="rowgroup"><strong>New State Pension.</strong> Full rate: {{ "nsp-full-rate-years" | fig }} qualifying years, depending on when the National Insurance record began: see <a href="#qualifying">qualifying years</a>. Any pension: usually {{ "nsp-min-qualifying-years" | fig }}.</th></tr>
-    <tr><th scope="row">Men from <span class="date">6 April 1951</span>, women from <span class="date">6 April 1953</span>, to <span class="date">5 April 1960</span></th><td>Already reached</td></tr>
-    <tr><th scope="row"><span class="date">6 April 1960</span> to <span class="date">5 March 1961</span></th><td>66 and 1 to 11 months, by month of birth</td></tr>
-    <tr><th scope="row"><span class="date">6 March 1961</span> to <span class="date">5 April 1977</span></th><td>67</td></tr>
-    <tr><th scope="row"><span class="date">6 April 1977</span> to <span class="date">5 April 1978</span></th><td>Between 67 and 68, on a date from <span class="date">May 2044</span> to <span class="date">March 2046</span> set by month of birth. A review could change this</td></tr>
-    <tr><th scope="row"><span class="date">6 April 1978</span> or later</th><td>68. A review could change this</td></tr>
+    <tr><th scope="row">Men from 6&nbsp;April&nbsp;1951, women from 6&nbsp;April&nbsp;1953, to 5&nbsp;April&nbsp;1960</th><td>Already reached</td></tr>
+    <tr><th scope="row">6&nbsp;April&nbsp;1960 to 5&nbsp;March&nbsp;1961</th><td>66 and 1 to 11 months, by month of birth</td></tr>
+    <tr><th scope="row">6&nbsp;March&nbsp;1961 to 5&nbsp;April&nbsp;1977</th><td>67</td></tr>
+    <tr><th scope="row">6&nbsp;April&nbsp;1977 to 5&nbsp;April&nbsp;1978</th><td>Between 67 and 68, on a date from May&nbsp;2044 to March&nbsp;2046 set by month of birth. A review could change this</td></tr>
+    <tr><th scope="row">6&nbsp;April&nbsp;1978 or later</th><td>68. A review could change this</td></tr>
   </tbody>
 </table>
 {% endcall %}
@@ -87,7 +87,7 @@ permalink: /state-pension/
 <ul>
   <li>A record that began after April 2016 needs {{ m.f("nsp-full-rate-years") }} qualifying years for the full rate. {{ m.ref(("nsp-full-rate-years" | figure).source) }}</li>
   <li>A record that began earlier was given a starting amount: see the note below.</li>
-  <li>Either way, each qualifying year added after <span class="date">5 April 2016</span> adds about {{ m.f("nsp-per-qualifying-year") }} a week, up to the full rate. {{ m.ref(("nsp-per-qualifying-year" | figure).source) }}</li>
+  <li>Either way, each qualifying year added after 5&nbsp;April&nbsp;2016 adds about {{ m.f("nsp-per-qualifying-year") }} a week, up to the full rate. {{ m.ref(("nsp-per-qualifying-year" | figure).source) }}</li>
 </ul>
 
 {% call m.note("35 years does not guarantee the full rate for everyone", 4) %}
@@ -105,7 +105,7 @@ permalink: /state-pension/
 <h3 id="filling-gaps-in-a-record">Filling gaps in a record</h3>
 <p>A person with gaps in their record may be able to pay voluntary National Insurance contributions to fill them. Paying does not always increase the pension, for example if the person was contracted out. GOV.UK says to check first: a person below State Pension age in the <a href="https://www.gov.uk/check-state-pension">State Pension forecast</a>, which says whether paying would add anything, and a person who has reached it with the Pension Service. {{ m.c("voluntary-not-always") }} The <a href="https://www.gov.uk/check-national-insurance-record">National Insurance record</a> shows the gaps, and the <a href="https://www.gov.uk/voluntary-national-insurance-contributions">guidance on voluntary contributions</a> says who can pay, what it costs and how to pay.</p>
 
-<p>The rules for time spent abroad changed from <span class="date">6 April 2026</span>. For the tax year 2026 to 2027 onwards, Class 2 contributions, the lower weekly rate, cannot be paid for time abroad, and Class 3 contributions for time abroad after <span class="date">5 April 2026</span> need 10 years of living in the UK in a row, or 10 years of paid contributions, not counting credits. The old rules asked for 3 years, and still apply to applications made before 6 April 2026. {{ m.c("voluntary-abroad-2026") }}</p>
+<p>The rules for time spent abroad changed from 6&nbsp;April&nbsp;2026. For the tax year 2026 to 2027 onwards, Class 2 contributions, the lower weekly rate, cannot be paid for time abroad, and Class 3 contributions for time abroad after 5&nbsp;April&nbsp;2026 need 10 years of living in the UK in a row, or 10 years of paid contributions, not counting credits. The old rules asked for 3 years, and still apply to applications made before 6 April 2026. {{ m.c("voluntary-abroad-2026") }}</p>
 
 <h2 id="what-people-receive">On average, people received less than the full new rate then in force</h2>
 
@@ -171,7 +171,7 @@ permalink: /state-pension/
 <p>The full new State Pension over 52 weeks is {{ m.f("nsp-full-52-weeks") }}. {{ m.ref(("nsp-full-52-weeks" | figure).source) }} The standard Personal Allowance is {{ m.f("personal-allowance") }} a year, so the full pension is just below it. A person with a protected payment, extra pension from deferring, or any other income can have tax to pay.</p>
 {{ m.sourceNote("personal-allowance" | figure) }}
 
-<p>The allowance is frozen at that level until <span class="date">5 April 2031</span>, the end of the tax year 2030 to 2031. {{ m.c("allowance-frozen-2031") }}</p>
+<p>The allowance is frozen at that level until 5&nbsp;April&nbsp;2031, the end of the tax year 2030 to 2031. {{ m.c("allowance-frozen-2031") }}</p>
 
 {% call m.note("Announced, not yet law", 3, "announced-not-yet-law") %}
 <p>{{ ("simple-assessment-2027" | claim).statement }} {{ m.c("simple-assessment-2027") }}</p>
