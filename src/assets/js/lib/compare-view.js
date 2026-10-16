@@ -112,7 +112,7 @@ function pounds(pence, sign) {
 }
 
 // What the index compared with earnings means: "100.0" alone did not say (step 4).
-const INDEX_MEANING = "Above 100, a rule raises the pension faster than average earnings; below 100, more slowly.";
+const INDEX_MEANING = "Above 100, a rule raises the pension faster than average earnings. Below 100, more slowly.";
 const SHORT = { "triple-lock": "Triple lock", "double-lock": "Double lock", earnings: "Earnings link", prices: "Prices link", "rule-2030": "April 2030 rule" };
 const IN_A_SENTENCE = { "triple-lock": "the triple lock", "double-lock": "the double lock", earnings: "the earnings link", prices: "the prices link", "rule-2030": "the rule announced for April 2030" };
 // Three or more rules are named in a list with one article, so the title stays short enough to read.

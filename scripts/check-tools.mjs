@@ -188,7 +188,7 @@ const submit = (page, form) => page.$eval(form, (el) => el.requestSubmit());
   // Step 4: an index compared with earnings says what it means, not only "114.4".
   await page.select("#history-measure", "earnings");
   await settle();
-  check("history: compared with earnings, the summary says how the pension moved against earnings", /the pension (rose [\d.]+% (more|less) than|kept pace with) average earnings/.test(await text(page, "#history-glance")), await text(page, "#history-glance"));
+  check("history: compared with earnings, the summary says how the pension moved against earnings", await page.$eval("#history-glance", (el) => { const [first, last] = [...el.querySelectorAll("dd")].map((dd) => Number(dd.textContent)); const change = (last / first * 100 - 100).toFixed(1); return el.textContent.includes(Number(change) > 0 ? `rose ${change}% more than average earnings` : `fell ${(-change).toFixed(1)}% behind average earnings`); }), await text(page, "#history-glance"));
   await page.select("#history-measure", "cash");
   await settle();
   await page.select("#history-series", "new");

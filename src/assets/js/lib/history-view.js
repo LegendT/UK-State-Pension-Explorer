@@ -85,9 +85,11 @@ function departures({ years, series, from, to, rule }) {
 // What an index compared with earnings means, worked out from where it ends: "114.4" alone did not
 // say (step 4).
 function againstEarnings(start, end, from, to) {
-  const change = Math.round((end / start - 1) * 1000) / 10;
+  // From the figures as shown, to one decimal place, so the sentence and the index never differ.
+  const change = Number(((Number(end.toFixed(1)) / Number(start.toFixed(1))) * 100 - 100).toFixed(1));
   if (change === 0) return `From ${from} to ${to} the pension kept pace with average earnings.`;
-  return `From ${from} to ${to} the pension rose ${Math.abs(change).toFixed(1)}% ${change > 0 ? "more" : "less"} than average earnings.`;
+  if (change > 0) return `From ${from} to ${to} the pension rose ${change.toFixed(1)}% more than average earnings.`;
+  return `From ${from} to ${to} the pension fell ${(-change).toFixed(1)}% behind average earnings.`;
 }
 
 export function renderHistorySummary(options) {
