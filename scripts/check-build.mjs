@@ -206,6 +206,8 @@ for (const path of walk("src/assets/js")) {
   if (/<time[\s>]|class="date"/.test(readFileSync(path, "utf8"))) fail(`${path}: a script draws a date in an element`);
 }
 for (const [url, html] of written) {
+  // Inside a chart image only its title is exposed; the drawing is hidden (step 4).
+  for (const [svg] of html.matchAll(/<svg[^>]*role="img"[^>]*>(?!<title[^>]*>[^<]*<\/title><g aria-hidden="true">)/g)) fail(`${url}: a chart image exposes what it draws: ${svg}`);
   for (const [svg] of html.matchAll(/<svg[^>]*role="img"[^>]*>/g)) {
     if (!/aria-labelledby="[^" ]+-title"/.test(svg) || /aria-describedby/.test(svg)) fail(`${url}: a chart's name is not its title alone: ${svg}`);
   }
