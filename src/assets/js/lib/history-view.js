@@ -3,7 +3,7 @@
 
 import { upratingFor } from "./uprating.js";
 import { earningsIndex, inLatestPrices, observed, reconstruct, SERIES_LABELS } from "./history.js";
-import { lineChart, near } from "./chart.js";
+import { chartSummary, lineChart, near } from "./chart.js";
 import { money, percent } from "./format.js";
 
 export const HISTORY_MEASURES = {
@@ -164,14 +164,17 @@ export function renderHistory(options) {
     width: chartWidth,
     id: "history-chart",
     title: message,
-    description:
-      `Published weekly rate for each tax year${rule ? `, and a calculation of the ${ruleName} applied from ${from}` : ""}. ` +
-      `The table after the chart gives every value.`,
     labels: rows.map((row) => row.tax_year),
     series: seriesList,
     yLabel: measure === "earnings" ? "Index (first year = 100)" : "Pounds a week",
     yPrefix: measure === "earnings" ? "" : "£",
     xLabel: "Tax year",
+  });
+  const chartText = chartSummary({
+    description: `Published weekly rate for each tax year${rule ? `, and a calculation of the ${ruleName} applied from ${from}` : ""}.`,
+    labels: rows.map((row) => row.tax_year),
+    series: seriesList,
+    format: (value) => show(value, measure),
   });
 
   const head =
@@ -202,7 +205,7 @@ export function renderHistory(options) {
   return (
     `<h3 id="history-result-heading">${name}, ${from} to ${to}</h3>` +
     `<p>Full rate, before tax.</p>` +
-    `<figure class="chart" id="history-chart"><figcaption><h4>${message}</h4><p>${HISTORY_MEASURES[measure]}</p></figcaption><div class="scroll-x" tabindex="0" role="region" aria-label="Chart: ${name}, ${from} to ${to}">${chart}</div>${markList}</figure>` +
+    `<figure class="chart" id="history-chart"><figcaption><h4>${message}</h4><p>${HISTORY_MEASURES[measure]}</p></figcaption>${chartText}<div class="scroll-x" tabindex="0" role="region" aria-label="Chart: ${name}, ${from} to ${to}">${chart}</div>${markList}</figure>` +
     sourceLine(sources, measure, rule) +
     comparison +
     `<div class="scroll-x" tabindex="0" role="region" aria-labelledby="history-table-caption"><table>` +

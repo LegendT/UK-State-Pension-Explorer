@@ -46,6 +46,12 @@ function ticks(min, max) {
 // Series that are the same, or nearly the same, in every year are drawn as one line, so no line
 // hides another, and the line is named by every series in it. A merged line keeps the style of
 // its first series, so a series looks the same in every result.
+// "A, b and c": the first name as written, the rest lower-cased to sit inside a sentence.
+function joinNames(names) {
+  const words = names.map((name, i) => (i === 0 ? name : name.charAt(0).toLowerCase() + name.slice(1)));
+  return words.length === 1 ? words[0] : `${words.slice(0, -1).join(", ")} and ${words[words.length - 1]}`;
+}
+
 function mergeClose(series) {
   const groups = [];
   series.forEach((s, style) => {
@@ -54,8 +60,8 @@ function mergeClose(series) {
     else groups.push({ values: s.values, members: [s], style });
   });
   return groups.map((g) => {
-    const names = g.members.map((m, i) => (i === 0 ? m.label : m.label.charAt(0).toLowerCase() + m.label.slice(1)));
-    const joined = names.length === 1 ? names[0] : `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}`;
+    const names = g.members.map((m) => m.label);
+    const joined = joinNames(names);
     const exact = g.members.every((m) => m.values.every((v, i) => v === g.values[i]));
     return {
       values: g.values,
@@ -69,7 +75,7 @@ function mergeClose(series) {
 // series: [{ label, short?, values: [number|null] }]. labels: x-axis labels, one per value.
 // marks: [{ index, number }] draws a dotted line at a year with a numbered marker; the page lists what each number means.
 // width: the width to draw at, in CSS pixels.
-export function lineChart({ id, title, description, labels, series: input, yLabel, yPrefix = "", xLabel, marks = [], width = CHART_WIDTH }) {
+export function lineChart({ id, title, labels, series: input, yLabel, yPrefix = "", xLabel, marks = [], width = CHART_WIDTH }) {
   const series = mergeClose(input);
   const W = Math.round(width);
   const narrow = W < NARROW;
@@ -211,8 +217,9 @@ export function lineChart({ id, title, description, labels, series: input, yLabe
     .join("");
 
   return (
-    `<svg class="chart-svg${narrow ? " chart-svg--narrow" : ""}" viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="${id}-title" aria-describedby="${id}-desc">` +
-    `<title id="${id}-title">${escape(title)}</title><desc id="${id}-desc">${escape(description)}${fromZero ? "" : " The scale starts above zero."}</desc>` +
+    // Named by its title alone. What it shows is in chartSummary, printed before it.
+    `<svg class="chart-svg${narrow ? " chart-svg--narrow" : ""}" viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="${id}-title">` +
+    `<title id="${id}-title">${escape(title)}</title>` +
     grid +
     `<line class="chart-axis" x1="${PAD.left}" x2="${W - PAD.right}" y1="${H - PAD.bottom}" y2="${H - PAD.bottom}"/>` +
     zeroBreak +
@@ -224,4 +231,30 @@ export function lineChart({ id, title, description, labels, series: input, yLabe
     endLabels +
     `</svg><ul class="chart-legend">${legend}</ul>${zeroNote}`
   );
+}
+
+// What a chart shows, as a paragraph printed before it: what its lines are, and each line's first
+// and last value, which a sighted reader takes from the chart at a glance. A paragraph, not the
+// image's description: VoiceOver with Safari read a description only as a hint, after a pause, so
+// it went unheard (step 4, decision 104).
+export function chartSummary({ description, labels, series, format }) {
+  const last = labels.length - 1;
+  const at = (i) => (labels[i] === "Start" ? "at the start" : `in ${labels[i]}`);
+  const lines = series.map(({ label, values }) => ({ label, from: format(values[0]), to: format(values[last]) }));
+  let ends;
+  if (lines.length > 1 && lines.every((line) => line.from === lines[0].from)) {
+    // Lines that start together, as the rules do: the start once, then where they end, with the
+    // lines that end at the same amount named together.
+    const groups = [];
+    for (const line of lines) {
+      const group = groups.find((item) => item.to === line.to);
+      if (group) group.names.push(line.label);
+      else groups.push({ to: line.to, names: [line.label] });
+    }
+    const start = labels[0] === "Start" ? "" : ` ${at(0)}`;
+    ends = `All start at ${lines[0].from}${start}. ${at(last).replace(/^i/, "I")}: ${groups.map((group) => `${joinNames(group.names)} ${group.to}`).join("; ")}.`;
+  } else {
+    ends = lines.map((line) => `${line.label}: ${line.from} ${at(0)}, ${line.to} ${at(last)}.`).join(" ");
+  }
+  return `<p class="chart-summary">${escape(`${description} ${ends} The table after the chart gives every value.`)}</p>`;
 }

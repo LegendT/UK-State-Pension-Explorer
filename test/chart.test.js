@@ -2,13 +2,12 @@
 // tolerance, minimum span and zero mark (W21).
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { lineChart } from "../src/assets/js/lib/chart.js";
+import { chartSummary, lineChart } from "../src/assets/js/lib/chart.js";
 
 const labels = Array.from({ length: 11 }, (_, i) => `${2016 + i}/${String(17 + i).padStart(2, "0")}`);
 const options = {
   id: "c",
   title: "Title",
-  description: "Description",
   labels,
   series: [{ label: "Rate", values: labels.map((_, i) => 200 + i * 5) }],
   yLabel: "Pounds a week",
@@ -114,7 +113,22 @@ test("a short range is drawn on an axis at least a tenth of its highest value ta
   assert.ok(Math.max(...values) - Math.min(...values) >= 20, values.join(","));
   assert.match(svg, /class="chart-break"/);
   assert.match(svg, /<p class="chart-note">The scale starts above zero.<\/p>/);
-  assert.match(svg, /<desc[^>]*>[^<]*The scale starts above zero.<\/desc>/);
   const fromZero = lineChart({ ...options, labels: ["a", "b"], marks: [], series: [{ label: "Rate", values: [0, 50] }] });
   assert.doesNotMatch(fromZero, /chart-break|chart-note/);
+});
+
+// Step 4: VoiceOver with Safari left a chart's description unheard, so what it shows is a paragraph.
+test("a chart's summary gives each line's first and last value, and a shared start once", () => {
+  const format = (v) => `£${v.toFixed(2)}`;
+  const apart = chartSummary({ description: "Two series.", labels: ["2025/26", "2026/27"], series: [{ label: "Published rate", values: [230.25, 241.3] }, { label: "Calculated", values: [229, 240] }], format });
+  assert.equal(apart, `<p class="chart-summary">Two series. Published rate: £230.25 in 2025/26, £241.30 in 2026/27. Calculated: £229.00 in 2025/26, £240.00 in 2026/27. The table after the chart gives every value.</p>`);
+  // Lines ending at the same amount are named together, as the chart draws them as one line.
+  const together = chartSummary({
+    description: "Three rules.",
+    labels: ["Start", "2027/28"],
+    series: [{ label: "Triple lock", values: [241.3, 260] }, { label: "Prices link", values: [241.3, 250] }, { label: "Earnings link", values: [241.3, 260] }],
+    format,
+  });
+  assert.equal(together, `<p class="chart-summary">Three rules. All start at £241.30. In 2027/28: Triple lock and earnings link £260.00; Prices link £250.00. The table after the chart gives every value.</p>`);
+  assert.doesNotMatch(lineChart(options), /<desc|aria-describedby/);
 });

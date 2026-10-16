@@ -207,9 +207,14 @@ for (const path of walk("src/assets/js")) {
 }
 for (const [url, html] of written) {
   for (const [svg] of html.matchAll(/<svg[^>]*role="img"[^>]*>/g)) {
-    if (!/aria-labelledby="([^" ]+)-title" aria-describedby="\1-desc"/.test(svg)) fail(`${url}: a chart's name is not its title alone: ${svg}`);
+    if (!/aria-labelledby="[^" ]+-title"/.test(svg) || /aria-describedby/.test(svg)) fail(`${url}: a chart's name is not its title alone: ${svg}`);
   }
-  for (const [, inner] of html.matchAll(/<figure class="chart">([\s\S]*?)<\/figure>/g)) if (!/^\s*<figcaption>/.test(inner)) fail(`${url}: a chart does not start with its figcaption`);
+  // A chart starts with its figcaption, then a paragraph of what it shows, read in order: VoiceOver
+  // with Safari left a description unheard (step 4, decision 104).
+  for (const [, inner] of html.matchAll(/<figure class="chart"[^>]*>([\s\S]*?)<\/figure>/g)) {
+    if (!/^\s*<figcaption>/.test(inner)) fail(`${url}: a chart does not start with its figcaption`);
+    else if (!/^\s*<figcaption>[\s\S]*?<\/figcaption>\s*<p class="chart-summary">/.test(inner)) fail(`${url}: a chart has no summary after its figcaption`);
+  }
   for (const [, cls, first] of html.matchAll(/<div class="([^"]*)" role="note">\s*<([a-z0-9]+)/g)) {
     if (!/^h[2-6]$/.test(first) && !cls.includes("preview")) fail(`${url}: a ${cls} note does not start with a heading`);
   }
