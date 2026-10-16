@@ -222,7 +222,7 @@ for (const [url, html] of written) {
   for (const [, summary, inner] of html.matchAll(/(<p class="chart-summary">[^<]*<a href="#[^"]+">[^<]*<\/a>\.<\/p>)?\s*<figure class="chart"[^>]*>([\s\S]*?)<\/figure>/g)) {
     if (!/^\s*<figcaption>/.test(inner)) fail(`${url}: a chart does not start with its figcaption`);
     if (!summary) fail(`${url}: a chart has no summary just before it, ending in a link to its table`);
-    else if (!html.includes(`id="${summary.match(/href="#([^"]+)"/)[1]}"`)) fail(`${url}: a chart's summary links to a table that is not on the page`);
+    else if (!new RegExp(`<div class="scroll-x" id="${summary.match(/href="#([^"]+)"/)[1]}"[^>]*><table`).test(html)) fail(`${url}: a chart's summary does not link to a table on the page`);
     if (inner.includes("chart-summary")) fail(`${url}: a chart's summary is inside its figure`);
   }
   for (const [, cls, first] of html.matchAll(/<div class="([^"]*)" role="note">\s*<([a-z0-9]+)/g)) {

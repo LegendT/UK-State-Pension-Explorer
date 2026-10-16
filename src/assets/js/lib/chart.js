@@ -217,8 +217,8 @@ export function lineChart({ id, labels, series: input, yLabel, yPrefix = "", xLa
     .join("");
 
   return (
-    // Named "Line chart" alone: the heading above it says what it shows, and as the name too it was
-    // heard twice (step 4). What it shows is in chartSummary, printed before it. Everything drawn
+    // Named "Line chart": the heading above says what it shows, and using it as the name too made
+    // VoiceOver read it twice (step 4). What it shows is in chartSummary, printed before it. Everything drawn
     // is hidden from screen readers: VoiceOver with Safari read the text inside an image, an axis
     // value or a line's name, in place of its title (step 4).
     `<svg class="chart-svg${narrow ? " chart-svg--narrow" : ""}" viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="${id}-title">` +

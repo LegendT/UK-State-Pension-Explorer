@@ -87,7 +87,7 @@ function summary(result, labels) {
 
 function table(caption, head, rows, id) {
   return (
-    `<div class="scroll-x" id="${id.replace(/-caption$/, "")}" tabindex="0" role="region" aria-labelledby="${id}"><table><caption id="${id}">${caption}</caption>` +
+    `<div class="scroll-x" id="${id}" tabindex="0" role="region" aria-labelledby="${id}-caption"><table><caption id="${id}-caption">${caption}</caption>` +
     `<thead><tr>${head.map((cell, i) => `<th scope="col"${i ? ' class="num"' : ""}>${cell}</th>`).join("")}</tr></thead>` +
     `<tbody>${rows
       .map((row) => `<tr>${row.map((cell, i) => (i ? `<td class="num">${cell}</td>` : `<th scope="row">${cell}</th>`)).join("")}</tr>`)
@@ -185,14 +185,14 @@ export function renderComparison(options) {
         return `${percent(entry.tenths)}, ${list(entry.determining.map((name) => MEASURE_LABELS[name]))}`;
       }),
     ]),
-    "compare-inputs-caption",
+    "compare-inputs",
   );
 
   const values = table(
     `${info.label}, by rule and year: ${info.unit}`,
     ["Tax year", ...ruleNames],
     labels.map((label, i) => [label, ...RULES.map((rule) => show(result.rules[rule].years[i], measure))]),
-    "compare-values-caption",
+    "compare-values",
   );
 
   const difference = table(
@@ -202,7 +202,7 @@ export function renderComparison(options) {
       label,
       ...RULES.slice(1).map((rule) => signed(result.rules[rule].years[i + 1].differencePence)),
     ]),
-    "compare-difference-caption",
+    "compare-difference",
   );
 
   const totals = table(
@@ -215,7 +215,7 @@ export function renderComparison(options) {
       pounds(result.rules[rule].realTotalPence),
       rule === "triple-lock" ? "Not applicable" : pounds(result.rules[rule].realTotalDifferencePence, true),
     ]),
-    "compare-totals-caption",
+    "compare-totals",
   );
 
   return (

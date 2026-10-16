@@ -124,6 +124,8 @@ const submit = (page, form) => page.$eval(form, (el) => el.requestSubmit());
 // Rule comparison.
 {
   const page = await open("/reform-options/compare/");
+  // Step 4: the box around the chart and the image are named plainly, not by a heading heard already.
+  check("compare: the chart's box is named Chart and its image Line chart", await page.$eval("#compare-chart .scroll-x", (el) => el.getAttribute("aria-label") === "Chart" && el.querySelector("title").textContent === "Line chart"));
   await page.select("#compare-scenario", "low");
   await settle();
   check("compare: a scenario change renames the result and its reason", /low inflation/.test(await text(page, "#compare-result h3")) && (await text(page, "#compare-reason")) !== "");
@@ -160,6 +162,8 @@ const submit = (page, form) => page.$eval(form, (el) => el.requestSubmit());
 // History explorer.
 {
   const page = await open("/tools/history/");
+  // Step 4: the box around the chart and the image are named plainly, not by a heading heard already.
+  check("history: the chart's box is named Chart and its image Line chart", await page.$eval("#history-chart .scroll-x", (el) => el.getAttribute("aria-label") === "Chart" && el.querySelector("title").textContent === "Line chart"));
   await page.select("#history-series", "new");
   await page.select("#history-from", "2020/21");
   await page.select("#history-to", "2024/25");
