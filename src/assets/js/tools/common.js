@@ -23,11 +23,15 @@ export function escapeHtml(text) {
 export function setError(input, message) {
   const error = document.getElementById(`${input.id}-error`);
   const hint = document.getElementById(`${input.id}-hint`);
-  error.textContent = message || "";
-  input.setAttribute("aria-invalid", message ? "true" : "false");
+  // Only what changes is written. Every redraw checks every field, and rewriting unchanged values,
+  // about 40 for one key in the budget explorer, cut VoiceOver off at "Result U…" in Safari
+  // (step 4).
+  const set = (name, value) => input.getAttribute(name) !== value && input.setAttribute(name, value);
+  if (error.textContent !== (message || "")) error.textContent = message || "";
+  set("aria-invalid", message ? "true" : "false");
   // A group's hint, read with its first field only, stays joined to it (step 4).
   const ids = [input.dataset.groupHint, hint && hint.id, message && error.id].filter(Boolean).join(" ");
-  if (ids) input.setAttribute("aria-describedby", ids);
+  if (ids) set("aria-describedby", ids);
   else input.removeAttribute("aria-describedby");
   return !message;
 }
