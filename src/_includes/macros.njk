@@ -20,7 +20,7 @@
 
 {#- A citation after a sentence. The short form shows the publisher and keeps the title for screen readers, so the link still names its destination. The full form is for "More about this figure". -#}
 {%- macro cite(s, full) -%}
-<a class="cite" href="{{ s.url }}">{{ s.publisher }}{% if full %}, {{ s.title }}{% else %}<span class="visually-hidden">, {{ s.title }}</span>{% endif %}</a>{% if s.published_date %} ({{ s.published_date | monthOrDayTag | safe }}){% endif %}
+<a class="cite" href="{{ s.url }}">{{ s.publisher }}{% if full %}, {{ s.title }}{% else %}<span class="visually-hidden">, {{ s.title }}</span>{% endif %}</a>{% if s.published_date %} ({{ s.published_date | monthOrDayText }}){% endif %}
 {%- endmacro -%}
 
 {#- One muted line under a figure's paragraph, or in its card: the kind and its source's status, the period, the range where
@@ -40,7 +40,7 @@
     <dl>
       <dt>Place</dt> <dd>{{ f.geography }}</dd>
       {%- if g.caveat %}<dt>Limits</dt> <dd>{{ caveat[0] }}{% if caveat[1] %} {{ caveat[1] }}{% endif %}</dd>{% elif caveat[1] %}<dt>Other limits</dt> <dd>{{ caveat[1] }}</dd>{% endif %}
-      <dt>Source</dt> <dd>{{ cite(f.source, true) }}. Checked against the source on {{ f.checked_date | dateTag | safe }}.</dd>
+      <dt>Source</dt> <dd>{{ cite(f.source, true) }}. Checked against the source on {{ f.checked_date | dateText }}.</dd>
       <dt>What it measures</dt> <dd>{{ f.definition }}</dd>
       <dt>Who it covers</dt> <dd>{{ f.population }}</dd>
       <dt>Where in the source</dt> <dd>{{ f.table_reference }}</dd>
@@ -73,8 +73,7 @@
 {#- id: typed in the template, so the address of a note does not change with its words (W29). -#}
 {%- macro note(heading, level, id) -%}
 <div class="note" role="note">
-  {#- Headings come from the templates, never from a reader. One carries a date span. -#}
-  <h{{ level or 3 }}{% if id %} id="{{ id }}"{% endif %}>{{ heading | safe }}</h{{ level or 3 }}>
+  <h{{ level or 3 }}{% if id %} id="{{ id }}"{% endif %}>{{ heading }}</h{{ level or 3 }}>
   {{ caller() }}
 </div>
 {%- endmacro -%}
@@ -187,6 +186,6 @@
 </div>
 <div class="source">
   <p>{{ t.qualifications }}</p>
-  <p>{% if s %}Source: {{ cite(s) }}. {% endif %}{{ t.table_reference }} Checked against the source on {{ t.checked_date | dateTag | safe }}.</p>
+  <p>{% if s %}Source: {{ cite(s) }}. {% endif %}{{ t.table_reference }} Checked against the source on {{ t.checked_date | dateText }}.</p>
 </div>
 {%- endmacro -%}

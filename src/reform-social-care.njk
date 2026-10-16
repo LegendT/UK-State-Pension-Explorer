@@ -5,7 +5,7 @@ permalink: /reform-options/social-care/
 {%- import "macros.njk" as m with context -%}
 <h1>Pensions and social care: the plan announced in September 2026</h1>
 
-<p class="lede">On {{ ("pm-care-2026-09-29" | sourceRecord).published_date | dateTag | safe }} the Prime Minister announced two things together. One is a new rule for the yearly increase in the State Pension, from April 2030. {{ ("ifs-real-rise-slower" | claim).statement }} {{ m.c("ifs-real-rise-slower") }} The other is a National Care Service with free personal care for older people, using the savings. This page sets out what was announced, what is in law, what has only been reported, and which questions the plan leaves open.</p>
+<p class="lede">On {{ ("pm-care-2026-09-29" | sourceRecord).published_date | dateText }} the Prime Minister announced two things together. One is a new rule for the yearly increase in the State Pension, from April 2030. {{ ("ifs-real-rise-slower" | claim).statement }} {{ m.c("ifs-real-rise-slower") }} The other is a National Care Service with free personal care for older people, using the savings. This page sets out what was announced, what is in law, what has only been reported, and which questions the plan leaves open.</p>
 
 {{ m.contents([
   ["care-status", "What is announced, what is in law and what is reported", [
@@ -30,9 +30,9 @@ permalink: /reform-options/social-care/
   ["care-not-assume", "What should not be assumed"]
 ], true) }}
 
-{% call m.note("The position on " ~ (news.as_of | dateTag), 2, "position-now") %}
-<p>This page was last checked on {{ news.as_of | dateTag | safe }}. The plan is an announcement. It is not law.</p>
-<p>{{ ("no-rule-2030-detail" | claim).statement }} {{ m.c("no-rule-2030-detail") }} Treat this page as a dated record. It does not yet cover every statement published since {{ ("ifs-new-tl-comment-2026" | sourceRecord).published_date | dateTag | safe }}.</p>
+{% call m.note("The position on " ~ (news.as_of | dateText), 2, "position-now") %}
+<p>This page was last checked on {{ news.as_of | dateText }}. The plan is an announcement. It is not law.</p>
+<p>{{ ("no-rule-2030-detail" | claim).statement }} {{ m.c("no-rule-2030-detail") }} Treat this page as a dated record. It does not yet cover every statement published since {{ ("ifs-new-tl-comment-2026" | sourceRecord).published_date | dateText }}.</p>
 {% endcall %}
 
 <h2 id="care-status">What is announced, what is in law and what is reported</h2>
@@ -98,7 +98,7 @@ permalink: /reform-options/social-care/
   <li>{{ ("plaid-response" | claim).statement }} {{ m.c("plaid-response") }}</li>
   <li>{{ ("green-response" | claim).statement }} {{ m.c("green-response") }}</li>
 </ul>
-<p>The statements from Reform UK and the Liberal Democrats come from the parties' own pages. The others come from news reports of {{ ("pa-2026-09-29" | sourceRecord).published_date | dateTag | safe }} and {{ ("pa-badenoch-2026-09-30" | sourceRecord).published_date | dateTag | safe }}.</p>
+<p>The statements from Reform UK and the Liberal Democrats come from the parties' own pages. The others come from news reports of {{ ("pa-2026-09-29" | sourceRecord).published_date | dateText }} and {{ ("pa-badenoch-2026-09-30" | sourceRecord).published_date | dateText }}.</p>
 
 <h3 id="status-parties-before">What the other parties said before the announcement</h3>
 <ul>

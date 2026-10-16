@@ -93,7 +93,7 @@ permalink: /reform-options/costs/
   </tbody>
 </table>
 {% endcall %}
-<div class="source"><p>Each estimate is for one year, not a running total. All were checked against their sources on {{ ("tl-cost-ifs-2023" | figure).checked_date | dateTag | safe }}, except the 2026-27 estimate by the Institute for Fiscal Studies, checked on {{ ("tl-cost-ifs-2026" | figure).checked_date | dateTag | safe }}. The estimates differ because they compare with different rules, measure different years and come from different forecasts. None is wrong because another is different.</p></div>
+<div class="source"><p>Each estimate is for one year, not a running total. All were checked against their sources on {{ ("tl-cost-ifs-2023" | figure).checked_date | dateText }}, except the 2026-27 estimate by the Institute for Fiscal Studies, checked on {{ ("tl-cost-ifs-2026" | figure).checked_date | dateText }}. The estimates differ because they compare with different rules, measure different years and come from different forecasts. None is wrong because another is different.</p></div>
 
 <p>The Office for Budget Responsibility also says the cost by 2029-30 is around three times what was first assumed. It gives {{ m.f("tl-cost-vs-earnings-2029-30") }} against {{ m.f("tl-cost-initial-assumption") }}. That compares two differences from earnings uprating. It does not mean State Pension spending is three times what was expected.</p>
 {{ m.sourceNote("tl-cost-initial-assumption" | figure) }}
@@ -123,7 +123,7 @@ permalink: /reform-options/costs/
   </tbody>
 </table>
 {% endcall %}
-<div class="source"><p>Estimates and projections, not forecasts of what will happen. None describes a cut to pensions already in payment. The sources do not say so in those words. This is our reading of what each one models. Checked against the sources on {{ ("saving-earnings-2075" | figure).checked_date | dateTag | safe }}, except the two rows for the rule announced for April 2030, checked on {{ ("saving-rule-2030-2050" | figure).checked_date | dateTag | safe }}. The government's two figures are measured against keeping the triple lock, and cover Great Britain.</p></div>
+<div class="source"><p>Estimates and projections, not forecasts of what will happen. None describes a cut to pensions already in payment. The sources do not say so in those words. This is our reading of what each one models. Checked against the sources on {{ ("saving-earnings-2075" | figure).checked_date | dateText }}, except the two rows for the rule announced for April 2030, checked on {{ ("saving-rule-2030-2050" | figure).checked_date | dateText }}. The government's two figures are measured against keeping the triple lock, and cover Great Britain.</p></div>
 
 <p>The pattern is consistent across sources. In the next few years the saving is small compared with the bill. Over decades it becomes large. The Institute for Fiscal Studies puts the cost of keeping the triple lock in 2050 at between {{ m.f("ifs-tl-cost-2050-low") }} and {{ m.f("ifs-tl-cost-2050-high") }} a year, a wide range because the result depends on how volatile prices and earnings turn out to be.</p>
 {{ m.sourceNote("ifs-tl-cost-2050-high" | figure) }}

@@ -1,7 +1,7 @@
 // Tool 2: compare the replacement rules. Presentation only.
 
 import { renderComparison, renderSummary } from "../lib/compare-view.js";
-import { announce, chartWidth, choose, fitChart, escapeHtml, focusFirstError, live, markStale, pinSummary, STALE_MESSAGE, updatedNote, readAmount, readJson, readPercent, readSettings, ready, setError, copyLink } from "./common.js";
+import { announce, chartWidth, choose, fitChart, escapeHtml, focusFirstError, glanceText, live, markStale, pinSummary, STALE_MESSAGE, updatedNote, readAmount, readJson, readPercent, readSettings, ready, setError, copyLink } from "./common.js";
 
 const data = readJson("compare-data");
 const form = document.getElementById("compare-form");
@@ -126,7 +126,7 @@ function update(message, mode) {
   result.innerHTML = renderComparison({ ...shown, chartWidth: chartWidth(result) });
   summary.innerHTML = renderSummary(options) + (mode === "load" ? "" : updatedNote("The chart and tables below have changed too."));
   linkSettings = linkSettingsFor(count, path);
-  if (mode !== "load") announce(status, message || "Result updated. The chart and tables below have changed.");
+  if (mode !== "load") announce(status, `${message || "Result updated."} ${glanceText(summary)} The chart and tables below have changed.`);
 }
 
 function reset() {
@@ -168,7 +168,7 @@ document.getElementById("compare-reset").addEventListener("click", () => {
   measure.value = "cash";
   setError(start, "");
   reset();
-  update("All settings are back to the starting scenario. The chart and tables below have changed.");
+  update("All settings are back to the starting scenario.");
 });
 
 // There is no submit button, so Enter does not submit. The handler stays for a scripted submit,

@@ -69,7 +69,7 @@
 {%- if not site.production %}
 <div class="preview-banner" role="note">
   <div class="wrap">
-    <p><strong>Preview for review.</strong> This site is not published. {% if site.reviewerName and site.reviewDate %}Its content was reviewed on {{ site.reviewDate | dateTag | safe }}, and its{% else %}A formal review of its content is not finished, and its{% endif %} accessibility assessment is not complete. <a href="/sources-and-method/#review-status">What has and has not been checked</a>.</p>
+    <p><strong>Preview for review.</strong> This site is not published. {% if site.reviewerName and site.reviewDate %}Its content was reviewed on {{ site.reviewDate | dateText }}, and its{% else %}A formal review of its content is not finished, and its{% endif %} accessibility assessment is not complete. <a href="/sources-and-method/#review-status">What has and has not been checked</a>.</p>
   </div>
 </div>
 {%- endif %}
@@ -104,7 +104,7 @@
 </nav>
 {%- endif %}
 {%- if entry.modified %}
-<p class="page-dates">Content of this page last changed on {{ entry.modified | dateTag | safe }}.{% if entry.figure_cards %} Each figure shows the date it was checked against its source under "More about this figure".{% endif %}</p>
+<p class="page-dates">Content of this page last changed on {{ entry.modified | dateText }}.{% if entry.figure_cards %} Each figure shows the date it was checked against its source under "More about this figure".{% endif %}</p>
 {%- endif %}
 {#- One link back up, in place of a link at the end of every section: decision 88. It goes to the
     start of the page, where the contents list is in view on every page but the overview: decision 94.

@@ -4,7 +4,7 @@ permalink: /sources-and-method/
 ---
 {%- import "macros.njk" as m with context -%}
 {#- The day the owner read every page and gave notes (launch step 3). The formal review that names a reviewer is REVIEW_DATE. -#}
-{%- set ownerReadDate = "2026-10-08" | dateTag -%}
+{%- set ownerReadDate = "2026-10-08" | dateText -%}
 <h1>Sources, method and corrections</h1>
 
 <p class="lede">This page says where the figures come from, how the calculations work, what has and has not been checked, and how to report an error.</p>
@@ -39,14 +39,14 @@ permalink: /sources-and-method/
   <li>The two headline rates were checked a second time, directly against GOV.UK.</li>
   <li>The calculators were tested against examples worked out separately, by a different method from the calculator code.</li>
   <li>Every increase in the published rates from 2011/12, and in the new State Pension from 2017/18, was tested against the rate before it, the increase applied, and rounding to the nearest 5p.</li>
-  <li>The owner read every page on {{ ownerReadDate | safe }} and gave notes page by page, and the AI assistant made a readability review of every page the same day.</li>
-  {% if site.reviewerName and site.reviewDate %}<li>The content was reviewed by {{ site.reviewerName }} on {{ site.reviewDate | dateTag | safe }}.</li>{% endif %}
+  <li>The owner read every page on {{ ownerReadDate }} and gave notes page by page, and the AI assistant made a readability review of every page the same day.</li>
+  {% if site.reviewerName and site.reviewDate %}<li>The content was reviewed by {{ site.reviewerName }} on {{ site.reviewDate | dateText }}.</li>{% endif %}
   <li>The four tools are driven in a browser by a script: <a href="#how-the-calculators-were-tested">how the calculators were tested</a>.</li>
 </ul>
 
 <h3 id="not-checked">Not checked</h3>
 <ul>
-  {% if not (site.reviewerName and site.reviewDate) %}<li><strong>The owner's second read of every page, after the changes made since {{ ownerReadDate | safe }}, is not finished.</strong> When it is finished, its date is given under Checked. A check by the same assistant that wrote a page is not an independent review.</li>{% endif %}
+  {% if not (site.reviewerName and site.reviewDate) %}<li><strong>The owner's second read of every page, after the changes made since {{ ownerReadDate }}, is not finished.</strong> When it is finished, its date is given under Checked. A check by the same assistant that wrote a page is not an independent review.</li>{% endif %}
   <li>Some sources refused automated reading, including the House of Commons Library and Hansard. Nothing on this site is quoted from them.</li>
   <li>Figures reported in the news without a document we could open are left out, or are marked as reported.</li>
   <li>The accessibility assessment is set out in the <a href="/accessibility/">accessibility statement</a>.</li>
@@ -161,17 +161,17 @@ permalink: /sources-and-method/
 
 <h2 id="ai">Use of AI</h2>
 
-<p>This site was researched, written and built with an AI assistant, Claude, made by Anthropic, working under the direction of the site's owner. The assistant read the sources, drafted the text, wrote the code and ran the tests. {% if site.reviewerName and site.reviewDate %}{{ site.reviewerName }} reviewed the content on {{ site.reviewDate | dateTag | safe }}.{% else %}The owner read every page on {{ ownerReadDate | safe }}; the second read, after the changes made since, is not finished.{% endif %}</p>
+<p>This site was researched, written and built with an AI assistant, Claude, made by Anthropic, working under the direction of the site's owner. The assistant read the sources, drafted the text, wrote the code and ran the tests. {% if site.reviewerName and site.reviewDate %}{{ site.reviewerName }} reviewed the content on {{ site.reviewDate | dateText }}.{% else %}The owner read every page on {{ ownerReadDate }}; the second read, after the changes made since, is not finished.{% endif %}</p>
 
 <p>An AI assistant can misread a source or state something wrongly with confidence. That is why each figure shows its source, and the passage it rests on where one is quoted, so that a reader can check it.</p>
 
 <h2 id="ownership">Who is responsible for this site</h2>
 
 {% if site.ownerName %}
-<p>This site is published by {{ site.ownerName }}, who read every page on {{ ownerReadDate | safe }} and gave notes page by page. It is an independent educational project. It is not part of the government and is not an official statistics producer.</p>
+<p>This site is published by {{ site.ownerName }}, who read every page on {{ ownerReadDate }} and gave notes page by page. It is an independent educational project. It is not part of the government and is not an official statistics producer.</p>
 {% else %}
 {% call m.unavailable("the name of the publisher", 3, "not-available-the-name-of-the-publisher") %}
-<p>The owner of this site has not yet been named here. It is set when the site is published. The owner read every page on {{ ownerReadDate | safe }} and gave notes page by page. The site is an independent educational project. It is not part of the government and is not an official statistics producer.</p>
+<p>The owner of this site has not yet been named here. It is set when the site is published. The owner read every page on {{ ownerReadDate }} and gave notes page by page. The site is an independent educational project. It is not part of the government and is not an official statistics producer.</p>
 {% endcall %}
 {% endif %}
 
@@ -201,11 +201,11 @@ permalink: /sources-and-method/
 <p>The log keeps three kinds of change apart.</p>
 <dl>
   <dt>Errors made by this site</dt>
-  <dd>{% if corrections.errors | length %}<ul>{% for item in corrections.errors %}<li>{{ item.date | dateTag | safe }}: {{ item.text }}</li>{% endfor %}</ul>{% else %}None recorded.{% if not site.production %} The site has not been published.{% endif %}{% endif %}</dd>
+  <dd>{% if corrections.errors | length %}<ul>{% for item in corrections.errors %}<li>{{ item.date | dateText }}: {{ item.text }}</li>{% endfor %}</ul>{% else %}None recorded.{% if not site.production %} The site has not been published.{% endif %}{% endif %}</dd>
   <dt>Changes in policy or rates</dt>
-  <dd>{% if corrections.policy_changes | length %}<ul>{% for item in corrections.policy_changes %}<li>{{ item.date | dateTag | safe }}: {{ item.text }}</li>{% endfor %}</ul>{% else %}None recorded.{% endif %}</dd>
+  <dd>{% if corrections.policy_changes | length %}<ul>{% for item in corrections.policy_changes %}<li>{{ item.date | dateText }}: {{ item.text }}</li>{% endfor %}</ul>{% else %}None recorded.{% endif %}</dd>
   <dt>Revisions by the producer of a statistic</dt>
-  <dd>{% if corrections.statistical_revisions | length %}<ul>{% for item in corrections.statistical_revisions %}<li>{{ item.date | dateTag | safe }}: {{ item.text }}</li>{% endfor %}</ul>{% else %}None recorded.{% endif %}</dd>
+  <dd>{% if corrections.statistical_revisions | length %}<ul>{% for item in corrections.statistical_revisions %}<li>{{ item.date | dateText }}: {{ item.text }}</li>{% endfor %}</ul>{% else %}None recorded.{% endif %}</dd>
 </dl>
 
 <h2 id="glossary">Glossary</h2>
@@ -227,7 +227,7 @@ permalink: /sources-and-method/
     <tbody>
       {%- for id, record in figures %}
       {%- set fg = id | figure %}
-      <tr id="fig-{{ id }}"><th scope="row">{{ fg.label }}</th><td class="num">{{ fg.shown }}</td><td>{{ fg.period_label }}</td><td>{{ m.kindLine(fg.classification, fg.provisional, fg.source.status) }}</td><td>{{ (fg.qualifications | splitCaveat)[0] }}</td><td>{{ fg.geography }}</td><td>{{ m.cite(fg.source, true) }}. {{ fg.table_reference }}</td><td>{{ fg.checked_date | dateTag | safe }}</td></tr>
+      <tr id="fig-{{ id }}"><th scope="row">{{ fg.label }}</th><td class="num">{{ fg.shown }}</td><td>{{ fg.period_label }}</td><td>{{ m.kindLine(fg.classification, fg.provisional, fg.source.status) }}</td><td>{{ (fg.qualifications | splitCaveat)[0] }}</td><td>{{ fg.geography }}</td><td>{{ m.cite(fg.source, true) }}. {{ fg.table_reference }}</td><td>{{ fg.checked_date | dateText }}</td></tr>
       {%- endfor %}
     </tbody>
   </table>
@@ -262,7 +262,7 @@ permalink: /sources-and-method/
     <thead><tr><th scope="col">Source</th><th scope="col">Publisher</th><th scope="col">Published</th><th scope="col">Checked</th><th scope="col">Status</th><th scope="col">Notes</th></tr></thead>
     <tbody>
       {%- for id, s in sources %}
-      <tr id="source-{{ id }}"><th scope="row"><a href="{{ s.url }}">{{ s.title }}</a></th><td>{{ s.publisher }}</td><td>{% if s.published_date %}{{ s.published_date | monthOrDayTag | safe }}{% elif s.updated_date %}Updated {{ s.updated_date | monthOrDayTag | safe }}{% else %}Not given{% endif %}</td><td>{{ s.checked_date | dateTag | safe }}</td><td>{% if s.status %}{{ m.statusLabel(s.status) }}{% endif %}</td><td>{{ s.note or "" }}</td></tr>
+      <tr id="source-{{ id }}"><th scope="row"><a href="{{ s.url }}">{{ s.title }}</a></th><td>{{ s.publisher }}</td><td>{% if s.published_date %}{{ s.published_date | monthOrDayText }}{% elif s.updated_date %}Updated {{ s.updated_date | monthOrDayText }}{% else %}Not given{% endif %}</td><td>{{ s.checked_date | dateText }}</td><td>{% if s.status %}{{ m.statusLabel(s.status) }}{% endif %}</td><td>{{ s.note or "" }}</td></tr>
       {%- endfor %}
     </tbody>
   </table>

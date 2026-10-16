@@ -71,6 +71,20 @@ export function announce(region, message) {
   }, 100);
 }
 
+// The tool's "At a glance" as sentences, for the message that announces a result: a screen reader
+// hears what the summary shows, which is not otherwise read (step 4). The note that the result
+// was updated is left out; the message says so itself. A term and its values read as "term: value".
+export function glanceText(glance) {
+  return [...glance.querySelectorAll("p:not(.tool-updated):not(.tool-stale), dl > div")]
+    .map((part) => {
+      if (part.matches("dl > div")) return `${part.querySelector("dt").textContent}: ${[...part.querySelectorAll("dd")].map((dd) => dd.textContent).join(", ")}`;
+      const label = part.querySelector(".status");
+      return label ? `${label.textContent}: ${[...part.childNodes].filter((node) => node !== label).map((node) => node.textContent).join("").trim()}` : part.textContent.trim();
+    })
+    .map((text) => (/[.!?]$/.test(text) ? text : `${text}.`))
+    .join(" ");
+}
+
 // After a failed submit, move focus to the first field in error.
 export function focusFirstError(form) {
   const first = form.querySelector('[aria-invalid="true"]');
