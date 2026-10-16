@@ -75,7 +75,7 @@ function mergeClose(series) {
 // series: [{ label, short?, values: [number|null] }]. labels: x-axis labels, one per value.
 // marks: [{ index, number }] draws a dotted line at a year with a numbered marker; the page lists what each number means.
 // width: the width to draw at, in CSS pixels.
-export function lineChart({ id, title, labels, series: input, yLabel, yPrefix = "", xLabel, marks = [], width = CHART_WIDTH }) {
+export function lineChart({ id, labels, series: input, yLabel, yPrefix = "", xLabel, marks = [], width = CHART_WIDTH }) {
   const series = mergeClose(input);
   const W = Math.round(width);
   const narrow = W < NARROW;
@@ -217,11 +217,12 @@ export function lineChart({ id, title, labels, series: input, yLabel, yPrefix = 
     .join("");
 
   return (
-    // Named by its title alone. What it shows is in chartSummary, printed before it. Everything drawn
+    // Named "Line chart": the heading above says what it shows, and using it as the name too made
+    // VoiceOver read it twice (step 4). What it shows is in chartSummary, printed before it. Everything drawn
     // is hidden from screen readers: VoiceOver with Safari read the text inside an image, an axis
     // value or a line's name, in place of its title (step 4).
     `<svg class="chart-svg${narrow ? " chart-svg--narrow" : ""}" viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="${id}-title">` +
-    `<title id="${id}-title">${escape(title)}</title><g aria-hidden="true">` +
+    `<title id="${id}-title">Line chart</title><g aria-hidden="true">` +
     grid +
     `<line class="chart-axis" x1="${PAD.left}" x2="${W - PAD.right}" y1="${H - PAD.bottom}" y2="${H - PAD.bottom}"/>` +
     zeroBreak +
@@ -239,7 +240,7 @@ export function lineChart({ id, title, labels, series: input, yLabel, yPrefix = 
 // and last value, which a sighted reader takes from the chart at a glance. A paragraph, not the
 // image's description: VoiceOver with Safari read a description only as a hint, after a pause, so
 // it went unheard (step 4, decision 104).
-export function chartSummary({ description, labels, series, format }) {
+export function chartSummary({ description, labels, series, format, table }) {
   const last = labels.length - 1;
   const at = (i) => (labels[i] === "Start" ? "at the start" : `in ${labels[i]}`);
   const lines = series.map(({ label, values }) => ({ label, from: format(values[0]), to: format(values[last]) }));
@@ -258,5 +259,6 @@ export function chartSummary({ description, labels, series, format }) {
   } else {
     ends = lines.map((line) => `${line.label}: ${line.from} ${at(0)}, ${line.to} ${at(last)}.`).join(" ");
   }
-  return `<p class="chart-summary">${escape(`${description} ${ends} The table after the chart gives every value.`)}</p>`;
+  // A link to the table, so a reader need not step through the chart to reach it (step 4).
+  return `<p class="chart-summary">${escape(`${description} ${ends}`)} Every value is in <a href="#${table}">the table after the chart</a>.</p>`;
 }

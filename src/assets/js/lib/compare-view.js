@@ -87,7 +87,7 @@ function summary(result, labels) {
 
 function table(caption, head, rows, id) {
   return (
-    `<div class="scroll-x" tabindex="0" role="region" aria-labelledby="${id}"><table><caption id="${id}">${caption}</caption>` +
+    `<div class="scroll-x" id="${id}" tabindex="0" role="region" aria-labelledby="${id}-caption"><table><caption id="${id}-caption">${caption}</caption>` +
     `<thead><tr>${head.map((cell, i) => `<th scope="col"${i ? ' class="num"' : ""}>${cell}</th>`).join("")}</tr></thead>` +
     `<tbody>${rows
       .map((row) => `<tr>${row.map((cell, i) => (i ? `<td class="num">${cell}</td>` : `<th scope="row">${cell}</th>`)).join("")}</tr>`)
@@ -159,7 +159,6 @@ export function renderComparison(options) {
   const chart = lineChart({
     id: "compare-chart",
     width: chartWidth,
-    title: message(result, measure, years),
     labels: chartLabels,
     series: chartSeries,
     yLabel: measure === "earnings" ? "Index (start = 100)" : "Pounds a week",
@@ -171,6 +170,7 @@ export function renderComparison(options) {
     labels: chartLabels,
     series: chartSeries,
     format: (value) => (measure === "earnings" ? value.toFixed(1) : money(Math.round(value * 100))),
+    table: "compare-values",
   });
 
   const inputs = table(
@@ -185,14 +185,14 @@ export function renderComparison(options) {
         return `${percent(entry.tenths)}, ${list(entry.determining.map((name) => MEASURE_LABELS[name]))}`;
       }),
     ]),
-    "compare-inputs-caption",
+    "compare-inputs",
   );
 
   const values = table(
     `${info.label}, by rule and year: ${info.unit}`,
     ["Tax year", ...ruleNames],
     labels.map((label, i) => [label, ...RULES.map((rule) => show(result.rules[rule].years[i], measure))]),
-    "compare-values-caption",
+    "compare-values",
   );
 
   const difference = table(
@@ -202,7 +202,7 @@ export function renderComparison(options) {
       label,
       ...RULES.slice(1).map((rule) => signed(result.rules[rule].years[i + 1].differencePence)),
     ]),
-    "compare-difference-caption",
+    "compare-difference",
   );
 
   const totals = table(
@@ -215,7 +215,7 @@ export function renderComparison(options) {
       pounds(result.rules[rule].realTotalPence),
       rule === "triple-lock" ? "Not applicable" : pounds(result.rules[rule].realTotalDifferencePence, true),
     ]),
-    "compare-totals-caption",
+    "compare-totals",
   );
 
   return (
@@ -224,7 +224,7 @@ export function renderComparison(options) {
     `The cash floor is ${cashFloor ? "on, so no rule can lower the amount in pounds" : "off, so a rule can lower the amount in pounds"}.</p>` +
     `<p>The rule announced for April 2030 is our reading of it, on four assumptions. It is not what the government's rule will pay. <a href="#rule-2030-assumptions">The assumptions</a>.</p>` +
     summary(result, labels) +
-    `${chartText}<figure class="chart" id="compare-chart"><figcaption><h4>${message(result, measure, years)}</h4><p>Illustration, not a forecast. ${info.label}: ${info.unit}</p></figcaption><div class="scroll-x" tabindex="0" role="region" aria-label="Chart: ${info.label}">${chart}</div></figure>` +
+    `${chartText}<figure class="chart" id="compare-chart"><figcaption><h4>${message(result, measure, years)}</h4><p>Illustration, not a forecast. ${info.label}: ${info.unit}</p></figcaption><div class="scroll-x" tabindex="0" role="region" aria-label="Chart">${chart}</div></figure>` +
     source +
     values +
     difference +
