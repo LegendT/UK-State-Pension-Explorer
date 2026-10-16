@@ -123,10 +123,10 @@
     "kind": "rule",
     "statement": "Where tax is due and cannot be collected another way, HM Revenue and Customs sends a Simple Assessment bill.",
     "source_id": "govuk-tax-on-pension",
-    "passage": "If you go over your Personal Allowance and you have tax to pay, HMRC will send you a Simple Assessment tax bill.",
+    "passage": "If you go over your Personal Allowance and you have tax to pay on your State Pension, HMRC will send you a Simple Assessment tax bill.",
     "interpretation": false,
     "note": null,
-    "checked_date": "2026-09-29",
+    "checked_date": "2026-10-16",
     "review_status": "checked-with-ai-assistance"
   },
   "simple-assessment-2027": {
