@@ -29,15 +29,20 @@ let enteredPeriod = period.value;
 const household = () => form.querySelector('input[name="budget-household"]:checked').value;
 const input = (id) => document.getElementById(`budget-${id}`);
 
+// Every example, with its group in the menu. The other household's are taken out of the menu, not
+// hidden: Safari showed an option marked hidden, greyed, beside its twin of the same name (step 4,
+// the owner's answer of 12 October 2026).
+const examples = [...preset.querySelectorAll("option[data-household]")].map((option) => ({ option, group: option.parentElement }));
+
 function showHousehold() {
   const couple = household() === "couple";
   for (const row of form.querySelectorAll("[data-couple-only]")) {
     row.hidden = !couple;
     if (!couple) row.querySelector("input").value = "";
   }
-  for (const option of preset.options) {
-    option.hidden = Boolean(option.dataset.household) && option.dataset.household !== household();
-    option.disabled = option.hidden;
+  for (const { option, group } of examples) {
+    if (option.dataset.household === household()) group.append(option);
+    else option.remove();
   }
   preset.value = "";
   about.innerHTML = "";
