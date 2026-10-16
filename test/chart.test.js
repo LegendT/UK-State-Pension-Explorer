@@ -8,7 +8,6 @@ const labels = Array.from({ length: 11 }, (_, i) => `${2016 + i}/${String(17 + i
 const options = {
   id: "c",
   title: "Title",
-  description: "Description",
   labels,
   series: [{ label: "Rate", values: labels.map((_, i) => 200 + i * 5) }],
   yLabel: "Pounds a week",
@@ -119,15 +118,17 @@ test("a short range is drawn on an axis at least a tenth of its highest value ta
 });
 
 // Step 4: VoiceOver with Safari left a chart's description unheard, so what it shows is a paragraph.
-test("a chart's summary gives each line's first and last value, from a line's first year", () => {
-  const html = chartSummary({
-    description: "Two rules.",
-    labels: ["Start", "2027/28", "2028/29"],
-    series: [{ label: "Triple lock", values: [241.3, 250, 260.5] }, { label: "Later", values: [null, 100, 110] }],
-    format: (v) => `£${v.toFixed(2)}`,
+test("a chart's summary gives each line's first and last value, and a shared start once", () => {
+  const format = (v) => `£${v.toFixed(2)}`;
+  const apart = chartSummary({ description: "Two series.", labels: ["2025/26", "2026/27"], series: [{ label: "Published rate", values: [230.25, 241.3] }, { label: "Calculated", values: [229, 240] }], format });
+  assert.equal(apart, `<p class="chart-summary">Two series. Published rate: £230.25 in 2025/26, £241.30 in 2026/27. Calculated: £229.00 in 2025/26, £240.00 in 2026/27. The table after the chart gives every value.</p>`);
+  // Lines ending at the same amount are named together, as the chart draws them as one line.
+  const together = chartSummary({
+    description: "Three rules.",
+    labels: ["Start", "2027/28"],
+    series: [{ label: "Triple lock", values: [241.3, 260] }, { label: "Prices link", values: [241.3, 250] }, { label: "Earnings link", values: [241.3, 260] }],
+    format,
   });
-  assert.equal(html, `<p class="chart-summary">Two rules. Triple lock: £241.30 at the start, £260.50 in 2028/29. Later: £100.00 in 2027/28, £110.00 in 2028/29. The table after the chart gives every value.</p>`);
-  const together = chartSummary({ description: "Two rules.", labels: ["Start", "2027/28"], series: [{ label: "Triple lock", values: [241.3, 260] }, { label: "Prices link", values: [241.3, 250] }], format: (v) => `£${v.toFixed(2)}` });
-  assert.equal(together, `<p class="chart-summary">Two rules. All start at £241.30. In 2027/28: Triple lock £260.00, Prices link £250.00. The table after the chart gives every value.</p>`);
+  assert.equal(together, `<p class="chart-summary">Three rules. All start at £241.30. In 2027/28: Triple lock and earnings link £260.00; Prices link £250.00. The table after the chart gives every value.</p>`);
   assert.doesNotMatch(lineChart(options), /<desc|aria-describedby/);
 });
