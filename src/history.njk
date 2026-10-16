@@ -47,7 +47,7 @@ permalink: /history/
       <td class="num">{{ year.applied_tenths | percent }}</td>
       <td class="num">{% if year.prices_tenths !== null %}{{ year.prices_tenths | percent }}{% else %}Not a test that year{% endif %}</td>
       <td class="num">{% if year.earnings_tenths !== null %}{{ year.earnings_tenths | percent }}{% if year.earnings_not_used %} (not used){% endif %}{% else %}Not a test that year{% endif %}</td>
-      <td>{{ year.effective_date | dateText | safe }}</td>
+      <td>{{ year.effective_date | dateText }}</td>
       <td>{{ { "prices": "Prices (CPI)", "earnings": "Earnings", "floor": "The 2.5% minimum", "rpi": "Prices (RPI, this year only)", "pre-triple-lock": "The higher of 2.5% or RPI" }[year.measure] }}</td>
     </tr>
     {%- endfor %}
@@ -56,7 +56,7 @@ permalink: /history/
 {% endcall %}
 <div class="source">
   <p><span class="status">Published rate</span> Great Britain. Prices are for the year to the September before. Earnings are for May to July of the year before, as published at the time of the decision. In 2022/23 the earnings figure was not used. In 2016/17 the basic State Pension rose on 11 April and the new State Pension began on 6 April.</p>
-  <p>Sources: <a href="{{ history.sources.rates_url }}">{{ history.sources.rates }}</a> <a href="{{ history.sources.decisions_url }}">{{ history.sources.decisions }}</a> Checked against the sources on {{ history.checked_date | dateText | safe }}.</p>
+  <p>Sources: <a href="{{ history.sources.rates_url }}">{{ history.sources.rates }}</a> <a href="{{ history.sources.decisions_url }}">{{ history.sources.decisions }}</a> Checked against the sources on {{ history.checked_date | dateText }}.</p>
 </div>
 
 <p>Each rate follows from the one before, the increase applied, and rounding to the nearest 5p. We tested this for every increase from 2011/12, and for the new State Pension from 2017/18. {{ m.c("rounding-5p") }}</p>
@@ -92,7 +92,7 @@ In {{ changed }} of the {{ counted }} years from 2011/12, the figure published n
 {% endcall %}
 <div class="source">
   <p><span class="status">Observed statistic</span> <span class="status">Can be revised</span> Average weekly earnings, whole economy, total pay including bonuses, May to July compared with a year earlier.</p>
-  <p>Source for the figures published now: <a href="{{ history.sources.earnings_current_url }}">{{ history.sources.earnings_current }}</a> Checked against the source on {{ history.checked_date | dateText | safe }}.</p>
+  <p>Source for the figures published now: <a href="{{ history.sources.earnings_current_url }}">{{ history.sources.earnings_current }}</a> Checked against the source on {{ history.checked_date | dateText }}.</p>
 </div>
 
 <p>The calculations on this page use the figures as they stood at each decision. A calculation from the figures published now would give slightly different results.</p>

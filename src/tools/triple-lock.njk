@@ -86,7 +86,7 @@ permalink: /tools/triple-lock/
       <dt>52 weeks at the new rate</dt> <dd>{{ (latest.new_pence * 52) | money }}</dd>
     </dl>
     <p>These are the published decision and the published rates. This tool did not calculate them.</p>
-    <p class="source-line">{% if latest.rate_source_url == latest.decision_source_url %}Source: <a href="{{ latest.decision_source_url }}">the explanatory memorandum to the Up-rating Order for {{ latest.tax_year }}</a>{% else %}Sources: <a href="{{ latest.rate_source_url }}">the published rates for {{ latest.tax_year }}</a> and <a href="{{ latest.decision_source_url }}">the explanatory memorandum to the Up-rating Order</a>{% endif %}, as recorded on <a href="/history/#decisions">the history page</a>. Checked against the sources on {{ history.checked_date | dateText | safe }}.</p>
+    <p class="source-line">{% if latest.rate_source_url == latest.decision_source_url %}Source: <a href="{{ latest.decision_source_url }}">the explanatory memorandum to the Up-rating Order for {{ latest.tax_year }}</a>{% else %}Sources: <a href="{{ latest.rate_source_url }}">the published rates for {{ latest.tax_year }}</a> and <a href="{{ latest.decision_source_url }}">the explanatory memorandum to the Up-rating Order</a>{% endif %}, as recorded on <a href="/history/#decisions">the history page</a>. Checked against the sources on {{ history.checked_date | dateText }}.</p>
   </div>
 
   <h3 id="how-the-tool-calculates-a-hypothetical-result">How the tool calculates a hypothetical result</h3>

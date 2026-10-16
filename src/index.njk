@@ -20,7 +20,7 @@ permalink: /
     <li><a href="#where-you-stand">Which pension applies to you?</a></li>
     <li><a href="https://www.gov.uk/check-state-pension">Check your own State Pension forecast on GOV.UK</a></li>
   </ul>
-  <p class="source">Rates took effect on {{ nsp.effective_from | dateText | safe }}. Sources: {{ m.cite(nsp.source, true) }}, and {{ m.cite(bsp.source, true) }}. Both were checked against the source on {{ nsp.checked_date | dateText | safe }}. The rates cover Great Britain. Northern Ireland sets the same rates through its own order, which we did not read.</p>
+  <p class="source">Rates took effect on {{ nsp.effective_from | dateText }}. Sources: {{ m.cite(nsp.source, true) }}, and {{ m.cite(bsp.source, true) }}. Both were checked against the source on {{ nsp.checked_date | dateText }}. The rates cover Great Britain. Northern Ireland sets the same rates through its own order, which we did not read.</p>
 </header>
 
 {{ m.contents([
@@ -54,7 +54,7 @@ permalink: /
 </table>
 {% endcall %}
 <div class="source">
-  <p>Sources: {{ m.cite(("which-system" | claim).source) }}, checked on {{ ("which-system" | claim).checked_date | dateText | safe }}, and {{ m.cite(("spa-born-1960-61" | claim).source) }}, checked on {{ ("spa-born-1960-61" | claim).checked_date | dateText | safe }}. "Already reached" is our reading of the timetable.</p>
+  <p>Sources: {{ m.cite(("which-system" | claim).source) }}, checked on {{ ("which-system" | claim).checked_date | dateText }}, and {{ m.cite(("spa-born-1960-61" | claim).source) }}, checked on {{ ("spa-born-1960-61" | claim).checked_date | dateText }}. "Already reached" is our reading of the timetable.</p>
   <details>
     <summary>What the table rests on</summary>
     <ul>
@@ -79,7 +79,7 @@ permalink: /
 
 <p>The <strong>State Pension</strong> is a regular payment from the government to people who have reached State Pension age and have paid, or been credited with, enough National Insurance. There are two systems. Which one applies depends on when a person was born.</p>
 
-<p>The <strong>triple lock</strong> is the rule for the yearly increase. Each April the full rates rise by the highest of three figures: the rise in prices, the rise in average earnings, or 2.5%. {{ m.c("tl-definition") }} On {{ ("pm-care-2026-09-29" | sourceRecord).published_date | dateText | safe }} the government announced that it will change the rule from April 2030. It says it will legislate for the change, and that the triple lock stays until then. {{ m.c("rule-2030") }} {{ m.more("/reform-options/#opt-2030", "What the announced rule does") }}</p>
+<p>The <strong>triple lock</strong> is the rule for the yearly increase. Each April the full rates rise by the highest of three figures: the rise in prices, the rise in average earnings, or 2.5%. {{ m.c("tl-definition") }} On {{ ("pm-care-2026-09-29" | sourceRecord).published_date | dateText }} the government announced that it will change the rule from April 2030. It says it will legislate for the change, and that the triple lock stays until then. {{ m.c("rule-2030") }} {{ m.more("/reform-options/#opt-2030", "What the announced rule does") }}</p>
 
 <p><strong>Entitlement and increases are different questions.</strong> Entitlement decides who gets a State Pension and how much of the full rate. The yearly increase decides how the rates change over time. A proposal to change one does not change the other.</p>
 
@@ -94,17 +94,17 @@ permalink: /
 
 <h2 id="in-the-news">In the news: what is decided and what is not</h2>
 
-<p>On {{ ("pm-care-2026-09-29" | sourceRecord).published_date | dateText | safe }} the Prime Minister announced a change to the yearly increase. {{ ("tl-kept-to-2030" | claim).statement }} {{ ("rule-2030" | claim).statement }} {{ m.c("rule-2030") }}</p>
+<p>On {{ ("pm-care-2026-09-29" | sourceRecord).published_date | dateText }} the Prime Minister announced a change to the yearly increase. {{ ("tl-kept-to-2030" | claim).statement }} {{ ("rule-2030" | claim).statement }} {{ m.c("rule-2030") }}</p>
 
 <p>This is an announcement. It is not law. {{ ("rule-2030-legislate" | claim).statement }} {{ ("ncs-savings-used" | claim).statement }} {{ m.c("ncs-savings-used") }} {{ ("no-rule-2030-detail" | claim).statement }} {{ m.c("no-rule-2030-detail") }}</p>
 
-<p>This is a dated note, correct on {{ news.as_of | dateText | safe }}. It is not a live news feed.</p>
+<p>This is a dated note, correct on {{ news.as_of | dateText }}. It is not a live news feed.</p>
 
 <p><a href="/reform-options/social-care/">What is announced, what is in law and what is only reported</a>, with what research bodies and other parties said, is on the pensions and social care page.</p>
 
 <h2 id="next-year">Next year's rate is not yet decided</h2>
 
-<p>The rate for {{ history.next_year.tax_year }} has not been set. It depends on two figures that are not yet final. Earnings growth for May to July 2026 was first estimated at {{ next.shown }}, and a revised figure is due on {{ history.next_year.earnings_revision_due | dateText | safe }}. The rise in prices for the year to September 2026 is due on {{ history.next_year.prices_due | dateText | safe }}. Until the government announces its decision, any figure for next year is a forecast.</p>
+<p>The rate for {{ history.next_year.tax_year }} has not been set. It depends on two figures that are not yet final. Earnings growth for May to July 2026 was first estimated at {{ next.shown }}, and a revised figure is due on {{ history.next_year.earnings_revision_due | dateText }}. The rise in prices for the year to September 2026 is due on {{ history.next_year.prices_due | dateText }}. Until the government announces its decision, any figure for next year is a forecast.</p>
 {{ m.sourceNote(next) }}
 
 <h2 id="distinctions">Distinctions that matter</h2>
