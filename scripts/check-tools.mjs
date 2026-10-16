@@ -79,6 +79,11 @@ const submit = (page, form) => page.$eval(form, (el) => el.requestSubmit());
   await type(page, firstIncome, "1000");
   check("budget: a result follows the first amount", (await text(page, "#budget-result h3")) === "Your result");
   check("budget: the update is announced", /Result updated/.test(await text(page, "#budget-status")));
+  // Step 4: rewriting every field's unchanged state on each redraw cut VoiceOver off in Safari.
+  await page.evaluate((field) => { window.formWrites = 0; new MutationObserver((records) => (window.formWrites += records.length)).observe(document.querySelector("#budget-form"), { attributes: true, childList: true, characterData: true, subtree: true }); }, firstIncome);
+  await type(page, firstIncome, "0");
+  check("budget: a keystroke writes nothing to the form", (await page.evaluate(() => window.formWrites)) === 0, await page.evaluate(() => window.formWrites));
+  await type(page, firstIncome, "1000");
   check("budget: a blank tax field leaves the balance before tax", /Balance before tax/.test(await text(page, "#budget-result")) && !/after the tax you entered/.test(await text(page, "#budget-result")), await text(page, "#budget-result .headline"));
   await type(page, "#budget-tax", "0");
   check("budget: a zero tax field is known, not missing", /after the tax you entered/.test(await text(page, "#budget-result")), await text(page, "#budget-result .headline"));
