@@ -47,6 +47,11 @@ async function open(path) {
 // A missing element throws, so a check never passes on a page that lacks what it reads.
 const text = (page, selector) => page.$eval(selector, (el) => el.textContent.trim());
 const value = (page, selector) => page.$eval(selector, (el) => el.value);
+// A message is said once the reader leaves the field (step 4), as Tab does.
+async function leave(page) {
+  await page.keyboard.press("Tab");
+  await settle();
+}
 async function type(page, selector, keys) {
   await page.focus(selector);
   await page.$eval(selector, (el) => { el.value = ""; });
@@ -78,6 +83,7 @@ const submit = (page, form) => page.$eval(form, (el) => el.requestSubmit());
   await page.select("#budget-period", "month");
   await type(page, firstIncome, "1000");
   check("budget: a result follows the first amount", (await text(page, "#budget-result h3")) === "Your result");
+  await leave(page);
   check("budget: the update is announced", /Result updated/.test(await text(page, "#budget-status")));
   // Step 4: rewriting every field's unchanged state on each redraw cut VoiceOver off in Safari.
   await page.evaluate(() => { window.formWrites = 0; new MutationObserver((records) => (window.formWrites += records.length)).observe(document.querySelector("#budget-form"), { attributes: true, childList: true, characterData: true, subtree: true }); });
@@ -121,6 +127,7 @@ const submit = (page, form) => page.$eval(form, (el) => el.requestSubmit());
   const before = await text(page, "#budget-result");
   await type(page, firstSpend, "-");
   check("budget: a half-typed amount keeps the last result, marked out of date", (await page.$(".tool-stale")) !== null && (await text(page, "#budget-result")).includes("Out of date"));
+  await leave(page);
   check("budget: the out-of-date state is announced", /out of date/.test(await text(page, "#budget-status")), await text(page, "#budget-status"));
   check("budget: the field shows its error", (await page.$eval(firstSpend, (el) => el.getAttribute("aria-invalid"))) === "true" && (await text(page, `${firstSpend}-error`)) !== "");
   await type(page, firstSpend, "100");
@@ -230,6 +237,11 @@ const submit = (page, form) => page.$eval(form, (el) => el.requestSubmit());
   check("triple lock: a half-typed figure keeps the published decision, marked out of date", (await page.$(".tool-stale")) !== null && (await text(page, "#mechanism-result .headline")) === published);
   await type(page, "#mechanism-prices", "9.0");
   check("triple lock: a typed figure gives a hypothetical result", /Hypothetical result/.test(await text(page, "#mechanism-result h3")) && /9\.0% increase, decided by prices/.test(await text(page, "#mechanism-result .headline")));
+  check("triple lock: nothing is said while the reader is still in the field (step 4)", !/Hypothetical/.test(await text(page, "#mechanism-status")) && /Hypothetical/.test(await text(page, "#mechanism-result h3")), await text(page, "#mechanism-status"));
+  await page.keyboard.press("Enter");
+  await settle();
+  check("triple lock: Enter says the result while the reader stays in the field (step 4)", /Hypothetical/.test(await text(page, "#mechanism-status")) && (await page.evaluate(() => document.activeElement.id)) === "mechanism-prices", await text(page, "#mechanism-status"));
+  await leave(page);
   check("triple lock: the hypothetical result is announced with its summary (step 4)", /Hypothetical: Your own figures.*Weekly increase: £/.test(await text(page, "#mechanism-status")));
   await page.click("#mechanism-copy-link");
   await settle();

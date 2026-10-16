@@ -19,11 +19,10 @@ function underFocus() {
   return a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top;
 }
 
-// Measured with the link visible: a hidden box has no size, so it is shown first and hidden again
-// if the focused element lies under it.
+// The class is written only when it changes (step 4: it was rewritten on every focus move). A link
+// under focus is hidden with visibility, so it keeps the size it is measured by.
 function check() {
-  box.classList.remove("is-under");
-  if (shown && underFocus()) box.classList.add("is-under");
+  box.classList.toggle("is-under", shown && underFocus());
 }
 
 function show(on) {
@@ -45,4 +44,4 @@ addEventListener("scroll", onScroll, { passive: true });
 addEventListener("resize", () => { if (!long()) show(false); });
 // After the browser has scrolled the newly focused element into view.
 addEventListener("focusin", () => requestAnimationFrame(check));
-addEventListener("focusout", () => box.classList.remove("is-under"));
+addEventListener("focusout", () => requestAnimationFrame(check));
