@@ -159,6 +159,17 @@ const submit = (page, form) => page.$eval(form, (el) => el.requestSubmit());
   check("compare: an edited figure makes the result the reader's own", /your own figures/.test(await text(page, "#compare-result h3")) && /ones you entered/.test(await text(page, "#compare-result .source-line")));
   await type(page, "#compare-start", "200");
   check("compare: an entered start is named in the source line", /one you entered/.test(await text(page, "#compare-result .source-line")));
+  // Step 4, decision 105: the message waits while the reader is still in the field, and is said on leaving it.
+  const beforeLeaving = await text(page, "#compare-status");
+  await page.focus("#compare-start");
+  await page.$eval("#compare-start", (el) => { el.value = ""; });
+  await page.keyboard.type("210");
+  await settle();
+  check("compare: nothing is said while the reader is still in the field", (await text(page, "#compare-status")) === beforeLeaving, await text(page, "#compare-status"));
+  await leave(page);
+  check("compare: the result is said on leaving the field", /Result updated/.test(await text(page, "#compare-status")) && (await text(page, "#compare-status")) !== beforeLeaving, await text(page, "#compare-status"));
+  await type(page, "#compare-start", "200");
+  await leave(page);
   await type(page, "#compare-years", "abc");
   check("compare: a wrong number of years keeps the last result, marked out of date", (await page.$(".tool-stale")) !== null);
   await submit(page, "#compare-form");
