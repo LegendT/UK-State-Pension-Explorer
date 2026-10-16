@@ -111,6 +111,8 @@ function pounds(pence, sign) {
   return `${sign ? (whole < 0 ? "−" : "+") : ""}${wholePounds.format(Math.abs(whole))}`;
 }
 
+// What the index compared with earnings means: "100.0" alone did not say (step 4).
+const INDEX_MEANING = "Above 100, a rule raises the pension faster than average earnings; below 100, more slowly.";
 const SHORT = { "triple-lock": "Triple lock", "double-lock": "Double lock", earnings: "Earnings link", prices: "Prices link", "rule-2030": "April 2030 rule" };
 const IN_A_SENTENCE = { "triple-lock": "the triple lock", "double-lock": "the double lock", earnings: "the earnings link", prices: "the prices link", "rule-2030": "the rule announced for April 2030" };
 // Three or more rules are named in a list with one article, so the title stays short enough to read.
@@ -166,7 +168,7 @@ export function renderComparison(options) {
     xLabel: "Tax year",
   });
   const chartText = chartSummary({
-    description: `The chart below shows the five rules over ${path.length} years. Rules with the same result, or less than 0.1% apart, in every year share one line.`,
+    description: `The chart below shows the five rules over ${path.length} years. Rules with the same result, or less than 0.1% apart, in every year share one line.${measure === "earnings" ? ` ${INDEX_MEANING}` : ""}`,
     labels: chartLabels,
     series: chartSeries,
     format: (value) => (measure === "earnings" ? value.toFixed(1) : money(Math.round(value * 100))),
@@ -263,5 +265,5 @@ export function renderSummary({ startPence, path, cashFloor, firstYear, measure 
     const entry = result.rules[rule].years[last];
     return `<div><dt>${SHORT[rule]}</dt> <dd>${show(entry, measure)}</dd> <dd>${rule === "triple-lock" ? "for comparison" : gap(entry, base, measure)}</dd></div>`;
   }).join("");
-  return `<p><span class="status">Hypothetical</span> One person on the full rate, after ${last === 1 ? "1 year" : `${last} years`}, in ${taxYear(firstYear + last - 1)}. ${info.label}: ${info.unit}.</p><dl>${rows}</dl>`;
+  return `<p><span class="status">Hypothetical</span> One person on the full rate, after ${last === 1 ? "1 year" : `${last} years`}, in ${taxYear(firstYear + last - 1)}. ${info.label}: ${info.unit}.</p>${measure === "earnings" ? `<p>${INDEX_MEANING}</p>` : ""}<dl>${rows}</dl>`;
 }

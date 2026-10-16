@@ -185,6 +185,12 @@ const submit = (page, form) => page.$eval(form, (el) => el.requestSubmit());
   await page.focus("#history-result .chart-summary a");
   await page.keyboard.press("Enter");
   check("history: the chart's link to its table moves focus there, writing nothing to the address", await page.evaluate(() => document.activeElement.id === "history-table" && location.hash === ""));
+  // Step 4: an index compared with earnings says what it means, not only "114.4".
+  await page.select("#history-measure", "earnings");
+  await settle();
+  check("history: compared with earnings, the summary says how the pension moved against earnings", /the pension (rose [\d.]+% (more|less) than|kept pace with) average earnings/.test(await text(page, "#history-glance")), await text(page, "#history-glance"));
+  await page.select("#history-measure", "cash");
+  await settle();
   await page.select("#history-series", "new");
   await page.select("#history-from", "2020/21");
   await page.select("#history-to", "2024/25");

@@ -82,6 +82,14 @@ function departures({ years, series, from, to, rule }) {
 }
 
 // The summary kept in view beside the form, or pinned to the foot of a narrow screen.
+// What an index compared with earnings means, worked out from where it ends: "114.4" alone did not
+// say (step 4).
+function againstEarnings(start, end, from, to) {
+  const change = Math.round((end / start - 1) * 1000) / 10;
+  if (change === 0) return `From ${from} to ${to} the pension kept pace with average earnings.`;
+  return `From ${from} to ${to} the pension rose ${Math.abs(change).toFixed(1)}% ${change > 0 ? "more" : "less"} than average earnings.`;
+}
+
 export function renderHistorySummary(options) {
   const { series, from, to, measure, rule } = options;
   const rows = historyRows(options);
@@ -89,6 +97,7 @@ export function renderHistorySummary(options) {
   const last = rows[rows.length - 1];
   return (
     `<p>${SERIES_LABELS[series]}, ${from} to ${to}. ${HISTORY_MEASURES[measure]}.</p>` +
+    (measure === "earnings" ? `<p>${againstEarnings(first.published, last.published, from, to)}</p>` : "") +
     `<dl><div><dt>${from}, published</dt> <dd>${show(first.published, measure)}</dd></div>` +
     `<div><dt>${to}, published</dt> <dd>${show(last.published, measure)}</dd></div>` +
     (rule ? `<div><dt>${to}, calculated under the ${RULE_IN_A_TITLE[rule]}</dt> <dd>${show(last.calculated, measure)}</dd></div>` : "") +
@@ -170,7 +179,7 @@ export function renderHistory(options) {
     xLabel: "Tax year",
   });
   const chartText = chartSummary({
-    description: `The chart below shows the published weekly rate for each tax year${rule ? `, and a calculation of the ${ruleName} applied from ${from}` : ""}.`,
+    description: `The chart below shows the published weekly rate for each tax year${rule ? `, and a calculation of the ${ruleName} applied from ${from}` : ""}.${measure === "earnings" ? ` ${againstEarnings(rows[0].published, rows[rows.length - 1].published, from, to)}` : ""}`,
     labels: rows.map((row) => row.tax_year),
     series: seriesList,
     format: (value) => show(value, measure),
