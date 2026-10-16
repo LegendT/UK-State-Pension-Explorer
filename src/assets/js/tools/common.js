@@ -240,3 +240,14 @@ export function fitChart(result, html) {
     if (focused) fresh.querySelector(".scroll-x").focus();
   }).observe(result);
 }
+
+// The link before a chart to its table moves focus onto the table. Safari scrolled to it without
+// moving focus, so VoiceOver announced nothing on arrival (step 4). Nothing is written to the
+// address (decision 96). Without this script the link still works as an ordinary link.
+document.addEventListener("click", (event) => {
+  const link = event.target.closest(".chart-summary a[href^='#']");
+  const table = link && document.getElementById(link.hash.slice(1));
+  if (!table) return;
+  event.preventDefault();
+  table.focus();
+});
