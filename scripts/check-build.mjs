@@ -206,10 +206,14 @@ for (const path of walk("src/assets/js")) {
   if (/<time[\s>]|class="date"/.test(readFileSync(path, "utf8"))) fail(`${path}: a script draws a date in an element`);
 }
 for (const [url, html] of written) {
-  // Inside a chart image only its title is exposed; the drawing is hidden (step 4).
-  for (const [svg] of html.matchAll(/<svg[^>]*role="img"[^>]*>(?!<title[^>]*>[^<]*<\/title><g aria-hidden="true">)/g)) fail(`${url}: a chart image exposes what it draws: ${svg}`);
-  for (const [svg] of html.matchAll(/<svg[^>]*role="img"[^>]*>/g)) {
+  for (const [, svg, inner] of html.matchAll(/(<svg[^>]*role="img"[^>]*>)([\s\S]*?)<\/svg>/g)) {
     if (!/aria-labelledby="[^" ]+-title"/.test(svg) || /aria-describedby/.test(svg)) fail(`${url}: a chart's name is not its title alone: ${svg}`);
+    // Inside a chart image only its title is exposed: everything drawn is in one hidden group that
+    // closes at the end of the image (step 4). Depth counts the groups inside it.
+    const drawing = inner.match(/^<title[^>]*>[^<]*<\/title>(<g aria-hidden="true">[\s\S]*)$/);
+    let depth = 0;
+    const closesAtEnd = drawing && [...drawing[1].matchAll(/<g[\s>]|<\/g>/g)].every((tag, i, all) => (depth += tag[0] === "</g>" ? -1 : 1) > 0 || i === all.length - 1) && depth === 0;
+    if (!closesAtEnd) fail(`${url}: a chart image exposes what it draws: ${svg}`);
   }
   // A chart starts with its figcaption, and a paragraph of what it shows comes just before it, outside
   // the figure: VoiceOver with Safari left a description unheard, and passed over a paragraph inside
