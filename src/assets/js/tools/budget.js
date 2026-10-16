@@ -72,10 +72,11 @@ function loadPreset() {
     `<div><dt>Housing</dt> <dd>${chosen.housing}</dd></div>` +
     `<div><dt>Left out</dt> <dd>${chosen.exclusions}</dd></div>` +
     `<div><dt>Source</dt> <dd>${chosen.source}. ${chosen.table_reference}</dd></div></dl>`;
-  // Read before update sets it: the breakdown has "changed" only when one was already showing.
+  // Read before update sets it: the breakdown has changed when a new one is showing, as the
+  // summary's "Updated" note says.
   const shown = lastResult;
   update("quiet");
-  announce(status, `Example budget loaded into the spending fields: ${chosen.label}.${note}${glanceNow()}${shown && lastResult !== shown ? " The breakdown below has changed." : ""}`);
+  announce(status, `Example budget loaded into the spending fields: ${chosen.label}.${note}${glanceNow()}${lastResult && lastResult !== shown ? " The breakdown below has changed." : ""}`);
 }
 
 function fillPension() {
@@ -85,7 +86,7 @@ function fillPension() {
   setError(input("state-pension"), "");
   const shown = lastResult;
   update("quiet");
-  announce(status, `State Pension set to the full new rate, ${data.full_new_rate} pounds a week.${note}${glanceNow()}${shown && lastResult !== shown ? " The breakdown below has changed." : ""}`);
+  announce(status, `State Pension set to the full new rate, ${data.full_new_rate} pounds a week.${note}${glanceNow()}${lastResult && lastResult !== shown ? " The breakdown below has changed." : ""}`);
 }
 
 // The summary, for a message that follows a helper: only when it shows a current result, not the
@@ -133,7 +134,7 @@ function convertAmounts() {
   const shown = lastResult;
   // As typing does: with an amount in error, the last result stays, marked out of date (decision 85).
   update("converted");
-  const after = stale ? ` ${STALE_MESSAGE}` : shown && lastResult !== shown ? `${glanceNow()} The breakdown below has changed.` : "";
+  const after = stale ? ` ${STALE_MESSAGE}` : lastResult && lastResult !== shown ? `${glanceNow()} The breakdown below has changed.` : "";
   announce(status, `${done}${left}${after}`);
 }
 period.addEventListener("input", (event) => event.stopPropagation());
