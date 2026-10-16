@@ -163,7 +163,6 @@ export function renderHistory(options) {
     marks,
     width: chartWidth,
     id: "history-chart",
-    title: message,
     labels: rows.map((row) => row.tax_year),
     series: seriesList,
     yLabel: measure === "earnings" ? "Index (first year = 100)" : "Pounds a week",
@@ -175,6 +174,7 @@ export function renderHistory(options) {
     labels: rows.map((row) => row.tax_year),
     series: seriesList,
     format: (value) => show(value, measure),
+    table: "history-table",
   });
 
   const head =
@@ -205,10 +205,10 @@ export function renderHistory(options) {
   return (
     `<h3 id="history-result-heading">${name}, ${from} to ${to}</h3>` +
     `<p>Full rate, before tax.</p>` +
-    `${chartText}<figure class="chart" id="history-chart"><figcaption><h4>${message}</h4><p>${HISTORY_MEASURES[measure]}</p></figcaption><div class="scroll-x" tabindex="0" role="region" aria-label="Chart: ${name}, ${from} to ${to}">${chart}</div>${markList}</figure>` +
+    `${chartText}<figure class="chart" id="history-chart"><figcaption><h4>${message}</h4><p>${HISTORY_MEASURES[measure]}</p></figcaption><div class="scroll-x" tabindex="0" role="region" aria-label="Chart">${chart}</div>${markList}</figure>` +
     sourceLine(sources, measure, rule) +
     comparison +
-    `<div class="scroll-x" tabindex="0" role="region" aria-labelledby="history-table-caption"><table>` +
+    `<div class="scroll-x" id="history-table" tabindex="0" role="region" aria-labelledby="history-table-caption"><table>` +
     `<caption id="history-table-caption">${name}, ${from} to ${to}. ${HISTORY_MEASURES[measure]}</caption>` +
     `<thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>` +
     sourceLine(sources, measure, rule)

@@ -218,9 +218,11 @@ for (const [url, html] of written) {
   // A chart starts with its figcaption, and a paragraph of what it shows comes just before it, outside
   // the figure: VoiceOver with Safari left a description unheard, and passed over a paragraph inside
   // the figure (step 4, decision 104).
-  for (const [, summary, inner] of html.matchAll(/(<p class="chart-summary">[^<]*<\/p>)?\s*<figure class="chart"[^>]*>([\s\S]*?)<\/figure>/g)) {
+  // Its last sentence links to the chart's table, so a reader can skip the chart.
+  for (const [, summary, inner] of html.matchAll(/(<p class="chart-summary">[^<]*<a href="#[^"]+">[^<]*<\/a>\.<\/p>)?\s*<figure class="chart"[^>]*>([\s\S]*?)<\/figure>/g)) {
     if (!/^\s*<figcaption>/.test(inner)) fail(`${url}: a chart does not start with its figcaption`);
-    if (!summary) fail(`${url}: a chart has no summary just before it`);
+    if (!summary) fail(`${url}: a chart has no summary just before it, ending in a link to its table`);
+    else if (!html.includes(`id="${summary.match(/href="#([^"]+)"/)[1]}"`)) fail(`${url}: a chart's summary links to a table that is not on the page`);
     if (inner.includes("chart-summary")) fail(`${url}: a chart's summary is inside its figure`);
   }
   for (const [, cls, first] of html.matchAll(/<div class="([^"]*)" role="note">\s*<([a-z0-9]+)/g)) {

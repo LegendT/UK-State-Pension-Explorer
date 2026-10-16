@@ -7,7 +7,6 @@ import { chartSummary, lineChart } from "../src/assets/js/lib/chart.js";
 const labels = Array.from({ length: 11 }, (_, i) => `${2016 + i}/${String(17 + i).padStart(2, "0")}`);
 const options = {
   id: "c",
-  title: "Title",
   labels,
   series: [{ label: "Rate", values: labels.map((_, i) => 200 + i * 5) }],
   yLabel: "Pounds a week",
@@ -120,18 +119,19 @@ test("a short range is drawn on an axis at least a tenth of its highest value ta
 // Step 4: VoiceOver with Safari left a chart's description unheard, so what it shows is a paragraph.
 test("a chart's summary gives each line's first and last value, and a shared start once", () => {
   const format = (v) => `£${v.toFixed(2)}`;
-  const apart = chartSummary({ description: "Two series.", labels: ["2025/26", "2026/27"], series: [{ label: "Published rate", values: [230.25, 241.3] }, { label: "Calculated", values: [229, 240] }], format });
-  assert.equal(apart, `<p class="chart-summary">Two series. Published rate: £230.25 in 2025/26, £241.30 in 2026/27. Calculated: £229.00 in 2025/26, £240.00 in 2026/27. The table after the chart gives every value.</p>`);
+  const apart = chartSummary({ description: "Two series.", labels: ["2025/26", "2026/27"], series: [{ label: "Published rate", values: [230.25, 241.3] }, { label: "Calculated", values: [229, 240] }], format, table: "t" });
+  assert.equal(apart, `<p class="chart-summary">Two series. Published rate: £230.25 in 2025/26, £241.30 in 2026/27. Calculated: £229.00 in 2025/26, £240.00 in 2026/27. Every value is in <a href="#t">the table after the chart</a>.</p>`);
   // Lines ending at the same amount are named together, as the chart draws them as one line.
   const together = chartSummary({
     description: "Three rules.",
     labels: ["Start", "2027/28"],
     series: [{ label: "Triple lock", values: [241.3, 260] }, { label: "Prices link", values: [241.3, 250] }, { label: "Earnings link", values: [241.3, 260] }],
     format,
+    table: "t",
   });
-  assert.equal(together, `<p class="chart-summary">Three rules. All start at £241.30. In 2027/28: Triple lock and earnings link £260.00; Prices link £250.00. The table after the chart gives every value.</p>`);
+  assert.equal(together, `<p class="chart-summary">Three rules. All start at £241.30. In 2027/28: Triple lock and earnings link £260.00; Prices link £250.00. Every value is in <a href="#t">the table after the chart</a>.</p>`);
   assert.doesNotMatch(lineChart(options), /<desc|aria-describedby/);
   // Everything drawn sits in one hidden group after the title: VoiceOver with Safari read an axis value
   // in place of the title (step 4).
-  assert.match(lineChart(options), /role="img"[^>]*><title id="c-title">Title<\/title><g aria-hidden="true">[\s\S]*<\/g><\/svg>/);
+  assert.match(lineChart(options), /role="img"[^>]*><title id="c-title">Line chart<\/title><g aria-hidden="true">[\s\S]*<\/g><\/svg>/);
 });
