@@ -2,7 +2,7 @@
 // browser after a reader changes an input, so both show the same thing. No DOM.
 
 import { compareRules, RULES, RULE_LABELS, MEASURE_LABELS } from "./uprating.js";
-import { lineChart, near } from "./chart.js";
+import { chartSummary, lineChart, near } from "./chart.js";
 import { money, percent, list } from "./format.js";
 
 export const MEASURES = {
@@ -150,20 +150,27 @@ export function renderComparison(options) {
 
   const years = path.length === 1 ? "1 year" : `${path.length} years`;
 
+  const chartLabels = labels.map((label, i) => (i === 0 ? "Start" : label));
+  const chartSeries = RULES.map((rule) => ({
+    label: RULE_LABELS[rule],
+    short: SHORT[rule],
+    values: result.rules[rule].years.map((entry) => value(entry, measure)),
+  }));
   const chart = lineChart({
     id: "compare-chart",
     width: chartWidth,
     title: message(result, measure, years),
-    description: `The five rules over ${path.length} years. Rules with the same result, or less than 0.1% apart, in every year share one line. The table after the chart gives every value.`,
-    labels: labels.map((label, i) => (i === 0 ? "Start" : label)),
-    series: RULES.map((rule) => ({
-      label: RULE_LABELS[rule],
-      short: SHORT[rule],
-      values: result.rules[rule].years.map((entry) => value(entry, measure)),
-    })),
+    labels: chartLabels,
+    series: chartSeries,
     yLabel: measure === "earnings" ? "Index (start = 100)" : "Pounds a week",
     yPrefix: measure === "earnings" ? "" : "£",
     xLabel: "Tax year",
+  });
+  const chartText = chartSummary({
+    description: `The five rules over ${path.length} years. Rules with the same result, or less than 0.1% apart, in every year share one line.`,
+    labels: chartLabels,
+    series: chartSeries,
+    format: (value) => (measure === "earnings" ? value.toFixed(1) : money(Math.round(value * 100))),
   });
 
   const inputs = table(
@@ -217,7 +224,7 @@ export function renderComparison(options) {
     `The cash floor is ${cashFloor ? "on, so no rule can lower the amount in pounds" : "off, so a rule can lower the amount in pounds"}.</p>` +
     `<p>The rule announced for April 2030 is our reading of it, on four assumptions. It is not what the government's rule will pay. <a href="#rule-2030-assumptions">The assumptions</a>.</p>` +
     summary(result, labels) +
-    `<figure class="chart" id="compare-chart"><figcaption><h4>${message(result, measure, years)}</h4><p>Illustration, not a forecast. ${info.label}: ${info.unit}</p></figcaption><div class="scroll-x" tabindex="0" role="region" aria-label="Chart: ${info.label}">${chart}</div></figure>` +
+    `<figure class="chart" id="compare-chart"><figcaption><h4>${message(result, measure, years)}</h4><p>Illustration, not a forecast. ${info.label}: ${info.unit}</p></figcaption>${chartText}<div class="scroll-x" tabindex="0" role="region" aria-label="Chart: ${info.label}">${chart}</div></figure>` +
     source +
     values +
     difference +

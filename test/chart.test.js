@@ -2,7 +2,7 @@
 // tolerance, minimum span and zero mark (W21).
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { lineChart } from "../src/assets/js/lib/chart.js";
+import { chartSummary, lineChart } from "../src/assets/js/lib/chart.js";
 
 const labels = Array.from({ length: 11 }, (_, i) => `${2016 + i}/${String(17 + i).padStart(2, "0")}`);
 const options = {
@@ -114,7 +114,20 @@ test("a short range is drawn on an axis at least a tenth of its highest value ta
   assert.ok(Math.max(...values) - Math.min(...values) >= 20, values.join(","));
   assert.match(svg, /class="chart-break"/);
   assert.match(svg, /<p class="chart-note">The scale starts above zero.<\/p>/);
-  assert.match(svg, /<desc[^>]*>[^<]*The scale starts above zero.<\/desc>/);
   const fromZero = lineChart({ ...options, labels: ["a", "b"], marks: [], series: [{ label: "Rate", values: [0, 50] }] });
   assert.doesNotMatch(fromZero, /chart-break|chart-note/);
+});
+
+// Step 4: VoiceOver with Safari left a chart's description unheard, so what it shows is a paragraph.
+test("a chart's summary gives each line's first and last value, from a line's first year", () => {
+  const html = chartSummary({
+    description: "Two rules.",
+    labels: ["Start", "2027/28", "2028/29"],
+    series: [{ label: "Triple lock", values: [241.3, 250, 260.5] }, { label: "Later", values: [null, 100, 110] }],
+    format: (v) => `£${v.toFixed(2)}`,
+  });
+  assert.equal(html, `<p class="chart-summary">Two rules. Triple lock: £241.30 at the start, £260.50 in 2028/29. Later: £100.00 in 2027/28, £110.00 in 2028/29. The table after the chart gives every value.</p>`);
+  const together = chartSummary({ description: "Two rules.", labels: ["Start", "2027/28"], series: [{ label: "Triple lock", values: [241.3, 260] }, { label: "Prices link", values: [241.3, 250] }], format: (v) => `£${v.toFixed(2)}` });
+  assert.equal(together, `<p class="chart-summary">Two rules. All start at £241.30. In 2027/28: Triple lock £260.00, Prices link £250.00. The table after the chart gives every value.</p>`);
+  assert.doesNotMatch(lineChart(options), /<desc|aria-describedby/);
 });

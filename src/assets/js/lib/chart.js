@@ -69,7 +69,7 @@ function mergeClose(series) {
 // series: [{ label, short?, values: [number|null] }]. labels: x-axis labels, one per value.
 // marks: [{ index, number }] draws a dotted line at a year with a numbered marker; the page lists what each number means.
 // width: the width to draw at, in CSS pixels.
-export function lineChart({ id, title, description, labels, series: input, yLabel, yPrefix = "", xLabel, marks = [], width = CHART_WIDTH }) {
+export function lineChart({ id, title, labels, series: input, yLabel, yPrefix = "", xLabel, marks = [], width = CHART_WIDTH }) {
   const series = mergeClose(input);
   const W = Math.round(width);
   const narrow = W < NARROW;
@@ -211,8 +211,9 @@ export function lineChart({ id, title, description, labels, series: input, yLabe
     .join("");
 
   return (
-    `<svg class="chart-svg${narrow ? " chart-svg--narrow" : ""}" viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="${id}-title" aria-describedby="${id}-desc">` +
-    `<title id="${id}-title">${escape(title)}</title><desc id="${id}-desc">${escape(description)}${fromZero ? "" : " The scale starts above zero."}</desc>` +
+    // Named by its title alone. What it shows is in chartSummary, printed before it.
+    `<svg class="chart-svg${narrow ? " chart-svg--narrow" : ""}" viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="${id}-title">` +
+    `<title id="${id}-title">${escape(title)}</title>` +
     grid +
     `<line class="chart-axis" x1="${PAD.left}" x2="${W - PAD.right}" y1="${H - PAD.bottom}" y2="${H - PAD.bottom}"/>` +
     zeroBreak +
@@ -224,4 +225,24 @@ export function lineChart({ id, title, description, labels, series: input, yLabe
     endLabels +
     `</svg><ul class="chart-legend">${legend}</ul>${zeroNote}`
   );
+}
+
+// What a chart shows, as a paragraph printed before it: what its lines are, and each line's first
+// and last value, which a sighted reader takes from the chart at a glance. A paragraph, not the
+// image's description: VoiceOver with Safari read a description only as a hint, after a pause, so
+// it went unheard (step 4). A line that starts later, as the new State Pension does, starts at its
+// first value.
+export function chartSummary({ description, labels, series, format }) {
+  const at = (i) => (labels[i] === "Start" ? "at the start" : `in ${labels[i]}`);
+  const lines = series.map(({ label, values }) => {
+    const first = values.findIndex((v) => v !== null);
+    const last = values.length - 1 - [...values].reverse().findIndex((v) => v !== null);
+    return { label, first, last, from: format(values[first]), to: format(values[last]) };
+  });
+  // Lines that all start together, as the rules do, say so once and then where each ends.
+  const shared = lines.length > 1 && lines.every((line) => line.first === lines[0].first && line.from === lines[0].from && line.last === lines[0].last);
+  const ends = shared
+    ? `All start at ${lines[0].from}${labels[lines[0].first] === "Start" ? "" : ` ${at(lines[0].first)}`}. ${at(lines[0].last).replace(/^i/, "I")}: ${lines.map((line) => `${line.label} ${line.to}`).join(", ")}.`
+    : lines.map((line) => `${line.label}: ${line.from} ${at(line.first)}, ${line.to} ${at(line.last)}.`).join(" ");
+  return `<p class="chart-summary">${escape(`${description} ${ends} The table after the chart gives every value.`)}</p>`;
 }
