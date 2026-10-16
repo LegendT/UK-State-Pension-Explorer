@@ -3,7 +3,7 @@
 import { mechanism, MEASURE_LABELS } from "../lib/uprating.js";
 import { SERIES_LABELS } from "../lib/history.js";
 import { money, percent, list } from "../lib/format.js";
-import { markStale, STALE_MESSAGE, announce, choose, copyLink, escapeHtml, focusFirstError, live, pinSummary, readAmount, readJson, readPercent, readSettings, ready, setError, updatedNote } from "./common.js";
+import { markStale, STALE_MESSAGE, announce, choose, glanceText, copyLink, escapeHtml, focusFirstError, live, pinSummary, readAmount, readJson, readPercent, readSettings, ready, setError, updatedNote } from "./common.js";
 
 const data = readJson("mechanism-data");
 const form = document.getElementById("mechanism-form");
@@ -89,7 +89,7 @@ function showPast(quiet) {
     `<p class="headline">${percent(record.applied_tenths)} increase, decided by ${escapeHtml(MEASURE_NAMES[record.measure])}</p>` +
     `<dl><div><dt>Weekly rate after</dt> <dd>${money(to)}</dd></div><div><dt>Weekly increase</dt> <dd>${money(to - from)}</dd></div></dl>` +
     (quiet ? "" : updatedNote("The full result below has changed too."));
-  if (!quiet) announce(status, `Showing the decision for ${record.tax_year}: ${percent(record.applied_tenths)}. The full result below has changed.`);
+  if (!quiet) announce(status, `Showing the decision. ${glanceText(glance)} The full result below has changed.`);
 }
 
 // typing: the redraw follows a keystroke, so an invalid figure may be half typed. quiet: the result
@@ -142,7 +142,7 @@ function showOwn(typing, quiet) {
     `<p class="headline">${percent(out.tenths)} increase, decided by ${escapeHtml(decided)}</p>` +
     `<dl><div><dt>Weekly amount after</dt> <dd>${money(out.pence)}</dd></div><div><dt>Weekly increase</dt> <dd>${money(out.increasePence)}</dd></div></dl>` +
     (quiet ? "" : updatedNote("The full result below has changed too."));
-  if (!quiet) announce(status, `Hypothetical result: ${percent(out.tenths)} increase, new weekly amount ${money(out.pence)}. The full result below has changed.`);
+  if (!quiet) announce(status, `Result updated. ${glanceText(glance)} The full result below has changed.`);
 }
 
 document.getElementById("mechanism-load").addEventListener("click", () => load());

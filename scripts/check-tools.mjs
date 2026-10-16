@@ -180,7 +180,7 @@ const submit = (page, form) => page.$eval(form, (el) => el.requestSubmit());
   check("triple lock: a half-typed figure keeps the published decision, marked out of date", (await page.$(".tool-stale")) !== null && (await text(page, "#mechanism-result .headline")) === published);
   await type(page, "#mechanism-prices", "9.0");
   check("triple lock: a typed figure gives a hypothetical result", /Hypothetical result/.test(await text(page, "#mechanism-result h3")) && /9\.0% increase, decided by prices/.test(await text(page, "#mechanism-result .headline")));
-  check("triple lock: the hypothetical result is announced", /Hypothetical result/.test(await text(page, "#mechanism-status")));
+  check("triple lock: the hypothetical result is announced with its summary (step 4)", /Hypothetical: Your own figures.*Weekly increase: £/.test(await text(page, "#mechanism-status")));
   await page.click("#mechanism-copy-link");
   await settle();
   check("triple lock: a copy after typing is announced, and the announcement stays", /has been copied/.test(await text(page, "#mechanism-status")) && /prices=9\.0/.test(await page.evaluate(() => navigator.clipboard.readText())), await text(page, "#mechanism-status"));

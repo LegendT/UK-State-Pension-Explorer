@@ -5,7 +5,7 @@ import { PERIOD_LABELS, convert, fromWeekly } from "../lib/budget.js";
 import { renderBudget, renderBudgetSummary } from "../lib/budget-view.js";
 import { money } from "../lib/format.js";
 import { parsePence } from "../lib/uprating.js";
-import { announce, focusFirstError, live, markStale, pinSummary, readAmount, readJson, ready, setError, STALE_MESSAGE, updatedNote } from "./common.js";
+import { announce, focusFirstError, glanceText, live, markStale, pinSummary, readAmount, readJson, ready, setError, STALE_MESSAGE, updatedNote } from "./common.js";
 
 const data = readJson("budget-data");
 const form = document.getElementById("budget-form");
@@ -53,6 +53,7 @@ function loadPreset() {
   const chosen = data.presets.find((item) => item.id === preset.value);
   if (!chosen) {
     about.innerHTML = "<p>Choose an example budget first.</p>";
+    announce(status, "Choose an example budget first.");
     return;
   }
   const note = convertedNote();
@@ -74,7 +75,7 @@ function loadPreset() {
   // Read before update sets it: the breakdown has "changed" only when one was already showing.
   const shown = lastResult;
   update("quiet");
-  announce(status, `Example budget loaded into the spending fields: ${chosen.label}.${note}${shown && lastResult !== shown ? " The breakdown below has changed." : ""}`);
+  announce(status, `Example budget loaded into the spending fields: ${chosen.label}.${note}${glanceNow()}${shown && lastResult !== shown ? " The breakdown below has changed." : ""}`);
 }
 
 function fillPension() {
@@ -84,8 +85,12 @@ function fillPension() {
   setError(input("state-pension"), "");
   const shown = lastResult;
   update("quiet");
-  announce(status, `State Pension set to the full new rate, ${data.full_new_rate} pounds a week.${note}${shown && lastResult !== shown ? " The breakdown below has changed." : ""}`);
+  announce(status, `State Pension set to the full new rate, ${data.full_new_rate} pounds a week.${note}${glanceNow()}${shown && lastResult !== shown ? " The breakdown below has changed." : ""}`);
 }
+
+// The summary, for a message that follows a helper: only when it shows a current result, not the
+// prompt shown before any amount, an error, or a result marked out of date.
+const glanceNow = () => (lastResult && !stale ? ` ${glanceText(glance)}` : "");
 
 // A change of period converts every amount already entered, so £241.30 a week becomes £1,045.63 a
 // calendar month, not £241.30 a month: decision 90. An amount that cannot be read is left as typed.
@@ -128,7 +133,7 @@ function convertAmounts() {
   const shown = lastResult;
   // As typing does: with an amount in error, the last result stays, marked out of date (decision 85).
   update("converted");
-  const after = stale ? ` ${STALE_MESSAGE}` : shown && lastResult !== shown ? " The breakdown below has changed." : "";
+  const after = stale ? ` ${STALE_MESSAGE}` : shown && lastResult !== shown ? `${glanceNow()} The breakdown below has changed.` : "";
   announce(status, `${done}${left}${after}`);
 }
 period.addEventListener("input", (event) => event.stopPropagation());
@@ -200,7 +205,7 @@ function update(mode) {
   lastResult = html;
   result.innerHTML = html;
   glance.innerHTML = renderBudgetSummary(figures) + updatedNote("The full breakdown below has changed too.");
-  if (!silent) announce(status, "Result updated. The breakdown below has changed.");
+  if (!silent) announce(status, `Result updated. ${glanceText(glance)} The breakdown below has changed.`);
 }
 
 // There is no submit button; the handler stays for a scripted submit.

@@ -2,7 +2,7 @@
 
 import { historyCsv, renderHistory, renderHistorySummary } from "../lib/history-view.js";
 import { observed } from "../lib/history.js";
-import { announce, chartWidth, choose, fitChart, live, pinSummary, readJson, readSettings, ready, updatedNote, writeSettings } from "./common.js";
+import { announce, glanceText, chartWidth, choose, fitChart, live, pinSummary, readJson, readSettings, ready, updatedNote, writeSettings } from "./common.js";
 
 const data = readJson("history-data");
 const form = document.getElementById("history-form");
@@ -45,7 +45,7 @@ function update(quiet) {
   result.innerHTML = renderHistory({ ...current, chartWidth: chartWidth(result) });
   glance.innerHTML = renderHistorySummary(current) + (quiet === "load" ? "" : updatedNote("The chart and table below have changed too."));
   writeSettings({ series: current.series, from: current.from, to: current.to, measure: current.measure, ...(current.rule ? { rule: current.rule } : {}) }, "explorer");
-  if (quiet !== "load") announce(status, "Result updated. The chart and table below have changed.");
+  if (quiet !== "load") announce(status, `Result updated. ${glanceText(glance)} The chart and table below have changed.`);
 }
 
 series.addEventListener("change", fillYears);
