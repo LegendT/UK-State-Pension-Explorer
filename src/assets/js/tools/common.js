@@ -74,10 +74,14 @@ export function readAmount(input, name, { min = MIN_PENCE, max = MAX_PENCE, opti
 // while the reader was still in the field it came from, and read the field again over it (step 4,
 // decision 105; WebKit bugs 222190 and 257953). The result on screen still follows the typing.
 // Menus, buttons and a submit are said at once.
+// A touch screen says it at once too: VoiceOver on the iPhone moves on by swiping, which leaves focus
+// in the field, so a held message was never said, and Done took VoiceOver to the field's label over
+// it (step 4, decision 106).
+const touch = window.matchMedia("(hover: none) and (pointer: coarse)");
 let typing = null;
 let held = null;
 export function announce(region, message) {
-  if (typing && document.activeElement === typing) held = { region, message };
+  if (typing && document.activeElement === typing && !touch.matches) held = { region, message };
   else say(region, message);
 }
 

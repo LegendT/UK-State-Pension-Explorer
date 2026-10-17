@@ -36,11 +36,11 @@ function check(name, ok, detail) {
 }
 // The live redraw waits 400 ms after the last keystroke; a little more lets the status settle.
 const settle = () => new Promise((resolve) => setTimeout(resolve, 700));
-async function open(path) {
+async function open(path, { hasTouch = false } = {}) {
   const page = await browser.newPage();
   page.errors = [];
   page.on("pageerror", (error) => page.errors.push(String(error)));
-  await page.setViewport({ width: 1280, height: 800 });
+  await page.setViewport({ width: 1280, height: 800, hasTouch });
   await page.goto(base + path, { waitUntil: "networkidle0" });
   return page;
 }
@@ -238,6 +238,16 @@ const submit = (page, form) => page.$eval(form, (el) => el.requestSubmit());
   const malformed = await open("/tools/history/?series=zzz&from=1999%2F00&to=abc&measure=nope&rule=none");
   check("history: a malformed address breaks nothing and shows the full range", malformed.errors.length === 0 && /2010\/11 to 2026\/27/.test(await text(malformed, "#history-result h3")), malformed.errors);
   await malformed.close();
+}
+
+// A touch screen says a typed result at once: VoiceOver on the iPhone moves on by swiping, which leaves
+// focus in the field (step 4).
+{
+  const page = await open("/tools/triple-lock/", { hasTouch: true });
+  await type(page, "#mechanism-prices", "9.0");
+  check("triple lock on a touch screen: the result is said while the reader is still in the field (step 4)", /Hypothetical/.test(await text(page, "#mechanism-status")) && (await page.evaluate(() => document.activeElement.id)) === "mechanism-prices", await text(page, "#mechanism-status"));
+  check("triple lock on a touch screen: no script error", page.errors.length === 0, page.errors);
+  await page.close();
 }
 
 // Triple lock calculator.
