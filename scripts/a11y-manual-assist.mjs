@@ -124,7 +124,7 @@ for (const path of pages) {
       const top = document.elementFromPoint(x, y);
       const covered = !(top && (el.contains(top) || top.contains(el)));
       const onScreen = box.bottom > 0 && box.top < innerHeight;
-      return { key: `${el.tagName.toLowerCase()}#${el.id}|${(el.textContent || "").trim().slice(0, 25)}`, visible, covered, onScreen, y: Math.round(box.top + scrollY) };
+      return { key: `${el.tagName.toLowerCase()}#${el.id}|${(el.textContent || "").trim().slice(0, 25)}`, visible, covered, onScreen, y: Math.round(box.top + scrollY), fixedLink: Boolean(el.closest(".back-to-top")) };
     });
     if (!info) break;
     if (seen.length && info.key === seen[0].key) break;
@@ -133,13 +133,16 @@ for (const path of pages) {
   const counts = (keys) => keys.reduce((map, k) => map.set(k, (map.get(k) || 0) + 1), new Map());
   const reachedCounts = counts(seen.map((f) => f.key));
   const missing = [...counts(expectedKeys)].filter(([k, n]) => (reachedCounts.get(k) || 0) < n).map(([k]) => k);
+  // The fixed "Back to top" link sits at the foot of the window wherever it is in the order, so the
+  // order on the page is measured without it.
+  const flow = seen.filter((f) => !f.fixedLink);
   out.keyboard = {
     expected,
     reached: seen.length,
     missing,
     noVisibleFocus: seen.filter((f) => !f.visible).map((f) => f.key),
     coveredOrOffScreen: seen.filter((f) => f.covered || !f.onScreen).map((f) => f.key),
-    backwards: seen.filter((f, i) => i > 1 && f.y < seen[i - 1].y - 60).map((f) => f.key),
+    backwards: flow.filter((f, i) => i > 1 && f.y < flow[i - 1].y - 60).map((f) => f.key),
   };
   if (out.keyboard.missing.length || out.keyboard.noVisibleFocus.length || out.keyboard.coveredOrOffScreen.length || out.keyboard.backwards.length) problems.push(`${path} keyboard: ${JSON.stringify(out.keyboard)}`);
   await second.close();
@@ -265,7 +268,8 @@ for (const path of pages) {
   const topShown = () => fifth.evaluate(() => {
     const el = document.querySelector(".back-to-top");
     const s = getComputedStyle(el), box = el.getBoundingClientRect();
-    return s.display !== "none" && s.position === "fixed" && box.bottom <= innerHeight && box.right <= innerWidth && box.left > innerWidth / 2;
+    // Hidden under a focused element with visibility, so it keeps its size (step 4).
+    return s.display !== "none" && s.visibility !== "hidden" && s.position === "fixed" && box.bottom <= innerHeight && box.right <= innerWidth && box.left > innerWidth / 2;
   });
   const isLong = () => fifth.evaluate(() => document.documentElement.scrollHeight > 4 * innerHeight);
   const toBottomThenUp = async (by) => {
@@ -274,6 +278,11 @@ for (const path of pages) {
   };
   const topSteps = [];
   if (await isLong()) {
+    // A keyboard reader reaches it before it shows: hidden with display, tabbing down never did (step 4).
+    const takesFocus = await fifth.evaluate(() => { const a = document.querySelector(".back-to-top a"); a.focus(); return document.activeElement === a; });
+    await topFrames();
+    topSteps.push(["it takes focus and shows before the reader scrolls up", takesFocus && (await topShown())]);
+    await fifth.evaluate(() => document.activeElement.blur()); await topFrames();
     await fifth.evaluate(() => scrollTo(0, document.body.scrollHeight)); await topFrames();
     topSteps.push(["scrolling down does not show it", !(await topShown())]);
     await fifth.evaluate(() => scrollBy(0, -200)); await topFrames();
@@ -317,6 +326,7 @@ for (const path of pages) {
   } else {
     await toBottomThenUp(100);
     topSteps.push(["a page of four screens or fewer never shows it", !(await topShown())]);
+    topSteps.push(["a page of four screens or fewer has no link to tab to", !(await fifth.evaluate(() => { const a = document.querySelector(".back-to-top a"); a.focus(); return document.activeElement === a; }))]);
   }
   out.backToTop = topSteps.filter(([, ok]) => !ok).map(([name]) => name);
   if (out.backToTop.length) problems.push(`${path} Back to top: ${out.backToTop.join("; ")}`);

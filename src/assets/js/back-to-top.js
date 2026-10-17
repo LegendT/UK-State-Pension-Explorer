@@ -1,7 +1,8 @@
 // One "Back to top" link on a long page, after Nielsen Norman Group's guidelines: decision 88.
 // Without this script the link sits at the end of the page. With it, on a page longer than four
-// screens, the link is fixed in the lower right. It appears when the reader scrolls up, stays where
-// it is until the reader is near the top, and hides while the focused element would sit under it.
+// screens, the link is fixed in the lower right. It appears when the reader scrolls up, or when it
+// has focus, stays where it is until the reader is near the top, and hides while the focused element
+// would sit under it. Until then it is below the window, still in the tab order (decision 108).
 // The stylesheet hides it at desktop width on a page whose contents list stays in view.
 
 const box = document.querySelector(".back-to-top");
@@ -39,9 +40,14 @@ function onScroll() {
   last = y;
 }
 
+// A page of four screens or fewer has no link (decision 88).
 box.classList.add("is-fixed");
+box.hidden = !long();
 addEventListener("scroll", onScroll, { passive: true });
-addEventListener("resize", () => { if (!long()) show(false); });
+addEventListener("resize", () => {
+  box.hidden = !long();
+  if (!long()) show(false);
+});
 // After the browser has scrolled the newly focused element into view.
 addEventListener("focusin", () => requestAnimationFrame(check));
 addEventListener("focusout", () => requestAnimationFrame(check));
