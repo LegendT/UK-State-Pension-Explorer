@@ -74,15 +74,31 @@ export function readAmount(input, name, { min = MIN_PENCE, max = MAX_PENCE, opti
 // while the reader was still in the field it came from, and read the field again over it (step 4,
 // decision 105; WebKit bugs 222190 and 257953). The result on screen still follows the typing.
 // Menus, buttons and a submit are said at once.
-// A touch screen says it at once too: VoiceOver on the iPhone moves on by swiping, which leaves focus
-// in the field, so a held message was never said, and Done took VoiceOver to the field's label over
-// it (step 4, decision 106).
+// A touch screen does not hold it: VoiceOver on the iPhone moves on by swiping, which leaves focus in
+// the field, so a held message was never said, and Done took VoiceOver to the field's label over it
+// (step 4, decision 106). It says it once typing has stopped for 1.5 seconds, since a key typed with
+// VoiceOver on a phone takes longer than the 400 ms redraw, and a message came after every key. A
+// button or a submit says it at once.
 const touch = window.matchMedia("(hover: none) and (pointer: coarse)");
+// 1.5 seconds after the last key: the redraw that brings the message comes 400 ms after it.
+const TOUCH_WAIT = 1100;
 let typing = null;
 let held = null;
+let waiting = null;
 export function announce(region, message) {
-  if (typing && document.activeElement === typing && !touch.matches) held = { region, message };
-  else say(region, message);
+  clearTimeout(waiting?.timer);
+  waiting = null;
+  if (!typing || document.activeElement !== typing) say(region, message);
+  else if (!touch.matches) held = { region, message };
+  else wait({ region, message });
+}
+
+function wait(next) {
+  next.timer = window.setTimeout(() => {
+    waiting = null;
+    say(next.region, next.message);
+  }, TOUCH_WAIT);
+  waiting = next;
 }
 
 // A later message replaces one not yet written, so an earlier one cannot overwrite it.
@@ -98,16 +114,28 @@ function say(region, message) {
 // message is held first if the cursor is still in a field (Safari does not focus a clicked button).
 function release() {
   typing = null;
+  if (waiting) {
+    clearTimeout(waiting.timer);
+    say(waiting.region, waiting.message);
+    waiting = null;
+  }
   if (!held) return;
   const { region, message } = held;
   held = null;
   say(region, message);
 }
 document.addEventListener("input", (event) => {
-  if (event.target.matches('input[type="text"]')) typing = event.target;
+  if (!event.target.matches('input[type="text"]')) return;
+  typing = event.target;
+  // Another key starts the wait again, so a result that a key does not change is still said.
+  if (waiting) {
+    clearTimeout(waiting.timer);
+    wait(waiting);
+  }
 });
+// On a touch screen leaving the field keeps the wait: Done took VoiceOver to the field's label.
 document.addEventListener("focusout", (event) => {
-  if (event.target === typing) release();
+  if (event.target === typing && !touch.matches) release();
 });
 document.addEventListener("keydown", (event) => {
   if (event.key === "Enter" && event.target === typing) setTimeout(release);

@@ -198,8 +198,15 @@ for (const [url, html] of written) {
   // VoiceOver with Safari read a hint joined to a fieldset at every field in it (step 4): a group's
   // hint goes with its first field, through the field macro's groupHint.
   if (/<fieldset[^>]*aria-describedby/.test(html)) fail(`${url}: a fieldset has a description; join it to the group's first field`);
-  // A button's hint follows it, so a description read it twice on the iPhone (step 4).
-  if (/<button[^>]*aria-describedby/.test(html)) fail(`${url}: a button has a description; its hint follows it and is read in order`);
+  // A button's hint is its description, read before it is pressed, and is hidden from screen readers
+  // where it shows, so VoiceOver on the iPhone does not read it twice (step 4).
+  for (const [, id] of html.matchAll(/<button[^>]*aria-describedby="([^"]+)"/g)) {
+    if (!new RegExp(`id="${id}"[^>]*aria-hidden="true"`).test(html)) fail(`${url}: a button's description ${id} is not hidden where it shows, so it is read twice`);
+  }
+  // A hint hidden where it shows must be some control's description, or no screen reader hears it.
+  for (const [, id] of html.matchAll(/<p class="hint" id="([^"]+-hint)" aria-hidden="true"/g)) {
+    if (!html.includes(`aria-describedby="${id}"`)) fail(`${url}: the hint ${id} is hidden and is no control's description, so it is never read`);
+  }
   // VoiceOver with Safari read a time element twice, and stopped at the edges of a span (step 4).
   if (/<time[\s>]|class="date"/.test(html)) fail(`${url}: a date in an element; print dates with dateText or monthOrDayText`);
 }
