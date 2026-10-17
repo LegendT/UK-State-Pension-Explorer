@@ -69,12 +69,49 @@ export function readAmount(input, name, { min = MIN_PENCE, max = MAX_PENCE, opti
 }
 
 // One polite message for screen readers after a result changes.
+// A message waits while the reader is still in the text field they last typed in, and is said when
+// they leave it, press Enter or press a button. VoiceOver with Safari cut a result's message short
+// while the reader was still in the field it came from, and read the field again over it (step 4,
+// decision 105; WebKit bugs 222190 and 257953). The result on screen still follows the typing.
+// Menus, buttons and a submit are said at once.
+let typing = null;
+let held = null;
 export function announce(region, message) {
+  if (typing && document.activeElement === typing) held = { region, message };
+  else say(region, message);
+}
+
+// A later message replaces one not yet written, so an earlier one cannot overwrite it.
+function say(region, message) {
+  clearTimeout(region.pending);
   region.textContent = "";
-  window.setTimeout(() => {
+  region.pending = window.setTimeout(() => {
     region.textContent = message;
   }, 100);
 }
+
+// Stops holding, and says what is held. Run after the page's own handler: a button's or a submit's
+// message is held first if the cursor is still in a field (Safari does not focus a clicked button).
+function release() {
+  typing = null;
+  if (!held) return;
+  const { region, message } = held;
+  held = null;
+  say(region, message);
+}
+document.addEventListener("input", (event) => {
+  if (event.target.matches('input[type="text"]')) typing = event.target;
+});
+document.addEventListener("focusout", (event) => {
+  if (event.target === typing) release();
+});
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Enter" && event.target === typing) setTimeout(release);
+});
+document.addEventListener("click", (event) => {
+  if (event.target.closest("button")) setTimeout(release);
+});
+document.addEventListener("submit", () => setTimeout(release));
 
 // The tool's "At a glance" as sentences, for the message that announces a result: a screen reader
 // hears what the summary shows, which is not otherwise read (step 4). The note that the result
