@@ -294,3 +294,18 @@ document.addEventListener("click", (event) => {
   event.preventDefault();
   table.focus();
 });
+
+// TEMPORARY, never merged: an on-screen log for the step 4 iPhone check, shown with ?debug.
+if (new URLSearchParams(window.location.search).has("debug")) {
+  const box = document.createElement("pre");
+  box.setAttribute("aria-hidden", "true");
+  box.style.cssText = "position:fixed;top:0;left:0;right:0;max-height:40vh;overflow:auto;z-index:9999;margin:0;padding:4px;font:11px/1.3 monospace;background:#ffd;color:#000;white-space:pre-wrap;border-bottom:2px solid #000";
+  document.body.append(box);
+  const t0 = performance.now();
+  const log = (text) => { box.textContent = `${((performance.now() - t0) / 1000).toFixed(1)}s ${text}\n${box.textContent}`.slice(0, 4000); };
+  log(`touch=${touch.matches} hover:none=${matchMedia("(hover: none)").matches} coarse=${matchMedia("(pointer: coarse)").matches} ua=${navigator.userAgent.slice(0, 60)}`);
+  for (const el of document.querySelectorAll('[role="status"],[role="alert"]')) {
+    new MutationObserver(() => { if (el.textContent.trim()) log(`WRITE ${el.id}: ${el.textContent.slice(0, 50)} | focus=${document.activeElement.id} typing=${typing?.id}`); }).observe(el, { childList: true, characterData: true, subtree: true });
+  }
+  for (const type of ["input", "focusin", "focusout", "keydown"]) document.addEventListener(type, (event) => log(`${type} ${event.target.id || event.target.tagName}${event.key ? ` key=${event.key}` : ""} | focus=${document.activeElement.id}`), true);
+}
