@@ -198,6 +198,8 @@ for (const [url, html] of written) {
   // VoiceOver with Safari read a hint joined to a fieldset at every field in it (step 4): a group's
   // hint goes with its first field, through the field macro's groupHint.
   if (/<fieldset[^>]*aria-describedby/.test(html)) fail(`${url}: a fieldset has a description; join it to the group's first field`);
+  // A button's hint follows it, so a description read it twice on the iPhone (step 4).
+  if (/<button[^>]*aria-describedby/.test(html)) fail(`${url}: a button has a description; its hint follows it and is read in order`);
   // VoiceOver with Safari read a time element twice, and stopped at the edges of a span (step 4).
   if (/<time[\s>]|class="date"/.test(html)) fail(`${url}: a date in an element; print dates with dateText or monthOrDayText`);
 }
