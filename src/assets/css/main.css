@@ -320,11 +320,12 @@ div.source { font-size: 0.9rem; color: var(--ink-soft); border-left: 3px solid v
 /* One "Back to top" link in place of a link at the end of every section: decision 88. It is static
    at the end of the page until back-to-top.js runs. Then it is fixed in the lower right, shown only
    once the reader scrolls up on a page over four screens, and hidden while a focused element would
-   sit under it. The link is 2.75 rem tall, the 44 px house standard. */
+   sit under it. Until it shows it is below the window but still in the tab order, and shows when it has
+   focus, as the skip link does above it. Hidden with display, Tab never reached it (step 4). The link is 2.75 rem tall, the 44 px house standard. */
 .back-to-top { margin: var(--space-l) 0 0; font-size: 0.95rem; }
 .back-to-top a { display: inline-block; padding: 0.55rem 0; }
-.back-to-top.is-fixed { display: none; position: fixed; right: var(--space-m); bottom: var(--space-m); z-index: 21; margin: 0; }
-.back-to-top.is-fixed.is-shown { display: block; }
+.back-to-top.is-fixed { position: fixed; right: var(--space-m); bottom: var(--space-m); z-index: 21; margin: 0; }
+.back-to-top.is-fixed:not(.is-shown):not(:focus-within) { transform: translateY(100vh); }
 .back-to-top.is-fixed.is-under { visibility: hidden; }
 .back-to-top.is-fixed a { padding: 0.7rem var(--space-m); min-height: 2.75rem; background: var(--paper); border: 1px solid var(--rule-strong); border-radius: var(--radius); box-shadow: 0 2px 8px rgb(0 0 0 / 0.15); font-weight: 600; text-decoration: none; }
 .back-to-top.is-fixed a:hover { text-decoration: underline; }
