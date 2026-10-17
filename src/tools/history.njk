@@ -69,6 +69,8 @@ permalink: /tools/history/
         <button type="button" class="secondary" id="history-download">Download the table shown (CSV)</button>
         <button type="button" class="secondary" id="history-copy">Copy the table shown</button>
       </div>
+      {#- What a copy or download did, for the eye; the status region says it to a screen reader (step 4). -#}
+      <p class="hint" id="history-copy-note" aria-hidden="true"></p>
     </fieldset>
   </form>
   <div class="tool-summary js-only">

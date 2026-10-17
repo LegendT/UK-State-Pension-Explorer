@@ -2,7 +2,7 @@
 
 import { historyCsv, renderHistory, renderHistorySummary } from "../lib/history-view.js";
 import { observed } from "../lib/history.js";
-import { announce, glanceText, chartWidth, choose, fitChart, live, pinSummary, readJson, readSettings, ready, updatedNote, writeSettings } from "./common.js";
+import { announce, glanceText, chartWidth, choose, fitChart, live, pinSummary, readJson, readSettings, ready, updatedNote, writeSettings, noteFollows } from "./common.js";
 
 const data = readJson("history-data");
 const form = document.getElementById("history-form");
@@ -55,6 +55,14 @@ form.addEventListener("submit", (event) => {
   update();
 });
 
+// What a download or copy did: said to a screen reader, and shown under the buttons, as the other
+// tools do after copying a link (step 4).
+const copyNote = document.getElementById("history-copy-note");
+noteFollows(form, copyNote);
+function tell(message) {
+  announce(status, message);
+  copyNote.textContent = message;
+}
 document.getElementById("history-download").addEventListener("click", () => {
   const link = document.createElement("a");
   link.href = URL.createObjectURL(new Blob([historyCsv(current)], { type: "text/csv" }));
@@ -63,15 +71,15 @@ document.getElementById("history-download").addEventListener("click", () => {
   link.click();
   link.remove();
   window.setTimeout(() => URL.revokeObjectURL(link.href), 1000);
-  announce(status, "The table shown has been downloaded as a CSV file.");
+  tell("The table shown has been downloaded as a CSV file.");
 });
 
 document.getElementById("history-copy").addEventListener("click", async () => {
   try {
     await navigator.clipboard.writeText(historyCsv(current));
-    announce(status, "The table shown has been copied.");
+    tell("The table shown has been copied.");
   } catch {
-    announce(status, "The table could not be copied. Use the download button.");
+    tell("The table could not be copied. Use the download button.");
   }
 });
 

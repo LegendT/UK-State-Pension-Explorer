@@ -147,9 +147,20 @@ export function writeSettings(settings, hash) {
   window.history.replaceState(null, "", settingsLink(window.location.href, settings, hash));
 }
 
+// A note of what a copy or download did is about the result it copied, so it goes when the form
+// changes or another of its buttons is pressed; the button that writes it does so after (step 4).
+export function noteFollows(form, note) {
+  const clear = () => {
+    note.textContent = "";
+  };
+  form.addEventListener("input", clear);
+  form.addEventListener("change", clear);
+  form.addEventListener("click", (event) => event.target.closest("button") && clear(), true);
+}
+
 // Copies a link to the result shown. The address is not written on its own (decision 96): only when
 // the clipboard refuses is the link put in the address bar, and the reader is told to copy it there.
-// The outcome is announced through the status region and shown in the note beside the button.
+// The outcome is announced through the status region and shown in the note under the button.
 export async function copyLink(settings, hash, status, note) {
   const link = settingsLink(window.location.href, settings, hash);
   let message;

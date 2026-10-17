@@ -1,7 +1,7 @@
 // Tool 2: compare the replacement rules. Presentation only.
 
 import { renderComparison, renderSummary } from "../lib/compare-view.js";
-import { announce, chartWidth, choose, fitChart, escapeHtml, focusFirstError, glanceText, live, markStale, pinSummary, STALE_MESSAGE, updatedNote, readAmount, readJson, readPercent, readSettings, ready, setError, copyLink } from "./common.js";
+import { announce, chartWidth, choose, fitChart, escapeHtml, focusFirstError, glanceText, live, markStale, pinSummary, STALE_MESSAGE, updatedNote, readAmount, readJson, readPercent, readSettings, ready, setError, copyLink, noteFollows } from "./common.js";
 
 const data = readJson("compare-data");
 const form = document.getElementById("compare-form");
@@ -158,6 +158,7 @@ document.getElementById("compare-copy-link").addEventListener("click", () => {
   }
   copyLink(linkSettings, "compare", status, document.getElementById("compare-copy-note"));
 });
+noteFollows(form, document.getElementById("compare-copy-note"));
 
 document.getElementById("compare-reset").addEventListener("click", () => {
   scenario.value = data.default;
