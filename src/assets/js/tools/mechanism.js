@@ -3,7 +3,7 @@
 import { mechanism, MEASURE_LABELS } from "../lib/uprating.js";
 import { SERIES_LABELS } from "../lib/history.js";
 import { money, percent, list } from "../lib/format.js";
-import { markStale, STALE_MESSAGE, announce, choose, glanceText, copyLink, escapeHtml, focusFirstError, live, pinSummary, readAmount, readJson, readPercent, readSettings, ready, setError, updatedNote } from "./common.js";
+import { markStale, STALE_MESSAGE, announce, choose, glanceText, copyLink, escapeHtml, focusFirstError, live, pinSummary, readAmount, readJson, readPercent, readSettings, ready, setError, updatedNote, noteFollows } from "./common.js";
 
 const data = readJson("mechanism-data");
 const form = document.getElementById("mechanism-form");
@@ -172,6 +172,7 @@ document.getElementById("mechanism-copy-link").addEventListener("click", () => {
   }
   copyLink(linkSettings, "tool", status, document.getElementById("mechanism-copy-note"));
 });
+noteFollows(form, document.getElementById("mechanism-copy-note"));
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();

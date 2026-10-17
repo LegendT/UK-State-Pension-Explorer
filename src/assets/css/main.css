@@ -426,6 +426,8 @@ fieldset > * { margin-block: 0; }
 fieldset > * + * { margin-top: var(--space-m); }
 fieldset > legend + * { margin-top: 0; }
 fieldset > :is(button, .choice) + .hint { margin-top: var(--space-s); }
+/* A note of what a copy did is empty until then, and leaves no gap (step 4). */
+p.hint:empty { display: none; }
 fieldset > .fields { margin-bottom: 0; }
 fieldset > .choice + .choice { margin-top: 0; }
 fieldset > div:empty { display: none; }
