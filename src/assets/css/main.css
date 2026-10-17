@@ -369,7 +369,6 @@ td.num, th.num { text-align: right; white-space: nowrap; }
 /* A heading over a group of rows says what the rows share, in running text: only its name is bold. */
 th[scope="rowgroup"] { font-weight: 400; padding-top: var(--space-m); }
 tr.calculated td, tr.calculated th { font-style: italic; }
-.scroll-x:focus-visible { outline-offset: -3px; }
 
 /* Charts */
 .chart { margin: var(--space-l) 0; }
