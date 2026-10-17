@@ -240,29 +240,34 @@ const submit = (page, form) => page.$eval(form, (el) => el.requestSubmit());
   await malformed.close();
 }
 
-// A touch screen does not hold a typed result: VoiceOver on the iPhone moves on by swiping, which leaves
-// focus in the field. It says it once typing has stopped for 1.5 seconds (step 4, decision 106).
+// A touch screen holds a typed result until the reader leaves the field, and says it 1 second later,
+// once VoiceOver has read where it landed (step 4, decision 107).
 {
   const page = await open("/tools/triple-lock/", { hasTouch: true });
-  // Counts the messages written, so a message after every key shows.
+  const pause = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+  const said = () => page.evaluate(() => window.said);
+  // Counts the messages written, so a message part way through a figure shows.
   await page.$eval("#mechanism-status", (el) => {
     window.said = 0;
     new MutationObserver(() => { if (el.textContent) window.said += 1; }).observe(el, { childList: true, characterData: true, subtree: true });
   });
   await page.focus("#mechanism-prices");
   await page.$eval("#mechanism-prices", (el) => { el.value = ""; });
-  // A key at a phone's pace: after the redraw, before the 1.5 second wait is over.
+  // Keys at VoiceOver's pace on a phone, each found before it is typed.
   await page.keyboard.type("1");
-  await new Promise((resolve) => setTimeout(resolve, 700));
+  await pause(2000);
   await page.keyboard.type("2");
-  await new Promise((resolve) => setTimeout(resolve, 2400));
-  check("triple lock on a touch screen: the result is said while the reader is still in the field (step 4)", /Hypothetical/.test(await text(page, "#mechanism-status")) && /12\.0% increase/.test(await text(page, "#mechanism-result .headline")) && (await page.evaluate(() => document.activeElement.id)) === "mechanism-prices", await text(page, "#mechanism-status"));
-  check("triple lock on a touch screen: one message for two keys typed at a phone's pace (step 4)", (await page.evaluate(() => window.said)) === 1, await page.evaluate(() => window.said));
-  // The message is still waiting 700 ms after the key; Enter says it then.
+  await pause(2000);
+  check("triple lock on a touch screen: nothing is said while the reader is in the field (step 4)", (await said()) === 0 && /12\.0% increase/.test(await text(page, "#mechanism-result .headline")), await said());
+  await page.$eval("#mechanism-prices", (el) => el.blur());
+  await pause(500);
+  const early = await said();
+  await pause(1000);
+  check("triple lock on a touch screen: leaving the field says the result 1 second later, once (step 4)", early === 0 && (await said()) === 1 && /Hypothetical/.test(await text(page, "#mechanism-status")), [early, await said()]);
   await type(page, "#mechanism-prices", "8");
   await page.keyboard.press("Enter");
-  await new Promise((resolve) => setTimeout(resolve, 300));
-  check("triple lock on a touch screen: Enter says the result without the wait (step 4)", (await page.evaluate(() => window.said)) === 2 && /Hypothetical/.test(await text(page, "#mechanism-status")) && /8\.0% increase/.test(await text(page, "#mechanism-result .headline")), await page.evaluate(() => window.said));
+  await pause(300);
+  check("triple lock on a touch screen: Enter says the result at once (step 4)", (await said()) === 2 && /Hypothetical/.test(await text(page, "#mechanism-status")) && /8\.0% increase/.test(await text(page, "#mechanism-result .headline")), await said());
   check("triple lock on a touch screen: no script error", page.errors.length === 0, page.errors);
   await page.close();
 }
