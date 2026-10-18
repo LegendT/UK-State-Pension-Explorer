@@ -6,7 +6,7 @@ The site is a **preview for review**. It is not published. The repository is htt
 
 **This file holds state only.** Do not add a dated section. The record of a change, with its checks, goes in the description of its pull request, and a decision goes in `docs/decision-log.md`. The record up to pull request 21 is this file as it stood before the cut: `git show 75d0574:docs/HANDOVER.md`.
 
-**Next action:** the owner's. Launch step 4, the owner's accessibility round, is under way: what is done and what is open is the step 4 paragraph of `docs/launch-dependencies.md`, the open items in the sentence opening "Open on 18 October 2026". The assistant acts only on the owner's word.
+**Next action:** the owner's. Launch step 4: the owner's accessibility round before launch is done, as the step 4 paragraph of `docs/launch-dependencies.md` records. What remains is recording its results in `src/_data/a11y.json`, `docs/accessibility-assessment.md` and `A11Y_ASSESSMENT_DATE`. The assistant acts only on the owner's word.
 
 ## How to look at it
 
@@ -66,7 +66,7 @@ The deployed preview was checked past the sign-in on 6 October 2026, in the owne
 
 ## Checks not performed
 
-- Parts of launch step 4, the owner's round: what is done and what is open is step 4's paragraph in `docs/launch-dependencies.md`, the open items in the sentence opening "Open on 18 October 2026". NVDA on Windows comes after launch (decision 99).
+- Parts of the owner's accessibility round, moved to after launch: block B on the iPhone for three tools, and two VoiceOver readings on the iPhone, listed in step 4's paragraph in `docs/launch-dependencies.md`. NVDA on Windows comes after launch (decision 99).
 - Review of content by a second person.
 - The download and copy buttons of the history explorer are pressed by `npm run test:tools` (W12), which checks the announcement and the copied table; the downloaded file itself has not been opened by a person.
 - The sister sites' tools were read from served HTML. They were not run.
@@ -103,7 +103,7 @@ As at 18 October 2026.
 
 | Item | What is needed |
 | --- | --- |
-| Launch | The steps, in order, are in `docs/launch-dependencies.md`, "Launch steps". Steps 1 to 3 and "Work before step 4" are done, W16 last: see its row. Step 4, the owner's accessibility round, is under way: VoiceOver with Safari on a Mac, VoiceOver on an iPhone for the triple lock calculator, keyboard and zoom in Chrome and Firefox; the rest of the iPhone round and NVDA after launch (decision 99, and the owner's answers of 18 October 2026). See its paragraph in `docs/launch-dependencies.md`. Step 5's answer is given: the five working documents at the repository root stop being tracked, on the local branch `step5-private-docs` with decision 103, not pushed, so the decision log on main has no 103, and step 5 in `docs/launch-dependencies.md` still reads as unanswered, until it merges. The assistant does each step on the owner's word |
+| Launch | The steps, in order, are in `docs/launch-dependencies.md`, "Launch steps". Steps 1 to 3 and "Work before step 4" are done, W16 last: see its row. Step 4's round before launch is done: VoiceOver with Safari on a Mac, VoiceOver on an iPhone for the triple lock calculator, keyboard and zoom in Chrome and Firefox; the rest of the iPhone round and NVDA after launch (decision 99, and the owner's answers of 18 October 2026). See its paragraph in `docs/launch-dependencies.md`. Next is recording its results, on the owner's word. Step 5's answer is given: the five working documents at the repository root stop being tracked, on the local branch `step5-private-docs` with decision 103, not pushed, so the decision log on main has no 103, and step 5 in `docs/launch-dependencies.md` still reads as unanswered, until it merges. The assistant does each step on the owner's word |
 
 Every other open item is in `docs/launch-dependencies.md`: before launch in "Work before step 4", after it in "After launch, first update". `docs/pre-launch-review.md`, which is frozen, points here for its "Rendered pages" and "Code" items. They are rows of that table.
 
