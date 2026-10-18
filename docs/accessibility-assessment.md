@@ -13,7 +13,7 @@ All built pages, 14 on 30 September 2026, 15 since the rule comparison got its o
 | Item | Value |
 | --- | --- |
 | Browser | Chrome 155.0.8059.82 for the scripts. Safari, Chrome and Firefox for the owner's tests, versions not recorded |
-| Operating system | macOS (Darwin 25.6.0), Apple silicon |
+| Operating system | macOS (Darwin 25.6.0), Apple silicon. iOS on an iPhone for the owner's VoiceOver tests, version not recorded |
 | Automated rules | axe-core 4.11.4, tags wcag2a, wcag2aa, wcag21a, wcag21aa, wcag22aa |
 | Viewports | 390 × 844 and 1280 × 900, light and dark. 320 × 256 for reflow |
 | Motion | `prefers-reduced-motion: reduce` |
@@ -28,7 +28,7 @@ npm run a11y                          # writes reports/a11y.json
 node scripts/a11y-manual-assist.mjs   # writes reports/a11y-manual-assist.json
 ```
 
-Both scripts print their counts. The counts are not copied here, because they change when content changes.
+Both scripts print their counts.
 
 ## Results of the last run
 
@@ -41,7 +41,7 @@ The run recorded here was on 18 October 2026, after the fixes of launch step 4: 
 
 - Contrast was measured from computed colours against the nearest solid background. That method is valid only while the stylesheet has no background images, gradients, opacity or transparent colours. The script checks the stylesheet for them and fails if it finds any.
 - The selector used to re-measure an incomplete result can match a different element with the same selector. Every element uses the same colour tokens, so the risk is small, but it is not zero.
-- The keyboard script shows that focus reaches each control and that an outline style is set. It does not show that a person can complete a task.
+- The keyboard script shows that focus reaches each control and that an outline style is set. It does not show that a person can complete a task. The owner's keyboard test does, in Chrome and Firefox.
 - The scripts do not cover how a screen reader announces a result, an error or a chart. The owner's VoiceOver tests do, on a Mac for the four calculators and on an iPhone for the triple lock calculator.
 
 ## Criterion by criterion
@@ -104,7 +104,7 @@ Result values: **No failure found** (with the method), **Not applicable** (with 
 
 ## Outstanding before any claim of conformance
 
-Done in launch step 4, 15 to 18 October 2026: VoiceOver with Safari on a Mac for the State Pension page's table and the four calculators, keyboard-only use in Chrome and Firefox, and zoom to 200% and 400% in Chrome, with a spot check in Firefox.
+Done in launch step 4, 15 to 18 October 2026: VoiceOver with Safari on a Mac for the State Pension page's table and the four calculators, and on an iPhone for the triple lock calculator, keyboard-only use in Chrome and Firefox, and zoom to 200% and 400% in Chrome, with a spot check in Firefox.
 
 1. VoiceOver with Safari on every other page, and on an iPhone for the budget explorer, the rule comparison and the history explorer. On the triple lock calculator on an iPhone: a paragraph read twice on one pass, which could not be repeated, and "At a glance" read after each digit.
 2. NVDA with a supported Windows browser: every page, every calculator state, every chart and table.
