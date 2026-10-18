@@ -91,7 +91,17 @@
     so the two lists a reader saw one after the other are one (note 4 of the page review). A reform
     page with no sections of its own, the calculator, keeps the list in the page's flow. -#}
 {%- macro contents(items, section) -%}
+{#- Over 10 entries, nested ones counted, the list opens with a link past it (decision 109). The
+    five lists over 10 run from 12 to 23 entries; at 10 a list still fits one phone screen. On a
+    reform page the section's page links count too. A for loop cannot add to a number
+    it did not declare, so the nested entries are gathered in an array. -#}
+{%- set nested = [] %}
+{%- for item in items %}{% if item[2] %}{% for sub in item[2] %}{% set _ = nested.push(sub) %}{% endfor %}{% endif %}{% endfor %}
+{%- set entries = items.length + nested.length + (site.reformPages.length if section else 0) %}
 <nav class="contents{% if section and not items.length %} section-nav{% endif %}" aria-labelledby="contents-heading">
+  {%- if entries > 10 %}
+  <a class="skip-contents" href="#{{ items[0][0] }}">Skip to the text</a>
+  {%- endif %}
   <h2 id="contents-heading">{% if section %}Reform options{% else %}On this page{% endif %}</h2>
   {%- if section %}
   <ol>

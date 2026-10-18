@@ -4,7 +4,8 @@
 // page cannot scroll up to the top.
 
 const nav = document.querySelector("main > .contents:not(.section-nav)");
-const links = nav ? [...nav.querySelectorAll('a[href^="#"]')] : [];
+// Not "Skip to the text", which shares the first entry's target and is never the entry being read.
+const links = nav ? [...nav.querySelectorAll('a[href^="#"]:not(.skip-contents)')] : [];
 const targets = links.map((link) => document.getElementById(link.hash.slice(1)));
 let followed = null;
 let followedTop = Infinity;

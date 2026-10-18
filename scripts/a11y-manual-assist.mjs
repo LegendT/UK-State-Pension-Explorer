@@ -54,7 +54,8 @@ for (const path of pages) {
   out.textSpacing = await page.evaluate(() => {
     const clipped = [...document.querySelectorAll("body *")].filter((el) => {
       const s = getComputedStyle(el);
-      if (el.closest(".visually-hidden, .skip-link") || el.matches(".visually-hidden, .skip-link")) return false;
+      // The two skip links are hidden until focused, as the visually hidden text is.
+      if (el.closest(".visually-hidden, .skip-link, .skip-contents") || el.matches(".visually-hidden, .skip-link, .skip-contents")) return false;
       const hides = [s.overflowX, s.overflowY].some((v) => v === "hidden" || v === "clip");
       return hides && (el.scrollHeight > el.clientHeight + 1 || el.scrollWidth > el.clientWidth + 1);
     });
@@ -69,7 +70,7 @@ for (const path of pages) {
   await second.goto(base + path, { waitUntil: "networkidle0" });
   await second.evaluate(() => document.querySelectorAll("details").forEach((d) => (d.open = true)));
   out.targets = await second.evaluate(() => {
-    const controls = [...document.querySelectorAll("a[href], button, input, select, summary")].filter((el) => el.offsetParent !== null && !el.closest(".skip-link") && !el.matches(".skip-link"));
+    const controls = [...document.querySelectorAll("a[href], button, input, select, summary")].filter((el) => el.offsetParent !== null && !el.closest(".skip-link, .skip-contents") && !el.matches(".skip-link, .skip-contents"));
     const inline = (el) => el.tagName === "A" && getComputedStyle(el).display === "inline" && el.parentElement.textContent.trim().length > el.textContent.trim().length;
     const rows = controls.map((el) => ({ el, box: el.getBoundingClientRect(), inline: inline(el) }));
     const name = (r) => `${r.el.tagName.toLowerCase()}#${r.el.id} "${(r.el.textContent || r.el.value || "").trim().slice(0, 30)}" ${Math.round(r.box.width)}x${Math.round(r.box.height)}`;
@@ -206,7 +207,8 @@ for (const path of pages) {
   if (await fourth.$("main > .contents:not(.section-nav)")) {
     contentsChecked += 1;
     // In-page links only: on a reform page the list also names the section's other pages.
-    const links = 'main > .contents:not(.section-nav) a[href^="#"]';
+    // The entries, as contents.js reads them: not "Skip to the text", which is never marked.
+    const links = 'main > .contents:not(.section-nav) a[href^="#"]:not(.skip-contents)';
     const frames = () => fourth.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
     const current = () => fourth.evaluate((sel) => [...document.querySelectorAll(sel)].findIndex((a) => a.getAttribute("aria-current") === "location"), links);
     const count = await fourth.$$eval(links, (a) => a.length);
