@@ -92,13 +92,17 @@ dd { margin: 0 0 var(--space-s); }
 dl:not(details.source dl, .result dl) > dd + dt { margin-top: var(--space-l); }
 
 a { color: var(--accent); text-underline-offset: 0.15em; }
-/* Visited and pressed colours for every link but the menus, the footer lists, the cards, the pager
-   and the skip and "Back to top" links, which a reader uses again and again (decision 109). :where()
-   keeps both rules at the weight of a:hover, so the contents list's current entry and the current
-   page, which set --ink, win. In this order: link, visited, hover, active. */
-a:visited:where(:not(.nav-menu a, .footer-links a, .explainers a, .journeys a, .pager a, .skip-link, .skip-contents, .back-to-top a)) { color: var(--visited); }
 a:hover { text-decoration-thickness: 2px; }
-a:active:where(:not(.nav-menu a, .footer-links a, .explainers a, .journeys a, .pager a, .skip-link, .skip-contents, .back-to-top a)) { color: var(--ink); }
+/* Visited and pressed colours for every link but the menus, the footer lists, the cards and the pager,
+   and the skip and "Back to top" links, which a reader uses again and again (decision 109). The links
+   left out are listed once, and the two states nest inside: :where() keeps each at the weight of
+   a:hover, so the contents list's current entry and the current page, which set --ink, win. A browser
+   without CSS nesting (before Safari 17.2) drops the block and shows the link colour throughout. A
+   hover colour, if one is ever wanted, goes in this block after :visited, so that it wins. */
+a:where(:not(.nav-menu a, .footer-links a, .explainers a, .journeys a, .pager a, .skip-link, .skip-contents, .back-to-top a)) {
+  &:visited { color: var(--visited); }
+  &:active { color: var(--ink); }
+}
 
 :focus-visible {
   outline: 3px solid var(--accent);
