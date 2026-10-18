@@ -11,6 +11,11 @@
   --rule: #d4d7d3;
   --rule-strong: #80858a;      /* 3.7:1 on --paper: control borders, SC 1.4.11 */
   --accent: #17505d;           /* 8.6:1 on --paper */
+  /* Visited links, worked by hand: axe cannot see them. 6.0:1 on --paper, 5.2:1 on --accent-soft,
+     the lowest. Only about 1.5:1 (1.46:1) lighter than
+     --accent: a stronger purple with the same lightness would be lost on a reader who cannot tell
+     the hues apart, and lighter ones close on 4.5:1 on the panel colours (decision 109). */
+  --visited: #7a4ea0;
   --accent-soft: #e4eef0;
   --note: #fbf5e0;
   --note-rule: #8a6d00;        /* 4.6:1 on --note */
@@ -38,6 +43,7 @@
     --rule: #3a4044;
     --rule-strong: #7d8489;    /* 4.6:1 on --paper */
     --accent: #8ecbd8;         /* 9.9:1 on --paper */
+    --visited: #ab92d0;        /* 6.6:1 on --paper, 4.9:1 on --accent-soft; 1.5:1 darker than --accent */
     --accent-soft: #1d3339;
     --note: #2a2618;
     --note-rule: #d3b24a;
@@ -87,6 +93,17 @@ dl:not(details.source dl, .result dl) > dd + dt { margin-top: var(--space-l); }
 
 a { color: var(--accent); text-underline-offset: 0.15em; }
 a:hover { text-decoration-thickness: 2px; }
+/* Visited and pressed colours for every link but the menus, the footer lists, the cards and the pager,
+   and the skip and "Back to top" links, which a reader uses again and again (decision 109). The links
+   left out are listed once, and the two states nest inside: :where() keeps each at the weight of
+   a:hover, so the contents list's current entry and the current page, which set --ink, win. A browser
+   without CSS nesting (before Safari 16.5, Chrome 112 or Firefox 117) drops the block and shows the
+   link colour throughout. A hover colour, if one is ever wanted, goes in this block between :visited
+   and :active. */
+a:where(:not(.nav-menu a, .footer-links a, .explainers a, .journeys a, .pager a, .skip-link, .skip-contents, .back-to-top a)) {
+  &:visited { color: var(--visited); }
+  &:active { color: var(--ink); }
+}
 
 :focus-visible {
   outline: 3px solid var(--accent);
@@ -107,7 +124,9 @@ main > .tool, main > figure, main > .cards, main > .scroll-x, main > .rate-block
 
 /* Utilities */
 
-.visually-hidden {
+/* Also "Skip to the text", the first item of a long contents list, until a keyboard reader reaches
+   it, when it shows in place at the top of the list (decision 109). */
+.visually-hidden, .skip-contents:not(:focus) {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
 }
@@ -133,6 +152,7 @@ main > .tool, main > figure, main > .cards, main > .scroll-x, main > .rate-block
   background: var(--paper); color: var(--accent); z-index: 10;
 }
 .skip-link:focus { top: var(--space-s); }
+.skip-contents:focus { margin-bottom: var(--space-s); }
 
 .preview-banner { background: var(--note); border-bottom: 2px solid var(--note-rule); font-size: 0.95rem; }
 .preview-banner p { margin: 0; padding: var(--space-s) 0; }
@@ -161,6 +181,9 @@ main > .tool, main > figure, main > .cards, main > .scroll-x, main > .rate-block
 .nav-menu a { display: block; padding: 0.6rem 0; min-height: 2.75rem; }
 /* "page" marks the page itself, "true" the section it belongs to. */
 .nav-menu a[aria-current], .contents a[aria-current="page"], .footer-links a[aria-current] { color: var(--ink); font-weight: 700; text-decoration: none; }
+/* A bar marks the current page, or its section, so the entry that no longer looks like a link reads
+   as "you are here": on the left in the list, under the link where the menu is a row (decision 109). */
+.nav-menu a[aria-current] { border-left: 3px solid var(--accent); padding-left: var(--space-s); }
 
 .site-footer { margin-top: var(--space-xl); border-top: 1px solid var(--rule); background: var(--panel); font-size: 0.95rem; }
 .site-footer .wrap { padding-top: var(--space-l); padding-bottom: var(--space-l); }
@@ -515,6 +538,8 @@ button.secondary { color: var(--accent); background: var(--paper); }
   @media (min-width: 60em) {
     .nav-menu summary { display: none; }
     .nav-menu ul { display: flex; flex-wrap: wrap; gap: 0 1rem; margin: 0; font-size: 0.9rem; }
+    /* The negative margin keeps the row the same height on a page with no current entry. */
+    .nav-menu a[aria-current] { border-left: 0; padding-left: 0; border-bottom: 3px solid var(--accent); margin-bottom: -3px; }
     .nav-menu::details-content { content-visibility: visible; display: block; }
   }
 }
@@ -527,6 +552,6 @@ button.secondary { color: var(--accent); background: var(--paper); }
   .site-header nav, .skip-link, .buttons, .site-footer nav[aria-label="Footer"], .back-to-top, .pager { display: none; }
   details::details-content { content-visibility: visible; display: block; }
   .tool-summary { position: static; }
-  a { color: inherit; }
+  a, a:visited, a:active { color: inherit; }
   body { font-size: 11pt; }
 }
