@@ -41,7 +41,7 @@ The run recorded here was on 18 October 2026, after the fixes of launch step 4: 
 
 - Contrast was measured from computed colours against the nearest solid background. That method is valid only while the stylesheet has no background images, gradients, opacity or transparent colours. The script checks the stylesheet for them and fails if it finds any.
 - The selector used to re-measure an incomplete result can match a different element with the same selector. Every element uses the same colour tokens, so the risk is small, but it is not zero.
-- The keyboard script shows that focus reaches each control and that an outline style is set. It does not show that a person can complete a task. The owner's keyboard test does, in Chrome and Firefox.
+- The keyboard script shows that focus reaches each control and that an outline style is set. It does not show that a person can complete a task. The owner's keyboard test did, in Chrome and Firefox, for the tasks step 4 records: reaching "Back to top" and the history explorer's copy. Its other steps are not written down.
 - The scripts do not cover how a screen reader announces a result, an error or a chart. The owner's VoiceOver tests do, on a Mac for the four calculators and on an iPhone for the triple lock calculator.
 
 ## Criterion by criterion
