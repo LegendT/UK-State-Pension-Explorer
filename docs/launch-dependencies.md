@@ -66,7 +66,7 @@ This is the one ordered list. Each step is the owner's unless it says otherwise.
    | `OWNER_TYPE` | `Person` |
    | `REVIEWER_NAME` | `Anthony George`. Set for all contexts on 15 October 2026 |
    | `REVIEW_DATE` | `2026-10-15`, from row W16. Set for all contexts on 15 October 2026 |
-   | `A11Y_ASSESSMENT_DATE` | The date of step 4, equal to `assessed_on` in `a11y.json`, in the form `YYYY-MM-DD` |
+   | `A11Y_ASSESSMENT_DATE` | `2026-10-18`, from step 4, equal to `assessed_on` in `a11y.json` once the results are recorded |
    | `AI_CRAWLER_POLICY` | `allow` |
 
 8. Attach `ukstatepensionexplorer.org` to the Netlify project: decision 67.
