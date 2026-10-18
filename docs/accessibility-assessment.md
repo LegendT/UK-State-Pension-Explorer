@@ -104,7 +104,7 @@ Result values: **No failure found** (with the method), **Not applicable** (with 
 
 ## Outstanding before any claim of conformance
 
-Done in launch step 4, 15 to 18 October 2026: VoiceOver with Safari on a Mac for the State Pension page's table and the four calculators, and on an iPhone for the triple lock calculator and the budget explorer's example menu, keyboard-only use in Chrome and Firefox, and zoom to 200% and 400% in Chrome, with a spot check in Firefox.
+Done in launch step 4, 15 to 18 October 2026: VoiceOver with Safari on a Mac for the State Pension page's table and the four calculators, and on an iPhone for the triple lock calculator; in Safari on a Mac and an iPhone, the budget explorer's example menu listing one option per group; keyboard-only use in Chrome and Firefox, and zoom to 200% and 400% in Chrome, with a spot check in Firefox.
 
 1. VoiceOver with Safari on every other page, and on an iPhone for the budget explorer, the rule comparison and the history explorer. On the triple lock calculator on an iPhone: a paragraph read twice on one pass, which could not be repeated, and "At a glance" read after each digit.
 2. NVDA with a supported Windows browser: every page, every calculator state, every chart and table.

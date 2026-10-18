@@ -44,7 +44,7 @@
     },
     {
       "check": "VoiceOver with Safari on an iPhone",
-      "result": "A person worked through the triple lock calculator and checked the budget explorer's list of example budgets. What was found was fixed and checked again, apart from the two points listed under what has not been tested.",
+      "result": "A person worked through the triple lock calculator. What was found was fixed and checked again, apart from the two points listed under what has not been tested.",
       "environment": "Safari with VoiceOver on iOS, used by a person.",
       "date": "2026-10-17"
     },
