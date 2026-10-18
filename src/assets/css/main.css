@@ -11,7 +11,8 @@
   --rule: #d4d7d3;
   --rule-strong: #80858a;      /* 3.7:1 on --paper: control borders, SC 1.4.11 */
   --accent: #17505d;           /* 8.6:1 on --paper */
-  /* Visited links. 6.0:1 on --paper, 5.2:1 on --accent-soft, the lowest. Only 1.5:1 lighter than
+  /* Visited links, worked by hand: axe cannot see them. 6.0:1 on --paper, 5.2:1 on --accent-soft,
+     the lowest. Only about 1.5:1 (1.46:1) lighter than
      --accent: a stronger purple with the same lightness would be lost on a reader who cannot tell
      the hues apart, and lighter ones close on 4.5:1 on the panel colours (decision 109). */
   --visited: #7a4ea0;
