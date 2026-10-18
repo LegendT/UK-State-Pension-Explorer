@@ -9,7 +9,7 @@ permalink: /accessibility/
 
 {% if a11y.status != "complete" %}
 {% call m.note("Status: assessment not complete", 2, "status-assessment-not-complete") %}
-<p>{% if not site.production %}This is a preview. {% endif %}An AI assistant has run automated checks and some scripted checks. The tests that need a person, and are not yet done, are listed under <a href="#not-tested">What has not been tested</a>. Automated checks alone cannot show that a site meets the guidelines. We will not describe the site as meeting WCAG 2.2 AA until every check below is done and every failure is fixed.</p>
+<p>{% if not site.production %}This is a preview. {% endif %}An AI assistant has run automated and scripted checks, and the site's owner has tested it with VoiceOver, with a keyboard alone and with zoom. The tests not yet done are listed under <a href="#not-tested">What has not been tested</a>. Automated checks alone cannot show that a site meets the guidelines. We will not describe the site as meeting WCAG 2.2 AA until every check below is done and every failure is fixed.</p>
 {% endcall %}
 {% endif %}
 
@@ -29,14 +29,11 @@ permalink: /accessibility/
 
 <h2 id="tested">What has been tested</h2>
 {% if a11y.done | length %}
-{#- When every test shares one environment and date, say so once. -#}
-{%- set runs = [] %}
-{%- for item in a11y.done %}{% set key = item.environment ~ item.date %}{% if key not in runs %}{% set _ = runs.push(key) %}{% endif %}{% endfor %}
-{%- set oneRun = (runs | length) == 1 %}
-{% if oneRun %}<p>Every test below used {{ a11y.done[0].environment }} They ran on {{ a11y.done[0].date | dateText }}.</p>{% endif %}
+{#- The run most tests shared is said once; a test with its own environment and date says them after its result. -#}
+<p>Unless a test says otherwise, it used {{ a11y.run.environment }} The tests ran on {{ a11y.run.date | dateText }}.</p>
 <dl>
   {%- for item in a11y.done %}
-  <dt>{{ item.check }}</dt> <dd>{{ item.result }}{% if not oneRun %} {{ item.environment }} Tested on {{ item.date | dateText }}.{% endif %}</dd>
+  <dt>{{ item.check }}</dt> <dd>{{ item.result }}{% if item.environment %} {{ item.environment }} Tested on {{ item.date | dateText }}.{% endif %}</dd>
   {%- endfor %}
 </dl>
 {% else %}

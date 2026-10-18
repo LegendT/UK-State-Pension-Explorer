@@ -230,8 +230,8 @@
       "canonical_path": "/accessibility/",
       "index": true,
       "published": null,
-      "modified": "2026-10-15",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 12 October 2026: the report section says a GitHub issue is the only route and needs an account, a known limit (W13). Changed on 13 October 2026: VoiceOver and NVDA said to be screen readers, in the reason for each (W25). Changed on 15 October 2026: the sentence beside the report link says it opens the issues list (decision 100); \"Without JavaScript\" gives what each calculator shows without its script, with its script blocked and while it loads, and the budget explorer's notice in place of a default result (W39)."
+      "modified": "2026-10-18",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 12 October 2026: the report section says a GitHub issue is the only route and needs an account, a known limit (W13). Changed on 13 October 2026: VoiceOver and NVDA said to be screen readers, in the reason for each (W25). Changed on 15 October 2026: the sentence beside the report link says it opens the issues list (decision 100); \"Without JavaScript\" gives what each calculator shows without its script, with its script blocked and while it loads, and the budget explorer's notice in place of a default result (W39). Changed on 18 October 2026: the results of launch step 4, the owner's tests with VoiceOver, a keyboard and zoom, and the scripted run of that day said once above the tests."
     },
     {
       "path": "/privacy/",
