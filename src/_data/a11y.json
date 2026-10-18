@@ -1,76 +1,82 @@
 {
   "standard": "WCAG 2.2 Level AA",
   "status": "incomplete",
-  "assessed_on": "2026-10-05",
-  "note": "Filled in from docs/accessibility-assessment.md after each round of testing.",
+  "assessed_on": "2026-10-18",
+  "note": "Filled in from docs/accessibility-assessment.md after each round of testing. A test without its own environment and date used the shared run.",
+  "run": {
+    "environment": "Chrome 155 on macOS (Apple silicon), driven by script.",
+    "date": "2026-10-18"
+  },
   "done": [
     {
       "check": "Automated rules",
-      "result": "axe-core 4.11 ran on every page, at phone and desktop widths, in light and dark schemes, and with each calculator showing a result and an error. It found no violations. Where it could not judge the contrast of some text, a script measured each case, and none was below the required ratio.",
-      "environment": "Chrome 154 on macOS (Apple silicon), driven by script.",
-      "date": "2026-10-05"
+      "result": "axe-core 4.11 ran on every page, at phone and desktop widths, in light and dark schemes, and with each calculator showing a result and an error. It found no violations. Where it could not judge the contrast of some text, a script measured each case, and none was below the required ratio."
     },
     {
       "check": "Reflow",
-      "result": "At 320 CSS pixels wide, no page scrolls sideways. Wide tables and charts scroll inside their own area.",
-      "environment": "Chrome 154 on macOS (Apple silicon), driven by script.",
-      "date": "2026-10-05"
+      "result": "At 320 CSS pixels wide, no page scrolls sideways. Wide tables and charts scroll inside their own area."
     },
     {
       "check": "Text spacing",
-      "result": "With the spacing of WCAG 1.4.12 applied, no text was cut off on any page.",
-      "environment": "Chrome 154 on macOS (Apple silicon), driven by script.",
-      "date": "2026-10-05"
+      "result": "With the spacing of WCAG 1.4.12 applied, no text was cut off on any page."
     },
     {
       "check": "Target size",
-      "result": "No control is smaller than 24 by 24 CSS pixels, apart from links inside a sentence, which the guidelines exempt, and four standalone links about 21 pixels tall, which pass by the spacing exception of the guideline. Some controls are between 24 and 43 pixels high, below our own aim of 44.",
-      "environment": "Chrome 154 on macOS (Apple silicon), driven by script.",
-      "date": "2026-10-05"
+      "result": "No control is smaller than 24 by 24 CSS pixels, apart from links inside a sentence, which the guidelines exempt. Some controls are between 24 and 43 pixels high, below our own aim of 44."
     },
     {
       "check": "Keyboard order and visible focus",
-      "result": "A script pressed Tab through every page. Every control was reached, in reading order, with an outline style set when focused, and none was covered by other content. A person has not looked at the outline on every control.",
-      "environment": "Chrome 154 on macOS (Apple silicon), driven by script.",
-      "date": "2026-10-05"
+      "result": "A script pressed Tab through every page. Every control was reached, in reading order, with an outline style set when focused, and none was covered by other content."
     },
     {
       "check": "Headings",
-      "result": "No page skips a heading level.",
-      "environment": "Chrome 154 on macOS (Apple silicon), driven by script.",
-      "date": "2026-10-05"
+      "result": "No page skips a heading level."
     },
     {
       "check": "Without JavaScript",
-      "result": "Every explanation can be read. With JavaScript off, each calculator shows a notice instead of its form, and none of the sentences that tell a reader what to enter or copy. The triple lock calculator, the rule comparison and the history explorer also show a default result; the budget explorer's notice points to its example budgets, set out in full on its page. Each calculator was also loaded with its own script blocked, when the notice adds that the script did not run and how to report it, and with its script held back, when neither the form nor the notice shows until it runs.",
-      "environment": "Chrome 155 on macOS (Apple silicon), driven by script.",
-      "date": "2026-10-15"
+      "result": "Every explanation can be read. With JavaScript off, each calculator shows a notice instead of its form, and none of the sentences that tell a reader what to enter or copy. The triple lock calculator, the rule comparison and the history explorer also show a default result; the budget explorer's notice points to its example budgets, set out in full on its page. Each calculator was also loaded with its own script blocked, when the notice adds that the script did not run and how to report it, and with its script held back, when neither the form nor the notice shows until it runs."
+    },
+    {
+      "check": "VoiceOver with Safari on a Mac",
+      "result": "A person listened to the State Pension page's table of what a date of birth decides, and worked through the four calculators, hearing between them entered figures, errors, results, charts and their tables, and a copied link. What was found was fixed and heard again. Other pages were not listened to in full.",
+      "environment": "Safari with VoiceOver on macOS, used by a person.",
+      "date": "2026-10-17"
+    },
+    {
+      "check": "VoiceOver with Safari on an iPhone",
+      "result": "A person worked through the triple lock calculator. What was found was fixed and checked again, apart from the two points listed under what has not been tested.",
+      "environment": "Safari with VoiceOver on iOS, used by a person.",
+      "date": "2026-10-17"
+    },
+    {
+      "check": "Keyboard use by a person",
+      "result": "A person tested the site with a keyboard alone, in Chrome and then in Firefox. Two faults were found and fixed: the \"Back to top\" link could not be reached with Tab, and the history explorer's copy button gave no visible sign that it had worked.",
+      "environment": "Chrome and Firefox on macOS, used by a person.",
+      "date": "2026-10-18"
+    },
+    {
+      "check": "Zoom to 200% and 400%",
+      "result": "A person zoomed every page to 200% and 400% in Chrome, and the costs page and the budget explorer to 400% in Firefox. One fault was found and fixed: on the costs page, the outline of a focused table covered the first letter of its caption.",
+      "environment": "Chrome and Firefox on macOS, used by a person.",
+      "date": "2026-10-18"
     }
   ],
   "not_done": [
     {
-      "check": "VoiceOver with Safari",
-      "reason": "VoiceOver is the screen reader built into Apple devices. Not yet tested by a person. This needs someone to listen to each page and each calculator."
+      "check": "VoiceOver on other pages and on an iPhone",
+      "reason": "No page has been listened to in full: only the State Pension page's table and the four calculators. On an iPhone the budget explorer, the rule comparison and the history explorer have not been tested. On the triple lock calculator on an iPhone, one paragraph was read twice on one pass, which could not be repeated, and VoiceOver read the summary \"At a glance\" after each digit typed. Both are still to be looked at."
     },
     {
       "check": "NVDA with a Windows browser",
       "reason": "NVDA is a free screen reader for Windows. Not yet tested. No Windows computer was available."
     },
     {
-      "check": "Keyboard use by a person",
-      "reason": "The keyboard check was made by a script. A person has not yet worked through each calculator with a keyboard alone."
+      "check": "Touch on a phone without a screen reader",
+      "reason": "Tested at phone width on a computer, and on an iPhone only with VoiceOver, as above."
     },
     {
-      "check": "Zoom to 200% and 400% in a browser",
-      "reason": "Reflow was measured at the equivalent width by script. A person has not yet zoomed each page in a browser."
-    },
-    {
-      "check": "Touch on a phone",
-      "reason": "Tested at phone width on a computer only, not on a phone."
-    },
-    {
-      "check": "Firefox and Safari",
-      "reason": "All checks so far used Chrome."
+      "check": "The automated and scripted checks in Firefox and Safari",
+      "reason": "They used Chrome only. Firefox was used for the keyboard and zoom checks, and Safari with VoiceOver, as above."
     },
     {
       "check": "Use by disabled and older readers",
