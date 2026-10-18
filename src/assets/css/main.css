@@ -97,8 +97,9 @@ a:hover { text-decoration-thickness: 2px; }
    and the skip and "Back to top" links, which a reader uses again and again (decision 109). The links
    left out are listed once, and the two states nest inside: :where() keeps each at the weight of
    a:hover, so the contents list's current entry and the current page, which set --ink, win. A browser
-   without CSS nesting (before Safari 17.2) drops the block and shows the link colour throughout. A
-   hover colour, if one is ever wanted, goes in this block after :visited, so that it wins. */
+   without CSS nesting (before Safari 16.5, Chrome 112 or Firefox 117) drops the block and shows the
+   link colour throughout. A hover colour, if one is ever wanted, goes in this block between :visited
+   and :active. */
 a:where(:not(.nav-menu a, .footer-links a, .explainers a, .journeys a, .pager a, .skip-link, .skip-contents, .back-to-top a)) {
   &:visited { color: var(--visited); }
   &:active { color: var(--ink); }
