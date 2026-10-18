@@ -6,7 +6,7 @@ The site is a **preview for review**. It is not published. The repository is htt
 
 **This file holds state only.** Do not add a dated section. The record of a change, with its checks, goes in the description of its pull request, and a decision goes in `docs/decision-log.md`. The record up to pull request 21 is this file as it stood before the cut: `git show 75d0574:docs/HANDOVER.md`.
 
-**Next action:** the owner's. Launch step 4, the owner's accessibility round, is under way: what is confirmed and what is open is the step 4 paragraph of `docs/launch-dependencies.md`, ending "Open at the close of 17 October 2026". The assistant acts only on the owner's word.
+**Next action:** the owner's. Launch step 4, the owner's accessibility round, is under way: what is confirmed and what is open is the step 4 paragraph of `docs/launch-dependencies.md`, in the sentence opening "Open at the close of 17 October 2026". The assistant acts only on the owner's word.
 
 ## How to look at it
 
@@ -20,7 +20,7 @@ npm run serve        # http://127.0.0.1:8137
 
 - Nineteen pages: eleven main pages, the Tools page and three tool pages (decision 78), and four utility pages. Four calculators. Reform options is five pages: the options, the rule comparison (decision 62), costs, pensions and social care, and entitlement.
 - On the overview, a section on State Pension age by date of birth, added on 30 September 2026.
-- Navigation: a contents list on every long explainer, kept in view in a column of its own at 64em and wider, with the `h3` entries of a section over four phone screens nested; the calculator pages have none. On the reform pages the list also names the section's five pages, with this page's sections nested under its name. One "Back to top" link on a long page (decision 88, amended by 92). Next and Previous links at the foot of each reform page, and a Next link on the State Pension page. The site map follows the navigation (W7, 9 October 2026).
+- Navigation: a contents list on every long explainer, kept in view in a column of its own at 64em and wider, with the `h3` entries of a section over four phone screens nested; the calculator pages have none. On the reform pages the list also names the section's five pages, with this page's sections nested under its name. One "Back to top" link on a long page (decision 88, amended by 92 and 108). Next and Previous links at the foot of each reform page, and a Next link on the State Pension page. The site map follows the navigation (W7, 9 October 2026).
 - Registers of figures, claims and sources, a page register and a link register.
 - Model specification, written before the code. Reference calculations by a separate method.
 - Build checks for metadata, canonicals, indexing, sitemap, internal links, registers and sister links.
@@ -66,7 +66,7 @@ The deployed preview was checked past the sign-in on 6 October 2026, in the owne
 
 ## Checks not performed
 
-- Parts of launch step 4, the owner's round, which has VoiceOver with Safari on the Mac, keyboard in Chrome and zoom at 400% on the costs page done: what is still open is listed at the end of step 4's paragraph in `docs/launch-dependencies.md`. NVDA on Windows comes after launch (decision 99).
+- Parts of launch step 4, the owner's round, which has VoiceOver with Safari on the Mac, keyboard in Chrome and zoom at 400% on the costs page done: what is still open is in step 4's paragraph in `docs/launch-dependencies.md`, in the sentence opening "Open at the close of 17 October 2026". NVDA on Windows comes after launch (decision 99).
 - Review of content by a second person.
 - The download and copy buttons of the history explorer are pressed by `npm run test:tools` (W12), which checks the announcement and the copied table; the downloaded file itself has not been opened by a person.
 - The sister sites' tools were read from served HTML. They were not run.
