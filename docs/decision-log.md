@@ -127,6 +127,13 @@ Short record of decisions made during the first build, 29 September 2026, after 
 | 119 | `docs/HANDOVER.md`, the handover, leaves the tracked tree after launch and stays on the owner's computer, as the five working documents (number 103) and `NEXT-SESSION.md` (number 99) do. It keeps its role: the state file a session reads first, with the last checks and what waits on the owner (number 83). The documents that cite it, the three frozen reviews among them, keep their citations; past commits still hold every version of it. Amends number 99, whose step 5 kept the handover tracked. | The owner's instruction after launch. The file is working state for the owner and his sessions, not for a reader of the site or the repository, who has the launch plan, the decision log and the README. | Yes: `git add -f` brings it back. |
 | 120 | The seven items that stand between the site and a claim of WCAG 2.2 AA conformance are planned as rows AA1 to AA7 of "Towards a claim of WCAG 2.2 AA conformance" in `docs/launch-dependencies.md`, after launch, each on the owner's word for when. The claim is made only when every row is done. Amends number 99, which put this work after launch unplanned. | The owner's "plan 1 to 7" to the assistant's list of 19 October 2026, drawn from the assessment's "Outstanding before any claim of conformance". Nothing known fails; the gap is coverage. | Yes |
 
+## After launch, from 19 October 2026
+
+Numbers 1 to 120 above were made before and at the launch of 19 October 2026 (step 9 of `docs/launch-dependencies.md`, pull request 65). Decisions after it continue the numbering here, in the same columns, and the "Who decided" paragraph at the top covers them too. The sections below, on the brief and the scope, were written during the build and are not continued.
+
+| No. | Decision | Reason | Reversible |
+| --- | --- | --- | --- |
+
 ## Contradictions and proposed scope changes
 
 | Item | In the brief | Found | Proposal |
