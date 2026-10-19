@@ -6,7 +6,7 @@ The site is a **preview for review**. It is not published. The repository is htt
 
 **This file holds state only.** Do not add a dated section. The record of a change, with its checks, goes in the description of its pull request, and a decision goes in `docs/decision-log.md`. The record up to pull request 21 is this file as it stood before the cut: `git show 75d0574:docs/HANDOVER.md`.
 
-**Next action:** the owner's. On 19 October 2026 (decision 110) the update check was built and run, the new material of the row "New material since 30 September 2026" in `docs/launch-dependencies.md` was brought in (decisions 111 and 112), and step 5's answer (decision 103) was merged with them as pull request 57 the same day. What remains of step 5 is the owner's switch to public. Then launch steps 6 to 9 in `docs/launch-dependencies.md`, "Launch steps", with the value check rerun alone and the update check clean before step 9; the launch date is his to set again. What he holds is in "Waiting on the owner". The assistant acts on the owner's word.
+**Next action:** the owner's. On 19 October 2026 (decision 110) the update check was built and run, the new material of the row "New material since 30 September 2026" in `docs/launch-dependencies.md` was brought in (decisions 111 and 112), and step 5's answer (decision 103) was merged with them as pull request 57 the same day. On 19 October 2026 the owner reordered the steps (decision 113): next is the repository audit, step 10 of "Launch steps" in `docs/launch-dependencies.md`, then step 13 (the update check, with the value check rerun alone), steps 8, 7, 6 and 11, step 5, step 9, step 14 (the live checks) and step 12 (the tag), as decision 114 amended it; the launch date is his to set again. What he holds is in "Waiting on the owner". The assistant acts on the owner's word.
 
 ## How to look at it
 
@@ -78,7 +78,7 @@ The deployed preview was checked past the sign-in on 6 October 2026, in the owne
 
 ## Launch
 
-See `docs/launch-dependencies.md`. Every item was decided on 2 October 2026, and "Launch steps" there is the one ordered list. The owner wanted to launch before 20 October 2026 (decision 82) and set 19 October for the update check, the new material and steps 5 to 9 (decision 110); that day ended with pull request 57 open and steps 6 to 9, which are his, not begun, so the launch date is his to set again.
+See `docs/launch-dependencies.md`. Every item was decided on 2 October 2026, and "Launch steps" there is the one ordered list. The owner wanted to launch before 20 October 2026 (decision 82) and set 19 October for the update check, the new material and steps 5 to 9 (decision 110); that day saw pull request 57 merged and steps 6 to 9, which are his, not begun, so the launch date is his to set again. Later that day he reordered the steps and added the audit, the branch clean-up and the tag (decision 113), and after the plan's critique the live checks, the rollback and the domain checks (decision 114).
 
 ## Declined: do not raise again
 
