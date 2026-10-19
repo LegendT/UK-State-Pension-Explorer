@@ -78,7 +78,7 @@ The deployed preview was checked past the sign-in on 6 October 2026, in the owne
 
 ## Launch
 
-See `docs/launch-dependencies.md`. Every item was decided on 2 October 2026, and "Launch steps" there is the one ordered list. The owner wants to launch before 20 October 2026: decision 82.
+See `docs/launch-dependencies.md`. Every item was decided on 2 October 2026, and "Launch steps" there is the one ordered list. The owner wanted to launch before 20 October 2026 (decision 82) and set 19 October for the update check, the new material and steps 5 to 9 (decision 110); that day ended with pull request 57 open and steps 6 to 9, which are his, not begun, so the launch date is his to set again.
 
 ## Declined: do not raise again
 
