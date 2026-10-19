@@ -1,5 +1,5 @@
 {
-  "note": "Passages confirmed by opening the source in a browser, because the site refuses automated requests. Each entry was read in Chrome on the date shown. An entry whose site asks a person to prove they are not a robot keeps its last date until a person reads it again.",
+  "note": "Passages confirmed by opening the source in a browser, because the site refuses automated requests. Each entry was read in Chrome on the date shown. An entry whose site asks a person to prove they are not a robot keeps its last date until a person reads it again. An entry whose browser is marked headless was read by a script driving Chrome, not by a person, and counts until a person reads it.",
   "checked": [
     {
       "id": "care-cost-free-personal",
@@ -116,6 +116,21 @@
       "id": "kf-response",
       "date": "2026-10-12",
       "browser": "Chrome 154"
+    },
+    {
+      "id": "ifs-saving-2034",
+      "date": "2026-10-19",
+      "browser": "Chrome 155, headless"
+    },
+    {
+      "id": "ifs-cancelling-unfunded",
+      "date": "2026-10-19",
+      "browser": "Chrome 155, headless"
+    },
+    {
+      "id": "saving-rule-2030-2040-ifs",
+      "date": "2026-10-19",
+      "browser": "Chrome 155, headless"
     }
   ]
 }

@@ -1,6 +1,6 @@
 # Requirements matrix
 
-Links each part of `uk-state-pension-explorer-scope.md` to where it is built, what evidence it rests on and how it was checked. Written 29 September 2026.
+Links each part of `uk-state-pension-explorer-scope.md`, the owner's scope, no longer tracked and kept on his computer (decision 103), to where it is built, what evidence it rests on and how it was checked. Written 29 September 2026.
 
 Status values: **Built**, **Built with a gap** (the gap is named), **Not built** (the reason is named), **Owner** (needs a decision or a person).
 
@@ -71,12 +71,12 @@ Status values: **Built**, **Built with a gap** (the gap is named), **Not built**
 | Dated language, no badges | Source notes | | Built |
 | Passage checks | `scripts/check-passages.py` | All passages found: by script, or in a browser for the sites that refuse scripts (23 passages) | Built |
 | Values without a passage | `scripts/check-values.py` and direct look-up in the spreadsheets | All found. The 12 figures without a quoted passage record their file and cell (W4, 8 October 2026) | Built |
-| Review status shown honestly | `review_status` = `checked-with-ai-assistance`, preview banner | | The owner read every page on 8 October 2026 (launch step 3); the formal review date is row W16 of `docs/launch-dependencies.md` |
+| Review status shown honestly | `review_status` = `checked-with-ai-assistance`, preview banner | | The owner read every page on 8 October 2026 (launch step 3) and again on 15 October 2026 (row W16 of `docs/launch-dependencies.md`), which set `REVIEW_DATE` to 2026-10-15 |
 | Conflicting sources not resolved silently | Decision log, source notes | | Built |
 
 ## Section 6: design and accessibility
 
-See `docs/accessibility-assessment.md`. Status: **Built with a gap**. Automated and scripted checks found no failure. No assistive technology has been used and no person has tested.
+See `docs/accessibility-assessment.md`. Status: **Built with a gap**. Automated and scripted checks found no failure. In launch step 4 (15 to 18 October 2026) the owner tested parts of the site with VoiceOver on a Mac and an iPhone. He tested the site with a keyboard, for the tasks the assessment records, and every page with zoom. NVDA, the rest of the iPhone round and usability sessions remain.
 
 ## Section 7: delivery stages
 

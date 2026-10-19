@@ -984,10 +984,10 @@
     "title": "Recycling savings from ending the triple lock into social care is good news for vulnerable pensioners",
     "url": "https://www.resolutionfoundation.org/press-releases/recycling-savings-from-ending-the-triple-lock-into-social-care-is-good-news-for-vulnerable-pensioners/",
     "published_date": "2026-09-29",
-    "updated_date": null,
-    "checked_date": "2026-09-30",
+    "updated_date": "2026-10-05",
+    "checked_date": "2026-10-19",
     "licence": "Copyright of the publisher. Short quotation only.",
-    "note": "A press release. It gives no method for its figures."
+    "note": "A press release. It gives no method for its figures. The page reports a modification on 5 October 2026; read again on 19 October 2026, when the three passages the site quotes were unchanged."
   },
   "pa-2026-09-29": {
     "publisher": "PA News, published by The Oldham Times",
@@ -1108,5 +1108,55 @@
     "checked_date": "2026-10-13",
     "licence": "Open Government Licence v3.0",
     "note": "GOV.UK guides show no publication date. The date given is the last technical update recorded by GOV.UK. The weekly rates quoted are in the guide's part on rates."
+  },
+  "ifs-savings-range-2026": {
+    "publisher": "Institute for Fiscal Studies",
+    "title": "Savings from triple lock reform could be large but will not be able to fund social care",
+    "url": "https://ifs.org.uk/articles/savings-triple-lock-reform-could-be-large-will-not-be-able-fund-social-care",
+    "published_date": "2026-09-30",
+    "updated_date": null,
+    "checked_date": "2026-10-19",
+    "licence": "Copyright of the publisher. Short quotation only.",
+    "note": "A comment by Jonathan Cribb and Heidi Karjalainen, giving the Institute's own range for the saving. It does not publish the paths of earnings and prices behind the range. The site refuses automated reading, so it was read in a browser."
+  },
+  "scotgov-letter-2026-09-30": {
+    "publisher": "Scottish Government",
+    "title": "Pension triple lock changes impact: Deputy First Minister letter",
+    "url": "https://www.gov.scot/publications/deputy-first-minister-letter-to-finance-and-public-administration-committee/",
+    "published_date": "2026-10-01",
+    "updated_date": null,
+    "checked_date": "2026-10-19",
+    "licence": "Open Government Licence v3.0",
+    "note": "A letter from the Deputy First Minister to the Scottish Parliament's Finance and Public Administration Committee, dated 30 September 2026 and published on 1 October 2026. Its figures apply Scotland's projected share of the UK's State Pension age population to the UK government's estimates. It gives no further method."
+  },
+  "snp-2026-10-02": {
+    "publisher": "Scottish National Party",
+    "title": "The Great Scottish Pensions Robbery",
+    "url": "https://www.snp.org/the-great-scottish-pensions-robbery/",
+    "published_date": "2026-10-02",
+    "updated_date": null,
+    "checked_date": "2026-10-19",
+    "licence": "Copyright of the publisher. Short quotation only.",
+    "note": "An unsigned article on the party's own site. It restates the Scottish Government's figures from the letter of 30 September 2026, as a total of £4 billion, without the year."
+  },
+  "bell-substack-2026-10-02": {
+    "publisher": "Torsten Bell, the pensions minister, on his own newsletter",
+    "title": "The Future of the Triple Lock",
+    "url": "https://torstenbell.substack.com/p/the-future-of-the-triple-lock",
+    "published_date": "2026-10-02",
+    "updated_date": null,
+    "checked_date": "2026-10-19",
+    "licence": "Copyright of the author. Short quotation only.",
+    "note": "A personal newsletter, not a government publication. It describes the rule in the minister's words and repeats the department's savings and poverty figures. GOV.UK's list of ministers, read on 19 October 2026, gives Torsten Bell as Pensions Minister at the Treasury and the Department for Work and Pensions."
+  },
+  "dhsc-news-2026-09-30": {
+    "publisher": "Department of Health and Social Care",
+    "title": "Support for families and babies rolled out to all family hubs",
+    "url": "https://www.gov.uk/government/news/support-for-families-and-babies-rolled-out-to-all-family-hubs",
+    "published_date": "2026-09-30",
+    "updated_date": null,
+    "checked_date": "2026-10-19",
+    "licence": "Open Government Licence v3.0",
+    "note": "A government news story. The workforce plan is one sentence in it."
   }
 }

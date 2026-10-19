@@ -112,18 +112,19 @@ permalink: /reform-options/costs/
     {%- for id, change, suffix in [
       ["saving-rule-2030-late-2030s","The rule announced for April 2030"," a year"],
       ["saving-rule-2030-2050","The rule announced for April 2030"," a year"],
+      ["saving-rule-2030-2040-ifs","The rule announced for April 2030, as the Institute for Fiscal Studies restates it"," a year"],
       ["saving-smoothed-rf-2030","Smoothed earnings link from 2027-28"," a year"],
       ["saving-earnings-gad-2031","Earnings link from April 2026",", built up over five years"],
       ["saving-earnings-ifs-2050","Pension kept at its present share of earnings from 2025"," a year"],
       ["saving-earnings-2075","Earnings link after 2030-31"," a year"],
       ["saving-cpi-2075","Prices link after 2030-31"," a year"]] %}
     {%- set fg = id | figure %}
-    <tr><th scope="row">{{ change }}</th><td>{{ id | figShown }}{{ suffix }}</td><td>{{ fg.period_label }}</td><td>{{ fg.gross_net }}{% if fg.price_basis and fg.price_basis != "cash" %}. {{ fg.price_basis | upperFirst }}{% endif %}</td><td>{{ m.cite(fg.source) }}</td></tr>
+    <tr><th scope="row">{{ change }}</th><td>{{ id | figShown }}{{ suffix }}{% if fg.range %}, in a range of {{ fg.range }}{% endif %}</td><td>{{ fg.period_label }}</td><td>{{ fg.gross_net }}{% if fg.price_basis and fg.price_basis != "cash" %}. {{ fg.price_basis | upperFirst }}{% endif %}</td><td>{{ m.cite(fg.source) }}</td></tr>
     {%- endfor %}
   </tbody>
 </table>
 {% endcall %}
-<div class="source"><p>Estimates and projections, not forecasts of what will happen. None describes a cut to pensions already in payment. The sources do not say so in those words. This is our reading of what each one models. Checked against the sources on {{ ("saving-earnings-2075" | figure).checked_date | dateText }}, except the two rows for the rule announced for April 2030, checked on {{ ("saving-rule-2030-2050" | figure).checked_date | dateText }}. The government's two figures are measured against keeping the triple lock, and cover Great Britain.</p></div>
+<div class="source"><p>Estimates and projections, not forecasts of what will happen. None describes a cut to pensions already in payment. The sources do not say so in those words. This is our reading of what each one models. Checked against the sources on {{ ("saving-earnings-2075" | figure).checked_date | dateText }}, except the government's two rows for the rule announced for April 2030, checked on {{ ("saving-rule-2030-2050" | figure).checked_date | dateText }}, and the Institute for Fiscal Studies' restatement, checked on {{ ("saving-rule-2030-2040-ifs" | figure).checked_date | dateText }}. The government's two figures are measured against keeping the triple lock, and cover Great Britain.</p></div>
 
 <p>The pattern is consistent across sources. In the next few years the saving is small compared with the bill. Over decades it becomes large. The Institute for Fiscal Studies puts the cost of keeping the triple lock in 2050 at between {{ m.f("ifs-tl-cost-2050-low") }} and {{ m.f("ifs-tl-cost-2050-high") }} a year, a wide range because the result depends on how volatile prices and earnings turn out to be.</p>
 {{ m.sourceNote("ifs-tl-cost-2050-high" | figure) }}
@@ -133,15 +134,18 @@ permalink: /reform-options/costs/
 
 <h4 id="saving-2030">The rule announced for April 2030</h4>
 
-<p>The table gives the government's estimates in cash, the money of each year. In the prices of 2025 to 2026 they are {{ m.f("saving-rule-2030-2040-real") }} for {{ ("saving-rule-2030-2040-real" | figure).period_label }} and {{ m.f("saving-rule-2030-2050-real") }} for {{ ("saving-rule-2030-2050-real" | figure).period_label }}.</p>
+<p>The table gives the government's two estimates in cash, the money of each year, and the Institute for Fiscal Studies' restatement of the first in today's terms. In the prices of 2025 to 2026 the government's are {{ m.f("saving-rule-2030-2040-real") }} for {{ ("saving-rule-2030-2040-real" | figure).period_label }} and {{ m.f("saving-rule-2030-2050-real") }} for {{ ("saving-rule-2030-2050-real" | figure).period_label }}.</p>
 {{ m.sourceNote("saving-rule-2030-2050-real" | figure) }}
 
 <p>{{ ("ifs-savings-small-early" | claim).statement }} {{ m.c("ifs-savings-small-early") }} To show the scale, the Institute looks back. If the announced rule had applied since 2011, spending in 2026-27 would be {{ m.f("rule-2030-counterfactual-ifs-2026") }} lower. That is a look back, not a forecast.</p>
 {{ m.sourceNote("rule-2030-counterfactual-ifs-2026" | figure) }}
 
+<p>The Institute for Fiscal Studies puts the government's estimated saving for {{ ("saving-rule-2030-2040-ifs" | figure).period_label }} at {{ m.f("saving-rule-2030-2040-ifs") }} a year in today's terms, and says it could reasonably be anywhere in a range of {{ ("saving-rule-2030-2040-ifs" | figure).range }}, because the old triple lock is so unpredictable. {{ ("ifs-saving-2034" | claim).statement }} {{ m.c("ifs-saving-2034") }} The Institute's today's terms and the department's prices of 2025 to 2026 both remove inflation, so the two estimates are close in kind, but the Institute does not state its base year or price index, so they are not shown to be the same. {{ ("ifs-cancelling-unfunded" | claim).statement }} {{ m.c("ifs-cancelling-unfunded") }}</p>
+{{ m.sourceNote("saving-rule-2030-2040-ifs" | figure) }}
+
 {% call m.note("How to read the government's figures", 5) %}
 <p>{{ ("dwp-2030-baseline" | claim).statement }} {{ m.c("dwp-2030-baseline") }} {{ ("dwp-2030-caution" | claim).statement }} {{ m.c("dwp-2030-caution") }}</p>
-<p>The estimate for {{ ("saving-rule-2030-2050-real" | figure).period_label }} in the prices of 2025 to 2026 is inside the Institute for Fiscal Studies' range, above, for what the triple lock itself would cost in 2050. The Institute gives its range in what it calls today's terms, as at 2025, so the two are close in kind but not on the same basis.</p>
+<p>The estimate for {{ ("saving-rule-2030-2050-real" | figure).period_label }} in the prices of 2025 to 2026 is inside the Institute for Fiscal Studies' range in the section above for what the triple lock itself would cost in 2050. The Institute gives its range in what it calls today's terms, as at 2025, so the two are close in kind but not on the same basis.</p>
 <p>{{ ("no-rule-2030-detail" | claim).statement }} {{ m.c("no-rule-2030-detail") }} So the estimates can be read, but not reproduced.</p>
 {% endcall %}
 

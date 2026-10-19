@@ -1535,8 +1535,8 @@
     "source_id": null,
     "passage": null,
     "interpretation": false,
-    "note": "Searched on 5 October 2026: GOV.UK, the announcement, the Department for Work and Pensions' analysis of 29 September 2026, and the UK Parliament's list of Bills. A search on 30 September 2026 missed that analysis. Searched again on 8 October 2026: GOV.UK publications and news since 5 October 2026 for \"triple lock\", \"national care service\", \"state pension uprating\" and \"adult social care commission\", which found only the department's factsheet of 6 October 2026; and the UK Parliament's list of Bills for \"triple lock\", \"state pension\", \"pension\" and \"uprating\".",
-    "checked_date": "2026-10-08",
+    "note": "Searched on 5 October 2026: GOV.UK, the announcement, the Department for Work and Pensions' analysis of 29 September 2026, and the UK Parliament's list of Bills. A search on 30 September 2026 missed that analysis. Searched again on 8 October 2026: GOV.UK publications and news since 5 October 2026 for \"triple lock\", \"national care service\", \"state pension uprating\" and \"adult social care commission\", which found only the department's factsheet of 6 October 2026; and the UK Parliament's list of Bills for \"triple lock\", \"state pension\", \"pension\" and \"uprating\". Searched again on 19 October 2026: GOV.UK for \"triple lock\" from the Department for Work and Pensions, the Treasury and the Prime Minister's Office, and for \"national care service\", which found nothing newer than the department's analysis updated on 6 October 2026 and the care commission's terms of 1 October 2026, both already recorded; and the UK Parliament's list of Bills for \"pension\", where the newest entry is unrelated.",
+    "checked_date": "2026-10-19",
     "review_status": "checked-with-ai-assistance"
   },
   "no-rule-2030-distribution": {
@@ -1707,6 +1707,116 @@
     "interpretation": false,
     "note": null,
     "checked_date": "2026-10-13",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "ifs-saving-2034": {
+    "kind": "finding",
+    "statement": "For 2034 to 2035 the Institute expects the change to save around £4 billion a year, and says it could easily save nothing at all if earnings growth is strong.",
+    "source_id": "ifs-savings-range-2026",
+    "passage": "In 2034–35, we expect that the reform will save around £4 billion per year, but it could easily save nothing at all if earnings growth is strong.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-19",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "ifs-cancelling-unfunded": {
+    "kind": "commentary",
+    "statement": "The deputy director of the Institute for Fiscal Studies says the change prevents unfunded increases in State Pension spending from 2030, and that cancelling an unfunded increase does not free up money for a new commitment, so tax rises or other spending cuts would be needed to pay for social care.",
+    "source_id": "ifs-savings-range-2026",
+    "passage": "the triple lock reform prevents unfunded increases in state pension expenditure from 2030 onwards. Cancelling an unfunded increase does not free up funds to pay for a new government commitment. Therefore tax rises or other spending cuts will be needed to pay for social care.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-19",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "scotgov-letter-loss": {
+    "kind": "finding",
+    "statement": "The Scottish Government wrote to a committee of the Scottish Parliament that, applying Scotland's projected share of the UK's State Pension age population to the UK government's estimates in cash, pensioners in Scotland could receive around £1.3 billion a year less by 2039 to 2040 than under the triple lock, and around £4.0 billion a year less by 2049 to 2050.",
+    "source_id": "scotgov-letter-2026-09-30",
+    "passage": "Scottish pensioners could receive around £1.3 billion less in State Pension payments annually by 2039-40 than would be the case under the existing Triple Lock, rising to around £4.0 billion by 2049-50",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-19",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "scotgov-letter-per-person": {
+    "kind": "finding",
+    "statement": "It puts the effect at almost £2,000 a person a year in real terms by 2049 to 2050.",
+    "source_id": "scotgov-letter-2026-09-30",
+    "passage": "The result would be a real terms impact on pensioner incomes of almost £2,000 per person annually by 2049-50.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-19",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "scotgov-representations": {
+    "kind": "commitment",
+    "statement": "The Deputy First Minister said she would make representations to the Chancellor.",
+    "source_id": "scotgov-letter-2026-09-30",
+    "passage": "I will be making representations to the Chancellor on these proposals",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-19",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "snp-statement": {
+    "kind": "commentary",
+    "statement": "On its own site the Scottish National Party said pensioners in Scotland, who already have free personal care, would lose the triple lock to pay for the same thing in England, and that Scotland needs another referendum.",
+    "source_id": "snp-2026-10-02",
+    "passage": "Scottish pensioners – who already have access to free personal care under an SNP-run Scottish Government – are about to have their triple lock snatched away to pay for English pensioners to get the very same thing. ... Scotland needs a fresh start and another referendum to secure its own future",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-19",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "minister-mechanism": {
+    "kind": "commentary",
+    "statement": "The pensions minister, writing on his own newsletter, describes the rule as a rise every year by at least the higher of inflation or 2.5%, plus whatever more is needed to keep the pension at its value relative to earnings in 2029 to 2030.",
+    "source_id": "bell-substack-2026-10-02",
+    "passage": "a State Pension that rises every year by at least the highest of inflation or 2.5%, plus anything more required to ensure the State Pension retains that 2029/30 record high value relative to earnings.",
+    "interpretation": false,
+    "note": "A description in a personal newsletter, not a government document. It names no measure of earnings.",
+    "checked_date": "2026-10-19",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "minister-pc-request": {
+    "kind": "commitment",
+    "statement": "The pensions minister says he has asked the Pensions Commission to include suggestions for supporting lower-income pensioners in its final report, which he says is due early in 2027.",
+    "source_id": "bell-substack-2026-10-02",
+    "passage": "I’ve also asked the Pensions Commission to include suggestions for further supporting lower income pensioners in their final report due early in 2027.",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-19",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "workforce-plan-promised": {
+    "kind": "commitment",
+    "statement": "On 30 September 2026 the Department of Health and Social Care said a new adult social care workforce plan would be published by the end of the year.",
+    "source_id": "dhsc-news-2026-09-30",
+    "passage": "a new adult social care workforce plan is set to be published by the end of the year",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-19",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "scotgov-reserved": {
+    "kind": "finding",
+    "statement": "The letter says responsibility for the State Pension is reserved to the UK Government.",
+    "source_id": "scotgov-letter-2026-09-30",
+    "passage": "responsibility for the State Pension is still reserved to the UK Government",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-19",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "casey-summer-2027-dhsc": {
+    "kind": "commitment",
+    "statement": "The Department of Health and Social Care's news story of 30 September 2026 says the commission is due to report by summer 2027.",
+    "source_id": "dhsc-news-2026-09-30",
+    "passage": "is due to report by summer 2027",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-19",
     "review_status": "checked-with-ai-assistance"
   }
 }

@@ -19,3 +19,9 @@ __pycache__/
 # documents of the first build (decision 99).
 NEXT-SESSION.md
 _archive/
+# Kept on this computer only: the owner's working documents at the root (decision 103).
+claude-code-build-prompt.md
+uk-state-pension-explorer-scope.md
+uk-state-pension-explorer-scope-review.md
+sibling-metadata-review.md
+ux_guidelines_for_statistical_websites.md
