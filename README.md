@@ -16,7 +16,7 @@ npm ci
 
 The accessibility and tool scripts use the Chrome already on the computer, through `puppeteer-core`, which downloads no browser of its own. Set `CHROME_PATH` if Chrome is not in the usual place on a Mac.
 
-`npm audit` reports 9 packages. The two with no fixed version, `braces` and `sprintf-js`, are never loaded when the site is built, and nothing reaches the published site, which is static files. Do not run `npm audit fix --force`: it would downgrade Eleventy. The detail is in `docs/maintenance.md`, "Dependencies".
+`npm audit` reports 0 vulnerabilities since Eleventy 3.1.7 on 19 October 2026. Nothing a dependency does reaches the published site, which is static files. Do not run `npm audit fix --force`: pin a version by hand and run the checks in `docs/maintenance.md`, "Dependencies".
 
 ## Commands
 

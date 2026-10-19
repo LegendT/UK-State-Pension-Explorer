@@ -18,7 +18,7 @@
     "node": ">=22.12"
   },
   "devDependencies": {
-    "@11ty/eleventy": "3.1.6",
+    "@11ty/eleventy": "3.1.7",
     "axe-core": "4.11.4",
     "http-server": "14.1.1",
     "puppeteer-core": "25.12.0"
