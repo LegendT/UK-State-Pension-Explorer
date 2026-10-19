@@ -91,3 +91,8 @@ Open each destination in `src/_data/links.json` when the destination site change
 ## After any change to markup, styles or scripts, or to data a page shows
 
 Run `npm run a11y`, `npm run a11y:manual` and `npm run test:tools`, and repeat the manual checks in `docs/accessibility-assessment.md` for the parts that changed.
+
+## Dependencies
+
+`npm audit` reports 9 packages: `braces` and `sprintf-js`, which Eleventy brings in, and the 7 packages between them and Eleventy (`chokidar`, `nunjucks`, `@11ty/eleventy-dev-server`, `argparse`, `js-yaml`, `gray-matter` and Eleventy itself). No fixed version of `braces` or `sprintf-js` exists. Neither is loaded when the site is built, and neither reaches the published site, which is static files. `braces` comes in through `chokidar`, which Eleventy imports only to watch files during `npm run dev`. `sprintf-js` comes in through `argparse`, which `js-yaml` loads only for its command-line tool, not when Eleventy reads front matter. Checked on 8 October 2026. Do not run `npm audit fix --force`: it would downgrade Eleventy to 0.6.0.
+
