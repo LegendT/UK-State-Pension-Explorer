@@ -139,9 +139,11 @@ permalink: /reform-options/costs/
 <p>{{ ("ifs-savings-small-early" | claim).statement }} {{ m.c("ifs-savings-small-early") }} To show the scale, the Institute looks back. If the announced rule had applied since 2011, spending in 2026-27 would be {{ m.f("rule-2030-counterfactual-ifs-2026") }} lower. That is a look back, not a forecast.</p>
 {{ m.sourceNote("rule-2030-counterfactual-ifs-2026" | figure) }}
 
+<p>{{ ("ifs-saving-range-2040" | claim).statement }} {{ ("ifs-saving-2034" | claim).statement }} {{ m.c("ifs-saving-range-2040") }} {{ ("ifs-cancelling-unfunded" | claim).statement }} {{ m.c("ifs-cancelling-unfunded") }}</p>
+
 {% call m.note("How to read the government's figures", 5) %}
 <p>{{ ("dwp-2030-baseline" | claim).statement }} {{ m.c("dwp-2030-baseline") }} {{ ("dwp-2030-caution" | claim).statement }} {{ m.c("dwp-2030-caution") }}</p>
-<p>The estimate for {{ ("saving-rule-2030-2050-real" | figure).period_label }} in the prices of 2025 to 2026 is inside the Institute for Fiscal Studies' range, above, for what the triple lock itself would cost in 2050. The Institute gives its range in what it calls today's terms, as at 2025, so the two are close in kind but not on the same basis.</p>
+<p>The estimate for {{ ("saving-rule-2030-2050-real" | figure).period_label }} in the prices of 2025 to 2026 is inside the Institute for Fiscal Studies' range in the section above for what the triple lock itself would cost in 2050. The Institute gives its range in what it calls today's terms, as at 2025, so the two are close in kind but not on the same basis.</p>
 <p>{{ ("no-rule-2030-detail" | claim).statement }} {{ m.c("no-rule-2030-detail") }} So the estimates can be read, but not reproduced.</p>
 {% endcall %}
 

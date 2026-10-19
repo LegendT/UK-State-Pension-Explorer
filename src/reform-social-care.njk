@@ -14,6 +14,7 @@ permalink: /reform-options/social-care/
     ["status-earlier", "Earlier commitments"],
     ["status-reported", "Reported, not confirmed"],
     ["status-bodies", "Research bodies, charities and a union"],
+    ["status-scotgov", "The Scottish Government"],
     ["status-poll", "A poll"],
     ["status-parties-after", "Other parties, after the announcement"],
     ["status-parties-before", "Other parties, before the announcement"]
@@ -63,7 +64,7 @@ permalink: /reform-options/social-care/
   <li>{{ ("labour-manifesto-tl" | claim).statement }} {{ m.c("labour-manifesto-tl") }} {{ ("tl-this-parliament" | claim).statement }} {{ m.c("tl-this-parliament") }}</li>
   <li>{{ ("casey-summer-2027" | claim).statement }} {{ ("care-funded-principle" | claim).statement }} {{ m.c("casey-summer-2027") }}</li>
   <li>{{ ("casey-panel" | claim).statement }} {{ m.c("casey-panel") }}</li>
-  <li>{{ ("pc-final-2027" | claim).statement }} {{ ("pc-terms" | claim).statement }} {{ m.c("pc-terms") }}</li>
+  <li>{{ ("pc-final-2027" | claim).statement }} {{ m.c("pc-final-2027") }} {{ ("pc-terms" | claim).statement }} {{ m.c("pc-terms") }}</li>
 </ul>
 
 <h3 id="status-reported">Reported, not confirmed in a government document</h3>
@@ -71,12 +72,13 @@ permalink: /reform-options/social-care/
   <li>{{ ("ncs-england-reported" | claim).statement }} {{ m.c("ncs-england-reported") }}</li>
   <li>{{ ("wales-funding-reported" | claim).statement }} {{ m.c("wales-funding-reported") }}</li>
   <li>{{ ("minister-more-funding" | claim).statement }} {{ m.c("minister-more-funding") }}</li>
+  <li>{{ ("minister-pc-request" | claim).statement }} {{ m.c("minister-pc-request") }} A personal newsletter, not a government document.</li>
 </ul>
 
 <h3 id="status-bodies">What research bodies, charities and a union said</h3>
 <ul>
   <li>{{ ("ifs-ratchet-removed" | claim).statement }} {{ ("ifs-savings-small-early" | claim).statement }} {{ m.c("ifs-savings-small-early") }}</li>
-  <li>{{ ("ifs-not-universal-care" | claim).statement }} {{ ("ifs-not-universal-care" | claim).note }} {{ ("ifs-floor-arbitrary" | claim).statement }} {{ m.c("ifs-not-universal-care") }}</li>
+  <li>{{ ("ifs-not-universal-care" | claim).statement }} {{ ("ifs-not-universal-care" | claim).note }} {{ ("ifs-floor-arbitrary" | claim).statement }} {{ m.c("ifs-not-universal-care") }} {{ ("ifs-cancelling-unfunded" | claim).statement }} {{ m.c("ifs-cancelling-unfunded") }}</li>
   <li>{{ ("rf-response-2030" | claim).statement }} {{ m.c("rf-response-2030") }}</li>
   <li>{{ ("ageuk-response" | claim).statement }} {{ m.c("ageuk-response") }}</li>
   <li>{{ ("hf-response" | claim).statement }} {{ m.c("hf-response") }}</li>
@@ -84,6 +86,9 @@ permalink: /reform-options/social-care/
   <li>{{ ("unite-response" | claim).statement }} {{ m.c("unite-response") }}</li>
 </ul>
 <p>The statement from Unite is as reported by PA News.</p>
+
+<h3 id="status-scotgov">What the Scottish Government said</h3>
+<p>{{ ("scotgov-letter-loss" | claim).statement }} {{ ("scotgov-letter-per-person" | claim).statement }} {{ m.c("scotgov-letter-loss") }} {{ ("scotgov-representations" | claim).statement }} {{ ("scotgov-reserved" | claim).statement }} {{ m.c("scotgov-representations") }}</p>
 
 <h3 id="status-poll">What a poll found</h3>
 <p>{{ ("yougov-rule-2030" | claim).statement }} {{ m.c("yougov-rule-2030") }} {{ ("yougov-question" | claim).statement }}</p>
@@ -94,11 +99,11 @@ permalink: /reform-options/social-care/
   <li>{{ ("conservative-response" | claim).statement }} {{ m.c("conservative-response") }} {{ ("conservative-response-next-day" | claim).statement }} {{ m.c("conservative-response-next-day") }}</li>
   <li>{{ ("libdem-response" | claim).statement }} {{ m.c("libdem-response") }}</li>
   <li>{{ ("reform-response" | claim).statement }} {{ m.c("reform-response") }}</li>
-  <li>{{ ("snp-response" | claim).statement }} {{ m.c("snp-response") }}</li>
+  <li>{{ ("snp-response" | claim).statement }} {{ m.c("snp-response") }} {{ ("snp-statement" | claim).statement }} {{ m.c("snp-statement") }}</li>
   <li>{{ ("plaid-response" | claim).statement }} {{ m.c("plaid-response") }}</li>
   <li>{{ ("green-response" | claim).statement }} {{ m.c("green-response") }}</li>
 </ul>
-<p>The statements from Reform UK and the Liberal Democrats come from the parties' own pages. The others come from news reports of {{ ("pa-2026-09-29" | sourceRecord).published_date | dateText }} and {{ ("pa-badenoch-2026-09-30" | sourceRecord).published_date | dateText }}.</p>
+<p>The statements from Reform UK and the Liberal Democrats, and the Scottish National Party's statement of 2 October 2026, come from the parties' own pages. The First Minister's words and the others come from news reports of {{ ("pa-2026-09-29" | sourceRecord).published_date | dateText }} and {{ ("pa-badenoch-2026-09-30" | sourceRecord).published_date | dateText }}.</p>
 
 <h3 id="status-parties-before">What the other parties said before the announcement</h3>
 <ul>
@@ -207,8 +212,8 @@ permalink: /reform-options/social-care/
   <li><strong>What are the costs and savings, and against what baseline?</strong> <span class="status">Answered in part.</span> The Department for Work and Pensions gives savings for two years, measured against keeping the triple lock, in cash and in 2025 to 2026 prices. It does not give the paths of earnings and prices behind them. {{ ("no-ncs-cost" | claim).statement }}</li>
   <li><strong>Would the saving actually be used for care?</strong> <span class="status">Answered in part.</span> The government says it will be. {{ ("ncs-savings-used" | claim).note }}</li>
   <li><strong>What pays for the early years?</strong> <span class="status">Answered in part.</span> The service is to be phased in as the saving grows, and not paid for by borrowing. {{ ("minister-more-funding" | claim).statement }}</li>
-  <li><strong>Can the service be delivered?</strong> <span class="status">Answered in part.</span> The announcement says the service will grow as staff and providers are built up. It gives no plan for that. The Prime Minister's Office said the commission would report in summer 2027. The commission's published terms still say 2026 for the first phase and by 2028 for the second. See <a href="#status-law">In law or in a government document</a>.</li>
-  <li><strong>What happens in Scotland, Wales and Northern Ireland?</strong> <span class="status">Not answered.</span> {{ ("no-ncs-nations" | claim).statement }}</li>
+  <li><strong>Can the service be delivered?</strong> <span class="status">Answered in part.</span> The announcement says the service will grow as staff and providers are built up. It gives no plan for that. {{ ("workforce-plan-promised" | claim).statement }} {{ m.c("workforce-plan-promised") }} The Prime Minister's Office said the commission would report in summer 2027. The commission's published terms still say 2026 for the first phase and by 2028 for the second. See <a href="#status-law">In law or in a government document</a>.</li>
+  <li><strong>What happens in Scotland, Wales and Northern Ireland?</strong> <span class="status">Not answered.</span> {{ ("no-ncs-nations" | claim).statement }} The Scottish Government has put figures on how much less pensioners in Scotland could receive: <a href="#status-scotgov">What the Scottish Government said</a>.</li>
   <li><strong>What happens to people on the lowest incomes?</strong> <span class="status">Not answered.</span> {{ ("no-rule-2030-pension-credit" | claim).statement }} {{ ("dwp-2030-poverty" | claim).statement }} It puts the share at {{ m.f("dwp-2030-poverty-2025") }} in 2024 to 2025 and {{ m.f("dwp-2030-poverty-2050") }} in 2049 to 2050. {{ m.c("dwp-2030-poverty") }} {{ ("dwp-2030-poverty-conditional" | claim).statement }} Our reading: {{ ("dwp-2030-poverty-not-effect" | claim).statement }} {{ m.c("dwp-2030-poverty-not-effect") }} In a speech the Prime Minister separately said pensioners on low incomes would not pay Income Tax in this Parliament. {{ m.c("pm-speech-income-tax") }} The speech is as published by the Labour Party. GOV.UK carries no transcript. That is about tax, not the rule. See <a href="/state-pension/#tax-and-payment">tax and the State Pension</a>.</li>
 </ol>
 <p>Each answer rests on the government's announcement, unless another source is named above. {{ m.c("rule-2030") }}</p>
