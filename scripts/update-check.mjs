@@ -1,8 +1,9 @@
 // The update check: what may have gone stale since the registers were last checked.
 // Run as "npm run update-check", before going live and at each update (decision 110).
 // It reads the registers and the maintenance guide, fetches every source once, and reports.
-// It edits nothing. Sections 1 to 5 are findings for a person; only the passage and value
-// checks of section 6 fail the run. Each run is recorded in the handover's "Last checks".
+// It edits nothing. Sections 1 to 5 are findings for a person; only the passage check of
+// section 6 fails the run, since check-values.py reports and always exits 0 (audit A2), so its
+// output is read. Each run is recorded in the handover's "Last checks".
 //
 //   --days N         flag a checked_date older than N days (default 45, the sister sites' rule)
 //   --today DATE     the date to count from, as YYYY-MM-DD (default today)
@@ -239,7 +240,7 @@ for (const t of typed) line(`${t.path}:${t.line} [${t.patterns.join(", ")}] ${t.
 line(`${typed.length} lines carry ${patterns.map(([name]) => name).join(", ")}.`);
 report.typed = typed;
 
-// 6. The two source checks, both run whichever fails; their result is the run's.
+// 6. The two source checks, both run whichever fails; the passage check's result is the run's.
 let failed = false;
 const ran = FETCH && DATA === "src/_data";
 if (ran) {
