@@ -16,7 +16,7 @@ npm ci
 
 The accessibility and tool scripts use the Chrome already on the computer, through `puppeteer-core`, which downloads no browser of its own. Set `CHROME_PATH` if Chrome is not in the usual place on a Mac.
 
-`npm audit` reports 9 packages. The two with no fixed version, `braces` and `sprintf-js`, are never loaded when the site is built, and nothing reaches the published site, which is static files. Do not run `npm audit fix --force`: it would downgrade Eleventy. The detail is in `docs/maintenance.md`, "Dependencies".
+`npm audit` reported 0 vulnerabilities on 19 October 2026, after Eleventy 3.1.7. No dependency's code runs on the published site, which is static files. Do not run `npm audit fix --force`: pin a version by hand and run the checks in `docs/maintenance.md`, "Dependencies".
 
 ## Commands
 
@@ -49,6 +49,8 @@ Each script's header comment says what it checks.
 
 A production build stops unless the launch values it can check are set, and set to values that can be right. It also stops while `BASIC_AUTH` is set, if `netlify.toml` sends an `X-Robots-Tag` header, or on Netlify outside the production context. A preview's `noindex` header is written to `_site/_headers`. See `docs/launch-dependencies.md`.
 
+On Netlify the build also reads three variables Netlify sets: `NETLIFY` and `CONTEXT`, which stop a production build outside the production context, and `DEPLOY_PRIME_URL`, which a preview takes as its own address so that it never names the published site as its canonical. `SECRETS_SCAN_OMIT_PATHS` in `netlify.toml` leaves `_site/_headers` out of Netlify's secrets scan, since the build writes the preview's sign-in there on purpose.
+
 A production build adds Cloudflare Web Analytics, with the token in `src/_data/site.js`, and the privacy page says so. Development and preview builds load nothing from any other website.
 
 ```
@@ -64,7 +66,7 @@ A11Y_ASSESSMENT_DATE=2026-10-01 AI_CRAWLER_POLICY=allow npm run build
 | `src/*.njk` | The pages. |
 | `src/tools/` | The Tools page and three tools, each on a page of its own. The rule comparison is `src/reform-compare.njk`. |
 | `src/_includes/` | Layout and shared components. |
-| `src/_data/figures.json` | Register of figures. Numbers in page text come from here. Exceptions: `tables.json`, `history.json`, `budgets.json` and `scenarios.json` hold their own sourced values, and `links.json` quotes two figures in a note. |
+| `src/_data/figures.json` | Register of figures. Numbers in page text come from here. Exceptions: `tables.json`, `history.json`, `budgets.json` and `scenarios.json` hold their own sourced values, and `links.json` quotes three amounts in a note, two of this site's and one of the destination's. |
 | `src/_data/claims.json` | Register of statements that are not figures. |
 | `src/_data/sources.json` | Register of sources. |
 | `src/_data/history.json` | Published rates and decisions, 2010/11 to 2026/27. A year with an `annotation` is marked on the history chart, with that text in the list under it. |
@@ -79,9 +81,9 @@ A11Y_ASSESSMENT_DATE=2026-10-01 AI_CRAWLER_POLICY=allow npm run build
 | `src/assets/js/tools/` | The four calculators' page scripts. |
 | `src/assets/js/*.js` | The page scripts: `contents.js` marks the section being read in the "On this page" list, `back-to-top.js` fixes the "Back to top" link, `scroll-cue.js` shows "Scroll sideways for more" on a wide table or chart, `cards.js` makes the overview's cards clickable, `js-class.js` marks the page as running scripts, and `moved.js` forwards the old rule comparison's address to `/reform-options/compare/`. |
 | `test/` | Tests. |
-| `scripts/` | Build check, accessibility runs, tool checks, source checks, reference calculations. |
+| `scripts/` | Build check, accessibility runs, tool checks, source checks, the update check, loading measurements, reference calculations. |
 | `research/` | The research record behind the registers. |
-| `docs/` | Specification, decisions, markup conventions, accessibility assessment, maintenance, handover. The handover holds the current state only. |
+| `docs/` | Specification, reference calculations, requirements matrix, decisions, launch dependencies, markup conventions, accessibility assessment, maintenance, handover, and the three frozen reviews. The handover holds the current state only. |
 | `LICENCE` | MIT for the code and the site's own writing; the figures and quoted passages stay under their sources' terms. |
 
 ## Hosting
@@ -90,7 +92,7 @@ Netlify builds a preview from `main`, using `netlify.toml`, until `SITE_ENV` und
 
 ## Markup
 
-The rules for figure cards, notes, charts, tables, citations, dates, the contents list and the tools are in `docs/markup-conventions.md`. Section 8 of `scripts/check-build.mjs` tests the ones a pattern can hold; the others need reading.
+The rules for figure cards, notes, charts, tables, citations, dates, the contents list and the tools are in `docs/markup-conventions.md`. Section 8 of `scripts/check-build.mjs` tests the ones a pattern can hold, listed at the head of `docs/markup-conventions.md`; the others need reading.
 
 ## Conventions
 

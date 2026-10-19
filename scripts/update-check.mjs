@@ -1,8 +1,10 @@
 // The update check: what may have gone stale since the registers were last checked.
 // Run as "npm run update-check", before going live and at each update (decision 110).
 // It reads the registers and the maintenance guide, fetches every source once, and reports.
-// It edits nothing. Sections 1 to 5 are findings for a person; only the passage and value
-// checks of section 6 fail the run. Each run is recorded in the handover's "Last checks".
+// It edits nothing. Sections 1 to 5 are findings for a person; only the passage check of
+// section 6 fails the run. The value check reports, and its exit status does not count: a
+// value not found, or a crash, is read and the check rerun alone (row W40 of
+// docs/launch-dependencies.md). Each run is recorded in the handover's "Last checks".
 //
 //   --days N         flag a checked_date older than N days (default 45, the sister sites' rule)
 //   --today DATE     the date to count from, as YYYY-MM-DD (default today)
@@ -239,19 +241,22 @@ for (const t of typed) line(`${t.path}:${t.line} [${t.patterns.join(", ")}] ${t.
 line(`${typed.length} lines carry ${patterns.map(([name]) => name).join(", ")}.`);
 report.typed = typed;
 
-// 6. The two source checks, both run whichever fails; their result is the run's.
+// 6. The two source checks, both run whichever fails; the passage check's status alone is the
+// run's, so the documented rule holds by construction, not because check-values.py happens to
+// exit 0 (W40).
 let failed = false;
 const ran = FETCH && DATA === "src/_data";
 if (ran) {
   section("6. The passage and value checks.");
   for (const script of ["scripts/check-passages.py", "scripts/check-values.py"]) {
     const run = spawnSync("python3", [script], { stdio: "inherit" });
-    if (run.status !== 0) failed = true;
+    if (script === "scripts/check-passages.py" && run.status !== 0) failed = true;
+    if (script === "scripts/check-values.py" && run.status !== 0) line("The value check did not complete: read its output and rerun it alone.");
   }
 }
 report.source_checks_passed = ran ? !failed : null;
 
 mkdirSync("reports", { recursive: true });
 writeFileSync("reports/update-check.json", JSON.stringify(report, null, 2));
-console.log(`\nupdate-check: ${!ran ? "the source checks were not run" : failed ? "FAILED, a passage or value check did not pass" : "the source checks passed"}; the findings above are for a person. Written to reports/update-check.json.`);
+console.log(`\nupdate-check: ${!ran ? "the source checks were not run" : failed ? "FAILED, the passage check did not pass" : "the source checks passed"}; the findings above are for a person. Written to reports/update-check.json.`);
 process.exit(failed ? 1 : 0);
