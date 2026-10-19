@@ -2,9 +2,9 @@
 
 A plain-English explainer of the UK State Pension, the triple lock, what a pension can cover, and the evidence for and against reform. A sister site to UK Public Finances Explorer and UK Migration Explorer.
 
-**Status: a preview for review. It is not published and must not be described as meeting WCAG 2.2 AA.** See `docs/HANDOVER.md`.
+**Status: published at https://ukstatepensionexplorer.org since 19 October 2026. It must not be described as meeting WCAG 2.2 AA.** See `docs/HANDOVER.md`.
 
-Found an error on the site? Open an issue at https://github.com/LegendT/UK-State-Pension-Explorer/issues. From launch, the correction link on every page goes there too.
+Found an error on the site? Open an issue at https://github.com/LegendT/UK-State-Pension-Explorer/issues. The correction link on every page goes there too.
 
 ## Set up
 
@@ -88,7 +88,7 @@ A11Y_ASSESSMENT_DATE=2026-10-01 AI_CRAWLER_POLICY=allow npm run build
 
 ## Hosting
 
-Netlify builds a preview from `main`, using `netlify.toml`, until `SITE_ENV` under `[context.production.environment]` is set to `production` at launch. Deploy previews and branch deploys stay previews after launch. A preview asks for a user name and password, set in the `BASIC_AUTH` variable in Netlify as `user:password`; the build writes them to `_site/_headers`. `BASIC_AUTH=user:password npm run build` shows that the rule is written, not that the sign-in works, because the local server ignores that file.
+Netlify publishes the site from `main`, using `netlify.toml`, since `SITE_ENV` under `[context.production.environment]` was set to `production` on 19 October 2026. Deploy previews and branch deploys stay previews. A preview asks for a user name and password, set in the `BASIC_AUTH` variable in Netlify as `user:password`; the build writes them to `_site/_headers`. `BASIC_AUTH=user:password npm run build` shows that the rule is written, not that the sign-in works, because the local server ignores that file.
 
 ## Markup
 

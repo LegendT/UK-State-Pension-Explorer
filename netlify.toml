@@ -1,13 +1,15 @@
-# Netlify builds a PREVIEW in every context until launch. It is not the published site.
-# A preview asks for a user name and password (basic authentication) and sends noindex. The build
-# writes both rules to _site/_headers, the password from the BASIC_AUTH variable, which is set in
-# Netlify and nowhere else. No password is in this file or in the repository. A preview build on
-# Netlify stops if BASIC_AUTH is missing.
+# Netlify publishes the site from the production context, since 19 October 2026 (launch step 9).
+# Every other context builds a PREVIEW: it asks for a user name and password (basic authentication)
+# and sends noindex. The build writes both rules to _site/_headers, the password from the
+# BASIC_AUTH variable, which is set in Netlify for deploy previews, branch deploys and the dev
+# server, never for production. No password is in this file or in the repository. A preview build
+# on Netlify stops if BASIC_AUTH is missing, and a production build stops if it is set.
 #
-# Decision 68: at launch only the production context changes. Deploy previews and branch deploys
-# stay previews, with the sign-in and noindex. The launch steps are in docs/launch-dependencies.md:
-# set SITE_ENV to "production" under [context.production.environment] below, and scope BASIC_AUTH
-# in Netlify to deploy previews and branch deploys. A production build stops while BASIC_AUTH is set.
+# Decision 68: only the production context publishes. Deploy previews and branch deploys stay
+# previews, with the sign-in and noindex. The launch switch is SITE_ENV under
+# [context.production.environment] below. Setting it back to "preview" alone does not take the
+# site down: that production build stops without BASIC_AUTH and the published deploy stays up.
+# Step 9 of docs/launch-dependencies.md gives the two ways to take it down.
 
 [build]
   command = "npm test && npm run build"
@@ -21,9 +23,10 @@
   # so that one file is left out of the scan.
   SECRETS_SCAN_OMIT_PATHS = "_site/_headers"
 
-# The launch switch. "preview" until launch, so a merge cannot publish the site by accident.
+# The launch switch, "production" since 19 October 2026. It was "preview" until then, so that a
+# merge could not publish the site by accident.
 [context.production.environment]
-  SITE_ENV = "preview"
+  SITE_ENV = "production"
 
 [[headers]]
   for = "/*"
