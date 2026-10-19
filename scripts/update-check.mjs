@@ -216,7 +216,7 @@ const taxYears = [history.years.at(-2).tax_year, history.years.at(-1).tax_year, 
 const forms = (year) => year.match(/^(\d{4})\/(\d{2})$/).slice(1).flatMap((_, i, [y, yy]) => i ? [] : [year, `${y} to ${y.slice(0, 2)}${yy}`, `${y}-${yy}`]);
 const years = [...new Set(taxYears.flatMap((year) => [year.slice(0, 4), `${year.slice(0, 2)}${year.slice(5)}`]))];
 // Each pattern as a regular expression: a space or &nbsp; between a month and its year, as templates
-// write them (README, "Markup conventions"), and the hyphen form not inside a figure id such as sp-spend-2026-27.
+// write them (docs/markup-conventions.md), and the hyphen form not inside a figure id such as sp-spend-2026-27.
 const patterns = [
   ...taxYears.flatMap(forms).map((form) => [form, new RegExp(`(?<![\\w-])${form.replace("/", "\\/")}(?![\\w-])`)]),
   ...years.map((y) => [`<month> ${y}`, new RegExp(`\\b(?:${MONTHS.map((m) => m[0].toUpperCase() + m.slice(1)).join("|")})(?: |&nbsp;)${y}\\b`)]),

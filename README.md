@@ -1,37 +1,41 @@
 # UK State Pension Explorer
 
-A plain-English explainer of the UK State Pension, the triple lock, what a pension can cover, and the evidence for and against reform. A sister site to UK Public Finances Explorer and UK Migration Explorer. The name was confirmed on 2 October 2026: decision 66.
+A plain-English explainer of the UK State Pension, the triple lock, what a pension can cover, and the evidence for and against reform. A sister site to UK Public Finances Explorer and UK Migration Explorer.
 
 **Status: a preview for review. It is not published and must not be described as meeting WCAG 2.2 AA.** See `docs/HANDOVER.md`.
 
+Found an error on the site? Open an issue at https://github.com/LegendT/UK-State-Pension-Explorer/issues. From launch, the correction link on every page goes there too.
+
 ## Set up
 
-Needs Node 22.12 or later, the oldest version `puppeteer-core` supports. The project pins Node 24 in `.node-version`.
+Needs Node 22.12 or later, the oldest version `puppeteer-core` supports; the project pins Node 24 in `.node-version`. The source checks need Python 3, `curl` and `pdftotext`.
 
 ```
 npm ci
 ```
 
-The accessibility scripts use the Chrome already on the computer, through `puppeteer-core`, which downloads no browser of its own. Set `CHROME_PATH` if Chrome is not in the usual place on a Mac. The source checks need Python 3, `curl` and `pdftotext`.
+The accessibility and tool scripts use the Chrome already on the computer, through `puppeteer-core`, which downloads no browser of its own. Set `CHROME_PATH` if Chrome is not in the usual place on a Mac.
 
-`npm audit` reports 9 packages: `braces` and `sprintf-js`, which Eleventy brings in, and the 7 packages between them and Eleventy (`chokidar`, `nunjucks`, `@11ty/eleventy-dev-server`, `argparse`, `js-yaml`, `gray-matter` and Eleventy itself). No fixed version of `braces` or `sprintf-js` exists. Neither is loaded when the site is built, and neither reaches the published site, which is static files. `braces` comes in through `chokidar`, which Eleventy imports only to watch files during `npm run dev`. `sprintf-js` comes in through `argparse`, which `js-yaml` loads only for its command-line tool, not when Eleventy reads front matter. Checked on 8 October 2026. Do not run `npm audit fix --force`: it would downgrade Eleventy to 0.6.0.
+`npm audit` reports 9 packages. The two with no fixed version, `braces` and `sprintf-js`, are never loaded when the site is built, and nothing reaches the published site, which is static files. Do not run `npm audit fix --force`: it would downgrade Eleventy. The detail is in `docs/maintenance.md`, "Dependencies".
 
 ## Commands
 
 | Command | What it does |
 | --- | --- |
 | `npm run dev` | Serves the site and rebuilds on change. |
-| `npm run build` | Builds to `_site`, then runs `scripts/check-build.mjs`. |
-| `npm test` | Tests the calculators against separately worked values, and the chart's layout on a phone. |
+| `npm run build` | Builds to `_site`, then runs the build checks in `scripts/check-build.mjs`. |
+| `npm test` | Tests the calculators against separately worked values, and a chart's layout on a phone. |
 | `npm run serve` | Serves `_site` at http://127.0.0.1:8137 |
-| `npm run a11y` | axe-core on every page and state. Writes `reports/a11y.json`. Run it after any change to markup, styles or scripts, and after a data change that a page shows: long file names in a figure's source made a page scroll sideways on a phone on 8 October 2026, and the build did not catch it. |
-| `npm run a11y:manual` | Reflow, text spacing, target size, keyboard, headings, no JavaScript, a tool's module blocked with every other script running (W32), a tool's module held back while it loads (decision 99), the "On this page" marking and the "Back to top" link. Run it after changing `contents.js`, `back-to-top.js`, `js-class.js`, a tool module, `ready()` in `tools/common.js`, the contents macro, or the `.contents`, `.back-to-top` or `.js-only` styles. |
-| `npm run test:tools` | Drives the four tools in a headless Chrome the way a reader does, after `npm run build`: fields kept through a change, a blank or zero tax field, recovery from a wrong entry, household and example changes, malformed and restored addresses, history subranges and the table export, the copied link, and the focus and announcements that go with each (W12). Run it after changing a tool's script or template. |
-| `npm run update-check` | Fetches every source and outbound link once and reports dead, refused and redirected addresses, pages with a last-updated signal newer than the record's `checked_date`, sources with no readable signal, check dates over 45 days old (`--days`), releases due from the table in `docs/maintenance.md` (`--today`), and typed tax years and dates in `src/`; then runs the passage and value checks and exits with their result. Writes `reports/update-check.json`. What to do with each section: "The update check" in `docs/maintenance.md` (decision 110). |
-| `node scripts/measure-loading.mjs` | Loads five pages as a slow phone (Chrome's "Slow 4G", CPU slowed four times), cold and warm, with the headers served and the sizes, times a keystroke to each tool's redraw, and scrolls the source register. With no `SITE_URL` it serves `_site` itself, after `npm run build`; with one it measures that site, and `SITE_USER` and `SITE_PASS` sign in to the preview (W34). The sizes raw, gzipped and with brotli of the files it fetches are printed too. |
+| `npm run a11y` | axe-core on every page and state. Writes `reports/a11y.json`. Run it after any change to markup, styles or scripts, and after a data change that a page shows. |
+| `npm run a11y:manual` | Scripted measurements for the manual part of the accessibility assessment: reflow, text spacing, target size, keyboard, headings, the "On this page" list, the "Back to top" link, and each tool with its script blocked or held back. Run it after a layout, focus or script-loading change; `docs/maintenance.md` says when to run every check. |
+| `npm run test:tools` | Drives the four tools in a headless Chrome the way a reader does, after `npm run build`. Run it after changing a tool's script or template. |
+| `npm run update-check` | Fetches every source and outbound link once and reports what may have gone stale (`--days`, `--today`), then runs the passage and value checks. Writes `reports/update-check.json`. What to do with each section: `docs/maintenance.md`, "The update check". |
+| `node scripts/measure-loading.mjs` | Loads five pages as a slow phone would, cold and warm, and times each tool's redraw. With no `SITE_URL` it serves `_site`, after `npm run build`; with one it measures that site, and `SITE_USER` and `SITE_PASS` sign in to the preview. |
 | `python3 scripts/check-passages.py` | Looks for every quoted passage in its live source. |
 | `python3 scripts/check-values.py` | Looks for unquoted figure values in their source text. |
 | `python3 scripts/reference.py` | Prints the reference calculations. |
+
+Each script's header comment says what it checks.
 
 ## Environments
 
@@ -43,9 +47,9 @@ The accessibility scripts use the Chrome already on the computer, through `puppe
 | preview | `noindex` on every page | None | Preview banner |
 | production | Indexable | `/sitemap.xml` | None |
 
-A production build stops unless the launch decisions it can check are set, and set to values that can be right: decision 86. It also stops while `BASIC_AUTH` is set, if `netlify.toml` sends an `X-Robots-Tag` header, or on Netlify outside the production context. A preview's `noindex` header is written to `_site/_headers`. See `docs/launch-dependencies.md`.
+A production build stops unless the launch values it can check are set, and set to values that can be right. It also stops while `BASIC_AUTH` is set, if `netlify.toml` sends an `X-Robots-Tag` header, or on Netlify outside the production context. A preview's `noindex` header is written to `_site/_headers`. See `docs/launch-dependencies.md`.
 
-A production build adds Cloudflare Web Analytics, with the token in `src/_data/site.js`, and the privacy page says so. Development and preview builds load nothing from any other website: decision 74.
+A production build adds Cloudflare Web Analytics, with the token in `src/_data/site.js`, and the privacy page says so. Development and preview builds load nothing from any other website.
 
 ```
 SITE_ENV=production SITE_TITLE="..." SITE_URL=https://... CORRECTION_URL=https://... \
@@ -67,61 +71,30 @@ A11Y_ASSESSMENT_DATE=2026-10-01 AI_CRAWLER_POLICY=allow npm run build
 | `src/_data/tables.json` | Sourced tables. |
 | `src/_data/budgets.json` | Budget categories and example budgets. |
 | `src/_data/scenarios.json` | Hypothetical scenarios for the rule comparison. |
-| `src/_data/pageRegister.json` | Title, description, dates and indexing for each page. `figure_cards` marks the pages with figure cards, where the page foot says check dates are under "More about this figure"; `npm run build` fails if it does not match the page. |
+| `src/_data/pageRegister.json` | Title, description, dates and indexing for each page. `figure_cards` marks the pages with figure cards; `npm run build` fails if it does not match the page. |
 | `src/_data/links.json` | Links to the sister sites, and the planned links back. |
-| `src/_data/news.json` | The date of the note "In the news" on the overview page, whose text is in `src/index.njk`. The same `as_of` date dates the pensions and social care page. |
+| `src/_data/news.json` | The date of the note "In the news" on the overview page, whose text is in `src/index.njk`. The same date dates the pensions and social care page. |
 | `src/_data/a11y.json` | What the accessibility statement reports. |
 | `src/assets/js/lib/` | Calculations and views. No DOM. Used by the build and the browser. |
 | `src/assets/js/tools/` | The four calculators' page scripts. |
-| `src/assets/js/contents.js` | Marks the section being read in the "On this page" list. |
-| `src/assets/js/back-to-top.js` | Fixes the one "Back to top" link of a long page in the lower right and shows it when the reader scrolls up or tabs to it (decision 88, as amended by 92 and 108). |
-| `src/assets/js/scroll-cue.js` | Shows "Scroll sideways for more" on a table or chart wider than its region, including those a tool draws later (W20). |
-| `src/assets/js/moved.js` | Sends a link to the old rule comparison, with settings in its address, on to `/reform-options/compare/`. |
-| `src/assets/js/cards.js` | Makes a click on the description of each card under "Where to go next" on the overview follow the card's link after 300 ms, unless a second click makes it a double-click or the reader has selected text. |
+| `src/assets/js/*.js` | The page scripts: `contents.js` marks the section being read in the "On this page" list, `back-to-top.js` fixes the "Back to top" link, `scroll-cue.js` shows "Scroll sideways for more" on a wide table or chart, `cards.js` makes the overview's cards clickable, `js-class.js` marks the page as running scripts, and `moved.js` forwards the old rule comparison's address to `/reform-options/compare/`. |
 | `test/` | Tests. |
-| `scripts/` | Build check, accessibility runs, source checks, reference calculations. |
+| `scripts/` | Build check, accessibility runs, tool checks, source checks, reference calculations. |
 | `research/` | The research record behind the registers. |
-| `docs/` | Specification, decisions, assessment, maintenance, handover. The handover holds the current state only: decision 83. |
+| `docs/` | Specification, decisions, markup conventions, accessibility assessment, maintenance, handover. The handover holds the current state only. |
 | `LICENCE` | MIT for the code and the site's own writing; the figures and quoted passages stay under their sources' terms. |
 
 ## Hosting
 
-Netlify builds a preview from `main`, using `netlify.toml`, until `SITE_ENV` under `[context.production.environment]` is set to `production` at launch. Deploy previews and branch deploys stay previews after launch: decision 68. A preview asks for a user name and password. They are set in the `BASIC_AUTH` variable in Netlify, as `user:password`, and the build writes them to `_site/_headers`. `BASIC_AUTH=user:password npm run build` shows that the rule is written. It does not show that the sign-in works, because the local server ignores that file. That was checked on the Netlify deploy preview on 29 September 2026. Repository: https://github.com/LegendT/UK-State-Pension-Explorer
+Netlify builds a preview from `main`, using `netlify.toml`, until `SITE_ENV` under `[context.production.environment]` is set to `production` at launch. Deploy previews and branch deploys stay previews after launch. A preview asks for a user name and password, set in the `BASIC_AUTH` variable in Netlify as `user:password`; the build writes them to `_site/_headers`. `BASIC_AUTH=user:password npm run build` shows that the rule is written, not that the sign-in works, because the local server ignores that file.
 
-## Markup conventions
+## Markup
 
-Set on 29 September 2026 after a sweep of every built page, and changed on 1 October 2026 for defect 11 of the handover. Accepted by the owner on 1 October 2026. The rule for sources changed on 2 October 2026: decision 77. Section 8 of `scripts/check-build.mjs` holds the rules a pattern can test: table regions named by their captions, a space between `</dt>` and `<dd>`, a chart named by its title alone and starting with its `figcaption`, notes that start with a heading, named sections for calculators only, and named `nav` elements. The others need reading.
-
-| Rule | Where it applies |
-| --- | --- |
-| A figure card is an `article` with a heading, inside a list item. Its heading is one level below the heading of the section it sits in. Pass the level to `m.stat`. | The cards on the State Pension, living on a pension and reform options pages |
-| A note or a "not available" block is a `div` with `role="note"` and a heading as its first child, one level below the section it sits in. Pass the level to `m.note` and `m.unavailable`, and for an `h2` or `h3` the id. | Every page, and the results the calculators write |
-| An option is an `article` with its own `h3`. It has no `aria-labelledby`, so it is not a region landmark. | Reform options |
-| A `section` with `aria-labelledby` is for a calculator only. | The four calculators |
-| A label with one value is a `dl`. So is a list of names, each with its description. Keep a space between `</dt>` and `<dd>`. A list of points that each open with a bold sentence stays a `ul`: the sentence is the point, not a name. A numbered sequence stays an `ol`. | Figure details, calculator results, the options, the measures, the situations on the overview, the history of the triple lock, the accessibility statement |
-| A figure in running text or on a card has one muted line under it: the kind, then the official status of its source where `sources.json` records one (`status`: accredited, official, in-development or suspended), the period, the range where the record has one (decision 95), the source with its date, then the key caveat, each a sentence. The key caveat is the first sentence of the figure's `qualifications`, and it says what changes the figure's meaning: the build fails a shown figure whose first sentence is empty or only restates the kind or the status. "More about this figure" holds the place, the other limits, the definition, the coverage, where in the source and the rest. Where a group of figures shares those parts, `m.sharedNote` says them once above the group from the `shared` filter, and each figure's `m.sourceNote` takes the group and leaves them out. | Every source note, from `m.sourceNote` |
-| A chart is a `figure` with its title in a `figcaption`. The title states what the chart shows and is worked out from the result, never typed. A tool draws its chart at the width of its result, up to the 720 the build draws at, so its text stays at the stylesheet's size on a phone; below 600 the names of the lines sit inside the plot and fewer years are named. A marked year's number sits above the plot (`lineChart` in `src/assets/js/lib/chart.js`, `fitChart` in `src/assets/js/tools/common.js`). Lines less than 0.1% apart in every year are drawn as one line, named by every series in it, and a title counts them as level (`NEAR` in `chart.js`, decision 97). A value axis is at least a tenth of its highest value tall, and one that does not start at zero is marked and says so. The image is named "Line chart", with no description, and everything drawn in it is hidden from screen readers; the box that scrolls it is named "Chart". What it shows is a paragraph, `chartSummary` in `chart.js`, just before the figure and outside it, ending in a link to the table of every value: decision 104. | The history explorer and the rule comparison |
-| A source after a sentence is `m.ref`, or `m.c` for a claim. `.ref` puts it on a line of its own under the sentence, small and muted. Do not type "Source:" and a citation by hand. The exception is the line under a tool's chart or output: a `source-line` paragraph opening "Sources:", built from strings the template hands to the view with any citation as `m.cite`, because the browser draws the line again as the form changes and cannot run a macro (W26). A figure in running text is `m.f`, and the build stops unless the first citation after it, before the next heading, is its own source's: the `proseCitations` transform in `eleventy.config.js` (W24). A figure said again after its source, as in "above", uses the `fig` filter, which the check does not see. A link onward from a short entry is `m.more`, drawn by `.onward` on a line of its own after the source, so the two do not run together. | Every page; `m.more` in the overview's short entries |
-| Every `h2` and `h3` carries an id typed in a template or a script, and the build stops on one without, on an id used twice on a page, or on a script that draws an `h2` or `h3` with none (W29, from R16 of the readability review). A figure card's heading is `card-` and the figure's id; a tool result's heading keeps one id in every state, such as `compare-result-heading`; the two charts are `compare-chart` and `history-chart`. Until 13 October 2026 an `h3` without an id was given one made from its words at build time, which changed when the heading was reworded. | Every page |
-| A tool's form and summary carry `js-only`, and so does a result only a script draws (the budget explorer's), and any sentence that tells a reader what to enter or copy (W39). Inside `section.tool` only: outside it, `js-only` never shows, so such a sentence moves into the tool rather than staying in the lede; a result the build draws shows without a script. The no-script notice carries `no-js-only`. The form shows only when the tool's own module has run and called `ready(form)` in `tools/common.js`, which marks the `section.tool` `is-ready`. `js-class.js` marks the page `js` for the styles that need a script running, and at the load event, by which every module has run or failed, marks any tool not ready `load-failed` (W32). The notice shows with no script, or once a tool is `load-failed`, with its `if-script-failed` sentence; while a module loads, neither the form nor the notice shows (decision 99). A module that fails to load leaves the notice, not a form that does nothing. | The four tools |
-| A calculator whose result is below its form keeps a summary of the result in view: beside the form when there is room, pinned to the foot of the screen when there is not, unless it would take more than half the screen: then it follows the form (decision 79). The pinned summary holds nothing that takes focus. The result follows the form 400 ms after the last change: `live` and `pinSummary` in `src/assets/js/tools/common.js`. The triple lock calculator follows its figures only; choosing a year waits for its load button. In the rule comparison, the triple lock calculator and the budget explorer, a half-typed figure keeps the last result, marked "Out of date" (decision 85). After a change, not on arrival, the summary ends with "Updated" and a sentence saying the result below changed too (`updatedNote`), and the status message says the same. | All four tools |
-| A link that stands for a card holds the card's name only. The description follows it as a paragraph. The link's `::after` covers the card, so the name and padding follow the link. The description is raised above it, so it can be selected by dragging or double-clicking. Once `cards.js` runs, a click on the description follows the link after 300 ms, unless a second click makes it a double-click. Without script the description is not a link target. The card shows a 3px outline while its link has keyboard focus. | "Where to go next" on the overview |
-| The contents list is `m.contents`. A section over about four phone screens lists its `h3` headings under its own entry, and those headings carry ids written in the template. On a reform page the list also names the section's pages in order, with this page's sections nested under its name, and the calculator page keeps the list in the page's flow. A reform page has one name, its label in `site.reformPages`, used by that list, by the Next and Previous links at the foot of the page, by the tools hub and by the site map, through the `pageName` filter. | Pages with a contents list, and the five reform pages |
-| A contents list of more than 10 entries, nested entries and a reform section's page links counted, opens with `<a class="skip-contents">Skip to the text</a>`, the first child of the `nav`, going to the first section's heading. It is hidden until focused and `contents.js` never marks it; the `a11y:manual` check leaves it out of the target and text-spacing measures, as it does the skip link (decision 109). | Pages whose contents list has more than 10 entries |
-| Every link takes `--visited` once followed and `--ink` while pressed, through `:visited` and `:active` nested in one `a:where(:not(…))` block, kept at the weight of `a:hover`; a browser without CSS nesting (before Safari 16.5, Chrome 112 or Firefox 117) shows the link colour throughout. The menus, the footer lists, the cards, the pager, the two skip links and "Back to top" are left out; a link that must stay in the link colour goes on that one list, not in a rule of its own (decision 109). | Every page |
-| A long page has one "Back to top" link, at the end of `main` in `base.njk`, in place of a link at the end of every section. It goes to the start of the page (decision 94). `back-to-top.js` fixes it in the lower right and shows it when the reader scrolls up or tabs to it on a page over four screens; the stylesheet hides it at desktop width where the contents list stays in view (decision 88, as amended by 92 and 108). | Every page |
-| A date that a template prints is plain text with non-breaking spaces, in no element: VoiceOver with Safari read a `time` element twice and stopped at the edges of a span (step 4). `dateText` for a day, `monthOrDayText` for a source that gives a month only. A date typed into a template joins its parts with `&nbsp;`. Dates typed inside register text stay plain. | Citations, check dates, the register of sources |
-| Words taken from a source are in `q` or in quotation marks. | Quoted passages |
-| Lists of links in the footer are `nav` elements with names. | Every page |
-| A wrapper that scrolls a table or chart keeps `tabindex="0"`, `role="region"` and a name. A table's wrapper is named by its `caption` with `aria-labelledby`. In a template, give the caption an id and leave the name off: the `tableRegions` transform in `eleventy.config.js` names the wrapper by that id, and a caption without one stops the build. A typed caption's id is `table-` and a short name, and `m.dataTable` uses `table-` and the table's register id. A script that draws a table gives the caption an `id` in its own pattern, such as `compare-values-caption`, and names the wrapper itself; the typed table in the comparison form follows that pattern. A chart's wrapper keeps a short typed name, "Chart: …". When the table or chart is wider than its region, `scroll-cue.js` adds the class `can-scroll` and the stylesheet shows "Scroll sideways for more" at its left edge, hidden from screen readers. Naming it from the `figcaption` would make a screen reader hear the title twice, once for the region and once for the image inside it. `html-validate` reports each wrapper under `prefer-native-element`. That report is declined. | Every wide table and chart |
-
-The exception is the preview banner. It has `role="note"` and no heading, because a heading there would come before the `h1`. It goes at launch.
-
-`scripts/a11y-manual-assist.mjs` counts skipped heading levels. It cannot tell whether a heading sits under the right parent. Check that by reading the outline.
+The rules for figure cards, notes, charts, tables, citations, dates, the contents list and the tools are in `docs/markup-conventions.md`. Section 8 of `scripts/check-build.mjs` tests the ones a pattern can hold; the others need reading.
 
 ## Conventions
 
 - British English. No em dashes. No emoji. Straight quotation marks.
-- No figure is typed into a page. Use `{{ "id" | fig }}` or the `figure` filter. Decision 84 allows two exceptions. The first is the 2.5% of the triple lock: it is part of the rule's wording and rests on the claims register. The second is a result of the model that a test holds, such as "10p a week at most" in the rule comparison.
+- No figure is typed into a page. Use `{{ "id" | fig }}` or the `figure` filter. Two exceptions (decision 84): the 2.5% of the triple lock, which is part of the rule's wording and rests on the claims register, and a result of the model that a test holds, such as "10p a week at most" in the rule comparison.
 - A date the site does not hold is left out. It is never taken from a build.
 - Tools calculate in whole pence and tenths of a per cent.

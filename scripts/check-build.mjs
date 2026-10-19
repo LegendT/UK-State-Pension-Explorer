@@ -186,7 +186,7 @@ for (const link of links.outbound) {
   }
 }
 
-// 8. The markup conventions in the README that a pattern can hold. The others need reading.
+// 8. The markup conventions in docs/markup-conventions.md that a pattern can hold. The others need reading.
 for (const [url, html] of written) {
   for (const [div, attrs, inner] of html.matchAll(/<div class="scroll-x"([^>]*)>([\s\S]*?)<\/div>/g)) {
     const caption = (inner.match(/^\s*<table[^>]*>\s*<caption id="([^"]+)"/) || [])[1];
