@@ -70,6 +70,9 @@ This is the one ordered list. Each step is the owner's unless it says otherwise.
    | `AI_CRAWLER_POLICY` | `allow` |
 
 8. Attach `ukstatepensionexplorer.org` to the Netlify project: decision 67.
+
+   Before step 9, the update check runs clean: `npm run update-check`, with every source it reports as having a newer edition read by a person, as "The update check" in `docs/maintenance.md` says (decision 110). Each run is recorded in "Last checks" in `docs/HANDOVER.md`, and nowhere else.
+
 9. The launch itself, at one time. In Netlify, scope `BASIC_AUTH` to deploy previews and branch deploys only. Then, on the owner's word, the assistant sets `SITE_ENV` under `[context.production.environment]` in `netlify.toml` to `production`, and the change is merged. Not before: until that merge the production context is still a preview, and a preview build stops without `BASIC_AUTH`. A production build stops while `BASIC_AUTH` is set.
 
 ## Work before step 4
