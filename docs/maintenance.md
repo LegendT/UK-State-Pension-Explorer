@@ -58,7 +58,7 @@ Read these parts of the reform options pages in full: on `/reform-options/`, the
 
 ## The update check
 
-`npm run update-check` says what may have gone stale. Run it before launch, at each release in the table above, and at least monthly. It edits nothing, and it fails only when the passage check of its last section does: everything else it prints, the value check's report among it, is for a person to act on. The record of each run is the "Last checks" table in `docs/HANDOVER.md`, not this file.
+`npm run update-check` says what may have gone stale. Run it before launch, at each release in the table above, and at least monthly. It edits nothing, and it fails only when the passage check of its last section does: everything else it prints, the value check's report among it, is for a person to act on. The record of each run is the "Last checks" table in `docs/HANDOVER.md`, not this file; that file is on the owner's computer, not in the repository (decision 119).
 
 The run is clean when it exits 0, every source it reports with a newer edition has been read and its record updated or left with a reason, every release it reports as due has been handled under "When a source publishes a new edition", the value check reported no source unreadable (or has since been rerun alone with none), and the run is recorded in the handover. The lists to read by hand are not part of clean: decision 110 asks for the sources reported with a newer edition to be read before launch, not these.
 

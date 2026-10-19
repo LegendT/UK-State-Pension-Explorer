@@ -19,6 +19,8 @@ __pycache__/
 # documents of the first build (decision 99).
 NEXT-SESSION.md
 _archive/
+# Kept on this computer only: the handover, the state file a session reads first (decision 119).
+docs/HANDOVER.md
 # Kept on this computer only: the owner's working documents at the root (decision 103).
 claude-code-build-prompt.md
 uk-state-pension-explorer-scope.md
