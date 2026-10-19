@@ -167,6 +167,7 @@ report.stale = stale.map(([kind, id, date]) => ({ kind, id, checked_date: date }
 section(`4. Releases due on or before ${TODAY}, from the table in docs/maintenance.md.`);
 // Only the table under "When a source publishes a new edition": the guide may gain other tables.
 const releaseSection = guide.split("\n## When a source publishes a new edition")[1]?.split("\n## ")[0] ?? "";
+if (!releaseSection) line("could not find the heading \"When a source publishes a new edition\" in docs/maintenance.md: section 4 has nothing to read");
 const tableRows = releaseSection.split("\n").filter((l) => l.startsWith("| ") && !l.startsWith("| Date") && !l.startsWith("| ---")).map((l) => l.split("|").slice(1, -1).map((c) => c.trim())).filter((c) => c.length === 3);
 const figureIds = Object.keys(figures);
 function named(cell) {

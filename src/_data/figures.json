@@ -3617,7 +3617,7 @@
     "passage": "In today’s terms, the estimated saving is £11 billion per year. However, the saving is very uncertain, because of how unpredictable the old triple lock is, and new IFS analysis shows it could reasonably be anywhere between £4 billion and £20 billion.",
     "classification": "estimate",
     "provisional": false,
-    "qualifications": "The central value is the government's estimate restated by the Institute, and the range is the Institute's own: the saving could reasonably be anywhere between £4 billion and £20 billion a year, because the old triple lock is so unpredictable. The Institute does not say which price index its today's terms uses, so the £11 billion and the department's £11 billion in 2025 to 2026 prices are close in kind but not shown to be the same. It does not publish the paths of earnings and prices behind the range.",
+    "qualifications": "The Institute's today's terms are not defined, so this £11 billion and the department's £11 billion in 2025 to 2026 prices are close in kind but not shown to be the same. The central value is the government's estimate restated by the Institute; the range is the Institute's own, because the old triple lock is so unpredictable. It does not publish the paths of earnings and prices behind the range.",
     "formula": null,
     "inputs": [],
     "checked_date": "2026-10-19",
