@@ -254,5 +254,5 @@ report.source_checks_passed = ran ? !failed : null;
 
 mkdirSync("reports", { recursive: true });
 writeFileSync("reports/update-check.json", JSON.stringify(report, null, 2));
-console.log(`\nupdate-check: ${!ran ? "the source checks were not run" : failed ? "FAILED, a passage or value check did not pass" : "the source checks passed"}; the findings above are for a person. Written to reports/update-check.json.`);
+console.log(`\nupdate-check: ${!ran ? "the source checks were not run" : failed ? "FAILED, the passage check did not pass" : "the source checks passed"}; the findings above are for a person. Written to reports/update-check.json.`);
 process.exit(failed ? 1 : 0);
