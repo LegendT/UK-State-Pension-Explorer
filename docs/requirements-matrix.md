@@ -69,7 +69,7 @@ Status values: **Built**, **Built with a gap** (the gap is named), **Not built**
 | Qualitative claim register | `claims.json` | `check-build.mjs` | Built |
 | Value stored once | `fig` and `figure` filters | Build fails on an unknown id | Built with a gap: `news.json` and `tables.json` repeat a few values in text |
 | Dated language, no badges | Source notes | | Built |
-| Passage checks | `scripts/check-passages.py` | All passages found: by script, or in a browser for the sites that refuse scripts (23 passages) | Built |
+| Passage checks | `scripts/check-passages.py` | All passages found: by script, or in a browser for the sites that refuse scripts (23 passages), or, for the three of the Institute for Fiscal Studies' analysis of 30 September 2026, by a script driving headless Chrome, which no person has yet read | Built |
 | Values without a passage | `scripts/check-values.py` and direct look-up in the spreadsheets | All found. The 12 figures without a quoted passage record their file and cell (W4, 8 October 2026) | Built |
 | Review status shown honestly | `review_status` = `checked-with-ai-assistance`, preview banner | | The owner read every page on 8 October 2026 (launch step 3) and again on 15 October 2026 (row W16 of `docs/launch-dependencies.md`), which set `REVIEW_DATE` to 2026-10-15 |
 | Conflicting sources not resolved silently | Decision log, source notes | | Built |
