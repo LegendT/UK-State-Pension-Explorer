@@ -3595,5 +3595,33 @@
     "checked_date": "2026-09-30",
     "review_status": "checked-with-ai-assistance",
     "next_review": "Each April. It comes from a single study, so it changes only if the Resolution Foundation publishes newer work that replaces it."
+  },
+  "saving-rule-2030-2040-ifs": {
+    "label": "Institute for Fiscal Studies restatement of the saving in 2039 to 2040, in today's terms, with its range",
+    "definition": "The government's estimated saving in 2039 to 2040 from the rule announced for April 2030, as the Institute for Fiscal Studies restates it in today's terms, with the Institute's own range for how uncertain it is.",
+    "value": 11,
+    "display": "billions",
+    "unit": "pounds a year",
+    "range": "£4 billion to £20 billion",
+    "population": "State Pension.",
+    "basis": "national total",
+    "geography": "Great Britain, following the government's estimate.",
+    "period_label": "2039 to 2040",
+    "effective_from": null,
+    "effective_to": null,
+    "price_basis": "today's terms, as the Institute calls it, not further defined",
+    "gross_net": "Direct effect on spending, before effects on tax and debt interest",
+    "frequency": "annual",
+    "source_id": "ifs-savings-range-2026",
+    "table_reference": "The quoted paragraph of the comment; the Institute publishes no table with it.",
+    "passage": "In today’s terms, the estimated saving is £11 billion per year. However, the saving is very uncertain, because of how unpredictable the old triple lock is, and new IFS analysis shows it could reasonably be anywhere between £4 billion and £20 billion.",
+    "classification": "estimate",
+    "provisional": false,
+    "qualifications": "The central value is the government's estimate restated by the Institute, and the range is the Institute's own: the saving could reasonably be anywhere between £4 billion and £20 billion a year, because the old triple lock is so unpredictable. The Institute does not say which price index its today's terms uses, so the £11 billion and the department's £11 billion in 2025 to 2026 prices are close in kind but not shown to be the same. It does not publish the paths of earnings and prices behind the range.",
+    "formula": null,
+    "inputs": [],
+    "checked_date": "2026-10-19",
+    "review_status": "checked-with-ai-assistance",
+    "next_review": "When the Office for Budget Responsibility costs the change, or the Institute publishes newer work that replaces it."
   }
 }

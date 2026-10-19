@@ -78,7 +78,8 @@ async function fetchOne(url) {
     const response = await fetch(url, { headers: { "user-agent": UA }, signal: controller.signal, redirect: "follow" });
     const type = response.headers.get("content-type") || "";
     const html = type.includes("html") ? await response.text() : "";
-    const refused = response.status === 429 ? "rate limited: HTTP 429, try again later" : response.status === 403 || /just a moment|captcha|access denied/i.test(html.slice(0, 5000)) ? `HTTP ${response.status}, the site answers with a robot check; read it in a browser` : null;
+    // The robot-check words are looked for only in an answer that is not 200: a normal page may load a captcha script.
+    const refused = response.status === 429 ? "rate limited: HTTP 429, try again later" : response.status === 403 || (response.status !== 200 && /just a moment|captcha|access denied/i.test(html.slice(0, 5000))) ? `HTTP ${response.status}, the site answers with a robot check; read it in a browser` : null;
     return { status: response.status, final: response.url !== url ? response.url : null, refused, signals: signalsOf(html) };
   } catch (error) {
     return { status: 0, final: null, refused: false, signals: {}, error: error.name === "AbortError" ? "timed out after 15 s" : error.message };
@@ -122,16 +123,22 @@ if (FETCH) {
   line(`${dead.length} dead, ${refused.length} refused, ${moved.length} redirected, ${fetched.length - dead.length - refused.length} answered.`);
 
   section("2. Newer editions: a last-updated signal later than the record's checked_date.");
-  // GOV.UK's govuk:updated-at moves on any edit, a typo or a tag; govuk:public-updated-at moves on a change
-  // the public is told of. Only the public signals are compared; the technical one is printed for information.
-  const publicSignals = (f) => Object.entries(f.signals).filter(([name]) => name !== "govuk:updated-at");
-  const newer = fetched.filter((f) => publicSignals(f).some(([, d]) => d > f.checked_date));
-  for (const f of newer) line(`NEWER     ${f.kind} ${f.id}, checked ${f.checked_date}: ${publicSignals(f).map(([k, v]) => `${k} ${v}`).join(", ")}. Read it.`);
-  line(`${newer.length} with a newer public signal.`);
+  // Only a signal that moves when the page changes counts as readable: GOV.UK's public updated-at,
+  // legislation.gov.uk's modified date and the generic modified-time metas. A release or published date
+  // on a page tied to one edition never moves, so it says nothing, and the page is read by hand. GOV.UK's
+  // govuk:updated-at moves on any edit, a typo or a tag, so it is not compared; a page with only that
+  // since its check date is read by hand too (the owner's answer of 19 October 2026). A source published
+  // at a new address each edition, as ONS and GOV.UK statistics are, never shows a newer signal on the
+  // page checked: the guide's release table, section 4, is what finds those.
+  const MODIFIED = ["govuk:public-updated-at", "DC.Date.Modified", "article:modified_time", "dateModified"];
+  const modifiedSignals = (f) => Object.entries(f.signals).filter(([name]) => MODIFIED.includes(name));
+  const newer = fetched.filter((f) => modifiedSignals(f).some(([, d]) => d > f.checked_date));
+  for (const f of newer) line(`NEWER     ${f.kind} ${f.id}, checked ${f.checked_date}: ${modifiedSignals(f).map(([k, v]) => `${k} ${v}`).join(", ")}. Read it.`);
+  line(`${newer.length} with a newer last-modified signal.`);
   const technical = fetched.filter((f) => !newer.includes(f) && f.signals["govuk:updated-at"] > f.checked_date);
-  line(`${technical.length} GOV.UK pages with a technical update since their check date and no public one, not flagged: ${technical.map((f) => f.id).join(", ") || "none"}.`);
-  const noSignal = fetched.filter((f) => f.status === 200 && !f.refused && !Object.keys(f.signals).length);
-  line(`No readable signal, to read by hand, by publisher: ${noSignal.length}.`);
+  const noSignal = fetched.filter((f) => f.status === 200 && !f.refused && !modifiedSignals(f).length && !technical.includes(f));
+  line(`To read by hand: ${technical.length} GOV.UK pages with a technical update since their check date and no public one, and ${noSignal.length} with no last-modified signal, by publisher.`);
+  if (technical.length) line(`  Technical update only: ${technical.map((f) => `${f.id} (${f.checked_date}, edited ${f.signals["govuk:updated-at"]})`).join(", ")}`);
   const byPublisher = Object.groupBy(noSignal, (f) => f.publisher);
   for (const [publisher, list] of Object.entries(byPublisher).sort()) line(`  ${publisher}: ${list.map((f) => `${f.id} (${f.checked_date})`).join(", ")}`);
   report.newer = newer.map((f) => f.id);
@@ -158,7 +165,9 @@ report.stale = stale.map(([kind, id, date]) => ({ kind, id, checked_date: date }
 
 // 4. Releases due, from the guide's own table, and each figure's next_review read the same way.
 section(`4. Releases due on or before ${TODAY}, from the table in docs/maintenance.md.`);
-const tableRows = guide.split("\n").filter((l) => l.startsWith("| ") && !l.startsWith("| Date") && !l.startsWith("| ---")).map((l) => l.split("|").slice(1, -1).map((c) => c.trim())).filter((c) => c.length === 3);
+// Only the table under "When a source publishes a new edition": the guide may gain other tables.
+const releaseSection = guide.split("\n## When a source publishes a new edition")[1]?.split("\n## ")[0] ?? "";
+const tableRows = releaseSection.split("\n").filter((l) => l.startsWith("| ") && !l.startsWith("| Date") && !l.startsWith("| ---")).map((l) => l.split("|").slice(1, -1).map((c) => c.trim())).filter((c) => c.length === 3);
 const figureIds = Object.keys(figures);
 function named(cell) {
   const ids = [];

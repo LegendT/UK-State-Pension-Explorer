@@ -1709,16 +1709,6 @@
     "checked_date": "2026-10-13",
     "review_status": "checked-with-ai-assistance"
   },
-  "ifs-saving-range-2040": {
-    "kind": "finding",
-    "statement": "The Institute for Fiscal Studies puts the government's estimated saving for 2039 to 2040 at £11 billion a year in today's terms, and says it could reasonably be anywhere between £4 billion and £20 billion, because the old triple lock is so unpredictable.",
-    "source_id": "ifs-savings-range-2026",
-    "passage": "In today’s terms, the estimated saving is £11 billion per year. However, the saving is very uncertain, because of how unpredictable the old triple lock is, and new IFS analysis shows it could reasonably be anywhere between £4 billion and £20 billion.",
-    "interpretation": false,
-    "note": null,
-    "checked_date": "2026-10-19",
-    "review_status": "checked-with-ai-assistance"
-  },
   "ifs-saving-2034": {
     "kind": "finding",
     "statement": "For 2034 to 2035 the Institute expects the change to save around £4 billion a year, and says it could easily save nothing at all if earnings growth is strong.",
@@ -1814,6 +1804,16 @@
     "statement": "The letter says responsibility for the State Pension is reserved to the UK Government.",
     "source_id": "scotgov-letter-2026-09-30",
     "passage": "responsibility for the State Pension is still reserved to the UK Government",
+    "interpretation": false,
+    "note": null,
+    "checked_date": "2026-10-19",
+    "review_status": "checked-with-ai-assistance"
+  },
+  "casey-summer-2027-dhsc": {
+    "kind": "commitment",
+    "statement": "The Department of Health and Social Care's news story of 30 September 2026 says the commission is due to report by summer 2027.",
+    "source_id": "dhsc-news-2026-09-30",
+    "passage": "is due to report by summer 2027",
     "interpretation": false,
     "note": null,
     "checked_date": "2026-10-19",

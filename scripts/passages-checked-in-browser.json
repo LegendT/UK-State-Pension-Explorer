@@ -118,17 +118,17 @@
       "browser": "Chrome 154"
     },
     {
-      "id": "ifs-saving-range-2040",
-      "date": "2026-10-19",
-      "browser": "Chrome 155, headless"
-    },
-    {
       "id": "ifs-saving-2034",
       "date": "2026-10-19",
       "browser": "Chrome 155, headless"
     },
     {
       "id": "ifs-cancelling-unfunded",
+      "date": "2026-10-19",
+      "browser": "Chrome 155, headless"
+    },
+    {
+      "id": "saving-rule-2030-2040-ifs",
       "date": "2026-10-19",
       "browser": "Chrome 155, headless"
     }
