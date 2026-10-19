@@ -31,7 +31,7 @@ Status values: **Built**, **Built with a gap** (the gap is named), **Not built**
 | E Sister-site links in context | `#public-finances`, `#cost-and-saving` | `links.json` | Built. Destination tools not exercised in a browser |
 | F Pensions and social care | `/reform-options/social-care/` | GOV.UK, nation governments, Health Foundation | Built as a dated page, the fourth of five reform options pages. Owner's decisions, 29 and 30 September 2026, and decision 46. Rewritten after the announcement. Gap: the plan has no Bill, no costing method and no cost for the service |
 | G History | `/history/` | `history.json` | Built |
-| H Sources, method and corrections | `/sources-and-method/` | The three registers | Built with a gap: the correction route (a GitHub issue), owner and reviewer were decided on 2 October 2026, decisions 69 to 71, and are set at launch |
+| H Sources, method and corrections | `/sources-and-method/` | The three registers | Built with a gap: the correction route (a GitHub issue), owner and reviewer were decided on 2 October 2026, decisions 69 to 71, and were set in Netlify on 15 and 19 October 2026 (launch step 7) |
 | Utility pages | `/accessibility/`, `/privacy/`, `/site-map/`, `/404.html` | | Built |
 
 ## Section 3: tools
@@ -84,7 +84,7 @@ See `docs/accessibility-assessment.md`. Status: **Built with a gap**. Automated 
 | --- | --- |
 | 1 Evidence and content foundation | Built |
 | 2 Complete first version | Built |
-| 3 Verification | Part done. Done: tests, passage and value checks, build checks, automated accessibility, checks on the deploy preview. Not done: review by a second person, screen readers, checks on a production domain |
+| 3 Verification | Part done. Done: tests, passage and value checks, build checks, automated accessibility, checks on the deploy preview. Checks on the production domain done on 19 October 2026 (launch step 14). Not done: review by a second person, and the screen reader checks moved after launch (decision 99) |
 
 ## Section 9: sister sites
 
@@ -108,6 +108,6 @@ See `docs/accessibility-assessment.md`. Status: **Built with a gap**. Automated 
 | XML sitemap, production only, real dates | `sitemap.njk` | Parsed as XML in a test production build | Built |
 | HTML site map | `/site-map/` | | Built |
 | Environment indexing controls | `site.js`, `base.njk`, `robots.njk` | Builds in three environments | Built |
-| AI crawler policy | `launch-dependencies.md` item 7: `allow`, decision 72 | | Set at launch |
+| AI crawler policy | `launch-dependencies.md` item 7: `allow`, decision 72 | The live robots file, read 19 October 2026 | Set, 19 October 2026 (launch step 7) |
 | Deployed checks | Netlify deploy preview of pull request 1 | `curl` and Chrome, recorded in `docs/HANDOVER.md` as it stood at commit `75d0574` | Done for the deploy preview, and on 6 October 2026 for the main site address past the sign-in: `docs/HANDOVER.md`, "Last checks". Not done for a production domain |
-| Search console | | | Not done: needs account and domain |
+| Search console | Domain property, proved by a TXT record in Netlify DNS | Read in the owner's Chrome, 19 October 2026 | Done, 19 October 2026 (launch step 14): the sitemap read with status Success, 18 pages |
