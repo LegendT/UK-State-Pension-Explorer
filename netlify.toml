@@ -43,3 +43,10 @@
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
+
+# The rule comparison moved to /tools/compare/ on 20 October 2026 (decision 123). Netlify passes the
+# query string on, so a copied link with its settings still opens the same result.
+[[redirects]]
+  from = "/reform-options/compare/"
+  to = "/tools/compare/"
+  status = 301

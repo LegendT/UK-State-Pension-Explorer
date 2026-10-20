@@ -37,7 +37,7 @@ if (!base) {
 const auth = process.env.SITE_USER ? `Basic ${Buffer.from(`${process.env.SITE_USER}:${process.env.SITE_PASS}`).toString("base64")}` : null;
 const headers = auth ? { authorization: auth } : {};
 const SLOW_4G = { offline: false, downloadThroughput: (1.6 * 1024 * 1024 * 0.9) / 8, uploadThroughput: (750 * 1024 * 0.9) / 8, latency: 150 * 3.75 };
-const PAGES = ["/", "/reform-options/costs/", "/sources-and-method/", "/reform-options/compare/", "/tools/history/"];
+const PAGES = ["/", "/reform-options/costs/", "/sources-and-method/", "/tools/compare/", "/tools/history/"];
 const FILES = ["/", "/assets/css/main.css", "/assets/js/tools/compare.js", "/sources-and-method/", "/reform-options/costs/"];
 const kB = (n) => (n / 1024).toFixed(1);
 
@@ -104,7 +104,7 @@ async function respond(path, field, act, resultId) {
   await page.close();
 }
 const typing = (field, keys) => async (page) => { await page.focus(field); await page.$eval(field, (el) => { el.value = ""; }); await page.keyboard.type(keys); };
-await respond("/reform-options/compare/", "#compare-start", typing("#compare-start", "200"), "compare-result");
+await respond("/tools/compare/", "#compare-start", typing("#compare-start", "200"), "compare-result");
 await respond("/tools/triple-lock/", "#mechanism-prices", typing("#mechanism-prices", "4.0"), "mechanism-result");
 await respond("/tools/budget/", "#budget-private-pension", typing("#budget-private-pension", "500"), "budget-result");
 await respond("/tools/history/", "#history-measure", (page) => page.select("#history-measure", "real"), "history-result");

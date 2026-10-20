@@ -64,7 +64,7 @@ A11Y_ASSESSMENT_DATE=2026-10-01 AI_CRAWLER_POLICY=allow npm run build
 | Path | What it holds |
 | --- | --- |
 | `src/*.njk` | The pages. |
-| `src/tools/` | The Tools page and three tools, each on a page of its own. The rule comparison is `src/reform-compare.njk`. |
+| `src/tools/` | The Tools page and the four tools, each on a page of its own, the rule comparison among them (decision 123). |
 | `src/_includes/` | Layout and shared components. |
 | `src/_data/figures.json` | Register of figures. Numbers in page text come from here. Exceptions: `tables.json`, `history.json`, `budgets.json` and `scenarios.json` hold their own sourced values, and `links.json` quotes three amounts in a note, two of this site's and one of the destination's. |
 | `src/_data/claims.json` | Register of statements that are not figures. |
@@ -79,7 +79,7 @@ A11Y_ASSESSMENT_DATE=2026-10-01 AI_CRAWLER_POLICY=allow npm run build
 | `src/_data/a11y.json` | What the accessibility statement reports. |
 | `src/assets/js/lib/` | Calculations and views. No DOM. Used by the build and the browser. |
 | `src/assets/js/tools/` | The four calculators' page scripts. |
-| `src/assets/js/*.js` | The page scripts: `contents.js` marks the section being read in the "On this page" list, `back-to-top.js` fixes the "Back to top" link, `scroll-cue.js` shows "Scroll sideways for more" on a wide table or chart, `cards.js` makes the overview's cards clickable, `js-class.js` marks the page as running scripts, and `moved.js` forwards the old rule comparison's address to `/reform-options/compare/`. |
+| `src/assets/js/*.js` | The page scripts: `contents.js` marks the section being read in the "On this page" list, `back-to-top.js` fixes the "Back to top" link, `scroll-cue.js` shows "Scroll sideways for more" on a wide table or chart, `cards.js` makes the overview's cards clickable, `js-class.js` marks the page as running scripts, and `moved.js` forwards the old rule comparison's address to `/tools/compare/`. |
 | `test/` | Tests. |
 | `scripts/` | Build check, accessibility runs, tool checks, source checks, the update check, loading measurements, reference calculations. |
 | `research/` | The research record behind the registers. |

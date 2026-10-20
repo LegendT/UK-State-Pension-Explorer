@@ -204,11 +204,11 @@ for (const path of pages) {
   const fourth = await browser.newPage();
   await fourth.setViewport({ width: 1400, height: 900 });
   await fourth.goto(base + path, { waitUntil: "networkidle0" });
-  if (await fourth.$("main > .contents:not(.section-nav)")) {
+  if (await fourth.$("main > .contents")) {
     contentsChecked += 1;
     // In-page links only: on a reform page the list also names the section's other pages.
     // The entries, as contents.js reads them: not "Skip to the text", which is never marked.
-    const links = 'main > .contents:not(.section-nav) a[href^="#"]:not(.skip-contents)';
+    const links = 'main > .contents a[href^="#"]:not(.skip-contents)';
     const frames = () => fourth.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
     const current = () => fourth.evaluate((sel) => [...document.querySelectorAll(sel)].findIndex((a) => a.getAttribute("aria-current") === "location"), links);
     const count = await fourth.$$eval(links, (a) => a.length);
@@ -255,7 +255,7 @@ for (const path of pages) {
     steps.push(["in a short window the marked link is in view", await fourth.evaluate((sel) => {
       const nav = document.querySelector(sel), box = nav.getBoundingClientRect(), mark = nav.querySelector('[aria-current="location"]')?.getBoundingClientRect();
       return Boolean(mark) && mark.top >= box.top && mark.bottom <= box.bottom;
-    }, "main > .contents:not(.section-nav)")]);
+    }, "main > .contents")]);
     out.contents = steps.filter(([, ok]) => !ok).map(([name]) => name);
     if (out.contents.length) problems.push(`${path} On this page: ${out.contents.join("; ")}`);
   }

@@ -145,7 +145,7 @@ const submit = (page, form) => page.$eval(form, (el) => el.requestSubmit());
 
 // Rule comparison.
 {
-  const page = await open("/reform-options/compare/");
+  const page = await open("/tools/compare/");
   // Step 4: the box around the chart and the image are named plainly, not by a heading heard already.
   check("compare: the chart's box is named Chart and its image Line chart", await page.$eval("#compare-chart .scroll-x", (el) => el.getAttribute("aria-label") === "Chart" && el.querySelector("title").textContent === "Line chart"));
   await page.focus("#compare-result .chart-summary a");
@@ -191,7 +191,7 @@ const submit = (page, form) => page.$eval(form, (el) => el.requestSubmit());
   check("compare: the copied link reopens the result", /your own figures, starting from £200\.00/.test(await text(restored, "#compare-result h3")) && (await value(restored, "#compare-scenario")) === "low" && (await value(restored, "#compare-prices-0")) === "5.0");
   check("compare: nothing is announced on arrival", (await text(restored, "#compare-status")) === "");
   await restored.close();
-  const malformed = await open("/reform-options/compare/?scenario=zzz&years=abc&start=xyz&first=1999&measure=nope&floor=off&prices=1,2&earnings=3");
+  const malformed = await open("/tools/compare/?scenario=zzz&years=abc&start=xyz&first=1999&measure=nope&floor=off&prices=1,2&earnings=3");
   check("compare: a malformed address breaks nothing and keeps the menus valid", malformed.errors.length === 0 && (await value(malformed, "#compare-scenario")) === "steady" && (await value(malformed, "#compare-measure")) === "cash", malformed.errors);
   check("compare: a malformed address shows the wrong amount's error, not a result", /Not available/.test(await text(malformed, "#compare-result h3")) && (await text(malformed, "#compare-start-error")) !== "" && (await value(malformed, "#compare-years")) === "10");
   await malformed.close();
