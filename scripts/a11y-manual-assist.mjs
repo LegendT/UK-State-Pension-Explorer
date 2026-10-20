@@ -28,6 +28,7 @@ const browser = await puppeteer.launch({ executablePath: CHROME, headless: true 
 const report = { run: new Date().toISOString(), browser: await browser.version(), pages: {} };
 const problems = [];
 let contentsChecked = 0;
+let skipChecked = 0;
 let followedChecked = 0;
 let underChecked = 0;
 
@@ -204,6 +205,22 @@ for (const path of pages) {
   const fourth = await browser.newPage();
   await fourth.setViewport({ width: 1400, height: 900 });
   await fourth.goto(base + path, { waitUntil: "networkidle0" });
+  // "Skip to the text" puts focus on the first heading after the list (decision 124).
+  const skip = await fourth.$("main > .contents .skip-contents");
+  if (skip) {
+    skipChecked += 1;
+    await skip.focus();
+    await fourth.keyboard.press("Enter");
+    await fourth.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
+    const landed = await fourth.evaluate(() => {
+      const nav = document.querySelector("main > .contents");
+      const first = [...document.querySelectorAll("main h2, main h3, main h4, main h5, main h6")].find((h) => nav.compareDocumentPosition(h) & Node.DOCUMENT_POSITION_FOLLOWING && !nav.contains(h));
+      return document.activeElement === first;
+    });
+    if (!landed) problems.push(`${path} Skip to the text: focus is not on the first heading after the list`);
+    // The marking check below starts from a fresh load, not from a followed link.
+    await fourth.goto(base + path, { waitUntil: "networkidle0" });
+  }
   if (await fourth.$("main > .contents")) {
     contentsChecked += 1;
     // In-page links only: on a reform page the list also names the section's other pages.
@@ -340,6 +357,7 @@ for (const path of pages) {
 
 await browser.close();
 // Every page with the list lost it, or the selector no longer matches: either way nothing was checked.
+if (!skipChecked) problems.push("Skip to the text: no page with the link was found, so it was not checked");
 if (!contentsChecked) problems.push("On this page: no page with the list was found, so the marking was not checked");
 if (!underChecked) problems.push("Back to top: no control sat under the link on any page, so the hiding under a focused element was not checked");
 if (contentsChecked && !followedChecked) problems.push("On this page: no last heading stayed below the marking line, so the hold on a followed link was not checked");

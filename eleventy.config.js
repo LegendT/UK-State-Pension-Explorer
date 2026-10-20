@@ -217,6 +217,22 @@ export default function (eleventyConfig) {
     });
   });
 
+  // "Skip to the text" goes to the first heading after the contents list, not to the list's first
+  // entry, which a note before it would leave skipped; the heading takes focus (decision 124).
+  eleventyConfig.addTransform("skipContents", function (content) {
+    if (!(this.page.outputPath || "").endsWith(".html")) return content;
+    const skip = content.indexOf('<a class="skip-contents" href="#');
+    if (skip < 0) return content;
+    const end = content.indexOf("</nav>", skip);
+    const next = content.slice(end).match(/<(h[2-6])\b[^>]*>/);
+    const id = next && next[0].match(/\sid="([^"]+)"/);
+    if (!id) throw new Error(`"Skip to the text" has no heading with an id after the list (${this.page.inputPath})`);
+    const at = end + next.index;
+    const heading = next[0].includes("tabindex=") ? next[0] : next[0].replace(`<${next[1]}`, `<${next[1]} tabindex="-1"`);
+    content = content.slice(0, at) + heading + content.slice(at + next[0].length);
+    return content.replace(/(<a class="skip-contents" href="#)[^"]+"/, `$1${id[1]}"`);
+  });
+
   // Every h2 and h3 carries an id typed in the template, so an address does not change when a heading
   // is reworded (W29, from R16 of the readability review). Until 13 October 2026 an h3 without one was
   // given an id made from its words at build time. A page with two elements of one id also stops.

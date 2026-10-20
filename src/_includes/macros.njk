@@ -102,7 +102,7 @@
 {%- set entries = items.length + nested.length + (site.reformPages.length if section else 0) %}
 <nav class="contents" aria-labelledby="contents-heading">
   {%- if entries > 10 %}
-  <a class="skip-contents" href="#{{ items[0][0] }}">Skip to the text</a>
+  <a class="skip-contents" href="#{{ items[0][0] }}">Skip to the text</a>{#- The build moves it to the first heading after the list (decision 124). -#}
   {%- endif %}
   <h2 id="contents-heading">{% if section %}Reform options{% else %}On this page{% endif %}</h2>
   {%- if section %}
