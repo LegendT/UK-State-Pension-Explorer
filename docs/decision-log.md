@@ -133,6 +133,7 @@ Numbers 1 to 120 above were made before and at the launch of 19 October 2026 (st
 
 | No. | Decision | Reason | Reversible |
 | --- | --- | --- | --- |
+| 121 | A reform page says where it sits in the series in a line above its heading, "Reform options: page 1 of 5", worked out from `site.reformPages`, and its contents list of the five pages is bulleted, as every other contents list is, not numbered. | The owner's decision of 20 October 2026, in AA1 check 6: the numbered list was confusing beside the other pages, and he asked for a different way to show that a page is one of several. The assistant put the pattern of GOV.UK's multi-page guides, a label above the heading with the Next and Previous links kept at the foot, and the owner said "yes, make the change". No decision had recorded why the list was numbered. | Yes |
 
 ## Contradictions and proposed scope changes
 

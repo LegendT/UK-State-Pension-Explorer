@@ -74,6 +74,9 @@ body {
    their own heading sizes below. R6 of the readability review of 8 October 2026. */
 h1, h2, h3, h4, h5 { line-height: 1.2; text-wrap: balance; margin: var(--space-xl) 0 var(--space-s); }
 h1 { font-size: 1.875rem; margin-top: var(--space-l); }
+/* "Reform options: page 1 of 5" above a reform page's heading (decision 121). */
+.series-label { margin: var(--space-l) 0 0; color: var(--ink-soft); font-weight: 600; }
+.series-label + h1 { margin-top: var(--space-s); }
 h2 { font-size: 1.6rem; }
 main > h2 { border-top: 1px solid var(--rule); padding-top: var(--space-m); }
 h3 { font-size: 1.3rem; margin-top: 2rem; }
@@ -314,7 +317,7 @@ div.source { font-size: 0.9rem; color: var(--ink-soft); border-left: 3px solid v
 
 .contents { padding: var(--space-m); background: var(--panel); border-radius: var(--radius); }
 .contents h2 { margin-top: 0; font-size: 1.05rem; }
-.contents ul, .contents ol { margin: 0; padding-left: 1.2rem; }
+.contents ul { margin: 0; padding-left: 1.2rem; }
 /* A block link keeps the list marker on its first line when it wraps. The padding takes each link
    to 44 px tall, the house standard for a target. */
 .contents a { display: block; padding: 0.65rem 0; }
