@@ -1,6 +1,6 @@
 # Accessibility assessment: WCAG 2.2 Level A and AA
 
-Assessed 29 September 2026; the automated and scripted tests below are as run on 18 October 2026, and the owner's tests by hand from 15 to 18 October 2026, in launch step 4 of `docs/launch-dependencies.md`, which records each finding and its fix. Later runs are in `docs/HANDOVER.md`, "Last checks". Status: **incomplete**. The site must not be described as meeting WCAG 2.2 AA.
+Assessed 29 September 2026; the automated and scripted tests below are as run on 18 October 2026, and the owner's tests by hand from 15 to 18 October 2026, in launch step 4 of `docs/launch-dependencies.md`, which records each finding and its fix. Later runs are in `docs/HANDOVER.md`, "Last checks", a file kept on the owner's computer and not in the repository (decision 119). Status: **incomplete**. The site must not be described as meeting WCAG 2.2 AA.
 
 Automated and scripted checks are a floor. They do not show conformance. The owner has tested parts of the site with VoiceOver and Safari, on a Mac the State Pension page's table and the four calculators and on an iPhone the triple lock calculator, and the site with a keyboard alone in Chrome and Firefox, and with zoom to 200% and 400%. No one has tested it with NVDA, or by touch without a screen reader.
 
