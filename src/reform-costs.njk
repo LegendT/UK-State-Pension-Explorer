@@ -30,7 +30,7 @@ permalink: /reform-options/costs/
 
 <ul class="cards cards--three">
   <li>{{ m.stat("sp-spend-2024-25" | figure, "The latest outturn: the final figures for a year that has ended.") }}</li>
-  <li>{{ m.stat("sp-spend-2026-27" | figure, "The forecast for the current year.") }}</li>
+  <li>{{ m.stat("sp-spend-2026-27" | figure) }}</li>
   <li>{{ m.stat("sp-share-gdp-2025-26" | figure, "The size of the bill compared with gross domestic product (GDP), the value of what the whole economy produces.") }}</li>
 </ul>
 
@@ -174,7 +174,7 @@ permalink: /reform-options/costs/
 {{ m.sharedNote(g) }}
 <ul class="cards cards--three">
   <li>{{ m.stat("low-income-ahc" | figure, "After rent, mortgage interest and similar costs are taken off.", 4, g) }}</li>
-  <li>{{ m.stat("low-income-bhc" | figure, "Before housing costs are taken off.", 4, g) }}</li>
+  <li>{{ m.stat("low-income-bhc" | figure, null, 4, g) }}</li>
   <li>{{ m.stat("material-deprivation" | figure, "A measure of going without, not of income.", 4, g) }}</li>
 </ul>
 

@@ -28,12 +28,13 @@
     so no label runs into a value (decision 56 as amended by 92, in the style of decision 77). "More
     about this figure" holds the rest. Where a line above a group of figures has said some parts once
     (sharedNote), pass that group: those parts are left out, and a figure whose every part the group
-    said gets no line of its own unless it has a range. -#}
+    said gets no line of its own unless it has a range. A period that carries its own kind in brackets,
+    "Mid-2034 (projection)", drops them when the line has just said the kind (AA1 check 2). -#}
 {%- macro sourceNote(f, group) -%}
 {%- set caveat = f | openCaveat -%}
 {%- set g = group or {} -%}
 {%- if f.range or not (g.kind and g.period and g.source and g.caveat) %}
-<p class="source-line">{% if not g.kind %}{{ kindLine(f.classification, f.provisional, f.source.status) }} {% endif %}{% if not g.period %}{{ f.period_label }}. {% endif %}{% if f.range %}Range: {{ f.range }}. {% endif %}{% if not g.source %}Source: {{ cite(f.source) }}. {% endif %}{% if not g.caveat %}{{ caveat[0] }}{% endif %}</p>
+<p class="source-line">{% if not g.kind %}{{ kindLine(f.classification, f.provisional, f.source.status) }} {% endif %}{% if not g.period %}{{ f.period_label | replace(" (" ~ f.classification ~ ")", "") if not g.kind else f.period_label }}. {% endif %}{% if f.range %}Range: {{ f.range }}. {% endif %}{% if not g.source %}Source: {{ cite(f.source) }}. {% endif %}{% if not g.caveat %}{{ caveat[0] }}{% endif %}</p>
 {%- endif %}
 <details class="source">
     <summary>More about this figure<span class="visually-hidden">: {{ f.label }}</span></summary>
