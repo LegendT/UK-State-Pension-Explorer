@@ -109,5 +109,5 @@ See `docs/accessibility-assessment.md`. Status: **Built with a gap**. Automated 
 | HTML site map | `/site-map/` | | Built |
 | Environment indexing controls | `site.js`, `base.njk`, `robots.njk` | Builds in three environments | Built |
 | AI crawler policy | `launch-dependencies.md` item 7: `allow`, decision 72 | The live robots file, read 19 October 2026 | Set, 19 October 2026 (launch step 7) |
-| Deployed checks | Netlify deploy preview of pull request 1 | `curl` and Chrome, recorded in `docs/HANDOVER.md` as it stood at commit `75d0574` | Done for the deploy preview, and on 6 October 2026 for the main site address past the sign-in: `docs/HANDOVER.md`, "Last checks". Not done for a production domain |
+| Deployed checks | Netlify deploy preview of pull request 1 | `curl` and Chrome, recorded in `docs/HANDOVER.md` as it stood at commit `75d0574` | Done for the deploy preview, and on 6 October 2026 for the main site address past the sign-in: `docs/HANDOVER.md`, "Last checks". Done for the production domain on 19 October 2026, launch step 14 |
 | Search console | Domain property, proved by a TXT record in Netlify DNS | Read in the owner's Chrome, 19 October 2026 | Done, 19 October 2026 (launch step 14): the sitemap read with status Success, 18 pages |
