@@ -219,8 +219,8 @@ permalink: /state-pension/
 {%- set g = ["nif-contributions-2024-25", "nif-state-pension-2024-25", "nif-balance-2025"] | shared %}
 {{ m.sharedNote(g) }}
 <ul class="cards cards--three">
-  <li>{{ m.stat("nif-contributions-2024-25" | figure, "National Insurance contributions paid into the Fund in the year.", null, g) }}</li>
-  <li>{{ m.stat("nif-state-pension-2024-25" | figure, "State Pension paid out of the Fund in the year.", null, g) }}</li>
+  <li>{{ m.stat("nif-contributions-2024-25" | figure, null, null, g) }}</li>
+  <li>{{ m.stat("nif-state-pension-2024-25" | figure, null, null, g) }}</li>
   <li>{{ m.stat("nif-balance-2025" | figure, "What the Fund held at the end of the year.", null, g) }}</li>
 </ul>
 
