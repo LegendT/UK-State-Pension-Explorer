@@ -322,7 +322,7 @@ for (const path of pages) {
     topSteps.push(["at the top it is hidden", !(await topShown())]);
     await fifth.setViewport({ width: 1280, height: 800 });
     await toBottomThenUp(200);
-    const column = Boolean(await fifth.$("main > .contents:not(.section-nav)"));
+    const column = Boolean(await fifth.$("main > .contents"));
     if (column) topSteps.push(["at desktop width a page with a contents column hides it", !(await topShown())]);
     else if (await isLong()) topSteps.push(["at desktop width a long page with no contents column shows it", await topShown()]);
   } else {

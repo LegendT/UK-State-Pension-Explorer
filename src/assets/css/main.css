@@ -327,7 +327,6 @@ div.source { font-size: 0.9rem; color: var(--ink-soft); border-left: 3px solid v
    the list marker: the list's 1.2rem padding plus most of the panel's 1rem. */
 .contents a[aria-current="location"] { position: relative; color: var(--ink); text-decoration: none; }
 .contents a[aria-current="location"]::before { content: ""; position: absolute; left: -1.85rem; top: 0.45rem; bottom: 0.45rem; border-left: 3px solid var(--accent); }
-.section-nav { margin-bottom: var(--space-m); }
 /* Nested lists: the subsections of a long section, and this page's sections under its name in the
    reform options list. Nested links are a little smaller and still over 24 px tall. */
 .contents li li a { font-size: 0.95rem; padding: 0.7rem 0; }
@@ -360,14 +359,14 @@ div.source { font-size: 0.9rem; color: var(--ink-soft); border-left: 3px solid v
    else stays in the first column, so the list never covers content or a focused control. Headings
    lose the space that grid items no longer share by collapsing margins. */
 @media (min-width: 64em) {
-  main:has(> .contents:not(.section-nav)) { display: grid; grid-template-columns: minmax(0, 1fr) 15rem; column-gap: var(--space-xl); align-content: start; }
-  main:has(> .contents:not(.section-nav)) > * { grid-column: 1; }
-  main:has(> .contents:not(.section-nav)) > h2 { margin-top: calc(var(--space-xl) - var(--space-m)); }
-  main:has(> .contents:not(.section-nav)) > h3 { margin-top: var(--space-m); }
-  main:has(> .contents:not(.section-nav)) > h4 { margin-top: var(--space-s); }
-  main > .contents:not(.section-nav) { grid-column: 2; grid-row: 1 / span 200; align-self: start; position: sticky; top: var(--space-m); max-height: calc(100vh - 2 * var(--space-m)); overflow-y: auto; margin-top: var(--space-l); }
+  main:has(> .contents) { display: grid; grid-template-columns: minmax(0, 1fr) 15rem; column-gap: var(--space-xl); align-content: start; }
+  main:has(> .contents) > * { grid-column: 1; }
+  main:has(> .contents) > h2 { margin-top: calc(var(--space-xl) - var(--space-m)); }
+  main:has(> .contents) > h3 { margin-top: var(--space-m); }
+  main:has(> .contents) > h4 { margin-top: var(--space-s); }
+  main > .contents { grid-column: 2; grid-row: 1 / span 200; align-self: start; position: sticky; top: var(--space-m); max-height: calc(100vh - 2 * var(--space-m)); overflow-y: auto; margin-top: var(--space-l); }
   /* The list stays in view here, so the fixed link is not needed (decision 88). */
-  body:has(main > .contents:not(.section-nav)) .back-to-top.is-fixed { display: none; }
+  body:has(main > .contents) .back-to-top.is-fixed { display: none; }
 }
 
 details.more { border: 1px solid var(--rule); border-radius: var(--radius); margin-bottom: var(--space-m); }
