@@ -89,8 +89,10 @@
 {#- The contents list. Each item is [id, label] or [id, label, [[id, label], ...]] for a section long
     enough to list its h3 headings: over about four phone screens (W7). On a reform page, pass true as
     well: the list then names the section's pages in order, with this page's sections nested under it,
-    so the two lists a reader saw one after the other are one (note 4 of the page review). A reform
-    page with no sections of its own, the calculator, keeps the list in the page's flow. -#}
+    so the two lists a reader saw one after the other are one (note 4 of the page review). It is a
+    bulleted list like every other contents list; the label above the page heading gives the order
+    (decision 121). A reform page with no sections of its own, the calculator, keeps the list in the
+    page's flow. -#}
 {%- macro contents(items, section) -%}
 {#- Over 10 entries, nested ones counted, the list opens with a link past it (decision 109). The
     five lists over 10 run from 12 to 23 entries; at 10 a list still fits one phone screen. On a
@@ -105,7 +107,7 @@
   {%- endif %}
   <h2 id="contents-heading">{% if section %}Reform options{% else %}On this page{% endif %}</h2>
   {%- if section %}
-  <ol>
+  <ul>
     {%- for item in site.reformPages %}
     <li><a href="{{ item.href }}"{% if page.url == item.href %} aria-current="page"{% endif %}>{{ item.label }}</a>
       {%- if page.url == item.href and items.length %}
@@ -113,7 +115,7 @@
       {%- endif %}
     </li>
     {%- endfor %}
-  </ol>
+  </ul>
   {%- else %}
   {{ sectionList(items) }}
   {%- endif %}

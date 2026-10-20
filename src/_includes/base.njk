@@ -89,6 +89,11 @@
   </div>
 </header>
 <main id="main" class="wrap" tabindex="-1">
+{#- A reform page says where it sits in the series before its heading, as a multi-page guide on
+    GOV.UK does (decision 121). -#}
+{%- for item in site.reformPages %}{% if item.href == page.url %}
+<p class="series-label">Reform options: page {{ loop.index }} of {{ loop.length }}</p>
+{%- endif %}{% endfor %}
 {{ content | safe }}
 {%- set pager = page.url | pager %}
 {%- if pager.previous or pager.next %}
