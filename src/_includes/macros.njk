@@ -91,18 +91,16 @@
     well: the list then names the section's pages in order, with this page's sections nested under it,
     so the two lists a reader saw one after the other are one (note 4 of the page review). It is a
     bulleted list like every other contents list; the label above the page heading gives the order
-    (decision 121). A reform page with no sections of its own, the rule comparison, has no
-    entries to mark as read: its class section-nav keeps contents.js and the a11y:manual marking check
-    off it. It takes the column at desktop width like the rest (decision 122). -#}
+    (decision 121). -#}
 {%- macro contents(items, section) -%}
 {#- Over 10 entries, nested ones counted, the list opens with a link past it (decision 109). The
-    five lists over 10 run from 12 to 23 entries; at 10 a list still fits one phone screen. On a
+    five lists over 10 run from 11 to 23 entries; at 10 a list still fits one phone screen. On a
     reform page the section's page links count too. A for loop cannot add to a number
     it did not declare, so the nested entries are gathered in an array. -#}
 {%- set nested = [] %}
 {%- for item in items %}{% if item[2] %}{% for sub in item[2] %}{% set _ = nested.push(sub) %}{% endfor %}{% endif %}{% endfor %}
 {%- set entries = items.length + nested.length + (site.reformPages.length if section else 0) %}
-<nav class="contents{% if section and not items.length %} section-nav{% endif %}" aria-labelledby="contents-heading">
+<nav class="contents" aria-labelledby="contents-heading">
   {%- if entries > 10 %}
   <a class="skip-contents" href="#{{ items[0][0] }}">Skip to the text</a>
   {%- endif %}

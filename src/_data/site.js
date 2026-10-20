@@ -72,7 +72,6 @@ const config = {
   // 8 October 2026).
   reformPages: [
     { href: "/reform-options/", label: "How the yearly increase could change" },
-    { href: "/reform-options/compare/", label: "Compare the rules for the yearly increase" },
     { href: "/reform-options/costs/", label: "What the State Pension costs, and who receives what" },
     { href: "/reform-options/social-care/", label: "Pensions and social care" },
     { href: "/reform-options/entitlement/", label: "Means-testing and entitlement" },
