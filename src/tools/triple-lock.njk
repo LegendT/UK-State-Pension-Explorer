@@ -60,7 +60,9 @@ permalink: /tools/triple-lock/
     <div class="buttons">
       <button type="button" class="secondary" id="mechanism-copy-link" aria-describedby="mechanism-copy-hint">Copy a link to this result</button>
     </div>
-    <p class="hint" id="mechanism-copy-hint" aria-hidden="true">The link holds the year and pension chosen and the three figures shown, including any you typed. Copying a link does not change the page address; only if the link cannot be copied is it put there for you to copy.</p>
+    {% set mechanism_copy_hint %}The link holds the year and pension chosen and the three figures shown, including any you typed. Copying a link does not change the page address; only if the link cannot be copied is it put there for you to copy.{% endset %}
+    <p class="hint" aria-hidden="true">{{ mechanism_copy_hint }}</p>
+    <span id="mechanism-copy-hint" hidden>{{ mechanism_copy_hint }}</span>
     <p class="hint" id="mechanism-copy-note" aria-hidden="true"></p>
   </form>
   <div class="tool-summary js-only">

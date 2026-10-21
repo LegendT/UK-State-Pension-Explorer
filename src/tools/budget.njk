@@ -78,7 +78,9 @@ permalink: /tools/budget/
       <legend>Income, before tax</legend>
       <p class="hint" id="budget-income-hint">Enter income <strong>before tax</strong>. Enter a benefit only if you <strong>actually receive</strong> it, and enter it once, here.</p>
       <button type="button" class="secondary" id="budget-fill-pension" aria-describedby="budget-fill-pension-hint">Fill in the full new State Pension ({{ "nsp-full-weekly" | fig }} a week)</button>
-      <p class="hint" id="budget-fill-pension-hint" aria-hidden="true">It is converted to the period you chose. The full rate is not everyone's payment. Replace it with the amount actually received.</p>
+      {% set budget_fill_pension_hint %}It is converted to the period you chose. The full rate is not everyone's payment. Replace it with the amount actually received.{% endset %}
+      <p class="hint" aria-hidden="true">{{ budget_fill_pension_hint }}</p>
+      <span id="budget-fill-pension-hint" hidden>{{ budget_fill_pension_hint }}</span>
       <div class="fields">
         {%- for row in budgets.income %}
         <div{% if row.couple_only %} data-couple-only hidden{% endif %}>
