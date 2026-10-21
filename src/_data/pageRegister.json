@@ -146,8 +146,8 @@
       "canonical_path": "/tools/",
       "index": true,
       "published": null,
-      "modified": "2026-10-09",
-      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 9 October 2026: the reform pages are named as the section list names them (W7)."
+      "modified": "2026-10-21",
+      "modified_note": "Corrected in the pre-launch review of 5 October 2026: see docs/pre-launch-review.md. Changed on 9 October 2026: the reform pages are named as the section list names them (W7). Changed on 21 October 2026: that the tools save nothing entered is said once for all four, after the list, not for the budget explorer alone (decision 130)."
     },
     {
       "path": "/tools/triple-lock/",
