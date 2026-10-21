@@ -29,7 +29,7 @@ Status values: **Built**, **Built with a gap** (the gap is named), **Not built**
 | E Public-finance context | `#public-finances`, `#cost-and-saving` | Tables `sp-spending-series`, `sp-longrun` | Built |
 | E Distributional context | `#who` | Tables `income-fifths`, `wealth-bands` | Built with a gap: carers' incomes and wealth by type for 65 and over not found |
 | E Sister-site links in context | `#public-finances`, `#cost-and-saving` | `links.json` | Built. Destination tools not exercised in a browser |
-| F Pensions and social care | `/reform-options/social-care/` | GOV.UK, nation governments, Health Foundation | Built as a dated page, the fourth of five reform options pages. Owner's decisions, 29 and 30 September 2026, and decision 46. Rewritten after the announcement. Gap: the plan has no Bill, no costing method and no cost for the service |
+| F Pensions and social care | `/reform-options/social-care/` | GOV.UK, nation governments, Health Foundation | Built as a dated page, the third of four reform options pages. Owner's decisions, 29 and 30 September 2026, and decision 46. Rewritten after the announcement. Gap: the plan has no Bill, no costing method and no cost for the service |
 | G History | `/history/` | `history.json` | Built |
 | H Sources, method and corrections | `/sources-and-method/` | The three registers | Built with a gap: the correction route (a GitHub issue), owner and reviewer were decided on 2 October 2026, decisions 69 to 71, and were set in Netlify on 15 and 19 October 2026 (launch step 7) |
 | Utility pages | `/accessibility/`, `/privacy/`, `/site-map/`, `/404.html` | | Built |
