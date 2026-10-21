@@ -73,7 +73,7 @@
   </div>
 </div>
 {%- endif %}
-<header class="site-header">
+<header class="site-header" id="top" tabindex="-1">
   <div class="wrap">
     <p class="brand"><a href="/">{{ site.name }}</a></p>
     <nav aria-label="Main">
@@ -112,9 +112,10 @@
 <p class="page-dates">Content of this page last changed on {{ entry.modified | dateText }}.{% if entry.figure_cards %} Each figure shows the date it was checked against its source under "More about this figure".{% endif %}</p>
 {%- endif %}
 {#- One link back up, in place of a link at the end of every section: decision 88. It goes to the
-    start of the page, where the contents list is in view on every page but the overview: decision 94.
-    back-to-top.js fixes it in the lower right of a long page; without the script it stays here. -#}
-<p class="back-to-top"><a href="#main">Back to top<span aria-hidden="true"> &uarr;</span></a></p>
+    start of the page, the site header with the menu, with the contents list below it on every page but
+    the overview: decisions 94 and 131. back-to-top.js fixes it in the lower right of a long
+    page and leaves no fragment in the address; without the script it stays here. -#}
+<p class="back-to-top"><a href="#top">Back to top<span aria-hidden="true"> &uarr;</span></a></p>
 <script type="module" src="/assets/js/back-to-top.js"></script>
 <script type="module" src="/assets/js/scroll-cue.js"></script>
 </main>

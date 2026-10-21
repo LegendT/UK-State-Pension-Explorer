@@ -114,7 +114,7 @@ a:where(:not(.nav-menu a, .footer-links a, .explainers a, .journeys a, .pager a,
   border-radius: 2px;
 }
 
-main:focus { outline: none; }
+main:focus, .site-header:focus { outline: none; }
 
 /* Composition */
 

@@ -331,6 +331,14 @@ for (const path of pages) {
       return a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top;
     });
     topSteps.push(["it does not overlap a pinned summary", !onSummary]);
+    // It goes to the very top, focus on the header with the menu, and leaves no fragment, so a
+    // refresh does not scroll back past the menu (decision 131).
+    await toBottomThenUp(200);
+    await fifth.click(".back-to-top a"); await topFrames();
+    const landed = await fifth.evaluate(() => ({ y: scrollY, focus: document.activeElement.id, hash: location.hash }));
+    topSteps.push(["following it scrolls to the top, focuses the header and leaves no fragment", landed.y === 0 && landed.focus === "top" && landed.hash === ""]);
+    await fifth.reload({ waitUntil: "networkidle0" });
+    topSteps.push(["a refresh after it stays at the top", (await fifth.evaluate(() => scrollY)) === 0]);
     // 320 by 256 CSS px, a 1280 px window at 400% zoom: the link fits inside the window.
     await fifth.setViewport({ width: 320, height: 256 });
     await toBottomThenUp(100);
