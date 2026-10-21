@@ -29,7 +29,7 @@ export function setError(input, message) {
   const set = (name, value) => input.getAttribute(name) !== value && input.setAttribute(name, value);
   if (error.textContent !== (message || "")) error.textContent = message || "";
   set("aria-invalid", message ? "true" : "false");
-  // A group's hint, read with its first field only, stays joined to it (step 4).
+  // A hint shared by a group, joined to its first field (step 4) or to every field (decision 128), stays joined.
   const ids = [input.dataset.groupHint, hint && hint.id, message && error.id].filter(Boolean).join(" ");
   if (ids) set("aria-describedby", ids);
   else input.removeAttribute("aria-describedby");
