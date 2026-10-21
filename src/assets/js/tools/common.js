@@ -82,17 +82,20 @@ const touch = window.matchMedia("(hover: none) and (pointer: coarse)");
 const TOUCH_LEAVE_WAIT = 1000;
 let typing = null;
 let held = null;
+// The field the reader last left, for a problem message (`problem`).
+let left = null;
 export function announce(region, message) {
   if (typing && document.activeElement === typing) held = { region, message };
   else say(region, message);
 }
 
 // A later message replaces one not yet written, so an earlier one cannot overwrite it.
+// A message can be a function, worded as it is said (`problem`).
 function say(region, message, wait = 100) {
   clearTimeout(region.pending);
   region.textContent = "";
   region.pending = window.setTimeout(() => {
-    region.textContent = message;
+    region.textContent = typeof message === "function" ? message() : message;
   }, wait);
 }
 
@@ -109,6 +112,7 @@ document.addEventListener("input", (event) => {
   if (event.target.matches('input[type="text"]')) typing = event.target;
 });
 document.addEventListener("focusout", (event) => {
+  if (event.target.matches("input, select")) left = event.target;
   if (event.target === typing) release(touch.matches ? TOUCH_LEAVE_WAIT : undefined);
 });
 document.addEventListener("keydown", (event) => {
@@ -268,11 +272,16 @@ export const STALE_MESSAGE = "There is a problem with the figures entered. The r
 // A problem message opens with the label and error of the first field marked with an error, in place
 // of its general first sentence, so a screen reader hears which field and what to enter. The error's own alert is set while the reader
 // is typing, when VoiceOver with Safari is reading back the keys, and was not heard (AA1 check 7).
+// The message is held until the reader leaves the field, so it is heard as they arrive in the next one, and says so when the
+// field named is the one they left: a name alone was heard as the new field's (decision 126). Worded when said, not when made:
+// by then focus has moved on, or Enter or a submit has kept it in the field.
 export function problem(form, message) {
   const field = form.querySelector('[aria-invalid="true"]');
   if (!field) return message;
   const rest = message.replace(/^There is a problem with the \w+ entered\. /, "");
-  return `${field.labels[0].textContent.trim()}: ${document.getElementById(`${field.id}-error`).textContent}. ${rest}`;
+  const name = field.labels[0].textContent.trim();
+  const error = document.getElementById(`${field.id}-error`).textContent;
+  return () => `Error in ${document.activeElement !== field && left === field ? `the field you just left, ${name}` : name}. ${error}. ${rest}`;
 }
 
 // The summary stays in view, but the full result is below the form and easy to miss. After a
