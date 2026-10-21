@@ -265,6 +265,16 @@ export function markStale(...regions) {
 }
 export const STALE_MESSAGE = "There is a problem with the figures entered. The result shown is out of date.";
 
+// A problem message opens with the label and error of the first field marked with an error, in place
+// of its general first sentence, so a screen reader hears which field and what to enter. The error's own alert is set while the reader
+// is typing, when VoiceOver with Safari is reading back the keys, and was not heard (AA1 check 7).
+export function problem(form, message) {
+  const field = form.querySelector('[aria-invalid="true"]');
+  if (!field) return message;
+  const rest = message.replace(/^There is a problem with the \w+ entered\. /, "");
+  return `${field.labels[0].textContent.trim()}: ${document.getElementById(`${field.id}-error`).textContent}. ${rest}`;
+}
+
 // The summary stays in view, but the full result is below the form and easy to miss. After a
 // change, the summary says the result below changed too. Text only: the pinned summary holds
 // nothing that takes focus. Not shown on arrival, when nothing has changed.

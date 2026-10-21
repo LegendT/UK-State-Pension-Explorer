@@ -1,7 +1,7 @@
 // Tool 2: compare the replacement rules. Presentation only.
 
 import { renderComparison, renderSummary } from "../lib/compare-view.js";
-import { announce, chartWidth, choose, fitChart, escapeHtml, focusFirstError, glanceText, live, markStale, pinSummary, STALE_MESSAGE, updatedNote, readAmount, readJson, readPercent, readSettings, ready, setError, copyLink, noteFollows } from "./common.js";
+import { announce, chartWidth, choose, fitChart, escapeHtml, focusFirstError, glanceText, live, markStale, pinSummary, STALE_MESSAGE, problem, updatedNote, readAmount, readJson, readPercent, readSettings, ready, setError, copyLink, noteFollows } from "./common.js";
 
 const data = readJson("compare-data");
 const form = document.getElementById("compare-form");
@@ -111,13 +111,13 @@ function update(message, mode) {
     if (!mode) focusFirstError(form);
     if (mode === "live" && hasResult) {
       markStale(result, summary);
-      announce(status, STALE_MESSAGE);
+      announce(status, problem(form, STALE_MESSAGE));
       return;
     }
     hasResult = false;
     result.innerHTML = `<div class="unavailable" role="note"><h3 id="compare-result-heading">Not available: a result</h3><p>Correct the figures marked with an error.</p></div>`;
     summary.innerHTML = `<p>No result. Correct the figures marked with an error.</p>`;
-    if (mode !== "load") announce(status, "There is a problem with the figures entered. No result is shown.");
+    if (mode !== "load") announce(status, problem(form, "There is a problem with the figures entered. No result is shown."));
     return;
   }
   hasResult = true;

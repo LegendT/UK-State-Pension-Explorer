@@ -5,7 +5,7 @@ import { PERIOD_LABELS, convert, fromWeekly } from "../lib/budget.js";
 import { renderBudget, renderBudgetSummary } from "../lib/budget-view.js";
 import { money } from "../lib/format.js";
 import { parsePence } from "../lib/uprating.js";
-import { announce, focusFirstError, glanceText, live, markStale, pinSummary, readAmount, readJson, ready, setError, STALE_MESSAGE, updatedNote } from "./common.js";
+import { announce, focusFirstError, glanceText, live, markStale, pinSummary, readAmount, readJson, ready, setError, STALE_MESSAGE, problem, updatedNote } from "./common.js";
 
 const data = readJson("budget-data");
 const form = document.getElementById("budget-form");
@@ -190,7 +190,7 @@ function update(mode) {
     if ((mode === "live" || mode === "converted") && lastResult) {
       stale = true;
       markStale(result, glance);
-      if (!silent) announce(status, STALE_MESSAGE);
+      if (!silent) announce(status, problem(form, STALE_MESSAGE));
       return;
     }
     stale = false;
@@ -199,7 +199,7 @@ function update(mode) {
     glance.innerHTML = `<p>No result. Correct the amounts marked with an error.</p>`;
     // A submit, not a keystroke: take the reader to the first field in error, as the comparison does.
     if (!mode) focusFirstError(form);
-    if (!silent) announce(status, "There is a problem with the amounts entered. No result is shown.");
+    if (!silent) announce(status, problem(form, "There is a problem with the amounts entered. No result is shown."));
     return;
   }
   const figures = { period: period.value, income, spending, taxPence, presetLabel };
