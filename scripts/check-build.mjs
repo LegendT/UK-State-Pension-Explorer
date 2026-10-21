@@ -198,14 +198,23 @@ for (const [url, html] of written) {
   // VoiceOver with Safari read a hint joined to a fieldset at every field in it (step 4): a group's
   // hint goes with its first field, through the field macro's groupHint.
   if (/<fieldset[^>]*aria-describedby/.test(html)) fail(`${url}: a fieldset has a description; join it to the group's first field`);
-  // A button's hint is its description, read before it is pressed, and is hidden from screen readers
-  // where it shows, so VoiceOver on the iPhone does not read it twice (step 4).
+  // A button's hint is its description, read before it is pressed. Where it shows it is hidden from
+  // screen readers, so VoiceOver on the iPhone does not read it twice (step 4), and the description
+  // is a copy of it with the hidden attribute: a description in a paragraph hidden only from screen
+  // readers sent VoiceOver with Safari back to the start of the form (AA1 check 7, decision 127).
   for (const [, id] of html.matchAll(/<button[^>]*aria-describedby="([^"]+)"/g)) {
-    if (!new RegExp(`id="${id}"[^>]*aria-hidden="true"`).test(html)) fail(`${url}: a button's description ${id} is not hidden where it shows, so it is read twice`);
+    const copy = html.match(new RegExp(`<span id="${id}" hidden>([^<]*)</span>`));
+    if (!copy) fail(`${url}: a button's description ${id} is not a span with the hidden attribute`);
+    else if (!html.includes(`<p class="hint" aria-hidden="true">${copy[1]}</p>`)) fail(`${url}: a button's description ${id} has no matching hint shown and hidden from screen readers, so it is read twice or not shown`);
   }
-  // A hint hidden where it shows must be some control's description, or no screen reader hears it.
-  for (const [, id] of html.matchAll(/<p class="hint" id="([^"]+-hint)" aria-hidden="true"/g)) {
-    if (!html.includes(`aria-describedby="${id}"`)) fail(`${url}: the hint ${id} is hidden and is no control's description, so it is never read`);
+  // A hint hidden where it shows must be read as some control's description, or no screen reader hears it.
+  for (const [, text] of html.matchAll(/<p class="hint" aria-hidden="true">([^<]+)<\/p>/g)) {
+    const copy = [...html.matchAll(/<span id="([^"]+)" hidden>([^<]*)<\/span>/g)].find(([, , t]) => t === text);
+    if (!copy || !new RegExp(`aria-describedby="[^"]*\\b${copy[1]}\\b`).test(html)) fail(`${url}: a hint is hidden and no control is described by a copy of it, so it is never read: ${text.slice(0, 60)}`);
+  }
+  // Nothing is described by an element hidden from screen readers alone.
+  for (const [, ids] of html.matchAll(/aria-describedby="([^"]+)"/g)) {
+    for (const id of ids.split(" ")) if (new RegExp(`id="${id}"[^>]*aria-hidden="true"`).test(html)) fail(`${url}: ${id} describes a control and is hidden from screen readers only; use a copy with the hidden attribute`);
   }
   // VoiceOver with Safari read a time element twice, and stopped at the edges of a span (step 4).
   if (/<time[\s>]|class="date"/.test(html)) fail(`${url}: a date in an element; print dates with dateText or monthOrDayText`);
