@@ -49,7 +49,7 @@ function drawRows(count, source) {
             const id = `compare-${key}-${i}`;
             const name = `the rise in ${key} for ${label}`;
             return (
-              `<td><label class="visually-hidden" for="${id}">Rise in ${key}, ${label}, per cent</label>` +
+              `<td><label class="visually-hidden" for="${id}">Rise in ${key}, ${label}</label>` +
               `<input type="text" inputmode="decimal" id="${id}" data-key="${key}" data-name="${name}" data-group-hint="compare-edit-hint" aria-describedby="compare-edit-hint" value="${typed[i] ? escapeHtml(typed[i][key]) : (year[key] / 10).toFixed(1)}" autocomplete="off">` +
               `<span class="error" id="${id}-error" role="alert"></span></td>`
             );
