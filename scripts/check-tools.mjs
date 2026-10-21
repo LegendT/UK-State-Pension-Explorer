@@ -155,6 +155,10 @@ const submit = (page, form) => page.$eval(form, (el) => el.requestSubmit());
   await settle();
   check("compare: a scenario change renames the result and its reason", /low inflation/.test(await text(page, "#compare-result h3")) && (await text(page, "#compare-reason")) !== "");
   await page.click("#compare-edit summary");
+  // AA1 check 7: a yearly field in error said "Error" and not its range; each is described by the range first (decision 128).
+  check("compare: every yearly field is described by the range", await page.$$eval("#compare-rows input", (inputs) => inputs.length === 2 * Number(document.getElementById("compare-years").value) && inputs.every((el) => el.getAttribute("aria-describedby") === "compare-edit-hint")) && (await text(page, "#compare-edit-hint")) === "Per cent, from -10 to 25, with one decimal place.");
+  await type(page, "#compare-prices-0", "30");
+  check("compare: a yearly field in error is described by the range and then its error", (await page.$eval("#compare-prices-0", (el) => el.getAttribute("aria-describedby"))) === "compare-edit-hint compare-prices-0-error", await page.$eval("#compare-prices-0", (el) => el.getAttribute("aria-describedby")));
   await type(page, "#compare-prices-0", "5.0");
   check("compare: an edited figure makes the result the reader's own", /your own figures/.test(await text(page, "#compare-result h3")) && /ones you entered/.test(await text(page, "#compare-result .source-line")));
   await type(page, "#compare-start", "200");
