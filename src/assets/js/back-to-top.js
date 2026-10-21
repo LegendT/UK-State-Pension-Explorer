@@ -4,6 +4,10 @@
 // has focus, stays where it is until the reader is near the top, and hides while the focused element
 // would sit under it. Until then it is below the window, still in the tab order (decision 108).
 // The stylesheet hides it at desktop width on a page whose contents list stays in view.
+// It goes to the very top, the site header with the menu, and takes focus there, without writing a
+// fragment to the address. One already there, from a link to a section or the skip link, is taken out,
+// so a refresh, such as a pull down on an iPhone, does not scroll back past the menu (decision 131).
+// The tools keep their settings in the query, which stays.
 
 const box = document.querySelector(".back-to-top");
 const html = document.documentElement;
@@ -39,6 +43,14 @@ function onScroll() {
   else if (y < last && long()) show(true);
   last = y;
 }
+
+const header = document.getElementById("top");
+box.querySelector("a").addEventListener("click", (event) => {
+  event.preventDefault();
+  scrollTo(0, 0);
+  header.focus({ preventScroll: true });
+  history.replaceState(history.state, "", location.pathname + location.search);
+});
 
 // A page of four screens or fewer has no link (decision 88).
 box.classList.add("is-fixed");
