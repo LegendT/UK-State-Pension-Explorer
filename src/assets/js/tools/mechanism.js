@@ -3,7 +3,7 @@
 import { mechanism, MEASURE_LABELS } from "../lib/uprating.js";
 import { SERIES_LABELS } from "../lib/history.js";
 import { money, percent, list } from "../lib/format.js";
-import { markStale, STALE_MESSAGE, announce, choose, glanceText, copyLink, escapeHtml, focusFirstError, live, pinSummary, readAmount, readJson, readPercent, readSettings, ready, setError, updatedNote, noteFollows } from "./common.js";
+import { markStale, STALE_MESSAGE, problem, announce, choose, glanceText, copyLink, escapeHtml, focusFirstError, live, pinSummary, readAmount, readJson, readPercent, readSettings, ready, setError, updatedNote, noteFollows } from "./common.js";
 
 const data = readJson("mechanism-data");
 const form = document.getElementById("mechanism-form");
@@ -103,14 +103,14 @@ function showOwn(typing, quiet) {
     // The label is left alone while the last result stays: it still names what is shown.
     if (typing && hasResult) {
       markStale(result, glance);
-      announce(status, STALE_MESSAGE);
+      announce(status, problem(form, STALE_MESSAGE));
       return;
     }
     hasResult = false;
     mode.textContent = "Hypothetical: your own figures";
     // A submit, not a keystroke or a link on arrival: take the reader to the first field in error.
     if (!typing && !quiet) focusFirstError(form);
-    if (!quiet) announce(status, "There is a problem with the figures entered. No result is shown.");
+    if (!quiet) announce(status, problem(form, "There is a problem with the figures entered. No result is shown."));
     result.innerHTML = `<h3 id="mechanism-result-heading">No result</h3><p>Correct the figures marked with an error.</p>`;
     glance.innerHTML = `<p>No result. Correct the figures marked with an error.</p>`;
     return;
