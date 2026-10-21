@@ -310,6 +310,8 @@ const submit = (page, form) => page.$eval(form, (el) => el.requestSubmit());
   check("triple lock: a copy after typing is announced, and the announcement stays", /has been copied/.test(await text(page, "#mechanism-status")) && /prices=9\.0/.test(await page.evaluate(() => navigator.clipboard.readText())), await text(page, "#mechanism-status"));
   await type(page, "#mechanism-earnings", "abc");
   check("triple lock: a change takes away the note of the last copy", (await text(page, "#mechanism-copy-note")) === "", await text(page, "#mechanism-copy-note"));
+  await leave(page);
+  check("triple lock: leaving a wrong field says it was the field just left, which one and what to enter (decision 126)", (await text(page, "#mechanism-status")) === "Error in the field you just left, Rise in earnings. Enter the rise in earnings as a number with no more than 1 decimal place, for example 3.5. The result shown is out of date.", await text(page, "#mechanism-status"));
   await submit(page, "#mechanism-form");
   await settle();
   check("triple lock: a submit with a wrong entry takes focus to the field and says so", (await page.evaluate(() => document.activeElement.id)) === "mechanism-earnings" && /No result/.test(await text(page, "#mechanism-result h3")) && /^Error in Rise in earnings\. Enter .*No result is shown\.$/.test(await text(page, "#mechanism-status")), await text(page, "#mechanism-status"));
