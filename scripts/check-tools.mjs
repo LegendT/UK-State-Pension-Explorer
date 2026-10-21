@@ -5,7 +5,8 @@
 // (W12, from audit finding A14). A module that fails to load is checked by a11y-manual-assist.mjs.
 // Serves _site itself, so run npm run build first. Chrome is the one on the computer, as a11y.mjs.
 import { createServer } from "node:http";
-import { existsSync, readFileSync, statSync } from "node:fs";
+import { existsSync, mkdtempSync, readdirSync, readFileSync, rmSync, statSync } from "node:fs";
+import { tmpdir } from "node:os";
 import { extname, join } from "node:path";
 import puppeteer from "puppeteer-core";
 
@@ -28,6 +29,10 @@ const budgets = JSON.parse(readFileSync("src/_data/budgets.json", "utf8"));
 
 const browser = await puppeteer.launch({ executablePath: CHROME, headless: true });
 await browser.defaultBrowserContext().overridePermissions(base, ["clipboard-read", "clipboard-write", "clipboard-sanitized-write"]);
+// The history explorer's download is saved here, not in ~/Downloads, and removed at the end.
+const downloads = mkdtempSync(join(tmpdir(), "check-tools-"));
+process.on("exit", () => rmSync(downloads, { recursive: true, force: true }));
+await (await browser.target().createCDPSession()).send("Browser.setDownloadBehavior", { behavior: "allow", downloadPath: downloads });
 const problems = [];
 let checks = 0;
 function check(name, ok, detail) {
@@ -249,6 +254,11 @@ const submit = (page, form) => page.$eval(form, (el) => el.requestSubmit());
   await page.click("#history-download");
   await settle();
   check("history: the download is announced and shown", /downloaded/.test(await text(page, "#history-status")) && /downloaded/.test(await text(page, "#history-copy-note")) && (await noteShown()), await text(page, "#history-copy-note"));
+  const csvs = () => readdirSync(downloads).filter((name) => name.endsWith(".csv"));
+  for (let wait = 0; wait < 20 && csvs().length === 0; wait += 1) await new Promise((resolve) => setTimeout(resolve, 250));
+  const saved = csvs();
+  const file = saved.length === 1 ? readFileSync(join(downloads, saved[0]), "utf8").replace(/^\uFEFF/, "") : "";
+  check("history: the downloaded file matches the copied table", file.trim() === csv.trim(), saved.length === 1 ? file.split("\n")[0] : saved);
   await page.select("#history-to", "2018/19");
   await settle();
   check("history: a changed table takes away the note of the last copy", (await text(page, "#history-copy-note")) === "" && !(await noteShown()), await text(page, "#history-copy-note"));
