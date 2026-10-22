@@ -2,7 +2,7 @@
 
 A plain-English explainer of the UK State Pension, the triple lock, what a pension can cover, and the evidence for and against reform. A sister site to UK Public Finances Explorer and UK Migration Explorer.
 
-**Status: published at https://ukstatepensionexplorer.org since 19 October 2026.** The site aims to meet WCAG 2.2 at Level AA on every page and in every calculator. No failure is known, but the assessment is not yet complete, so the site makes no claim of conformance: `docs/accessibility-assessment.md` says what was checked and what remains, planned as rows AA1 to AA7 of `docs/launch-dependencies.md`. The launch record is "Launch steps" in `docs/launch-dependencies.md`, and every decision is in `docs/decision-log.md`. The handover, `docs/HANDOVER.md`, which other documents cite for the state and the last checks, is kept on the owner's computer and is not in the repository (decision 119).
+**Status: published at https://ukstatepensionexplorer.org since 19 October 2026.** The site aims to meet WCAG 2.2 at Level AA on every page and in every calculator. No failure is known, but the assessment is not yet complete, so the site makes no claim of conformance: `docs/accessibility-assessment.md` says what was checked and what remains, planned as rows AA2 to AA7 of `docs/launch-dependencies.md`. The launch record is "Launch steps" in `docs/launch-dependencies.md`, and every decision is in `docs/decision-log.md`. The handover, `docs/HANDOVER.md`, which other documents cite for the state and the last checks, is kept on the owner's computer and is not in the repository (decision 119).
 
 Found an error on the site? Open an issue at https://github.com/LegendT/UK-State-Pension-Explorer/issues. The correction link on every page goes there too.
 
