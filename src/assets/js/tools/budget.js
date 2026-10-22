@@ -244,13 +244,13 @@ document.getElementById("budget-clear").addEventListener("click", () => {
 // so the change is said (decision 132). As with the period, the form's own redraw would talk over
 // it, so this redraws and announces once instead.
 function changeHousehold() {
-  const hadAmount = input("state-pension-2").value.trim() !== "";
+  const hadAmount = form.querySelector("[data-couple-only] input").value.trim() !== "";
   showHousehold();
   const shown = lastResult;
   update("converted");
   const done = household() === "couple"
     ? "Field added under Income, before tax: State Pension, second person."
-    : `Field removed: State Pension, second person.${hadAmount ? " Its amount was cleared." : ""}`;
+    : `Field removed${hadAmount ? ", and its amount cleared" : ""}: State Pension, second person.`;
   const after = stale ? ` ${STALE_MESSAGE}` : lastResult && lastResult !== shown ? `${glanceNow()} The breakdown below has changed.` : "";
   announce(status, `${done}${after}`);
 }
