@@ -240,7 +240,28 @@ document.getElementById("budget-clear").addEventListener("click", () => {
   announce(status, "Everything you entered has been cleared.");
 });
 
-for (const radio of form.querySelectorAll('input[name="budget-household"]')) radio.addEventListener("change", showHousehold);
+// The second person's field is added far below the choice, and taking it away clears its amount,
+// so the change is said (decision 132). As with the period, the form's own redraw would talk over
+// it, so this redraws and announces once instead.
+function changeHousehold() {
+  const hadAmount = input("state-pension-2").value.trim() !== "";
+  showHousehold();
+  const shown = lastResult;
+  update("converted");
+  const done = household() === "couple"
+    ? "Field added under Income, before tax: State Pension, second person."
+    : `Field removed: State Pension, second person.${hadAmount ? " Its amount was cleared." : ""}`;
+  const after = stale ? ` ${STALE_MESSAGE}` : lastResult && lastResult !== shown ? `${glanceNow()} The breakdown below has changed.` : "";
+  announce(status, `${done}${after}`);
+}
+
+for (const radio of form.querySelectorAll('input[name="budget-household"]')) {
+  radio.addEventListener("input", (event) => event.stopPropagation());
+  radio.addEventListener("change", (event) => {
+    event.stopPropagation();
+    changeHousehold();
+  });
+}
 document.getElementById("budget-load").addEventListener("click", loadPreset);
 document.getElementById("budget-fill-pension").addEventListener("click", fillPension);
 
