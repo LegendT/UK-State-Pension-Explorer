@@ -33,8 +33,9 @@ permalink: /tools/budget/
   <form id="budget-form" class="js-only" novalidate autocomplete="off">
     <fieldset>
       <legend>Household</legend>
-      <div class="choice"><input type="radio" id="budget-household-single" name="budget-household" value="single" checked aria-describedby="budget-household-hint"><label for="budget-household-single">One person</label></div>
-      <div class="choice"><input type="radio" id="budget-household-couple" name="budget-household" value="couple"><label for="budget-household-couple">Two people</label></div>
+      {#- Each button is in its own box, and VoiceOver with Safari counted "1 of 1": the position is given (decision 133). -#}
+      <div class="choice"><input type="radio" id="budget-household-single" name="budget-household" value="single" checked aria-describedby="budget-household-hint" aria-posinset="1" aria-setsize="2"><label for="budget-household-single">One person</label></div>
+      <div class="choice"><input type="radio" id="budget-household-couple" name="budget-household" value="couple" aria-posinset="2" aria-setsize="2"><label for="budget-household-couple">Two people</label></div>
       <p class="hint" id="budget-household-hint">Choosing two people adds a second State Pension field and changes the example budgets offered.</p>
     </fieldset>
 
