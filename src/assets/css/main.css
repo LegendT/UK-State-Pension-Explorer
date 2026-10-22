@@ -394,6 +394,8 @@ td.num, th.num { text-align: right; white-space: nowrap; }
 /* A heading over a group of rows says what the rows share, in running text: only its name is bold. */
 th[scope="rowgroup"] { font-weight: 400; padding-top: var(--space-m); }
 tr.calculated td, tr.calculated th { font-style: italic; }
+/* A register's notes are its longest cells: a narrow column wrapped one search record to a row about 2,000px tall (decision 134). */
+th.notes { min-width: 20rem; }
 
 /* Charts */
 .chart { margin: var(--space-l) 0; }
