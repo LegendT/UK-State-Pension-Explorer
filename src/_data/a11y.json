@@ -1,11 +1,11 @@
 {
   "standard": "WCAG 2.2 Level AA",
   "status": "incomplete",
-  "assessed_on": "2026-10-18",
+  "assessed_on": "2026-10-22",
   "note": "Filled in from docs/accessibility-assessment.md after each round of testing. A test without its own environment and date used the shared run.",
   "run": {
-    "environment": "Chrome 155 on macOS (Apple silicon), driven by script.",
-    "date": "2026-10-18"
+    "environment": "Chrome 156 on macOS (Apple silicon), driven by script.",
+    "date": "2026-10-22"
   },
   "done": [
     {
@@ -38,9 +38,9 @@
     },
     {
       "check": "VoiceOver with Safari on a Mac",
-      "result": "A person listened to the State Pension page's table of what a date of birth decides, and worked through the four calculators, hearing between them entered figures, errors, results, charts and their tables, and a copied link. What was found was fixed and heard again. Other pages were not listened to in full.",
+      "result": "A person listened to every page from top to foot, with every disclosure open, and listed each page's headings, tables, links and landmarks; worked through the four calculators, hearing entered figures, errors, results, charts and their tables, and a copied link; and moved through every table by row and by column. What was found was fixed and heard again.",
       "environment": "Safari with VoiceOver on macOS, used by a person.",
-      "date": "2026-10-17"
+      "date": "2026-10-22"
     },
     {
       "check": "VoiceOver with Safari on an iPhone",
@@ -63,8 +63,8 @@
   ],
   "not_done": [
     {
-      "check": "VoiceOver on other pages and on an iPhone",
-      "reason": "No page has been listened to in full: only the State Pension page's table and the four calculators. On an iPhone the budget explorer, the rule comparison and the history explorer have not been tested. On the triple lock calculator on an iPhone, one paragraph was read twice on one pass, which could not be repeated, and VoiceOver read the summary \"At a glance\" after each digit typed. Both are still to be looked at."
+      "check": "VoiceOver on an iPhone for the other three calculators",
+      "reason": "On an iPhone the budget explorer, the rule comparison and the history explorer have not been tested. On the triple lock calculator on an iPhone, one paragraph was read twice on one pass, which could not be repeated, and VoiceOver read the summary \"At a glance\" after each digit typed. Both are still to be looked at."
     },
     {
       "check": "NVDA with a Windows browser",
@@ -88,11 +88,11 @@
     },
     {
       "check": "The \"Out of date\" note in the calculators",
-      "reason": "Added on 5 October 2026. When a figure is half typed, the last result stays with this note. It was looked at in screenshots. The automated rules did not scan that state, and nobody has heard it with a screen reader."
+      "reason": "Added on 5 October 2026. When a figure is half typed, the last result stays with this note. It was looked at in screenshots. On the rule comparison, VoiceOver with Safari on a Mac said the field, what to enter and that the result shown is out of date on leaving a wrong figure. The note has not been heard in the other calculators, and the automated rules did not scan that state."
     },
     {
       "check": "Changes to a form when a choice is made",
-      "reason": "Some choices change other fields at once: the household, the budget period, the scenario, the number of years, the first year and the pension series. A person has not yet judged whether each change is clear."
+      "reason": "Some choices change other fields at once: the household, the budget period, the scenario, the number of years, the first year and the pension series. With VoiceOver, choosing a household said nothing of the field it adds or empties; it now says so. A person has not yet judged whether each change is clear."
     }
   ],
   "known_issues": []
