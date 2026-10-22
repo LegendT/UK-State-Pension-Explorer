@@ -241,7 +241,7 @@ permalink: /sources-and-method/
   {% call m.scrollTable() %}
   <table>
     <caption id="table-register-claims">Register of claims</caption>
-    <thead><tr><th scope="col">Statement</th><th scope="col">Kind</th><th scope="col">What the source says</th><th scope="col">Source</th><th scope="col">Notes</th></tr></thead>
+    <thead><tr><th scope="col">Statement</th><th scope="col">Kind</th><th scope="col">What the source says</th><th scope="col">Source</th><th scope="col" class="notes">Notes</th></tr></thead>
     <tbody>
       {%- for id, record in claims %}
       {%- set cl = id | claim %}
@@ -259,7 +259,7 @@ permalink: /sources-and-method/
   {% call m.scrollTable() %}
   <table>
     <caption id="table-register-sources">Register of sources</caption>
-    <thead><tr><th scope="col">Source</th><th scope="col">Publisher</th><th scope="col">Published</th><th scope="col">Checked</th><th scope="col">Status</th><th scope="col">Notes</th></tr></thead>
+    <thead><tr><th scope="col">Source</th><th scope="col">Publisher</th><th scope="col">Published</th><th scope="col">Checked</th><th scope="col">Status</th><th scope="col" class="notes">Notes</th></tr></thead>
     <tbody>
       {%- for id, s in sources %}
       <tr id="source-{{ id }}"><th scope="row"><a href="{{ s.url }}">{{ s.title }}</a></th><td>{{ s.publisher }}</td><td>{% if s.published_date %}{{ s.published_date | monthOrDayText }}{% elif s.updated_date %}Updated {{ s.updated_date | monthOrDayText }}{% else %}Not given{% endif %}</td><td>{{ s.checked_date | dateText }}</td><td>{% if s.status %}{{ m.statusLabel(s.status) }}{% endif %}</td><td>{{ s.note or "" }}</td></tr>
