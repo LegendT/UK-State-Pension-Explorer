@@ -16,7 +16,7 @@ npm ci
 
 The accessibility and tool scripts use the Chrome already on the computer, through `puppeteer-core`, which downloads no browser of its own. Set `CHROME_PATH` if Chrome is not in the usual place on a Mac. The two accessibility scripts also run in Firefox, `A11Y_BROWSER=firefox`, using the Firefox on the computer (`FIREFOX_PATH`), and in WebKit, Safari's engine, `A11Y_BROWSER=webkit`, through `playwright-core`, which needs `npx playwright-core install webkit` once.
 
-`npm audit` reported 0 vulnerabilities on 19 October 2026, after Eleventy 3.1.7. No dependency's code runs on the published site, which is static files. Do not run `npm audit fix --force`: pin a version by hand and run the checks in `docs/maintenance.md`, "Dependencies".
+`npm audit`'s last result is in `docs/maintenance.md`, "Dependencies". No dependency's code runs on the published site, which is static files. Do not run `npm audit fix --force`: pin a version by hand and run the checks in `docs/maintenance.md`, "Dependencies".
 
 ## Commands
 
