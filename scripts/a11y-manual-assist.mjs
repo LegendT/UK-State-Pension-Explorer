@@ -6,14 +6,13 @@
 // "On this page" list marks the section being read. Run it after changing src/assets/js/contents.js,
 // the contents macro or the .contents styles, the "Back to top" link of back-to-top.js (decision 88),
 // js-class.js, ready() in tools/common.js, a tool module or the .js-only styles.
-// Usage: npm run build && node scripts/a11y-manual-assist.mjs
+// Usage: npm run build && npm run a11y:manual (A11Y_BROWSER=firefox or webkit for the others, scripts/browser.mjs)
 
 import { createServer } from "node:http";
 import { readFileSync, writeFileSync, mkdirSync, existsSync, statSync } from "node:fs";
 import { extname, join } from "node:path";
-import puppeteer from "puppeteer-core";
+import { chrome, launch, suffix, tabKey } from "./browser.mjs";
 
-const CHROME = process.env.CHROME_PATH || "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 const TYPES = { ".html": "text/html", ".css": "text/css", ".js": "text/javascript", ".svg": "image/svg+xml", ".png": "image/png", ".csv": "text/csv" };
 const server = createServer((request, response) => {
   let path = join("_site", decodeURIComponent(new URL(request.url, "http://x").pathname));
@@ -24,7 +23,8 @@ const server = createServer((request, response) => {
 await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
 const base = `http://127.0.0.1:${server.address().port}`;
 const pages = JSON.parse(readFileSync("src/_data/pageRegister.json", "utf8")).pages.map((entry) => entry.path);
-const browser = await puppeteer.launch({ executablePath: CHROME, headless: true });
+const browser = await launch();
+const scriptless = chrome ? browser : await launch({ javascript: false });
 const report = { run: new Date().toISOString(), browser: await browser.version(), pages: {} };
 const problems = [];
 let contentsChecked = 0;
@@ -105,7 +105,7 @@ for (const path of pages) {
   const expected = expectedKeys.length;
   const seen = [];
   for (let i = 0; i < expected + 5; i += 1) {
-    await second.keyboard.press("Tab");
+    await second.keyboard.press(tabKey);
     // Measured two animation frames after the move, once the page's own focus and scroll handlers
     // have run: the "Back to top" link shows when a focus move scrolls the page up, and hides again
     // on the next frame when the focused element lies under it. Measured at once, the link was now
@@ -150,8 +150,8 @@ for (const path of pages) {
   await second.close();
 
   // No JavaScript: the explanation must still be readable, and tool forms must not show.
-  const third = await browser.newPage();
-  await third.setJavaScriptEnabled(false);
+  const third = await scriptless.newPage();
+  if (chrome) await third.setJavaScriptEnabled(false);
   await third.goto(base + path, { waitUntil: "networkidle0" });
   out.noScript = await third.evaluate(() => ({
     words: document.querySelector("main").innerText.split(/\s+/).length,
@@ -231,13 +231,13 @@ for (const path of pages) {
     const count = await fourth.$$eval(links, (a) => a.length);
     const mid = Math.floor(count / 2);
     // A list taller than the window scrolls inside its column, and contents.js moves it to keep the
-    // marked link in view on every window scroll. Settle the list before clicking, or the click lands
-    // on whichever link has just moved under the pointer.
+    // marked link in view on every window scroll. A link is followed from the keyboard, focus then
+    // Enter, so the press goes to that link wherever the list has moved: a click went to whichever link
+    // had moved under the pointer, in Firefox even after the list was settled first (AA5).
     const follow = async (i) => {
-      const link = (await fourth.$$(links))[i];
-      await link.evaluate((el) => el.scrollIntoView({ block: "center" }));
+      await (await fourth.$$(links))[i].focus();
       await frames();
-      await link.click();
+      await fourth.keyboard.press("Enter");
       await frames();
     };
     const steps = [];
@@ -287,8 +287,10 @@ for (const path of pages) {
   const topShown = () => fifth.evaluate(() => {
     const el = document.querySelector(".back-to-top");
     const s = getComputedStyle(el), box = el.getBoundingClientRect();
+    // The width inside a classic scroll bar, as headless Firefox draws one (AA5).
+    const width = document.documentElement.clientWidth;
     // Hidden under a focused element with visibility, so it keeps its size (step 4).
-    return s.display !== "none" && s.visibility !== "hidden" && s.position === "fixed" && box.bottom <= innerHeight && box.right <= innerWidth && box.left > innerWidth / 2;
+    return s.display !== "none" && s.visibility !== "hidden" && s.position === "fixed" && box.bottom <= innerHeight && box.right <= width && box.left > width / 2;
   });
   const isLong = () => fifth.evaluate(() => document.documentElement.scrollHeight > 4 * innerHeight);
   const toBottomThenUp = async (by) => {
@@ -364,6 +366,7 @@ for (const path of pages) {
 }
 
 await browser.close();
+if (!chrome) await scriptless.close();
 // Every page with the list lost it, or the selector no longer matches: either way nothing was checked.
 if (!skipChecked) problems.push("Skip to the text: no page with the link was found, so it was not checked");
 if (!contentsChecked) problems.push("On this page: no page with the list was found, so the marking was not checked");
@@ -371,7 +374,7 @@ if (!underChecked) problems.push("Back to top: no control sat under the link on 
 if (contentsChecked && !followedChecked) problems.push("On this page: no last heading stayed below the marking line, so the hold on a followed link was not checked");
 server.close();
 mkdirSync("reports", { recursive: true });
-writeFileSync("reports/a11y-manual-assist.json", JSON.stringify(report, null, 2));
-console.log(`manual-assist: ${report.browser}. ${problems.length} problem(s). Saved to reports/a11y-manual-assist.json`);
+writeFileSync(`reports/a11y-manual-assist${suffix}.json`, JSON.stringify(report, null, 2));
+console.log(`manual-assist: ${report.browser}. ${problems.length} problem(s). Saved to reports/a11y-manual-assist${suffix}.json`);
 for (const problem of problems) console.log(`  - ${problem.slice(0, 700)}`);
 process.exit(problems.length ? 1 : 0);

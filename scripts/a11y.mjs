@@ -1,17 +1,16 @@
 // Runs axe-core against every built page, in each state listed below, and saves the full
 // result. Violations and incomplete results are reported separately: incomplete is not a pass.
-// Usage: npm run build && npm run a11y
+// Usage: npm run build && npm run a11y (A11Y_BROWSER=firefox or webkit for the others, scripts/browser.mjs)
 // A clean run here is a floor. It does not show that the site meets WCAG 2.2 AA.
 
 import { createServer } from "node:http";
 import { readFileSync, writeFileSync, mkdirSync, existsSync, statSync } from "node:fs";
 import { createRequire } from "node:module";
 import { extname, join } from "node:path";
-import puppeteer from "puppeteer-core";
+import { chrome, launch, suffix } from "./browser.mjs";
 
 const require = createRequire(import.meta.url);
 const axeSource = readFileSync(require.resolve("axe-core/axe.min.js"), "utf8");
-const CHROME = process.env.CHROME_PATH || "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 const TAGS = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"];
 const TYPES = { ".html": "text/html", ".css": "text/css", ".js": "text/javascript", ".json": "application/json", ".svg": "image/svg+xml", ".png": "image/png", ".csv": "text/csv", ".txt": "text/plain" };
 
@@ -51,14 +50,15 @@ const views = [
   { name: "desktop-dark", width: 1280, height: 900, scheme: "dark" },
 ];
 
-const browser = await puppeteer.launch({ executablePath: CHROME, headless: true });
-const version = await browser.version();
+const browsers = { light: await launch({ scheme: "light", reducedMotion: true }) };
+browsers.dark = chrome ? browsers.light : await launch({ scheme: "dark", reducedMotion: true });
+const version = await browsers.light.version();
 const runs = [];
 
 async function audit(path, view, state) {
-  const page = await browser.newPage();
+  const page = await browsers[view.scheme].newPage();
   await page.setViewport({ width: view.width, height: view.height });
-  await page.emulateMediaFeatures([{ name: "prefers-color-scheme", value: view.scheme }, { name: "prefers-reduced-motion", value: "reduce" }]);
+  if (chrome) await page.emulateMediaFeatures([{ name: "prefers-color-scheme", value: view.scheme }, { name: "prefers-reduced-motion", value: "reduce" }]);
   const errors = [];
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("console", (message) => message.type() === "error" && errors.push(message.text()));
@@ -68,7 +68,8 @@ async function audit(path, view, state) {
     await new Promise((resolve) => setTimeout(resolve, 400));
   }
   await page.evaluate(axeSource);
-  const result = await page.evaluate((tags) => window.axe.run(document, { runOnly: { type: "tag", values: tags } }), TAGS);
+  // Passed back as text: Firefox's driver drops nested arrays from an object this deep.
+  const result = JSON.parse(await page.evaluate((tags) => window.axe.run(document, { runOnly: { type: "tag", values: tags } }).then(JSON.stringify), TAGS));
   // axe could not judge these. Measure each one: the text colour against the nearest solid
   // background behind it. This is valid only because the stylesheet uses no background images,
   // gradients, opacity or transparent colours, which the build of this report checks below.
@@ -109,12 +110,12 @@ for (const path of pages) {
   }
 }
 
-await browser.close();
+for (const browser of new Set(Object.values(browsers))) await browser.close();
 server.close();
 
 mkdirSync("reports", { recursive: true });
 const report = { tool: `axe-core ${JSON.parse(readFileSync(require.resolve("axe-core/package.json"), "utf8")).version}`, browser: version, platform: `${process.platform} ${process.arch}`, tags: TAGS, run: new Date().toISOString(), runs };
-writeFileSync("reports/a11y.json", JSON.stringify(report, null, 2));
+writeFileSync(`reports/a11y${suffix}.json`, JSON.stringify(report, null, 2));
 
 const group = (key) => {
   const found = new Map();
@@ -156,5 +157,5 @@ for (const [label, list] of [["VIOLATION", violations]]) {
 }
 for (const run of overflow) console.log(`OVERFLOW ${run.pageOverflowPx}px ${run.path} ${run.view} ${run.state}`);
 for (const run of errors) console.log(`SCRIPT ERROR ${run.path} ${run.view} ${run.state}: ${run.scriptErrors.join("; ")}`);
-console.log("a11y: full results saved to reports/a11y.json");
+console.log(`a11y: full results saved to reports/a11y${suffix}.json`);
 process.exit(violations.length || overflow.length || errors.length || low.length || unmeasured.length || unsafe ? 1 : 0);

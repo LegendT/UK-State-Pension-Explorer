@@ -1,6 +1,6 @@
 # Accessibility assessment: WCAG 2.2 Level A and AA
 
-Assessed 29 September 2026; the automated and scripted tests below are as run on 22 October 2026. The owner's tests by hand ran from 15 to 18 October 2026 in launch step 4 of `docs/launch-dependencies.md`, which records each finding and its fix. His VoiceOver round of every page, 20 to 22 October 2026, is row AA1 there, with its step list; its findings and fixes are decisions 121 to 134 of `docs/decision-log.md`. Later runs are in `docs/HANDOVER.md`, "Last checks", a file kept on the owner's computer and not in the repository (decision 119). Status: **incomplete**. The site must not be described as meeting WCAG 2.2 AA.
+Assessed 29 September 2026; the automated and scripted tests below are as run on 22 October 2026. The owner's tests by hand ran from 15 to 18 October 2026 in launch step 4 of `docs/launch-dependencies.md`, which records each finding and its fix. His VoiceOver round of every page, 20 to 22 October 2026, is row AA1 there, with its step list; its findings and fixes are decisions 121 to 134 of `docs/decision-log.md`. The scripts ran in Firefox and WebKit as well as Chrome on 22 October 2026, row AA5 there; its fixes are decisions 136 to 138. Later runs are in `docs/HANDOVER.md`, "Last checks", a file kept on the owner's computer and not in the repository (decision 119). Status: **incomplete**. The site must not be described as meeting WCAG 2.2 AA.
 
 Automated and scripted checks are a floor. They do not show conformance. The owner has tested the site with VoiceOver and Safari, on a Mac every page and on an iPhone the triple lock calculator, and the site with a keyboard alone in Chrome and Firefox, and with zoom to 200% and 400%. No one has tested it with NVDA, or by touch without a screen reader.
 
@@ -12,7 +12,7 @@ All built pages, 14 on 30 September 2026, 15 since the rule comparison got its o
 
 | Item | Value |
 | --- | --- |
-| Browser | Chrome 156.0.8078.47 for the scripts. Safari, Chrome and Firefox for the owner's tests, versions not recorded; in Safari the owner had "Press Tab to highlight each item on a web page" on |
+| Browser | Chrome 156.0.8078.47, Firefox 158.0.1 and WebKit 27.2 for the scripts. WebKit is Safari's engine, run through `playwright-core` 1.64.0, not Safari itself (decision 139). Safari, Chrome and Firefox for the owner's tests, versions not recorded; in Safari the owner had "Press Tab to highlight each item on a web page" on |
 | Operating system | macOS (Darwin 25.6.0), Apple silicon. iOS on an iPhone for the owner's VoiceOver tests, version not recorded |
 | Automated rules | axe-core 4.11.4, tags wcag2a, wcag2aa, wcag21a, wcag21aa, wcag22aa |
 | Viewports | 390 × 844 and 1280 × 900, light and dark. 320 × 256 for reflow |
@@ -25,23 +25,28 @@ All built pages, 14 on 30 September 2026, 15 since the rule comparison got its o
 ```
 npm run build
 npm run a11y                          # writes reports/a11y.json
-node scripts/a11y-manual-assist.mjs   # writes reports/a11y-manual-assist.json
+npm run a11y:manual                   # writes reports/a11y-manual-assist.json
+A11Y_BROWSER=firefox npm run a11y     # or webkit; writes reports/a11y-firefox.json
+A11Y_BROWSER=firefox npm run a11y:manual
 ```
 
-Both scripts print their counts.
+Both scripts print their counts. `scripts/browser.mjs` picks the browser.
 
 ## Results of the last run
 
 - `npm run a11y`: 0 violations. 0 audits with sideways page scroll. 0 audits with script errors. Every contrast result that axe marked incomplete was measured, 4,111 of them: 0 below threshold, 0 that could not be measured.
-- `node scripts/a11y-manual-assist.mjs`: 0 problems on 19 pages.
+- `npm run a11y:manual`: 0 problems on 19 pages.
+- The same two in Firefox 158 and in WebKit 27.2: 0 violations, 0 audits with sideways page scroll, 0 with script errors, 0 problems. Firefox gave 2,190 distinct incomplete results and 4,150 contrast occurrences, every one measured and none below threshold; WebKit 2,173 and 4,111, likewise. Before the fixes of decisions 136 to 138, Firefox had 10 problems and WebKit 10 audits with a script error.
 
-The run recorded here was on 22 October 2026, after the fixes of AA1's round, the last in pull request 92: 130 audits of 19 pages, with 2,173 distinct incomplete results across every rule; the 4,111 above are the contrast ones, counted once for each time they occur. The states scanned with an error use a scripted submit, so the "Out of date" note of decision 85 was not scanned. The front-end sweep of 1 October 2026 also ran axe at 320, 768 and 1280 px.
+The run recorded here was on 22 October 2026, after the fixes of AA1's round, the last in pull request 92, and of AA5: 130 audits of 19 pages, with 2,173 distinct incomplete results across every rule; the 4,111 above are the contrast ones, counted once for each time they occur. The states scanned with an error use a scripted submit, so the "Out of date" note of decision 85 was not scanned. The front-end sweep of 1 October 2026 also ran axe at 320, 768 and 1280 px.
 
 ### What those runs did not establish
 
 - Contrast was measured from computed colours against the nearest solid background. That method is valid only while the stylesheet has no background images, gradients, opacity or transparent colours. The script checks the stylesheet for them and fails if it finds any.
 - The selector used to re-measure an incomplete result can match a different element with the same selector. Every element uses the same colour tokens, so the risk is small, but it is not zero.
 - The keyboard script shows that focus reaches each control and that an outline style is set. It does not show that a person can complete a task. The owner's keyboard test did, in Chrome and Firefox, for the tasks step 4 records: reaching "Back to top" and the history explorer's copy. Its other steps are not written down.
+- WebKit is the engine Safari is built on, not Safari: Safari's driver would not start a session (decision 139). In WebKit the keyboard check presses Option-Tab, which reaches links as Tab does in Safari with "Press Tab to highlight each item on a web page" on.
+- Headless Firefox draws a scroll bar 15 px wide, which Firefox on a Mac hides until scrolling by default. The checks measure inside it.
 - The scripts do not cover how a screen reader announces a result, an error or a chart. The owner's VoiceOver tests do, on a Mac for every page and on an iPhone for the triple lock calculator.
 
 ## Criterion by criterion
@@ -66,7 +71,7 @@ Result values: **No failure found** (with the method), **Not applicable** (with 
 | 1.4.11 Non-text Contrast | AA | No failure found | Calculated from the colour tokens, on all four backgrounds, light and dark. Control borders: lowest 3.15:1. Chart lines: lowest 5.75:1. Focus outline: lowest 7.37:1. The threshold is 3:1. |
 | 1.4.12 Text Spacing | AA | No failure found | Script applied the four overrides. No clipping found. |
 | 1.4.13 Content on Hover or Focus | AA | Not applicable | No content appears when another control is hovered or focused. No tooltips. The skip link (`.skip-link:focus` in the stylesheet) and "Back to top" (decision 108) show when they themselves take focus, which adds no content to another control. |
-| 2.1.1 Keyboard | A | No failure found | Script reached every control by Tab. The owner's keyboard test in Chrome and Firefox passed, 17 and 18 October 2026; "Back to top", which Tab could not reach, was fixed (decision 108). |
+| 2.1.1 Keyboard | A | No failure found | Script reached every control by Tab in Chrome and Firefox, and by Option-Tab in WebKit. The owner's keyboard test in Chrome and Firefox passed, 17 and 18 October 2026; "Back to top", which Tab could not reach, was fixed (decision 108). |
 | 2.1.2 No Keyboard Trap | A | No failure found | Script tabbed through each page and returned to the start. |
 | 2.1.4 Character Key Shortcuts | A | Not applicable | No shortcuts. |
 | 2.2.1 Timing Adjustable | A | Not applicable | No time limits. |
@@ -79,13 +84,13 @@ Result values: **No failure found** (with the method), **Not applicable** (with 
 | 2.4.5 Multiple Ways | AA | No failure found | Main navigation, site map, and links in the text. |
 | 2.4.6 Headings and Labels | AA | No failure found | Read through by the author. No skipped levels (script). Every page's headings heard and listed with VoiceOver on a Mac, 20 to 22 October 2026. |
 | 2.4.7 Focus Visible | AA | No failure found | Script found an outline on every focused control. The owner's keyboard test in Chrome and Firefox passed. Its steps are not written down, so whether focus was looked at on every control is not recorded. |
-| 2.4.11 Focus Not Obscured (Minimum) | AA | No failure found | Script: no focused control was covered, including on the four tools, where a summary is pinned to the foot of screens narrower than 1024 px. The page is padded at the foot and scrolls a focused field clear of the summary, which holds nothing that takes focus. At 1024 px and wider the contents list stays in view in a column of its own, beside the content rather than over it. The scripts test 390 and 1280 px, not 1024 to 1279 px, where that column first appears. That range was looked at in screenshots only. |
+| 2.4.11 Focus Not Obscured (Minimum) | AA | No failure found | Script: no focused control was covered, including on the four tools, where a summary is pinned to the foot of screens narrower than 1024 px. The page is padded at the foot and scrolls a focused field clear of the summary, which holds nothing that takes focus. Firefox left a focused element partly under the summary when it was already partly in view, 18 px of a link showing, until decision 137. At 1024 px and wider the contents list stays in view in a column of its own, beside the content rather than over it. The scripts test 390 and 1280 px, not 1024 to 1279 px, where that column first appears. That range was looked at in screenshots only. |
 | 2.5.1 Pointer Gestures | A | Not applicable | No gestures. |
 | 2.5.2 Pointer Cancellation | A | No failure found | Native buttons and links, and the overview cards. `cards.js` acts on the `click` event, which fires on release, and does nothing on a press alone. |
 | 2.5.3 Label in Name | A | No failure found | Visible labels are the accessible names. axe `label-content-name-mismatch`. |
 | 2.5.4 Motion Actuation | A | Not applicable | None. |
 | 2.5.7 Dragging Movements | AA | Not applicable | Nothing is dragged. No sliders. |
-| 2.5.8 Target Size (Minimum) | AA | No failure found | Script, 18 October 2026: none under 24 × 24 apart from links in a sentence. Some controls are 24 to 43 px, below the house aim of 44. |
+| 2.5.8 Target Size (Minimum) | AA | No failure found | Script, 22 October 2026, in Chrome, Firefox and WebKit: none under 24 × 24 apart from links in a sentence. Some controls are 24 to 43 px, below the house aim of 44. |
 | 3.1.1 Language of Page | A | No failure found | `lang="en-GB"`. Checked by the build. |
 | 3.1.2 Language of Parts | AA | Not applicable | No passages in another language. |
 | 3.2.1 On Focus | A | No failure found | Nothing changes on focus. |
@@ -108,10 +113,12 @@ Done in launch step 4, 15 to 18 October 2026: from 15 to 17 October, VoiceOver w
 
 Done in AA1's round, 20 to 22 October 2026: VoiceOver with Safari on a Mac on every page, in the order of the main navigation, with the fixes of decisions 121 to 134 heard again on their deploy previews.
 
+Done in AA5, 22 October 2026: the automated and scripted checks in Firefox and in WebKit, with the fixes of decisions 136 to 138.
+
 1. VoiceOver with Safari on an iPhone for the budget explorer, the rule comparison and the history explorer. On the triple lock calculator on an iPhone: a paragraph read twice on one pass, which could not be repeated, and "At a glance" read after each digit.
 2. NVDA with a supported Windows browser: every page, every calculator state, every chart and table.
 3. A phone, by touch, without a screen reader.
-4. The automated and scripted checks in Firefox and Safari.
+4. The automated and scripted checks in Safari itself, not its engine: decision 139.
 5. Whether each change a choice makes to other fields is clear (3.2.2).
 6. Usability sessions with disabled and older readers, where feasible.
 7. A working route to report a barrier. At launch it is a GitHub issue, which needs a GitHub account: decision 69.

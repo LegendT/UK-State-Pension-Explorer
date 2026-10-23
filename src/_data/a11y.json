@@ -4,7 +4,7 @@
   "assessed_on": "2026-10-22",
   "note": "Filled in from docs/accessibility-assessment.md after each round of testing. A test without its own environment and date used the shared run.",
   "run": {
-    "environment": "Chrome 156 on macOS (Apple silicon), driven by script.",
+    "environment": "Chrome 156, Firefox 158 and WebKit 27.2, the engine Safari is built on, on macOS (Apple silicon), driven by script.",
     "date": "2026-10-22"
   },
   "done": [
@@ -26,7 +26,7 @@
     },
     {
       "check": "Keyboard order and visible focus",
-      "result": "A script pressed Tab through every page. Every control was reached, in reading order, with an outline style set when focused, and none was covered by other content."
+      "result": "A script pressed Tab through every page, or Option-Tab in WebKit, which reaches links as Tab does in Safari with its setting to highlight each item on. Every control was reached, in reading order, with an outline style set when focused, and none was covered by other content."
     },
     {
       "check": "Headings",
@@ -75,8 +75,8 @@
       "reason": "Tested at phone width on a computer, and on an iPhone only with VoiceOver, as above."
     },
     {
-      "check": "The automated and scripted checks in Firefox and Safari",
-      "reason": "They used Chrome only. Firefox was used for the keyboard and zoom checks, and Safari with VoiceOver, as above."
+      "check": "The automated and scripted checks in Safari itself",
+      "reason": "They ran in WebKit, the engine Safari is built on, because Safari would not accept a test script on our computer. Safari itself was used with VoiceOver, as above."
     },
     {
       "check": "Use by disabled and older readers",

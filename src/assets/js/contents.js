@@ -9,6 +9,9 @@ const links = nav ? [...nav.querySelectorAll('a[href^="#"]:not(.skip-contents)')
 const targets = links.map((link) => document.getElementById(link.hash.slice(1)));
 let followed = null;
 let followedTop = Infinity;
+// Firefox can draw a frame before it scrolls to a link followed with Enter, so a followed heading
+// not yet on screen is waited for, not let go (AA5).
+let arriving = false;
 let queued = false;
 
 function onScreen(el) {
@@ -20,9 +23,10 @@ function update() {
   queued = false;
   if (followed !== null) {
     const top = targets[followed].getBoundingClientRect().top;
+    if (arriving) arriving = !onScreen(targets[followed]);
     // A heading moving down the window means the reader has scrolled back up, away from it.
-    if (!onScreen(targets[followed]) || top > followedTop + 1) followed = null;
-    else followedTop = top;
+    if (!arriving && (!onScreen(targets[followed]) || top > followedTop + 1)) followed = null;
+    else if (!arriving) followedTop = top;
   }
   let current = followed;
   if (current === null) {
@@ -50,7 +54,7 @@ if (targets.length && targets.every(Boolean)) {
     // A modified click opens the section elsewhere, so this page does not move.
     if (event.defaultPrevented || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
     const i = links.indexOf(event.target.closest("a"));
-    if (i >= 0) { followed = i; followedTop = Infinity; queue(); }
+    if (i >= 0) { followed = i; followedTop = Infinity; arriving = true; queue(); }
   });
   addEventListener("scroll", queue, { passive: true });
   addEventListener("resize", queue);
