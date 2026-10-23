@@ -249,6 +249,17 @@ export function pinSummary(summary) {
   };
   new ResizeObserver(fit).observe(summary);
   window.addEventListener("resize", fit);
+  // The page's scroll-padding-bottom keeps a focused element clear of the pinned summary, but Firefox
+  // does not scroll one that is already partly in view (AA5). Measured once the browser has scrolled.
+  // Not an element Tab cannot reach, such as main or the header that a link moves focus to: Safari
+  // focuses main when a link in it is clicked.
+  document.addEventListener("focusin", (event) => requestAnimationFrame(() => {
+    if (event.target.tabIndex < 0 || getComputedStyle(summary).position !== "fixed") return;
+    const box = event.target.getBoundingClientRect();
+    const line = summary.getBoundingClientRect().top;
+    const top = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+    if (box.top < line && box.bottom > line) window.scrollBy(0, Math.min(box.bottom - line, box.top - top));
+  }));
 }
 
 // A half-typed figure, such as "-", is not a reason to take away the result the reader is looking
@@ -301,9 +312,12 @@ export function chartWidth(result) {
 
 // Draws the chart again when the result's width changes, starting with the one the build drew.
 // html() returns the result on screen at chartWidth(result), or nothing when there is no result.
-// Only the chart is replaced, so focus elsewhere in the result stays where it is.
+// Only the chart is replaced, so focus elsewhere in the result stays where it is. Drawn in the next
+// frame: a chart replaced inside the observer resized the result in the same frame, a loop Safari's
+// engine reported as an error on the rule comparison and the history explorer (AA5), as scroll-cue.js
+// once did.
 export function fitChart(result, html) {
-  new ResizeObserver(() => {
+  new ResizeObserver(() => requestAnimationFrame(() => {
     const old = result.querySelector("figure.chart");
     if (!old || old.querySelector("svg").viewBox.baseVal.width === chartWidth(result)) return;
     const fresh = document.createRange().createContextualFragment(html() || "").querySelector("figure.chart");
@@ -311,7 +325,7 @@ export function fitChart(result, html) {
     const focused = old.contains(document.activeElement);
     old.replaceWith(fresh);
     if (focused) fresh.querySelector(".scroll-x").focus();
-  }).observe(result);
+  })).observe(result);
 }
 
 // The link before a chart to its table moves focus onto the table. Safari scrolled to it without
