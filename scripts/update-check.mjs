@@ -15,6 +15,7 @@
 import { readFileSync, readdirSync, statSync, mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { spawnSync } from "node:child_process";
+import { readingOf } from "./browser-readings.mjs";
 
 const arg = (name, fallback) => {
   const at = process.argv.indexOf(`--${name}`);
@@ -81,8 +82,10 @@ async function fetchOne(url) {
     const type = response.headers.get("content-type") || "";
     const html = type.includes("html") ? await response.text() : "";
     // The robot-check words are looked for only in an answer that is not 200: a normal page may load a captcha script.
-    const refused = response.status === 429 ? "rate limited: HTTP 429, try again later" : response.status === 403 || (response.status !== 200 && /just a moment|captcha|access denied/i.test(html.slice(0, 5000))) ? `HTTP ${response.status}, the site answers with a robot check; read it in a browser` : null;
-    return { status: response.status, final: response.url !== url ? response.url : null, refused, signals: signalsOf(html) };
+    // A 429 is not a refusal: the passage check fetches the page again in section 6.
+    const limited = response.status === 429;
+    const refused = limited ? null : response.status === 403 || (response.status !== 200 && /just a moment|captcha|access denied/i.test(html.slice(0, 5000))) ? `HTTP ${response.status}, the site answers with a robot check; read it in a browser` : null;
+    return { status: response.status, final: response.url !== url ? response.url : null, refused, limited, signals: signalsOf(html) };
   } catch (error) {
     return { status: 0, final: null, refused: false, signals: {}, error: error.name === "AbortError" ? "timed out after 15 s" : error.message };
   } finally {
@@ -116,13 +119,29 @@ if (FETCH) {
   report.fetched = fetched;
 
   section(`1. Addresses: ${fetched.length} fetched once, ${Object.keys(sources).length} sources and ${links.outbound.length} outbound links.`);
-  const dead = fetched.filter((f) => f.status !== 200 && !f.refused);
+  const dead = fetched.filter((f) => f.status !== 200 && !f.refused && !f.limited);
   const refused = fetched.filter((f) => f.refused);
+  const limited = fetched.filter((f) => f.limited);
   const moved = fetched.filter((f) => f.final);
+  // A refused source is covered by its passages' browser readings, and is due for one past the limit.
+  const readings = Object.fromEntries(JSON.parse(readFileSync("scripts/passages-checked-in-browser.json", "utf8")).checked.map((r) => [r.id, r]));
+  const readDue = [];
   for (const f of dead) line(`DEAD      ${f.kind} ${f.id}: ${f.error || `HTTP ${f.status}`} <- ${f.url}`);
-  for (const f of refused) line(`REFUSED   ${f.kind} ${f.id}: ${f.refused} <- ${f.url}`);
+  for (const f of refused) {
+    line(`REFUSED   ${f.kind} ${f.id}: ${f.refused} <- ${f.url}`);
+    if (f.kind !== "source") continue;
+    const r = readingOf(f.id, figures, claims, readings, TODAY, DAYS);
+    const passages = `${r.passages} passage${r.passages === 1 ? "" : "s"}`;
+    if (!r.passages) line("            quotes no passage, so no reading is dated: read the page in a browser");
+    else if (r.due) {
+      readDue.push(f.id);
+      line(`READ DUE  ${f.id}: ${passages}; never read in a browser: ${r.unread.join(", ") || "none"}; read over ${DAYS} days ago: ${r.old.map((id) => `${id} (${readings[id].date})`).join(", ") || "none"}`);
+    } else line(`            ${passages} read in a browser, oldest ${r.oldest.date} (${r.oldest.browser})`);
+  }
+  for (const f of limited) line(`LIMITED   ${f.kind} ${f.id}: HTTP 429, try again later${f.kind === "source" && DATA === "src/_data" ? "; the passage check reads it again in section 6" : ""} <- ${f.url}`);
   for (const f of moved) line(`MOVED     ${f.kind} ${f.id}: now ${f.final}`);
-  line(`${dead.length} dead, ${refused.length} refused, ${moved.length} redirected, ${fetched.length - dead.length - refused.length} answered.`);
+  line(`${dead.length} dead, ${refused.length} refused (${readDue.length} due a browser reading), ${limited.length} rate limited, ${moved.length} redirected, ${fetched.length - dead.length - refused.length - limited.length} answered.`);
+  report.read_due = readDue;
 
   section("2. Newer editions: a last-updated signal later than the record's checked_date.");
   // Only a signal that moves when the page changes counts as readable: GOV.UK's public updated-at,
