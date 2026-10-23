@@ -1,8 +1,8 @@
 # Accessibility assessment: WCAG 2.2 Level A and AA
 
-Assessed 29 September 2026; the automated and scripted tests below are as run on 18 October 2026, and the owner's tests by hand from 15 to 18 October 2026, in launch step 4 of `docs/launch-dependencies.md`, which records each finding and its fix. Later runs are in `docs/HANDOVER.md`, "Last checks", a file kept on the owner's computer and not in the repository (decision 119). Status: **incomplete**. The site must not be described as meeting WCAG 2.2 AA.
+Assessed 29 September 2026; the automated and scripted tests below are as run on 22 October 2026. The owner's tests by hand ran from 15 to 18 October 2026 in launch step 4 of `docs/launch-dependencies.md`, which records each finding and its fix. His VoiceOver round of every page, 20 to 22 October 2026, is row AA1 there, with its step list; its findings and fixes are decisions 121 to 134 of `docs/decision-log.md`. Later runs are in `docs/HANDOVER.md`, "Last checks", a file kept on the owner's computer and not in the repository (decision 119). Status: **incomplete**. The site must not be described as meeting WCAG 2.2 AA.
 
-Automated and scripted checks are a floor. They do not show conformance. The owner has tested parts of the site with VoiceOver and Safari, on a Mac the State Pension page's table and the four calculators and on an iPhone the triple lock calculator, and the site with a keyboard alone in Chrome and Firefox, and with zoom to 200% and 400%. No one has tested it with NVDA, or by touch without a screen reader.
+Automated and scripted checks are a floor. They do not show conformance. The owner has tested the site with VoiceOver and Safari, on a Mac every page and on an iPhone the triple lock calculator, and the site with a keyboard alone in Chrome and Firefox, and with zoom to 200% and 400%. No one has tested it with NVDA, or by touch without a screen reader.
 
 ## Scope
 
@@ -12,12 +12,12 @@ All built pages, 14 on 30 September 2026, 15 since the rule comparison got its o
 
 | Item | Value |
 | --- | --- |
-| Browser | Chrome 155.0.8059.82 for the scripts. Safari, Chrome and Firefox for the owner's tests, versions not recorded |
+| Browser | Chrome 156.0.8078.47 for the scripts. Safari, Chrome and Firefox for the owner's tests, versions not recorded; in Safari the owner had "Press Tab to highlight each item on a web page" on |
 | Operating system | macOS (Darwin 25.6.0), Apple silicon. iOS on an iPhone for the owner's VoiceOver tests, version not recorded |
 | Automated rules | axe-core 4.11.4, tags wcag2a, wcag2aa, wcag21a, wcag21aa, wcag22aa |
 | Viewports | 390 × 844 and 1280 × 900, light and dark. 320 × 256 for reflow |
 | Motion | `prefers-reduced-motion: reduce` |
-| Assistive technology | VoiceOver on macOS and iOS, used by the owner, 15 to 17 October 2026 |
+| Assistive technology | VoiceOver on macOS and iOS, used by the owner, 15 to 17 October 2026, and on macOS from 20 to 22 October 2026 |
 | Operator | An AI assistant running scripts, and the owner by hand |
 
 ## How to repeat the checks
@@ -32,17 +32,17 @@ Both scripts print their counts.
 
 ## Results of the last run
 
-- `npm run a11y`: 0 violations. 0 audits with sideways page scroll. 0 audits with script errors. Every contrast result that axe marked incomplete was measured, 4,052 of them: 0 below threshold, 0 that could not be measured.
+- `npm run a11y`: 0 violations. 0 audits with sideways page scroll. 0 audits with script errors. Every contrast result that axe marked incomplete was measured, 4,111 of them: 0 below threshold, 0 that could not be measured.
 - `node scripts/a11y-manual-assist.mjs`: 0 problems on 19 pages.
 
-The run recorded here was on 18 October 2026, after the fixes of launch step 4: 130 audits of 19 pages. The states scanned with an error use a scripted submit, so the "Out of date" note of decision 85 was not scanned. The front-end sweep of 1 October 2026 also ran axe at 320, 768 and 1280 px.
+The run recorded here was on 22 October 2026, after the fixes of AA1's round, the last in pull request 92: 130 audits of 19 pages, with 2,173 distinct incomplete results across every rule; the 4,111 above are the contrast ones, counted once for each time they occur. The states scanned with an error use a scripted submit, so the "Out of date" note of decision 85 was not scanned. The front-end sweep of 1 October 2026 also ran axe at 320, 768 and 1280 px.
 
 ### What those runs did not establish
 
 - Contrast was measured from computed colours against the nearest solid background. That method is valid only while the stylesheet has no background images, gradients, opacity or transparent colours. The script checks the stylesheet for them and fails if it finds any.
 - The selector used to re-measure an incomplete result can match a different element with the same selector. Every element uses the same colour tokens, so the risk is small, but it is not zero.
 - The keyboard script shows that focus reaches each control and that an outline style is set. It does not show that a person can complete a task. The owner's keyboard test did, in Chrome and Firefox, for the tasks step 4 records: reaching "Back to top" and the history explorer's copy. Its other steps are not written down.
-- The scripts do not cover how a screen reader announces a result, an error or a chart. The owner's VoiceOver tests do, on a Mac for the four calculators and on an iPhone for the triple lock calculator.
+- The scripts do not cover how a screen reader announces a result, an error or a chart. The owner's VoiceOver tests do, on a Mac for every page and on an iPhone for the triple lock calculator.
 
 ## Criterion by criterion
 
@@ -52,7 +52,7 @@ Result values: **No failure found** (with the method), **Not applicable** (with 
 | --- | --- | --- | --- |
 | 1.1.1 Non-text Content | A | No failure found | A paragraph just before each tool chart says what its lines are and where they start and end, and links to the full table of values (decision 104). The image is named "Line chart", and what is drawn in it is hidden from screen readers. axe `svg-img-alt`, `image-alt`. VoiceOver with Safari on a Mac read the paragraph and reached the table by its link, on the history explorer and the rule comparison. NVDA not assessed. |
 | 1.2.1 to 1.2.5 Time-based media | A, AA | Not applicable | The site has no audio or video. |
-| 1.3.1 Info and Relationships | A | No failure found | Semantic headings, lists, tables with `scope` and captions, `fieldset` and `legend`, labels. axe. VoiceOver with Safari on a Mac on the State Pension page's table and the four calculators; other pages not listened to, NVDA not assessed. |
+| 1.3.1 Info and Relationships | A | No failure found | Semantic headings, lists, tables with `scope` and captions, `fieldset` and `legend`, labels. axe. VoiceOver with Safari on a Mac on every page, every table moved through by row and by column, 20 to 22 October 2026; NVDA not assessed. |
 | 1.3.2 Meaningful Sequence | A | No failure found | Source order is reading order. No CSS reordering. Tab order followed page order in the script. |
 | 1.3.3 Sensory Characteristics | A | No failure found | Read through of instructions: none depends on shape, colour or position. Done by the author, not a second reader. |
 | 1.3.4 Orientation | AA | No failure found | No orientation lock in the CSS. Not tested on a device. |
@@ -77,7 +77,7 @@ Result values: **No failure found** (with the method), **Not applicable** (with 
 | 2.4.3 Focus Order | A | No failure found | Script: no backwards jumps. |
 | 2.4.4 Link Purpose (In Context) | A | No failure found | Links name their destination. Repeated "More about this figure" summaries carry the figure name in hidden text. |
 | 2.4.5 Multiple Ways | AA | No failure found | Main navigation, site map, and links in the text. |
-| 2.4.6 Headings and Labels | AA | No failure found | Read through by the author. No skipped levels (script). |
+| 2.4.6 Headings and Labels | AA | No failure found | Read through by the author. No skipped levels (script). Every page's headings heard and listed with VoiceOver on a Mac, 20 to 22 October 2026. |
 | 2.4.7 Focus Visible | AA | No failure found | Script found an outline on every focused control. The owner's keyboard test in Chrome and Firefox passed. Its steps are not written down, so whether focus was looked at on every control is not recorded. |
 | 2.4.11 Focus Not Obscured (Minimum) | AA | No failure found | Script: no focused control was covered, including on the four tools, where a summary is pinned to the foot of screens narrower than 1024 px. The page is padded at the foot and scrolls a focused field clear of the summary, which holds nothing that takes focus. At 1024 px and wider the contents list stays in view in a column of its own, beside the content rather than over it. The scripts test 390 and 1280 px, not 1024 to 1279 px, where that column first appears. That range was looked at in screenshots only. |
 | 2.5.1 Pointer Gestures | A | Not applicable | No gestures. |
@@ -89,7 +89,7 @@ Result values: **No failure found** (with the method), **Not applicable** (with 
 | 3.1.1 Language of Page | A | No failure found | `lang="en-GB"`. Checked by the build. |
 | 3.1.2 Language of Parts | AA | Not applicable | No passages in another language. |
 | 3.2.1 On Focus | A | No failure found | Nothing changes on focus. |
-| 3.2.2 On Input | A | Not assessed | Every calculator redraws its result as the figures change, 400 ms after the last change, on the same page: the rule comparison since 1 October 2026 and the other three since 2 October 2026 (decision 78). Focus stays where it was and the page does not move. Loading a past decision or an example budget is still a button. Six choices change other fields at once, the budget explorer's period among them (W3): household (shows or hides a field, empties it, clears the example choice), scenario (refills the yearly figures and discards edits), number of years and first year (redraw the yearly rows), and pension series (refills the year lists). Each is described beside the control. A person has not judged whether that is enough. |
+| 3.2.2 On Input | A | Not assessed | Every calculator redraws its result as the figures change, 400 ms after the last change, on the same page: the rule comparison since 1 October 2026 and the other three since 2 October 2026 (decision 78). Focus stays where it was and the page does not move. Loading a past decision or an example budget is still a button. Six choices change other fields at once, the budget explorer's period among them (W3): household (shows or hides a field, empties it, clears the example choice), scenario (refills the yearly figures and discards edits), number of years and first year (redraw the yearly rows), and pension series (refills the year lists). Each is described beside the control. With VoiceOver, choosing a household said nothing of the field it adds or empties; it now says so (decision 132), confirmed by the owner on the deploy preview. A person has not judged whether each of the six is enough. |
 | 3.2.3 Consistent Navigation | AA | No failure found | One shared layout. |
 | 3.2.4 Consistent Identification | AA | No failure found | Shared components. |
 | 3.2.6 Consistent Help | A | Not applicable now. Not assessed for launch | No help mechanism exists yet. The place for it is the same on each page. |
@@ -99,14 +99,16 @@ Result values: **No failure found** (with the method), **Not applicable** (with 
 | 3.3.4 Error Prevention (Legal, Financial, Data) | AA | Not applicable | No transaction and no stored data. |
 | 3.3.7 Redundant Entry | A | Not applicable | No multi-step process. |
 | 3.3.8 Accessible Authentication (Minimum) | AA | Not applicable | No sign-in. |
-| 4.1.2 Name, Role, Value | A | No failure found | Native controls. axe. VoiceOver with Safari on a Mac in the four calculators; NVDA not assessed. |
+| 4.1.2 Name, Role, Value | A | No failure found | Native controls. axe. VoiceOver with Safari on a Mac on every page; it counted each of the budget explorer's household radio buttons "1 of 1", each in its own box, and they now carry their position (decision 133), confirmed by the owner on the deploy preview. NVDA not assessed. |
 | 4.1.3 Status Messages | AA | No failure found | Each calculator has a `role="status"` region that receives one message after a change, reading the result's summary. While a text field has focus the message waits, and is said when the reader leaves the field or presses Enter; on a touch screen, 1 second after leaving it (decisions 105 and 107). A change from a menu or button is said at once. VoiceOver with Safari read the messages in full on a Mac in all four calculators. On an iPhone, in the triple lock calculator, earlier timings were heard, but after every key or halfway through a figure; under decision 107 an on-screen log showed the message written once, 1 second after leaving the field, and it has not been listened to under that rule. On the iPhone, VoiceOver also read the summary "At a glance" after each digit, which is its own reading, to be looked at. NVDA not assessed. |
 
 ## Outstanding before any claim of conformance
 
 Done in launch step 4, 15 to 18 October 2026: from 15 to 17 October, VoiceOver with Safari on a Mac for the State Pension page's table and the four calculators, and on an iPhone for the triple lock calculator, and in Safari on a Mac and an iPhone, the budget explorer's example menu listing one option per group; to 18 October, keyboard-only use in Chrome and Firefox, and zoom to 200% and 400% in Chrome, with a spot check in Firefox.
 
-1. VoiceOver with Safari on every other page, and on an iPhone for the budget explorer, the rule comparison and the history explorer. On the triple lock calculator on an iPhone: a paragraph read twice on one pass, which could not be repeated, and "At a glance" read after each digit.
+Done in AA1's round, 20 to 22 October 2026: VoiceOver with Safari on a Mac on every page, in the order of the main navigation, with the fixes of decisions 121 to 134 heard again on their deploy previews.
+
+1. VoiceOver with Safari on an iPhone for the budget explorer, the rule comparison and the history explorer. On the triple lock calculator on an iPhone: a paragraph read twice on one pass, which could not be repeated, and "At a glance" read after each digit.
 2. NVDA with a supported Windows browser: every page, every calculator state, every chart and table.
 3. A phone, by touch, without a screen reader.
 4. The automated and scripted checks in Firefox and Safari.
